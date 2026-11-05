@@ -1,0 +1,6 @@
+{
+  "sourceHead": "8f15eed1255222ff9178b529d7a3039bfd67fab6",
+  "mobileResolvedHash": "6b48992dd5e63492f51221297b6763ebd7184a67168a304f200b25c5508de39a",
+  "resolvedEntries": 615,
+  "normalization": "Object.entries(packages), excluding workspace/root/link metadata; original property order retained"
+}

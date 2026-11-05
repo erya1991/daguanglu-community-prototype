@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-11-04T11:44:42.483Z",
+  "run": "BUILD_2026-11-04T11-35-49-231Z",
+  "contract": "prototype-shared/types.d.ts",
+  "results": [
+    {
+      "id": "resident-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-04T11:37:06.137Z",
+      "end": "2026-11-04T11:37:08.820Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00/BUILD_2026-11-04T11-35-49-231Z/resident-types.log"
+    },
+    {
+      "id": "merchant-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-04T11:37:08.820Z",
+      "end": "2026-11-04T11:37:11.242Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00/BUILD_2026-11-04T11-35-49-231Z/merchant-types.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-04T11:37:11.243Z",
+      "end": "2026-11-04T11:37:13.940Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00/BUILD_2026-11-04T11-35-49-231Z/staff-types.log"
+    }
+  ]
+}

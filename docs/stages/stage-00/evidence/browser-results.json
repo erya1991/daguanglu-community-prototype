@@ -1,0 +1,49 @@
+{
+  "run": "BROWSER_2026-11-04T11-38-25-379Z",
+  "session": "BROWSER_2026-11-04T11-38-25-379Z",
+  "base": "http://127.0.0.1:19200",
+  "edgeVersion": "156.0.4314.58",
+  "results": [
+    {
+      "name": "T04/T24/T28 住户页面提交 → Web页面审核 → 住户与管理端读取",
+      "status": "PASS"
+    },
+    {
+      "name": "T28 多标签重复审核与撤回竞争不产生重复关系",
+      "status": "PASS"
+    },
+    {
+      "name": "T16/T28 分端身份、刷新恢复与仅当前会话复位",
+      "status": "PASS"
+    },
+    {
+      "name": "T03/T13/T20 文件实际字节授权、失败保留与版本独立",
+      "status": "PASS"
+    },
+    {
+      "name": "T02/T03/T20 无权详情、联系方式和导出均由Adapter裁减",
+      "status": "PASS"
+    },
+    {
+      "name": "T08 Web实际文件选择、预览、整批导入与重复错误",
+      "status": "PASS"
+    },
+    {
+      "name": "T24/T26 四端导航、页面直达与移动视口无横向溢出",
+      "status": "PASS"
+    },
+    {
+      "name": "T25 来源框架所需六类画面与两类Web视口截图",
+      "status": "PASS"
+    },
+    {
+      "name": "T27 冷启动、保存、附件、失败和消息均无外部业务请求",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "badRequests": [],
+  "finished": "2026-11-04T11:39:22.565Z",
+  "path": ".runtime/stage00/BROWSER_2026-11-04T11-38-25-379Z"
+}

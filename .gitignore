@@ -32,3 +32,8 @@ Thumbs.db
 
 # Local prototype state, not shared scenario seeds
 .local-data/
+
+# Stage00 owned tools, cache, generated shared inputs
+.runtime/
+miniapp/apps/*/src/_shared/
+miniapp/apps/*/src/_core/

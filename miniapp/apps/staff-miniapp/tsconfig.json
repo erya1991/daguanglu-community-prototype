@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "checkJs": false,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@ui/*": [
+        "src/_shared/ui/components/*"
+      ],
+      "@core/*": [
+        "src/_core/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "src/**/*.js"
+  ]
+}

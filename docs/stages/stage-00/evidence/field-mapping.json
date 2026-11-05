@@ -1,0 +1,4035 @@
+{
+  "run": "FIELDS_1793792385999",
+  "path": ".runtime/stage00/FIELDS_1793792385999",
+  "mapping": [
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "组织名称",
+      "type": "文本／单行输入",
+      "source": "组织维护岗录入",
+      "rule": "同名只提示核对，不凭名称自动合并；去除首尾空白",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；编辑：有权组织维护岗新建和编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "组织类型",
+      "type": "枚举／下拉单选",
+      "source": "组织维护岗选择",
+      "rule": "候选：社区、物业、平台运营、服务机构；字典范围待Q03核定",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；编辑：有权组织维护岗新建和编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "上级组织",
+      "type": "关联对象／树选择",
+      "source": "已有组织档案",
+      "rule": "可无上级；不得选择自身或形成循环；不由组织层级自动授予空间权限",
+      "conditions": "必填：否；可见：Web组织树、表单、详情；编辑：有权组织维护岗编辑，变更留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "工作联系人",
+      "type": "文本／单行输入",
+      "source": "组织维护岗录入",
+      "rule": "使用工作联系信息，不自动绑定居民或生成责任区域",
+      "conditions": "必填：否；可见：Web列表、表单、详情；编辑：有权组织维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "工作联系电话",
+      "type": "联系方式／单行输入",
+      "source": "组织维护岗录入",
+      "rule": "支持手机号或固定电话；不强制手机号格式覆盖固话",
+      "conditions": "必填：否；可见：Web列表、表单、详情；编辑：有权组织维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "组织状态",
+      "type": "枚举／状态标签",
+      "source": "启用或停用动作",
+      "rule": "字典：启用、停用；历史业务不删除；不作为任意修改账号身份的开关",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；编辑：只读，使用启用／停用操作",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "备注",
+      "type": "多行文本／文本域",
+      "source": "组织维护岗填写",
+      "rule": "不填写未确认区域责任、真实账号密钥",
+      "conditions": "必填：否；可见：Web表单、详情；编辑：有权组织维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "orgs",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "登录账号",
+      "type": "文本／账号选择",
+      "source": "已有账号候选或模拟账号",
+      "rule": "不是数据库用户ID；不新建商城账号内核；按姓名或手机号相同不能自动合并",
+      "conditions": "必填：是；可见：Web筛选、列表、关联表单、详情；编辑：账号管理岗首次关联可选，关联后变更需核验",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "人员姓名",
+      "type": "关联对象／人员选择",
+      "source": "已有人员档案或经核验人员资料",
+      "rule": "重名时结合所属组织及必要联系方式核对；不覆盖已有居民身份",
+      "conditions": "必填：是；可见：Web筛选、列表、关联表单、详情；编辑：账号管理岗按核验结果关联",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "所属组织",
+      "type": "关联对象／树选择",
+      "source": "已有有效组织档案",
+      "rule": "授权限定在当前组织成员关系，不把各组织权限直接相加",
+      "conditions": "必填：是；可见：Web筛选、列表、授权表单、详情；编辑：账号管理岗在可授予范围内选择",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "岗位",
+      "type": "文本／单行输入",
+      "source": "物业人员资料带入或账号管理岗维护",
+      "rule": "岗位名称不自动赋予操作权限；不新增复杂岗位体系",
+      "conditions": "必填：否；可见：Web列表、授权表单、详情；编辑：账号管理岗编辑当前成员关系",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "授权角色",
+      "type": "关联对象／多选",
+      "source": "已有角色模板",
+      "rule": "可选范围不得超出授权者可授予范围；无角色不能默认放行",
+      "conditions": "必填：是，启用工作身份前；可见：Web列表、授权表单、详情；编辑：有权授权岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "可查看社区",
+      "type": "关联对象／多选",
+      "source": "已有社区档案",
+      "rule": "仅数据访问清单，不等于责任区域；空值不代表全部",
+      "conditions": "必填：条件必填，使用社区范围时；可见：Web授权表单、详情；编辑：有权授权岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "可查看小区",
+      "type": "关联对象／多选",
+      "source": "已有小区档案",
+      "rule": "限对应社区及可授予范围；选社区不自动获得所有小区，实际继承策略待Q03",
+      "conditions": "必填：条件必填，使用小区范围时；可见：Web授权表单、详情；编辑：有权授权岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS",
+      "ruleValidation": "CONSTRAINT_1793792295300 T09/T19 人员岗位调整显示条件必填并要求本次原因；T13/T20 文件下载权限修改不能省略本次操作原因；T02/T20 有社区但小区清单为空时，实际管理端不返回房屋"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "账号状态",
+      "type": "枚举／只读标签",
+      "source": "已有账号或模拟数据",
+      "rule": "显示启用／停用；本阶段不伪称已改真实微信账号",
+      "conditions": "必填：自动带入，无需填写；可见：Web筛选、列表、详情；编辑：只读，真实账号操作由已有账号机制决定",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "当前工作身份状态",
+      "type": "枚举／状态标签",
+      "source": "当前成员关系启停动作",
+      "rule": "字典：启用、停用；与全局账号及其他合法身份分开",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；编辑：通过有权启用／停用动作变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "授权变更原因",
+      "type": "多行文本／文本域",
+      "source": "当前授权操作人填写",
+      "rule": "调整角色、数据范围或停用时记录；不能用默认空值替代依据",
+      "conditions": "必填：是，变更时；可见：Web授权确认弹窗、变更记录；编辑：当前有权授权人在提交前可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "accounts",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "角色名称",
+      "type": "文本／单行输入",
+      "source": "有权角色管理岗录入",
+      "rule": "名称清楚区分档案维护、审核、查询等；模板不等于街道真实岗位批准",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；编辑：有权角色管理岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "角色说明",
+      "type": "多行文本／文本域",
+      "source": "有权角色管理岗录入",
+      "rule": "不写未确认的责任区域或默认跨组织权限",
+      "conditions": "必填：否；可见：Web表单、详情；编辑：有权角色管理岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "可见菜单",
+      "type": "层级多选／权限树",
+      "source": "当前已纳入范围的菜单清单",
+      "rule": "不包含网格与责任区域页面；菜单可见不能替代详情权限校验",
+      "conditions": "必填：是，角色启用前；可见：Web角色配置、详情；编辑：有权角色管理岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "允许操作",
+      "type": "多选／操作权限组",
+      "source": "各菜单操作清单",
+      "rule": "查询、编辑、审核分开；不因为有菜单就默认有全部按钮",
+      "conditions": "必填：是，角色启用前；可见：Web角色配置、详情；编辑：有权角色管理岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "敏感查看与导出权限",
+      "type": "多选／权限项",
+      "source": "各功能已定义的敏感权限项",
+      "rule": "按项授权；数据范围仍限制对象；不能新增未批准业务导出能力",
+      "conditions": "必填：否，未选即不授权；可见：Web角色配置、详情；编辑：有权角色管理岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "角色状态",
+      "type": "枚举／状态标签",
+      "source": "启用／停用动作",
+      "rule": "字典：启用、停用；停用前说明受影响账号，历史操作保留",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；编辑：只读，使用受控启停动作",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.1 DGL-001｜组织、账号与权限",
+      "table": "roles",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 config"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "社区编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验后的既有业务编码",
+      "rule": "非数据库主键；真实编码映射待Q04；不能因改名变化",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情、管理端详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "社区名称",
+      "type": "文本／单行输入",
+      "source": "档案维护岗录入或台账导入",
+      "rule": "不用同名判断为同一社区；去除首尾空白",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端查询；住户房屋选择；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "社区地址",
+      "type": "文本／单行输入",
+      "source": "现有台账或档案维护岗",
+      "rule": "不新增地图边界绘制；不能以文本地址推定责任区域",
+      "conditions": "必填：是；可见：Web表单、详情；管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "社区简介",
+      "type": "多行文本／文本域",
+      "source": "档案维护岗",
+      "rule": "只记录当前允许公开或内部授权信息",
+      "conditions": "必填：否；可见：Web表单、详情；管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "维护单位",
+      "type": "关联对象／组织选择",
+      "source": "已有组织档案",
+      "rule": "是资料维护责任，不等于治理责任区域",
+      "conditions": "必填：否，实际维护方待Q04；可见：Web表单、详情；管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "维护联系人",
+      "type": "文本／单行输入",
+      "source": "档案维护岗",
+      "rule": "仅工作用途，不自动形成居民关联",
+      "conditions": "必填：否；可见：Web表单、详情；获准管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "维护联系电话",
+      "type": "联系方式／单行输入",
+      "source": "档案维护岗",
+      "rule": "手机号或固定电话；仅授权工作查询可见",
+      "conditions": "必填：否；可见：Web表单、详情；获准管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "档案状态",
+      "type": "枚举／状态标签",
+      "source": "启用／停用动作",
+      "rule": "字典：启用、停用；停用不删除历史；受引用时受控处理",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；管理端详情；编辑：通过受控启停操作",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "communities",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "小区编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验后的既有编码",
+      "rule": "不等于数据库ID；同名小区依该业务引用区分",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情、管理端详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "小区名称",
+      "type": "文本／单行输入",
+      "source": "档案维护岗或台账",
+      "rule": "不跨社区按名称自动合并",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户房屋选择；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "所属社区",
+      "type": "关联对象／单选",
+      "source": "有效社区档案",
+      "rule": "只可选有维护权限的社区；已被业务引用后跨社区调整不在本轮普通编辑范围",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户房屋选择；编辑：新建可选，已有引用时不允许直接迁移",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "小区地址",
+      "type": "文本／单行输入",
+      "source": "现有台账或档案维护岗",
+      "rule": "不要求绘制边界，不做区域责任推断",
+      "conditions": "必填：是；可见：Web表单、详情；管理端详情；住户定位；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "物业管理单位",
+      "type": "关联对象／组织选择",
+      "source": "已有物业组织或待核验资料",
+      "rule": "未确定时显示未维护；不因选择该单位自动分派业务责任",
+      "conditions": "必填：否，待实际资料确认；可见：Web列表、表单、详情；管理端详情；编辑：档案维护岗核验后编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "档案状态",
+      "type": "枚举／状态标签",
+      "source": "启用／停用动作",
+      "rule": "字典：启用、停用；不等同入住率、收费状态",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；管理端详情；编辑：通过受控启停操作",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "estates",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "楼栋编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或台账核验带入",
+      "rule": "不暴露数据库ID；改显示名称不改稳定引用",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情、管理端详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "所属社区",
+      "type": "关联对象／只读带入",
+      "source": "所选小区自动带入",
+      "rule": "与所属小区一致，不单独选择矛盾社区",
+      "conditions": "必填：自动带入；可见：Web筛选、表单、详情；管理端；住户房屋选择；编辑：通过小区选择联动，非独立编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "所属小区",
+      "type": "关联对象／单选",
+      "source": "有效小区档案",
+      "rule": "父档案停用不允许新增；已有引用不直接迁移",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户房屋选择；编辑：新建可选，迁移不作为普通编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "楼栋名称／楼栋号",
+      "type": "文本／单行输入",
+      "source": "台账或档案维护岗",
+      "rule": "同小区重复提示核验；保留原有文字，不强制纯数字",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户房屋选择；编辑：档案维护岗编辑并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "是否设单元",
+      "type": "布尔／单选",
+      "source": "台账或档案维护岗",
+      "rule": "是／否；不生成虚构默认单元；已有房屋后变更需核验，不自动迁移",
+      "conditions": "必填：是；可见：Web列表、表单、详情；房屋选择结构；编辑：新建可选，引用后受控调整",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "档案状态",
+      "type": "枚举／状态标签",
+      "source": "启用／停用动作",
+      "rule": "启用、停用；不表达建筑安全或占用情况",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；管理端详情；编辑：受控启停",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "buildings",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "单元编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验带入",
+      "rule": "非数据库ID；仅真实有单元时建立",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "所属社区",
+      "type": "关联对象／只读展示",
+      "source": "所属楼栋关联带入",
+      "rule": "不独立修改",
+      "conditions": "必填：自动带入；可见：Web筛选、表单、详情；管理端；住户选择；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "所属小区",
+      "type": "关联对象／只读展示",
+      "source": "所属楼栋关联带入",
+      "rule": "不独立修改",
+      "conditions": "必填：自动带入；可见：Web筛选、列表、表单、详情；管理端；住户选择；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "所属楼栋",
+      "type": "关联对象／单选",
+      "source": "已有楼栋档案",
+      "rule": "仅可选择启用且设单元的楼栋；已有引用不随意迁移",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户选择；编辑：新建可选，引用后只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "单元名称／单元号",
+      "type": "文本／单行输入",
+      "source": "台账或档案维护岗",
+      "rule": "同楼栋重复提示核实；不强制纯数字",
+      "conditions": "必填：是；可见：Web列表、表单、详情；管理端；住户选择；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "档案状态",
+      "type": "枚举／状态标签",
+      "source": "启用／停用动作",
+      "rule": "启用、停用；历史保留",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；编辑：受控启停",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "units",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "房屋编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验后的既有业务编码",
+      "rule": "不是room_id等技术字段；用于业务查找；真实编码映射待Q04",
+      "conditions": "必填：自动生成或核验带入；可见：Web筛选、列表、详情；获准管理端详情；本人房屋详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "所属社区",
+      "type": "关联对象／级联单选",
+      "source": "有效社区档案",
+      "rule": "只在授权及有效档案范围选择",
+      "conditions": "必填：是；可见：Web筛选、表单、详情；管理端；住户房屋选择；编辑：新建可选；已有引用不直接迁移",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "所属小区",
+      "type": "关联对象／级联单选",
+      "source": "所属社区下有效小区",
+      "rule": "社区改变时清空不适用下级选择并提示",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户房屋选择；编辑：新建可选；已有引用不直接迁移",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "所属楼栋",
+      "type": "关联对象／级联单选",
+      "source": "所属小区下有效楼栋",
+      "rule": "不允许跨小区选择",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户房屋选择；编辑：新建可选；已有引用不直接迁移",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "所属单元",
+      "type": "关联对象／级联单选",
+      "source": "所属楼栋下有效单元",
+      "rule": "有单元楼栋必选；无单元楼栋隐藏且不创建虚拟数据",
+      "conditions": "必填：条件必填，有单元时；可见：Web筛选、列表、表单、详情；管理端；住户选择，仅适用时；编辑：新建可选；随楼栋联动",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "楼层",
+      "type": "文本／单行输入",
+      "source": "台账或档案维护岗",
+      "rule": "特殊地下/夹层表达待Q04；不先写死仅正整数",
+      "conditions": "必填：否，随实际样表确认；可见：Web表单、详情；管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "房号",
+      "type": "文本／单行输入",
+      "source": "台账或档案维护岗",
+      "rule": "保留前导零和文字；同楼栋/适用单元内重复需核验",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；住户选择；编辑：档案维护岗编辑并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "完整房屋地址",
+      "type": "文本／只读展示",
+      "source": "小区地址及楼栋、单元、房号组合",
+      "rule": "缺省单元不显示虚构字段；不是商城收货地址；纠错不改写历史快照",
+      "conditions": "必填：自动生成，无需填写；可见：Web列表、详情；管理端详情；住户选择和本人详情；编辑：来源字段编辑后联动展示",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "房屋用途",
+      "type": "枚举／下拉单选",
+      "source": "原始台账或维护岗选择",
+      "rule": "候选住宅、商用、其他；正式字典待Q04；不得自动推断",
+      "conditions": "必填：否；可见：Web筛选、列表、表单、详情；获准管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "房屋面积",
+      "type": "小数／数字输入（㎡）",
+      "source": "原始台账或维护岗录入",
+      "rule": "已知值应大于0；未知留空，不填0；小数精度待真实样表",
+      "conditions": "必填：否；可见：Web表单、详情；获准管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "档案状态",
+      "type": "枚举／状态标签",
+      "source": "启用／停用动作",
+      "rule": "启用、停用；不等同入住、产权或欠费状态",
+      "conditions": "必填：自动生成，无需填写；可见：Web筛选、列表、详情；管理端详情；编辑：受控启停",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "关联居民",
+      "type": "关联对象集合／按权限只读列表",
+      "source": "正式人房关系",
+      "rule": "名单不开放给找房的居民；无权限不返回敏感资料；不是自由编辑字段",
+      "conditions": "必填：自动汇总，无需填写；可见：Web及获准管理端房屋详情；住户只看本人关系；编辑：通过人房关系流程变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "houses",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "导入文件",
+      "type": "文件／上传控件",
+      "source": "维护岗选取文件",
+      "rule": "模板待Q04确认；演示模板显著标示示例；文件类型/大小由PLAN记录，不擅定业务限制",
+      "conditions": "必填：是；可见：Web导入弹窗；编辑：有权导入岗确认前可更换",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：input[type=file]"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "文件名称",
+      "type": "文本／只读展示",
+      "source": "文件元信息",
+      "rule": "不自动作为批次唯一技术标识",
+      "conditions": "必填：自动带入；可见：Web导入、结果；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.ivu-form-item"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "模板说明",
+      "type": "文本及下载入口／只读",
+      "source": "经评审的房屋字段定义",
+      "rule": "模板包含房屋产品字段，不要求用户填写数据库关联ID",
+      "conditions": "必填：自动提供；可见：Web导入弹窗；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：button"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "资料来源",
+      "type": "枚举／单选",
+      "source": "维护岗选择",
+      "rule": "台账导入为本次建档方式；具体提供方写来源说明",
+      "conditions": "必填：是；可见：Web导入弹窗、结果；编辑：有权导入岗确认前可编辑",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.ivu-form-item"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "不把示例台账写成街道正式数据",
+      "conditions": "必填：是；可见：Web导入弹窗、结果；编辑：有权导入岗确认前可编辑",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：textarea"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "数据行号",
+      "type": "整数／只读列",
+      "source": "解析结果",
+      "rule": "与原文件行对应，便于定位；不是数据库主键",
+      "conditions": "必填：自动生成；可见：Web校验预览、错误明细；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.ivu-table-header"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "待导入房屋资料",
+      "type": "结构化表格／预览",
+      "source": "上传文件解析",
+      "rule": "逐列展示上表房屋字段及导入可填写的来源项；不以JSON代替前端展示",
+      "conditions": "必填：自动解析；可见：Web校验预览；编辑：不在预览中默默改值，修正文件后重提",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.ivu-table"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "校验结果",
+      "type": "枚举／状态列",
+      "source": "校验动作",
+      "rule": "通过／不通过；重复也作为不通过说明；不能静默覆盖",
+      "conditions": "必填：自动生成；可见：Web校验预览；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.ivu-table-header"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "错误原因",
+      "type": "文本列表／只读",
+      "source": "校验动作",
+      "rule": "指明字段和原因；不只显示错误代码",
+      "conditions": "必填：条件生成，不通过时；可见：Web错误明细；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.ivu-table-header"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "总行数",
+      "type": "整数／只读汇总",
+      "source": "文件解析",
+      "rule": "排除表头；与行明细一致",
+      "conditions": "必填：自动生成；可见：Web校验和结果；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.metric"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "通过行数",
+      "type": "整数／只读汇总",
+      "source": "校验汇总",
+      "rule": "与明细一致，不等于已经成功入库",
+      "conditions": "必填：自动生成；可见：Web校验和结果；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.metric"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "不通过行数",
+      "type": "整数／只读汇总",
+      "source": "校验汇总",
+      "rule": "总行数等于通过和不通过之和；本稿存在错误整批不写入",
+      "conditions": "必填：自动生成；可见：Web校验和结果；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.metric"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "导入处理状态",
+      "type": "枚举／状态标签",
+      "source": "用户确认及模拟处理",
+      "rule": "待校验、校验未通过、待确认导入、处理中、成功、失败；不把预览成功当完成",
+      "conditions": "必填：自动生成；可见：Web导入弹窗、结果；编辑：由动作驱动，不手改状态",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web实际CSV选择、预览与结构化结果：.metric"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "提交人",
+      "type": "文本／只读展示",
+      "source": "当前有权账号",
+      "rule": "展示工作身份，不记录口令",
+      "conditions": "必填：自动生成；可见：Web导入结果；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web确认导入后的提交记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋",
+      "table": "imports",
+      "field": "提交时间",
+      "type": "日期时间／只读展示",
+      "source": "确认动作",
+      "rule": "未确认时留空，不造成功时间",
+      "conditions": "必填：自动生成；可见：Web导入结果；编辑：只读",
+      "implementation": "web/manager/src/components/ImportPanel.vue",
+      "rendered": [
+        "Web确认导入后的提交记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "居民编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验后的业务编码",
+      "rule": "不是数据库member_id；姓名不作为唯一识别依据",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情、获准管理端详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "居民姓名",
+      "type": "文本／单行输入",
+      "source": "本人提交、核验后的台账或维护岗",
+      "rule": "不新增证件号等无来源要求；不因重名合并",
+      "conditions": "必填：是，提交关系申请前；导入缺值需核验；可见：Web筛选、列表、表单、详情；获准管理端；住户本人资料；编辑：本人可提交更正，有权维护岗按核验结果维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "联系电话",
+      "type": "联系方式／单行输入、脱敏展示",
+      "source": "本人或合法来源台账",
+      "rule": "共享号码不自动合并人员；手机验证不等于房屋资格",
+      "conditions": "必填：条件必填，申请需要联系时；离线台账可待补；可见：Web按权限脱敏；获准管理端；住户本人可看本人号码；编辑：本人提交或有权维护岗核验后更正",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "关联账号",
+      "type": "文本／账号选择或只读展示",
+      "source": "核验后的账号映射",
+      "rule": "没有账号也可保留居民档案；不按手机号自动认领历史资料",
+      "conditions": "必填：否；可见：Web详情；住户本人资料仅展示本人；编辑：有权人员核验后关联；居民不能随意更换账号主体",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "账号关联情况",
+      "type": "枚举／只读标签",
+      "source": "账号关联结果",
+      "rule": "字典：未关联、已关联；不代替微信登录验证结果",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "关联房屋",
+      "type": "关联对象集合／只读列表",
+      "source": "正式人房关系",
+      "rule": "一人多房；停用/历史关系单独显示，不手填制造关系",
+      "conditions": "必填：自动汇总；可见：Web详情、获准管理端；住户我的房屋；编辑：通过关系申请与核验流程变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "residents",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请编号",
+      "type": "文本／只读展示",
+      "source": "提交后生成",
+      "rule": "保留审核轮次；不暴露内部申请ID",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；住户本人申请详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请类型",
+      "type": "枚举／只读带入",
+      "source": "添加房屋、关系变更或解除入口",
+      "rule": "字典：绑定、变更、解除；由入口决定，不在审核中改成其他类型",
+      "conditions": "必填：自动带入；可见：Web筛选、列表、详情；住户申请表单和详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请人姓名",
+      "type": "文本／只读带入",
+      "source": "当前居民身份",
+      "rule": "不能替换任意他人；未维护姓名先完善本人资料",
+      "conditions": "必填：自动带入；可见：Web列表、详情；住户本人表单、详情；编辑：在本人资料入口按规则更正，不在审核中替换主体",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "联系号码",
+      "type": "联系方式／单行输入、脱敏展示",
+      "source": "本人资料带入，可补充经核验号码",
+      "rule": "同号码不推定相同人员；后台按权限脱敏",
+      "conditions": "必填：是，提交时；可见：Web详情按权限；住户本人表单、详情；编辑：申请人草稿及补充重提时可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "所属社区",
+      "type": "关联对象／级联单选",
+      "source": "有效社区档案",
+      "rule": "仅定位，不展示他人居民资料",
+      "conditions": "必填：是，绑定提交时；可见：Web筛选、详情；住户绑定表单；编辑：绑定草稿可选；变更/解除时由原关系带入只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "所属小区",
+      "type": "关联对象／级联单选",
+      "source": "所选社区下档案",
+      "rule": "上级变更时清空不适用选择",
+      "conditions": "必填：是，绑定提交时；可见：Web筛选、列表、详情；住户绑定表单；编辑：绑定草稿可选；变更/解除只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "所属楼栋",
+      "type": "关联对象／级联单选",
+      "source": "所选小区下档案",
+      "rule": "无匹配房屋走缺失反馈，不由居民建正式档案",
+      "conditions": "必填：是，绑定提交时；可见：Web详情；住户绑定表单；编辑：绑定草稿可选；变更/解除只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "所属单元",
+      "type": "关联对象／级联单选",
+      "source": "所选楼栋下档案",
+      "rule": "仅有单元时出现并必选，无单元不提交虚构值",
+      "conditions": "必填：条件必填，有单元时；可见：Web详情；住户绑定表单，仅适用时；编辑：绑定草稿可选；变更/解除只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "房号",
+      "type": "关联对象／房屋选择",
+      "source": "所选楼栋/单元下有效房屋",
+      "rule": "不是自由填写的新房；确认前再次检查有效性",
+      "conditions": "必填：是，绑定提交时；可见：Web详情；住户绑定表单；编辑：绑定草稿可选；变更/解除只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "房屋地址",
+      "type": "文本／只读展示",
+      "source": "已选房屋或原关系快照",
+      "rule": "保存提交时展示事实；主档纠错不静默重写历史申请",
+      "conditions": "必填：自动带入；可见：Web列表、详情；住户申请和详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "当前关系类型",
+      "type": "枚举／只读标签",
+      "source": "原人房关系",
+      "rule": "绑定新增时不出现；保留原值",
+      "conditions": "必填：自动带入；可见：Web、住户变更/解除表单和详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请关系类型",
+      "type": "枚举／下拉单选",
+      "source": "申请人选择",
+      "rule": "候选业主、租户、家庭成员；正式枚举待Q05；解除时不要求新关系类型",
+      "conditions": "必填：条件必填，绑定/变更时；可见：Web详情；住户绑定/变更表单；编辑：申请人草稿或驳回重提时可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请说明",
+      "type": "多行文本／文本域",
+      "source": "申请人填写",
+      "rule": "绑定可补充；变更/解除必须说明原因；不等同正式产权声明",
+      "conditions": "必填：条件必填，变更/解除时；可见：Web详情；住户表单和详情；编辑：提交前或驳回重提可编辑，已提交版本不可覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "证明说明",
+      "type": "多行文本／文本域",
+      "source": "申请人补充",
+      "rule": "具体材料待Q05；不默认强制身份证、房产证原件",
+      "conditions": "必填：按Q05确认要求，当前不预设强制；可见：Web核验岗及住户本人表单/详情；编辑：草稿或补充重提可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "证明附件",
+      "type": "文件集合／上传与受控预览",
+      "source": "申请人或有权人员补充",
+      "rule": "类型、数量、大小限值待Q05/PLAN；演示只用虚构文件；不得公开地址访问",
+      "conditions": "必填：按Q05确认要求，当前不预设强制；可见：仅核验岗位和申请人本人；普通查询不显示；编辑：草稿或补充重提可增删，提交后保留版本",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请有效起始日",
+      "type": "日期／日期选择",
+      "source": "申请人或核验依据",
+      "rule": "仅启用有效期规则时使用；终止日不得早于起始日",
+      "conditions": "必填：条件必填，启用对应规则时；可见：Web核验及住户申请，仅对应规则启用时；编辑：申请人提交前可填，审核修订需记录依据",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请有效结束日",
+      "type": "日期／日期选择",
+      "source": "申请人或核验依据",
+      "rule": "可为空；不默认一年或永久政策",
+      "conditions": "必填：否；可见：Web核验及住户申请，仅对应规则启用时；编辑：同上，修订保留前后值",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "申请状态",
+      "type": "枚举／状态标签",
+      "source": "提交、撤回、审核动作",
+      "rule": "草稿、待审核、已通过、已驳回、已撤回；不以关系解除覆盖原通过结果",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；住户记录和详情；编辑：只读，通过合法操作驱动",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "审核轮次",
+      "type": "整数／只读展示",
+      "source": "重提记录",
+      "rule": "原提交内容与原结论保留，不覆盖旧轮次",
+      "conditions": "必填：自动生成；可见：Web及住户本人申请详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "提交时间",
+      "type": "日期时间／只读展示",
+      "source": "提交动作",
+      "rule": "草稿不造提交时间；历史轮次各自保留",
+      "conditions": "必填：自动生成；可见：Web筛选（日期范围）、列表、详情；住户记录；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "审核操作",
+      "type": "枚举／单选操作",
+      "source": "有权审核人",
+      "rule": "通过、驳回；仅待审核且在授权范围时允许",
+      "conditions": "必填：是，审核提交时；可见：Web审核弹窗；编辑：有权审核人提交前可选",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "对外审核说明",
+      "type": "多行文本／文本域",
+      "source": "有权审核人填写",
+      "rule": "驳回必须填写；不包含他人资料或内部敏感判断",
+      "conditions": "必填：条件必填，驳回时；可见：Web审核弹窗及详情；住户审核后本人详情；编辑：审核提交前可编辑，提交后留痕不覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "内部审核备注",
+      "type": "多行文本／文本域",
+      "source": "有权审核人填写",
+      "rule": "不同步到居民端或普通工作查询",
+      "conditions": "必填：否；可见：Web授权核验详情及审核弹窗；编辑：审核提交前可编辑，后续补充留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "审核人",
+      "type": "文本／只读展示",
+      "source": "审核动作",
+      "rule": "居民对外显示范围待Q03，不默认公开个人联系方式",
+      "conditions": "必填：自动生成；可见：Web详情；住户只按确认的公开范围展示；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "审核时间",
+      "type": "日期时间／只读展示",
+      "source": "审核动作",
+      "rule": "未审核留空，不用更新时间代替",
+      "conditions": "必填：自动生成；可见：Web列表、详情；住户本人结果；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "applications",
+      "field": "撤回时间",
+      "type": "日期时间／只读展示",
+      "source": "撤回动作",
+      "rule": "仅撤回时显示；撤回与通过不能同时生效",
+      "conditions": "必填：自动生成；可见：Web、住户已撤回申请详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "居民姓名",
+      "type": "文本／只读展示",
+      "source": "已核验居民档案",
+      "rule": "住户只看本人，不能因同房查看其他人",
+      "conditions": "必填：自动带入；可见：Web、获准管理端关系详情；住户本人；编辑：只读，通过核验后居民资料变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "房屋地址",
+      "type": "文本／只读展示",
+      "source": "正式房屋关联及必要历史快照",
+      "rule": "停用不隐藏应保留的本人历史关系",
+      "conditions": "必填：自动带入；可见：Web筛选、列表、详情；管理端；住户我的房屋；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "关系类型",
+      "type": "枚举／只读标签",
+      "source": "审核通过结果",
+      "rule": "与候选关系字典一致；不直接在关系列表改类型",
+      "conditions": "必填：自动带入；可见：Web筛选、列表、详情；管理端；住户本人；编辑：通过关系变更流程修改",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "关系状态",
+      "type": "枚举／状态标签",
+      "source": "绑定、解除及启用后的到期机制",
+      "rule": "有效、已解除、已到期（启用有效期时）；不包含待审核",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；管理端；住户本人；编辑：只读，通过对应业务动作改变",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "有效起始日",
+      "type": "日期／只读展示",
+      "source": "审核结果",
+      "rule": "未启用此规则时不制造日期；不是申请提交日的同义词",
+      "conditions": "必填：条件生成，按已确认规则；可见：Web、获准管理端、本人关系详情；编辑：通过核验变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "有效结束日",
+      "type": "日期／只读展示",
+      "source": "审核结果",
+      "rule": "无终点时显示未设置，不宣称产权永久有效",
+      "conditions": "必填：否；可见：Web、获准管理端、本人关系详情；编辑：通过核验变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "来源申请编号",
+      "type": "文本／关联入口",
+      "source": "已通过申请",
+      "rule": "跳转再次校验权限；不是数据库外键展示",
+      "conditions": "必填：自动生成；可见：Web、住户本人关系详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "建立时间",
+      "type": "日期时间／只读展示",
+      "source": "审核通过动作",
+      "rule": "与申请时间分开",
+      "conditions": "必填：自动生成；可见：Web和本人关系详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "失效原因",
+      "type": "多行文本／只读展示",
+      "source": "解除核验或已启用规则",
+      "rule": "失效才显示；公开反馈不含内部敏感信息",
+      "conditions": "必填：条件生成，关系失效时；可见：Web和本人关系详情；管理端按权限；编辑：由解除/到期动作生成，不能任意覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "relations",
+      "field": "失效时间",
+      "type": "日期时间／只读展示",
+      "source": "解除或到期结果",
+      "rule": "不删除本人历史业务；不影响其他绑定人",
+      "conditions": "必填：条件生成，关系失效时；可见：Web和本人关系详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 reviewer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "missing",
+      "field": "社区",
+      "type": "关联对象／可选单选",
+      "source": "当前查找上下文",
+      "rule": "找不到社区可不选，通过地址描述补充；不创建网格",
+      "conditions": "必填：否；可见：住户缺失反馈表单、Web受理查看；编辑：居民提交前可选",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "missing",
+      "field": "小区名称或地址",
+      "type": "文本／单行输入",
+      "source": "居民填写或当前上下文带入",
+      "rule": "不自动写入正式小区档案",
+      "conditions": "必填：是；可见：住户缺失反馈、Web受理查看；编辑：居民提交前可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "missing",
+      "field": "具体房屋描述",
+      "type": "多行文本／文本域",
+      "source": "居民填写",
+      "rule": "仅用于维护人员补档核对，不替代正式房屋选择",
+      "conditions": "必填：是；可见：住户缺失反馈、Web受理查看；编辑：居民提交前可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "missing",
+      "field": "联系号码",
+      "type": "联系方式／单行输入",
+      "source": "本人资料带入",
+      "rule": "按本人和授权维护岗可见；不向其他居民展示",
+      "conditions": "必填：是；可见：住户缺失反馈、Web授权受理查看；编辑：居民提交前补充",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.3 DGL-004｜居民、人房关系与申请审核",
+      "table": "missing",
+      "field": "提交时间",
+      "type": "日期时间／只读展示",
+      "source": "提交动作",
+      "rule": "原型可在绑定相关待核对记录展示，不新增工单模块",
+      "conditions": "必填：自动生成；可见：住户本人反馈记录、Web受理查看；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "统计范围",
+      "type": "关联对象／社区或小区选择",
+      "source": "已授权社区/小区",
+      "rule": "不使用网格或责任区域；不能跨不相容范围直接相加",
+      "conditions": "必填：是；可见：Web范围筛选、来源表单、详情；管理端概况；编辑：维护岗选择；计算指标随当前范围",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "指标名称",
+      "type": "枚举／下拉单选",
+      "source": "维护岗选择",
+      "rule": "人口／户数；若真实来源有细分口径，应在口径说明填写而不臆造",
+      "conditions": "必填：是；可见：Web来源表单、列表、详情；管理端概况；编辑：维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "指标数值",
+      "type": "非负整数／数字输入",
+      "source": "社区或物业权威台账",
+      "rule": "未提供为未维护；只有来源明确为零时可填0；不能从账号数推算",
+      "conditions": "必填：是，保存有效来源记录时；可见：Web来源表单、详情；管理端概况；编辑：维护岗据来源维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "计量单位",
+      "type": "枚举／只读带入",
+      "source": "指标名称联动",
+      "rule": "人口为人，户数为户；不能任意改成房屋套数",
+      "conditions": "必填：自动带入；可见：Web和管理端概况；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "统计口径说明",
+      "type": "多行文本／文本域",
+      "source": "台账说明或提供方",
+      "rule": "区分常住/登记等真实口径；资料缺失写待核实，不自行确定",
+      "conditions": "必填：是，保存有效来源记录时；可见：Web表单、详情；管理端概况；编辑：维护岗据提供方说明维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "统计日期",
+      "type": "日期／日期选择",
+      "source": "来源台账",
+      "rule": "与录入更新时间分开；跨期数据不能无规则合并",
+      "conditions": "必填：是；可见：Web表单、来源记录、管理端概况；编辑：维护岗据来源维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "数据来源",
+      "type": "文本／单行输入",
+      "source": "提供方说明",
+      "rule": "不用居民账号表冒充官方人口资料",
+      "conditions": "必填：是；可见：Web表单、详情；管理端概况；编辑：维护岗维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "提供单位",
+      "type": "文本／单行输入",
+      "source": "来源材料",
+      "rule": "可与维护单位不同；无法核实时注明",
+      "conditions": "必填：是；可见：Web表单、详情；管理端概况；编辑：维护岗维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "保存动作",
+      "rule": "不代替数据提供方",
+      "conditions": "必填：自动生成；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "保存动作",
+      "rule": "不代替统计日期",
+      "conditions": "必填：自动生成；可见：Web、管理端概况；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "已建档房屋数",
+      "type": "整数／只读指标卡",
+      "source": "房屋档案汇总",
+      "rule": "按房屋稳定引用去重，不称户数",
+      "conditions": "必填：自动计算；可见：Web、管理端获准概况；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "居民档案人数",
+      "type": "整数／只读指标卡",
+      "source": "居民及关系汇总",
+      "rule": "一人多房仍按居民去重，不称常住人口",
+      "conditions": "必填：自动计算；可见：Web、管理端获准概况；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "有效人房关系数",
+      "type": "整数／只读指标卡",
+      "source": "正式关系汇总",
+      "rule": "不等于人口；不得与居民人数混算",
+      "conditions": "必填：自动计算；可见：Web、管理端获准概况；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.4 DGL-005｜人口户数及统计口径",
+      "table": "statistics",
+      "field": "已关联账号人数",
+      "type": "整数／只读指标卡",
+      "source": "已核验账号映射汇总",
+      "rule": "不等于全部居民人数；重复账号映射需核对",
+      "conditions": "必填：自动计算；可见：Web、管理端获准概况；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "车辆档案编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验带入",
+      "rule": "非车辆数据库ID；变更车牌不抹除历史引用",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情、住户本人详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "车牌号码",
+      "type": "文本／单行输入",
+      "source": "居民或有权维护岗填写",
+      "rule": "去除首尾空白、统一字母大小写；特殊车牌格式待Q04；冲突不暴露他人身份",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；住户本人；获准管理端；编辑：首次申报可填，后续变更需核实并保留旧值",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "车辆类型",
+      "type": "枚举／下拉单选",
+      "source": "居民或台账",
+      "rule": "字典以停车实际样表确认；不默认所有车都按一种月卡规则",
+      "conditions": "必填：否；可见：Web筛选、列表、表单、详情；住户本人；编辑：本人申报或有权维护岗核实后编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "车辆颜色",
+      "type": "文本／单行输入",
+      "source": "居民或台账",
+      "rule": "非必需，不因未知阻止基础登记",
+      "conditions": "必填：否；可见：Web表单、详情；住户本人；编辑：本人或有权维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "关联居民",
+      "type": "关联对象／只读带入或后台选择",
+      "source": "住户当前身份或核验后的后台关联",
+      "rule": "居民不能选择任意他人；一车多人规则仍待Q04/Q05",
+      "conditions": "必填：是；可见：Web列表、详情；住户仅本人；获准管理端；编辑：本人端只读，后台按核验依据关联",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "关联房屋",
+      "type": "关联对象／单选",
+      "source": "本人有效人房关系或后台核验",
+      "rule": "可空；解绑后不再作为有效授权依据；不直接注销车辆",
+      "conditions": "必填：否；可见：Web表单、详情；住户本人表单、详情；编辑：仅从本人有效关系选择，后台变更有核验依据",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "登记说明",
+      "type": "多行文本／文本域",
+      "source": "申请人或有权维护岗",
+      "rule": "变更车牌或关系时说明原因；不提交他人敏感材料",
+      "conditions": "必填：条件必填，车牌/关系更正时；可见：Web核实、详情；住户本人；编辑：提交前可编辑，历史不可覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "核实状态",
+      "type": "枚举／状态标签",
+      "source": "申报与人工核实动作",
+      "rule": "待核实、已确认、已退回为本稿流程；草稿本地未提交不冒充已登记；不等于停车准入",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；住户本人；编辑：由核实动作驱动",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "核实操作",
+      "type": "枚举／操作选择",
+      "source": "核实岗选择",
+      "rule": "确认、退回；只处理本授权范围待核实资料",
+      "conditions": "必填：是，核实提交时；可见：Web核实弹窗；编辑：有权核实岗提交前可选",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "核实反馈",
+      "type": "多行文本／文本域",
+      "source": "核实岗填写",
+      "rule": "退回必须有原因；不展示冲突车主身份",
+      "conditions": "必填：条件必填，退回时；可见：Web核实、详情；住户本人结果；编辑：核实提交前可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "核实人",
+      "type": "文本／只读展示",
+      "source": "核实动作",
+      "rule": "与维护人区分；对居民的公开范围按Q03",
+      "conditions": "必填：自动生成；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "核实时间",
+      "type": "日期时间／只读展示",
+      "source": "核实动作",
+      "rule": "未核实留空",
+      "conditions": "必填：自动生成；可见：Web详情、住户本人结果；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.5 DGL-006｜车辆基础档案",
+      "table": "vehicles",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "点位编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验带入",
+      "rule": "不把点位号当全部厂商设备号",
+      "conditions": "必填：自动生成或核验带入；可见：Web筛选、列表、详情；管理端详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "点位名称",
+      "type": "文本／单行输入",
+      "source": "台账或维护岗",
+      "rule": "名称不作为唯一匹配依据",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端查询；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "点位类别",
+      "type": "枚举／下拉单选",
+      "source": "台账或维护岗",
+      "rule": "车棚、监控、充电、消防为当前范围；不扩成四套监测系统",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端查询；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "所属社区",
+      "type": "关联对象／单选",
+      "source": "有效社区档案",
+      "rule": "限授权范围；不关联网格",
+      "conditions": "必填：是；可见：Web筛选、表单、详情；管理端；编辑：档案维护岗选择",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "所属小区",
+      "type": "关联对象／级联单选",
+      "source": "所属社区下小区",
+      "rule": "位于小区外公共位置可仅关联社区并填写具体位置；不得虚构小区",
+      "conditions": "必填：条件必填，实际位于小区内时；可见：Web筛选、列表、表单、详情；管理端；编辑：档案维护岗选择",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "具体位置",
+      "type": "文本／单行输入",
+      "source": "台账或维护岗",
+      "rule": "允许公共区域描述，不强制挂到房屋，不绘制责任边界",
+      "conditions": "必填：是；可见：Web列表、表单、详情；管理端；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "关联楼栋",
+      "type": "关联对象／可选单选",
+      "source": "所属小区楼栋",
+      "rule": "无对应楼栋留空，不强制",
+      "conditions": "必填：否；可见：Web表单、详情；管理端详情；编辑：档案维护岗选择",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "关联房屋",
+      "type": "关联对象／可选单选",
+      "source": "有效房屋档案",
+      "rule": "与位置一致，不关联居民名单；不适用留空",
+      "conditions": "必填：否；可见：Web表单、详情；管理端详情；编辑：档案维护岗选择",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "设备或设施编号",
+      "type": "文本／单行输入",
+      "source": "台账或厂商资料",
+      "rule": "不是内部数据库ID；与点位编号分开；多设备精细模型待资料确认",
+      "conditions": "必填：否；可见：Web筛选、表单、详情；管理端详情；编辑：有权维护岗按依据录入",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "数量",
+      "type": "非负整数／数字输入",
+      "source": "台账或维护岗",
+      "rule": "配合单位解释；未知留空不填0；点位数不等于设备数量",
+      "conditions": "必填：否；可见：Web列表、表单、详情；管理端详情；编辑：档案维护岗按台账编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "数量单位",
+      "type": "枚举／下拉单选",
+      "source": "台账",
+      "rule": "按类目实际用台、个等；正式字典待Q04；不能混加不同单位",
+      "conditions": "必填：条件必填，填写数量时；可见：Web表单、详情；管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "厂商名称",
+      "type": "文本／单行输入",
+      "source": "原始台账或厂商资料",
+      "rule": "不要求本阶段创建厂商接入账号",
+      "conditions": "必填：否；可见：Web表单、详情；管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "维护单位",
+      "type": "关联对象／组织选择",
+      "source": "原始台账",
+      "rule": "只是档案属性，不创建责任区域或自动派单规则",
+      "conditions": "必填：否；可见：Web列表、表单、详情；管理端详情；编辑：档案维护岗核验后维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "工作联系人",
+      "type": "文本／单行输入",
+      "source": "维护单位资料",
+      "rule": "不自动绑定网格员，不公开私人资料",
+      "conditions": "必填：否；可见：Web表单、详情；获准管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "工作联系电话",
+      "type": "联系方式／单行输入",
+      "source": "维护单位资料",
+      "rule": "支持手机号或固话；按业务必要可见",
+      "conditions": "必填：否；可见：Web表单、详情；获准管理端详情；编辑：档案维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "点位照片",
+      "type": "图片集合／上传、预览",
+      "source": "维护岗上传",
+      "rule": "原型使用虚构/批准脱敏图；不以照片推断设备在线",
+      "conditions": "必填：否；可见：Web表单、详情；管理端详情；编辑：有权维护岗编辑，保存版本记录",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "档案状态",
+      "type": "枚举／状态标签",
+      "source": "启停动作",
+      "rule": "启用、停用；不等同接入或在线状态",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；管理端详情；编辑：受控启停",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "接入状态",
+      "type": "枚举／只读标签",
+      "source": "依据资料或明确标注的模拟数据",
+      "rule": "未接入、待确认；已接入示例须标模拟；本轮无真实监测",
+      "conditions": "必填：自动带入或待确认；可见：Web筛选、列表、详情；管理端详情；编辑：本轮只读，不用表单改出真实在线",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "接入说明",
+      "type": "多行文本／文本域",
+      "source": "资料维护岗",
+      "rule": "不包含密码、密钥、访问令牌",
+      "conditions": "必填：否；可见：Web表单、详情；管理端授权详情；编辑：维护岗补充依据",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "备注",
+      "type": "多行文本／文本域",
+      "source": "维护岗",
+      "rule": "不填写未确认的责任区域或监测结论",
+      "conditions": "必填：否；可见：Web表单、详情；管理端详情；编辑：维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.6 DGL-007｜设施点位档案",
+      "table": "facilities",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "人员编号",
+      "type": "文本／只读展示",
+      "source": "系统生成或核验带入",
+      "rule": "不展示数据库person_id；同名人员不能自动合并",
+      "conditions": "必填：自动生成或核验带入；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "人员姓名",
+      "type": "文本／单行输入",
+      "source": "核验后的人员资料或维护岗",
+      "rule": "同名结合组织和必要工作联系信息辨认",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端名录；编辑：有权人员维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "所属物业组织",
+      "type": "关联对象／单选",
+      "source": "已有组织档案",
+      "rule": "不重复建企业主数据；不自动赋予组织全部数据权限",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；编辑：有权人员维护岗编辑，变更留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "岗位",
+      "type": "文本／单行输入",
+      "source": "物业提供的岗位资料",
+      "rule": "与账号权限角色分开；正式岗位字典待Q03",
+      "conditions": "必填：是，名录有效展示时；可见：Web筛选、列表、表单、详情；管理端；编辑：有权人员维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "工作联系电话",
+      "type": "联系方式／单行输入",
+      "source": "物业提供或本人授权工作号码",
+      "rule": "手机/固话均可；与居民私人联系方式分开",
+      "conditions": "必填：否，实际名录要求待Q03；可见：Web列表、表单、详情；获准管理端名录；编辑：有权人员维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "在岗状态",
+      "type": "枚举／状态标签",
+      "source": "维护岗确认入岗/离岗",
+      "rule": "在岗、离岗；不表示考勤、值班或责任片区",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；管理端；编辑：通过记录入岗/离岗动作维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "关联账号",
+      "type": "文本／账号选择或只读展示",
+      "source": "已核验账号",
+      "rule": "无账号仍可建名录；不因离岗注销其他身份",
+      "conditions": "必填：否；可见：Web表单、详情；编辑：有权账号关联岗核验后维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "入岗日期",
+      "type": "日期／日期选择",
+      "source": "物业任职资料",
+      "rule": "有资料才填写，不推定为账号创建日期",
+      "conditions": "必填：否；可见：Web表单、详情；编辑：有权人员维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "离岗日期",
+      "type": "日期／日期选择",
+      "source": "物业离岗资料",
+      "rule": "不早于已维护入岗日期；未离岗留空",
+      "conditions": "必填：条件必填，记录离岗时；可见：Web离岗操作、详情；编辑：有权人员维护岗操作时填写",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "变更说明",
+      "type": "多行文本／文本域",
+      "source": "有权维护岗",
+      "rule": "离岗及重要关系调整必填；不扩展责任区域",
+      "conditions": "必填：条件必填，重要变更时；可见：Web变更操作、记录；编辑：当前操作者提交前编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS",
+      "ruleValidation": "CONSTRAINT_1793792295300 T09/T19 人员岗位调整显示条件必填并要求本次原因；T13/T20 文件下载权限修改不能省略本次操作原因；T02/T20 有社区但小区清单为空时，实际管理端不返回房屋"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "资料来源",
+      "type": "枚举／下拉单选",
+      "source": "建档方式自动带入，维护岗补充来源说明",
+      "rule": "候选字典为人工维护、台账导入、外部来源；外部来源不代表接口已经接通",
+      "conditions": "必填：是；可见：Web详情；编辑：维护岗建档可补充，历史来源不静默覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "来源说明",
+      "type": "多行文本／文本域",
+      "source": "维护岗填写",
+      "rule": "来源不明确时标注待核验；不填写真实敏感凭证",
+      "conditions": "必填：条件必填，选择外部来源或台账导入时；可见：Web详情；编辑：维护岗可补充并留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.7 DGL-008｜物业人员名录",
+      "table": "personnel",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 maintainer"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "文件编号",
+      "type": "文本／只读展示",
+      "source": "建立资料主题后生成",
+      "rule": "一个主题多个版本共用业务引用；不展示存储对象ID",
+      "conditions": "必填：自动生成；可见：Web筛选、详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "文件名称",
+      "type": "文本／单行输入",
+      "source": "上传人填写",
+      "rule": "可与附件文件名不同；不因名称相同自动覆盖",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；编辑：有权文件维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "文件分类",
+      "type": "枚举／下拉单选",
+      "source": "文件维护岗选择",
+      "rule": "候选制度规程、图纸、合同资料、资质、巡检/整改报告、其他；正式清单待Q06",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；编辑：有权文件维护岗编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "所属组织",
+      "type": "关联对象／单选",
+      "source": "已有组织档案",
+      "rule": "不能通过修改组织扩大下载权限",
+      "conditions": "必填：是；可见：Web筛选、列表、表单、详情；编辑：有权文件维护岗选择，变更留痕",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "适用社区",
+      "type": "关联对象／多选",
+      "source": "已授权社区档案",
+      "rule": "是资料适用范围，不是责任区域；未选不默认全平台公开",
+      "conditions": "必填：按实际适用范围，Q06确认；可见：Web筛选、表单、详情；编辑：文件维护岗在可授权范围编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "适用小区",
+      "type": "关联对象／多选",
+      "source": "已授权小区档案",
+      "rule": "与所选社区匹配；不由资料范围推定治理责任",
+      "conditions": "必填：按实际适用范围，Q06确认；可见：Web筛选、表单、详情；编辑：文件维护岗在可授权范围编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "文件附件",
+      "type": "文件／上传控件",
+      "source": "文件维护岗上传",
+      "rule": "支持格式和大小上限待PLAN核验；模拟文件不包含真实合同或证件",
+      "conditions": "必填：是，新建或上传新版本时；可见：Web上传表单、授权详情；编辑：新版本上传时选择；旧版本不可替换覆盖",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "附件文件名",
+      "type": "文本／只读展示",
+      "source": "文件元信息",
+      "rule": "不同于资料主题名称",
+      "conditions": "必填：自动带入；可见：Web表单、详情、预览说明、历史版本；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "文件格式",
+      "type": "文本／只读展示",
+      "source": "文件元信息与安全校验",
+      "rule": "不支持预览时明确说明，不能假装预览成功",
+      "conditions": "必填：自动生成；可见：Web列表、详情、预览说明；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "文件大小",
+      "type": "容量数值／只读展示",
+      "source": "文件元信息",
+      "rule": "展示合适单位；超出已确认限制明确失败原因",
+      "conditions": "必填：自动生成；可见：Web表单、详情、版本记录；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "版本号",
+      "type": "文本／只读展示",
+      "source": "上传新版本生成",
+      "rule": "建议顺序版本；不得与旧版本冲突；不把Git提交号当文件版本",
+      "conditions": "必填：自动生成；可见：Web列表、详情、历史版本；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "变更说明",
+      "type": "多行文本／文本域",
+      "source": "上传人填写",
+      "rule": "新版本上传必填；不覆盖旧变更说明",
+      "conditions": "必填：条件必填，新版本时；可见：Web上传新版本、历史版本、详情；编辑：上传提交前可编辑",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "资料使用状态",
+      "type": "枚举／状态标签",
+      "source": "有权使用/归档动作",
+      "rule": "使用中、已归档；不等同是否到期；归档后仍按权限查看",
+      "conditions": "必填：自动生成；可见：Web筛选、列表、详情；编辑：通过使用/归档操作变更",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "生效日期",
+      "type": "日期／日期选择",
+      "source": "文件内容或维护岗依据",
+      "rule": "可空；不是上传时间",
+      "conditions": "必填：否；可见：Web表单、详情、历史版本适用快照；编辑：有权文件维护岗据依据维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "到期日期",
+      "type": "日期／日期选择",
+      "source": "文件内容或维护岗依据",
+      "rule": "可空；有生效日时不得早于生效日；不造默认一年",
+      "conditions": "必填：否；可见：Web表单、列表、详情；编辑：有权文件维护岗据依据维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "有效期提示",
+      "type": "枚举／只读标签",
+      "source": "日期及已确认提前提醒规则",
+      "rule": "未设置、未生效、有效、临近到期（启用提醒时）、已到期；不替代使用状态",
+      "conditions": "必填：自动计算；可见：Web筛选、列表、详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "可查阅角色",
+      "type": "关联对象／多选",
+      "source": "有权文件维护岗选择",
+      "rule": "仍受所属组织/社区小区范围限制；不开放给任意居民",
+      "conditions": "必填：是，资料可用前；可见：Web权限表单、授权管理详情；编辑：有权文件权限管理岗维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "可下载角色",
+      "type": "关联对象／多选",
+      "source": "有权文件权限管理岗选择",
+      "rule": "建议必须是可查阅角色子集；未选不允许下载；旧版本仍受控",
+      "conditions": "必填：否；可见：Web权限表单、授权管理详情；编辑：有权文件权限管理岗维护",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "到期提醒接收人",
+      "type": "关联对象／人员多选",
+      "source": "有权文件维护岗配置",
+      "rule": "仅有到期日且启用规则时使用；接收人需能访问该资料；真实对象待Q06",
+      "conditions": "必填：条件必填，启用到期提醒时；可见：Web提醒配置、详情；编辑：有权文件维护岗配置，非真实消息发送",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "提前提醒天数",
+      "type": "非负整数／数字输入（天）",
+      "source": "经确认规则或标示的示例参数",
+      "rule": "数值待Q06；本稿不固定7/30天；无到期日隐藏",
+      "conditions": "必填：条件必填，启用提前提醒时；可见：Web提醒配置、详情；编辑：有权文件维护岗设置已确认值或明确示例",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "上传人",
+      "type": "文本／只读展示",
+      "source": "上传动作",
+      "rule": "旧版本保留各自上传人",
+      "conditions": "必填：自动生成；可见：Web详情、历史版本；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "上传时间",
+      "type": "日期时间／只读展示",
+      "source": "上传成功动作",
+      "rule": "失败不写成功时间；旧版本各自保留",
+      "conditions": "必填：自动生成；可见：Web详情、历史版本；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "维护人",
+      "type": "文本／只读展示",
+      "source": "当前授权操作身份生成",
+      "rule": "显示工作身份；不因姓名相同合并账号",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "files",
+      "field": "更新时间",
+      "type": "日期时间／只读展示",
+      "source": "维护动作生成",
+      "rule": "展示到秒，按项目统一时区；不替代统计日期或生效日期",
+      "conditions": "必填：自动生成，无需填写；可见：Web详情；编辑：只读",
+      "implementation": "web/manager/src/components/FieldEditor.vue + web/manager/src/views/Workspace.vue",
+      "rendered": [
+        "Web详情，角色 file-manager"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "fileFeedback",
+      "field": "目标版本",
+      "type": "文本／只读展示",
+      "source": "用户选中的版本记录",
+      "rule": "默认当前版本，历史版本由显式选择；不混用附件",
+      "conditions": "必填：自动带入；可见：Web版本详情、预览、下载确认；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web历史版本显式选择"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "fileFeedback",
+      "field": "预览内容",
+      "type": "文件预览／只读区域",
+      "source": "受控读取的样例附件",
+      "rule": "不支持则提示格式；无权不加载；不把隐藏按钮当文件权限验证",
+      "conditions": "必填：自动提供，格式支持且有权限时；可见：Web预览弹窗；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web受控读取的本地文本字节"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "fileFeedback",
+      "field": "预览结果说明",
+      "type": "文本／只读提示",
+      "source": "预览动作",
+      "rule": "不暴露私有文件URL、存储密钥或内部堆栈",
+      "conditions": "必填：条件生成，无法预览时；可见：Web预览弹窗；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web不支持格式时的真实反馈与受控下载边界"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "fileFeedback",
+      "field": "上传进度或状态",
+      "type": "枚举及进度／只读展示",
+      "source": "模拟上传处理",
+      "rule": "待上传、上传中、成功、失败；失败保留用户输入，不自动升级版本",
+      "conditions": "必填：自动生成；可见：Web上传表单；编辑：由上传/重试动作驱动",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web实际本地附件处理状态"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "fileFeedback",
+      "field": "上传失败原因",
+      "type": "文本／只读提示",
+      "source": "上传校验结果",
+      "rule": "具体到可操作原因；未确认限值不得伪称生产限制",
+      "conditions": "必填：条件生成，失败时；可见：Web上传表单；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web模拟失败原因，表单仍保留"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.8 DGL-009｜物业文件管理",
+      "table": "fileFeedback",
+      "field": "操作原因",
+      "type": "多行文本／文本域",
+      "source": "有权操作者",
+      "rule": "影响访问/使用的重要动作需留痕，不建设审批流",
+      "conditions": "必填：条件必填，重要变更时；可见：Web操作弹窗及记录；编辑：当前有权操作者提交前填写",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web文件操作原因与版本变更说明"
+      ],
+      "status": "PASS",
+      "ruleValidation": "CONSTRAINT_1793792295300 T09/T19 人员岗位调整显示条件必填并要求本次原因；T13/T20 文件下载权限修改不能省略本次操作原因；T02/T20 有社区但小区清单为空时，实际管理端不返回房屋"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "profile",
+      "field": "头像",
+      "type": "图片／选择与预览",
+      "source": "现有账号资料或本人模拟选择",
+      "rule": "只用虚构/批准素材；不实现真实微信资料授权",
+      "conditions": "必填：否；可见：住户个人中心、本人资料；编辑：本人可模拟修改",
+      "implementation": "miniapp/packages/foundation/MobileFields.vue",
+      "rendered": [
+        "住户本人资料表单"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "profile",
+      "field": "昵称",
+      "type": "文本／单行输入",
+      "source": "账号资料或本人填写",
+      "rule": "不作为真实身份、唯一人员或房屋核验依据",
+      "conditions": "必填：否；可见：住户个人中心、本人资料；编辑：本人可修改",
+      "implementation": "miniapp/packages/foundation/MobileFields.vue",
+      "rendered": [
+        "住户本人资料表单"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "profile",
+      "field": "姓名",
+      "type": "文本／单行输入",
+      "source": "居民档案关联",
+      "rule": "与5.3居民档案姓名为同一字段，不建立第二份；更正按核验规则",
+      "conditions": "必填：条件必填，提交关系申请前；可见：住户本人资料；编辑：本人提交更正，已核验资料保留历史",
+      "implementation": "miniapp/packages/foundation/MobileFields.vue",
+      "rendered": [
+        "住户本人资料表单"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "profile",
+      "field": "手机号",
+      "type": "联系方式／单行输入与状态提示",
+      "source": "现有账号/居民资料",
+      "rule": "若账号手机号与联系号码不同须明确标签；Mock不等于真实手机号验证",
+      "conditions": "必填：按现有登录和关系申请要求；可见：住户本人资料；编辑：本人按已有机制模拟更新，不修改真实商城账号映射",
+      "implementation": "miniapp/packages/foundation/MobileFields.vue",
+      "rendered": [
+        "住户本人资料表单"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "演示模式标识",
+      "type": "文本标签／固定展示",
+      "source": "项目配置",
+      "rule": "四端持续可辨识；不能误认真实业务或生产登录",
+      "conditions": "必填：自动展示；可见：四端页头或明显位置；编辑：不允许业务用户关闭标识",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "当前演示账号",
+      "type": "关联对象／账号选择",
+      "source": "固定虚构账号集合",
+      "rule": "是演示工具，不是居民生产提权；不能输入任意真实账号",
+      "conditions": "必填：是，进入角色演示前；可见：演示控制区；编辑：演示者可切换",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "当前业务角色",
+      "type": "枚举／单选及只读标识",
+      "source": "演示账号已配置角色",
+      "rule": "仅在该账号角色内切换；角色权限不无条件相加",
+      "conditions": "必填：是；可见：四端演示控制区、当前身份信息；编辑：演示者可在已授权角色内切换",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "当前所属组织",
+      "type": "文本／只读或已授权身份选择",
+      "source": "已有模拟身份",
+      "rule": "与当前业务角色关联；不暗建责任区域",
+      "conditions": "必填：条件带入，工作/商户身份时；可见：Web、管理端、商户端身份信息；编辑：仅通过获准身份切换",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "可见数据范围",
+      "type": "文本集合／只读摘要",
+      "source": "授权结果",
+      "rule": "展示授权结果而非责任片区；不得自行扩大",
+      "conditions": "必填：自动生成；可见：Web、管理端演示说明；住户显示本人；商户显示本主体；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "当前社区",
+      "type": "关联对象／单选",
+      "source": "当前账号可访问的社区",
+      "rule": "只缩小查询范围，不能授予权限；无可选范围给空态说明",
+      "conditions": "必填：条件选择，有多社区可查看时；可见：Web、管理端查询栏；住户查找房屋时按业务使用；编辑：当前用户在允许范围选择",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "当前小区",
+      "type": "关联对象／级联单选",
+      "source": "当前可访问小区",
+      "rule": "与社区一致；不是责任区域配置",
+      "conditions": "必填：否，按当前页面需要；可见：Web、管理端查询栏；住户房屋查找；编辑：在允许范围选择",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "功能入口名称",
+      "type": "文本／入口卡片",
+      "source": "需求与路由清单",
+      "rule": "沿用业务名称，不新增与本阶段无关菜单",
+      "conditions": "必填：自动生成；可见：四端导航或首页；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "入口可用说明",
+      "type": "枚举及说明／标签",
+      "source": "已交付范围配置",
+      "rule": "未实现入口隐藏或标后续/外部；不得跳空白或假成功",
+      "conditions": "必填：自动生成；可见：四端适用入口；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "待审核申请数",
+      "type": "非负整数／只读卡片",
+      "source": "同一套人房申请数据",
+      "rule": "仅Web有审核权限时展示；不凭空给管理端工单待办",
+      "conditions": "必填：自动计算；可见：Web基础工作台；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "未读结果消息数",
+      "type": "非负整数／只读标记",
+      "source": "本人模拟消息",
+      "rule": "与列表同步，切账号不能带入其他人统计",
+      "conditions": "必填：自动计算；可见：对应角色消息入口；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web工作台与当前查询上下文",
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "demo",
+      "field": "数据复位说明",
+      "type": "文本／确认提示",
+      "source": "演示场景配置",
+      "rule": "明确仅模拟数据；复位前二次确认，不接触真实外部系统",
+      "conditions": "必填：自动展示；可见：演示复位确认弹窗；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web演示控制、分端身份与会话复位说明"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "消息标题",
+      "type": "文本／只读展示",
+      "source": "业务触发生成",
+      "rule": "不含他人敏感资料",
+      "conditions": "必填：自动生成；可见：授权接收人的消息列表、详情；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "消息类型",
+      "type": "枚举／只读标签",
+      "source": "业务触发",
+      "rule": "绑定/变更/解除结果、车辆核实结果、文件到期提示；仅按实际实现触发",
+      "conditions": "必填：自动生成；可见：消息列表、详情；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "消息内容",
+      "type": "多行文本／只读展示",
+      "source": "对外业务反馈或到期说明",
+      "rule": "不把内部审核备注复制给居民",
+      "conditions": "必填：自动生成；可见：消息详情；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "接收身份",
+      "type": "文本／只读展示",
+      "source": "业务归属和接收配置",
+      "rule": "同一人多身份也按当前角色范围查看",
+      "conditions": "必填：自动生成；可见：消息详情；后台模拟记录按授权；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "关联业务名称",
+      "type": "文本／详情入口",
+      "source": "来源业务",
+      "rule": "点击详情仍校验权限；不直接给无权文件下载地址",
+      "conditions": "必填：自动生成；可见：消息详情；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "发生时间",
+      "type": "日期时间／只读展示",
+      "source": "业务动作",
+      "rule": "不用固定演示时间假装实时发送",
+      "conditions": "必填：自动生成；可见：消息列表、详情；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "阅读状态",
+      "type": "枚举／只读标签",
+      "source": "查看消息动作",
+      "rule": "未读、已读；与模拟发送状态分开",
+      "conditions": "必填：自动生成；可见：消息列表；编辑：阅读动作驱动",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.9 DGL-010｜四端入口、角色框架与演示体验",
+      "table": "messages",
+      "field": "模拟发送状态",
+      "type": "枚举／只读标签",
+      "source": "Mock行为",
+      "rule": "待处理、模拟成功、模拟失败；不声称真实订阅/短信成功",
+      "conditions": "必填：自动生成；可见：演示提示及有权模拟记录；编辑：模拟动作驱动，不是生产发送配置",
+      "implementation": "specialized surface",
+      "rendered": [
+        "住户本人结果消息详情"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作时间",
+      "type": "日期时间／只读展示",
+      "source": "实际模拟动作",
+      "rule": "与对象更新时间和文件生效日区分",
+      "conditions": "必填：自动生成；可见：对应对象的授权详情记录区；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作人",
+      "type": "文本／只读展示",
+      "source": "当前操作身份",
+      "rule": "对外反馈按授权裁减，居民不看他人敏感身份",
+      "conditions": "必填：自动生成；可见：对应对象的授权详情记录区；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作组织",
+      "type": "文本／只读展示",
+      "source": "当前工作身份",
+      "rule": "居民自助动作可不适用，不伪造组织",
+      "conditions": "必填：条件生成，工作身份时；可见：内部授权详情记录；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作名称",
+      "type": "枚举／只读标签",
+      "source": "本菜单合法操作",
+      "rule": "不是自由改状态；只记录实际发生动作",
+      "conditions": "必填：自动生成；可见：对应对象的授权详情记录区；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作对象",
+      "type": "文本／只读展示",
+      "source": "当前对象",
+      "rule": "不展示数据库主键、密钥或内部URL",
+      "conditions": "必填：自动生成；可见：对应对象的授权详情记录区；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "变更字段",
+      "type": "文本列表／只读展示",
+      "source": "前后差异",
+      "rule": "使用需求中的字段名称，不以数据库列名替代",
+      "conditions": "必填：条件生成，编辑/授权等变更时；可见：内部授权变更记录；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "变更前值",
+      "type": "结构化文本／只读展示",
+      "source": "变更快照",
+      "rule": "敏感字段同样脱敏，不能通过日志绕过权限",
+      "conditions": "必填：条件生成，存在修改时；可见：内部授权变更记录；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "变更后值",
+      "type": "结构化文本／只读展示",
+      "source": "变更结果",
+      "rule": "与当前结果一致；不能覆盖历史轮次",
+      "conditions": "必填：条件生成，存在修改时；可见：内部授权变更记录；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作说明／原因",
+      "type": "多行文本／只读展示",
+      "source": "对应操作表单",
+      "rule": "这是同一说明字段在记录中的展示，不生成重复业务事实",
+      "conditions": "必填：条件生成，业务要求原因时；可见：内部记录或本人获准反馈；编辑：只读，原表单提交前可编辑",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    },
+    {
+      "section": "### 5.10 DGL-011｜跨模块公共约定",
+      "table": "history",
+      "field": "操作结果",
+      "type": "枚举及文本／只读展示",
+      "source": "操作校验及Mock结果",
+      "rule": "不把模拟结果当真实后端事务证据",
+      "conditions": "必填：自动生成；可见：对应对象的授权详情记录区；编辑：只读",
+      "implementation": "specialized surface",
+      "rendered": [
+        "Web授权操作记录"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}

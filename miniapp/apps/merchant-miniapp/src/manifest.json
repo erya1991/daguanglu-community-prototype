@@ -1,0 +1,22 @@
+{
+  "name": "大光路商户原型",
+  "appid": "__UNI__DGL_STAGE00_MERCHANT",
+  "description": "仅限虚构数据原型演示",
+  "versionName": "0.1.0",
+  "versionCode": "10",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "es6": true,
+      "minified": true
+    },
+    "usingComponents": true
+  },
+  "h5": {
+    "router": {
+      "mode": "hash",
+      "base": "/merchant/"
+    }
+  }
+}

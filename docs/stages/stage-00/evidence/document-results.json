@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-05T03:16:06.907Z",
+  "files": 26,
+  "localLinks": 674,
+  "markdownTables": 445,
+  "scenarios": 31,
+  "pass": 27,
+  "blocked": 4,
+  "externalQuestionsUnchanged": true,
+  "nonStage00PackagesUnchanged": true,
+  "nonStage00PackageCount": 53,
+  "errors": []
+}

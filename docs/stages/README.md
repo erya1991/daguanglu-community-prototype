@@ -1,6 +1,6 @@
 # 阶段目录使用说明
 
-INIT已完成，Stage00处于文档整合、待提交复核；原型未实施，Stage01～05未启动。Stage00唯一当前有效目录为[stage-00](stage-00/REQUIREMENTS.md)，仅维护REQUIREMENTS、PLAN、ACCEPTANCE、RESULT四文档。
+INIT已完成，Stage00原型待人工验收，执行事实见RESULT第11节，Stage01～05未启动。Stage00唯一当前有效目录为[stage-00](stage-00/REQUIREMENTS.md)，仅维护REQUIREMENTS、PLAN、ACCEPTANCE、RESULT四文档。
 
 用户启动 StageXX 时，从 [阶段模板目录](../templates/stage/REQUIREMENTS.md)复制四份模板到 `docs/stages/stage-XX/`，然后根据 [总体需求](../OVERALL_REQUIREMENTS.md)、[范围台账](../SCOPE_REGISTER.md)、[问题台账](../OPEN_QUESTIONS.md)和 [工作流](../WORKFLOW.md)逐步填写。
 

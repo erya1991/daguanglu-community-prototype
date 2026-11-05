@@ -1,0 +1,46 @@
+{
+  "name": "daguanglu-community-stage00-miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stage00 三端独立原型；仅 Mock",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build:resident:h5": "node scripts/sync-shared.mjs && npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+    "dev:resident:h5": "node scripts/sync-shared.mjs && npm.cmd run dev:h5 --workspace=@daguanglu/resident-miniapp",
+    "build:resident:mp-weixin": "node scripts/sync-shared.mjs && npm.cmd run build:mp-weixin --workspace=@daguanglu/resident-miniapp",
+    "dev:resident:mp-weixin": "node scripts/sync-shared.mjs && npm.cmd run dev:mp-weixin --workspace=@daguanglu/resident-miniapp",
+    "type-check:resident": "node scripts/sync-shared.mjs && vue-tsc --noEmit -p apps/resident-miniapp/tsconfig.json",
+    "build:merchant:h5": "node scripts/sync-shared.mjs && npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+    "dev:merchant:h5": "node scripts/sync-shared.mjs && npm.cmd run dev:h5 --workspace=@daguanglu/merchant-miniapp",
+    "build:merchant:mp-weixin": "node scripts/sync-shared.mjs && npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+    "dev:merchant:mp-weixin": "node scripts/sync-shared.mjs && npm.cmd run dev:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+    "type-check:merchant": "node scripts/sync-shared.mjs && vue-tsc --noEmit -p apps/merchant-miniapp/tsconfig.json",
+    "build:staff:h5": "node scripts/sync-shared.mjs && npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+    "dev:staff:h5": "node scripts/sync-shared.mjs && npm.cmd run dev:h5 --workspace=@daguanglu/staff-miniapp",
+    "build:staff:mp-weixin": "node scripts/sync-shared.mjs && npm.cmd run build:mp-weixin --workspace=@daguanglu/staff-miniapp",
+    "dev:staff:mp-weixin": "node scripts/sync-shared.mjs && npm.cmd run dev:mp-weixin --workspace=@daguanglu/staff-miniapp",
+    "type-check:staff": "node scripts/sync-shared.mjs && vue-tsc --noEmit -p apps/staff-miniapp/tsconfig.json"
+  },
+  "dependencies": {
+    "@dcloudio/uni-app": "3.0.0-5020420260813003",
+    "@dcloudio/uni-components": "3.0.0-5020420260813003",
+    "@dcloudio/uni-h5": "3.0.0-5020420260813003",
+    "@dcloudio/uni-mp-weixin": "3.0.0-5020420260813003",
+    "@vue/shared": "3.4.21",
+    "vue": "3.4.21",
+    "vue-i18n": "^9.1.9"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^3.4.8",
+    "@dcloudio/uni-cli-shared": "3.0.0-5020420260813003",
+    "@dcloudio/vite-plugin-uni": "3.0.0-5020420260813003",
+    "@vue/runtime-core": "3.4.21",
+    "@vue/tsconfig": "^0.1.3",
+    "sass": "^1.77.8",
+    "typescript": "^4.9.4",
+    "vite": "5.2.8",
+    "vue-tsc": "^1.0.24"
+  }
+}

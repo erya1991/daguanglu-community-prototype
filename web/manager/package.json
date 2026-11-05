@@ -1,0 +1,40 @@
+{
+  "name": "daguanglu-community-stage00-manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Manager compatible Stage00 Mock prototype",
+  "author": "lili-platform",
+  "scripts": {
+    "serve": "vue-cli-service serve --host 127.0.0.1 --port 19210",
+    "prebuild": "node scripts/apply-compression-hash-fix.cjs",
+    "build": "vue-cli-service build"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "sass": "^1.63.6",
+    "sass-loader": "^10.4.1",
+    "view-design": "^4.7.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.4.4",
+    "@vue/cli-service": "^4.4.4",
+    "compression-webpack-plugin": "^4.0.0",
+    "css-loader": "^5.0.1",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "style-loader": "^2.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "resolutions": {
+    "minimatch": "^3.1.2",
+    "node-sass": "npm:sass@^1.63.6",
+    "@achrinza/node-ipc": "9.2.2"
+  }
+}

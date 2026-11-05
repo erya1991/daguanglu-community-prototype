@@ -1,0 +1,18 @@
+{
+  "run": "CONSTRAINT_1793792295300",
+  "path": ".runtime/stage00/CONSTRAINT_1793792295300",
+  "results": [
+    {
+      "name": "T09/T19 人员岗位调整显示条件必填并要求本次原因",
+      "status": "PASS"
+    },
+    {
+      "name": "T13/T20 文件下载权限修改不能省略本次操作原因",
+      "status": "PASS"
+    },
+    {
+      "name": "T02/T20 有社区但小区清单为空时，实际管理端不返回房屋",
+      "status": "PASS"
+    }
+  ]
+}

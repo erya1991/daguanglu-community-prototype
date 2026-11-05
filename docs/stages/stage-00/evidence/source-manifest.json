@@ -1,0 +1,805 @@
+{
+  "date": "2026-11-04T09:50:13.045Z",
+  "target": {
+    "branch": "stage/00-foundation",
+    "head": "dea2d20e3e15113b9b408358c57949e50adab4f1"
+  },
+  "repositories": [
+    {
+      "path": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "branch": "main",
+      "head": "8f15eed1255222ff9178b529d7a3039bfd67fab6",
+      "remote": "https://github.com/erya1991/Smart-Community-miniapp.git",
+      "status": "M apps/merchant-miniapp/src/services/merchant-platform.ts\n M apps/merchant-miniapp/src/services/merchant-session.ts\n M apps/resident-miniapp/src/adapters/stage2-http.ts\n M apps/resident-miniapp/src/features/mall/SkuPickerSheet.vue\n M apps/resident-miniapp/src/features/mall/Stage2AddressEdit.vue\n M apps/resident-miniapp/src/features/mall/Stage2Confirm.vue\n M apps/resident-miniapp/src/features/mall/Stage2Payment.vue\n M apps/resident-miniapp/src/features/mall/useCatalogCart.ts\n M apps/resident-miniapp/src/features/mall/useStage2HomeSections.ts\n M apps/resident-miniapp/src/pages/mall/cart/index.vue\n M apps/resident-miniapp/src/pages/mall/detail/index.vue\n M apps/resident-miniapp/src/pages/mall/list/index.vue\n M apps/resident-miniapp/src/pages/mall/pending/index.vue\n M apps/resident-miniapp/src/pages/member/address/index.vue\n M apps/resident-miniapp/src/services/stage2-mall.ts\n M apps/resident-miniapp/src/services/stage2-types.ts\n M scripts/p06-merchant-session.test.mjs\n M scripts/resident-home-render.test.mjs\n M scripts/stage2-checkout.test.mjs\n M scripts/stage2-mall.test.mjs\n M scripts/stage2-payment.test.mjs",
+      "staged": ""
+    },
+    {
+      "path": "D:/git/daguanglu-p0/lilishop-ui",
+      "branch": "master",
+      "head": "23dfcffd4205fb893d70dcc3fa7b79843616f16b",
+      "remote": "https://github.com/erya1991/daguanglu-p0-lilishop-ui.git",
+      "status": "",
+      "staged": ""
+    },
+    {
+      "path": "D:/git/daguanglu-p0/project-ops",
+      "branch": "main",
+      "head": "156f35bfcc5644f0aa11b3d61555942c6a2497f9",
+      "remote": "https://github.com/erya1991/daguanglu-p0-project-ops.git",
+      "status": "M docs/stages/stage-02/IMPLEMENTATION_CONTRACT.md\n M docs/stages/stage-02/RESULT.md\n M scripts/stage-01/local-env.ps1\n M scripts/stage-02/local-env.ps1\n M scripts/stage-02/preflight.mjs\n M scripts/stage-02/remaining-evidence.mjs\n?? database/stage-02/S2_007_native_captcha.sql\n?? docs/stages/stage-03/\n?? docs/stages/stage-04-05/\n?? scripts/stage-02/protection-baselines.mjs\n?? scripts/stage-02/protection-baselines.test.mjs",
+      "staged": ""
+    }
+  ],
+  "copies": [
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "package.json",
+      "target": "miniapp/package.json",
+      "sha256": "5669ae0e0dd04e13d186b8bed86375e3a139875353134e50b284c3df88432da5",
+      "purpose": "mobile workspace/build baseline"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "package-lock.json",
+      "target": "miniapp/package-lock.json",
+      "sha256": "cb140f8a6337d10d2ab8755a8dc90fcba2e5e4e01be306177da1a7f3b50ac9ad",
+      "purpose": "mobile workspace/build baseline"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "tsconfig.base.json",
+      "target": "miniapp/tsconfig.base.json",
+      "sha256": "574ff752c5fa32f929eec43fbae832cedb32949b91c45ff842682fde4158ec99",
+      "purpose": "mobile workspace/build baseline"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "scripts/run-uni.mjs",
+      "target": "miniapp/scripts/run-uni.mjs",
+      "sha256": "a8875cd89ce0a05c941b97203da3144d19d26e2ec4e11fe8540b21adf701568b",
+      "purpose": "mobile workspace/build baseline"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/AppPage.vue",
+      "target": "miniapp/packages/ui/components/AppPage.vue",
+      "sha256": "46e234261b93131e1707eeecd0d7d47cb837e17b24a1e352b6c4f3a8947b938d",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/AppNavbar.vue",
+      "target": "miniapp/packages/ui/components/AppNavbar.vue",
+      "sha256": "408e263139bab4f64ac08992cb466aa677a6bd200d60843b3bd6c748798d7741",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/AppTabbar.vue",
+      "target": "miniapp/packages/ui/components/AppTabbar.vue",
+      "sha256": "5c988d6c7e020b7d8064838c9ef4d4c746facd4a01f62d7a8d5fa884cef376c7",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/AppButton.vue",
+      "target": "miniapp/packages/ui/components/AppButton.vue",
+      "sha256": "2c414542a45dfc14fc2f89b29677384507e00f5618ce029418165523f24a798a",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/AppIcon.vue",
+      "target": "miniapp/packages/ui/components/AppIcon.vue",
+      "sha256": "ff48fca5ed50006cb54ec0199e16c46313afc65140c02606e85bc8b844799548",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/BaseCard.vue",
+      "target": "miniapp/packages/ui/components/BaseCard.vue",
+      "sha256": "09a9a474712c43d846119fefd11fa61d3d2f3089e0a5fa2bb667f35ed0fe3995",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/BottomActionBar.vue",
+      "target": "miniapp/packages/ui/components/BottomActionBar.vue",
+      "sha256": "6446241518add1f84e8d04ba37b9df58ee07309cab5395e8e8da4f9ce1597013",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/FormField.vue",
+      "target": "miniapp/packages/ui/components/FormField.vue",
+      "sha256": "50f2087b0bf8f083428f65b49f25c26ca46e12c5fc07932f3d48983b6a31add9",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/FormSection.vue",
+      "target": "miniapp/packages/ui/components/FormSection.vue",
+      "sha256": "6443b5f719eb0873f32fd23bde5b2264301700c589739bc5db8e9017249533eb",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/PageState.vue",
+      "target": "miniapp/packages/ui/components/PageState.vue",
+      "sha256": "9a39d0ff4f5fe2d8c6b071ecf8b3bb48d1c870de48b734b47dce55cf06b2ff22",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/ResultState.vue",
+      "target": "miniapp/packages/ui/components/ResultState.vue",
+      "sha256": "6df3ee1ef7c53d7cdef8b5ad385c3e5815dba22ae84f7db2a50106995c3fe6c7",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/StatusTag.vue",
+      "target": "miniapp/packages/ui/components/StatusTag.vue",
+      "sha256": "4b3429103686fd89a882b299a5bcf8ebc423c6e79a3fb2979a590ce5d7fd94af",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/SectionHeader.vue",
+      "target": "miniapp/packages/ui/components/SectionHeader.vue",
+      "sha256": "50868c86265d19f75372a7ca9efc33c062c621f1c2104928d50e162051403d8c",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/SearchBar.vue",
+      "target": "miniapp/packages/ui/components/SearchBar.vue",
+      "sha256": "1c3dbee4f3d458eaf5b4c4dc8b9a947698a043f27ac6a1a95b94e0cb95c47458",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/IconContainer.vue",
+      "target": "miniapp/packages/ui/components/IconContainer.vue",
+      "sha256": "a82b1004cd4924bdf707967cf96f7aab2d1c469f23080e0ac2ba8971834aee78",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/QuickEntryGrid.vue",
+      "target": "miniapp/packages/ui/components/QuickEntryGrid.vue",
+      "sha256": "227d7c1390b3e69b0bcbfaaf1e6ac3828fd4ab902eb613df886246110492d170",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/FeatureUnavailable.vue",
+      "target": "miniapp/packages/ui/components/FeatureUnavailable.vue",
+      "sha256": "7a2b1c3ec82ce0b554fa2b2b20f5fff9bd2bbe5e99c692b0ca3fec3c60c624e3",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/components/EvidenceUploader.vue",
+      "target": "miniapp/packages/ui/components/EvidenceUploader.vue",
+      "sha256": "fcc1f677c00e314a4aed6b7145c6ae387a852f406fcafa6bc975d41431daa503",
+      "purpose": "shared mobile UI; Stage00 adaptation follows"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/theme/uni.scss",
+      "target": "miniapp/packages/theme/uni.scss",
+      "sha256": "9ce6aa52c07a79680aaaee98a1cd224ca0535e97e14272e5fa2063bd2471cdcf",
+      "purpose": "theme/pure framework"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/theme/global.scss",
+      "target": "miniapp/packages/theme/global.scss",
+      "sha256": "92115d9b45c30e7f85afd47513fe2b6f130ace9bb35fde8300fd6da366b14fdb",
+      "purpose": "theme/pure framework"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/common/utils/navigation.ts",
+      "target": "miniapp/packages/common/utils/navigation.ts",
+      "sha256": "1eaa9b439d843e40c01e0c4f3fa5ad20cb7ec7442d31c5ab2da48fe87d3a6127",
+      "purpose": "theme/pure framework"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/common/types/app.ts",
+      "target": "miniapp/packages/common/types/app.ts",
+      "sha256": "86474dd95f14644e9c0fe0266ac544755c048f13dea2b5aee392e181883e9da7",
+      "purpose": "theme/pure framework"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/common/composables/usePageResource.ts",
+      "target": "miniapp/packages/common/composables/usePageResource.ts",
+      "sha256": "e0ca5dc6075f39146b144b411159d760199446bbf284a3bf7c932787860725fb",
+      "purpose": "theme/pure framework"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/bag.svg",
+      "target": "miniapp/packages/ui/assets/icons/bag.svg",
+      "sha256": "5f8dafc81070def9e6a5f7f4d79adec477777e8d7a0e3e667281d8765a3730b2",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/bell.svg",
+      "target": "miniapp/packages/ui/assets/icons/bell.svg",
+      "sha256": "402ab866f88549e379ed723dfeb563ba52d0e5e6bce212b0b1a7e54bed542e8d",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/bill.svg",
+      "target": "miniapp/packages/ui/assets/icons/bill.svg",
+      "sha256": "5ff62c14ca24d782a57e1754e058c1d26b04b178adf1e165453d35970e7da4ba",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/brand-building.svg",
+      "target": "miniapp/packages/ui/assets/icons/brand-building.svg",
+      "sha256": "d5716dcdff661f25e3a26bb0c728aa14a6950397c95d704a246ec6a0018a96ad",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/car.svg",
+      "target": "miniapp/packages/ui/assets/icons/car.svg",
+      "sha256": "01f448fce2f197fdb212cd163b4f2b4f36b80d44b6267e1c7dd339ddcfde527e",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/cart.svg",
+      "target": "miniapp/packages/ui/assets/icons/cart.svg",
+      "sha256": "0577f6e57dccf564c798fbba88f8ab9bbebaca28270405bd135312e0fab1947f",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/chevron-right.svg",
+      "target": "miniapp/packages/ui/assets/icons/chevron-right.svg",
+      "sha256": "5eba18c2d14204fc36531be80a559206055966619b11c8c337739c63b8d93385",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/cleaning.svg",
+      "target": "miniapp/packages/ui/assets/icons/cleaning.svg",
+      "sha256": "b5d188f26098e52c30b1e94de21146d2ba3e104974799d634daba3961c6202f4",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/close.svg",
+      "target": "miniapp/packages/ui/assets/icons/close.svg",
+      "sha256": "657a13ae14839ef029e03c239c53727c7a46146d2fd7d8fd30170d28f301316c",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/dashboard.svg",
+      "target": "miniapp/packages/ui/assets/icons/dashboard.svg",
+      "sha256": "d183793dc7adc79007310c6db933a7f9458b83063b89dd68ab20ecab904baec4",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/edit.svg",
+      "target": "miniapp/packages/ui/assets/icons/edit.svg",
+      "sha256": "91f37de87fb9f0e42f7879576567b85c18318bb5112603255cd42269367e2c11",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/food.svg",
+      "target": "miniapp/packages/ui/assets/icons/food.svg",
+      "sha256": "1476c300b7468534748a8e881d9b82d6f70240626b1aa1d3e07d7f54c8c32578",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/grain.svg",
+      "target": "miniapp/packages/ui/assets/icons/grain.svg",
+      "sha256": "8f5c56134fb6171a07244d513b5466cc2d5a9db7e52860a927079badf6e7f411",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/heart.svg",
+      "target": "miniapp/packages/ui/assets/icons/heart.svg",
+      "sha256": "7a9dd4d7052775d8d745d14493430120509837d0b6f95c6841564297c75c07b2",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/home.svg",
+      "target": "miniapp/packages/ui/assets/icons/home.svg",
+      "sha256": "0959a6d18a88bd3814aa12d9c88373c8163fe09e3cbfe80c0e471905f9583c80",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/house.svg",
+      "target": "miniapp/packages/ui/assets/icons/house.svg",
+      "sha256": "26d05260b8e11f1254200c0cacca553a976047ee716810880c7b7734c7fed586",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/household.svg",
+      "target": "miniapp/packages/ui/assets/icons/household.svg",
+      "sha256": "3c6954acf34b59772ffa149c93ccbd26266768ad3ccd6afb1db0708818ced285",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/key.svg",
+      "target": "miniapp/packages/ui/assets/icons/key.svg",
+      "sha256": "364fdd3eb647946330bcec15c0551d807eb260e343edb093f9c1346eb8882395",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/leaf.svg",
+      "target": "miniapp/packages/ui/assets/icons/leaf.svg",
+      "sha256": "fed1b8e65e7ac1802c1b79081840b3ca713a60e15cd6b51c44b3f0ac394b48d3",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/location.svg",
+      "target": "miniapp/packages/ui/assets/icons/location.svg",
+      "sha256": "24b36a12ed004593f3a3f83f51b4d43936149712bef3d8e2209e47924b1d27db",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/message.svg",
+      "target": "miniapp/packages/ui/assets/icons/message.svg",
+      "sha256": "3fc821f9c73f1ed98ddd7a431b8b606e8178bc581db6938637257c97b34ca30c",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/more.svg",
+      "target": "miniapp/packages/ui/assets/icons/more.svg",
+      "sha256": "88340669d084d1612bbf8093a0ead4e2e1094d9f817d75231b01cf97cb92e295",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/neighbor.svg",
+      "target": "miniapp/packages/ui/assets/icons/neighbor.svg",
+      "sha256": "ddd2294df173efbcfcd52aad060b46a375adc1c8f8e9d13ba8a90df12509b10d",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/order.svg",
+      "target": "miniapp/packages/ui/assets/icons/order.svg",
+      "sha256": "15c65756b10ed0014e3852d94e5e5f5bb052bfb9ebf09507aa8443a9f4b804d4",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/parking.svg",
+      "target": "miniapp/packages/ui/assets/icons/parking.svg",
+      "sha256": "93c7408a9261860e128ae861f287ed1a96e14dd64f2857c43b2832df0200e6f3",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/plus.svg",
+      "target": "miniapp/packages/ui/assets/icons/plus.svg",
+      "sha256": "ec50e97e8c309c61f7c19b62ab8a96d9f207f5af0ddf9b03ca0a112ec2c38475",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/points.svg",
+      "target": "miniapp/packages/ui/assets/icons/points.svg",
+      "sha256": "4b4000304fc480f59c72b7b2e01f21553dbb158dc0a572f2cefc559f79a1f5a2",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/qr.svg",
+      "target": "miniapp/packages/ui/assets/icons/qr.svg",
+      "sha256": "1eb7a91d4a1a3993af4677b1b2c1d7ca0283fbd77b142b51181ecaba3f65efe6",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/recycle.svg",
+      "target": "miniapp/packages/ui/assets/icons/recycle.svg",
+      "sha256": "babb53c1c7cf300721018f6a53e3698b94f07ad0cf5865470978e4e080296442",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/repair.svg",
+      "target": "miniapp/packages/ui/assets/icons/repair.svg",
+      "sha256": "4939c5f88c506a4de1d021c811c8946a64a7b35584e1046340ddbc18dfeb486b",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/search.svg",
+      "target": "miniapp/packages/ui/assets/icons/search.svg",
+      "sha256": "b9f0b63ee8cbf59ca66e58c1cb57e6c12ae76baa2a2393450d0d0c90ee141434",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/services.svg",
+      "target": "miniapp/packages/ui/assets/icons/services.svg",
+      "sha256": "ddd75103f2ff6eb586440e7c0b3593460c456bd9354043265310e007c33744c5",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/settings.svg",
+      "target": "miniapp/packages/ui/assets/icons/settings.svg",
+      "sha256": "26d60e3265811731ea48ba39c65628d4bb3e904f4f9709f6809faaad0ce7c9f2",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/shop.svg",
+      "target": "miniapp/packages/ui/assets/icons/shop.svg",
+      "sha256": "d0638e4920e999277bbb9f89cd2bffb0c0a54095dbe1cbd55da54f9c54cf3a67",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/store.svg",
+      "target": "miniapp/packages/ui/assets/icons/store.svg",
+      "sha256": "ce7b665fe298f14b7b86cc637dcc09cb8e215ec0c35441d91cefed20cdc66e20",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/user.svg",
+      "target": "miniapp/packages/ui/assets/icons/user.svg",
+      "sha256": "5aaf296f49fb577a407c6a6d20d3898649750c7356d27ed80b17f2f53d9608b6",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "packages/ui/assets/icons/verified.svg",
+      "target": "miniapp/packages/ui/assets/icons/verified.svg",
+      "sha256": "930c8c8314a5588fd0012af3919247c07073efaeb51d342b54f7497a1a0f5c54",
+      "purpose": "local icon assets"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/package.json",
+      "target": "miniapp/apps/resident-miniapp/package.json",
+      "sha256": "daafd05c2616220ea30bd3bb081c7289c2622765759e45a760b61ec48b47a171",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/tsconfig.json",
+      "target": "miniapp/apps/resident-miniapp/tsconfig.json",
+      "sha256": "6cdc174252bd41aa1c944ea3f20aab54d55c00669d1f9339d6055ee1fa493d13",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/vite.config.ts",
+      "target": "miniapp/apps/resident-miniapp/vite.config.ts",
+      "sha256": "ddc43600106cc684d2c5b343eb78f69dd73df950c8e5f34bc4f1f1105f756c3f",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/index.html",
+      "target": "miniapp/apps/resident-miniapp/index.html",
+      "sha256": "f6c3644bee6e97c0d12a9ee39ab72511fb9ef4d0880a6664636500ccd7679669",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/main.ts",
+      "target": "miniapp/apps/resident-miniapp/src/main.ts",
+      "sha256": "a49d747787a15a1772d8c4bba46c9c7c55a642fc3d78e38b086fd15bbb2286d4",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/App.vue",
+      "target": "miniapp/apps/resident-miniapp/src/App.vue",
+      "sha256": "1740c7e4a45b7583d328c98892b080577b85a99943833d15ffbf4e6e424dafab",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/pages.json",
+      "target": "miniapp/apps/resident-miniapp/src/pages.json",
+      "sha256": "fd0f864ae5b731a62f425849770233d3930e6099f3fad2a1f5e3295248dacdb7",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/manifest.json",
+      "target": "miniapp/apps/resident-miniapp/src/manifest.json",
+      "sha256": "a21834f6095e77e83595ac601a30f80adaddc7886de484a125709048d391411c",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/uni.scss",
+      "target": "miniapp/apps/resident-miniapp/src/uni.scss",
+      "sha256": "b391cd4c53010c5a76a79fb5008d956cce8e41ee9953fc68621cc6e392e1ec3c",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/env.d.ts",
+      "target": "miniapp/apps/resident-miniapp/src/env.d.ts",
+      "sha256": "8b74b311b09d5693c0e0c7b97856310067c6db1b30f98ec87ee155a6d52ff3cf",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/config/navigation.ts",
+      "target": "miniapp/apps/resident-miniapp/src/config/navigation.ts",
+      "sha256": "a22911f9e9bcf19b71cd9ae6dfb73defe57b5476774c8d6b446bc53d0021982f",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/package.json",
+      "target": "miniapp/apps/merchant-miniapp/package.json",
+      "sha256": "f89b93eb53c8bba282e5396d0c3dfa5bf9bb0b79fecc6b8e862ce7794f7dafc3",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/tsconfig.json",
+      "target": "miniapp/apps/merchant-miniapp/tsconfig.json",
+      "sha256": "20f32a01336984f1dc49e191ee80481fef8e3908520b960918f3118360ec111e",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/vite.config.ts",
+      "target": "miniapp/apps/merchant-miniapp/vite.config.ts",
+      "sha256": "888620fcb133ceb063b5c66f4a318564f45be3558df0bc947afa718b1d77778c",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/index.html",
+      "target": "miniapp/apps/merchant-miniapp/index.html",
+      "sha256": "f6c3644bee6e97c0d12a9ee39ab72511fb9ef4d0880a6664636500ccd7679669",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/main.ts",
+      "target": "miniapp/apps/merchant-miniapp/src/main.ts",
+      "sha256": "a49d747787a15a1772d8c4bba46c9c7c55a642fc3d78e38b086fd15bbb2286d4",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/App.vue",
+      "target": "miniapp/apps/merchant-miniapp/src/App.vue",
+      "sha256": "2b0cc9d4f1b81142c478434b79c6c7483ba6f91a8b9b7af5c59e632fd6f4b537",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/pages.json",
+      "target": "miniapp/apps/merchant-miniapp/src/pages.json",
+      "sha256": "fe472c6d84315cbef22f78847916f503e3ec91d2dfb3f762148454cea2e039a5",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/manifest.json",
+      "target": "miniapp/apps/merchant-miniapp/src/manifest.json",
+      "sha256": "bb057cb8cf783bf1c64fa2d007e33f7fa93d7ba62500ae76bc1c14152fe243e5",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/uni.scss",
+      "target": "miniapp/apps/merchant-miniapp/src/uni.scss",
+      "sha256": "b391cd4c53010c5a76a79fb5008d956cce8e41ee9953fc68621cc6e392e1ec3c",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/env.d.ts",
+      "target": "miniapp/apps/merchant-miniapp/src/env.d.ts",
+      "sha256": "8b74b311b09d5693c0e0c7b97856310067c6db1b30f98ec87ee155a6d52ff3cf",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/config/navigation.ts",
+      "target": "miniapp/apps/merchant-miniapp/src/config/navigation.ts",
+      "sha256": "235ff97e732d97b9660a4a79ababd9eef2de3b6f4c0a336c5ed02a8091772d0f",
+      "purpose": "independent app scaffold; replace business initialization"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/pages/home/index.vue",
+      "target": "layout reference only; Stage00 page composed locally",
+      "sha256": "e2cef365240c890e2b651f4b43df127c36a8e18185aaea394e295c8ca41dc1cd",
+      "purpose": "template/layout reference; business hooks excluded"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/pages/profile/index.vue",
+      "target": "layout reference only; Stage00 page composed locally",
+      "sha256": "f06cf727d5095ac4025d35953a6ee040a0c3aad653c2ea1243609637ac28d4d4",
+      "purpose": "template/layout reference; business hooks excluded"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/pages/profile/edit.vue",
+      "target": "layout reference only; Stage00 page composed locally",
+      "sha256": "4373eeefffcc7ea8b788e3bc8529c2a0e226d1f502a0d1a294c6fde4be58a25e",
+      "purpose": "template/layout reference; business hooks excluded"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/pages/workbench/index.vue",
+      "target": "layout reference only; Stage00 page composed locally",
+      "sha256": "1522f4453685c46e0377f43584d015aa8c58d996e751fa5cc5113e1a6bfcd5ce",
+      "purpose": "template/layout reference; business hooks excluded"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/merchant-miniapp/src/pages/profile/index.vue",
+      "target": "layout reference only; Stage00 page composed locally",
+      "sha256": "5a1f3c373dec69456526d49d39800974e0339015414e39c6bb518bcf9d96c6f9",
+      "purpose": "template/layout reference; business hooks excluded"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/smart-community-miniapp",
+      "source": "apps/resident-miniapp/src/static/images/home/hero-community-life.png",
+      "target": "miniapp/apps/resident-miniapp/src/static/images/home/hero-community-life.png",
+      "sha256": "2f85d3a25d1ee35c17e6b9a326835e5234fd9b10fb2c25a2d0b1e3ddcb38c54f",
+      "purpose": "approved local source hero"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/package.json",
+      "target": "web/manager/package.json",
+      "sha256": "b76bd94dc435d46784f691819be70b4ed12542699e725cdf51733736e2dc9656",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/yarn.lock",
+      "target": "web/manager/yarn.lock",
+      "sha256": "f0ae0bc19bd463a4a06d39d3c1e8e26a8c26707047efa4a0eaf2a6f5d7fcdcfc",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/babel.config.js",
+      "target": "web/manager/babel.config.js",
+      "sha256": "0346a3142f754c6eb0ff2e4023c88ec4a2d867e4905da62c3c36e6a80f2b18f1",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/styles/theme.less",
+      "target": "web/manager/src/styles/theme.less",
+      "sha256": "f0d393c1266a9d2673a2367fb6e24bf8b6544ba05cd471470d91b874d944c2b0",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/styles/common.scss",
+      "target": "web/manager/src/styles/common.scss",
+      "sha256": "e36c8c802b9852b1ad3dfe0f7d9800c69f7cd2aee9994be408f66fe905984da8",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/styles/table-common.scss",
+      "target": "web/manager/src/styles/table-common.scss",
+      "sha256": "20a34e070e820fc5afa7207fcb4c1c837dc2aae8a7b55b5d3b63e1dbc47ae4db",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/views/main.scss",
+      "target": "web/manager/src/views/main.scss",
+      "sha256": "0f73188ddd0d8ee50fbc32ba7ac0d6f0b3c2b426c8446bc0503096d89413a828",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/scripts/apply-compression-hash-fix.cjs",
+      "target": "web/manager/scripts/apply-compression-hash-fix.cjs",
+      "sha256": "dd94d191dabda7999469ab5b9bd5a59acaa013c798aa13f557d035fa2cdd0400",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/patches/compression-webpack-plugin+4.0.1.patch",
+      "target": "web/manager/patches/compression-webpack-plugin+4.0.1.patch",
+      "sha256": "33c75bef8ec138cefef99a69c2ac574d50760331d6d280b2e9b90b234bbbb1ce",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/views/p0-stage1/usability/components/FieldRow.vue",
+      "target": "web/manager/src/views/p0-stage1/usability/components/FieldRow.vue",
+      "sha256": "79468cf56e4731c392515b620421db9c0bd9bc9df70d4dad9908d37e8f93e4d6",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/views/p0-stage1/usability/components/DetailSection.vue",
+      "target": "web/manager/src/views/p0-stage1/usability/components/DetailSection.vue",
+      "sha256": "37af7af1cc4ccf52c7f7f49bce995e7bf5bcfe7c897b00f02d8c66874e4ad30a",
+      "purpose": "Manager framework/style/build baseline; no API bootstrap"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "LICENSE",
+      "target": "web/manager/LICENSE",
+      "sha256": "6da1054eef20b8949622f2acc5a89c3243ff3b3d7aa8c2bb8fa5c04d15113c00",
+      "purpose": "retain original AGPLv3 license"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/views/Main.vue",
+      "target": "layout reference only; Stage00 layout composed locally",
+      "sha256": "be68f6869410dbfec0e0bb75af59e05c008ba7d2bb24553b8e7073e5c883592d",
+      "purpose": "retain desktop layout/interaction; exclude authentication/menu request logic"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0/lilishop-ui",
+      "source": "manager/src/views/main-parts/shrinkable-menu/shrinkable-menu.vue",
+      "target": "layout reference only; Stage00 layout composed locally",
+      "sha256": "7e1e04af6de8595b634f73251fb39404a15b9684719ab585f9b9e0449a5cb3fb",
+      "purpose": "retain desktop layout/interaction; exclude authentication/menu request logic"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0-build/F01-03B2/tools/yarn-1.22.22/package",
+      "source": "bin/yarn.js",
+      "target": ".runtime/stage00/tools/yarn/bin/yarn.js",
+      "sha256": "148e19db309ec9eaf7720b28df811337906eea8a1758deaa54afee60a6305e04",
+      "purpose": "portable Yarn 1.22.22; runtime tool, excluded from source"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0-build/F01-03B2/tools/yarn-1.22.22/package",
+      "source": "lib/cli.js",
+      "target": ".runtime/stage00/tools/yarn/lib/cli.js",
+      "sha256": "443ed69e76443b89afddccfc9faec1ff16eb5e500979cc079c696dec4c3d94ee",
+      "purpose": "portable Yarn 1.22.22; runtime tool, excluded from source"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0-build/F01-03B2/tools/yarn-1.22.22/package",
+      "source": "package.json",
+      "target": ".runtime/stage00/tools/yarn/package.json",
+      "sha256": "9533b84eaaeea708ab99bcf92772bc81c7389f90a04f8b0188c163f9b3b621c3",
+      "purpose": "portable Yarn 1.22.22; runtime tool, excluded from source"
+    },
+    {
+      "repository": "D:/git/daguanglu-p0-build/F01-03B2/tools/yarn-1.22.22/package",
+      "source": "LICENSE",
+      "target": ".runtime/stage00/tools/yarn/LICENSE",
+      "sha256": "ae09761b5d27e237571245437653b483bbb85de3cc64b802e8ef47d03aabec1e",
+      "purpose": "portable Yarn 1.22.22; runtime tool, excluded from source"
+    }
+  ]
+}

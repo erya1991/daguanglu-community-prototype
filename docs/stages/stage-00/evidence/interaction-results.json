@@ -1,0 +1,18 @@
+{
+  "run": "INTERACTION_1793790047910",
+  "path": ".runtime/stage00/INTERACTION_1793790047910",
+  "results": [
+    {
+      "name": "T11/T26 车辆表单模拟失败保留输入并可重试",
+      "status": "PASS"
+    },
+    {
+      "name": "T19 无单元楼栋不显示虚构单元控件",
+      "status": "PASS"
+    },
+    {
+      "name": "T24 详情直达无返回栈时回本端我的入口",
+      "status": "PASS"
+    }
+  ]
+}

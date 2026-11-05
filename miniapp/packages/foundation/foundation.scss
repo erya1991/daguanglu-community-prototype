@@ -1,0 +1,22 @@
+@import './foundation-base.scss';
+.app-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  line-height: 1.6;
+}
+.app-page__content {
+  padding: 0;
+}
+.foundation-body {
+  padding: 16px;
+  padding-bottom: calc(28px + env(safe-area-inset-bottom));
+}
+.readonly-field {
+  padding: 12px 0;
+  border-bottom: 1px solid #edf1f1;
+}
+
+.avatar > image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
