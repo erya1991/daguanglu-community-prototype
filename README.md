@@ -7,19 +7,20 @@
 ## 当前状态
 
 - 当前步骤：Stage00原型已实施，待lee人工验收；七类构建和三端类型检查通过，微信工具及完整源画面对照仍有受阻项。
+- Stage01：完整V0.3四文档已首次导入，需求设计与评审中；原型未实施、验收未执行，未标PASS。当前仅文档授权，不实施Stage01代码。
 - 需求与计划：REQUIREMENTS V0.3承接已审V0.2；用户于2026-11-04告知ChatGPT已复核文档提交dea2d20，并确认集中实施计划。执行事实见RESULT第11节。
-- Git：当前`stage/00-foundation`；文档基线`dea2d20e3e15113b9b408358c57949e50adab4f1`；2026-11-05用户授权将本次Stage00实现保存为一次本地提交，对应版本以包含本段记录的Git提交为准；未授权推送、合并或修改仓库可见性。
-- 原型：三个独立uni-app＋Manager兼容Web＋DGL-001～011 Mock基础业务；Stage01～05未启动，NOT_STAGE_PASS。
+- Git：当前`stage/00-foundation`，首次导入轮开始HEAD为`a4210cd8ec9319df3a7092738ac889ae522b406c`；文档导入结束后，用户于2026-11-05追加授权将15份文档保存为一次提交并推送到`origin/stage/00-foundation`。本次版本以包含本段记录的Git提交为准，实际推送以Git回执及远端SHA核对为准；不合并、不切换分支。
+- 原型：三个独立uni-app＋Manager兼容Web＋DGL-001～011 Mock基础业务；Stage00仍为NOT_STAGE_PASS，Stage01仅文档设计，Stage02～05未启动。
 - 技术方向：Web沿用实际LiLiShop Manager的Vue 2、View UI/view-design、Vue Router 3、Vuex 3与Vue CLI；三小程序使用uni-app、Vue 3＋TypeScript＋Vite。依赖、锁文件与构建按Web/移动端隔离，精确环境实施前核验，见[AGENTS第6.1节](AGENTS.md#61-分端前端技术基线2026-11-04用户确认)。
 - 生产进度：以研发和原商城项目实际记录为准，本仓库尚未核定。
 
-上一轮文档整合及复核已结束。本轮按用户确认的计划完成原型与可执行自测，保留人工验收、真实研发接收和最终Git交付停止点。六阶段分组与产品交接日期仍为讨论建议。
+Stage00文档整合、复核、实施自测及本地Git检查点属于此前记录，人工验收、真实研发接收和Stage通过仍需实际依据。本轮只更新长期协作规则并首次导入Stage01完整文档，不安装、不启动、不构建、不做代码测试。六阶段分组与产品交接日期仍为讨论建议。三角色、产品语言与演示辅助、Web布局及微信验证的长期原则以[根AGENTS](AGENTS.md)为主维护位置。
 
 ## 第一次使用
 
 1. 打开现有独立仓库，先读[AGENTS.md](AGENTS.md)并核对实际分支、工作区与本轮授权；不重复初始化Git。
-2. 阅读[Stage00需求](docs/stages/stage-00/REQUIREMENTS.md)、[计划](docs/stages/stage-00/PLAN.md)、[验收清单](docs/stages/stage-00/ACCEPTANCE.md)和[结果](docs/stages/stage-00/RESULT.md)。当前有效目录仅为`docs/stages/stage-00/`。
-3. 后续Stage按[阶段计划](docs/STAGES.md)由用户启动。[仓库准备说明](docs/REPOSITORY_SETUP.md)保留为INIT历史操作说明，不是本轮待执行任务。
+2. Stage00实际原型与验收边界见[需求](docs/stages/stage-00/REQUIREMENTS.md)、[计划](docs/stages/stage-00/PLAN.md)、[验收清单](docs/stages/stage-00/ACCEPTANCE.md)和[结果](docs/stages/stage-00/RESULT.md)。Stage01文档入口见[需求](docs/stages/stage-01/REQUIREMENTS.md)、[计划](docs/stages/stage-01/PLAN.md)、[验收设计](docs/stages/stage-01/ACCEPTANCE.md)和[本地导入记录](docs/stages/stage-01/RESULT.md)。
+3. Stage01代码实施及后续Stage按[阶段计划](docs/STAGES.md)和实际授权推进。[仓库准备说明](docs/REPOSITORY_SETUP.md)保留为INIT历史操作说明，不是本轮待执行任务。
 
 实际本地位置：`D:\git\daguanglu-community-prototype`。安装、构建、缓存和静态预览均在本原型仓完成，不依赖商城目录；无生产后端或业务Mock服务。
 
@@ -55,13 +56,13 @@
 | Stage | 名称 | 当前状态 |
 |---|---|---|
 | 00 | 公共基础与协作约定 | 原型待人工验收；构建与H5自测通过，微信及部分视觉证据受阻 |
-| 01 | 物业收费停车与统一事件闭环 | 未启动；01A收费停车、01B工单隐患分件交接 |
+| 01 | 物业收费停车与统一事件闭环 | V0.3文档已首次导入，需求设计与评审中；01A／01B共享四文档，原型未实施、验收未执行 |
 | 02 | 便民服务闭环 | 未启动 |
 | 03 | 活动与积分运营 | 未启动；活动暂由lee负责 |
 | 04 | 网格党建与安全协同 | 未启动；业务及外部条件需并行确认 |
 | 05 | 运营汇总与整体交付 | 未启动；消息权限统计随各业务同步定义 |
 
-各阶段使用 `REQUIREMENTS.md`、`PLAN.md`、`ACCEPTANCE.md`、`RESULT.md` 四份文档。[四份模板](docs/templates/stage/REQUIREMENTS.md)已准备；Stage00已归并到规范目录，其他阶段在获准启动时创建。
+各阶段使用 `REQUIREMENTS.md`、`PLAN.md`、`ACCEPTANCE.md`、`RESULT.md` 四份文档。Stage00已归并到规范目录，Stage01从完整V0.3输入包首次导入，无本地V0.1／V0.2旧版；没有完整输入的后续阶段获准启动后使用[阶段模板](docs/templates/stage/REQUIREMENTS.md)。
 
 Stage00承担三个独立小程序框架＋Manager兼容Web框架＋DGL-001～011基础业务原型。住户沿用“首页｜服务｜商城｜我的”，商户沿用“工作台｜经营｜订单｜我的”；管理端独立，“工作台｜档案｜我的”是本版方案。商城实际工程继续作为生产开发基础，原型只复用获准框架、主题、组件与导航，新增业务只接Service/Adapter后的Mock，研发按模块接收增量。
 
@@ -72,7 +73,7 @@ Stage00承担三个独立小程序框架＋Manager兼容Web框架＋DGL-001～01
 - 本仓库 Markdown 是后续主维护版本；前一轮 Excel 和 Word 保留为讨论快照，不再与仓库双向各自更新状态。
 - 需求包编号保持稳定。来源文件保持原文，新决定写入当前文档和问题记录。
 - 项目级分工或公共规则变化更新总体需求；条目状态更新范围台账；问题答复更新问题台账；阶段交接更新阶段计划与对应 RESULT。
-- 原型安装、启动、身份及复位见下文；实际执行记录统一维护在Stage00 RESULT，不重开已确认的产品规则与技术方向。
+- 下文安装、启动、身份、复位及运行证据均为Stage00既有操作说明；Stage01本轮只做文档，实际导入与静态检查统一维护在其RESULT，不重开已确认规则或将旧运行证据记为Stage01验证。
 
 ## 初始化及上一轮文档记录（历史保留）
 
@@ -109,6 +110,8 @@ npm.cmd run preview
 住户与商户保留原四Tab，管理端为三Tab。三个应用有独立App/main/pages/manifest和产物，不使用单App切角色替代。手机H5可使用390×844或414×896视口；Web已检查1366×768及1920×1080。
 
 ## 演示身份、主流程与复位
+
+本节保留Stage00实际账号与操作说明，未据本轮文档任务修改原型身份。后续社区、物业演示默认采用[根AGENTS第5.2节](AGENTS.md#52-社区物业原型的演示角色)的三角色规则；Stage01获准实施时再按实际基线衔接，不能据文档导入宣称现有页面已完成角色或布局改造。
 
 Web右上角“演示控制”、移动“我的—演示控制”可切换固定虚构身份。主要Web账号：`archive`资料维护、`audit`人房审核、`admin`配置、`staff`受限查询、`sensitive`敏感查询、`file-owner`文件维护、`file-reader`可查不可下载；住户有`resident-a`、`resident-b`及双身份样例`dual`。账号无真实口令、登录或商城Token；每端角色限定于该App，不合并所有身份权限。小区空清单表示未授权，不从已选社区继承全部小区。演示配置管理员可在本项目已建档虚构社区、小区内配置授权，这是Q03未确认前的明确演示参数，不代表生产授权上界。
 
