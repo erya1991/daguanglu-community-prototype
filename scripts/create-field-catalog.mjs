@@ -1,11 +1,24 @@
 import fs from 'node:fs'
-const baseline=JSON.parse(fs.readFileSync('docs/stages/stage-00/evidence/field-baseline.json','utf8'))
-const keys=['orgs','accounts','roles','communities','estates','buildings','units','houses','imports','residents','applications','relations','missing','statistics','vehicles','facilities','personnel','files','fileFeedback','profile','demo','messages','history']
-const names=['组织资料','账号与授权','角色权限','社区档案','小区档案','楼栋档案','单元档案','房屋档案','房屋导入','居民档案','关系申请','正式人房关系','房屋缺失反馈','基础概况来源','车辆档案','设施点位','物业人员','文件资料','文件处理反馈','本人资料','演示控制','结果消息','操作记录']
+import prettier from '../.runtime/stage00/tools/qa/node_modules/prettier/index.mjs'
+const baseline=[]
+let section='',heading='',current
+for(const line of fs.readFileSync('docs/stages/stage-00/REQUIREMENTS.md','utf8').split(/\r?\n/)) {
+  if(/^#{2,4} /.test(line))section=line.replace(/^#+ /,'')
+  if(/^\*\*[^*]+\*\*$/.test(line))heading=line.replaceAll('**','')
+  if(line.startsWith('| 字段名称 |')) {current={section:section+' / '+heading,rows:[]};baseline.push(current);continue}
+  if(current&&line.startsWith('| ')&&!line.startsWith('| ---'))current.rows.push(line.split('|').slice(1,-1).map(v=>v.trim()))
+  else if(!line.startsWith('|'))current=null
+}
+const keys=['orgs','accounts','roles','communities','estates','buildings','units','houses','imports','residents','applications','relations','missing','statistics','vehicles','facilities','personnel','files','fileFeedback','profile','demo','messages','history','parking']
+const names=['组织资料','账号与授权','角色权限','社区档案','小区档案','楼栋档案','单元档案','房间（房屋）','房屋导入','居民档案','房屋绑定','正式人房关系','房屋缺失反馈','基础概况来源','车辆档案','设施点位','物业人员','文件资料','文件处理反馈','本人资料','演示控制','结果消息','操作记录','车位资源']
+if(baseline.length!==keys.length)throw Error('字段表数量与业务映射不一致')
 const form={orgs:'组织名称|组织类型|上级组织|工作联系人|工作联系电话|备注|资料来源|来源说明',accounts:'登录账号|人员姓名|所属组织|岗位|授权角色|可查看社区|可查看小区|授权变更原因',roles:'角色名称|角色说明|可见菜单|允许操作|敏感查看与导出权限',communities:'社区名称|社区地址|社区简介|维护单位|维护联系人|维护联系电话|资料来源|来源说明',estates:'小区名称|所属社区|小区地址|物业管理单位|资料来源|来源说明',buildings:'所属小区|楼栋名称／楼栋号|是否设单元|资料来源|来源说明',units:'所属楼栋|单元名称／单元号|资料来源|来源说明',houses:'所属社区|所属小区|所属楼栋|所属单元|楼层|房号|房屋用途|房屋面积|资料来源|来源说明',residents:'居民姓名|联系电话|关联账号|资料来源|来源说明',applications:'申请类型|所属社区|所属小区|所属楼栋|所属单元|房号|申请关系类型|申请说明|证明说明|证明附件|申请有效起始日|申请有效结束日',relations:'',missing:'社区|小区名称或地址|具体房屋描述|联系号码',statistics:'统计范围|指标名称|指标数值|统计口径说明|统计日期|数据来源|提供单位',vehicles:'车牌号码|车辆类型|车辆颜色|关联居民|关联房屋|登记说明|资料来源|来源说明',facilities:'点位名称|点位类别|所属社区|所属小区|具体位置|关联楼栋|关联房屋|设备或设施编号|数量|数量单位|厂商名称|维护单位|工作联系人|工作联系电话|点位照片|接入说明|备注|资料来源|来源说明',personnel:'人员姓名|所属物业组织|岗位|工作联系电话|关联账号|入岗日期|变更说明|资料来源|来源说明',files:'文件名称|文件分类|所属组织|适用社区|适用小区|文件附件|生效日期|到期日期|可查阅角色|可下载角色|到期提醒接收人|提前提醒天数',profile:'头像|昵称|姓名|手机号'}
 const filters={orgs:'组织名称|组织类型|组织状态',accounts:'登录账号|人员姓名|所属组织|账号状态',roles:'角色名称|角色状态',communities:'社区名称|档案状态',estates:'小区名称|所属社区|档案状态',buildings:'所属社区|所属小区|楼栋名称／楼栋号|档案状态',units:'所属社区|所属小区|所属楼栋|档案状态',houses:'房屋编号|所属社区|所属小区|所属楼栋|所属单元|房号|房屋用途|档案状态',residents:'居民姓名|联系电话|账号关联情况',applications:'申请编号|申请人姓名|申请类型|申请状态|所属社区|所属小区|提交时间',relations:'居民姓名|房屋地址|关系类型|关系状态',missing:'社区|小区名称或地址',statistics:'统计范围|统计日期',vehicles:'车牌号码|车辆类型|核实状态|所属社区|所属小区',facilities:'点位名称|点位编号|点位类别|所属社区|所属小区|档案状态|接入状态|设备或设施编号',personnel:'人员姓名|所属物业组织|岗位|在岗状态',files:'文件名称|文件编号|文件分类|所属组织|适用社区|适用小区|资料使用状态|有效期提示',messages:'消息类型|阅读状态|模拟发送状态'}
+form.parking='车位编号|车位类型|备注'
+filters.parking='车位编号|车位类型|档案状态'
 const catalogs=Object.fromEntries(baseline.map((t,i)=>[keys[i],{key:keys[i],title:names[i],section:t.section,fields:t.rows.map(r=>({name:r[0],type:r[1],meaning:r[2],source:r[3],rule:r[4],condition:r[5]})),form:(form[keys[i]]||'').split('|').filter(Boolean),filters:(filters[keys[i]]||'').split('|').filter(Boolean)}]))
 fs.mkdirSync('prototype-shared',{recursive:true})
-fs.writeFileSync('prototype-shared/catalog.js','// Stage00 field correspondence, derived from reviewed REQUIREMENTS V0.3; not a database schema.\nexport const catalog = '+JSON.stringify(catalogs,null,2)+'\n')
+const output='// Stage00 field correspondence, derived from REQUIREMENTS including authorized R1; not a database schema.\nexport const catalog = '+JSON.stringify(catalogs,null,2)+'\n'
+fs.writeFileSync('prototype-shared/catalog.js',await prettier.format(output,{filepath:'catalog.js',singleQuote:true,semi:false,printWidth:110}))
 fs.writeFileSync('prototype-shared/package.json','{"type":"module","private":true}\n')
-console.log('23 business field groups mapped; UI uses explicit per-business form and filter lists')
+console.log(baseline.length+' business field groups mapped; '+baseline.reduce((n,t)=>n+t.rows.length,0)+' field rows')

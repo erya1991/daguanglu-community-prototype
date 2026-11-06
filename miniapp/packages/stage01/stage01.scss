@@ -1,0 +1,143 @@
+.s1-mobile {
+  padding: 16px;
+  max-width: 650px;
+  margin: 0 auto;
+  min-width: 0;
+  color: #243a37;
+  overflow-wrap: anywhere;
+}
+.s1-mobile h1,
+.s1-mobile .hero-title {
+  font-size: 22px;
+  line-height: 1.45;
+  font-weight: 650;
+  display: block;
+}
+.s1-mobile .muted {
+  display: block;
+  color: #5d7070;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 6px 0;
+}
+.s1-mobile .card {
+  padding: 16px;
+  border: 1px solid #e3eae6;
+  border-radius: 12px;
+  background: white;
+  margin: 16px 0;
+  min-width: 0;
+}
+.s1-mobile .card-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+  display: block;
+}
+.s1-mobile .amount {
+  font-size: 28px;
+  font-weight: 650;
+  color: #164f3c;
+  display: block;
+  margin: 12px 0;
+}
+.s1-mobile .state {
+  font-size: 13px;
+  color: #71501a;
+  background: #fff7df;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.s1-mobile button {
+  min-height: 44px;
+  line-height: 1.45;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #215b46;
+  background: #fff;
+  border: 1px solid #c5d8ce;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+.s1-mobile button.primary {
+  background: #0c5a3e;
+  border-color: #0c5a3e;
+  color: white;
+}
+.s1-mobile button[disabled] {
+  opacity: 0.5;
+}
+.s1-mobile .actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.s1-mobile .actions button {
+  flex: 1;
+  min-width: 104px;
+}
+.s1-mobile .error {
+  padding: 12px;
+  background: #fff0ef;
+  border: 1px solid #e7b7b6;
+  color: #9b2026;
+  display: block;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+.s1-mobile .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.s1-mobile .filters input,
+.s1-mobile .filters picker {
+  background: white;
+  border: 1px solid #d1ddd7;
+  padding: 12px;
+  border-radius: 6px;
+  min-height: 44px;
+  flex: 1;
+  min-width: 120px;
+}
+.s1-mobile .link {
+  color: #215d47;
+  padding: 12px 0;
+  display: block;
+  min-height: 44px;
+}
+.s1-mobile .bottom-space {
+  height: 100px;
+}
+.s1-mobile .fixed-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px calc(env(safe-area-inset-bottom) + 12px);
+  background: white;
+  border-top: 1px solid #dfe8e1;
+  z-index: 30;
+}
+.s1-mobile .fixed-action button {
+  margin: 0;
+  width: 100%;
+}
+.s1-mobile .notice {
+  font-size: 13px;
+  color: #526c60;
+  padding: 12px;
+  background: #eef5f0;
+  line-height: 1.7;
+  border-radius: 8px;
+}
+.s1-mobile .choice {
+  padding: 14px 0;
+  min-height: 44px;
+}
+.s1-mobile input {
+  min-height: 44px;
+}

@@ -1,13 +1,14 @@
 /** Stage00 adapter contract. UI frameworks are deliberately absent from the shared business layer. */
 export type AppKind='web'|'resident'|'merchant'|'staff'
-export type EntityTable='orgs'|'accounts'|'roles'|'communities'|'estates'|'buildings'|'units'|'houses'|'residents'|'applications'|'relations'|'missing'|'statistics'|'vehicles'|'facilities'|'personnel'|'files'|'messages'
-export interface DemoContext{app:AppKind;account:string;role?:string;community?:string;estate?:string}
+export type EntityTable='orgs'|'accounts'|'roles'|'communities'|'estates'|'buildings'|'units'|'houses'|'residents'|'applications'|'relations'|'missing'|'statistics'|'vehicles'|'facilities'|'parking'|'personnel'|'files'|'messages'
+export interface DemoContext{app:AppKind;account:string;role?:string;community?:string;estate?:string;identityVersion?:number}
 export interface DemoRecord{_id:string;_rev:number;_labels?:Record<string,string>;[field:string]:any}
 export interface DemoActor extends DemoRecord{role:string;name:string;org:string;orgName:string;roleName:string;scopeLabel:string;permissions:string[];sensitive:string[];menus:string[];resident?:string}
 export interface DemoInfo{session:string;version:string;generation:number;actor:DemoActor;counts:Record<string,number|null>;accounts:Array<{id:string;name:string;roles:Array<{id:string;name:string}>}>}
 export type BusinessCommand='save'|'apply'|'withdraw'|'review'|'profile'|'status'|'verifyVehicle'|'fileVersion'|'messageRead'|'messageSend'|'remind'
 export interface CommandResult{id:string;message:string}
 export interface Stage00Service{
+ stage01:Stage01Service;
  app:string;session:string;context():DemoContext;onChange(listener:()=>void):()=>void
  start():Promise<DemoInfo>;info():Promise<DemoInfo>;identity(account:string,role:string):Promise<DemoInfo>
  query(table:string,filters?:Record<string,any>):Promise<DemoRecord[]>;record(table:string,id:string):Promise<DemoRecord>
@@ -24,3 +25,5 @@ export interface Stage00Service{
  ownedAttachment(id:string):Promise<any>;attachment(parameters:Record<string,any>):Promise<any>
  versions(id:string):Promise<Record<string,any>[]>
 }
+
+export interface Stage01Service { query(table:string,filters?:Record<string,any>):Promise<DemoRecord[]>; record(table:string,id:string):Promise<any>; options():Promise<any>; overview():Promise<any>; command(name:string,p?:Record<string,any>):Promise<CommandResult>; auxiliary(name:string,p?:Record<string,any>):Promise<any>; importPreview(p:Record<string,any>):Promise<any>; reset():Promise<void>; upload(file:any,options?:{fail?:boolean}):Promise<any>; attachment(p:Record<string,any>):Promise<any>; accounts():Promise<any[]> }

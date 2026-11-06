@@ -1,0 +1,15 @@
+{
+  "baselineRef": "234bf251f429e77e0996ce2854a237021c1914f4",
+  "date": "2026-11-06T02:27:29.809Z",
+  "files": 30,
+  "localLinks": 1015,
+  "markdownTables": 611,
+  "scenarios": 31,
+  "pass": 27,
+  "blocked": 4,
+  "externalQuestionsUnchanged": true,
+  "authorizedScope": "Stage00 inherited R1 + Stage01",
+  "outsideAuthorizedStagePackagesUnchanged": true,
+  "protectedPackageCount": 50,
+  "errors": []
+}

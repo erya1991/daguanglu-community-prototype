@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-06T02:10:56.857Z",
+  "preview": {
+    "url": "http://127.0.0.1:19202",
+    "port": 19202,
+    "pid": 416,
+    "started": "2026-11-06T01:17:28.290Z",
+    "type": "static-only"
+  },
+  "results": [
+    {
+      "url": "http://127.0.0.1:19202/",
+      "status": 200,
+      "type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "http://127.0.0.1:19202/web/?session=stage01-demo",
+      "status": 200,
+      "type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "http://127.0.0.1:19202/resident/?session=stage01-demo",
+      "status": 200,
+      "type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "http://127.0.0.1:19202/staff/?session=stage01-demo",
+      "status": 200,
+      "type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "http://127.0.0.1:19202/merchant/?session=stage01-demo",
+      "status": 200,
+      "type": "text/html; charset=utf-8"
+    }
+  ],
+  "boundary": "Local HTTP availability only, not deployment or acceptance"
+}

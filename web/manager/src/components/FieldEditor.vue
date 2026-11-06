@@ -4,7 +4,7 @@
       v-for="f in fields"
       v-show="visible(f.name)"
       :key="f.name"
-      :label="f.name"
+      :label="label(f.name)"
       :required="required(f)"
       :error="errors[f.name]"
       :class="{ 'field-full': /多行|集合|上传/.test(f.type) }"
@@ -23,7 +23,6 @@
           />
           <p>{{ uploadState[f.name] || '待选择本地演示文件；文件不会发送到服务器' }}</p>
           <p v-if="value[f.name]">已选：{{ fileNames[f.name] || value[f.name] }}</p>
-          <Checkbox v-model="uploadFail">本次模拟处理失败</Checkbox>
         </div></template
       >
       <Select
@@ -58,21 +57,23 @@
         :value="value[f.name]"
         :type="/多行/.test(f.type) ? 'textarea' : 'text'"
         :rows="3"
-        :placeholder="f.rule"
+        :placeholder="'请输入' + label(f.name)"
         @input="set(f.name, $event)"
       />
-      <div class="muted">{{ f.rule }}</div>
+      <div v-if="help(f.name)" class="field-help">{{ help(f.name) }}</div>
     </FormItem>
     <FormItem v-if="table === 'files'" label="到期提醒（样例配置）" class="field-full"
       ><Checkbox :value="value._reminder" @on-change="set('_reminder', $event)"
         >启用本地样例提醒；Q06正式参数待确认</Checkbox
       ></FormItem
     >
+    <div v-if="fields.some(isFile)" class="field-full"><details class="demo-tools"><summary>演示辅助</summary><Checkbox v-model="uploadFail">下一次附件处理失败</Checkbox></details></div>
   </div>
 </template>
 <script>
 import { catalog } from '../../../../prototype-shared/catalog.js'
 import { service } from '../services/foundation'
+import { fieldHelp, fieldLabel } from '../../../../prototype-shared/field-help.js'
 const multis = [
   '授权角色',
   '可查看社区',
@@ -93,6 +94,7 @@ export default {
     errors: { type: Object, default: () => ({}) },
     names: Array,
     original: Object,
+    locked: { type: Object, default: () => ({}) },
   },
   data: () => ({ choices: {}, uploadState: {}, fileNames: {}, uploadFail: false, buildings: [] }),
   computed: {
@@ -112,6 +114,7 @@ export default {
       } catch {}
     },
     visible(n) {
+      if (Object.prototype.hasOwnProperty.call(this.locked, n)) return false
       if (this.table === 'personnel' && n === '变更说明')
         return (
           !!this.original &&
@@ -123,6 +126,8 @@ export default {
         return this.value._reminder && this.value['到期日期']
       return true
     },
+    help(n) { return fieldHelp(this.table, n) },
+    label(n) { return fieldLabel(this.table, n) },
     required(f) {
       if (f.name === '来源说明') return !!this.value['资料来源'] && this.value['资料来源'] !== '人工维护'
       if (this.table === 'personnel' && f.name === '变更说明') return this.visible(f.name)

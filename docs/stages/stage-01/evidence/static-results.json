@@ -1,0 +1,123 @@
+{
+  "at": "2026-11-06T02:27:29.263Z",
+  "node": "v24.14.0",
+  "results": [
+    {
+      "name": "294项六列字段及26组与V0.3原文一致",
+      "status": "PASS",
+      "detail": {
+        "definitions": 294,
+        "groups": 26
+      }
+    },
+    {
+      "name": "23视图和72验收编号稳定",
+      "status": "PASS",
+      "detail": {
+        "views": [
+          "P-A01",
+          "P-A02",
+          "P-A03",
+          "P-A04",
+          "P-A05",
+          "P-A06",
+          "P-A07",
+          "P-A08",
+          "P-A09",
+          "P-A10",
+          "P-A11",
+          "P-A12",
+          "P-A13",
+          "P-B01",
+          "P-B02",
+          "P-B03",
+          "P-B04",
+          "P-B05",
+          "P-B06",
+          "P-B07",
+          "P-B08",
+          "P-B09",
+          "P-C01"
+        ],
+        "cases": 72
+      }
+    },
+    {
+      "name": "Stage00目录、原始锁文件及R1未触碰文件保护",
+      "status": "PASS",
+      "detail": {
+        "files": 59
+      }
+    },
+    {
+      "name": "现有与新增规则测试的实际退出码",
+      "status": "PASS",
+      "detail": {
+        "command": "node --test tests/business.test.mjs tests/r1.test.mjs tests/stage01.test.mjs",
+        "exit": 0,
+        "total": 70,
+        "pass": 70,
+        "log": ".runtime/stage01/tests-final.log"
+      }
+    },
+    {
+      "name": "七构建与三类型检查分项记录",
+      "status": "PASS",
+      "detail": {
+        "run": "BUILD_2026-11-06T02-01-19-813Z",
+        "results": [
+          {
+            "id": "web",
+            "exit": 0
+          },
+          {
+            "id": "resident-h5",
+            "exit": 0
+          },
+          {
+            "id": "resident-mp-weixin",
+            "exit": 0
+          },
+          {
+            "id": "merchant-h5",
+            "exit": 0
+          },
+          {
+            "id": "merchant-mp-weixin",
+            "exit": 0
+          },
+          {
+            "id": "staff-h5",
+            "exit": 0
+          },
+          {
+            "id": "staff-mp-weixin",
+            "exit": 0
+          },
+          {
+            "id": "resident-types",
+            "exit": 0
+          },
+          {
+            "id": "merchant-types",
+            "exit": 0
+          },
+          {
+            "id": "staff-types",
+            "exit": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "分支、HEAD及暂存边界",
+      "status": "PASS",
+      "detail": {
+        "branch": "stage/01-property-parking-workorder",
+        "head": "234bf251f429e77e0996ce2854a237021c1914f4",
+        "index": "EMPTY"
+      }
+    }
+  ],
+  "boundary": "Static and rule checks only; UI/tool/owner evidence is separate."
+}

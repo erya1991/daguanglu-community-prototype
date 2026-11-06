@@ -1,9 +1,9 @@
-// Stage00 field correspondence, derived from reviewed REQUIREMENTS V0.3; not a database schema.
+// Stage00 field correspondence, derived from REQUIREMENTS including authorized R1; not a database schema.
 export const catalog = {
   orgs: {
     key: 'orgs',
     title: '组织资料',
-    section: '### 5.1 DGL-001｜组织、账号与权限',
+    section: '5.1 DGL-001｜组织、账号与权限 / 组织资料字段',
     fields: [
       {
         name: '组织名称',
@@ -100,7 +100,7 @@ export const catalog = {
   accounts: {
     key: 'accounts',
     title: '账号与授权',
-    section: '### 5.1 DGL-001｜组织、账号与权限',
+    section: '5.1 DGL-001｜组织、账号与权限 / 账号关联与授权字段',
     fields: [
       {
         name: '登录账号',
@@ -216,7 +216,7 @@ export const catalog = {
   roles: {
     key: 'roles',
     title: '角色权限',
-    section: '### 5.1 DGL-001｜组织、账号与权限',
+    section: '5.1 DGL-001｜组织、账号与权限 / 角色及操作权限字段',
     fields: [
       {
         name: '角色名称',
@@ -289,7 +289,7 @@ export const catalog = {
   communities: {
     key: 'communities',
     title: '社区档案',
-    section: '### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋',
+    section: '5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋 / 社区档案字段',
     fields: [
       {
         name: '社区编号',
@@ -404,7 +404,7 @@ export const catalog = {
   estates: {
     key: 'estates',
     title: '小区档案',
-    section: '### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋',
+    section: '5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋 / 小区档案字段',
     fields: [
       {
         name: '小区编号',
@@ -495,7 +495,7 @@ export const catalog = {
   buildings: {
     key: 'buildings',
     title: '楼栋档案',
-    section: '### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋',
+    section: '5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋 / 楼栋档案字段',
     fields: [
       {
         name: '楼栋编号',
@@ -587,7 +587,7 @@ export const catalog = {
   units: {
     key: 'units',
     title: '单元档案',
-    section: '### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋',
+    section: '5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋 / 单元档案字段',
     fields: [
       {
         name: '单元编号',
@@ -675,8 +675,8 @@ export const catalog = {
   },
   houses: {
     key: 'houses',
-    title: '房屋档案',
-    section: '### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋',
+    title: '房间（房屋）',
+    section: '5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋 / 房屋档案字段',
     fields: [
       {
         name: '房屋编号',
@@ -831,7 +831,7 @@ export const catalog = {
   imports: {
     key: 'imports',
     title: '房屋导入',
-    section: '### 5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋',
+    section: '5.2 DGL-002、DGL-003｜社区、小区、楼栋与房屋 / 房屋导入、预览与结果字段',
     fields: [
       {
         name: '导入文件',
@@ -960,7 +960,7 @@ export const catalog = {
   residents: {
     key: 'residents',
     title: '居民档案',
-    section: '### 5.3 DGL-004｜居民、人房关系与申请审核',
+    section: '5.3 DGL-004｜居民、人房关系与申请审核 / 居民档案字段',
     fields: [
       {
         name: '居民编号',
@@ -1052,8 +1052,8 @@ export const catalog = {
   },
   applications: {
     key: 'applications',
-    title: '关系申请',
-    section: '### 5.3 DGL-004｜居民、人房关系与申请审核',
+    title: '房屋绑定',
+    section: '5.3 DGL-004｜居民、人房关系与申请审核 / 绑定、变更与解除申请字段',
     fields: [
       {
         name: '申请编号',
@@ -1294,7 +1294,7 @@ export const catalog = {
   relations: {
     key: 'relations',
     title: '正式人房关系',
-    section: '### 5.3 DGL-004｜居民、人房关系与申请审核',
+    section: '5.3 DGL-004｜居民、人房关系与申请审核 / 正式人房关系与我的房屋字段',
     fields: [
       {
         name: '居民姓名',
@@ -1386,7 +1386,7 @@ export const catalog = {
   missing: {
     key: 'missing',
     title: '房屋缺失反馈',
-    section: '### 5.3 DGL-004｜居民、人房关系与申请审核',
+    section: '5.3 DGL-004｜居民、人房关系与申请审核 / 找不到房屋时的缺失反馈字段',
     fields: [
       {
         name: '社区',
@@ -1435,7 +1435,7 @@ export const catalog = {
   statistics: {
     key: 'statistics',
     title: '基础概况来源',
-    section: '### 5.4 DGL-005｜人口户数及统计口径',
+    section: '5.4 DGL-005｜人口户数及统计口径 / 人口、户数来源记录及基础概况字段',
     fields: [
       {
         name: '统计范围',
@@ -1559,7 +1559,7 @@ export const catalog = {
   vehicles: {
     key: 'vehicles',
     title: '车辆档案',
-    section: '### 5.5 DGL-006｜车辆基础档案',
+    section: '5.5 DGL-006｜车辆基础档案 / 车辆档案及核实字段',
     fields: [
       {
         name: '车辆档案编号',
@@ -1701,7 +1701,7 @@ export const catalog = {
   facilities: {
     key: 'facilities',
     title: '设施点位',
-    section: '### 5.6 DGL-007｜设施点位档案',
+    section: '5.6 DGL-007｜设施点位档案 / 设施点位档案字段',
     fields: [
       {
         name: '点位编号',
@@ -1710,6 +1710,15 @@ export const catalog = {
         source: '系统生成或核验带入',
         rule: '不把点位号当全部厂商设备号',
         condition: '必填：自动生成或核验带入；可见：Web筛选、列表、详情；管理端详情；编辑：只读',
+      },
+      {
+        name: '所属空间',
+        type: '关联对象／只读展示',
+        meaning: '设施直接归属的小区或楼栋',
+        source: '当前树节点及空间档案',
+        rule: '新增只允许小区或楼栋；社区直属旧记录保留，不自动迁移；所属社区、小区及关联楼栋据此一致带出',
+        condition:
+          '必填：新增自动带入；可见：Web列表、表单上下文、详情及管理端授权查询；编辑：本轮只读，不支持资源迁移',
       },
       {
         name: '点位名称',
@@ -1933,7 +1942,7 @@ export const catalog = {
   personnel: {
     key: 'personnel',
     title: '物业人员',
-    section: '### 5.7 DGL-008｜物业人员名录',
+    section: '5.7 DGL-008｜物业人员名录 / 物业人员名录字段',
     fields: [
       {
         name: '人员编号',
@@ -2066,7 +2075,7 @@ export const catalog = {
   files: {
     key: 'files',
     title: '文件资料',
-    section: '### 5.8 DGL-009｜物业文件管理',
+    section: '5.8 DGL-009｜物业文件管理 / 物业文件资料字段',
     fields: [
       {
         name: '文件编号',
@@ -2294,7 +2303,7 @@ export const catalog = {
   fileFeedback: {
     key: 'fileFeedback',
     title: '文件处理反馈',
-    section: '### 5.8 DGL-009｜物业文件管理',
+    section: '5.8 DGL-009｜物业文件管理 / 文件预览、版本及上传反馈字段',
     fields: [
       {
         name: '目标版本',
@@ -2351,7 +2360,7 @@ export const catalog = {
   profile: {
     key: 'profile',
     title: '本人资料',
-    section: '### 5.9 DGL-010｜四端入口、角色框架与演示体验',
+    section: '5.9 DGL-010｜四端入口、角色框架与演示体验 / 住户本人资料字段',
     fields: [
       {
         name: '头像',
@@ -2394,7 +2403,7 @@ export const catalog = {
   demo: {
     key: 'demo',
     title: '演示控制',
-    section: '### 5.9 DGL-010｜四端入口、角色框架与演示体验',
+    section: '5.9 DGL-010｜四端入口、角色框架与演示体验 / 公共入口与演示控制字段',
     fields: [
       {
         name: '演示模式标识',
@@ -2501,7 +2510,7 @@ export const catalog = {
   messages: {
     key: 'messages',
     title: '结果消息',
-    section: '### 5.9 DGL-010｜四端入口、角色框架与演示体验',
+    section: '5.9 DGL-010｜四端入口、角色框架与演示体验 / 阶段内结果消息字段',
     fields: [
       {
         name: '消息标题',
@@ -2574,7 +2583,7 @@ export const catalog = {
   history: {
     key: 'history',
     title: '操作记录',
-    section: '### 5.10 DGL-011｜跨模块公共约定',
+    section: '5.10 DGL-011｜跨模块公共约定 / 各菜单详情中的操作／变更记录字段',
     fields: [
       {
         name: '操作时间',
@@ -2660,5 +2669,70 @@ export const catalog = {
     ],
     form: [],
     filters: [],
+  },
+  parking: {
+    key: 'parking',
+    title: '车位资源',
+    section: '10.1 社区房屋档案与资源 / 车位基础档案字段（R1新增）',
+    fields: [
+      {
+        name: '车位编号',
+        type: '文本／单行输入',
+        meaning: '可核对的独立车位业务标识',
+        source: '当前维护人或已核验台账',
+        rule: '在同一直接归属空间内唯一，按字符串保留前导零；不另采重复名称；既有编号不通过普通编辑修改',
+        condition: '必填：是；可见：Web筛选、列表、表单和详情；编辑：新建可填，保存后只读',
+      },
+      {
+        name: '所属空间',
+        type: '关联对象／只读展示',
+        meaning: '车位直接归属的小区或楼栋',
+        source: '当前选中节点',
+        rule: '自动带出社区、小区及适用楼栋；仅小区、楼栋可新建，不归属单元或房间',
+        condition: '必填：自动带入；可见：Web表单上下文、列表和详情；编辑：只读，不提供迁移',
+      },
+      {
+        name: '车位类型',
+        type: '枚举／单选',
+        meaning: '基础用途分类',
+        source: '已有字典或明确演示候选',
+        rule: '普通、无障碍、其他仅为当前演示候选；不生成收费或通行资格',
+        condition: '必填：是；可见：Web筛选、列表、表单和详情；编辑：有权维护人编辑',
+      },
+      {
+        name: '档案状态',
+        type: '枚举／状态标签',
+        meaning: '档案是否继续启用',
+        source: '受控启停动作',
+        rule: '启用、停用；不表示空闲、可出租或已获得停车权益；不删除历史引用',
+        condition: '必填：自动生成；可见：Web筛选、列表和详情；编辑：受控状态操作',
+      },
+      {
+        name: '备注',
+        type: '多行文本／文本域',
+        meaning: '必要的档案补充',
+        source: '维护人',
+        rule: '选填，不采租赁人、租期、租金、月卡、实时占用或车场授权',
+        condition: '必填：否；可见：Web表单和详情；编辑：有权维护人编辑',
+      },
+      {
+        name: '维护人',
+        type: '文本／只读展示',
+        meaning: '最近一次维护人员',
+        source: '当前授权操作身份',
+        rule: '历史责任记录保留',
+        condition: '必填：自动生成；可见：Web详情及历史；编辑：只读',
+      },
+      {
+        name: '更新时间',
+        type: '日期时间／只读展示',
+        meaning: '最近一次维护时点',
+        source: '维护动作',
+        rule: '与业务历史分别保留',
+        condition: '必填：自动生成；可见：Web详情及历史；编辑：只读',
+      },
+    ],
+    form: ['车位编号', '车位类型', '备注'],
+    filters: ['车位编号', '车位类型', '档案状态'],
   },
 }

@@ -1,13 +1,12 @@
 <template>
-  <section>
-    <div class="page-heading">
+  <section :class="{ 'space-workspace': embedded }">
+    <div class="page-heading" v-if="!embedded && !detailOnly">
       <div>
         <h1>{{ isDashboard ? '基础工作台' : definition.title }}</h1>
         <p class="muted" data-field="demo:入口可用说明">
           {{ isDashboard ? '当前身份授权范围内的基础资料和审核结果' : description }}
         </p>
       </div>
-      <Tag color="orange">Stage00 · Mock</Tag>
     </div>
     <template v-if="isDashboard"
       ><div class="metric-grid">
@@ -27,7 +26,7 @@
       <div class="panel">
         <h3>开始处理</h3>
         <p class="instructions">
-          从左侧进入当前角色可用模块。先在住户端提交关系申请，再用“演示审核员”在Web处理，住户刷新查看结果，管理端按权限查询。
+          住户提交房屋绑定申请后，物业管理员可在授权范围内完成审核；各端查看同一业务结果。
         </p>
         <div class="module-links">
           <Button
@@ -35,7 +34,7 @@
             :key="t"
             data-field="demo:功能入口名称"
             @click="$router.push('/' + t)"
-            >{{ catalog[t].title }}</Button
+            >{{ t === 'spaces' ? '社区房屋档案' : catalog[t].title }}</Button
           >
         </div>
       </div>
@@ -46,14 +45,14 @@
         </p>
       </div></template
     >
-    <template v-else>
+    <template v-else-if="!detailOnly">
       <Alert v-if="error" type="error" show-icon
         >{{ error }}<Button size="small" @click="load">重试</Button></Alert
       >
       <div class="panel">
         <div class="filter-grid">
-          <label v-for="f in definition.filters" :key="f"
-            >{{ f
+          <label v-for="f in filterFields" :key="f"
+            >{{ filterLabel(f)
             }}<Select
               v-if="filterOptions[f] && filterOptions[f].length"
               v-model="filters[f]"
@@ -78,25 +77,44 @@
         <div class="toolbar">
           <Button type="primary" icon="ios-search" @click="load">查询</Button
           ><Button @click="clearFilters">重置筛选</Button
-          ><Button v-if="canWrite" icon="md-add" @click="edit()">新增{{ definition.title }}</Button
-          ><Button v-if="table === 'houses' && canWrite" @click="importOpen = true">房屋导入</Button
+          ><Button v-if="canCreate" icon="md-add" @click="edit()">{{
+            createLabel || '新增' + definition.title
+          }}</Button
           ><Button v-if="canExport" @click="exportRows">导出当前获准结果</Button>
         </div>
         <Spin v-if="loading" fix /><Table
           :columns="columns"
-          :data="rows"
+          :data="pagedRows"
           :loading="loading"
           border
           stripe
           :no-data-text="error ? '读取失败，请重试' : '当前筛选没有数据'"
           size="default"
           ><template slot="actions" slot-scope="{ row }"
-            ><div class="table-actions">
+            ><div class="table-actions" :data-row-id="row._id">
               <a @click="details(row)">详情</a><a v-if="canWrite" @click="edit(row)">编辑</a>
+              <a
+                v-if="canWrite && ['facilities', 'parking'].includes(table)"
+                @click="openRowAction(row, 'status')"
+                >{{ row['档案状态'] === '停用' ? '启用' : '停用' }}</a
+              >
+              <a v-if="embedded && table === 'houses'" @click="$emit('locate', row)">定位树节点</a>
+              <a
+                v-if="embedded && table === 'houses' && info.actor.permissions.includes('read:applications')"
+                @click="$router.push({ path: '/applications', query: { house: row._id } })"
+                >房屋绑定</a
+              >
             </div></template
           ></Table
         >
-        <p class="muted" style="margin-top: 16px">共 {{ rows.length }} 条 · 列表和详情读取同一模拟事实</p>
+        <Page
+          :total="rows.length"
+          :page-size="pageSize"
+          :current="page"
+          show-total
+          @on-change="page = $event"
+          class="list-pagination"
+        />
       </div>
     </template>
     <Modal
@@ -105,9 +123,34 @@
       width="900"
       :mask-closable="false"
       :footer-hide="true"
-      ><Alert v-if="formError" type="error">{{ formError }}</Alert
-      ><Form label-position="top"
-        ><FieldEditor :table="table" v-model="form" :errors="fieldErrors" :original="originalForm" /><FormItem
+      ><Alert v-if="formError" type="error">{{ formError }}</Alert>
+      <p v-if="formContext" class="form-context">所属位置：{{ formContext }}。普通编辑不迁移归属。</p>
+      <Form label-position="top"
+        ><FormItem
+          v-if="!editing && isResource && resourceChoices.length"
+          label="实际所属空间"
+          required
+          :error="fieldErrors.space"
+          ><Select
+            v-model="resourceKey"
+            filterable
+            placeholder="选择小区或楼栋"
+            @on-change="chooseResourceParent"
+            ><Option
+              v-for="item in resourceChoices"
+              :key="item.table + ':' + item.id"
+              :value="item.table + ':' + item.id"
+              >{{ item.label }}</Option
+            ></Select
+          ></FormItem
+        ><FieldEditor
+          v-if="editor"
+          :key="table + ':' + (editing || 'new')"
+          :table="table"
+          v-model="form"
+          :errors="fieldErrors"
+          :original="originalForm"
+          :locked="lockedContext" /><FormItem
           v-if="table === 'files' && editing"
           label="操作原因（组织、范围或访问权限变更时必填）"
           :required="fileAccessChanged"
@@ -116,8 +159,12 @@
           ><Input v-model="form['操作原因']" type="textarea" /></FormItem
       ></Form>
       <div class="toolbar">
-        <Button type="primary" :loading="saving" @click="save">保存模拟资料</Button
-        ><Button @click="editor = false">取消</Button><Checkbox v-model="failSave">本次模拟保存失败</Checkbox>
+        <Button type="primary" :loading="saving" @click="save">保存</Button
+        ><Button @click="editor = false">取消</Button>
+        <details class="demo-tools">
+          <summary>演示辅助</summary>
+          <Checkbox v-model="failSave">下一次保存失败</Checkbox>
+        </details>
       </div></Modal
     >
     <Modal
@@ -127,93 +174,108 @@
       :footer-hide="true"
       @on-visible-change="releasePreview"
     >
-      <template v-if="selected"
-        ><div class="toolbar">
-          <Tag color="orange">当前角色：{{ info.actor.role }}</Tag
-          ><Button v-if="canWrite" @click="edit(selected)">编辑资料</Button
-          ><Button v-if="canWrite && statusSupported" @click="openAction('status')">{{
-            table === 'personnel' ? '记录入岗／离岗' : table === 'files' ? '归档／恢复' : '启用／停用'
-          }}</Button
-          ><Button
-            v-if="table === 'applications' && canReview && selected['申请状态'] === '待审核'"
-            type="primary"
-            @click="openAction('review')"
-            >审核申请</Button
-          ><Button
-            v-if="table === 'vehicles' && canWrite && selected['核实状态'] === '待核实'"
-            @click="openAction('verifyVehicle')"
-            >核实车辆</Button
-          >
-        </div>
-        <dl class="detail-grid">
-          <div v-for="f in detailFields" :key="f.name" class="detail-row" :data-field="table + ':' + f.name">
-            <dt>{{ f.name }}</dt>
-            <dd>{{ selected._labels[f.name] || '未维护／不适用' }}</dd>
-          </div>
-        </dl>
-        <template v-if="table === 'communities'"
-          ><h3 style="margin-top: 24px">基础概况</h3>
-          <p class="instructions">
-            档案指标与来源人口／户数分开。来源记录未维护时为“待提供／未维护”，不以档案数替代。
-          </p>
-          <div class="metric-grid">
-            <div class="metric" v-for="(v, k) in communityCounts" :key="k">
-              {{ k }}<strong>{{ v }}</strong>
-            </div>
-          </div>
-          <p v-for="r in sourceStats" :key="r._id">
-            {{ r['指标名称'] }}：{{ r['指标数值'] }}{{ r['计量单位'] }} · {{ r['统计口径说明'] }} ·
-            {{ r['统计日期'] }} · {{ r['数据来源'] }}
-          </p>
-          <p v-if="!sourceStats.length" class="muted">社区提供的人口／户数：待提供／未维护</p></template
-        >
-        <template v-if="table === 'files'"
-          ><h3 style="margin-top: 24px">历史版本与受控附件</h3>
-          <div class="toolbar">
-            <span data-field="fileFeedback:目标版本">目标版本</span
-            ><Select v-model="targetVersion" style="width: 180px"
-              ><Option v-for="v in versions" :key="v['版本号']" :value="v['版本号']"
-                >{{ v['版本号'] }} · {{ v['附件文件名'] }}</Option
-              ></Select
-            ><Button @click="fileAccess('view')">预览目标版本</Button
-            ><Button @click="fileAccess('download')">下载目标版本</Button
-            ><Button v-if="canWrite" @click="openAction('fileVersion')">上传新版本</Button
-            ><Button v-if="canWrite" @click="remind">生成本地到期提醒</Button>
-          </div>
-          <Table :columns="versionColumns" :data="versions" size="small" />
-          <p v-if="previewError" class="error" data-field="fileFeedback:预览结果说明">{{ previewError }}</p>
-          <pre data-field="fileFeedback:预览内容" v-if="previewText" class="native-text">{{
-            previewText
-          }}</pre>
-          <img v-if="previewUrl && previewType === 'image'" :src="previewUrl" class="file-preview" /><iframe
-            v-if="previewUrl && previewType === 'pdf'"
-            :src="previewUrl"
-            class="file-preview"
-            title="本地样例文件预览"
-            width="100%"
-        /></template>
-        <template v-if="table === 'messages'"
+      <template v-if="selected && detailOpen">
+        <BindingDetail
+          v-if="table === 'applications'"
+          :record="selected"
+          :history="history"
+          :can-review="canReview"
+          :proof-error="proofError"
+          @review="openAction('review')"
+          @preview="proofPreview"
+          @application="details"
+          @close="detailOpen = false"
+        />
+        <template v-else
           ><div class="toolbar">
-            <Button @click="messageAction('messageRead')">标为已读</Button
-            ><Button @click="messageAction('messageSend')">模拟处理／重试</Button
-            ><Button @click="messageAction('messageSend', true)">模拟处理失败</Button
-            ><Button @click="followMessage">查看关联业务</Button>
-          </div></template
-        >
-        <template v-if="table === 'applications' && selected['证明附件'] && selected['证明附件'].length"
-          ><h3>受控证明附件</h3>
-          <Button v-for="(id, i) in selected['证明附件']" :key="id" @click="proofPreview(id)"
-            >预览证明附件 {{ i + 1 }}</Button
+            <Tag color="orange">{{ info.actor.roleName }}</Tag
+            ><Button v-if="canWrite && !spatialDetail" @click="edit(selected)">编辑资料</Button
+            ><Button v-if="canWrite && statusSupported && !spatialDetail" @click="openAction('status')">{{
+              table === 'personnel' ? '记录入岗／离岗' : table === 'files' ? '归档／恢复' : '启用／停用'
+            }}</Button
+            ><Button
+              v-if="table === 'vehicles' && canWrite && selected['核实状态'] === '待核实'"
+              @click="openAction('verifyVehicle')"
+              >核实车辆</Button
+            >
+          </div>
+          <dl class="detail-grid">
+            <div
+              v-for="f in detailFields"
+              :key="f.name"
+              class="detail-row"
+              :data-field="table + ':' + f.name"
+            >
+              <dt>{{ f.name }}</dt>
+              <dd>{{ selected._labels[f.name] || '未维护／不适用' }}</dd>
+            </div>
+          </dl>
+          <template v-if="table === 'communities'"
+            ><h3 style="margin-top: 24px">基础概况</h3>
+            <p class="instructions">
+              档案指标与来源人口／户数分开。来源记录未维护时为“待提供／未维护”，不以档案数替代。
+            </p>
+            <div class="metric-grid">
+              <div class="metric" v-for="(v, k) in communityCounts" :key="k">
+                {{ k }}<strong>{{ v }}</strong>
+              </div>
+            </div>
+            <p v-for="r in sourceStats" :key="r._id">
+              {{ r['指标名称'] }}：{{ r['指标数值'] }}{{ r['计量单位'] }} · {{ r['统计口径说明'] }} ·
+              {{ r['统计日期'] }} · {{ r['数据来源'] }}
+            </p>
+            <p v-if="!sourceStats.length" class="muted">社区提供的人口／户数：待提供／未维护</p></template
           >
-          <p v-if="proofError" class="error">{{ proofError }}</p></template
-        >
-        <h3 style="margin-top: 24px">操作与变更记录</h3>
-        <HistoryPanel :records="history" />
+          <template v-if="table === 'files'"
+            ><h3 style="margin-top: 24px">历史版本与受控附件</h3>
+            <div class="toolbar">
+              <span data-field="fileFeedback:目标版本">目标版本</span
+              ><Select v-model="targetVersion" style="width: 180px"
+                ><Option v-for="v in versions" :key="v['版本号']" :value="v['版本号']"
+                  >{{ v['版本号'] }} · {{ v['附件文件名'] }}</Option
+                ></Select
+              ><Button @click="fileAccess('view')">预览目标版本</Button
+              ><Button @click="fileAccess('download')">下载目标版本</Button
+              ><Button v-if="canWrite" @click="openAction('fileVersion')">上传新版本</Button
+              ><Button v-if="canWrite" @click="remind">生成本地到期提醒</Button>
+            </div>
+            <Table :columns="versionColumns" :data="versions" size="small" />
+            <p v-if="previewError" class="error" data-field="fileFeedback:预览结果说明">{{ previewError }}</p>
+            <pre data-field="fileFeedback:预览内容" v-if="previewText" class="native-text">{{
+              previewText
+            }}</pre>
+            <img v-if="previewUrl && previewType === 'image'" :src="previewUrl" class="file-preview" /><iframe
+              v-if="previewUrl && previewType === 'pdf'"
+              :src="previewUrl"
+              class="file-preview"
+              title="本地样例文件预览"
+              width="100%"
+          /></template>
+          <template v-if="table === 'messages'"
+            ><div class="toolbar">
+              <Button @click="messageAction('messageRead')">标为已读</Button
+              ><Button @click="messageAction('messageSend')">模拟处理／重试</Button
+              ><Button @click="messageAction('messageSend', true)">模拟处理失败</Button
+              ><Button @click="followMessage">查看关联业务</Button>
+            </div></template
+          >
+          <h3 style="margin-top: 24px">操作与变更记录</h3>
+          <HistoryPanel :records="history" />
+        </template>
       </template>
     </Modal>
     <Modal v-model="actionOpen" :title="actionTitle" :footer-hide="true" width="680" :mask-closable="false"
-      ><Alert v-if="actionError" type="error">{{ actionError }}</Alert
-      ><Form label-position="top"
+      ><Alert v-if="actionError" type="error">{{ actionError }}</Alert>
+      <p
+        v-if="action === 'status' && spatialDetail && selected"
+        class="form-context"
+        data-testid="space-status-target"
+      >
+        对象：{{ statusObject }}；本次将{{
+          selected['档案状态'] === '停用' ? '启用' : '停用'
+        }}，历史和关联记录保留。
+      </p>
+      <Form label-position="top"
         ><FormItem
           v-if="action === 'review' || action === 'verifyVehicle'"
           :label="action === 'review' ? '审核操作' : '核实操作'"
@@ -251,16 +313,17 @@
           <p v-if="versionUploadState.startsWith('失败')" data-field="fileFeedback:上传失败原因">
             上传失败原因：{{ versionUploadState }}
           </p></FormItem
-        ><Checkbox v-model="actionForm.fail">本次模拟失败</Checkbox></Form
+        >
+        <details class="demo-tools">
+          <summary>演示辅助</summary>
+          <Checkbox v-model="actionForm.fail">下一次操作失败</Checkbox>
+        </details></Form
       >
       <div class="toolbar">
-        <Button type="primary" :loading="saving" @click="submitAction">确认模拟操作</Button
+        <Button type="primary" :loading="saving" @click="submitAction">确认</Button
         ><Button @click="actionOpen = false">取消</Button>
       </div></Modal
     >
-    <Modal v-model="importOpen" title="房屋导入、预览与结果" width="1100" :footer-hide="true"
-      ><ImportPanel @refresh="load"
-    /></Modal>
   </section>
 </template>
 <script>
@@ -268,8 +331,8 @@ import { catalog } from '../../../../prototype-shared/catalog.js'
 import { service } from '../services/foundation'
 import { detailVisible } from '../../../../prototype-shared/core.js'
 import FieldEditor from '../components/FieldEditor.vue'
-import ImportPanel from '../components/ImportPanel.vue'
 import HistoryPanel from '../components/HistoryPanel.vue'
+import BindingDetail from '../components/BindingDetail.vue'
 const listFields = {
   orgs: ['组织名称', '组织类型', '上级组织', '工作联系人', '工作联系电话', '组织状态'],
   accounts: ['登录账号', '人员姓名', '所属组织', '岗位', '授权角色', '账号状态', '当前工作身份状态'],
@@ -280,7 +343,8 @@ const listFields = {
   units: ['单元编号', '单元名称／单元号', '所属社区', '所属小区', '所属楼栋', '档案状态'],
   houses: ['房屋编号', '所属小区', '所属楼栋', '房号', '完整房屋地址', '房屋用途', '档案状态'],
   residents: ['居民姓名', '联系电话', '账号关联情况', '关联房屋'],
-  applications: ['申请编号', '申请类型', '申请人姓名', '房屋地址', '申请关系类型', '申请状态', '提交时间'],
+  applications: ['申请人姓名', '房屋地址', '申请关系类型', '申请类型', '提交时间', '申请状态'],
+  parking: ['车位编号', '所属空间', '车位类型', '档案状态'],
   relations: ['居民姓名', '房屋地址', '关系类型', '关系状态', '有效起始日', '有效结束日'],
   missing: ['社区', '小区名称或地址', '具体房屋描述', '联系号码', '提交时间'],
   statistics: ['统计范围', '指标名称', '指标数值', '统计口径说明', '统计日期', '数据来源'],
@@ -311,8 +375,22 @@ const listFields = {
   messages: ['消息标题', '消息类型', '发生时间', '阅读状态', '模拟发送状态'],
 }
 export default {
-  components: { FieldEditor, ImportPanel, HistoryPanel },
-  props: ['info'],
+  components: { FieldEditor, HistoryPanel, BindingDetail },
+  props: {
+    info: Object,
+    module: String,
+    embedded: Boolean,
+    detailOnly: Boolean,
+    filterRow: Function,
+    parentContext: { type: Object, default: () => ({}) },
+    resourceParent: Object,
+    resourceChoices: { type: Array, default: () => [] },
+    createAllowed: { type: Boolean, default: true },
+    createLabel: String,
+    scopeNode: Object,
+    contextLabel: String,
+    pathFor: Function,
+  },
   data: () => ({
     catalog,
     rows: [],
@@ -336,7 +414,6 @@ export default {
     actionForm: {},
     actionError: '',
     actionErrors: {},
-    importOpen: false,
     versions: [],
     targetVersion: '',
     previewUrl: '',
@@ -347,6 +424,15 @@ export default {
     proofError: '',
     communityCounts: {},
     sourceStats: [],
+    page: 1,
+    pageSize: 10,
+    loadTicket: 0,
+    detailTicket: 0,
+    editingSpace: null,
+    resourceKey: '',
+    formParents: {},
+    formLocation: '',
+    actionFromRow: false,
   }),
   computed: {
     fileAccessChanged() {
@@ -358,7 +444,7 @@ export default {
       )
     },
     table() {
-      return this.$route.params.table || 'dashboard'
+      return this.module || this.$route.params.table || 'dashboard'
     },
     isDashboard() {
       return this.table === 'dashboard'
@@ -377,7 +463,57 @@ export default {
       )
     },
     allowedTables() {
-      return Object.keys(listFields).filter((t) => this.info.actor.permissions.includes('read:' + t))
+      const allowed = Object.keys(listFields).filter(
+        (t) =>
+          !['communities', 'estates', 'buildings', 'units', 'houses', 'parking'].includes(t) &&
+          this.info.actor.permissions.includes('read:' + t),
+      )
+      if (this.info.actor.permissions.includes('read:communities')) allowed.unshift('spaces')
+      return allowed
+    },
+    isResource() {
+      return ['facilities', 'parking'].includes(this.table)
+    },
+    spatialDetail() {
+      return ['communities', 'estates', 'buildings', 'units', 'houses', 'facilities', 'parking'].includes(
+        this.table,
+      )
+    },
+    canCreate() {
+      return (
+        this.canWrite &&
+        this.createAllowed &&
+        (!this.isResource || !!this.resourceParent || this.resourceChoices.length > 0)
+      )
+    },
+    filterFields() {
+      if (this.table === 'applications')
+        return ['申请人姓名', '所属社区', '所属小区', '房屋地址', '申请类型', '申请状态', '提交时间']
+      return this.definition.filters.filter((f) => !this.embedded || !(f in this.parentContext))
+    },
+    pagedRows() {
+      return this.rows.slice((this.page - 1) * this.pageSize, this.page * this.pageSize)
+    },
+    formContext() {
+      if (this.editing)
+        return ['所属社区', '所属小区', '所属楼栋', '所属单元', '关联楼栋']
+          .filter((f) => this.form[f])
+          .map((f) => this.form._labels?.[f] || this.form[f])
+          .join(' / ')
+      return this.formLocation || ''
+    },
+    lockedContext() {
+      const locked = { ...this.formParents }
+      if (this.isResource)
+        for (const f of ['所属社区', '所属小区', '关联楼栋']) locked[f] = this.form[f] || ''
+      if (
+        this.editing &&
+        ['estates', 'buildings', 'units', 'houses', 'facilities', 'parking'].includes(this.table)
+      )
+        for (const f of ['所属社区', '所属小区', '所属楼栋', '所属单元', '关联楼栋'])
+          if (f in this.form) locked[f] = this.form[f]
+      if (this.table === 'parking' && this.editing) locked['车位编号'] = this.form['车位编号']
+      return locked
     },
     canWrite() {
       return this.info.actor.permissions.includes('write:' + this.table)
@@ -402,14 +538,46 @@ export default {
         'units',
         'houses',
         'facilities',
+        'parking',
         'personnel',
         'files',
       ].includes(this.table)
     },
     columns() {
+      if (this.embedded && ['houses', 'facilities', 'parking'].includes(this.table)) {
+        const fields =
+          this.table === 'houses'
+            ? ['房号', '房屋编号', '所属位置', '房屋面积', '档案状态']
+            : this.table === 'facilities'
+              ? ['点位名称', '点位编号', '点位类别', '所属位置', '档案状态', '接入状态']
+              : ['车位编号', '车位类型', '所属位置', '档案状态']
+        return [
+          ...fields.map((f) => ({
+            title: f === '房号' ? '房间号' : f === '房屋面积' ? '建筑面积（㎡）' : f,
+            key: f,
+            minWidth: f === '所属位置' ? 290 : 120,
+            render: (h, p) =>
+              h(
+                'span',
+                f === '所属位置'
+                  ? (this.pathFor?.(p.row) || p.row._labels['所属空间'] || '未维护') +
+                      (p.row._spaceTable === 'communities' ? '（历史社区直属）' : '')
+                  : p.row._labels[f] || '未维护',
+              ),
+          })),
+          { title: '操作', slot: 'actions', width: this.table === 'houses' ? 230 : 160, fixed: 'right' },
+        ]
+      }
       return [
-        ...(listFields[this.table] || []).map((f) => ({
-          title: f,
+        ...(this.embedded && this.table === 'houses'
+          ? ['房号', '房屋用途', '房屋面积', '档案状态']
+          : this.embedded && this.table === 'units'
+            ? ['单元名称／单元号', '档案状态']
+            : this.embedded && this.table === 'buildings'
+              ? ['楼栋名称／楼栋号', '是否设单元', '档案状态']
+              : listFields[this.table] || []
+        ).map((f) => ({
+          title: f === '房号' ? '房间号' : f,
           key: f,
           minWidth: f.includes('地址') ? 220 : 140,
           render: (h, p) => h('span', p.row._labels[f] || '未维护'),
@@ -425,10 +593,18 @@ export default {
     actionTitle() {
       return {
         status: '受控状态变更',
-        review: '审核关系申请',
+        review: '审核房屋绑定',
         verifyVehicle: '核实车辆',
         fileVersion: '上传新版本',
       }[this.action]
+    },
+    statusObject() {
+      if (!this.selected) return ''
+      const name =
+        ['点位名称', '车位编号', '社区名称', '小区名称', '楼栋名称／楼栋号', '单元名称／单元号', '房号']
+          .map((f) => this.selected[f])
+          .find(Boolean) || ''
+      return [this.pathFor?.(this.selected), name].filter(Boolean).join(' / ')
     },
     versionColumns() {
       return [
@@ -444,8 +620,19 @@ export default {
     },
   },
   watch: {
+    '$route.query.house'() {
+      if (this.table === 'applications') {
+        this.detailOpen = false
+        this.page = 1
+        this.load()
+      }
+    },
+    '$route.query.id'() {
+      if (!this.embedded) this.load()
+    },
     table() {
       this.filters = {}
+      this.page = 1
       this.detailOpen = false
       this.editor = false
       this.load()
@@ -459,38 +646,73 @@ export default {
     })
   },
   beforeDestroy() {
+    this.loadTicket++
+    this.detailTicket++
     this.unsubscribe?.()
     this.releasePreview(false)
   },
   methods: {
+    filterLabel(f) {
+      return this.table === 'applications' && f === '申请人姓名'
+        ? '申请人或联系方式'
+        : f === '房屋地址'
+          ? '房屋位置'
+          : f === '房号'
+            ? '房间号'
+            : f
+    },
     showValue(v) {
       if (v === undefined) return '不适用'
       return Array.isArray(v) ? v.join('、') : String(v)
     },
     async load() {
-      if (this.isDashboard) return
+      if (this.isDashboard || this.detailOnly) return
+      const ticket = ++this.loadTicket,
+        table = this.table
       this.loading = true
       this.error = ''
+      this.rows = []
       try {
-        this.rows = await service.labels(this.table, await service.query(this.table, this.filters))
+        const filters = { ...this.filters }
+        if (this.embedded && this.scopeNode) filters._space = this.scopeNode
+        if (table === 'applications' && this.$route.query.house) filters._house = this.$route.query.house
+        let rows = await service.labels(table, await service.query(table, filters))
+        if (ticket !== this.loadTicket) return
+        if (this.filterRow) rows = rows.filter(this.filterRow)
+        this.rows = rows
+        this.page = Math.min(this.page, Math.max(1, Math.ceil(rows.length / this.pageSize)))
         const options = {}
         for (const f of this.definition.filters)
-          options[f] = await service.options(this.table, f, this.filters)
+          options[f] = await service.options(this.table, f, { ...this.parentContext, ...this.filters })
+        if (ticket !== this.loadTicket) return
         this.filterOptions = options
+        if (this.$route.query.id && !this.embedded) await this.details({ _id: this.$route.query.id })
       } catch (e) {
+        if (ticket !== this.loadTicket) return
         this.error = e.message
         this.rows = []
       } finally {
-        this.loading = false
+        if (ticket === this.loadTicket) this.loading = false
       }
     },
     clearFilters() {
       this.filters = {}
+      this.page = 1
       this.load()
     },
-    async edit(r) {
+    async edit(r, settings = {}) {
+      if (r && !r._labels) r = (await service.labels(this.table, [r]))[0]
+      this.formParents = { ...(settings.context || this.parentContext) }
+      this.formLocation = settings.label === undefined ? this.contextLabel || '' : settings.label
       this.editing = r?._id || null
       this.form = r ? { ...r } : Object.fromEntries(this.definition.form.map((f) => [f, '']))
+      if (!r) Object.assign(this.form, this.formParents)
+      this.editingSpace = r
+        ? ['estates', 'buildings'].includes(r._spaceTable)
+          ? { table: r._spaceTable, id: r._spaceId }
+          : null
+        : this.resourceParent
+      this.resourceKey = this.editingSpace ? this.editingSpace.table + ':' + this.editingSpace.id : ''
       this.originalForm = r ? JSON.parse(JSON.stringify(r)) : null
       if (this.table === 'personnel') this.form['变更说明'] = ''
       for (const f of [
@@ -518,11 +740,17 @@ export default {
       this.formError = ''
       this.fieldErrors = {}
       try {
+        if (!this.editing && this.isResource && !this.editingSpace) {
+          this.fieldErrors = { space: '请选择实际归属的小区或楼栋' }
+          this.formError = '请选择实际所属空间'
+          return
+        }
         const result = await service.command('save', {
           table: this.table,
           id: this.editing,
           data: this.form,
           reason: this.form['操作原因'] || this.form['变更说明'],
+          space: this.editingSpace,
           fail: this.failSave,
           operation: 'save-' + Date.now(),
         })
@@ -532,7 +760,7 @@ export default {
           this.$Modal.info({
             title: '新档案与访问清单',
             content:
-              '新档案已保存。演示配置管理员需在账号授权中明确勾选新社区和小区后，业务身份才能查询或维护下级档案；选择社区不自动授予全部小区。Q03正式授权规则待确认。',
+              '新档案已保存。请由平台管理员在账号授权中明确勾选新社区和小区后继续维护下级档案；选择社区不会自动授予全部小区。',
           })
         await this.load()
         this.$emit('refresh')
@@ -544,10 +772,15 @@ export default {
       }
     },
     async details(r) {
+      const ticket = ++this.detailTicket
+      this.proofError = ''
       this.releasePreview(false)
       try {
-        this.selected = (await service.labels(this.table, [await service.record(this.table, r._id)]))[0]
-        this.history = await service.history(this.table, r._id)
+        const selected = (await service.labels(this.table, [await service.record(this.table, r._id)]))[0]
+        const history = await service.history(this.table, r._id)
+        if (ticket !== this.detailTicket) return
+        this.selected = selected
+        this.history = history
         this.detailOpen = true
         if (this.table === 'files') {
           this.versions = await service.versions(r._id)
@@ -565,7 +798,32 @@ export default {
         this.$Message.error(e.message)
       }
     },
-    openAction(action) {
+    chooseResourceParent(key) {
+      const parent = this.resourceChoices.find((item) => item.table + ':' + item.id === key)
+      this.editingSpace = parent ? { table: parent.table, id: parent.id } : null
+      if (parent) {
+        Object.assign(this.form, parent.context)
+        this.formLocation = parent.label
+      }
+      this.fieldErrors = {}
+    },
+    async openRowAction(row, action) {
+      const ticket = ++this.detailTicket
+      this.actionOpen = false
+      try {
+        const current = await service.record(this.table, row._id)
+        const selected = (await service.labels(this.table, [current]))[0]
+        if (ticket !== this.detailTicket) return
+        this.selected = selected
+        this.openAction(action, true)
+      } catch (e) {
+        if (ticket !== this.detailTicket) return
+        this.actionOpen = false
+        this.$Message.error(e.message)
+      }
+    },
+    openAction(action, fromRow = false) {
+      this.actionFromRow = fromRow
       this.action = action
       this.actionForm = {
         decision: action === 'review' ? '通过' : '确认',
@@ -598,7 +856,7 @@ export default {
         }
         await service.command(this.action, p)
         this.actionOpen = false
-        await this.details(this.selected)
+        if (!this.actionFromRow) await this.details(this.selected)
         await this.load()
         this.$emit('refresh')
       } catch (e) {
@@ -695,14 +953,21 @@ export default {
       try {
         await service.record(m._table, m._object)
         this.detailOpen = false
-        await this.$router.push('/' + m._table)
-        this.$nextTick(() => this.details({ _id: m._object }))
+        const spatial = ['communities', 'estates', 'buildings', 'units', 'houses'].includes(m._table)
+        await this.$router.push(
+          spatial
+            ? { path: '/spaces', query: { node: m._table + ':' + m._object } }
+            : { path: '/' + m._table, query: { id: m._object } },
+        )
       } catch (e) {
         this.$Message.error(e.message)
       }
     },
     async exportRows() {
-      this.rows = await service.labels(this.table, await service.exportRows(this.table, this.filters))
+      const filters = { ...this.filters }
+      if (this.embedded && this.scopeNode) filters._space = this.scopeNode
+      this.rows = await service.labels(this.table, await service.exportRows(this.table, filters))
+      if (this.filterRow) this.rows = this.rows.filter(this.filterRow)
       const fields = this.definition.fields.map((f) => f.name),
         csv =
           '\uFEFF' +

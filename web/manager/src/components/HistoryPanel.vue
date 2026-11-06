@@ -12,7 +12,7 @@
           <dt>{{ field }}</dt>
           <dd>
             <template v-if="['变更前值', '变更后值'].includes(field)"
-              ><div v-for="(value, key) in h[field]" :key="key">{{ key }}：{{ show(value) }}</div></template
+              ><div v-for="(value, key) in publicValues(h[field])" :key="key">{{ key }}：{{ show(value) }}</div></template
             ><template v-else>{{ show(h[field]) }}</template>
           </dd>
         </div>
@@ -38,6 +38,7 @@ export default {
     ],
   }),
   methods: {
+    publicValues(v) { return Object.fromEntries(Object.entries(v || {}).filter(([key]) => !key.startsWith('_'))) },
     show(v) {
       if (v === undefined || v === null || v === '') return '不适用'
       if (Array.isArray(v)) return v.join('、')

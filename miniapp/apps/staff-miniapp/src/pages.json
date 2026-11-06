@@ -132,6 +132,55 @@
         "navigationStyle": "custom",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/stage01/charges/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/stage01/charges/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/stage01/reports/create",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/stage01/reports/supplement",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/stage01/tasks/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/stage01/tasks/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/stage01/tasks/action",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
     }
   ],
   "globalStyle": {

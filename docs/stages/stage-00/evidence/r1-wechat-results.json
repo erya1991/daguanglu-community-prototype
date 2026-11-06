@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2026-11-05T08:40:28.554Z",
+  "tool": "WeChat DevTools Stable 2.01.2510290",
+  "library": "3.17.6",
+  "resident": {
+    "project": "miniapp/apps/resident-miniapp/dist/build/mp-weixin",
+    "userConfirmedWindow": "mp-weixin",
+    "observed": [
+      {
+        "status": "PASS",
+        "step": "Home rendered with four original tabs and fictional resident"
+      },
+      {
+        "status": "PASS",
+        "step": "My page opened; ordinary resident and collapsed demo tools displayed"
+      },
+      {
+        "status": "PASS",
+        "step": "Demo tools expanded; resident identity, local sample notice and reset shown"
+      },
+      {
+        "status": "PASS",
+        "step": "My houses opened empty relationship list with add-house entry"
+      },
+      {
+        "status": "PASS",
+        "step": "Binding form opened; labels, required markers, sparse helper and validity controls present"
+      }
+    ],
+    "submission": {
+      "status": "BLOCKED",
+      "reason": "Native submit element has no cached bounds; screenshot stream did not match selected window, so coordinate input was not used."
+    },
+    "visual": {
+      "status": "BLOCKED",
+      "reason": "AX observations establish text/navigation only; target screenshots unavailable."
+    }
+  },
+  "merchant": {
+    "status": "NOT_RUN",
+    "reason": "No separately confirmed prototype window available this round"
+  },
+  "staff": {
+    "status": "NOT_RUN",
+    "reason": "No separately confirmed prototype window available this round"
+  },
+  "warnings": [
+    "Inherited FormField, AppNavbar, AppButton component WXSS selector warnings observed; no tool runtime errors shown in observed state."
+  ],
+  "cli": {
+    "status": "BLOCKED",
+    "reason": "Service port disabled; no security setting changed"
+  },
+  "device": "NOT_RUN",
+  "overall": "BLOCKED",
+  "boundary": "Local mock only; no preview upload, release, login, payment or production request performed; tool URLs and identifiers intentionally excluded."
+}

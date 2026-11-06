@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-06T02:06:52.097Z",
+  "base": "http://127.0.0.1:19202",
+  "session": "stage01-FLOW-2026-11-06T01-27-26-224Z",
+  "results": [
+    {
+      "view": "P-A03-filter",
+      "status": "PASS",
+      "url": "http://127.0.0.1:19202/web/?session=stage01-FLOW-2026-11-06T01-27-26-224Z#/property/payments",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "overflow": false,
+      "screenshot": ".runtime/stage01/VIEWS-1793930807065/P-A03-filter.png"
+    }
+  ],
+  "errors": [],
+  "boundary": "Actual local Web: switching to unpaid bills clears the now-hidden business-type filter."
+}

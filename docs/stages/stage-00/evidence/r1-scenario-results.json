@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-05T08:40:28.552Z",
+  "baseline": "234bf251f429e77e0996ce2854a237021c1914f4",
+  "results": [
+    {
+      "id": "R1-01",
+      "name": "单一菜单、树选中与直属层级、搜索及空态",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-00-03-790Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-02",
+      "name": "无单元房间新增编辑、上级锁定、同步与分页",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-32-38-083Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-03",
+      "name": "独立设施与车位在小区楼栋创建、社区只汇总",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-00-03-790Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-04",
+      "name": "实际CSV选取、错误范围不写入、修正重试与选择器更新",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-38-37-496Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-05",
+      "name": "旧会话持久化升级不清档案、申请、附件与历史",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-00-03-790Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-06",
+      "name": "房屋绑定旧详情链接、四页签与固定主操作",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-29-20-379Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-07",
+      "name": "住户实际提交、物业审核、驳回重提变更解除与跨端结果",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-29-34-813Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-08",
+      "name": "分端身份、无权空间与材料消息拒绝、文件可查不可下载",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-32-41-033Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-09",
+      "name": "普通字段不渲染规则、特殊帮助、必填错误和保存重试",
+      "status": "PASS",
+      "run": "R1_2026-11-05T08-00-03-790Z",
+      "browserStatus": "PASS"
+    },
+    {
+      "id": "R1-10",
+      "name": "四端导航及390/414/1920视口、实际网络隔离",
+      "status": "BLOCKED",
+      "run": "R1_2026-11-05T08-34-40-039Z",
+      "browserStatus": "PASS",
+      "limitation": "Resident DevTools navigation and form appearance observed; full native submission, merchant/staff tool interaction and device/visual checks not complete."
+    }
+  ],
+  "browserRuns": [
+    {
+      "run": "R1_2026-11-05T08-00-03-790Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-00-03-790Z",
+      "base": "http://127.0.0.1:19200",
+      "errors": [],
+      "external": []
+    },
+    {
+      "run": "R1_2026-11-05T08-32-38-083Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-32-38-083Z",
+      "base": "http://127.0.0.1:19200",
+      "errors": [],
+      "external": []
+    },
+    {
+      "run": "R1_2026-11-05T08-38-37-496Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-38-37-496Z",
+      "base": "http://127.0.0.1:19201",
+      "errors": [],
+      "external": []
+    },
+    {
+      "run": "R1_2026-11-05T08-29-20-379Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-29-20-379Z",
+      "base": "http://127.0.0.1:19200",
+      "errors": [],
+      "external": []
+    },
+    {
+      "run": "R1_2026-11-05T08-29-34-813Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-29-34-813Z",
+      "base": "http://127.0.0.1:19200",
+      "errors": [],
+      "external": []
+    },
+    {
+      "run": "R1_2026-11-05T08-32-41-033Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-32-41-033Z",
+      "base": "http://127.0.0.1:19200",
+      "errors": [],
+      "external": []
+    },
+    {
+      "run": "R1_2026-11-05T08-34-40-039Z",
+      "path": ".runtime/stage00-r1/R1_2026-11-05T08-34-40-039Z",
+      "base": "http://127.0.0.1:19201",
+      "errors": [],
+      "external": []
+    }
+  ],
+  "rules": {
+    "command": "node --test tests/*.test.mjs",
+    "pass": 41,
+    "fail": 0,
+    "log": ".runtime/stage00-r1/rules-second.log"
+  },
+  "fields": {
+    "path": "r1-field-mapping.json",
+    "rendered": 295,
+    "total": 295
+  },
+  "priorImportScreenshotFailure": {
+    "id": "R1-04",
+    "name": "实际CSV选取、错误范围不写入、修正重试与选择器更新",
+    "status": "FAIL",
+    "error": "page.screenshot: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\n    at screenshot (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r1.mjs:43:46)\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r1.mjs:119:9\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r1.mjs:45:9)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r1.mjs:104:1"
+  },
+  "manual": "OWNER_RETEST_PENDING",
+  "stage": "NOT_STAGE_PASS"
+}

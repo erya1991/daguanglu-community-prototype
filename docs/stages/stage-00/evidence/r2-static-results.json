@@ -1,0 +1,172 @@
+{
+  "recordedAt": "2026-11-06T06:19:33.564Z",
+  "baseline": {
+    "date": "2026-11-06T06:08:34.214Z",
+    "branch": "stage/01-property-parking-workorder",
+    "head": "234bf251f429e77e0996ce2854a237021c1914f4",
+    "files": 365
+  },
+  "checks": [
+    {
+      "name": "Git分支、HEAD及暂存区保护",
+      "status": "PASS",
+      "evidence": {
+        "branch": "stage/01-property-parking-workorder",
+        "head": "234bf251f429e77e0996ce2854a237021c1914f4",
+        "indexEmpty": true
+      }
+    },
+    {
+      "name": "开工365文件中全部R2范围外文件保持",
+      "status": "FAIL",
+      "error": "范围外基线文件发生变化，未尝试撤销",
+      "evidence": {
+        "compared": 354,
+        "diff": [
+          "AGENTS.md",
+          "docs/OPEN_QUESTIONS.md",
+          "docs/OVERALL_REQUIREMENTS.md",
+          "docs/SCOPE_REGISTER.md",
+          "docs/STAGES.md",
+          "docs/WORKFLOW.md",
+          "docs/stages/README.md",
+          "docs/stages/stage-01/ACCEPTANCE.md",
+          "docs/stages/stage-01/PLAN.md",
+          "docs/stages/stage-01/REQUIREMENTS.md",
+          "docs/stages/stage-01/RESULT.md"
+        ]
+      }
+    },
+    {
+      "name": "Stage01专属代码、四文档、测试、脚本及证据保持",
+      "status": "FAIL",
+      "error": "Stage01专属内容与R2开工不同",
+      "evidence": {
+        "compared": 89,
+        "diff": [
+          "docs/stages/stage-01/ACCEPTANCE.md",
+          "docs/stages/stage-01/PLAN.md",
+          "docs/stages/stage-01/REQUIREMENTS.md",
+          "docs/stages/stage-01/RESULT.md"
+        ]
+      }
+    },
+    {
+      "name": "新增可见文件均为本轮R2测试或证据",
+      "status": "PASS",
+      "evidence": {
+        "added": [
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-01.json",
+          "docs/stages/stage-00/evidence/r2-build-results.json",
+          "scripts/browser-r2.mjs",
+          "tests/r2.test.mjs"
+        ],
+        "outside": []
+      }
+    },
+    {
+      "name": "所有已有锁文件及依赖声明保持",
+      "status": "PASS",
+      "evidence": {
+        "compared": 9,
+        "diff": []
+      }
+    },
+    {
+      "name": "Stage00字段24表295行六列逐项一致，保留287行历史",
+      "status": "PASS",
+      "evidence": {
+        "tables": 24,
+        "fields": 295,
+        "columns": 6,
+        "historicTables": 23,
+        "historicFields": 287,
+        "diff": []
+      }
+    },
+    {
+      "name": "三个微信产物usingComponents闭合且无H5存储链",
+      "status": "PASS",
+      "evidence": [
+        {
+          "app": "resident",
+          "componentReferences": 68,
+          "storageChainFiles": 14,
+          "h5Storage": false
+        },
+        {
+          "app": "merchant",
+          "componentReferences": 18,
+          "storageChainFiles": 14,
+          "h5Storage": false
+        },
+        {
+          "app": "staff",
+          "componentReferences": 51,
+          "storageChainFiles": 14,
+          "h5Storage": false
+        }
+      ]
+    },
+    {
+      "name": "源码请求、绝对跨仓依赖及链接隔离",
+      "status": "PASS",
+      "evidence": {
+        "files": 222,
+        "violations": [],
+        "note": "Static patterns only; actual browser network observations are recorded separately."
+      }
+    },
+    {
+      "name": "商城源仓与已有保护快照对照",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "D:/git/daguanglu-p0/smart-community-miniapp",
+          "head": "8f15eed1255222ff9178b529d7a3039bfd67fab6",
+          "headUnchanged": true,
+          "statusUnchanged": true,
+          "indexUnchanged": true,
+          "trackedFiles": 452,
+          "hashMismatches": []
+        },
+        {
+          "path": "D:/git/daguanglu-p0/lilishop-ui",
+          "head": "23dfcffd4205fb893d70dcc3fa7b79843616f16b",
+          "headUnchanged": true,
+          "statusUnchanged": true,
+          "indexUnchanged": true,
+          "trackedFiles": 1456,
+          "hashMismatches": []
+        },
+        {
+          "path": "D:/git/daguanglu-p0/project-ops",
+          "head": "156f35bfcc5644f0aa11b3d61555942c6a2497f9",
+          "headUnchanged": true,
+          "statusUnchanged": true,
+          "indexUnchanged": true,
+          "trackedFiles": 208,
+          "hashMismatches": []
+        }
+      ]
+    },
+    {
+      "name": "全docs Markdown表列数与本地引用只读检查",
+      "status": "PASS",
+      "evidence": {
+        "files": 30,
+        "tables": 735,
+        "localLinks": 1699,
+        "errors": [],
+        "note": "No document or existing evidence files were changed by this check."
+      }
+    }
+  ],
+  "summary": {
+    "pass": 8,
+    "fail": 2,
+    "blocked": 0
+  },
+  "ownerAcceptance": "OWNER_RETEST_PENDING",
+  "stage": "NOT_STAGE_PASS"
+}

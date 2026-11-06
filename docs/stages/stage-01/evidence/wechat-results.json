@@ -1,0 +1,28 @@
+{
+  "recordedAt": "2026-11-06T01:03:29.670Z",
+  "scope": "Stage01 current implementation",
+  "buildEvidence": "build-results.json",
+  "developerTools": {
+    "status": "BLOCKED",
+    "observed": "Window inventory showed miniapp - 微信开发者工具 Stable v2.01.2510290",
+    "attempt": "Read-only get_window / get_window_state before any application input",
+    "reason": "Computer Use app approval timed out",
+    "projectVerified": false,
+    "stage01Loaded": false,
+    "appInputPerformed": false,
+    "conclusion": "No current Stage01 developer-tools navigation, capsule, image, keyboard or submission evidence. Historical Stage00 observations not reused."
+  },
+  "device": {
+    "status": "NOT_RUN",
+    "reason": "No current tool project or true-device run verified"
+  },
+  "owner": {
+    "name": "lee",
+    "status": "NOT_RUN"
+  },
+  "integration": {
+    "status": "NOT_RUN",
+    "scope": "No real payment, vendor, gate, message, production authentication or deployment"
+  },
+  "h5Boundary": "Browser viewport simulation is separate from developer tools and a real device."
+}

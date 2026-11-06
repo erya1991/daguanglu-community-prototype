@@ -101,7 +101,7 @@
 | 实际结论 | 三角色演示由系统管理员、物业管理员、住户承担；物业侧动作独立留痕，不为细岗新增演示角色。2026-11-04基础网格与责任区域本次不执行、不前置的决定保留。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 2026-11-04网格范围决定保留；其余原答复日期未提供，2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage00需求边界](stages/stage-00/REQUIREMENTS.md#23-明确排除)；[Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage00需求边界](stages/stage-00/REQUIREMENTS.md#23-明确排除)；[Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | 当前社区／物业原型及Stage01 V0.3；生产岗位授权、敏感权限、复核回避及网格正式业务方案仍待确认。 |
 
 
@@ -143,7 +143,7 @@
 | 实际结论 | 住户可查询本人有效绑定房屋的费用；不据此扩大为特殊代办或查看他人完整付款资料。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | Stage01 V0.3；绑定审核、解绑后历史、家庭代办及特殊授权的未答子项保留。 |
 
 
@@ -185,7 +185,7 @@
 | 实际结论 | 仅物业费、停车费；物业费账单、月租预缴订单、临停账单独立；不合缴、不开发票，普通缴费记录／凭证保留。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | Stage01 V0.3；Q07.a1样表来源、期间截止和历史结清，Q07.b1任意部分支付／线下款，Q07.c1更正减免退费仍未答；导入仅为候选方案。 |
 
 
@@ -206,7 +206,7 @@
 | 实际结论 | Stage01物业费与停车费均由物业公司后续创建的微信支付企业账号收款，不走商城佣金分账。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | 仅Stage01收款主体已确定；企业商户号、产品、AppID关系、支付退款权限及正式验证仍待Q08.1，其他业务主体问题未关闭。 |
 
 
@@ -227,7 +227,7 @@
 | 实际结论 | 当前无停车厂商接口，先做通用月租预缴、临停账单、缴费及记录，厂商闸机对接后置。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | Stage01 V0.3；Q09.a1月租价格期间及实际履约，Q09.b1无接口期临停来源仍待确认；人工登记／导入是建议，真实接口另验。 |
 
 
@@ -248,7 +248,7 @@
 | 实际结论 | 无感支付需求保留，待停车厂商对接后确定；当前仅未接入说明，不启用授权或自动扣款。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | Stage01 V0.3；授权撤销、扣款触发、失败和争议规则留厂商专项，不作为当前通用功能退出门槛。 |
 
 
@@ -269,7 +269,7 @@
 | 实际结论 | 仅本物业内部人工派单，不跨单位；物业侧由PA逐步演示派单、接单、处理、复核并分别留痕；居民确认并评价；本轮只记时间，响应考核后移。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | Stage01 V0.3；主工单数量、节点顺序、转派交接、生产回避、隐患证据风险字典、评价尺度及例外仍待Q11.a1／b1～b3／c2～c3／d2评审；候选方案未冻结。 |
 
 
@@ -353,7 +353,7 @@
 | 实际结论 | 获取／使用渠道指业务场景，由Stage03统一配置获取、使用及抵扣规则，Stage01读取启用规则与折算结果，不另建配置器。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | Stage01／Stage03；场景实际启用、比例上限、全额抵扣、获取基数、退款扣回、有效期及成本承担仍待确认，不设默认值。 |
 
 
@@ -521,7 +521,7 @@
 | 实际结论 | 消息后续统一做；Stage01不实施发送、订阅通知、催缴、模板或发送记录，业务页面结果、本人记录和待办保留。 |
 | 确认人 | 用户（据输入包已确认子项记录）；其余业务及生产责任方仍待确认 |
 | 确认日期 | 原业务答复日期未提供；2026-11-05本地导入记录 |
-| 确认依据／材料路径 | [Stage01 REQUIREMENTS第1.1节](stages/stage-01/REQUIREMENTS.md#11-本轮确认结果沿用项目q编号)及第10节；来源为本次完整V0.3输入包，非本地重新业务确认 |
+| 确认依据／材料路径 | [Stage01 REQUIREMENTS已确认决定](stages/stage-01/REQUIREMENTS.md#stage01-decisions)及[未决问题](stages/stage-01/REQUIREMENTS.md#stage01-open-questions)；来源为本次完整V0.3输入包，非本地重新业务确认 |
 | 适用范围／生效版本／仍未答事项 | 仅Stage01后移决定生效；消息具体渠道、接收人及失败规则后续确认；Stage00既有实现及证据保留，不作本轮返工授权。 |
 
 

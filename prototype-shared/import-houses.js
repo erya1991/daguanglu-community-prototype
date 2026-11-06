@@ -1,4 +1,5 @@
-import { query, execute, clone, DomainError } from './core.js'
+import { query, execute, clone, DomainError, record, actorFor, permitted } from './core.js'
+import { houseInSpace, spaceTables } from './spaces.js'
 export const importColumns = [
   '房屋编号',
   '所属社区',
@@ -59,7 +60,12 @@ export function parseCSV(text) {
       return normalized
     })
 }
-export function previewImport(state, ctx, text, source) {
+export function previewImport(state, ctx, text, source, scope) {
+  if (!permitted(actorFor(state, ctx), 'write', 'houses')) throw new DomainError('当前身份无房屋导入权限')
+  if (scope && scope.table !== 'root') {
+    if (!spaceTables.includes(scope.table) || scope.table === 'houses') throw new DomainError('当前节点不支持导入下级房间')
+    record(state, ctx, scope.table, scope.id)
+  }
   const parsed = parseCSV(text),
     headers = parsed.shift() || []
   if (!source) throw new DomainError('请填写台账来源说明')
@@ -96,6 +102,7 @@ export function previewImport(state, ctx, text, source) {
     }
     if (raw['房屋编号'] && draft.houses.some((h) => h['房屋编号'] === raw['房屋编号']))
       errors.push('房屋编号重复')
+    if (!errors.length && !houseInSpace(data, scope)) errors.push('文件房屋归属与当前导入范围不一致')
     if (!errors.length)
       try {
         const r = execute(draft, ctx, 'save', { table: 'houses', data })
@@ -121,16 +128,19 @@ export function previewImport(state, ctx, text, source) {
     不通过行数: rows.filter((r) => r['校验结果'] !== '通过').length,
     导入处理状态: rows.length && !rows.some((r) => r['错误原因'].length) ? '待确认导入' : '校验未通过',
     revision: state.revision,
+    scope: scope || { table: 'root' },
   }
 }
-export function commitImport(state, ctx, text, source, revision) {
+export function commitImport(state, ctx, text, source, revision, scope) {
   if (state.revision !== revision) throw new DomainError('预览后数据已变化，请重新校验')
-  const preview = previewImport(state, ctx, text, source)
+  const preview = previewImport(state, ctx, text, source, scope)
   if (preview['导入处理状态'] !== '待确认导入') throw new DomainError('存在错误，整批未写入')
+  const draft = clone(state)
   for (const r of preview.rows) {
-    const x = execute(state, ctx, 'save', { table: 'houses', data: r._data })
+    const x = execute(draft, ctx, 'save', { table: 'houses', data: r._data })
     if (r['待导入房屋资料']['房屋编号'])
-      state.houses.find((h) => h._id === x.id)['房屋编号'] = r['待导入房屋资料']['房屋编号']
+      draft.houses.find((h) => h._id === x.id)['房屋编号'] = r['待导入房屋资料']['房屋编号']
   }
+  Object.assign(state, draft)
   return { ...preview, 导入处理状态: '成功', 提交时间: new Date().toISOString(), 提交人: ctx.account }
 }

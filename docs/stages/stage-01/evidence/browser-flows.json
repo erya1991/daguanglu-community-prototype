@@ -1,0 +1,67 @@
+{
+  "run": "FLOW-2026-11-06T01-27-26-224Z",
+  "session": "stage01-FLOW-2026-11-06T01-27-26-224Z",
+  "base": "http://127.0.0.1:19202",
+  "results": [
+    {
+      "id": "property-pay",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/property-paid.png",
+        "url": "http://127.0.0.1:19202/resident/?session=stage01-FLOW-2026-11-06T01-27-26-224Z#/pages/stage01/payments/detail?id=S1-PY-000014"
+      },
+      "at": "2026-11-06T01:27:37.369Z"
+    },
+    {
+      "id": "repair-submit",
+      "status": "PASS",
+      "detail": {
+        "url": "http://127.0.0.1:19202/resident/?session=stage01-FLOW-2026-11-06T01-27-26-224Z#/pages/stage01/repairs/detail?id=S1-RP-000020&table=reports",
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/repair-submitted.png"
+      },
+      "at": "2026-11-06T01:27:41.514Z"
+    },
+    {
+      "id": "repair-property-work",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/repair-review.png"
+      },
+      "at": "2026-11-06T01:28:17.162Z"
+    },
+    {
+      "id": "repair-resident-confirm-evaluate",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/repair-evaluated.png"
+      },
+      "at": "2026-11-06T01:28:33.648Z"
+    },
+    {
+      "id": "monthly-new-and-renewal",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/monthly-renewed.png"
+      },
+      "at": "2026-11-06T01:28:50.156Z"
+    },
+    {
+      "id": "temporary-payment",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/temporary-paid.png"
+      },
+      "at": "2026-11-06T01:29:00.378Z"
+    },
+    {
+      "id": "hazard-resident-to-staff-close",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/hazard-public-result.png",
+        "staff": ".runtime/stage01/FLOW-2026-11-06T01-27-26-224Z/hazard-closed.png"
+      },
+      "at": "2026-11-06T01:29:09.436Z"
+    }
+  ],
+  "errors": []
+}

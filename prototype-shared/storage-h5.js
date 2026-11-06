@@ -1,4 +1,7 @@
+import * as stage01 from './stage01/index.js'
+import { seed as seedStage01 } from './stage01/seed.js'
 import { roleInApp } from './core.js'
+import { upgradeState, upgradeIdentity, defaultIdentity, ordinaryAccounts, R1_SCHEMA } from './r1-migration.js'
 // Browser-only adapter. MP builds select storage-uni.js and never import this file.
 import {
   createSeed,
@@ -44,12 +47,13 @@ export function createBrowserAdapter(app) {
       (url.searchParams.get('session') || 'demo').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 48) || 'demo'
   const identityKey = NAMESPACE + ':' + session + ':' + app + ':identity',
     signalKey = NAMESPACE + ':' + session + ':changed'
-  const defaultAccount = { web: 'archive', resident: 'resident-a', merchant: 'merchant', staff: 'staff' }[app]
+  const defaultAccount = session.startsWith('stage01-') ? ({web:'property-admin',resident:'resident-b',staff:'property-admin',merchant:'merchant'})[app] : defaultIdentity[app]
   let context = { app, account: defaultAccount, role: '' },
     listeners = []
   try {
     context = { ...context, ...JSON.parse(localStorage.getItem(identityKey) || '{}'), app }
   } catch {}
+  context = upgradeIdentity(context, app)
   const notify = () => {
     localStorage.setItem(signalKey, Date.now() + ':' + Math.random())
     listeners.forEach((f) => f())
@@ -57,7 +61,7 @@ export function createBrowserAdapter(app) {
   window.addEventListener('storage', (e) => {
     if (e.key === identityKey) {
       try {
-        context = { ...JSON.parse(e.newValue), app }
+        context = upgradeIdentity({ ...JSON.parse(e.newValue), app }, app)
       } catch {
         context = { app, account: defaultAccount, role: '' }
       }
@@ -78,6 +82,9 @@ export function createBrowserAdapter(app) {
       q.onsuccess = () => {
         try {
           const state = q.result || createSeed()
+          upgradeState(state)
+          stage01.prepare(state, session)
+          seedStage01(state)
           value = fn(state, tx.objectStore('blobs'))
           store.put(state, session)
         } catch (e) {
@@ -93,7 +100,11 @@ export function createBrowserAdapter(app) {
   async function read(fn) {
     const database = await db(),
       s = await req(database.transaction('sessions').objectStore('sessions').get(session))
-    return fn(s || createSeed())
+    const state = s || createSeed()
+    upgradeState(state)
+          stage01.prepare(state, session)
+          seedStage01(state)
+    return fn(state)
   }
   const api = {
     app,
@@ -107,6 +118,7 @@ export function createBrowserAdapter(app) {
     },
     async start() {
       await transact(() => true)
+      localStorage.setItem(identityKey, JSON.stringify(context))
       return api.info()
     },
     async info() {
@@ -115,8 +127,7 @@ export function createBrowserAdapter(app) {
         version: s.version,
         generation: s.generation,
         ...dashboard(s, context),
-        accounts: s.accounts
-          .filter((a) => a._apps.includes(app) && a['账号状态'] === '启用')
+        accounts: ordinaryAccounts(s, app)
           .map((a) => ({
             id: a._id,
             name: a['人员姓名'],
@@ -128,7 +139,7 @@ export function createBrowserAdapter(app) {
       }))
     },
     async identity(account, role) {
-      const next = { app, account, role }
+      const next = { app, account, role, identityVersion: R1_SCHEMA }
       await read((s) => actorFor(s, next))
       context = next
       localStorage.setItem(identityKey, JSON.stringify(context))
@@ -193,7 +204,7 @@ export function createBrowserAdapter(app) {
         actorFor(s, context)
         s.drafts = s.drafts || {}
         if (data === null) delete s.drafts[id]
-        else s.drafts[id] = data
+        else s.drafts[id] = JSON.parse(JSON.stringify(data))
       })
       return data
     },
@@ -224,11 +235,11 @@ export function createBrowserAdapter(app) {
     async versions(id) {
       return read((s) => fileVersions(s, context, id))
     },
-    async importPreview(text, source) {
-      return read((s) => previewImport(s, context, text, source))
+    async importPreview(text, source, scope) {
+      return read((s) => previewImport(s, context, text, source, scope))
     },
-    async importCommit(text, source, revision) {
-      const r = await transact((s) => commitImport(s, context, text, source, revision))
+    async importCommit(text, source, revision, scope) {
+      const r = await transact((s) => commitImport(s, context, text, source, revision, scope))
       notify()
       return r
     },
@@ -266,8 +277,21 @@ export function createBrowserAdapter(app) {
             .get(session + ':' + id),
         )
       if (!blob) throw new DomainError('本地附件已失效，请重新选择')
-      return { blob, name: meta.name, type: meta.type }
+      return { ...meta, blob, name: meta.name, type: meta.type }
     },
+  }
+  api.stage01 = {
+    query: (table, filters) => read(s => stage01.query(s, context, table, filters)),
+    record: (table, id) => read(s => stage01.record(s, context, table, id)),
+    options: () => read(s => stage01.options(s, context)),
+    overview: () => read(s => stage01.overview(s, context)),
+    importPreview: p => read(s => stage01.importPreview(s, context, p)),
+    async command(name, p = {}) { const r = await transact(s => stage01.command(s, context, name, p)); notify(); return r },
+    async auxiliary(name, p = {}) { const r = await transact(s => stage01.auxiliary(s, context, name, p)); notify(); return r },
+    async reset() { await transact((s, blobs) => { stage01.reset(s, context, id => blobs.delete(session + ':' + id)); seedStage01(s) }); notify() },
+    async upload(file, options = {}) { const r = await api.upload(file, options); await transact(s => { Object.assign(s.attachments[r.id], {stage01: true, uploadedAt: new Date().toISOString(), uploader: stage01.options(s, context).actor.name, status: '成功'}) }); return r },
+    async attachment(p) { const id = await read(s => stage01.attachmentId(s, context, p)); const database = await db(); const blob = await req(database.transaction('blobs').objectStore('blobs').get(session + ':' + id)); if (!blob) throw new DomainError('本地附件已失效，请重新选择'); return {blob, ...(await read(s => s.attachments[id]))} },
+    async accounts() { return read(s => s.stage01?.prepared && ['web','staff'].includes(app) ? [{id:'property-colleague',name:'陈晓',roles:[{id:'property',name:'物业管理员'}]}] : []) },
   }
   return api
 }

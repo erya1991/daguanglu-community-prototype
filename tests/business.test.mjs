@@ -194,7 +194,7 @@ test('T12 数量未知与0分开，单位条件必填，点位不推导设备在
     () =>
       f.run(archive, 'save', {
         table: 'facilities',
-        data: { 点位名称: '数量例', 点位类别: '消防', 所属社区: 'C-A', 具体位置: '示例位置', 数量: 2 },
+        data: { 点位名称: '数量例', 点位类别: '消防', 所属社区: 'C-A', 所属小区: 'E-A', 具体位置: '示例位置', 数量: 2 },
       }),
     /必填/,
   )
@@ -204,6 +204,7 @@ test('T12 数量未知与0分开，单位条件必填，点位不推导设备在
       点位名称: '数量例',
       点位类别: '消防',
       所属社区: 'C-A',
+      所属小区: 'E-A',
       具体位置: '示例位置',
       数量: 2,
       数量单位: '个',
@@ -299,12 +300,16 @@ test('T20 停用账号和权限撤回即刻生效', () => {
   f.run(admin, 'status', { table: 'accounts', id: 'staff', reason: '演示停用' })
   assert.throws(() => query(f.s, staff, 'houses'), /身份不可用/)
 })
-test('T18 23张字段表和287行仍与需求基线一致', async () => {
+test('T18 保留23表287行历史基线；R1增量24表295行且全部表单字段有定义', async () => {
   const { catalog } = await import('../prototype-shared/catalog.js')
-  assert.equal(Object.keys(catalog).length, 23)
+  const { readFileSync } = await import('node:fs')
+  const old = JSON.parse(readFileSync(new URL('../docs/stages/stage-00/evidence/field-baseline.json', import.meta.url)))
+  assert.equal(old.length, 23)
+  assert.equal(old.reduce((n,t)=>n+t.rows.length,0),287)
+  assert.equal(Object.keys(catalog).length, 24)
   assert.equal(
     Object.values(catalog).reduce((n, t) => n + t.fields.length, 0),
-    287,
+    295,
   )
   for (const t of Object.values(catalog))
     for (const name of t.form)

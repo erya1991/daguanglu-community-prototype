@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-06T02:27:28.359Z",
+  "checks": [
+    {
+      "name": "保留23表287行历史；R1当前24表295行与需求逐列一致",
+      "status": "PASS",
+      "evidence": {
+        "historic": {
+          "tables": 23,
+          "rows": 287
+        },
+        "current": {
+          "tables": 24,
+          "rows": 295
+        }
+      }
+    },
+    {
+      "name": "移动依赖解析未升级，只有工作区元信息适配",
+      "status": "PASS",
+      "evidence": {
+        "unchangedResolvedEntries": 615
+      }
+    },
+    {
+      "name": "Web保留Manager锁文件，Vue2与移动Vue3隔离",
+      "status": "PASS",
+      "evidence": {
+        "web": "2.7.16",
+        "mobile": "3.4.21"
+      }
+    },
+    {
+      "name": "自有源码无真实业务调用、源仓绝对导入或跨仓链接",
+      "status": "PASS",
+      "evidence": {
+        "files": 222
+      }
+    },
+    {
+      "name": "微信产物组件路径完整且浏览器存储未进入运行链",
+      "status": "PASS",
+      "evidence": [
+        {
+          "app": "resident",
+          "componentReferences": 68
+        },
+        {
+          "app": "merchant",
+          "componentReferences": 18
+        },
+        {
+          "app": "staff",
+          "componentReferences": 51
+        }
+      ]
+    },
+    {
+      "name": "源仓HEAD、工作区与全部已跟踪文件保持提取前状态",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "D:/git/daguanglu-p0/smart-community-miniapp",
+          "head": "8f15eed1255222ff9178b529d7a3039bfd67fab6",
+          "trackedFiles": 452,
+          "statusUnchanged": true
+        },
+        {
+          "path": "D:/git/daguanglu-p0/lilishop-ui",
+          "head": "23dfcffd4205fb893d70dcc3fa7b79843616f16b",
+          "trackedFiles": 1456,
+          "statusUnchanged": true
+        },
+        {
+          "path": "D:/git/daguanglu-p0/project-ops",
+          "head": "156f35bfcc5644f0aa11b3d61555942c6a2497f9",
+          "trackedFiles": 208,
+          "statusUnchanged": true
+        }
+      ]
+    },
+    {
+      "name": "七构建与三类型检查具有实际退出码",
+      "status": "PASS",
+      "evidence": {
+        "run": "BUILD_2026-11-06T02-01-19-813Z",
+        "passed": 10
+      }
+    }
+  ]
+}

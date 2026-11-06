@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Alert show-icon>UTF-8 CSV演示模板，限2 MiB；Q04正式模板待确认。错误批次整批不写入，不静默覆盖。</Alert>
+    <Alert show-icon>导入对象：房间（房屋）。UTF-8 CSV文件，演示限制2 MiB；错误批次整批不写入。</Alert><p v-if="scopeLabel" class="form-context">导入范围：{{ scopeLabel }}。文件实际归属必须匹配，系统不会替换文件中的上级。</p>
     <div class="toolbar">
-      <Button @click="template">下载演示模板</Button><input type="file" accept=".csv" @change="choose" />
+      <Button @click="template">下载导入模板</Button><input type="file" accept=".csv" :disabled="busy" @change="choose" />
     </div>
     <Form label-position="top"
       ><FormItem label="文件名称"
         ><span>{{ name || '未选择' }}</span></FormItem
       ><FormItem label="资料来源">台账导入</FormItem
       ><FormItem label="来源说明" required
-        ><Input v-model="source" type="textarea" placeholder="填写本次演示台账提供方及依据" /></FormItem
+        ><Input v-model="source" type="textarea" :disabled="busy" placeholder="填写台账提供方及依据" @input="result = null" /></FormItem
     ></Form>
     <div class="toolbar">
       <Button type="primary" :disabled="!text" :loading="busy" @click="preview">校验预览</Button
@@ -46,6 +46,7 @@ function download(text, name) {
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 export default {
+  props: { scope: Object, scopeLabel: String },
   data: () => ({ name: '', text: '', source: '', result: null, error: '', busy: false }),
   computed: {
     columns() {
@@ -67,20 +68,29 @@ export default {
     async choose(e) {
       this.result = null
       this.error = ''
+      this.text = ''
+      this.name = ''
       const f = e.target.files[0]
       if (!f) return
+      this.name = f.name
       if (f.size > 2 * 1024 * 1024) {
         this.error = '超过本轮2 MiB演示限制'
         return
       }
-      this.name = f.name
-      this.text = await f.text()
+      this.busy = true
+      try {
+        this.text = await f.text()
+      } catch (e) {
+        this.error = '文件读取失败，请重新选择文件'
+      } finally {
+        this.busy = false
+      }
     },
     async preview() {
       this.busy = true
       this.error = ''
       try {
-        this.result = await service.importPreview(this.text, this.source)
+        this.result = await service.importPreview(this.text, this.source, this.scope)
       } catch (e) {
         this.error = e.message
       } finally {
@@ -92,7 +102,7 @@ export default {
       this.error = ''
       try {
         this.result = {
-          ...(await service.importCommit(this.text, this.source, this.result.revision)),
+          ...(await service.importCommit(this.text, this.source, this.result.revision, this.scope)),
           文件名称: this.name,
         }
         this.$emit('refresh')

@@ -1,0 +1,1152 @@
+{
+  "date": "2026-11-05T08:57:08.551Z",
+  "branch": "stage/00-foundation",
+  "head": "234bf251f429e77e0996ce2854a237021c1914f4",
+  "baseline": "234bf251f429e77e0996ce2854a237021c1914f4",
+  "startWorktree": "",
+  "startIndex": "",
+  "indexEmpty": true,
+  "stage": "NOT_STAGE_PASS",
+  "manual": "OWNER_RETEST_PENDING",
+  "sourceProtection": "r1-static-results.json",
+  "stage01": {
+    "files": 4,
+    "unchanged": true
+  },
+  "outsideR1": {
+    "compared": 186,
+    "mismatches": []
+  },
+  "preview": {
+    "url": "http://127.0.0.1:19201",
+    "port": 19201,
+    "pid": 44396,
+    "started": "2026-11-05T08:33:37.456Z",
+    "type": "static-only"
+  },
+  "historicalQaOrigin": "http://127.0.0.1:19200",
+  "notes": [
+    "Static previews on different ports do not share sessions.",
+    "Snapshot excludes itself; no staging, commit, push or merge performed.",
+    "Only task-owned virtual-data H5 screenshots copied; no native tool URL/token/screenshot stored."
+  ],
+  "files": [
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results-R1-02.json",
+      "sha256": "c6c3b315bb0ab54420f5c36c07d6e639ed0bd94ec22440d19061064067fef63f"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results-R1-04.json",
+      "sha256": "7f4baf43afcf5e1f25b25a681c1a0ecfa066a4b20468d6c0bd56f82dc66b75a4"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results-R1-06.json",
+      "sha256": "37dc976791a8fb4c3cd1f0df34d8992ce889e04f9623dc69a043934082486e13"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results-R1-07.json",
+      "sha256": "a966535cb1bcbc53a9d74461c11e6644aa5e7bab65d93bfb2cc21808ac383e66"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results-R1-08.json",
+      "sha256": "d8960ff495c73a940c23d67d03fe113073866269231272b56adaa4f90f3e98db"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results-R1-10.json",
+      "sha256": "824f23846d9832a87be1a62ff81982c196d912b7821eb6d8f12fbef47a562edc"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-browser-results.json",
+      "sha256": "c6553d7028b1b6a644e918747d78dd332c848ce6a20562a4c2297c8ed79511aa"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-build-results.json",
+      "sha256": "5cfa037ced8a630174606780eb53e159eab72448fb7c047e409b5c928905a6ce"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-document-results.json",
+      "sha256": "5c99260855cd63d7d4d3a08ca523831b900dcc07ec70a13574c4f2a78b828f76"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-field-mapping.json",
+      "sha256": "11eacbc59e44aeccee67e64bf3240c9f74ab5e30faa54a733b287be29ec0a672"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-houses-with-unit.csv",
+      "sha256": "efb98d0ee1019c90973d3c0c578700797a2a7e62db791fc880262c64b1a1b96e"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-houses-without-unit.csv",
+      "sha256": "3b4ec4f2c66986025a7342f24ec65c3a450ea31776eb0563a8670f11d0e93951"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-scenario-results.json",
+      "sha256": "06be0549cf8d4f55d18e7005dc09ff184e3c15fdb9bb5f7ca5bfb002aeb81d93"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-static-results.json",
+      "sha256": "f6a24b83dd01ba7c55177d37548663916ec0079f3a9e9ecb88b223d12cb577f4"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1-wechat-results.json",
+      "sha256": "fd416cde4daae7152db0d4806d92edcb7c9cda9dbf288eb7644b4babc1b4a90c"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/binding-four-tabs.png",
+      "sha256": "37f0206583d64eab69fceae24f3b161eab5f735fbf7fb8de2fa3b5436004d3f4"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/import-duplicate.png",
+      "sha256": "e200779712ed9abdeb019339643d278d649831faa84a009eb97b52a9d039893a"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/import-wrong-scope.png",
+      "sha256": "1c6622be52c0a2b286e0c8b6d80907a2959f7577b42613b456682beae507c83d"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/parking-building.png",
+      "sha256": "14e4c8672548fc7884ec88c0cb44960e18ec9eb61fc2cf8efba72296ae75a2fd"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/room-selected.png",
+      "sha256": "d2ac6410e46cfc335e711a3e42aba41ccd624b75017f7fcad97da10ceaecb142"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/spaces-1366.png",
+      "sha256": "b521646c5cdb969fed98de8f28189f1ad1548e9e22d3dc6260b35b60edb6d6ae"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/r1/screenshots/spaces-1920.png",
+      "sha256": "96b47eea35a5b1137b01aa28f70f7b987f28b0215ee2835735de64a05ec703b3"
+    },
+    {
+      "file": "prototype-shared/field-help.js",
+      "sha256": "97e8574890a60b405b25defe1dc6b4d70c6ef69b410995f47b88653a03196d5a"
+    },
+    {
+      "file": "prototype-shared/r1-migration.js",
+      "sha256": "ef7d991e300136290b9931bc7c6f963a2b36609641ba8dfa08bac288eb1edb1a"
+    },
+    {
+      "file": "prototype-shared/spaces.js",
+      "sha256": "e45233af0659579a3869bd7eaf593ea58a8f98ae0ea086184293b146af16ee62"
+    },
+    {
+      "file": "scripts/browser-r1-fields.mjs",
+      "sha256": "2cf63a55c903f542c63f60f3d623a0c84a1971384287537fde58584fca68d2b8"
+    },
+    {
+      "file": "scripts/browser-r1.mjs",
+      "sha256": "4f45678d20775c8e34c13d96028a44453c3e21fd86bbe86d9a3bc2cec91236f5"
+    },
+    {
+      "file": "tests/r1.test.mjs",
+      "sha256": "51bd81638b45ad8309addc816fbef6f08befcf13f8b4d0b648d782d6ae1a6bbe"
+    },
+    {
+      "file": "web/manager/src/components/BindingDetail.vue",
+      "sha256": "fcb5cd325d787d8f084759d73cb88c076f981ad54ae2582251521571373eb037"
+    },
+    {
+      "file": "web/manager/src/views/SpaceArchive.vue",
+      "sha256": "defcaa83da60b8f367d92676ea64aa108cc37676b8616de726f9034e5cb1b86b"
+    },
+    {
+      "file": ".editorconfig",
+      "sha256": "ed284727f865ab97b05739ad8193484558c93676e73dc25770adb29402181605"
+    },
+    {
+      "file": ".gitattributes",
+      "sha256": "c91acdfed2d0f38835c3593a00a7e8aa0ac5ca00187d91f9da746ba528b55992"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "0af53339ec76b08e10e233183238687ad6a2ff00a12779d15588053e50e79958"
+    },
+    {
+      "file": "AGENTS.md",
+      "sha256": "a2c03db6a7e404c2a37c877e69f4cd2bb1502b2bf7f3a7f7999da96eef53ad89"
+    },
+    {
+      "file": "README.md",
+      "sha256": "c0960d9ad2cd55a6836f1120c9c008670d4447a75d7742643c4be8bd13567802"
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "sha256": "56546db1e6bc652e22295a7d6375ba275a66fd84ba5ee9858d2d5d56d64c8d42"
+    },
+    {
+      "file": "docs/OPEN_QUESTIONS.md",
+      "sha256": "d7daa855cc92244d93ce2fc6f1aeab0d4959d204f3798109482ec78c8b931a61"
+    },
+    {
+      "file": "docs/OVERALL_REQUIREMENTS.md",
+      "sha256": "7c501f2e59d3cebaf48489ab44d941c9ed75628c937d75b011b66f0e5ef8aded"
+    },
+    {
+      "file": "docs/REPOSITORY_SETUP.md",
+      "sha256": "0cab3200c4a45dfd773fef20534f324471b4bdf7530c5818b863fe9a3d4bb8ca"
+    },
+    {
+      "file": "docs/SCOPE_REGISTER.md",
+      "sha256": "d0b940bbb5a61dd0dc83bc8f203fd7b603a17c1cbcfd02c217ec67b1747dcb4c"
+    },
+    {
+      "file": "docs/SOURCE_COVERAGE.md",
+      "sha256": "6d0ff866dfd1003b6b06ebf0b46737672c8417b05b33949c9737d64e04c0e37f"
+    },
+    {
+      "file": "docs/STAGES.md",
+      "sha256": "062d99d1f26ed936756390f03c0f64488c3795ce5a9e8fd2a95a125ff32a8bdf"
+    },
+    {
+      "file": "docs/WORKFLOW.md",
+      "sha256": "ab4da31d1ff9452c7c794341c2c2d4de85137dcf1892539826bd78849b7b74eb"
+    },
+    {
+      "file": "docs/sources/README.md",
+      "sha256": "90853578778637234bdd81b6f2b0db17ee0a74dd8d3b58cdd916adcca8f0bc86"
+    },
+    {
+      "file": "docs/sources/S1_0826_SCOPE_SUMMARY.md",
+      "sha256": "80ee0093a740e1b4ab8f086918f66244318c985fb10903010cc0c651f5bb040c"
+    },
+    {
+      "file": "docs/sources/S2_0826_SCOPE_DETAIL.md",
+      "sha256": "b5ba4addb6e2eae394b5019fc773f3f8180e9e833273f37eda28edfdc087bb5d"
+    },
+    {
+      "file": "docs/sources/S3_P0_STAGE_PLAN.md",
+      "sha256": "5954cb5b1603a335e37db87ebb98e1d464cb5f47edeadf3e2670e3f2543bf4aa"
+    },
+    {
+      "file": "docs/sources/S4_P0_REQUIREMENTS.md",
+      "sha256": "eaa102590a3cde3af0eed6b1560f1aa00218f703edce31f61b38e87d3b811d50"
+    },
+    {
+      "file": "docs/sources/S5_RESEARCH_REQUIREMENTS_V04.md",
+      "sha256": "5a6c6686287083300b324f002d0ab9d271806356cefb07277212e5fe645adaeb"
+    },
+    {
+      "file": "docs/sources/S6_RESEARCH_DESIGN_V04.md",
+      "sha256": "a95e52ba6d33b25f8f8fd3a1017a904ca071ce89ed0c1edc04fe922ef5299407"
+    },
+    {
+      "file": "docs/sources/S7_RESEARCH_PROPOSAL.doc",
+      "sha256": "1031822406cacaba38a81a49c46c0397ccab3097f73c849543bcec4b88409b94"
+    },
+    {
+      "file": "docs/stages/README.md",
+      "sha256": "050e0576f52692dfd3d61deb4b7681080d36bcc0e990fc1d0109f1622cb584e2"
+    },
+    {
+      "file": "docs/stages/stage-00/ACCEPTANCE.md",
+      "sha256": "daa4f81ab4bdb625d9307b596a8f815c8b560f1b2101dc9e8a28cb72da67d82d"
+    },
+    {
+      "file": "docs/stages/stage-00/PLAN.md",
+      "sha256": "4ee39915c9e637f8bb5ffef789c01818d4af3aa10d2356e04785bf0be3b68a7d"
+    },
+    {
+      "file": "docs/stages/stage-00/REQUIREMENTS.md",
+      "sha256": "5f0cdf610b5370b0ed822c3a8a55c2331a6982c23d0cdaf6b59802b8cf2a6145"
+    },
+    {
+      "file": "docs/stages/stage-00/RESULT.md",
+      "sha256": "8b74e5549dfef652a9709f5f85af6ee777fb9a8986f5f05ab8fdd6004da043ea"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/browser-results.json",
+      "sha256": "00279cb04db14813960d71a59a6b2aab45e76a9afc112df663b112c577557bd3"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/build-results.json",
+      "sha256": "5cfa037ced8a630174606780eb53e159eab72448fb7c047e409b5c928905a6ce"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/candidate-snapshot.json",
+      "sha256": "417a22cde88948ad7a011288b140ff75ab91e4469b6e7376fc56c92dda227f9f"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/constraint-results.json",
+      "sha256": "3345b37ab9bd089a0c9291c6783259487d32abae976c97ac8bb8cb2ef4529d41"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/dependency-baseline.json",
+      "sha256": "b4cb0e3f1c551fd40d39a35e6e4f015efe66a6080f13aca1bb48762cd18ca474"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/document-results.json",
+      "sha256": "303362557fdbaa20dc619333adaeb2d81c37d4c9ae695ad9107d6156dae1b7c0"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/field-baseline.json",
+      "sha256": "8bf6e0cef8e418eb11dc18b9b1f18e4228aa28a733d2dadcfb8d593b5b96bac1"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/field-mapping.json",
+      "sha256": "0a8581147b28df5856b0980caa941a90dd271d80178c861fca04a153e6a747a0"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/interaction-results.json",
+      "sha256": "137abd242cae6987cf13ee352548ac344aece7d19490dd1666ff9b50fdd4dabd"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/scenario-results.json",
+      "sha256": "1e1a603d703041e2070d5492f344d68e850fe6a9c1bbb897168f3205f5723e2a"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/source-manifest.json",
+      "sha256": "fb970b58e66319e7c211f1e35c0d63e5aa427dce392c2104dffb7333cc990971"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/static-results.json",
+      "sha256": "536ca99890645d2f74f202d4c81c8be4e33db65f9bc20d41126b058eb497e851"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/typed-contract-results.json",
+      "sha256": "790bc253709fb1da636fb9d0f76f1f8df77d5c316b38fe54d04e80264c42b96d"
+    },
+    {
+      "file": "docs/stages/stage-00/evidence/unit-results.json",
+      "sha256": "b841a923fd4788868d16a7afdfacb5afccb8ef5e8c31c1154d2a2b3e1fbd6fdc"
+    },
+    {
+      "file": "docs/stages/stage-01/ACCEPTANCE.md",
+      "sha256": "2e5f17f11c320555aa0c9ee41663cf2489ba270bc1a81c57fe0f63dbd4a3a691"
+    },
+    {
+      "file": "docs/stages/stage-01/PLAN.md",
+      "sha256": "14fe3700db693e54001b41daa019192a967e2fffefb3178c228687da64bb3fb5"
+    },
+    {
+      "file": "docs/stages/stage-01/REQUIREMENTS.md",
+      "sha256": "8ce6b6986f9efa3335acfb57d3c0bdb4107834c2102515ace910298bdf2f1ab6"
+    },
+    {
+      "file": "docs/stages/stage-01/RESULT.md",
+      "sha256": "75c8f2618f14e23f012bf7dc1332dbfd51b4875e9f55250bab5aa3c57d2b0068"
+    },
+    {
+      "file": "docs/templates/stage/ACCEPTANCE.md",
+      "sha256": "376bd3e42dface6a8e34d24b12638c9e20b5e5b5072d8b8ebd2cfbca2d1202b2"
+    },
+    {
+      "file": "docs/templates/stage/PLAN.md",
+      "sha256": "6bb8197fdac0c706394e16233ce2eab3388e2cb39466677bcd67c7b2f197bf0d"
+    },
+    {
+      "file": "docs/templates/stage/REQUIREMENTS.md",
+      "sha256": "a371bbf676a74ec2a7181784c7e5a747f77694edc8d058ead5120dc513fb0b8a"
+    },
+    {
+      "file": "docs/templates/stage/RESULT.md",
+      "sha256": "5cb97edb9d824b4b3b5ca4afa9036bee288b09ecbd24f97d9325068e33b78683"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/index.html",
+      "sha256": "9d7a0e23e2296c69b936e6a99cc2397f881155651a5666ac631f903f4ce5d464"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/package.json",
+      "sha256": "2098dfb7a750c79a8fa6c344df112546be05574c58912d8d1d0114b62c226b4d"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/App.vue",
+      "sha256": "28344caeead17af380ce4a7264edc82922a4d439073561b210e0e87fbd7f2871"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/config/navigation.ts",
+      "sha256": "f2559bb8628e1da228d715aec9f41231d7e95e1343a338ff420e5b24ff106a89"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/env.d.ts",
+      "sha256": "26a37f9eea6b7a927ca1a8da048459f386551372433f8eeb58127ade580fe60e"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/main.ts",
+      "sha256": "506cb8900ef1ef03c89e182f5143f8b388449f326a8bbd695eb6fac3fb5a7085"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/manifest.json",
+      "sha256": "34f1f78f99eb7f7997c4c34b14b8a821c2b084766b7a32a615e9e31a2028763e"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages.json",
+      "sha256": "a3054e903d086e7b57b0692fa27329b82d38295f77fae604cb63eb865394b173"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/operation/index.vue",
+      "sha256": "a53bedf4e7e88a66c88d17b6c4f4fbc92638ddda90c2730ac8a981521ee0fe18"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/order/index.vue",
+      "sha256": "0cb6842a54649cf545aa2a75d97fb2c41083bb3ae08964f4e19fabcc8ee8ec96"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/profile/index.vue",
+      "sha256": "fea677bb56e427b4d015a267247c01d16be930148b8e0f310e3319c48ee51689"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/workbench/index.vue",
+      "sha256": "8b14523e46a943d79eb466bebf7e90ce555fcceec20bfa1e52b930077e934923"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/services/foundation.ts",
+      "sha256": "2352eb466162ea5b3312cb33424eb0e9fb57bca47ae3844df3a5e67d6a6b2e16"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/styles/foundation.scss",
+      "sha256": "b48b1bb559580efe8210730c98f00a8537d20b2afd6cf01004f53b8100a7b9ed"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/uni.scss",
+      "sha256": "9ec07add753de931937bf4896480dcad41f0b1f50d06c9540bbee3bf8a27caad"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/tsconfig.json",
+      "sha256": "e62613155531df9a58191600697a0505d913f5735003a18cddda10f2df1be965"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/vite.config.ts",
+      "sha256": "71e066bcdc899779daeb36ea06fa4ea160ebe6ceaf548146d12712096b5b287a"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/index.html",
+      "sha256": "9d7a0e23e2296c69b936e6a99cc2397f881155651a5666ac631f903f4ce5d464"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/package.json",
+      "sha256": "74284acab7e55498fe968d9f5c43720840b756c8cce1207c29e8991a2fd3fca0"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/App.vue",
+      "sha256": "28344caeead17af380ce4a7264edc82922a4d439073561b210e0e87fbd7f2871"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/config/navigation.ts",
+      "sha256": "f2559bb8628e1da228d715aec9f41231d7e95e1343a338ff420e5b24ff106a89"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/env.d.ts",
+      "sha256": "26a37f9eea6b7a927ca1a8da048459f386551372433f8eeb58127ade580fe60e"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/main.ts",
+      "sha256": "506cb8900ef1ef03c89e182f5143f8b388449f326a8bbd695eb6fac3fb5a7085"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/manifest.json",
+      "sha256": "0147f001f024903a80c0a5d010aa4aa1ca17746bfb8a101afd1bc3a05d26643a"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages.json",
+      "sha256": "7b6eb85a6188e8ee452baf5c0f9d542fb761bfb98709669dc97e60923d27b7ee"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/applications/detail.vue",
+      "sha256": "6d273576540d68512e7378206866bd5f2acbb6b106395298407db35ce19b5197"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/applications/index.vue",
+      "sha256": "fcc697414e35f204a3c6acdfb9daf27362826d76bd79b9172ad4f7584d15a908"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/houses/detail.vue",
+      "sha256": "deec983962e66b8bb339505568863f191aef17c632ed301dae9c18f3b4eb68ad"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/houses/index.vue",
+      "sha256": "8b6e76c14fe6c667b722bbb48e24d64803e85c21793b19c82cafc13057227b09"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/messages/detail.vue",
+      "sha256": "1b3e3dde6477df5880837848c8647e97b1841048ac72fb324b1f717f4da1f09e"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/messages/index.vue",
+      "sha256": "3c273f2e86b73e8670c78cec1df59eb2b4209a0184cc1cc2cde83b63e362897a"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/missing/detail.vue",
+      "sha256": "8e38383dfdd70d0cd405a3e6fb8fa746b6b473efdf2efa8bec0ad537afa694ee"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/missing/edit.vue",
+      "sha256": "55c9c1852abd9d5467d94a4b334e55c7a31449fac4f227a236ae2182d72125e3"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/missing/index.vue",
+      "sha256": "3aef60e4bccec6f1aa3a0d5f34daf1d723624ec35d44c6b4c99b5c8005745c1d"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/relations/apply.vue",
+      "sha256": "6d84163d8669e01a61badfeeeb18c82c6a09041bf860ac0c8f5db445a9f898ec"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/relations/detail.vue",
+      "sha256": "deec983962e66b8bb339505568863f191aef17c632ed301dae9c18f3b4eb68ad"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/relations/index.vue",
+      "sha256": "8b6e76c14fe6c667b722bbb48e24d64803e85c21793b19c82cafc13057227b09"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/vehicles/detail.vue",
+      "sha256": "a6ca9b1d4427825865933ed67942289f3513d9d3afb425aacac297163f4a1ae6"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/vehicles/edit.vue",
+      "sha256": "37fa4ce921917740ca0f485193c5300f3a4d9b34512e481ef02d0e1f6b4a0a7f"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/foundation/vehicles/index.vue",
+      "sha256": "863d17fd12684f82b6f5718a61819801296c4bac29c6cf6f1350f4fe2f455205"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/home/index.vue",
+      "sha256": "4f51baf2d5f74b98ce9d64d85946c5fe7e09d9444749646f729e13f3ba501999"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/index.vue",
+      "sha256": "8c8ffcd42a5b051ea717fb468fe302670117f4e1a13b545e4a2d62141bce6612"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/profile/edit.vue",
+      "sha256": "34eab9f3b3b2dfd0a3334517abd5581da84328537029c744ea314919fc6f5c2b"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/profile/index.vue",
+      "sha256": "fea677bb56e427b4d015a267247c01d16be930148b8e0f310e3319c48ee51689"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/index.vue",
+      "sha256": "e72d860ac43ef0f5569d5d02840a1929d6d5edd2a034f5338ae7aa5b9792e283"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/services/foundation.ts",
+      "sha256": "01bdf009d7473bb6b112385b260076a7a9d89a8235c3fae07e447be0c5491b9e"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/static/images/home/hero-community-life.png",
+      "sha256": "2f85d3a25d1ee35c17e6b9a326835e5234fd9b10fb2c25a2d0b1e3ddcb38c54f"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/styles/foundation.scss",
+      "sha256": "b48b1bb559580efe8210730c98f00a8537d20b2afd6cf01004f53b8100a7b9ed"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/uni.scss",
+      "sha256": "9ec07add753de931937bf4896480dcad41f0b1f50d06c9540bbee3bf8a27caad"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/tsconfig.json",
+      "sha256": "e62613155531df9a58191600697a0505d913f5735003a18cddda10f2df1be965"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/vite.config.ts",
+      "sha256": "7ecc8f76cc916cefdadc4006ef44d90d893c860c19711815a101dd6d13eb0402"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/index.html",
+      "sha256": "9d7a0e23e2296c69b936e6a99cc2397f881155651a5666ac631f903f4ce5d464"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/package.json",
+      "sha256": "5aa8caa498c5f6cf8c907c281a268cb197eefeac003b3ee62a616e470a316dfd"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/App.vue",
+      "sha256": "28344caeead17af380ce4a7264edc82922a4d439073561b210e0e87fbd7f2871"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/config/navigation.ts",
+      "sha256": "f2559bb8628e1da228d715aec9f41231d7e95e1343a338ff420e5b24ff106a89"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/env.d.ts",
+      "sha256": "26a37f9eea6b7a927ca1a8da048459f386551372433f8eeb58127ade580fe60e"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/main.ts",
+      "sha256": "506cb8900ef1ef03c89e182f5143f8b388449f326a8bbd695eb6fac3fb5a7085"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/manifest.json",
+      "sha256": "acf0c908357ddad899fd55866333197e5727631f2108ee863c9bde41a6cef443"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages.json",
+      "sha256": "71dc1d93164729f191ca1cf766b898bcec36b5d8f003e2a62c3bc095fee28cb0"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/archive/index.vue",
+      "sha256": "87efc0d1c7fee8e84fe5f3e43a896adac0c4104d657654e381731d3d0057236d"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/communities/detail.vue",
+      "sha256": "d06d2b4451b7af3f61eeb7910605d3771b1c674b6df058c583605486039942e3"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/communities/index.vue",
+      "sha256": "c1227b1a052a0289ed085240aac4b728f0ba05bcd5c225e1b8043e75cad12e91"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/estates/detail.vue",
+      "sha256": "911015d73c54a86c64d526e5127bc653ec037f132162bdf38522e87214011dac"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/estates/index.vue",
+      "sha256": "c9bf33b395a33a722166c159ea8485ddfcbb76507c6eccbc6cbcc92c9d7a0a0c"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/facilities/detail.vue",
+      "sha256": "655ee284aedd01f394a4acea2ab2fae417a020baf2a326c4b1a80d970b065c82"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/facilities/index.vue",
+      "sha256": "c1f15cfc702149c9d4662f19a85e5ae875b233dbfc047eedd50b31ab896c8593"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/houses/detail.vue",
+      "sha256": "5b4dd1634b37e3a4ef10146d8042bd4ed540fb65d2c555911a03059b5535e12d"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/houses/index.vue",
+      "sha256": "4331e2473ebae325e6ba35fe295ced494d2c0c14da2ef7a0e13a3ae19270dc3a"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/messages/detail.vue",
+      "sha256": "1b3e3dde6477df5880837848c8647e97b1841048ac72fb324b1f717f4da1f09e"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/messages/index.vue",
+      "sha256": "3c273f2e86b73e8670c78cec1df59eb2b4209a0184cc1cc2cde83b63e362897a"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/personnel/detail.vue",
+      "sha256": "8342a2ad38d4c8120aa7821f8945cc9d150abc80841daf45724bd7c926b212d9"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/personnel/index.vue",
+      "sha256": "0e411a6bedf2fb6d8ef3a634ec1f419c5f68cbbbb356c65cf05a4fe98b5eb8e4"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/residents/detail.vue",
+      "sha256": "66f76cae9de6404a357034c12cbcc6e2b31db54fa56da50c41dec45e4f9b6cdb"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/residents/index.vue",
+      "sha256": "83b98c52d65881ed730b88451c5b93c1dd4672b072331289f74a8f596421bef3"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/vehicles/detail.vue",
+      "sha256": "a6ca9b1d4427825865933ed67942289f3513d9d3afb425aacac297163f4a1ae6"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/foundation/vehicles/index.vue",
+      "sha256": "863d17fd12684f82b6f5718a61819801296c4bac29c6cf6f1350f4fe2f455205"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/profile/index.vue",
+      "sha256": "fea677bb56e427b4d015a267247c01d16be930148b8e0f310e3319c48ee51689"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/workbench/index.vue",
+      "sha256": "8b14523e46a943d79eb466bebf7e90ce555fcceec20bfa1e52b930077e934923"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/services/foundation.ts",
+      "sha256": "f32e46ef37de87f65ad6bc27558c889b6fa867d9cb688f54d4d50b5c53df21cc"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/styles/foundation.scss",
+      "sha256": "b48b1bb559580efe8210730c98f00a8537d20b2afd6cf01004f53b8100a7b9ed"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/uni.scss",
+      "sha256": "9ec07add753de931937bf4896480dcad41f0b1f50d06c9540bbee3bf8a27caad"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/tsconfig.json",
+      "sha256": "e62613155531df9a58191600697a0505d913f5735003a18cddda10f2df1be965"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/vite.config.ts",
+      "sha256": "e7eae99d87e2184adb082b89bc650faf69d49935da0755f81c73b09b26746d78"
+    },
+    {
+      "file": "miniapp/package-lock.json",
+      "sha256": "374a1bc1933fe6098363170e9879a88364949763feeb140deea4993c3c91de24"
+    },
+    {
+      "file": "miniapp/package.json",
+      "sha256": "edfa409401a46dc5a71e311b6b6633509e6fd0d038752b459831b1c8ba7963ab"
+    },
+    {
+      "file": "miniapp/packages/common/composables/usePageResource.ts",
+      "sha256": "e0ca5dc6075f39146b144b411159d760199446bbf284a3bf7c932787860725fb"
+    },
+    {
+      "file": "miniapp/packages/common/types/app.ts",
+      "sha256": "b63efe02e6de2ab44c058586d9d28e7c2b2fe0a9f9d4591deaf5435f9212d2d9"
+    },
+    {
+      "file": "miniapp/packages/common/utils/navigation.ts",
+      "sha256": "ade20c1876c1da043f704ec51417000b8f163f3db53544b3be6f3d12e5fac89e"
+    },
+    {
+      "file": "miniapp/packages/foundation/DemoControl.vue",
+      "sha256": "f0eeb7709bb6b58e08d890db05bb9983348bae546a5cecf3b0b24961ee065409"
+    },
+    {
+      "file": "miniapp/packages/foundation/FoundationPage.vue",
+      "sha256": "804f4a435683d6d6b22bca22e46a5ebd9f6fbb26d56bcf39e2d68e06c0ce3bf2"
+    },
+    {
+      "file": "miniapp/packages/foundation/MobileFields.vue",
+      "sha256": "0912282fb4041c08b3dffa09403b2276c59c859cd709f9ec039dee44dd407968"
+    },
+    {
+      "file": "miniapp/packages/foundation/foundation-base.scss",
+      "sha256": "08efd7f11d7321a763c9c60833503d32b85b56c3b464555d3fd2fc9727736805"
+    },
+    {
+      "file": "miniapp/packages/foundation/foundation.scss",
+      "sha256": "590c085fb2636487528c53114dd123002de925b5905d17f8ff9a3ac051dd8b74"
+    },
+    {
+      "file": "miniapp/packages/theme/global.scss",
+      "sha256": "92115d9b45c30e7f85afd47513fe2b6f130ace9bb35fde8300fd6da366b14fdb"
+    },
+    {
+      "file": "miniapp/packages/theme/uni.scss",
+      "sha256": "48ce3185deba896be9ac7731ff270a0a3924beb60c3433cccb968cf2449f2190"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/bag.svg",
+      "sha256": "5f8dafc81070def9e6a5f7f4d79adec477777e8d7a0e3e667281d8765a3730b2"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/bell.svg",
+      "sha256": "402ab866f88549e379ed723dfeb563ba52d0e5e6bce212b0b1a7e54bed542e8d"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/bill.svg",
+      "sha256": "5ff62c14ca24d782a57e1754e058c1d26b04b178adf1e165453d35970e7da4ba"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/brand-building.svg",
+      "sha256": "d5716dcdff661f25e3a26bb0c728aa14a6950397c95d704a246ec6a0018a96ad"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/car.svg",
+      "sha256": "01f448fce2f197fdb212cd163b4f2b4f36b80d44b6267e1c7dd339ddcfde527e"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/cart.svg",
+      "sha256": "0577f6e57dccf564c798fbba88f8ab9bbebaca28270405bd135312e0fab1947f"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/chevron-right.svg",
+      "sha256": "5eba18c2d14204fc36531be80a559206055966619b11c8c337739c63b8d93385"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/cleaning.svg",
+      "sha256": "b5d188f26098e52c30b1e94de21146d2ba3e104974799d634daba3961c6202f4"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/close.svg",
+      "sha256": "657a13ae14839ef029e03c239c53727c7a46146d2fd7d8fd30170d28f301316c"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/dashboard.svg",
+      "sha256": "d183793dc7adc79007310c6db933a7f9458b83063b89dd68ab20ecab904baec4"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/edit.svg",
+      "sha256": "91f37de87fb9f0e42f7879576567b85c18318bb5112603255cd42269367e2c11"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/food.svg",
+      "sha256": "1476c300b7468534748a8e881d9b82d6f70240626b1aa1d3e07d7f54c8c32578"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/grain.svg",
+      "sha256": "8f5c56134fb6171a07244d513b5466cc2d5a9db7e52860a927079badf6e7f411"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/heart.svg",
+      "sha256": "7a9dd4d7052775d8d745d14493430120509837d0b6f95c6841564297c75c07b2"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/home.svg",
+      "sha256": "0959a6d18a88bd3814aa12d9c88373c8163fe09e3cbfe80c0e471905f9583c80"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/house.svg",
+      "sha256": "26d05260b8e11f1254200c0cacca553a976047ee716810880c7b7734c7fed586"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/household.svg",
+      "sha256": "3c6954acf34b59772ffa149c93ccbd26266768ad3ccd6afb1db0708818ced285"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/key.svg",
+      "sha256": "364fdd3eb647946330bcec15c0551d807eb260e343edb093f9c1346eb8882395"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/leaf.svg",
+      "sha256": "fed1b8e65e7ac1802c1b79081840b3ca713a60e15cd6b51c44b3f0ac394b48d3"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/location.svg",
+      "sha256": "24b36a12ed004593f3a3f83f51b4d43936149712bef3d8e2209e47924b1d27db"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/message.svg",
+      "sha256": "3fc821f9c73f1ed98ddd7a431b8b606e8178bc581db6938637257c97b34ca30c"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/more.svg",
+      "sha256": "88340669d084d1612bbf8093a0ead4e2e1094d9f817d75231b01cf97cb92e295"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/neighbor.svg",
+      "sha256": "ddd2294df173efbcfcd52aad060b46a375adc1c8f8e9d13ba8a90df12509b10d"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/order.svg",
+      "sha256": "15c65756b10ed0014e3852d94e5e5f5bb052bfb9ebf09507aa8443a9f4b804d4"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/parking.svg",
+      "sha256": "93c7408a9261860e128ae861f287ed1a96e14dd64f2857c43b2832df0200e6f3"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/plus.svg",
+      "sha256": "ec50e97e8c309c61f7c19b62ab8a96d9f207f5af0ddf9b03ca0a112ec2c38475"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/points.svg",
+      "sha256": "4b4000304fc480f59c72b7b2e01f21553dbb158dc0a572f2cefc559f79a1f5a2"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/qr.svg",
+      "sha256": "1eb7a91d4a1a3993af4677b1b2c1d7ca0283fbd77b142b51181ecaba3f65efe6"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/recycle.svg",
+      "sha256": "babb53c1c7cf300721018f6a53e3698b94f07ad0cf5865470978e4e080296442"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/repair.svg",
+      "sha256": "4939c5f88c506a4de1d021c811c8946a64a7b35584e1046340ddbc18dfeb486b"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/search.svg",
+      "sha256": "b9f0b63ee8cbf59ca66e58c1cb57e6c12ae76baa2a2393450d0d0c90ee141434"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/services.svg",
+      "sha256": "ddd75103f2ff6eb586440e7c0b3593460c456bd9354043265310e007c33744c5"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/settings.svg",
+      "sha256": "26d60e3265811731ea48ba39c65628d4bb3e904f4f9709f6809faaad0ce7c9f2"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/shop.svg",
+      "sha256": "d0638e4920e999277bbb9f89cd2bffb0c0a54095dbe1cbd55da54f9c54cf3a67"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/store.svg",
+      "sha256": "ce7b665fe298f14b7b86cc637dcc09cb8e215ec0c35441d91cefed20cdc66e20"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/user.svg",
+      "sha256": "5aaf296f49fb577a407c6a6d20d3898649750c7356d27ed80b17f2f53d9608b6"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/icons/verified.svg",
+      "sha256": "930c8c8314a5588fd0012af3919247c07073efaeb51d342b54f7497a1a0f5c54"
+    },
+    {
+      "file": "miniapp/packages/ui/components/AppButton.vue",
+      "sha256": "6c20073da9389f3fb560ecd8481c79e167642d8502143d1fd06e5c7266d94224"
+    },
+    {
+      "file": "miniapp/packages/ui/components/AppIcon.vue",
+      "sha256": "ff48fca5ed50006cb54ec0199e16c46313afc65140c02606e85bc8b844799548"
+    },
+    {
+      "file": "miniapp/packages/ui/components/AppNavbar.vue",
+      "sha256": "00d81c13b4f8ddcfcb0091ffc3fca68652a7982ce45d3250bdf5073acb3362b0"
+    },
+    {
+      "file": "miniapp/packages/ui/components/AppPage.vue",
+      "sha256": "42ed55b8b357f2b2ba70b67d567e987fe765b977678b21a790775a9d17f29241"
+    },
+    {
+      "file": "miniapp/packages/ui/components/AppTabbar.vue",
+      "sha256": "4063e8f89d79c8e91906b81b54a08fbf8e1f720dec8469af71f2083ad479be96"
+    },
+    {
+      "file": "miniapp/packages/ui/components/BaseCard.vue",
+      "sha256": "09a9a474712c43d846119fefd11fa61d3d2f3089e0a5fa2bb667f35ed0fe3995"
+    },
+    {
+      "file": "miniapp/packages/ui/components/BottomActionBar.vue",
+      "sha256": "bf493bfe5c57857b7f5273164469b1a6ddd264254549b5dca4be24c9329e8f02"
+    },
+    {
+      "file": "miniapp/packages/ui/components/EvidenceUploader.vue",
+      "sha256": "fcc1f677c00e314a4aed6b7145c6ae387a852f406fcafa6bc975d41431daa503"
+    },
+    {
+      "file": "miniapp/packages/ui/components/FeatureUnavailable.vue",
+      "sha256": "7a2b1c3ec82ce0b554fa2b2b20f5fff9bd2bbe5e99c692b0ca3fec3c60c624e3"
+    },
+    {
+      "file": "miniapp/packages/ui/components/FormField.vue",
+      "sha256": "50f2087b0bf8f083428f65b49f25c26ca46e12c5fc07932f3d48983b6a31add9"
+    },
+    {
+      "file": "miniapp/packages/ui/components/FormSection.vue",
+      "sha256": "6443b5f719eb0873f32fd23bde5b2264301700c589739bc5db8e9017249533eb"
+    },
+    {
+      "file": "miniapp/packages/ui/components/IconContainer.vue",
+      "sha256": "a82b1004cd4924bdf707967cf96f7aab2d1c469f23080e0ac2ba8971834aee78"
+    },
+    {
+      "file": "miniapp/packages/ui/components/PageState.vue",
+      "sha256": "9a39d0ff4f5fe2d8c6b071ecf8b3bb48d1c870de48b734b47dce55cf06b2ff22"
+    },
+    {
+      "file": "miniapp/packages/ui/components/QuickEntryGrid.vue",
+      "sha256": "227d7c1390b3e69b0bcbfaaf1e6ac3828fd4ab902eb613df886246110492d170"
+    },
+    {
+      "file": "miniapp/packages/ui/components/ResultState.vue",
+      "sha256": "6df3ee1ef7c53d7cdef8b5ad385c3e5815dba22ae84f7db2a50106995c3fe6c7"
+    },
+    {
+      "file": "miniapp/packages/ui/components/SearchBar.vue",
+      "sha256": "1c3dbee4f3d458eaf5b4c4dc8b9a947698a043f27ac6a1a95b94e0cb95c47458"
+    },
+    {
+      "file": "miniapp/packages/ui/components/SectionHeader.vue",
+      "sha256": "50868c86265d19f75372a7ca9efc33c062c621f1c2104928d50e162051403d8c"
+    },
+    {
+      "file": "miniapp/packages/ui/components/StatusTag.vue",
+      "sha256": "5d2be30a35b686c8aab90a65e46e1f2758c9248fba8ef7e529b560b50fff1fbf"
+    },
+    {
+      "file": "miniapp/scripts/run-uni.mjs",
+      "sha256": "a8875cd89ce0a05c941b97203da3144d19d26e2ec4e11fe8540b21adf701568b"
+    },
+    {
+      "file": "miniapp/scripts/sync-shared.mjs",
+      "sha256": "4ed91a7eb879a8c2ae084c2867504612435a05d5616a61536fcb5f1cd882a21d"
+    },
+    {
+      "file": "miniapp/tsconfig.base.json",
+      "sha256": "ce58c0581f1909e9e6da27e8787173f6b56aa1f7cd33a15e816690733aa3bc48"
+    },
+    {
+      "file": "package.json",
+      "sha256": "9a4270b7d633070fd233d4fdb19bd1d16a878ae7b42cb03ec21a5284b27b5e9c"
+    },
+    {
+      "file": "prototype-shared/catalog.js",
+      "sha256": "150853991466d9038ab162d359b9b5334e03e2d09701bcd3f48b2801e2857582"
+    },
+    {
+      "file": "prototype-shared/core.js",
+      "sha256": "e4a792e87fbba4f808dac84048092b32139df256608a0ca600c9ea6a6337ab6a"
+    },
+    {
+      "file": "prototype-shared/import-houses.js",
+      "sha256": "b3dbfc6a3d0a7bf609e5daacee3ea74045c2e046934274d7e1407060a8029ed7"
+    },
+    {
+      "file": "prototype-shared/package.json",
+      "sha256": "89c47db7851f89caec72da4f215ebc21cf1e294aeef3b45d2583562d846ab035"
+    },
+    {
+      "file": "prototype-shared/storage-h5.js",
+      "sha256": "f0db878662abd36e00be05d822c47805171ae452258d5b9e076fdbd4fbf7175f"
+    },
+    {
+      "file": "prototype-shared/storage-uni.js",
+      "sha256": "7e29163e711f117f1216c1e76ce6fc5f8e384361b5d39eb87ec38238dd11e07d"
+    },
+    {
+      "file": "prototype-shared/types.d.ts",
+      "sha256": "5518f2dafe95d22538ebc71da9f61cdfb2825b22d1a66b08fe563ad924afd7be"
+    },
+    {
+      "file": "scripts/browser-acceptance.mjs",
+      "sha256": "ca6ddc8c710a3bd81291baba51a276dc24c9670d796bf24bb4ae83a0d7bb28ed"
+    },
+    {
+      "file": "scripts/browser-constraints.mjs",
+      "sha256": "fd18e1d2312e5eeda8f1236d579a8fc0e6196f26753ff3cecd82e42a1504097c"
+    },
+    {
+      "file": "scripts/browser-fields.mjs",
+      "sha256": "209dda52fa12b72dc92fae846c5e4e3f15f36aca21f4c1bedeb8aa5878154f7d"
+    },
+    {
+      "file": "scripts/browser-file-feedback.mjs",
+      "sha256": "5b118b5409ffb9fd74bb89503d7255be8cb4a0d5fd79fcc90e4370a782707c91"
+    },
+    {
+      "file": "scripts/browser-interactions.mjs",
+      "sha256": "a57c769aa19a8a6008f75879bc897a7954508944855578370fc1e156d6e714ed"
+    },
+    {
+      "file": "scripts/browser-smoke.mjs",
+      "sha256": "a71a700105b4a1271856c67f525085cfce91dbe41ab5a1b10e0413e3b97101c9"
+    },
+    {
+      "file": "scripts/build-preview.mjs",
+      "sha256": "fa88bcc701c7524afcc7196a4c4303b791ceb4d5c620b60b14ad4beaa545854d"
+    },
+    {
+      "file": "scripts/check-docs.mjs",
+      "sha256": "ec732cf506e60412e8d8c0475c935d131fd14a2164a99c4c6d1d5e68a604ff62"
+    },
+    {
+      "file": "scripts/check-stage00.mjs",
+      "sha256": "fd41c8833d27d723748185da49025acf7425dfb5a6aae3519a95aac45ec4c27f"
+    },
+    {
+      "file": "scripts/create-field-catalog.mjs",
+      "sha256": "a32b3f07ef7d8e3bef90bf867e728d4c37bd4a22559b65f40754f2047563efeb"
+    },
+    {
+      "file": "scripts/format-new-files.mjs",
+      "sha256": "1b58c940a40229b05f7e6436fbb227213badc2a843ce744f95128e61c3d45683"
+    },
+    {
+      "file": "scripts/prepare-wechat.mjs",
+      "sha256": "dfacefeace3d8273ef140a6dd2eff52b6336077290a3cdda56057c536a9cd707"
+    },
+    {
+      "file": "scripts/preview.mjs",
+      "sha256": "f64844f20ffc61914bcea806b9dc5b5249bf619ab4c290705c6f9daa92a88322"
+    },
+    {
+      "file": "scripts/setup-tools.mjs",
+      "sha256": "d790b4614e09153defb84f92107b18d4f351fda8409ce7b465a7eff3bad79e38"
+    },
+    {
+      "file": "scripts/snapshot-stage00.mjs",
+      "sha256": "1956fc9acb548ab2d1f2ba8e49510499eb91f74e0b173c5cfe41e4d97a323755"
+    },
+    {
+      "file": "scripts/verify-builds.mjs",
+      "sha256": "9a60b833526ef301cddfb12bdfa49da9755e52a59fe56bd4bc69c5408b75312a"
+    },
+    {
+      "file": "tests/business.test.mjs",
+      "sha256": "f8c5a35d17646b437c4ef1a0267a9409cad8b4341a2d64723891033685c38508"
+    },
+    {
+      "file": "web/manager/.yarnrc",
+      "sha256": "3f50b5f75aa8d00a88674d030f04be1ec7d743e342a89f7a5ee0250713af9f11"
+    },
+    {
+      "file": "web/manager/LICENSE",
+      "sha256": "6da1054eef20b8949622f2acc5a89c3243ff3b3d7aa8c2bb8fa5c04d15113c00"
+    },
+    {
+      "file": "web/manager/babel.config.js",
+      "sha256": "0346a3142f754c6eb0ff2e4023c88ec4a2d867e4905da62c3c36e6a80f2b18f1"
+    },
+    {
+      "file": "web/manager/package.json",
+      "sha256": "242dd4ddb35eea5b21a65ed756957b0809944045a7f949326dd09452d71afb28"
+    },
+    {
+      "file": "web/manager/patches/compression-webpack-plugin+4.0.1.patch",
+      "sha256": "33c75bef8ec138cefef99a69c2ac574d50760331d6d280b2e9b90b234bbbb1ce"
+    },
+    {
+      "file": "web/manager/public/index.html",
+      "sha256": "04adbfbfd3aaa1205cd220981fb5b4ef96fc13c89ad318e5ec8d36ceae9b967c"
+    },
+    {
+      "file": "web/manager/scripts/apply-compression-hash-fix.cjs",
+      "sha256": "dd94d191dabda7999469ab5b9bd5a59acaa013c798aa13f557d035fa2cdd0400"
+    },
+    {
+      "file": "web/manager/src/App.vue",
+      "sha256": "9a1a562c9acb348de6199710a953ce0beb83c489473661ea9865321ee67d0bf1"
+    },
+    {
+      "file": "web/manager/src/components/FieldEditor.vue",
+      "sha256": "c3439a539428b5c86a285a71f66713b7f0dc6614043629788ab1554a266f4e05"
+    },
+    {
+      "file": "web/manager/src/components/HistoryPanel.vue",
+      "sha256": "f04db0ed3e5625616c6403d339897a8fbd25f70b408b7db62790532d0c248284"
+    },
+    {
+      "file": "web/manager/src/components/ImportPanel.vue",
+      "sha256": "5187bbb75af8e2754376ba57d297044c4404b5a2fd7569c2a177f9a3f847c51d"
+    },
+    {
+      "file": "web/manager/src/main.js",
+      "sha256": "4a29093181977750d9b523feee803149fc1d77ce964f83d4f10a54c183994c49"
+    },
+    {
+      "file": "web/manager/src/services/foundation.js",
+      "sha256": "8472927d77915f46515b8ed1b0decc00cf4b7a2f5e7499ca8423656c6b608e03"
+    },
+    {
+      "file": "web/manager/src/styles/common.scss",
+      "sha256": "e36c8c802b9852b1ad3dfe0f7d9800c69f7cd2aee9994be408f66fe905984da8"
+    },
+    {
+      "file": "web/manager/src/styles/stage00.scss",
+      "sha256": "b1730e36e10fed89d864ad4b54c791cfce09adc5b33f4a2aaad51ead1adf2b21"
+    },
+    {
+      "file": "web/manager/src/styles/table-common.scss",
+      "sha256": "20a34e070e820fc5afa7207fcb4c1c837dc2aae8a7b55b5d3b63e1dbc47ae4db"
+    },
+    {
+      "file": "web/manager/src/styles/theme.less",
+      "sha256": "584b619b24ce3fc99d000cefd0de7562a2e9ae076e1ef283caffd92bb6b7ecc5"
+    },
+    {
+      "file": "web/manager/src/views/Workspace.vue",
+      "sha256": "f005773abec31ed248888341f5f4ff51557aa29378785ce1ecea85805a23f64b"
+    },
+    {
+      "file": "web/manager/src/views/main.scss",
+      "sha256": "cee97be747bce7347c4bcac1d6ca8a90365406fb02f40991b2a403274d304f2d"
+    },
+    {
+      "file": "web/manager/src/views/p0-stage1/usability/components/DetailSection.vue",
+      "sha256": "605ecdcbcd5fed57f2105d4817b4d7ca410109751345a6e21bbbf8fde8235479"
+    },
+    {
+      "file": "web/manager/src/views/p0-stage1/usability/components/FieldRow.vue",
+      "sha256": "c820dfec70960bbc77495f29a88d659a39346a63b4802bdf51181bc78ae6ef35"
+    },
+    {
+      "file": "web/manager/vue.config.js",
+      "sha256": "73656a6a5dfa168324710b177c478c2f0932ec76e347deb571170b1f8b8addb3"
+    },
+    {
+      "file": "web/manager/yarn.lock",
+      "sha256": "f0ae0bc19bd463a4a06d39d3c1e8e26a8c26707047efa4a0eaf2a6f5d7fcdcfc"
+    }
+  ],
+  "gitStatus": "M AGENTS.md\n M README.md\n M docs/stages/stage-00/ACCEPTANCE.md\n M docs/stages/stage-00/PLAN.md\n M docs/stages/stage-00/REQUIREMENTS.md\n M docs/stages/stage-00/RESULT.md\n M docs/stages/stage-00/evidence/build-results.json\n M miniapp/packages/foundation/DemoControl.vue\n M miniapp/packages/foundation/MobileFields.vue\n M prototype-shared/catalog.js\n M prototype-shared/core.js\n M prototype-shared/import-houses.js\n M prototype-shared/storage-h5.js\n M prototype-shared/storage-uni.js\n M prototype-shared/types.d.ts\n M scripts/check-docs.mjs\n M scripts/check-stage00.mjs\n M scripts/create-field-catalog.mjs\n M scripts/preview.mjs\n M tests/business.test.mjs\n M web/manager/src/App.vue\n M web/manager/src/components/FieldEditor.vue\n M web/manager/src/components/HistoryPanel.vue\n M web/manager/src/components/ImportPanel.vue\n M web/manager/src/main.js\n M web/manager/src/styles/stage00.scss\n M web/manager/src/views/Workspace.vue\n?? docs/stages/stage-00/evidence/r1-browser-results-R1-02.json\n?? docs/stages/stage-00/evidence/r1-browser-results-R1-04.json\n?? docs/stages/stage-00/evidence/r1-browser-results-R1-06.json\n?? docs/stages/stage-00/evidence/r1-browser-results-R1-07.json\n?? docs/stages/stage-00/evidence/r1-browser-results-R1-08.json\n?? docs/stages/stage-00/evidence/r1-browser-results-R1-10.json\n?? docs/stages/stage-00/evidence/r1-browser-results.json\n?? docs/stages/stage-00/evidence/r1-build-results.json\n?? docs/stages/stage-00/evidence/r1-document-results.json\n?? docs/stages/stage-00/evidence/r1-field-mapping.json\n?? docs/stages/stage-00/evidence/r1-houses-with-unit.csv\n?? docs/stages/stage-00/evidence/r1-houses-without-unit.csv\n?? docs/stages/stage-00/evidence/r1-scenario-results.json\n?? docs/stages/stage-00/evidence/r1-snapshot.json\n?? docs/stages/stage-00/evidence/r1-static-results.json\n?? docs/stages/stage-00/evidence/r1-wechat-results.json\n?? docs/stages/stage-00/evidence/r1/screenshots/binding-four-tabs.png\n?? docs/stages/stage-00/evidence/r1/screenshots/import-duplicate.png\n?? docs/stages/stage-00/evidence/r1/screenshots/import-wrong-scope.png\n?? docs/stages/stage-00/evidence/r1/screenshots/parking-building.png\n?? docs/stages/stage-00/evidence/r1/screenshots/room-selected.png\n?? docs/stages/stage-00/evidence/r1/screenshots/spaces-1366.png\n?? docs/stages/stage-00/evidence/r1/screenshots/spaces-1920.png\n?? prototype-shared/field-help.js\n?? prototype-shared/r1-migration.js\n?? prototype-shared/spaces.js\n?? scripts/browser-r1-fields.mjs\n?? scripts/browser-r1.mjs\n?? tests/r1.test.mjs\n?? web/manager/src/components/BindingDetail.vue\n?? web/manager/src/views/SpaceArchive.vue"
+}

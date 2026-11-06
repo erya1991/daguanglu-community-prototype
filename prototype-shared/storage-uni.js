@@ -1,4 +1,7 @@
+import * as stage01 from './stage01/index.js'
+import { seed as seedStage01 } from './stage01/seed.js'
 import { roleInApp } from './core.js'
+import { upgradeState, upgradeIdentity, defaultIdentity, ordinaryAccounts, R1_SCHEMA } from './r1-migration.js'
 // WeChat-only local storage; no browser module or browser global is imported here.
 import {
   createSeed,
@@ -17,12 +20,13 @@ import {
 } from './core.js'
 export function createUniAdapter(app) {
   const key = 'dgl-community-prototype-stage00:' + app,
-    defaults = { resident: 'resident-a', merchant: 'merchant', staff: 'staff' },
+    defaults = defaultIdentity,
     identityKey = key + ':identity'
   let context = uni.getStorageSync(identityKey) || { app, account: defaults[app], role: '' },
     listeners = [],
     queue = Promise.resolve()
-  const read = () => uni.getStorageSync(key) || createSeed(),
+  context = upgradeIdentity(context, app)
+  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); return s },
     save = (s) => uni.setStorageSync(key, s)
   const notify = () => listeners.forEach((f) => f())
   const api = {
@@ -34,7 +38,8 @@ export function createUniAdapter(app) {
       return () => (listeners = listeners.filter((x) => x !== f))
     },
     async start() {
-      if (!uni.getStorageSync(key)) save(createSeed())
+      save(read())
+      uni.setStorageSync(identityKey, context)
       return api.info()
     },
     async info() {
@@ -44,8 +49,7 @@ export function createUniAdapter(app) {
         version: s.version,
         generation: s.generation,
         ...dashboard(s, context),
-        accounts: s.accounts
-          .filter((a) => a._apps.includes(app))
+        accounts: ordinaryAccounts(s, app)
           .map((a) => ({
             id: a._id,
             name: a['人员姓名'],
@@ -59,7 +63,7 @@ export function createUniAdapter(app) {
       }
     },
     async identity(account, role) {
-      const next = { app, account, role }
+      const next = { app, account, role, identityVersion: R1_SCHEMA }
       actorFor(read(), next)
       context = next
       uni.setStorageSync(identityKey, next)
@@ -72,6 +76,7 @@ export function createUniAdapter(app) {
     async scope(community, estate) {
       const opts = scopeOptions(read(), context)
       if (community && !opts.communities.some((c) => c.value === community)) throw Error('上下文不能扩大授权')
+      if (estate && !opts.estates.some((e) => e.value === estate)) throw Error('上下文不能扩大授权')
       context = { ...context, community, estate }
       uni.setStorageSync(identityKey, context)
       notify()
@@ -122,7 +127,7 @@ export function createUniAdapter(app) {
       s.drafts = s.drafts || {}
       if (data === undefined) return s.drafts[id] || null
       if (data === null) delete s.drafts[id]
-      else s.drafts[id] = data
+      else s.drafts[id] = JSON.parse(JSON.stringify(data))
       save(s)
       return data
     },
@@ -183,6 +188,20 @@ export function createUniAdapter(app) {
         id = authorizeAttachment(s, context, p)
       return s.attachments[id]
     },
+  }
+  const stage01Write = fn => { const pending = queue.then(() => { const s = read(), value = fn(s); save(s); notify(); return value }); queue = pending.catch(() => {}); return pending }
+  api.stage01 = {
+    query: async (table, filters) => stage01.query(read(), context, table, filters),
+    record: async (table, id) => stage01.record(read(), context, table, id),
+    options: async () => stage01.options(read(), context),
+    overview: async () => stage01.overview(read(), context),
+    importPreview: async p => stage01.importPreview(read(), context, p),
+    command: (name, p = {}) => stage01Write(s => stage01.command(s, context, name, p)),
+    auxiliary: (name, p = {}) => stage01Write(s => stage01.auxiliary(s, context, name, p)),
+    reset: () => stage01Write(s => { stage01.reset(s, context); seedStage01(s) }),
+    async upload(file, options = {}) { const r = await api.upload(file, options); await stage01Write(s => { Object.assign(s.attachments[r.id], {stage01:true, uploadedAt:new Date().toISOString(), uploader:stage01.options(s, context).actor.name, status:'成功'}) }); return r },
+    async attachment(p) { const s = read(), id = stage01.attachmentId(s, context, p); return s.attachments[id] },
+    async accounts() { return [{id:'property-colleague',name:'陈晓',roles:[{id:'property',name:'物业管理员'}]}] },
   }
   return api
 }

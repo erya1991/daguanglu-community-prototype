@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import FormField from '../ui/components/FormField.vue'
 import AppButton from '../ui/components/AppButton.vue'
 import { catalog } from '@core/catalog.js'
+import { fieldHelp } from '@core/field-help.js'
 import { service } from '@/services/foundation'
 const props = defineProps<{
   table: string
@@ -89,7 +90,7 @@ async function preview(f: string) {
         v-if="visible(name)"
         :label="name"
         :required="required(name)"
-        :hint="field(name)?.condition.includes('条件必填') ? '按当前操作条件填写' : ''"
+        :hint="fieldHelp(table, name)"
         :error="errors?.[name]"
         :data-field="table + ':' + name"
       >
@@ -124,7 +125,7 @@ async function preview(f: string) {
         <textarea
           v-else-if="/多行/.test(field(name)?.type || '')"
           :value="modelValue[name]"
-          :placeholder="field(name)?.rule"
+          :placeholder="'填写' + name"
           :maxlength="-1"
           auto-height
           @input="input(name, $event)"

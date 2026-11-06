@@ -1,0 +1,975 @@
+{
+  "at": "2026-11-06T02:07:50.240Z",
+  "counts": {
+    "LOCAL_SELF_CHECK_PASS": 63,
+    "PARTIAL": 6,
+    "CONDITION_DISABLED": 1,
+    "FUTURE_RESERVED": 2
+  },
+  "currentApplicable": 69,
+  "total": 72,
+  "ruleTests": 70,
+  "fieldCoverage": {
+    "current": 276,
+    "observed": 276,
+    "conditionDisabled": 11,
+    "futureReserved": 7
+  },
+  "cases": [
+    {
+      "id": "AC-A01",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与CSV页面：原文件／改名同内容识别完全重复，来源号冲突保留原单；IM与IR追溯可查。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A02",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：错房、非法金额逐行报错，正常行显式勾选有效行确认，错误行不发布；匹配原值及说明可达。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A03",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：同来源号不同金额进入冲突行，已发布及已付快照不覆盖，原收款保留。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A04",
+      "status": "PARTIAL",
+      "label": "部分完成（微信／真机待验）",
+      "note": "H5已完成单账单支付、独立核销与普通凭证；微信构建通过，微信工具运行与真实支付未执行。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A05",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5异常：结果未知退出重进仍读原交易，禁止重付，查询原支付后原单恢复成功。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A06",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：通过申请审核建立同房另一住户关系；只一份支付占用，另一人无付款明细，结清不可重付。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A07",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：关单与迟到成功均留存原交易，授权变化进入核查，资金不丢失，不重复释放或收款。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A08",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：成功待核销不判拖欠，不开放再次付款；物业恢复原核销，不发送催缴。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A09",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：未发布可核验，发布后不允许直接更改快照；无减免退款审批。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A10",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：欠费单独查询，无截止日显示未明确；成功待核销单列，无催缴发送入口。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A11",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与只读页面：两笔成功收款均保留；已有退款事实只读，核查不改资金终态，不自动重开应收。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A12",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：有效车辆关系与月租权益分开，未付款不生成权益，通行信息不伪造。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A13",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：月租新办、续费预缴及平台登记均完成；明确自然月样例，不按固定30天。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A14",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：平台已登记与厂商未接入分别表达，未生成厂家下发或抬杆成功。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A15",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：重复回执与查询不再次登记或延长期限，原产品及期间版本冻结。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A16",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：付款前核对临停报价版本，变化须重新确认；在途不允许直接改价。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A17",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：零应付及已结清不发起支付，不生成抬杆或离场事实。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A18",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：无厂商仍可查询关系、月租及临停；没有回传按钮、假回执或自动计费。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A19",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：PA办理停车核查，R无内部EX读取权限，SA不自动取得本业务权限；核查意见不改渠道结果。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A20",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际页面：仅AU未开放说明，无授权开关或自动扣费，主动缴费独立走通。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A21",
+      "status": "CONDITION_DISABLED",
+      "label": "条件未启用",
+      "note": "条件未启用：积分规则属Stage03；PT01～PT10及PY05当前隐藏，未执行启用后的占用、扣减或退款积分验证。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A22",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：物业账单、月租预缴订单和临停账单使用独立对象，三类支付原单可追溯。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A23",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "静态与H5：收款主体为物业公司样例，无商城抽佣、个人收款、发票字段或真实扣款。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A24",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：每笔一个原单，只付剩余应缴；无合缴或自由金额入口，CSV批量导入不受影响。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-A25",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际页面与假设记录：停车来源、价格期间为合理虚构样例，通行未同步明确，未将样例当正式政策。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B01",
+      "status": "PARTIAL",
+      "label": "部分完成（微信／真机待验）",
+      "note": "H5与规则：住户上报至PA核实、派单、接单、处理提交、复核，再由住户确认评价均独立完成；微信运行待验。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B02",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：公共位置不强制房屋，补充追加不覆盖原文；本人可查需补充内容，无消息前置。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B03",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：住户隐患照片上报，管理端现场登记和补证；均先待核实，无定位、网格或自动分配。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B04",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：误报终止及重复关联有说明，技术重复只落一次；原报告保留，不向住户公开他人内部报告。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B05",
+      "status": "FUTURE_RESERVED",
+      "label": "后续专项未执行",
+      "note": "后续专项：保留外部投递契约，不执行设备／城运接口投递，未计当前真实接入通过。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B06",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与实际主线：事件登记后须PA人工派单，R不能执行内部动作，不增加独立派单岗。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B07",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：有效关联账号的人员接单，主线当前PA完成；重复命令幂等，责任和版本校验保留。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B08",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面历史：退单及内部转派留原因、前后责任和实际操作者，旧版本被拒，无跨单位。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B09",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "静态与页面：仅一主工单及内部转派，无协办单位、子任务树或独立协办验收。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B10",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：整改前后照片独立，隐患缺证据不能提交；提交固定本轮，旧轮与旧证据保留。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B11",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：处理提交与复核分两次动作；复核退回须意见，新轮保留旧记录；R不能复核。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B12",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：未回复保持待居民确认，未解决反馈触发重新核实并保留复核与历次UC；管理员不能代确认。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B13",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：前后证据、本轮通过复核后独立销号；住户只读获准公开反馈及附件。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B14",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与页面：首次派单接单及自然时间保留，无SLA、超期标签、停表或升级通知。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B15",
+      "status": "FUTURE_RESERVED",
+      "label": "后续专项未执行",
+      "note": "后续规则：不实现任意撤回、重开、安全例外审批或代结案，原报告与追加补充保留。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B16",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：授权范围计数随动作变化，统计时点及带条件下钻可查；未评价保持未评价，不默认满意。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B17",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与三端主线：SA／PA／R三个基本角色；同PA顺序办理，各动作独立，住户自己确认评价。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-B18",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：居民确认与评价各存实际人和时间，先确认再评价，未评价不补好评。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-C01",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与R1回归：本人对象、PA范围、应用及敏感查看分别校验；住户不读他人付款及内部证据，电话权限回收生效。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-C02",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则：工单完成不改支付、退款、月租登记或通行结果，不新增资金异常自动转工单。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-C03",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "静态与页面：Stage00成果保留，无网格；积分、厂商、消息及考核后移，未接入不假成功。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-C04",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与三端主线：状态、记录与待办来自业务事实，不新增通知、订阅或消息发送门槛。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-C05",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "边界与实际主线：厂商、无感、积分和SLA未开放不阻断已明确通用业务；生产条件另验。",
+      "evidence": [
+        "static-results.json",
+        "browser-flows.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F01",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "静态：26组294项与原V0.3六列逐项比对一致，系统字段、来源及条件保留，不改为数据库字段表。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F02",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际H5：23视图的当前字段在筛选、详情、动作、附件或历史可达；条件及未来隐藏依据见逐字段映射，不要求同屏。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F03",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与实际表单：公共位置、补充／退回原因、续费原权益、隐患证据及有效日期按条件校验；失败不覆盖旧事实。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F04",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与实际投影：R本人及公开信息、PA必要范围分别返回，内部补证和附件隔离；积分未启用无假控件。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F05",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与详情：发布后账单、已发布临停关联及已引用停车身份锁定；关系／业务快照和前后变更历史保留。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F06",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际详情与附件：名称、类型、大小、上传人、时间、状态与预览可达；PR／RV／UC按轮保存；失败图片不算证据。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F07",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则、页面与假设记录：金额整数分，期间明确；样例自然月、三档评价和10MiB技术上限均不冒充生产政策。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-F08",
+      "status": "PARTIAL",
+      "label": "部分完成（微信／真机待验）",
+      "note": "Web与H5控件和规则已核对；未来XI不渲染，无网格／发票／SLA隐藏字段；微信原生控件运行待补。",
+      "evidence": [
+        "static-results.json",
+        "field-mapping.json",
+        "view-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U01",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际主线与身份入口：仅三种基本角色，PA主线无需切细岗账号，SA不插入每笔业务。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U02",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "规则与H5：核实、派单、接单、处理、复核及居民确认评价独立，缺前置会拒绝，实际操作者不伪造。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U03",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "静态、构建与R1页面回归：三个App独立，商户无Stage01新增业务，Web仍原框架。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U04",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际页面与截图：正式业务名称与合理样例，无满屏Mock／Q编号或模拟成功业务按钮。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U05",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际缴费与停车页面：集中环境说明，付款前明确不扣款，普通凭证不冒充微信官方凭证，通行结果未同步。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U06",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际主线与辅助入口：默认正常按钮连续推进；场景、回放和局部复位独立，业务状态和历史同步变化。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U07",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际Web详情：对象、状态、金额或责任在摘要，一层主题页签，按动作打开表单，无无关空隐患或退款分组。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U08",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际视图与窄屏：Web1366／1024检查，表格横滚限制在容器，筛选、分页、详情和主操作可达。切换未缴费用会清除隐藏业务类型筛选，已实际页面验证。最终1366／1024账单与工单布局复测通过：金额状态单行、状态与办理列可见，整页无横向溢出。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json",
+        "browser-filter-results.json",
+        "table-layout-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U09",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际字段路径：当前字段通过真实控件、详情、历史和附件观察；积分条件及未来字段隐藏，编号不作业务文案。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U10",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际动作与失败恢复：按状态打开表单，输入失败保留；未知支付重入、照片失败重试及重复命令经规则验证。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U11",
+      "status": "PARTIAL",
+      "label": "部分完成（微信／真机待验）",
+      "note": "H5返回和独立导航已检查，三微信构建通过；开发者工具只读状态授权超时，未取得当前Stage01微信导航画面。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U12",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际H5：移动卡片、单列分组与独立办理页，无Web宽表格搬运；附件与当前动作可用。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U13",
+      "status": "PARTIAL",
+      "label": "部分完成（微信／真机待验）",
+      "note": "H5窄视口、安全区占位和键盘监听已检查；微信原生键盘、胶囊及真机安全区未执行，保留待补证。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U14",
+      "status": "PARTIAL",
+      "label": "部分完成（微信／真机待验）",
+      "note": "实际H5异常：上传失败保留文字，重试后正常提交；未知付款恢复原交易，错误信息无异常栈；微信端恢复待运行核验。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U15",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "证据已分列H5、七构建、开发者工具受阻、真机未执行、lee未执行和真实联调未执行，不以构建冒充运行。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    },
+    {
+      "id": "AC-U16",
+      "status": "LOCAL_SELF_CHECK_PASS",
+      "label": "本地自测通过",
+      "note": "实际同源H5：Web、R、staff读取同一会话事实；其他端口／设备／App独立，不回退真实接口，不伪造渠道或闸机。",
+      "evidence": [
+        "browser-flows.json",
+        "browser-exceptions.json",
+        "view-results.json",
+        "wechat-results.json"
+      ],
+      "owner": "NOT_RUN",
+      "realIntegration": "NOT_RUN"
+    }
+  ],
+  "boundary": "72 acceptance entries, not 72 individual automated test functions. Local rule/static/H5 evidence is stated per case; WeChat/device/owner/real integration are separate."
+}

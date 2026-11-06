@@ -1,0 +1,126 @@
+{
+  "run": "BUILD_2026-11-06T02-01-19-813Z",
+  "node": "v24.14.0",
+  "results": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T02:21:33.035Z",
+      "end": "2026-11-06T02:21:45.188Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/WEB_FINAL_2026-11-06T02-21-33-027Z/web.log"
+    },
+    {
+      "id": "resident-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T02:01:32.343Z",
+      "end": "2026-11-06T02:01:48.976Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/resident-h5.log"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T02:01:48.977Z",
+      "end": "2026-11-06T02:02:01.329Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/resident-mp-weixin.log"
+    },
+    {
+      "id": "merchant-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T02:02:01.330Z",
+      "end": "2026-11-06T02:02:13.244Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/merchant-h5.log"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T02:02:13.244Z",
+      "end": "2026-11-06T02:02:24.943Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/merchant-mp-weixin.log"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T02:02:24.944Z",
+      "end": "2026-11-06T02:02:38.858Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/staff-h5.log"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T02:02:38.859Z",
+      "end": "2026-11-06T02:02:50.557Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/staff-mp-weixin.log"
+    },
+    {
+      "id": "resident-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T02:02:50.558Z",
+      "end": "2026-11-06T02:02:54.783Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/resident-types.log"
+    },
+    {
+      "id": "merchant-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T02:02:54.784Z",
+      "end": "2026-11-06T02:02:58.293Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/merchant-types.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T02:02:58.294Z",
+      "end": "2026-11-06T02:03:02.292Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage01/BUILD_2026-11-06T02-01-19-813Z/staff-types.log"
+    }
+  ],
+  "targetedUpdates": [
+    {
+      "run": "WEB_LAYOUT_2026-11-06T02-15-27-757Z",
+      "scope": "web",
+      "reason": "Actual 1024px screenshot found wrapped money and status; constrain wrapping and keep action column visible. Other nine results retain unchanged-source validity",
+      "files": [
+        "web/manager/src/components/stage01/Business.vue",
+        "web/manager/src/styles/stage01.scss"
+      ]
+    },
+    {
+      "run": "WEB_FINAL_2026-11-06T02-21-33-027Z",
+      "scope": "web",
+      "reason": "Final 1024 layout: readable unwrapped numbers and states, visible state/action columns, container scrolling; nine other jobs have unchanged owning source",
+      "files": [
+        "web/manager/src/components/stage01/Business.vue",
+        "web/manager/src/styles/stage01.scss"
+      ]
+    }
+  ]
+}

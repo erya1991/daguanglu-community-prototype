@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-06T02:06:55.705Z",
+  "run": "EXCEPT-1793930812944",
+  "session": "stage01-EXCEPT-1793930812944",
+  "base": "http://127.0.0.1:19202",
+  "results": [
+    {
+      "id": "unknown-payment-reload-query",
+      "status": "PASS",
+      "detail": {
+        "url": "http://127.0.0.1:19202/resident/?session=stage01-EXCEPT-1793930812944#/pages/stage01/fees/pay?id=S1-BL-000002&kind=%25E7%2589%25A9%25E4%25B8%259A%25E8%25B4%25B9&payment=S1-PY-000014",
+        "screenshot": ".runtime/stage01/EXCEPT-1793930812944/payment-recovered.png"
+      }
+    },
+    {
+      "id": "photo-failure-retry-preserves-input",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/EXCEPT-1793930812944/upload-retried.png",
+        "retainedText": "楼梯扶手松动，上传失败后保留此说明。"
+      }
+    }
+  ],
+  "errors": [],
+  "observed": {
+    "AT08": [
+      {
+        "view": "P-B06",
+        "url": "http://127.0.0.1:19202/resident/?session=stage01-EXCEPT-1793930812944#/pages/stage01/repairs/create",
+        "text": "照片保存失败，请重试；已填内容保留重试上传",
+        "screenshot": ".runtime/stage01/EXCEPT-1793930812944/upload-failed.png"
+      }
+    ]
+  },
+  "boundary": "Auxiliary modes prepare local failure conditions; remaining actions use actual product UI. Not real payment or WeChat evidence."
+}

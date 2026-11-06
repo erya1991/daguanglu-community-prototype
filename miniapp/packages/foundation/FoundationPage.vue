@@ -119,6 +119,7 @@ function open(mode: string, table = '', id = '', extra = '') {
         : `/pages/foundation/${table}/${mode === 'detail' ? 'detail' : mode === 'edit' ? 'edit' : 'index'}`
   uni.navigateTo({ url: path + (id ? '?id=' + encodeURIComponent(id) : '?') + extra })
 }
+function stage01(path:string){uni.navigateTo({url:'/pages/stage01/'+path})}
 function tab(path: string) {
   uni.redirectTo({ url: path })
 }
@@ -357,6 +358,7 @@ onUnmounted(() => {
         ><AppButton variant="quiet" @click="load">重新读取</AppButton></view
       ><text v-if="success" class="success-tip">{{ success }}</text
       ><view v-if="busy && !info" class="hint">正在读取演示数据…</view>
+      <view v-if="APP==='resident' && ['home','service','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业服务</text><view class="s1-entry-grid"><button @click="stage01('fees/index')">物业缴费</button><button @click="stage01('parking/index')">停车服务</button><button @click="stage01('repairs/index')">报事报修</button><button @click="stage01('hazards/index')">隐患随手拍</button><button @click="stage01('records/index')">业务记录</button></view></view><view v-if="APP==='staff' && ['workbench','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业办理</text><view class="s1-entry-grid"><button @click="stage01('tasks/index')">工单待办</button><button @click="stage01('reports/create')">现场上报</button><button @click="stage01('charges/index')">收费查询</button></view></view>
       <template v-if="props.mode === 'home'"
         ><view class="community-line"
           ><AppIcon name="location" :size="18" /><text>青禾示例社区</text><text class="muted">仅演示</text
@@ -430,7 +432,7 @@ onUnmounted(() => {
           ><text class="hint">{{
             APP === 'merchant'
               ? '商户框架仅展示身份和原项目交付边界，不查询订单、资金或资质。'
-              : '仅查询获准档案；本端无移动审批、派单或工单业务。'
+              : 'Stage00档案与关系仅供查询；工单待办可办理当前物业任务。'
           }}</text
           ><view class="entry-row" v-if="APP === 'staff'" @click="open('list', 'messages')"
             ><text>结果消息</text><text>›</text></view
@@ -648,3 +650,5 @@ onUnmounted(() => {
     ><template #tabbar><AppTabbar v-if="top" :items="navigation" :active-path="activePath" /></template
   ></AppPage>
 </template>
+
+<style scoped>.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}</style>

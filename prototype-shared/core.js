@@ -1,4 +1,7 @@
 import { catalog } from './catalog.js'
+import { houseInSpace, resourceInSpace, spaceTables } from './spaces.js'
+import { upgradeState } from './r1-migration.js'
+export { upgradeState } from './r1-migration.js'
 export const SEED_VERSION = 'stage00-v1'
 export const clone = (v) => JSON.parse(JSON.stringify(v))
 export const roleInApp = (app, id) =>
@@ -46,6 +49,7 @@ export const tableOrder = [
   'statistics',
   'vehicles',
   'facilities',
+  'parking',
   'personnel',
   'files',
   'orgs',
@@ -82,6 +86,7 @@ const titleNames = {
   statistics: '指标名称',
   vehicles: '车牌号码',
   facilities: '点位名称',
+  parking: '车位编号',
   personnel: '人员姓名',
   files: '文件名称',
   messages: '消息标题',
@@ -457,6 +462,7 @@ export function createSeed() {
     size: 54,
     text: '这是虚构物业文件 V1，仅用于原型演示。',
   }
+  upgradeState(s, true)
   hydrate(s)
   return s
 }
@@ -473,7 +479,7 @@ export function actorFor(s, ctx) {
     ...a,
     role: rid,
     menus: role['可见菜单'] || [],
-    permissions: role['允许操作'] || [],
+    permissions: ctx.app === 'staff' ? (role['允许操作'] || []).filter(p => p.startsWith('read:')) : role['允许操作'] || [],
     sensitive: role['敏感查看与导出权限'] || [],
     name: a['人员姓名'],
     org: a['所属组织'],
@@ -502,7 +508,7 @@ export function inScope(s, a, r) {
   if (communities.length && !communities.some((c) => list(a['可查看社区']).includes(c))) return false
   if (estates.length && !estates.some((e) => list(a['可查看小区']).includes(e))) return false
   const org = r['所属组织'] || r['所属物业组织']
-  return !org || org === a.org
+  return !org || (a._orgs || [a.org]).includes(org)
 }
 function hydrate(s) {
   for (const b of s.buildings)
@@ -550,6 +556,13 @@ function hydrate(s) {
     h['关联居民'] = s.relations
       .filter((x) => x._house === h._id && x['关系状态'] === '有效')
       .map((x) => x['居民姓名'])
+  for (const f of [...s.facilities, ...(s.parking || [])]) {
+    const table = f._spaceTable || (f['关联楼栋'] ? 'buildings' : f['所属小区'] ? 'estates' : 'communities')
+    const id = f._spaceId || f['关联楼栋'] || f['所属小区'] || f['所属社区']
+    f['所属空间'] = titleOf(table, find(s, table, id))
+    f._spaceTable = table
+    f._spaceId = id
+  }
   for (const f of s.files) f['有效期提示'] = validity(f)
   for (const stat of s.statistics) {
     const c = stat['统计范围'],
@@ -620,10 +633,21 @@ export function query(s, ctx, table, filters = {}) {
       const estates = list(r['适用小区']).concat(list(r['所属小区'] || r._estate))
       return !estates.length || estates.includes(ctx.estate)
     })
+  if (filters._space) {
+    const scope = filters._space
+    if (!['houses', 'facilities', 'parking'].includes(table) || !['root', ...spaceTables].includes(scope.table)) fail('当前空间查询范围无效')
+    if (scope.table !== 'root') record(s, ctx, scope.table, scope.id)
+    items = items.filter(r => table === 'houses' ? houseInSpace(r, scope) : resourceInSpace(r, scope))
+  }
   const result = items
     .filter((r) =>
       Object.entries(filters).every(([k, v]) => {
+        if (k === '_space') return true
         if (blank(v)) return true
+        if (table === 'applications' && k === '申请人姓名') {
+          const text = [r['申请人姓名'], r['申请编号'], ...(sensitive(a, 'phone') ? [r['联系号码']] : [])].join(' ')
+          return text.toLowerCase().includes(String(v).toLowerCase())
+        }
         if (k === '提交时间' && Array.isArray(v)) {
           const date = String(r[k] || '').slice(0, 10)
           return (!v[0] || date >= v[0]) && (!v[1] || date <= v[1])
@@ -741,6 +765,7 @@ function validateParents(s, t, d) {
       ['所属楼栋', 'buildings'],
     ],
     facilities: [['所属社区', 'communities']],
+    parking: [['所属社区', 'communities']],
   }
   for (const [field, tab] of links[t] || []) {
     const p = find(s, tab, d[field])
@@ -754,11 +779,12 @@ function validateParents(s, t, d) {
     if (estate && (!active(estate) || !active(find(s, 'communities', estate['所属社区']))))
       fail('上级社区或小区已停用，不能新增或调整下级档案')
   }
-  if (['houses', 'facilities'].includes(t)) {
+  if (['houses', 'facilities', 'parking'].includes(t)) {
     const e = find(s, 'estates', d['所属小区']),
       b = find(s, 'buildings', d['所属楼栋'] || d['关联楼栋'])
     if (e && e['所属社区'] !== d['所属社区']) fail('小区与社区不匹配')
     if (b && b['所属小区'] !== d['所属小区']) fail('楼栋与小区不匹配')
+    if (t !== 'houses' && ((e && !active(e)) || (b && !active(b)))) fail('归属小区或楼栋已停用，不能新增或调整资源')
     if (t === 'houses' && b?.['是否设单元'] === '是') {
       required(d, ['所属单元'])
       const u = find(s, 'units', d['所属单元'])
@@ -781,6 +807,7 @@ const requiredByTable = {
   statistics: ['统计范围', '指标名称', '指标数值', '统计口径说明', '统计日期', '数据来源', '提供单位'],
   vehicles: ['车牌号码', '关联居民'],
   facilities: ['点位名称', '点位类别', '所属社区', '具体位置'],
+  parking: ['车位编号', '车位类型', '所属社区'],
   personnel: ['人员姓名', '所属物业组织', '岗位'],
   files: ['文件名称', '文件分类', '所属组织', '文件附件', '可查阅角色'],
 }
@@ -791,6 +818,19 @@ export function validateSave(s, ctx, table, input, id) {
   if (a.role === 'resident' && !['vehicles', 'missing', 'profile'].includes(table))
     fail('住户不能直接维护该档案')
   if (a.role !== 'resident') requirePermission(a, 'write', table)
+  if (['facilities', 'parking'].includes(table)) {
+    const building = find(s, 'buildings', d['关联楼栋'])
+    if (d['关联楼栋'] && !building) fail('归属楼栋不存在', { 关联楼栋: '请选择有效楼栋' })
+    const estate = find(s, 'estates', building?.['所属小区'] || d['所属小区'])
+    const legacy = table === 'facilities' && old?._spaceTable === 'communities' && !d['所属小区'] && !d['关联楼栋']
+    if (!estate && !legacy) fail('新增资源必须归属小区或楼栋', { 所属小区: '请选择小区或从楼栋新增资源' })
+    if (building && d['所属小区'] && d['所属小区'] !== building['所属小区']) fail('楼栋与小区不匹配')
+    if (estate && d['所属社区'] && d['所属社区'] !== estate['所属社区']) fail('资源与所属社区不匹配')
+    if (estate) { d['所属小区'] = estate._id; d['所属社区'] = estate['所属社区'] }
+    d._spaceTable = building ? 'buildings' : estate ? 'estates' : 'communities'
+    d._spaceId = building?._id || estate?._id || old?._spaceId
+    if (old && old._spaceId && (old._spaceId !== d._spaceId || old._spaceTable !== d._spaceTable)) fail('资源归属不能通过普通编辑迁移')
+  }
   if (old) {
     record(s, ctx, table, id)
     if (input._rev !== undefined && old._rev !== input._rev) fail('记录已更新，请保留输入并重新核对')
@@ -839,7 +879,7 @@ export function validateSave(s, ctx, table, input, id) {
     // Demo configuration role may grant known communities in this single prototype project.
     // This is a labelled Q03 example, separate from permission to read business/sensitive data.
     const grantable =
-      a.role === 'config' ? s.communities.filter(active).map((c) => c._id) : list(a['可查看社区'])
+      ['config', 'platform'].includes(a.role) ? s.communities.filter(active).map((c) => c._id) : list(a['可查看社区'])
     if (list(d['可查看社区']).some((c) => !grantable.includes(c)))
       fail('不能授予当前身份可授予社区范围之外的权限')
     if (s.accounts.some((r) => r._id !== id && r['登录账号'] === d['登录账号']))
@@ -888,7 +928,16 @@ export function validateSave(s, ctx, table, input, id) {
     }
     if (d['关联房屋'] && find(s, 'houses', d['关联房屋'])?.['所属社区'] !== d['所属社区'])
       fail('关联房屋与点位所属社区不一致')
+    if (d['关联房屋']) {
+      const h = find(s, 'houses', d['关联房屋'])
+      if (!h || (d['所属小区'] && h['所属小区'] !== d['所属小区']) || (d['关联楼栋'] && h['所属楼栋'] !== d['关联楼栋'])) fail('关联房屋不在当前设施所属空间内')
+    }
     d['接入状态'] = old?.['接入状态'] || '未接入'
+  }
+  if (table === 'parking') {
+    d['车位编号'] = String(d['车位编号']).trim()
+    if (old && old['车位编号'] !== d['车位编号']) fail('已有车位编号不可通过普通编辑修改')
+    if (s.parking.some(r => r._id !== id && r._spaceId === d._spaceId && r['车位编号'] === d['车位编号'])) fail('当前空间已有相同车位编号', { 车位编号: '请使用当前空间内唯一的编号' })
   }
   if (table === 'personnel' && old && ['所属物业组织', '岗位', '关联账号'].some((k) => old[k] !== d[k]))
     required(d, ['变更说明'])
@@ -926,6 +975,15 @@ export function execute(s, ctx, command, p = {}) {
     const data = Object.fromEntries(
       (catalog[table]?.form || []).filter((k) => k in p.data).map((k) => [k, p.data[k]]),
     )
+    if (['facilities', 'parking'].includes(table)) {
+      if (p.space) {
+        if (!['estates', 'buildings'].includes(p.space.table)) fail('设施和车位只能在小区或楼栋下新增')
+        const parent = record(s, ctx, p.space.table, p.space.id)
+        data['所属社区'] = parent['所属社区']
+        data['所属小区'] = p.space.table === 'estates' ? parent._id : parent['所属小区']
+        data['关联楼栋'] = p.space.table === 'buildings' ? parent._id : ''
+      } else if (old) for (const key of ['所属社区', '所属小区', '关联楼栋']) if (!(key in data)) data[key] = old[key] || ''
+    }
     if (table === 'files') data._reminder = !!p.data._reminder
     if (old) data._rev = p.data._rev
     if (a.role === 'resident' && table === 'vehicles') data['关联居民'] = a.resident
@@ -967,7 +1025,7 @@ export function execute(s, ctx, command, p = {}) {
     })
     if (table === 'accounts' && !old)
       Object.assign(after, { _apps: ['web', 'staff'], 账号状态: '启用', 当前工作身份状态: '在岗' })
-    if (!old && ['orgs', 'roles', 'communities', 'estates', 'buildings', 'units', 'houses'].includes(table))
+    if (!old && ['orgs', 'roles', 'communities', 'estates', 'buildings', 'units', 'houses', 'facilities', 'parking'].includes(table))
       after[stateKey[table] || '档案状态'] = '启用'
     if (!old && table === 'personnel') after['在岗状态'] = '在岗'
     if (table === 'files' && !old) {
@@ -1365,6 +1423,7 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
     车辆类型: ['小型汽车（样例）', '其他（样例）'],
     点位类别: ['车棚', '监控', '充电', '消防'],
     数量单位: ['台', '个', '处'],
+    车位类型: ['普通车位（演示候选）', '无障碍车位（演示候选）', '其他（演示候选）'],
     文件分类: ['制度规程', '图纸', '合同资料', '资质', '巡检/整改报告', '其他'],
     组织状态: ['启用', '停用'],
     角色状态: ['启用', '停用'],
@@ -1382,7 +1441,7 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
     关系类型: ['业主', '租户', '家庭成员'],
     账号关联情况: ['已核验关联', '未关联'],
   }
-  if (enums[field]) return enums[field].map((v) => ({ value: v, label: v }))
+  if (enums[field]) return enums[field].map((v) => ({ value: v, label: field === '点位类别' && v === '充电' ? '充电桩' : v }))
   if (field === '可见菜单') return tableOrder.map((t) => ({ value: t, label: catalog[t].title }))
   if (field === '允许操作')
     return tableOrder
@@ -1431,8 +1490,8 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
     .filter(active)
     .filter((r) => {
       if (['communities', 'estates', 'buildings', 'units', 'houses'].includes(t)) {
-        if (field === '可查看社区' && a.role === 'config') return true
-        if (field === '可查看小区' && a.role === 'config')
+        if (field === '可查看社区' && ['config', 'platform'].includes(a.role)) return true
+        if (field === '可查看小区' && ['config', 'platform'].includes(a.role))
           return list(data['可查看社区']).includes(r['所属社区'])
         if (a.role !== 'resident' && !inScope(s, a, t === 'communities' ? { _community: r._id } : r))
           return false
@@ -1446,7 +1505,7 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
           )
         }
       }
-      if (t === 'orgs') return r._id === a.org || a.role === 'config'
+      if (t === 'orgs') return (a._orgs || [a.org]).includes(r._id) || a.role === 'config'
       if (t === 'residents') return a.role === 'resident' ? r._id === a.resident : inScope(s, a, r)
       if (t === 'accounts') return r['所属组织'] === a.org || r._id === a._id
       return true

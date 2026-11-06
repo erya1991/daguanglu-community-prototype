@@ -1,0 +1,188 @@
+{
+  "at": "2026-11-06T02:22:41.825Z",
+  "base": "http://127.0.0.1:19202",
+  "results": [
+    {
+      "width": 1366,
+      "route": "/property/bills",
+      "status": "PASS",
+      "observed": {
+        "pageOverflow": false,
+        "moneyLineCounts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "statusLineCounts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "buttons": [
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          }
+        ],
+        "containerScroll": false
+      },
+      "screenshot": ".runtime/stage01/TABLE-1793931758685/bills-1366.png"
+    },
+    {
+      "width": 1366,
+      "route": "/workorders/tasks",
+      "status": "PASS",
+      "observed": {
+        "pageOverflow": false,
+        "moneyLineCounts": [],
+        "statusLineCounts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "buttons": [
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          },
+          {
+            "left": 1233,
+            "right": 1297
+          }
+        ],
+        "containerScroll": false
+      },
+      "screenshot": ".runtime/stage01/TABLE-1793931758685/tasks-1366.png"
+    },
+    {
+      "width": 1024,
+      "route": "/property/bills",
+      "status": "PASS",
+      "observed": {
+        "pageOverflow": false,
+        "moneyLineCounts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "statusLineCounts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "buttons": [
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          }
+        ],
+        "containerScroll": true
+      },
+      "screenshot": ".runtime/stage01/TABLE-1793931758685/bills-1024.png"
+    },
+    {
+      "width": 1024,
+      "route": "/workorders/tasks",
+      "status": "PASS",
+      "observed": {
+        "pageOverflow": false,
+        "moneyLineCounts": [],
+        "statusLineCounts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "buttons": [
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          },
+          {
+            "left": 891,
+            "right": 955
+          }
+        ],
+        "containerScroll": true
+      },
+      "screenshot": ".runtime/stage01/TABLE-1793931758685/tasks-1024.png"
+    }
+  ],
+  "errors": [],
+  "boundary": "Actual local Web text line boxes, action bounds, container overflow and screenshots; not native WeChat or owner acceptance."
+}

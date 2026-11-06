@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-06T06:16:05.904Z",
+  "node": "v24.14.0",
+  "results": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T06:13:43.997Z",
+      "end": "2026-11-06T06:14:16.612Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/web.log"
+    },
+    {
+      "id": "resident-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T06:14:16.615Z",
+      "end": "2026-11-06T06:14:41.430Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-h5.log"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T06:14:41.431Z",
+      "end": "2026-11-06T06:14:56.223Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-mp-weixin.log"
+    },
+    {
+      "id": "merchant-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T06:14:56.224Z",
+      "end": "2026-11-06T06:15:10.938Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-h5.log"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T06:15:10.938Z",
+      "end": "2026-11-06T06:15:20.510Z",
+      "exit": 1,
+      "status": "FAIL",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-mp-weixin.log"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T06:15:20.511Z",
+      "end": "2026-11-06T06:15:36.938Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-h5.log"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T06:15:36.939Z",
+      "end": "2026-11-06T06:15:51.173Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-mp-weixin.log"
+    },
+    {
+      "id": "resident-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T06:15:51.174Z",
+      "end": "2026-11-06T06:15:56.823Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-types.log"
+    },
+    {
+      "id": "merchant-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T06:15:56.823Z",
+      "end": "2026-11-06T06:16:01.208Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-types.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T06:16:01.208Z",
+      "end": "2026-11-06T06:16:05.903Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-types.log"
+    }
+  ]
+}
