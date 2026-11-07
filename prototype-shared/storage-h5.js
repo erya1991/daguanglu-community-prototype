@@ -1,3 +1,4 @@
+import * as serviceDomain from './service/index.js'
 import * as stage01 from './stage01/index.js'
 import { seed as seedStage01 } from './stage01/seed.js'
 import { roleInApp } from './core.js'
@@ -85,6 +86,7 @@ export function createBrowserAdapter(app) {
           upgradeState(state)
           stage01.prepare(state, session)
           seedStage01(state)
+          serviceDomain.prepare(state, session)
           value = fn(state, tx.objectStore('blobs'))
           store.put(state, session)
         } catch (e) {
@@ -104,6 +106,7 @@ export function createBrowserAdapter(app) {
     upgradeState(state)
           stage01.prepare(state, session)
           seedStage01(state)
+          serviceDomain.prepare(state, session)
     return fn(state)
   }
   const api = {
@@ -246,6 +249,7 @@ export function createBrowserAdapter(app) {
     async attachment(params) {
       const descriptor = await read((s) => {
         const id = authorizeAttachment(s, context, params)
+        if(s.attachments[id]?.stage02)serviceDomain.attachmentId(s,context,{attachmentId:id})
         return { id, meta: s.attachments[id] }
       })
       let blob
@@ -267,6 +271,7 @@ export function createBrowserAdapter(app) {
         actorFor(s, context)
         const m = s.attachments[id]
         if (!m || m.owner !== context.account) throw new DomainError('无权读取此本地附件')
+        if(m.stage02)serviceDomain.attachmentId(s,context,{attachmentId:id})
         return m
       })
       const database = await db(),
@@ -292,6 +297,34 @@ export function createBrowserAdapter(app) {
     async upload(file, options = {}) { const r = await api.upload(file, options); await transact(s => { Object.assign(s.attachments[r.id], {stage01: true, uploadedAt: new Date().toISOString(), uploader: stage01.options(s, context).actor.name, status: '成功'}) }); return r },
     async attachment(p) { const id = await read(s => stage01.attachmentId(s, context, p)); const database = await db(); const blob = await req(database.transaction('blobs').objectStore('blobs').get(session + ':' + id)); if (!blob) throw new DomainError('本地附件已失效，请重新选择'); return {blob, ...(await read(s => s.attachments[id]))} },
     async accounts() { return read(s => s.stage01?.prepared && ['web','staff'].includes(app) ? [{id:'property-colleague',name:'陈晓',roles:[{id:'property',name:'物业管理员'}]}] : []) },
+  }
+
+  api.service = {
+    query: (table, filters) => read(s => serviceDomain.query(s, context, table, filters)),
+    record: (table, id) => read(s => serviceDomain.record(s, context, table, id)),
+    options: () => read(s => serviceDomain.options(s, context)),
+    overview: filters => read(s => serviceDomain.overview(s, context, filters)),
+    async command(name, p = {}) { const r = await transact(s => serviceDomain.command(s, context, name, p)); notify(); return r },
+    async auxiliary(name, p = {}) { const r = await transact(s => serviceDomain.auxiliary(s, context, name, p)); notify(); return r },
+    async reset() { await transact((s, blobs) => serviceDomain.reset(s, context, id => blobs.delete(session + ':' + id))); notify() },
+    async draft(key, data) { return api.draft('service:' + key, data) },
+    async upload(file, options = {}) {
+      await api.service.options()
+      if ((await read(s => s.service?.outcomes?.upload)) === "failure") throw new DomainError("上传失败，已保留所选文件与其他输入")
+      const r = await api.upload(file, options)
+      await transact(s => Object.assign(s.attachments[r.id], { stage02:true, uploadedAt:new Date().toISOString(), uploader:serviceDomain.options(s, context).actor.name, status:'成功', table:options.table || '', recordId:options.id || options.recordId || '', visibility:options.visibility || '业务可见', description:options.description || '', order:options.order || 0 }))
+      return { ...r, stage02:true, status:'成功' }
+    },
+    async attachment(p) {
+      const descriptor = await read(s => { const id=serviceDomain.attachmentId(s, context, p); return {id,meta:s.attachments[id]} })
+      let blob
+      if(descriptor.meta.base64) blob=new Blob([Uint8Array.from(atob(descriptor.meta.base64), c=>c.charCodeAt(0))], {type:descriptor.meta.type})
+      else if(descriptor.meta.text) blob=new Blob([descriptor.meta.text], {type:descriptor.meta.type || 'text/plain'})
+      else {const database=await db();blob=await req(database.transaction('blobs').objectStore('blobs').get(session+':'+descriptor.id))}
+      if(!blob)throw new DomainError('本地附件已失效，请重新选择')
+      return {...descriptor.meta,blob,name:descriptor.meta.name,type:descriptor.meta.type}
+    },
+    accounts: () => read(s => serviceDomain.accounts(s, context)),
   }
   return api
 }

@@ -1,0 +1,31 @@
+{
+  "run": "WEB-2026-11-07T04-45-15-204Z",
+  "base": "http://127.0.0.1:19220",
+  "session": "stage02-WEB-2026-11-07T04-45-15-204Z",
+  "selectedChecks": [
+    "executed-ruling-note-and-rule-version"
+  ],
+  "executedAt": "2026-11-07T04:45:23.934Z",
+  "results": [
+    {
+      "id": "executed-ruling-note-and-rule-version",
+      "acs": [
+        "AC02-035",
+        "AC02-037",
+        "AC02-042"
+      ],
+      "status": "PASS",
+      "detail": {
+        "sale": "S02-SALE-000114",
+        "noteOnly": true,
+        "fundsUnchanged": true,
+        "ruleVersion": "DEMO-ALLOC-V2",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T04-45-15-204Z/executed-ruling-note.png"
+      }
+    }
+  ],
+  "errors": [],
+  "blockedRequests": [],
+  "observed": {},
+  "scope": "Actual Web UI checks; legal Service helpers only prepare fixtures and inspect persisted outcomes. This report is not a full AC pass or owner acceptance."
+}

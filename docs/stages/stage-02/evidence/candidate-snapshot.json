@@ -1,0 +1,449 @@
+{
+  "candidate": "S02_2026-11-07T05-26-40-468Z",
+  "createdAt": "2026-11-07T05:26:40.468Z",
+  "workspace": "D:\\git\\daguanglu-community-prototype-stage02",
+  "branch": "stage/02-service-prototype",
+  "committedBaseline": "269fd854d1f16468ae7823bca30f8ec484962fa0",
+  "implementationUncommitted": true,
+  "contentManifestSha256": "66ab539925dded53ce2e20140f464c6fa43b79847c0bcb397386dec5382ed457",
+  "files": [
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "fb8b9e145c9da0b73ba0f21df8bf9008d858f514dfe577d4ddc2e38802c395ca",
+      "bytes": 1207
+    },
+    {
+      "path": "docs/stages/stage-02/ACCEPTANCE.md",
+      "sha256": "501f65bb74f380a3f8bb276b2a181dd18dc69badc0e67fb1eb2f8c17dd0f7cfc",
+      "bytes": 148979
+    },
+    {
+      "path": "docs/stages/stage-02/PLAN.md",
+      "sha256": "a579407a6f1f7de51bbac23c2b05ae22f1b3756eaeb64fd8b30996143fb6defc",
+      "bytes": 230882
+    },
+    {
+      "path": "docs/stages/stage-02/RESULT.md",
+      "sha256": "2432b71fdadbeaa7e733dac07c7703b4690ac7a9ca966ae3e447dbba664130b7",
+      "bytes": 32284
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/acceptance-execution.json",
+      "sha256": "b25d537fb44e1b8b081672ba44e64877080f55d1a4f56a76ef1e5c2aa25fcf65",
+      "bytes": 632118
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/browser-flows.json",
+      "sha256": "da8d7c68f4dc356fb49943a92d7ba1845c6266058ee7f5a4ba332aeeae443cbd",
+      "bytes": 156012
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/browser-regression.json",
+      "sha256": "3cb80cbe83205050d0c5418db7f2b7a858092862d4152ff6b4bdda059e9e4c93",
+      "bytes": 3420
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/browser-web-followup.json",
+      "sha256": "2de06498670e05bbc65380c20b35c64194be41d7bd057985f4477725a88a0479",
+      "bytes": 920
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/browser-web.json",
+      "sha256": "934b23862838c3bdb3ed10adacb90d76797e186832b5d9503ecc0b22c88d6873",
+      "bytes": 195133
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/build-artifacts.json",
+      "sha256": "8da88ba6d77d98740bcd971673b17a5ce85bbaca90e562b9f50899a29cd160aa",
+      "bytes": 167392
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/build-results.json",
+      "sha256": "2240c62eab6521ba93bd02b18789826836ade899299d7222846712e3328b3cd2",
+      "bytes": 4323
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/field-runtime-results.json",
+      "sha256": "daf861d5d76e505bc776f80126e5135795434cfe1a745d2c852dc654b64281a8",
+      "bytes": 18220701
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/public-rule-differences.json",
+      "sha256": "030973de64e43ad499d0f1b7408f61768372075b650fff804c9b580d59c673c2",
+      "bytes": 699
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/security-browser.json",
+      "sha256": "08e9d2d293fd5a10d227267c834a98c8034d4157bb0b2ab50dca6b18f4b927f5",
+      "bytes": 14885
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/source-protection-final.json",
+      "sha256": "41ea5401a7c0a6ae965bbbc0114730eb32b062a2cc1e2b3af4893f430eb73886",
+      "bytes": 3621
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/static-results.json",
+      "sha256": "1af767b6e20d385d69d4197d76d81d0776d7ed6ee8680dd51ba704ee2fa8ca3b",
+      "bytes": 1788
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/validation-impact.json",
+      "sha256": "cd19bd37bdedbdbb4094c71ce5f425f42c1029fd71e6766fef93d804ad1b40c2",
+      "bytes": 1463
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/wechat-results.json",
+      "sha256": "bc00981242a0860ea04f50881b5e996a3a9233e27f11befd469533f09acdcbe5",
+      "bytes": 2773
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages.json",
+      "sha256": "b53d2e9e3f9873427748322472d5eda175d836f98238fce2bf8cba8d85140302",
+      "bytes": 2753
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/action.vue",
+      "sha256": "f530af4a672053b6cdaac07f3800aca4ad7d27689b39f973e52edd761d08f5cd",
+      "bytes": 663
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/after-sale.vue",
+      "sha256": "f2b446166719c9154865049445e11e6a50d241e3d483fbef8cbee0a142226979",
+      "bytes": 671
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/aftersales.vue",
+      "sha256": "5271a64514238d96d7d6b7f12972b556b1e598c10c55c2f09ac264dcd62032e0",
+      "bytes": 671
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/evaluations.vue",
+      "sha256": "8a601d0e1c1aef9544e9bc4892bf4f247b945fcc54edc7b8aedc82a8ac43dfbb",
+      "bytes": 673
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/funds.vue",
+      "sha256": "e0c07d365473bd2f1e500135edd35d011113f04b113b0149dbc786670c947a71",
+      "bytes": 661
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/order.vue",
+      "sha256": "7ff733cec939d45aae156caf06b9ae1e0e51a24a3fa1f0816bc53095ca309084",
+      "bytes": 662
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/orders.vue",
+      "sha256": "e98eb1904566786d17dbc6e224a9f54adaa66d944f1c07aaf62252fc5ebcdeb5",
+      "bytes": 663
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/overview.vue",
+      "sha256": "2d9e5398dfb55c78b411c12758cdf59bd8aaa31de2021993f79d0583a23911a2",
+      "bytes": 665
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/personnel.vue",
+      "sha256": "5d3ed6f0cb7ca57075bfd8fee789a1d57663b6a75d69e4cdeb3ff43272658c86",
+      "bytes": 669
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/qualification.vue",
+      "sha256": "02f8e02a3ab035979954e50abedc252129104415837c5f2a48c9818f8472a555",
+      "bytes": 678
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/supply.vue",
+      "sha256": "29a1bcf0510ace4c4939437c1a8990fee3038bfac486854868842b10eec6e721",
+      "bytes": 665
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/verify.vue",
+      "sha256": "04476f7cd87102390e05da62cb92ed94316503129d306af68034a3c85510aaae",
+      "bytes": 663
+    },
+    {
+      "path": "miniapp/apps/merchant-miniapp/src/pages/service/workbench.vue",
+      "sha256": "d0874b8ac77125d615192e35dcf56bae7a1a910bed35807f4196a7d58bb6e891",
+      "bytes": 666
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages.json",
+      "sha256": "47670932b8d8c938800d48e7c4a4bcc91b306715ea79e1acee570f5aa7ac93dd",
+      "bytes": 7517
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/action.vue",
+      "sha256": "f530af4a672053b6cdaac07f3800aca4ad7d27689b39f973e52edd761d08f5cd",
+      "bytes": 663
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/after-sale.vue",
+      "sha256": "f2b446166719c9154865049445e11e6a50d241e3d483fbef8cbee0a142226979",
+      "bytes": 671
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/booking.vue",
+      "sha256": "e6ad1e7882fe3c36744acaa9fa6859666149f06d74cb0d3f8d25e4562c653121",
+      "bytes": 666
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/catalog.vue",
+      "sha256": "06df126480f54b0073518259a90d826a7171af940a1b5860f8011f307b8cd06e",
+      "bytes": 667
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/detail.vue",
+      "sha256": "c9415455f875a7970bdc97c95213744f08dd38dde4401f5bc683745a1a330e5b",
+      "bytes": 665
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/evaluation.vue",
+      "sha256": "9aec6a4ea02c4f1f7f15ecf0289721d64d294c11be3aee68902d9290be871d2f",
+      "bytes": 667
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/order.vue",
+      "sha256": "7ff733cec939d45aae156caf06b9ae1e0e51a24a3fa1f0816bc53095ca309084",
+      "bytes": 662
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/orders.vue",
+      "sha256": "e98eb1904566786d17dbc6e224a9f54adaa66d944f1c07aaf62252fc5ebcdeb5",
+      "bytes": 663
+    },
+    {
+      "path": "miniapp/apps/resident-miniapp/src/pages/service/voucher.vue",
+      "sha256": "605003d0a806f1bd0bca4115cb3bbd1d4ea084affafdee5b0ecf0dae7a23ad66",
+      "bytes": 664
+    },
+    {
+      "path": "miniapp/packages/foundation/DemoControl.vue",
+      "sha256": "2a2375864086b77779b650e9c17c0fcd9c02fcb7372da52fbef214073f6c4992",
+      "bytes": 8502
+    },
+    {
+      "path": "miniapp/packages/foundation/FoundationPage.vue",
+      "sha256": "efe8f8643bae3ab24cce140b6f68e9d816a5758396c6b71a102a8c714f513af7",
+      "bytes": 30562
+    },
+    {
+      "path": "miniapp/packages/service/Details.vue",
+      "sha256": "7f5cf7d7ab04d58ba88950a244001b9f90cdaea7a653eec10a4b3d9d1029cb8c",
+      "bytes": 11175
+    },
+    {
+      "path": "miniapp/packages/service/Evidence.vue",
+      "sha256": "7ead71252cca72022418cb0c10cb2a96264e7e2904b47a93b39909aaab52dee8",
+      "bytes": 12279
+    },
+    {
+      "path": "miniapp/packages/service/FieldGroup.vue",
+      "sha256": "9c21523d4293dadb11995df20beaa98774a63a16ec8c6eb146fbb3a1f66ca6b1",
+      "bytes": 17074
+    },
+    {
+      "path": "miniapp/packages/service/Picture.vue",
+      "sha256": "fcf76fd30217a8336eccf2fb1cafa16e120a7181a0209b368e4eb93bd49c4649",
+      "bytes": 2449
+    },
+    {
+      "path": "miniapp/packages/service/ServicePage.vue",
+      "sha256": "61f9a1cb893a96cae61e41e5a7499df73bc2e777557306b56fafc6c68d7d0dbf",
+      "bytes": 66473
+    },
+    {
+      "path": "miniapp/packages/service/SupplyEditor.vue",
+      "sha256": "1b3ec4337919d0260df9340b499fdab557539ed514ab81ec5bd83ad73bab0294",
+      "bytes": 8186
+    },
+    {
+      "path": "miniapp/packages/service/VoucherCode.vue",
+      "sha256": "e9025950ebc69986cbe9a9a98b51dab4803dfc80d20702a0719b6ed74a01971b",
+      "bytes": 2165
+    },
+    {
+      "path": "miniapp/packages/service/vendor-qr.d.ts",
+      "sha256": "a182168146022a9c0e98e81171749bea88d876ef271f0063b53d5c8afd4e8d61",
+      "bytes": 376
+    },
+    {
+      "path": "prototype-shared/service/aftersale.js",
+      "sha256": "40d1a8d778d884919189a2379ce3bb898b5ba949c9fba790a0acab8584a04976",
+      "bytes": 17226
+    },
+    {
+      "path": "prototype-shared/service/common.js",
+      "sha256": "4912cd3f144f064eab5b210152f6f8e350bfa12adc7d4a4ee35f1a7b83778dda",
+      "bytes": 18816
+    },
+    {
+      "path": "prototype-shared/service/fields.js",
+      "sha256": "456732f32a295b368c6d57ae3ba6d28f4c9b16c2cd4a6e0d053fbdd7b75db0b7",
+      "bytes": 430896
+    },
+    {
+      "path": "prototype-shared/service/funds.js",
+      "sha256": "f93bc48bc27844286a2d46e42cc3b54458b71eab7c48cf5d2b207bc4b647d92b",
+      "bytes": 13753
+    },
+    {
+      "path": "prototype-shared/service/index.js",
+      "sha256": "34cfce7352418aaf981668c2072b495bb7a23bed5c40b6af2cf9b358248a6fdb",
+      "bytes": 44894
+    },
+    {
+      "path": "prototype-shared/service/orders.js",
+      "sha256": "f7065192909852773148ea2cb88f90e47f9956f5f1036f184139364933b095c3",
+      "bytes": 31802
+    },
+    {
+      "path": "prototype-shared/service/scenarios.js",
+      "sha256": "b6aa9b3e88efdfe25299c60a2268f30ecd1399272113655971d8a2116f4a36f7",
+      "bytes": 11231
+    },
+    {
+      "path": "prototype-shared/service/seed.js",
+      "sha256": "2235937fec8ee73d36074dff8a04cf4e6c5acb1791027d5aae9e20356554a67f",
+      "bytes": 15624
+    },
+    {
+      "path": "prototype-shared/service/supply.js",
+      "sha256": "616fc86c06368a5d64cb42d94e89a96f9234cdc833fa6255cc2dfcd535c5deba",
+      "bytes": 25367
+    },
+    {
+      "path": "prototype-shared/storage-h5.js",
+      "sha256": "f4754a36af2330ceda5ded702b7ea6e08e303bef52bf5c1335733a1bf7e5bcdb",
+      "bytes": 14526
+    },
+    {
+      "path": "prototype-shared/storage-uni.js",
+      "sha256": "bee705f8fbfd0f8119f2b78df25d2a2e8d9d36611a6ab76b71ba73ae92c661ee",
+      "bytes": 10449
+    },
+    {
+      "path": "prototype-shared/types.d.ts",
+      "sha256": "6f4a5363b6718614889b0267aed559ae60dd0cff05bade20f3f7d3089e1b97de",
+      "bytes": 3925
+    },
+    {
+      "path": "scripts/browser-service-fields.mjs",
+      "sha256": "7e4a812557e5d2bf9add772516d1f4a3f72d90baee911b2756a6b9dd874b7933",
+      "bytes": 33071
+    },
+    {
+      "path": "scripts/browser-service-flows.mjs",
+      "sha256": "0b21687aab8c306718d86d7f4155387f4ed744ec20550a4ea594739010195296",
+      "bytes": 28958
+    },
+    {
+      "path": "scripts/browser-service-security.mjs",
+      "sha256": "428ffea6cc4b3377bbf4fa6f5a26cfa287b15f99eecf1b7bc2136a0a4008b874",
+      "bytes": 35230
+    },
+    {
+      "path": "scripts/browser-service-web.mjs",
+      "sha256": "cbaa2b008502c26740e80e8f752e8e5696bf02cb8dd31068264a3b79b8eb8fd5",
+      "bytes": 24476
+    },
+    {
+      "path": "scripts/browser-stage02-regression.mjs",
+      "sha256": "7d6465138cfee3f01c733891c9dbaaaa6b8d51cf699ec248dbe3757949f1f3ee",
+      "bytes": 5254
+    },
+    {
+      "path": "scripts/check-stage02.mjs",
+      "sha256": "f5388ab2b46a398be08785c367f0e212de0d2735f888b746e4d3b2a940bd81a7",
+      "bytes": 6348
+    },
+    {
+      "path": "scripts/create-service-fields.mjs",
+      "sha256": "c776d850556d54e1db7b55c49909cb879fca5405bdf7b4bf988297e46087575f",
+      "bytes": 2085
+    },
+    {
+      "path": "scripts/prepare-wechat.mjs",
+      "sha256": "b64af9258418a1bd4e27986701ddd2263c8f0caecc2654ff0c94065ce38a1f10",
+      "bytes": 1129
+    },
+    {
+      "path": "scripts/preview.mjs",
+      "sha256": "3144fb38843ae83f527d9ba30f1b2ff4126352498d23e0635b14f6d26733b9b6",
+      "bytes": 5209
+    },
+    {
+      "path": "scripts/snapshot-stage02.mjs",
+      "sha256": "e906a683789640dfc293395414cd37ea3e6f83f4ab8a2def905c474ff38b3f6a",
+      "bytes": 5133
+    },
+    {
+      "path": "scripts/summarize-service-validation.mjs",
+      "sha256": "540750d4af685960cf6718794f8d30183b4d6a176130180f7283123b7dd269ae",
+      "bytes": 7569
+    },
+    {
+      "path": "scripts/verify-builds.mjs",
+      "sha256": "15098ad3cbd114e47c4fda00b0d230ecc460060db1a4d7e6bbd42dae827f7b58",
+      "bytes": 4464
+    },
+    {
+      "path": "tests/service-adapters.test.mjs",
+      "sha256": "ef022d2f880cb4a17fa2ca2866d8075e6ee70c7d2b6f7dddd8cf38be256532f8",
+      "bytes": 5326
+    },
+    {
+      "path": "tests/service-variants.test.mjs",
+      "sha256": "2dd78ca29be920c26d5b3e3f018eea0ab10f6ff644b3bbfb9f615ea3c943e3d5",
+      "bytes": 34566
+    },
+    {
+      "path": "tests/service.test.mjs",
+      "sha256": "d23aa702e6cf5b7ce8a05397fb6796d5625d2e3209a7e04c4343804076bf1481",
+      "bytes": 58787
+    },
+    {
+      "path": "web/manager/src/App.vue",
+      "sha256": "501ae213301267922400cf3974649a3271191b61beadd956ecc41c360227f4a3",
+      "bytes": 17798
+    },
+    {
+      "path": "web/manager/src/components/service/ServiceDetail.vue",
+      "sha256": "43f0180908315822c03caf94e608b148d95a299a66d82689b8cb1192276f63b1",
+      "bytes": 20204
+    },
+    {
+      "path": "web/manager/src/components/service/ServiceEvidence.vue",
+      "sha256": "b7c4f87f9f4dce92037289fced33fb4acde26fc404fb1faaf7c52ea3f04e4e71",
+      "bytes": 10146
+    },
+    {
+      "path": "web/manager/src/components/service/ServiceFields.vue",
+      "sha256": "53b7e48aeed597aee0f17bc595ffc5b8743d3d618999cd010354a795b2ffef0d",
+      "bytes": 20030
+    },
+    {
+      "path": "web/manager/src/components/service/ServiceValues.vue",
+      "sha256": "5227c5fbf6e9e10f00ac845cab46f9d8dae1fbd41686467b04ebf45c8d6d8f4e",
+      "bytes": 4775
+    },
+    {
+      "path": "web/manager/src/components/service/model.js",
+      "sha256": "029bc4d9f386fbfb83b8d2ac3812b24e1266a2f9da52ad64013c4060266e9a3d",
+      "bytes": 8348
+    },
+    {
+      "path": "web/manager/src/main.js",
+      "sha256": "833504b61e89836597dd9d1d3857051b0b73170082e0ca38903d914470e99be4",
+      "bytes": 4143
+    },
+    {
+      "path": "web/manager/src/views/service/ServiceWorkspace.vue",
+      "sha256": "f71c5e557b4117f8f8d443f51dc2382597e0a4ca1daa9a18397e82671ec213d2",
+      "bytes": 38770
+    }
+  ],
+  "sourceProtection": "docs/stages/stage-02/evidence/source-protection-final.json",
+  "ownerAcceptance": "NOT_RUN",
+  "stagePass": false
+}

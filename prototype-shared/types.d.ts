@@ -9,6 +9,7 @@ export type BusinessCommand='save'|'apply'|'withdraw'|'review'|'profile'|'status
 export interface CommandResult{id:string;message:string}
 export interface Stage00Service{
  stage01:Stage01Service;
+ service:ServicePrototypeService;
  app:string;session:string;context():DemoContext;onChange(listener:()=>void):()=>void
  start():Promise<DemoInfo>;info():Promise<DemoInfo>;identity(account:string,role:string):Promise<DemoInfo>
  query(table:string,filters?:Record<string,any>):Promise<DemoRecord[]>;record(table:string,id:string):Promise<DemoRecord>
@@ -27,3 +28,6 @@ export interface Stage00Service{
 }
 
 export interface Stage01Service { query(table:string,filters?:Record<string,any>):Promise<DemoRecord[]>; record(table:string,id:string):Promise<any>; options():Promise<any>; overview():Promise<any>; command(name:string,p?:Record<string,any>):Promise<CommandResult>; auxiliary(name:string,p?:Record<string,any>):Promise<any>; importPreview(p:Record<string,any>):Promise<any>; reset():Promise<void>; upload(file:any,options?:{fail?:boolean}):Promise<any>; attachment(p:Record<string,any>):Promise<any>; accounts():Promise<any[]> }
+
+/** Stage02 isolated frontend service; no real payment or production API. */
+export interface ServicePrototypeService { query(table:string,filters?:Record<string,any>):Promise<DemoRecord[]>; record(table:string,id:string):Promise<any>; options():Promise<any>; overview(filters?:Record<string,any>):Promise<any>; command(name:string,p?:Record<string,any>):Promise<any>; auxiliary(name:string,p?:Record<string,any>):Promise<any>; reset():Promise<void>; draft(key:string,data?:Record<string,any>|null):Promise<any>; upload(file:any,options?:Record<string,any>):Promise<any>; attachment(p:Record<string,any>):Promise<any>; accounts():Promise<any[]> }

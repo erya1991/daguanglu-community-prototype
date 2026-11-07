@@ -1,0 +1,10 @@
+{
+  "observedAt": "2026-11-07T05:22:44.368Z",
+  "source": "D:\\git\\daguanglu-community-prototype\\AGENTS.md",
+  "target": "D:\\git\\daguanglu-community-prototype-stage02\\AGENTS.md",
+  "sourceSha256": "eb5f57de84e119006bee7f1ff84ce7f36dd04cd738f7a825e783ed430315b432",
+  "targetSha256": "21f6841ecb1b77b7ab0ef3ba3168eb2d187f3b96ff6fb1ec019a9b78fc5551fd",
+  "difference": "Source authorization paragraphs now describe separate Stage00 local delivery task; previous Stage01 authorization is marked historical. Long-term business/technical sections have no differences.",
+  "noRuleFileCopied": true,
+  "stage02GitAuthorization": "No staging, commit, push, merge or tag per current user instruction"
+}

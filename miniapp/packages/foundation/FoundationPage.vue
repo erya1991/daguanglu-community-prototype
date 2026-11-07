@@ -119,6 +119,7 @@ function open(mode: string, table = '', id = '', extra = '') {
         : `/pages/foundation/${table}/${mode === 'detail' ? 'detail' : mode === 'edit' ? 'edit' : 'index'}`
   uni.navigateTo({ url: path + (id ? '?id=' + encodeURIComponent(id) : '?') + extra })
 }
+function serviceEntry(page:string){uni.navigateTo({url:'/pages/service/'+page})}
 function stage01(path:string){uni.navigateTo({url:'/pages/stage01/'+path})}
 function tab(path: string) {
   uni.redirectTo({ url: path })
@@ -358,6 +359,9 @@ onUnmounted(() => {
         ><AppButton variant="quiet" @click="load">重新读取</AppButton></view
       ><text v-if="success" class="success-tip">{{ success }}</text
       ><view v-if="busy && !info" class="hint">正在读取演示数据…</view>
+
+      <view v-if="APP==='resident' && ['home','service','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">便民服务</text><text class="hint">入驻服务商 · 上门服务与预约到点</text><view class="s1-entry-grid"><button @click="serviceEntry('catalog')">发现服务</button><button @click="serviceEntry('orders')">我的服务订单</button></view></view>
+      <view v-if="APP==='merchant' && ['workbench','operation','order','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">服务经营</text><view class="s1-entry-grid"><template v-if="props.mode==='workbench'"><button @click="serviceEntry('workbench')">服务待办</button><button @click="serviceEntry('overview')">服务经营</button></template><template v-if="props.mode==='operation'"><button @click="serviceEntry('supply')">服务管理</button><button @click="serviceEntry('personnel')">服务人员</button><button @click="serviceEntry('evaluations')">服务评价</button></template><template v-if="props.mode==='order'"><button @click="serviceEntry('orders')">服务订单</button><button @click="serviceEntry('aftersales')">服务售后</button></template><template v-if="props.mode==='profile'"><button @click="serviceEntry('qualification')">服务经营资格</button><button @click="serviceEntry('funds')">服务资金</button></template></view></view>
       <view v-if="APP==='resident' && ['home','service','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业服务</text><view class="s1-entry-grid"><button @click="stage01('fees/index')">物业缴费</button><button @click="stage01('parking/index')">停车服务</button><button @click="stage01('repairs/index')">报事报修</button><button @click="stage01('hazards/index')">隐患随手拍</button><button @click="stage01('records/index')">业务记录</button></view></view><view v-if="APP==='staff' && ['workbench','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业办理</text><view class="s1-entry-grid"><button @click="stage01('tasks/index')">工单待办</button><button @click="stage01('reports/create')">现场上报</button><button @click="stage01('charges/index')">收费查询</button></view></view>
       <template v-if="props.mode === 'home'"
         ><view class="community-line"
@@ -490,10 +494,10 @@ onUnmounted(() => {
             props.mode === 'mall'
               ? '商城由原项目独立交付，本原型不重复演示交易全链路。'
               : props.mode === 'order'
-                ? '商品订单由原商城项目交付，服务订单在后续阶段实施。'
+                ? '商品订单由原商城项目交付；服务订单从上方入口办理。'
                 : props.mode === 'operation'
-                  ? '商品经营沿用原商城项目；后续服务入口在获准阶段增量接入。'
-                  : '当前可使用房屋关系、个人车辆和结果消息；预约、支付等业务待对应阶段。'
+                  ? '商品经营沿用原商城项目；服务项目、人员及评价从上方入口办理。'
+                  : '可使用上方便民服务完成预约，也可进入既有房屋与物业服务。'
           }}</text
           ><AppButton v-if="APP === 'resident'" variant="quiet" @click="open('list', 'relations')"
             >进入我的房屋</AppButton

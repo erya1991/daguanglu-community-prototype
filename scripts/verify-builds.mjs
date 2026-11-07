@@ -1,13 +1,22 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import crypto from 'node:crypto'
 import {spawnSync} from 'node:child_process'
-const stage=process.argv.includes('--stage01')?'stage-01':'stage-00', runtime=stage==='stage-01'?'stage01':'stage00'
+const stage=process.argv.includes('--stage02')?'stage-02':process.argv.includes('--stage01')?'stage-01':'stage-00', runtime=stage==='stage-02'?'stage02':stage==='stage-01'?'stage01':'stage00'
 const root=path.resolve(import.meta.dirname,'..'),run='BUILD_'+new Date().toISOString().replace(/[:.]/g,'-'),out=path.join(root,'.runtime',runtime,run)
 fs.mkdirSync(out,{recursive:true})
+// Preserve only this worktree's local developer-tool configuration before generated output is rebuilt.
+if(stage==='stage-02')for(const app of ['resident','merchant','staff'])for(const name of ['project.config.json','project.private.config.json']){const source=path.join(root,`miniapp/apps/${app}-miniapp/dist/build/mp-weixin`,name),saved=path.join(root,'.runtime/stage02/wechat',app,name);if(fs.existsSync(source)){fs.mkdirSync(path.dirname(saved),{recursive:true});fs.copyFileSync(source,saved)}}
 const sync=spawnSync(process.execPath,['miniapp/scripts/sync-shared.mjs'],{cwd:root,encoding:'utf8'});if(sync.status!==0)throw Error(sync.stderr)
 const jobs=[{id:'web',command:process.execPath,args:['.runtime/stage00/tools/yarn/bin/yarn.js','--cwd','web/manager','build'],cwd:root}]
 for(const app of ['resident','merchant','staff'])for(const platform of ['h5','mp-weixin'])jobs.push({id:app+'-'+platform,command:'npm.cmd',args:['run','build:'+platform,'--workspace=@daguanglu/'+app+'-miniapp'],cwd:path.join(root,'miniapp'),shell:true})
 for(const app of ['resident','merchant','staff'])jobs.push({id:app+'-types',command:process.execPath,args:['miniapp/node_modules/vue-tsc/bin/vue-tsc.js','--noEmit','-p',`miniapp/apps/${app}-miniapp/tsconfig.json`],cwd:root})
 const results=[]
 for(const job of jobs){const start=new Date(),r=spawnSync(job.command,job.args,{cwd:job.cwd,encoding:'utf8',shell:job.shell||false,maxBuffer:20*1024*1024,env:{...process.env,npm_config_cache:path.join(root,'.runtime/stage00/cache/npm'),YARN_CACHE_FOLDER:path.join(root,'.runtime/stage00/cache/yarn')}});const file=path.join(out,job.id+'.log');fs.writeFileSync(file,(r.stdout||'')+'\n'+(r.stderr||'')+(r.error?.stack||''));const result={id:job.id,command:[job.command,...job.args].join(' '),cwd:job.cwd,start:start.toISOString(),end:new Date().toISOString(),exit:r.status,status:r.status===0?'PASS':'FAIL',log:path.relative(root,file).replaceAll('\\','/')};results.push(result);fs.writeFileSync(path.join(out,'results.json'),JSON.stringify(results,null,2));console.log(job.id+': '+result.status)}
-fs.mkdirSync(path.join(root,'docs/stages',stage,'evidence'),{recursive:true});fs.writeFileSync(path.join(root,'docs/stages',stage,'evidence/build-results.json'),JSON.stringify({run,node:process.version,results},null,2)+'\n');process.exitCode=results.some(r=>r.status!=='PASS')?1:0
+if(stage==='stage-02'){const prepared=spawnSync(process.execPath,['scripts/prepare-wechat.mjs','--stage02'],{cwd:root,encoding:'utf8'});fs.writeFileSync(path.join(out,'wechat-local-config.log'),(prepared.stdout||'')+'\n'+(prepared.stderr||''));if(prepared.status!==0)process.exitCode=1}
+if(stage==='stage-02'){
+ const artifactRoots=[{id:'web',directory:'web/manager/dist'},...['resident','merchant','staff'].flatMap(app=>['h5','mp-weixin'].map(platform=>({id:app+'-'+platform,directory:'miniapp/apps/'+app+'-miniapp/dist/build/'+platform})))];
+ const artifacts=artifactRoots.map(item=>{const base=path.join(root,item.directory),files=[];function visit(folder){for(const entry of fs.readdirSync(folder,{withFileTypes:true})){const file=path.join(folder,entry.name);if(entry.isDirectory())visit(file);else if(entry.isFile())files.push({path:path.relative(base,file).replaceAll('\\','/'),bytes:fs.statSync(file).size,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')})}}if(fs.existsSync(base))visit(base);files.sort((a,b)=>a.path.localeCompare(b.path));return{...item,files,fileCount:files.length,treeSha256:crypto.createHash('sha256').update(files.map(f=>f.path+' '+f.sha256).join('\n')).digest('hex')}});
+ fs.mkdirSync(path.join(root,'docs/stages/stage-02/evidence'),{recursive:true});fs.writeFileSync(path.join(root,'docs/stages/stage-02/evidence/build-artifacts.json'),JSON.stringify({run,generatedAt:new Date().toISOString(),artifacts,scope:'Actual local generated output; no native interaction, real-device or deployment claim'},null,2)+'\n');
+}
+fs.mkdirSync(path.join(root,'docs/stages',stage,'evidence'),{recursive:true});fs.writeFileSync(path.join(root,'docs/stages',stage,'evidence/build-results.json'),JSON.stringify({run,node:process.version,results},null,2)+'\n');process.exitCode=(process.exitCode||results.some(r=>r.status!=='PASS'))?1:0

@@ -11,7 +11,7 @@
             menuTitle(t)
           }}</MenuItem></MenuGroup
         >
-        <MenuGroup v-if="info.actor.role==='property'" title="物业服务"><MenuItem v-for="entry in stage01Entries" :key="entry[0]" :name="entry[0]">{{entry[1]}}</MenuItem></MenuGroup><MenuItem name="messages">结果消息 <Badge :count="info.counts['未读结果消息数']" /></MenuItem>
+        <MenuGroup v-if="info.actor.role==='property'" title="物业服务"><MenuItem v-for="entry in stage01Entries" :key="entry[0]" :name="entry[0]">{{entry[1]}}</MenuItem></MenuGroup><MenuGroup v-for="g in serviceMenuGroups" :key="'service-'+g.title" :title="g.title"><MenuItem v-for="entry in g.entries" :key="entry.path" :name="entry.path">{{entry.title}}</MenuItem></MenuGroup><MenuItem name="messages">结果消息 <Badge :count="info.counts['未读结果消息数']" /></MenuItem>
       </Menu>
     </aside>
     <header class="main-header-con">
@@ -27,7 +27,7 @@
       </div>
       <div class="tags-con">
         <Breadcrumb
-          ><BreadcrumbItem>基础管理</BreadcrumbItem
+          ><BreadcrumbItem>{{ isStage02 ? '便民服务' : '基础管理' }}</BreadcrumbItem
           ><BreadcrumbItem>{{ pageTitle }}</BreadcrumbItem></Breadcrumb
         >
         <div class="header-context" v-if="!identityChanging">
@@ -80,9 +80,10 @@
           <p>会话：{{ info.session }}；种子：{{ info.version }}；复位代次：{{ info.generation }}</p></FormItem
         > </Form
       ><Alert data-field="demo:数据复位说明" type="warning"
-        >复位仅清除本原型当前会话的修改和本地附件，恢复虚构种子。其他会话和商城不受影响。</Alert
-      ><Button type="error" ghost @click="reset">复位当前会话</Button>
-      <div v-if="info.actor.role==='property'" class="s1"><h3>Stage01场景辅助</h3><p>演示价格、自然月期间、评价字典和附件限制均为可替换样例。</p><Select v-model="paymentMode" @on-change="stage01Mode"><Option value="normal">正常缴费</Option><Option value="unknown">支付结果未知</Option><Option value="pending">支付在途</Option><Option value="failure">付款失败</Option><Option value="reconcile">成功待核销</Option></Select><Checkbox v-model="uploadFailure" @on-change="uploadMode">下次上传失败</Checkbox><div class="s1-actions"><Button @click="sameHouse">准备同房多人专项</Button><Button @click="replayLast">回放最近付款回执</Button><Button @click="closeLast">回放原支付关闭结果</Button><Button @click="funds('duplicate')">准备重复收款事实</Button><Button @click="funds('refund')">准备已有退款事实</Button><Button @click="resetStage01">仅复位Stage01</Button></div></div>
+        >{{ isStage02 ? 'Stage02复位仅恢复当前会话便民服务数据和专属附件，保留Stage00/01及其他会话。' : '复位仅清除本原型当前会话的修改和本地附件，恢复虚构种子。其他会话和商城不受影响。' }}</Alert
+      ><Button v-if="!isStage02" type="error" ghost @click="reset">复位当前会话</Button>
+      <div v-if="!isStage02 && info.actor.role==='property'" class="s1"><h3>Stage01场景辅助</h3><p>演示价格、自然月期间、评价字典和附件限制均为可替换样例。</p><Select v-model="paymentMode" @on-change="stage01Mode"><Option value="normal">正常缴费</Option><Option value="unknown">支付结果未知</Option><Option value="pending">支付在途</Option><Option value="failure">付款失败</Option><Option value="reconcile">成功待核销</Option></Select><Checkbox v-model="uploadFailure" @on-change="uploadMode">下次上传失败</Checkbox><div class="s1-actions"><Button @click="sameHouse">准备同房多人专项</Button><Button @click="replayLast">回放最近付款回执</Button><Button @click="closeLast">回放原支付关闭结果</Button><Button @click="funds('duplicate')">准备重复收款事实</Button><Button @click="funds('refund')">准备已有退款事实</Button><Button @click="resetStage01">仅复位Stage01</Button></div></div>
+      <div v-if="isStage02" class="s1"><h3>Stage02场景辅助</h3><p>仅影响当前会话的便民服务演示事实，不操作真实资金。</p><Select v-model="serviceScenario"><Option v-for="name in serviceScenarios" :key="name" :value="name">{{name}}</Option></Select><div class="s1-actions"><Button @click="chooseServiceScenario">载入独立场景</Button><Button @click="resetService">仅复位Stage02</Button></div><div class="s1-actions"><label>可重放场景时间 <input type="datetime-local" v-model="serviceClock" /></label><Button @click="setServiceClock">设置场景时间</Button></div><p>仅推进演示场景时间，不改写已有业务发生时间。</p><label>只读演示返回版本</label><Select data-action="stage02-rule-version" v-model="serviceRuleVersion" @on-change="setServiceRuleVersion"><Option value="DEMO-ALLOC-V1">演示返回 V1</Option><Option value="DEMO-ALLOC-V2">演示返回 V2</Option></Select><p>仅切换后续新订单的演示快照版本；不提供商业费率配置，旧订单与原资金记录保留。</p><Select v-model="serviceFundKind"><Option value="payment">支付</Option><Option value="refund">退款</Option><Option value="split">分账</Option><Option value="rollback">回退</Option><Option value="save">保存</Option><Option value="upload">上传</Option></Select><Select v-model="serviceOutcome" @on-change="serviceMode"><Option value="normal">默认成功</Option><Option value="failure">失败</Option><Option value="unknown">结果未知</Option><Option value="pending">在途</Option></Select></div>
     </Modal>
   </div>
   <div v-else class="startup">
@@ -107,7 +108,7 @@ export default {
     context: {},
     catalog,
     stage01Entries: [['property/bills','物业费账单'],['property/payments','缴费记录与异常'],['parking/business','停车业务'],['parking/checks','停车核查'],['workorders/events','待核实事件'],['workorders/tasks','工单办理'],['workorders/overview','工单概况'],['workorders/repairs','报修反馈'],['workorders/hazards','隐患台账']],
-    paymentMode:'normal', uploadFailure:false,
+    paymentMode:'normal', uploadFailure:false, serviceScenario:'S02-BASE',serviceScenarios:['S02-BASE','S02-STATS'],serviceFundKind:'payment',serviceOutcome:'normal',serviceRuleVersion:'DEMO-ALLOC-V1',serviceClock:'2026-11-07T08:00',
 
     groups: [
       {
@@ -120,12 +121,14 @@ export default {
     ],
   }),
   computed: {
+    isStage02(){return service.session.startsWith('stage02-') || !!this.$route.meta.service},
+    serviceMenuGroups(){const role=this.info?.actor.role;const groups=[{title:'商户与合作管理',entries:[['qualifications','服务经营资格'],['personnel','服务人员']]},{title:'商品与服务运营',entries:[['categories','服务分类'],['review','服务审核']]},{title:'订单与履约管理',entries:[['orders','服务订单']]},{title:'售后与评价',entries:[['aftersales','服务售后'],['evaluations','服务评价']]},{title:'经营与资金',entries:[['overview','服务经营'],['funds','服务资金'],['exceptions','资金异常核查']]}];return groups.map(g=>({...g,entries:g.entries.filter(e=>e[0]==='categories'?role==='platform':role==='property').map(e=>({path:'service/'+e[0],title:e[1]}))})).filter(g=>g.entries.length)},
     table() {
-      if(this.$route.meta.stage01)return this.$route.path.slice(1)
+      if(this.$route.meta.service || this.$route.meta.stage01)return this.$route.path.slice(1)
       return this.$route.name === 'spaces' ? 'spaces' : this.$route.params.table || 'dashboard'
     },
     pageTitle() {
-      if(this.$route.meta.stage01)return this.$route.meta.title
+      if(this.$route.meta.service || this.$route.meta.stage01)return this.$route.meta.title
       return this.table === 'spaces' ? '社区房屋档案' : this.catalog[this.table]?.title || '基础工作台'
     },
     currentAccount() {
@@ -173,6 +176,7 @@ export default {
         const next = await service.info()
         const scopes = await service.scopes()
         if(next.actor.role==='property')next.accounts.push(...await service.stage01.accounts())
+        if(this.isStage02){const extras=await service.service.accounts();next.accounts.push(...extras.filter(a=>!next.accounts.some(x=>x.id===a.id)));const opts=await service.service.options();this.serviceRuleVersion=opts.ruleVersion||'DEMO-ALLOC-V1';this.serviceClock=String(opts.clock||'').slice(0,16);if(opts.scenarios?.length)this.serviceScenarios=opts.scenarios.map(x=>typeof x==='string'?x:x.id||x.name)}
         if (ticket !== this.refreshTicket) return
         if (
           this.info &&
@@ -213,7 +217,7 @@ export default {
         this.generation++
         this.$store.commit('identityChanged')
         await this.refresh(true)
-        this.navigate('dashboard')
+        this.navigate(this.isStage02?(role==='platform'?'service/categories':'service/orders'):'dashboard')
       } catch (e) {
         this.$Message.error(e.message)
         await this.refresh(true)
@@ -242,6 +246,11 @@ export default {
     async funds(kind){try{const rows=await service.stage01.query('payments');if(!rows.length)throw Error('尚无付款');await service.stage01.auxiliary('funds',{id:rows[rows.length-1]._id,kind});this.$Message.success('专项事实已准备')}catch(e){this.$Message.error(e.message)}},
     async closeLast(){try{const rows=await service.stage01.query('payments');await service.stage01.auxiliary('replay',{id:rows[rows.length-1]._id,outcome:'已关闭'});this.$Message.success('关单结果已处理')}catch(e){this.$Message.error(e.message)}},
     async replayLast(){try{const rows=await service.stage01.query('payments');if(!rows.length)throw Error('尚无付款记录');await service.stage01.auxiliary('replay',{id:rows[rows.length-1]._id});this.$Message.success('已按原支付回放')}catch(e){this.$Message.error(e.message)}},
+    async chooseServiceScenario(){try{await service.service.auxiliary('scenario',{name:this.serviceScenario});this.generation++;await this.refresh();this.$Message.success('场景已载入')}catch(e){this.$Message.error(e.message)}},
+    async setServiceClock(){try{await service.service.auxiliary('clock',{time:this.serviceClock+':00+08:00'});await this.refresh();this.$Message.success('场景时间已设置')}catch(e){this.$Message.error(e.message)}},
+    async setServiceRuleVersion(){try{await service.service.auxiliary('rule-version',{version:this.serviceRuleVersion});await this.refresh();this.$Message.success('后续新单的演示返回版本已设置')}catch(e){this.$Message.error(e.message)}},
+    async serviceMode(){try{await service.service.auxiliary('mode',{kind:this.serviceFundKind,outcome:this.serviceOutcome});this.$Message.success('下次返回场景已设置')}catch(e){this.$Message.error(e.message)}},
+    resetService(){this.$Modal.confirm({title:'仅复位Stage02？',content:'只恢复当前会话便民服务业务和专属附件，保留Stage00/01及其他会话。',onOk:async()=>{await service.service.reset();this.generation++;await this.refresh()}})},
     reset() {
       this.$Modal.confirm({
         title: '复位当前原型会话？',
