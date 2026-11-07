@@ -1,5 +1,6 @@
 import { actorFor, inScope, DomainError, clone } from "../core.js";
 export { clone, DomainError };
+export const isPropertyOperator = (a) => ["property", "platform"].includes(a.role);
 export const now = () => new Date().toISOString();
 export const day = () =>
   new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
@@ -40,13 +41,13 @@ export function domain(s) {
 }
 export function actor(s, ctx, write = false, finance = false) {
   const a = actorFor(s, ctx);
-  need(["property", "resident"].includes(a.role), "当前身份没有本阶段业务权限");
+  need(isPropertyOperator(a) || a.role === "resident", "当前身份没有本阶段业务权限");
   if (finance)
     need(
-      a.role === "property" && ctx.app === "web",
+      isPropertyOperator(a) && ctx.app === "web",
       "该操作仅在物业Web办理，管理端收费只读"
     );
-  if (write && a.role === "property")
+  if (write && isPropertyOperator(a))
     need(["web", "staff"].includes(ctx.app), "当前应用不能办理物业业务");
   return a;
 }
@@ -106,7 +107,7 @@ export function houseFor(s, a, id, payable = false) {
   return h;
 }
 export function visible(s, a, r, table) {
-  if (a.role === "property")
+  if (isPropertyOperator(a))
     return inScope(s, a, {
       _community: r._community,
       _estate: r._estate,
@@ -186,7 +187,7 @@ export function ownReport(s, a, id) {
   return get(s, a, "reports", id);
 }
 export function requireProperty(a) {
-  need(a.role === "property", "该操作仅由物业管理员办理");
+  need(isPropertyOperator(a), "该操作仅由物业管理员或平台管理员办理");
 }
 export function touch(s) {
   s.revision = (s.revision || 0) + 1;

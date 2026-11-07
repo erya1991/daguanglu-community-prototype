@@ -1,0 +1,17 @@
+{
+  "run": "R2_PROBE_2026-11-06T06-21-21-035Z",
+  "session": "R2_PROBE_2026-11-06T06-21-21-035Z",
+  "base": "http://127.0.0.1:19201",
+  "baseline": true,
+  "path": ".runtime/stage00-r2/R2_PROBE_2026-11-06T06-21-21-035Z",
+  "results": [
+    {
+      "id": "R2-01",
+      "name": "连续身份切换及关闭按钮、遮罩、Escape后页面仍可操作",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 7000ms exceeded.\n    at overlaysSettled (D:\\git\\daguanglu-community-prototype\\.runtime\\stage00-r2\\probe-close.mjs:51:46)\n    at D:\\git\\daguanglu-community-prototype\\.runtime\\stage00-r2\\probe-close.mjs:62:106\n    at async check (D:\\git\\daguanglu-community-prototype\\.runtime\\stage00-r2\\probe-close.mjs:40:9)\n    at async file:///D:/git/daguanglu-community-prototype/.runtime/stage00-r2/probe-close.mjs:53:1"
+    }
+  ],
+  "errors": [],
+  "external": []
+}

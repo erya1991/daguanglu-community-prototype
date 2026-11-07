@@ -11,12 +11,44 @@
     <div class="space-layout">
       <aside class="space-tree panel" aria-label="空间导航">
         <div class="space-tree-heading">
-          <strong>空间结构</strong
-          ><Button v-if="canCreateCommunity" size="small" @click="openEditor('communities')">新增社区</Button>
+          <strong>空间结构</strong>
         </div>
         <Input v-model="treeSearch" search placeholder="查找社区、楼栋或房间" aria-label="查找空间" />
-        <Tree :data="treeData" :render="renderNode" @on-select-change="select" @on-toggle-expand="toggle" />
-        <p v-if="!busy && !treeData[0].children.length" class="muted">当前没有可见空间</p>
+        <div class="space-tree-toolbar" data-space-tree-toolbar>
+          <Button
+            type="primary"
+            icon="md-add"
+            :disabled="!canAddChild(node)"
+            :data-space-add-child="node.key"
+            data-space-toolbar-child
+            @click="treeAction(node, 'child')"
+            >新增下级</Button
+          >
+          <Button
+            icon="md-copy"
+            :disabled="!canAddSibling(node)"
+            :data-space-add-sibling="node.key"
+            data-space-toolbar-sibling
+            @click="treeAction(node, 'sibling')"
+            >新增同级</Button
+          >
+        </div>
+        <div class="space-tree-current" data-space-toolbar-context :title="breadcrumb">
+          <span>当前节点</span><strong>{{ node.title }}</strong>
+          <Button
+            v-if="node.row"
+            size="small"
+            icon="ios-information-circle-outline"
+            title="查看节点详情"
+            aria-label="查看节点详情"
+            data-space-current-detail
+            @click="treeAction(node, 'view')"
+          />
+        </div>
+        <div class="space-tree-viewport" data-space-tree-viewport>
+          <Tree :data="treeData" :render="renderNode" @on-select-change="select" @on-toggle-expand="toggle" />
+          <p v-if="!busy && !treeData[0].children.length" class="muted">当前没有可见空间</p>
+        </div>
         <Spin v-if="busy" fix />
       </aside>
       <div class="space-main">
@@ -52,7 +84,7 @@
           :create-allowed="createAllowed"
           :create-label="createLabel"
           :scope-node="scope"
-          :context-label="breadcrumb"
+          :context-label="creationBreadcrumb"
           :path-for="locationFor"
           @refresh="refresh"
           @locate="locateRoom"
@@ -75,6 +107,20 @@
       :mask-closable="false"
       ><ImportPanel v-if="importOpen" :scope="scope" :scope-label="breadcrumb" @refresh="refresh"
     /></Modal>
+    <Modal v-model="rootNameOpen" title="编辑空间目录名称" :footer-hide="true" width="500">
+      <Alert v-if="rootNameError" type="error">{{ rootNameError }}</Alert>
+      <Form label-position="top"
+        ><FormItem label="目录名称" required
+          ><Input
+            v-model="rootNameValue"
+            placeholder="填写空间目录名称"
+            :disabled="rootNameSaving" /></FormItem
+      ></Form>
+      <div class="toolbar">
+        <Button type="primary" :loading="rootNameSaving" @click="saveRootName">保存</Button
+        ><Button @click="rootNameOpen = false">取消</Button>
+      </div>
+    </Modal>
   </section>
 </template>
 <script>
@@ -103,12 +149,23 @@ export default {
     importOpen: false,
     token: 0,
     editingTable: 'communities',
+    rootNameOpen: false,
+    rootNameValue: '',
+    rootNameError: '',
+    rootNameSaving: false,
     spaceNames,
   }),
   computed: {
     nodes() {
       const nodes = {
-        root: { key: 'root', title: '全部获准空间', table: 'root', id: '', parentKey: '', row: null },
+        root: {
+          key: 'root',
+          title: this.info.spaceRootName || '大光路社区',
+          table: 'root',
+          id: '',
+          parentKey: '',
+          row: null,
+        },
       }
       for (const table of spaceTables)
         for (const row of this.graph[table] || []) {
@@ -165,17 +222,33 @@ export default {
     module() {
       return this.category === 'space' ? 'houses' : this.category
     },
+    creationNode() {
+      return this.node.table === 'houses' ? this.nodes[this.node.parentKey] || this.nodes.root : this.node
+    },
+    creationBreadcrumb() {
+      return this.pathForNode(this.creationNode) || this.nodes.root.title
+    },
     resourceParent() {
-      return ['estates', 'buildings'].includes(this.node.table) ? this.scope : null
+      return ['estates', 'buildings', 'units'].includes(this.creationNode.table)
+        ? { table: this.creationNode.table, id: this.creationNode.id }
+        : null
     },
     resourceChoices() {
-      if (!['root', 'communities'].includes(this.node.table)) return []
+      const scope = this.creationNode
       return Object.values(this.nodes)
         .filter(
           (n) =>
-            ['estates', 'buildings'].includes(n.table) &&
+            ['estates', 'buildings', 'units'].includes(n.table) &&
             this.activeBranch(n) &&
-            (this.node.table === 'root' || n.row['所属社区'] === this.node.id),
+            (scope.table === 'root' ||
+              (scope.table === 'communities' && n.row['所属社区'] === scope.id) ||
+              (scope.table === 'estates' &&
+                (n.table === 'estates' ? n.id === scope.id : n.row['所属小区'] === scope.id)) ||
+              (scope.table === 'buildings' &&
+                (n.table === 'buildings'
+                  ? n.id === scope.id
+                  : n.table === 'units' && n.row['所属楼栋'] === scope.id)) ||
+              (scope.table === 'units' && n.table === 'units' && n.id === scope.id)),
         )
         .map((n) => ({
           table: n.table,
@@ -184,16 +257,16 @@ export default {
           context: {
             所属社区: n.row['所属社区'],
             所属小区: n.table === 'estates' ? n.id : n.row['所属小区'],
-            关联楼栋: n.table === 'buildings' ? n.id : '',
+            关联楼栋: n.table === 'buildings' ? n.id : n.table === 'units' ? n.row['所属楼栋'] : '',
+            所属单元: n.table === 'units' ? n.id : '',
           },
         }))
     },
     context() {
-      const c = spaceParents(this.node.table, this.node.row)
+      const c = spaceParents(this.creationNode.table, this.creationNode.row)
       if (this.category !== 'space') {
-        c['关联楼栋'] = this.node.table === 'buildings' ? this.node.id : ''
+        if (c['所属楼栋']) c['关联楼栋'] = c['所属楼栋']
         delete c['所属楼栋']
-        delete c['所属单元']
       }
       return c
     },
@@ -202,10 +275,8 @@ export default {
     },
     createAllowed() {
       return (
-        this.activeBranch(this.node) &&
-        (this.category === 'space'
-          ? this.node.table !== 'houses'
-          : !!this.resourceParent || this.resourceChoices.length > 0)
+        this.activeBranch(this.creationNode) &&
+        (this.category === 'space' ? true : !!this.resourceParent || this.resourceChoices.length > 0)
       )
     },
     canImport() {
@@ -214,15 +285,18 @@ export default {
     canCreateCommunity() {
       return this.info.actor.role !== 'property' && this.canWrite('communities')
     },
+    canEditRootName() {
+      return this.info.actor.role === 'platform'
+    },
     creationHint() {
-      if (!this.activeBranch(this.node))
-        return '当前节点或上级已停用，可查看历史；恢复启用后才能新增资源或导入。'
+      if (!this.activeBranch(this.creationNode))
+        return '当前所属位置已停用，可查看历史；恢复启用后才能新增资源。'
       if (this.category === 'space' && this.node.table === 'houses')
-        return '当前为房间本身；请从上级新增或使用左侧“新增同级”，导入请选择上级位置。'
-      if (this.category !== 'space' && ['units', 'houses'].includes(this.node.table))
-        return '当前节点没有直属设施或车位；新增资源请先选择小区或楼栋。'
+        return '新增房间沿用当前房间的上级位置，当前房间不作为容器；CSV导入请选择上级位置。'
+      if (this.category !== 'space' && this.node.table === 'houses')
+        return '当前房间不作为资源归属；新增资源将归属于它的单元，无单元时归属于楼栋。'
       return this.category !== 'space' && ['root', 'communities'].includes(this.node.table)
-        ? '汇总当前范围内资源；新增时请选择实际归属的小区或楼栋。'
+        ? '汇总当前范围内资源；新增时请选择实际归属的小区、楼栋或单元。'
         : ''
     },
   },
@@ -299,7 +373,7 @@ export default {
         key = 'root'
       }
       this.selected = key
-      if (navigate && this.$route.query.node !== key)
+      if (navigate && (this.$route.query.node || 'root') !== key)
         this.$router.replace({ path: '/spaces', query: key === 'root' ? {} : { node: key } })
     },
     select(selected, current) {
@@ -312,6 +386,7 @@ export default {
     },
     childTable(node) {
       return {
+        root: 'communities',
         communities: 'estates',
         estates: 'buildings',
         buildings: node.row?.['是否设单元'] === '是' ? 'units' : 'houses',
@@ -327,71 +402,93 @@ export default {
     },
     canAddChild(node) {
       const table = this.childTable(node)
+      if (node.table === 'root') return this.canCreateCommunity
       return !!table && this.canWrite(table) && this.activeBranch(node)
     },
     renderNode(h, { data }) {
+      const inactive = data.row?.['档案状态'] === '停用'
+      const icons = {
+        root: 'ios-folder-outline',
+        communities: 'md-map',
+        estates: 'md-home',
+        buildings: 'md-albums',
+        units: 'ios-grid-outline',
+        houses: 'ios-home-outline',
+      }
       const title = h(
-        'span',
+        'button',
         {
-          attrs: { 'data-space-node': data.key },
-          class: { 'space-node-disabled': data.row?.['档案状态'] === '停用' },
+          attrs: { type: 'button', 'data-space-node': data.key, title: this.pathForNode(data) || data.title },
+          class: { 'space-node-label': true, 'space-node-disabled': inactive },
+          on: {
+            click: (e) => {
+              e.stopPropagation()
+              this.choose(data.key)
+            },
+          },
         },
         [
-          data.title,
-          h(
-            'small',
-            data.row?.['档案状态'] === '停用'
-              ? ' 已停用'
-              : data.children?.length
-                ? ' (' + data.children.length + ')'
-                : '',
-          ),
+          h('Icon', { class: 'space-node-icon', props: { type: icons[data.table] }, attrs: { 'aria-hidden': 'true' } }),
+          h('span', { class: 'space-node-name' }, data.title),
+          inactive
+            ? h('small', { class: 'space-node-state' }, '已停用')
+            : data.children?.length
+              ? h('small', { class: 'space-node-count' }, '(' + data.children.length + ')')
+              : null,
         ],
       )
-      if (!data.row) return title
-      const actions = [
-        h('DropdownItem', { props: { name: 'view' } }, '查看详情'),
-        h('DropdownItem', { props: { name: 'sibling', disabled: !this.canAddSibling(data) } }, '新增同级'),
-      ]
-      if (this.childTable(data))
-        actions.push(
-          h('DropdownItem', { props: { name: 'child', disabled: !this.canAddChild(data) } }, '新增下级'),
-        )
-      actions.push(
-        h('DropdownItem', { props: { name: 'edit', disabled: !this.canWrite(data.table) } }, '编辑节点'),
-        h(
-          'DropdownItem',
-          { props: { name: 'status', disabled: !this.canWrite(data.table) } },
-          data.row['档案状态'] === '停用' ? '启用' : '停用',
-        ),
-      )
-      return h('span', { class: 'space-tree-node' }, [
+      const controls = []
+      const iconButton = (icon, label, attrs, action) => h('Button', {
+        class: 'space-node-action',
+        props: { size: 'small', icon },
+        attrs: { ...attrs, title: label, 'aria-label': label },
+        on: { click: (e) => { e.stopPropagation(); action() } },
+      })
+      if (data.table === 'root') {
+        if (this.canEditRootName)
+          controls.push(iconButton('ios-create-outline', '编辑根名称', { 'data-space-root-edit': 'root' }, () => this.openRootName()))
+      } else if (data.table !== 'houses' && this.canWrite(data.table)) {
+        controls.push(iconButton('ios-create-outline', '编辑' + data.title, { 'data-space-edit': data.key }, () => this.treeAction(data, 'edit')))
+        controls.push(iconButton(
+          inactive ? 'ios-checkmark-circle-outline' : 'ios-remove-circle-outline',
+          (inactive ? '启用' : '停用') + data.title,
+          { 'data-space-status': data.key },
+          () => this.treeAction(data, 'status'),
+        ))
+      }
+      return h('span', { class: { 'space-tree-node': true, 'is-current': data.key === this.selected } }, [
         title,
-        h(
-          'Dropdown',
-          {
-            props: { trigger: 'click', transfer: true, placement: 'bottom-end' },
-            on: { 'on-click': (action) => this.treeAction(data, action) },
-            nativeOn: { click: (e) => e.stopPropagation() },
-          },
-          [
-            h(
-              'Button',
-              {
-                props: { size: 'small', type: 'text' },
-                attrs: { 'data-space-actions': data.key, 'aria-label': data.title + '更多操作' },
-              },
-              '更多',
-            ),
-            h('DropdownMenu', { slot: 'list' }, actions),
-          ],
-        ),
+        controls.length ? h('span', {
+          class: 'space-node-tools',
+          style: { width: controls.length === 1 ? '32px' : '62px' },
+          attrs: { 'aria-label': '节点操作', 'aria-hidden': data.key !== this.selected ? 'true' : null },
+        }, data.key === this.selected ? controls : []) : null,
       ])
     },
     async openEditor(table, row = null, context = {}, label = '') {
       this.editingTable = table
       await this.$nextTick()
       this.$refs.nodeActions.edit(row, { context, label })
+    },
+    openRootName() {
+      if (!this.canEditRootName) return
+      this.rootNameValue = this.info.spaceRootName || '大光路社区'
+      this.rootNameError = ''
+      this.rootNameOpen = true
+    },
+    async saveRootName() {
+      this.rootNameSaving = true
+      this.rootNameError = ''
+      try {
+        const result = await service.command('space-root', { name: this.rootNameValue })
+        this.rootNameOpen = false
+        this.$Message.success(result.message || '目录名称已保存')
+        this.refresh()
+      } catch (e) {
+        this.rootNameError = e.message
+      } finally {
+        this.rootNameSaving = false
+      }
     },
     async treeAction(node, action) {
       if (action === 'sibling' && this.canAddSibling(node)) {
@@ -431,7 +528,15 @@ export default {
       this.treeSearch = ''
       this.choose(key)
     },
-    refresh() {
+    refresh(payload) {
+      if (
+        this.node.table === 'houses' &&
+        payload?.created &&
+        ['houses', 'facilities', 'parking'].includes(payload.table)
+      ) {
+        const parent = this.creationNode
+        if (parent && this.nodes[parent.key]) this.choose(parent.key)
+      }
       this.load()
       this.$emit('refresh')
     },

@@ -1,0 +1,50 @@
+[
+  {
+    "round": 0,
+    "id": "property-admin",
+    "masks": 0,
+    "wraps": 0,
+    "bodyOverflow": "visible",
+    "transferred": 4
+  },
+  {
+    "round": 0,
+    "id": "platform-admin",
+    "masks": 0,
+    "wraps": 0,
+    "bodyOverflow": "visible",
+    "transferred": 4
+  },
+  {
+    "round": 1,
+    "id": "property-admin",
+    "masks": 0,
+    "wraps": 0,
+    "bodyOverflow": "visible",
+    "transferred": 4
+  },
+  {
+    "round": 1,
+    "id": "platform-admin",
+    "masks": 0,
+    "wraps": 0,
+    "bodyOverflow": "visible",
+    "transferred": 4
+  },
+  {
+    "round": 2,
+    "id": "property-admin",
+    "masks": 0,
+    "wraps": 0,
+    "bodyOverflow": "visible",
+    "transferred": 4
+  },
+  {
+    "round": 2,
+    "id": "platform-admin",
+    "masks": 0,
+    "wraps": 0,
+    "bodyOverflow": "visible",
+    "transferred": 4
+  }
+]

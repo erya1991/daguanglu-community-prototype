@@ -1,0 +1,172 @@
+{
+  "run": "TREE_ACTIONS_2026-11-06T08-51-59-509Z-452",
+  "session": "TREE_ACTIONS_2026-11-06T08-51-59-509Z-452",
+  "base": "http://127.0.0.1:19201",
+  "runtime": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-51-59-509Z-452",
+  "only": "TA01",
+  "results": [
+    {
+      "id": "TA01",
+      "name": "双视口工具栏与树名称图标区域分离，左右布局可用",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "id": "TA01",
+      "width": 1366,
+      "layout": {
+        "tree": {
+          "left": 224,
+          "right": 564,
+          "top": 132.5,
+          "bottom": 638.5,
+          "width": 340
+        },
+        "toolbar": {
+          "left": 237,
+          "right": 551,
+          "top": 226.5,
+          "bottom": 271.5,
+          "width": 314
+        },
+        "list": {
+          "left": 237,
+          "right": 551,
+          "top": 315.5,
+          "bottom": 619.5,
+          "width": 314
+        },
+        "viewport": {
+          "left": 237,
+          "right": 551,
+          "top": 313.5,
+          "bottom": 621.5,
+          "width": 314
+        },
+        "search": {
+          "left": 237,
+          "right": 551,
+          "top": 182.5,
+          "bottom": 214.5,
+          "width": 314
+        },
+        "controlsInsideTree": false,
+        "inlineTextActions": []
+      },
+      "mainWidth": 760,
+      "glyphs": [
+        {
+          "key": "root",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "communities:C-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "estates:E-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "buildings:B-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "units:U-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "houses:H-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        }
+      ]
+    },
+    {
+      "id": "TA01",
+      "width": 1920,
+      "layout": {
+        "tree": {
+          "left": 224,
+          "right": 564,
+          "top": 202.5,
+          "bottom": 708.5,
+          "width": 340
+        },
+        "toolbar": {
+          "left": 237,
+          "right": 551,
+          "top": 296.5,
+          "bottom": 341.5,
+          "width": 314
+        },
+        "list": {
+          "left": 237,
+          "right": 551,
+          "top": 385.5,
+          "bottom": 689.5,
+          "width": 314
+        },
+        "viewport": {
+          "left": 237,
+          "right": 551,
+          "top": 383.5,
+          "bottom": 691.5,
+          "width": 314
+        },
+        "search": {
+          "left": 237,
+          "right": 551,
+          "top": 252.5,
+          "bottom": 284.5,
+          "width": 314
+        },
+        "controlsInsideTree": false,
+        "inlineTextActions": []
+      },
+      "mainWidth": 1314,
+      "glyphs": [
+        {
+          "key": "root",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "communities:C-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "estates:E-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "buildings:B-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "units:U-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        },
+        {
+          "key": "houses:H-A",
+          "content": "\"\"",
+          "fontFamily": "Ionicons"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "external": [],
+  "note": "独立QA会话；Web树操作布局与必要回归，未替代人工验收或微信验证"
+}

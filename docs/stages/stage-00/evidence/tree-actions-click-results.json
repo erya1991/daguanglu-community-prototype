@@ -1,0 +1,81 @@
+{
+  "run": "TREE_CLICK_2026-11-06T09-00-11-910Z-47808",
+  "session": "TREE_CLICK_2026-11-06T09-00-11-910Z-47808",
+  "base": "http://127.0.0.1:19201",
+  "runtime": ".runtime/tree-actions-click/TREE_CLICK_2026-11-06T09-00-11-910Z-47808",
+  "only": "TA03",
+  "clickOnly": true,
+  "results": [
+    {
+      "id": "TA03",
+      "name": "仅点击选中节点显示操作，悬停或仅聚焦不显示，选中后键盘操作可用",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "id": "TA03",
+      "selected": "estates:E-A",
+      "tools": [
+        "estates:E-A",
+        "estates:E-A"
+      ]
+    },
+    {
+      "id": "TA03",
+      "selected": "estates:E-A",
+      "tools": [
+        "estates:E-A",
+        "estates:E-A"
+      ]
+    },
+    {
+      "id": "TA03",
+      "selected": "estates:E-A",
+      "tools": [
+        "estates:E-A",
+        "estates:E-A"
+      ]
+    },
+    {
+      "id": "TA03",
+      "selected": "buildings:B-A",
+      "tools": [
+        "buildings:B-A",
+        "buildings:B-A"
+      ]
+    },
+    {
+      "id": "TA03",
+      "selected": "buildings:B-A",
+      "tools": [
+        "buildings:B-A",
+        "buildings:B-A"
+      ]
+    },
+    {
+      "id": "TA03",
+      "selected": "root",
+      "tools": [
+        "root"
+      ]
+    },
+    {
+      "id": "TA03",
+      "selected": "houses:H-A",
+      "tools": []
+    },
+    {
+      "id": "TA03",
+      "selected": "estates:E-A",
+      "tools": [
+        "estates:E-A",
+        "estates:E-A"
+      ]
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "external": [],
+  "note": "独立QA会话；Web树操作布局与必要回归，未替代人工验收或微信验证"
+}

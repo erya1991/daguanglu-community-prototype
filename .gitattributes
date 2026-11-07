@@ -17,3 +17,13 @@
 *.jpg binary
 *.jpeg binary
 *.zip binary
+
+# Generated Stage00 evidence records raw-byte SHA-256 values.
+# Preserve these artifacts without rewriting line endings.
+docs/stages/stage-00/evidence/r2*.json -text
+docs/stages/stage-00/evidence/r2/** -text
+docs/stages/stage-00/evidence/r2-followup/** -text
+docs/stages/stage-00/evidence/tree-actions*.json -text
+docs/stages/stage-00/evidence/tree-actions/** -text
+# PowerShell JSON captures use CRLF; retain ordinary whitespace checks.
+docs/stages/stage-00/evidence/r2-followup/logs/old-browser-evidence-hashes-*.json whitespace=trailing-space,space-before-tab,cr-at-eol

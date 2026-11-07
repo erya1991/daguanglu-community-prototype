@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-11-06T06:19:33.564Z",
+  "recordedAt": "2026-11-06T06:45:20.358Z",
   "baseline": {
     "date": "2026-11-06T06:08:34.214Z",
     "branch": "stage/01-property-parking-workorder",
@@ -9,11 +9,12 @@
   "checks": [
     {
       "name": "Git分支、HEAD及暂存区保护",
-      "status": "PASS",
+      "status": "FAIL",
+      "error": "Git状态与开工不同",
       "evidence": {
         "branch": "stage/01-property-parking-workorder",
-        "head": "234bf251f429e77e0996ce2854a237021c1914f4",
-        "indexEmpty": true
+        "head": "a00c14d33968a867a1770893c2588e82ae508864",
+        "index": ""
       }
     },
     {
@@ -56,8 +57,55 @@
       "status": "PASS",
       "evidence": {
         "added": [
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-06.json",
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-08.json",
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-10.json",
+          "docs/stages/stage-00/evidence/r2-scenario-results.json",
+          "docs/stages/stage-00/evidence/r2-snapshot.json",
+          "docs/stages/stage-00/evidence/r2/before-width/all-leaf-rooms.png",
+          "docs/stages/stage-00/evidence/r2/before/R2-01-failure.png",
+          "docs/stages/stage-00/evidence/r2/before/identity-failure-state.json",
+          "docs/stages/stage-00/evidence/r2/first-run/R2-01-failure.png",
+          "docs/stages/stage-00/evidence/r2/first-run/R2-04-failure.png",
+          "docs/stages/stage-00/evidence/r2/first-run/R2-07-failure.png",
+          "docs/stages/stage-00/evidence/r2/first-run/R2-09-failure.png",
+          "docs/stages/stage-00/evidence/r2/first-run/identity-failure-state.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-09-17-090Z.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-10-16-854Z.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-16-06-849Z.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-18-25-059Z.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-06-415Z-37936.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-08-395Z-35568.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-08-912Z-11964.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-56-976Z-14828.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-26-33-971Z-21908.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-26-35-507Z-55956.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-30-19-348Z-30896.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-44-03-367Z-23048.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-44-04-179Z-30964.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-44-04-296Z-53632.json",
+          "docs/stages/stage-00/evidence/r2/runs/R2_PROBE_2026-11-06T06-21-21-035Z.json",
+          "docs/stages/stage-00/evidence/r2/screenshots/all-leaf-rooms.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/csv-success-tree-list.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/csv-too-large-clears-preview.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/house-columns-1366.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/house-columns-1920.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/house-table-readability.json",
+          "docs/stages/stage-00/evidence/r2/screenshots/identity-observations.json",
+          "docs/stages/stage-00/evidence/r2/screenshots/identity-usable.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/inactive-node-history.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/resource-parent-selection.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/resource-row-actions.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/same-number-full-path.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/tree-structural-actions.png",
+          "docs/stages/stage-00/evidence/r2/screenshots/tree-with-and-without-unit.png",
           "docs/stages/stage-00/evidence/r2-browser-results-R2-01.json",
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-04.json",
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-07.json",
+          "docs/stages/stage-00/evidence/r2-browser-results-R2-09.json",
+          "docs/stages/stage-00/evidence/r2-browser-results.json",
           "docs/stages/stage-00/evidence/r2-build-results.json",
+          "docs/stages/stage-00/evidence/r2-static-results.json",
           "scripts/browser-r2.mjs",
           "tests/r2.test.mjs"
         ],
@@ -155,16 +203,16 @@
       "status": "PASS",
       "evidence": {
         "files": 30,
-        "tables": 735,
-        "localLinks": 1699,
+        "tables": 739,
+        "localLinks": 1734,
         "errors": [],
         "note": "No document or existing evidence files were changed by this check."
       }
     }
   ],
   "summary": {
-    "pass": 8,
-    "fail": 2,
+    "pass": 7,
+    "fail": 3,
     "blocked": 0
   },
   "ownerAcceptance": "OWNER_RETEST_PENDING",

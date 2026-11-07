@@ -1,0 +1,49 @@
+{
+  "actor": "平台管理员 · 平台管理员\n 演示身份",
+  "app": {
+    "control": false,
+    "account": "platform-admin"
+  },
+  "wraps": [
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "演示身份与辅助工具"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "新增房间（房屋）"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "房间（房屋）详情"
+    },
+    {
+      "display": "none",
+      "visibility": "visible"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "新增社区档案"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "社区档案详情"
+    },
+    {
+      "display": "none",
+      "visibility": "visible"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "房间（房屋）导入"
+    }
+  ],
+  "bodyOverflow": "hidden",
+  "transferred": 15
+}

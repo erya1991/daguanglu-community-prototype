@@ -1,0 +1,280 @@
+{
+  "recordedAt": "2026-11-06T07:26:35.996Z",
+  "baseline": {
+    "baselineSource": "docs/stages/stage-00/evidence/r2-snapshot.json",
+    "baselineDate": "2026-11-06T06:45:47.338Z",
+    "laterGitObservationAt": "2026-11-06T07:05:28.383Z",
+    "initialObservedHead": "a00c14d33968a867a1770893c2588e82ae508864",
+    "laterObservedBaselineHead": "c3d51eb35e487a5677d463d7754ed646ae9f2ddd",
+    "branch": "stage/01-property-parking-workorder",
+    "files": 415,
+    "basis": "文件SHA-256继承前次R2收尾快照，非本轮开始即时全量快照；Git首次与后续读取分开记录。继承R2未提交成果不作为本轮新增改写。"
+  },
+  "checks": [
+    {
+      "name": "Git分支、首次HEAD及空暂存区保护",
+      "status": "FAIL",
+      "error": "当前Git状态与首次实际读取的保护目标不同",
+      "evidence": {
+        "branch": "stage/01-property-parking-workorder",
+        "initialObservedHead": "a00c14d33968a867a1770893c2588e82ae508864",
+        "laterObservedBaselineHead": "c3d51eb35e487a5677d463d7754ed646ae9f2ddd",
+        "currentHead": "c3d51eb35e487a5677d463d7754ed646ae9f2ddd",
+        "index": "",
+        "indexEmpty": true,
+        "note": "首次实际读取为a00；before.json是在07:05再次读取Git并继承前次文件摘要。并行任务c3d51仅修改Stage01 REQUIREMENTS字段标题；没有执行回滚、暂存或其他Git写入。"
+      }
+    },
+    {
+      "name": "继承415文件摘要中全部本轮范围外文件保持",
+      "status": "FAIL",
+      "error": "范围外继承文件发生变化，未撤销或覆盖",
+      "evidence": {
+        "compared": 392,
+        "diff": [
+          "docs/stages/stage-01/REQUIREMENTS.md"
+        ],
+        "allowedChanged": [
+          "README.md",
+          "docs/stages/stage-00/ACCEPTANCE.md",
+          "docs/stages/stage-00/PLAN.md",
+          "docs/stages/stage-00/REQUIREMENTS.md",
+          "docs/stages/stage-00/RESULT.md",
+          "prototype-shared/core.js",
+          "prototype-shared/r1-migration.js",
+          "prototype-shared/spaces.js",
+          "prototype-shared/stage01/common.js",
+          "prototype-shared/stage01/index.js",
+          "prototype-shared/stage01/payments.js",
+          "prototype-shared/stage01/ui.js",
+          "prototype-shared/stage01/workorders.js",
+          "prototype-shared/types.d.ts",
+          "scripts/browser-r2.mjs",
+          "tests/r1.test.mjs",
+          "tests/r2.test.mjs",
+          "tests/stage01.test.mjs",
+          "web/manager/src/App.vue",
+          "web/manager/src/components/FieldEditor.vue",
+          "web/manager/src/styles/stage00.scss",
+          "web/manager/src/views/SpaceArchive.vue",
+          "web/manager/src/views/Workspace.vue"
+        ],
+        "basis": "docs/stages/stage-00/evidence/r2-snapshot.json",
+        "baselineDate": "2026-11-06T06:45:47.338Z"
+      }
+    },
+    {
+      "name": "Stage01四文档、未授权代码测试脚本和既有证据保持",
+      "status": "FAIL",
+      "error": "Stage01受保护内容与继承摘要不同；纯权限源码差异已获本轮授权，四文档未获修改授权",
+      "evidence": {
+        "total": 89,
+        "authorizedPurePermissionAndTestFiles": [
+          {
+            "file": "prototype-shared/stage01/common.js",
+            "changed": true
+          },
+          {
+            "file": "prototype-shared/stage01/index.js",
+            "changed": true
+          },
+          {
+            "file": "prototype-shared/stage01/payments.js",
+            "changed": true
+          },
+          {
+            "file": "prototype-shared/stage01/ui.js",
+            "changed": true
+          },
+          {
+            "file": "prototype-shared/stage01/workorders.js",
+            "changed": true
+          },
+          {
+            "file": "tests/stage01.test.mjs",
+            "changed": true
+          }
+        ],
+        "protected": 83,
+        "categories": {
+          "documents": {
+            "compared": 4,
+            "unchanged": 3,
+            "changed": [
+              "docs/stages/stage-01/REQUIREMENTS.md"
+            ]
+          },
+          "existingEvidence": {
+            "compared": 18,
+            "unchanged": 18,
+            "changed": []
+          },
+          "otherCodeTestsScripts": {
+            "compared": 61,
+            "unchanged": 61,
+            "changed": []
+          }
+        },
+        "diff": [
+          "docs/stages/stage-01/REQUIREMENTS.md"
+        ]
+      }
+    },
+    {
+      "name": "新增可见文件仅为本轮已授权测试、浏览器驱动或证据",
+      "status": "PASS",
+      "evidence": {
+        "inheritedSnapshotSelfExcludedFromItsOwnHashes": "docs/stages/stage-00/evidence/r2-snapshot.json",
+        "added": [
+          "docs/stages/stage-00/evidence/r2-followup-browser-results-R2-F04.json",
+          "docs/stages/stage-00/evidence/r2-followup-browser-results.json",
+          "docs/stages/stage-00/evidence/r2-followup-build-results.json",
+          "docs/stages/stage-00/evidence/r2-followup-regression-R2-01.json",
+          "docs/stages/stage-00/evidence/r2-followup-regression-R2-11.json",
+          "docs/stages/stage-00/evidence/r2-followup-regression-R2-12.json",
+          "docs/stages/stage-00/evidence/r2-followup-scenario-results.json",
+          "docs/stages/stage-00/evidence/r2-followup-snapshot.json",
+          "docs/stages/stage-00/evidence/r2-followup-static-results.json",
+          "docs/stages/stage-00/evidence/r2-followup/logs/old-browser-evidence-hashes-after.json",
+          "docs/stages/stage-00/evidence/r2-followup/logs/old-browser-evidence-hashes-before.json",
+          "docs/stages/stage-00/evidence/r2-followup/runs/R2F_2026-11-06T07-18-02-027Z-44464.json",
+          "docs/stages/stage-00/evidence/r2-followup/runs/R2F_2026-11-06T07-18-02-027Z-53044.json",
+          "docs/stages/stage-00/evidence/r2-followup/runs/R2F_2026-11-06T07-18-04-944Z-8780.json",
+          "docs/stages/stage-00/evidence/r2-followup/runs/R2_FOLLOWUP_2026-11-06T07-20-10-908Z-11004.json",
+          "docs/stages/stage-00/evidence/r2-followup/runs/R2_FOLLOWUP_2026-11-06T07-22-33-504Z-28936.json",
+          "docs/stages/stage-00/evidence/r2-followup/runs/R2_FOLLOWUP_2026-11-06T07-24-32-151Z-54240.json",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F01-platform-menus.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F02-tree-1366.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F02-tree-1920.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F03-root-persistence.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F04-childB.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F04-childU.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F04-locked-parents-childB.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F04-locked-parents-childU.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F05-house-row-actions.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F06-hB.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F06-hH.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/F07-unit-resource-location.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/csv-success-tree-list.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/csv-too-large-clears-preview.png",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/identity-observations.json",
+          "docs/stages/stage-00/evidence/r2-followup/screenshots/identity-usable.png",
+          "scripts/browser-r2-followup.mjs",
+          "tests/r2-followup.test.mjs"
+        ],
+        "outside": []
+      }
+    },
+    {
+      "name": "所有已有锁文件及依赖声明保持",
+      "status": "PASS",
+      "evidence": {
+        "compared": 9,
+        "diff": []
+      }
+    },
+    {
+      "name": "Stage00字段24表295行六列逐项一致且无新增字典",
+      "status": "PASS",
+      "evidence": {
+        "tables": 24,
+        "fields": 295,
+        "columns": 6,
+        "historicTables": 23,
+        "historicFields": 287,
+        "catalogUnchanged": true,
+        "resourceUnitOwnership": "所属单元与社区/小区/楼栋是既有归属的投影，独立资源仍使用所属空间字段，未增加字段表或字典",
+        "diff": []
+      }
+    },
+    {
+      "name": "三个微信产物usingComponents闭合且无H5存储运行链",
+      "status": "PASS",
+      "evidence": [
+        {
+          "app": "resident",
+          "componentReferences": 68,
+          "storageChainFiles": 14,
+          "h5Storage": false
+        },
+        {
+          "app": "merchant",
+          "componentReferences": 18,
+          "storageChainFiles": 14,
+          "h5Storage": false
+        },
+        {
+          "app": "staff",
+          "componentReferences": 51,
+          "storageChainFiles": 14,
+          "h5Storage": false
+        }
+      ]
+    },
+    {
+      "name": "源码真实接口、绝对跨仓依赖及链接隔离",
+      "status": "PASS",
+      "evidence": {
+        "files": 222,
+        "violations": [],
+        "note": "仅静态模式检查；实际浏览器网络观察、微信工具和人工验收分别记录。"
+      }
+    },
+    {
+      "name": "商城三源仓与已有只读保护快照对照",
+      "status": "PASS",
+      "evidence": {
+        "source": ".runtime/stage00/source-protection-before.json",
+        "note": "沿用历史保护快照，不冒充本轮新即时源仓快照。",
+        "results": [
+          {
+            "path": "D:/git/daguanglu-p0/smart-community-miniapp",
+            "head": "8f15eed1255222ff9178b529d7a3039bfd67fab6",
+            "headUnchanged": true,
+            "statusUnchanged": true,
+            "indexUnchanged": true,
+            "trackedFiles": 452,
+            "hashMismatches": []
+          },
+          {
+            "path": "D:/git/daguanglu-p0/lilishop-ui",
+            "head": "23dfcffd4205fb893d70dcc3fa7b79843616f16b",
+            "headUnchanged": true,
+            "statusUnchanged": true,
+            "indexUnchanged": true,
+            "trackedFiles": 1456,
+            "hashMismatches": []
+          },
+          {
+            "path": "D:/git/daguanglu-p0/project-ops",
+            "head": "156f35bfcc5644f0aa11b3d61555942c6a2497f9",
+            "headUnchanged": true,
+            "statusUnchanged": true,
+            "indexUnchanged": true,
+            "trackedFiles": 208,
+            "hashMismatches": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "全docs Markdown表列数与本地引用只读检查",
+      "status": "PASS",
+      "evidence": {
+        "files": 30,
+        "tables": 746,
+        "localLinks": 1744,
+        "errors": [],
+        "note": "仅只读检查，不运行会覆盖Stage01证据的脚本。"
+      }
+    }
+  ],
+  "summary": {
+    "pass": 7,
+    "fail": 3,
+    "blocked": 0
+  },
+  "ownerAcceptance": "OWNER_RETEST_PENDING",
+  "stage": "NOT_STAGE_PASS",
+  "gitWritesByThisScript": false
+}

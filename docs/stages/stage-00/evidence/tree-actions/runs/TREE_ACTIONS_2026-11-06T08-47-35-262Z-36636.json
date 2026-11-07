@@ -1,0 +1,189 @@
+{
+  "run": "TREE_ACTIONS_2026-11-06T08-47-35-262Z-36636",
+  "session": "TREE_ACTIONS_2026-11-06T08-47-35-262Z-36636",
+  "base": "http://127.0.0.1:19201",
+  "runtime": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-47-35-262Z-36636",
+  "only": null,
+  "results": [
+    {
+      "id": "TA01",
+      "name": "双视口工具栏与树名称图标区域分离，左右布局可用",
+      "status": "PASS"
+    },
+    {
+      "id": "TA02",
+      "name": "点击名称选中高亮，各层新增按钮及只读权限匹配",
+      "status": "PASS"
+    },
+    {
+      "id": "TA03",
+      "name": "图标悬停及键盘焦点可达，编辑启停不误选中或展开，房间无操作",
+      "status": "PASS"
+    },
+    {
+      "id": "TA04",
+      "name": "根名称图标编辑不改变当前选中和展开，保存后持久且可恢复",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 9000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-space-root-edit=\"root\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" title=\"编辑根名称\" aria-label=\"编辑根名称\" data-space-root-edit=\"root\" class=\"ivu-btn ivu-btn-default ivu-btn-small ivu-btn-icon-only space-node-action\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"ivu-spin ivu-spin-default ivu-spin-fix fade-leave-active fade-leave-to\">…</div> from <div class=\"space-main\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"ivu-spin ivu-spin-default ivu-spin-fix fade-leave-active fade-leave-to\">…</div> from <div class=\"space-main\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <span class=\"space-tree-node\">…</span> intercepts pointer events\u001b[22m\n\u001b[2m  16 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <span class=\"space-tree-node\">…</span> intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-tree-actions.mjs:156:22\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-tree-actions.mjs:52:5)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-tree-actions.mjs:151:1"
+    },
+    {
+      "id": "TA05",
+      "name": "独立新增下级工具栏实际新建楼栋和单元，上级名称仍禁用带入",
+      "status": "PASS"
+    },
+    {
+      "id": "TA06",
+      "name": "图标停用恢复保留历史与下级引用，停用节点可选且新增下级禁用",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 9000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-space-status=\"buildings:BUI-00101\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" title=\"停用树操作验证楼\" aria-label=\"停用树操作验证楼\" data-space-status=\"buildings:BUI-00101\" class=\"ivu-btn ivu-btn-default ivu-btn-small ivu-btn-icon-only space-node-action\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <span class=\"space-tree-node\">…</span> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <span class=\"space-tree-node\">…</span> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    17 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <span class=\"space-tree-node\">…</span> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-tree-actions.mjs:173:21\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-tree-actions.mjs:52:5)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-tree-actions.mjs:170:1"
+    },
+    {
+      "id": "TA07",
+      "name": "本次浏览器全过程无页面异常、控制台错误或外部请求",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "id": "TA01",
+      "width": 1366,
+      "layout": {
+        "tree": {
+          "left": 224,
+          "right": 564,
+          "top": 202.5,
+          "bottom": 708.5,
+          "width": 340
+        },
+        "toolbar": {
+          "left": 237,
+          "right": 551,
+          "top": 296.5,
+          "bottom": 341.5,
+          "width": 314
+        },
+        "list": {
+          "left": 237,
+          "right": 551,
+          "top": 385.5,
+          "bottom": 689.5,
+          "width": 314
+        },
+        "viewport": {
+          "left": 237,
+          "right": 551,
+          "top": 383.5,
+          "bottom": 691.5,
+          "width": 314
+        },
+        "search": {
+          "left": 237,
+          "right": 551,
+          "top": 252.5,
+          "bottom": 284.5,
+          "width": 314
+        },
+        "controlsInsideTree": false,
+        "inlineTextActions": []
+      },
+      "mainWidth": 760
+    },
+    {
+      "id": "TA01",
+      "width": 1920,
+      "layout": {
+        "tree": {
+          "left": 224,
+          "right": 564,
+          "top": 202.5,
+          "bottom": 708.5,
+          "width": 340
+        },
+        "toolbar": {
+          "left": 237,
+          "right": 551,
+          "top": 296.5,
+          "bottom": 341.5,
+          "width": 314
+        },
+        "list": {
+          "left": 237,
+          "right": 551,
+          "top": 385.5,
+          "bottom": 689.5,
+          "width": 314
+        },
+        "viewport": {
+          "left": 237,
+          "right": 551,
+          "top": 383.5,
+          "bottom": 691.5,
+          "width": 314
+        },
+        "search": {
+          "left": 237,
+          "right": 551,
+          "top": 252.5,
+          "bottom": 284.5,
+          "width": 314
+        },
+        "controlsInsideTree": false,
+        "inlineTextActions": []
+      },
+      "mainWidth": 1314
+    },
+    {
+      "id": "TA02",
+      "key": "root",
+      "child": true,
+      "sibling": false,
+      "context": "当前节点\n大光路社区"
+    },
+    {
+      "id": "TA02",
+      "key": "communities:C-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n青禾示例社区"
+    },
+    {
+      "id": "TA02",
+      "key": "estates:E-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n青禾示例花园"
+    },
+    {
+      "id": "TA02",
+      "key": "buildings:B-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n01幢"
+    },
+    {
+      "id": "TA02",
+      "key": "buildings:B-N",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n02幢"
+    },
+    {
+      "id": "TA02",
+      "key": "units:U-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n1单元"
+    },
+    {
+      "id": "TA02",
+      "key": "houses:H-A",
+      "child": false,
+      "sibling": true,
+      "context": "当前节点\n0101室"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "external": [],
+  "note": "独立QA会话；Web树操作布局与必要回归，未替代人工验收或微信验证"
+}

@@ -1,0 +1,21 @@
+FAIL R2-01 page.waitForFunction: Timeout 7000ms exceeded.
+PASS R2-02 树层级、展开收起、同名房间与无单元模式
+PASS R2-03 左树新增同级下级、节点编辑与同一房间表单
+FAIL R2-04 locator.fill: Timeout 7000ms exceeded.
+Call log:
+[2m  - waiting for locator('.ivu-modal-wrap:visible').filter({ has: locator('.ivu-modal-header-inner').filter({ hasText: '受控状态变更' }) }).last().locator('textarea')[22m
+
+PASS R2-05 每一层始终显示三个资源页签，单元房间资源正常空态
+PASS R2-06 社区至房间均为全部末级房屋，分页无遗漏无重复且切范围清筛选
+FAIL R2-07 locator.waitFor: Timeout 7000ms exceeded.
+Call log:
+[2m  - waiting for locator('.space-main') to be visible[22m
+
+PASS R2-08 完整所属路径区分同名房间，无单元不显示假单元
+FAIL R2-09 locator.click: Timeout 7000ms exceeded.
+Call log:
+[2m  - waiting for locator('.ivu-modal-wrap:visible').filter({ has: locator('.ivu-modal-header-inner').filter({ hasText: '新增车位资源' }) }).last().locator('.ivu-form-item').filter({ has: locator('.ivu-modal-wrap:visible').filter({ has: locator('.ivu-modal-header-inner').filter({ hasText: '新增车位资源' }) }).last().locator('.ivu-form-item-label').filter({ hasText: '实际所属空间' }) }).locator('.ivu-select-selection')[22m
+
+PASS R2-10 列表操作栏办理、空间详情只读，关闭详情保留范围筛选
+PASS R2-11 CSV两种楼栋、错误范围、超限清旧文件、失败重选与树表同步
+PASS R2-12 物业审核、住户和管理端共享结果、敏感与附件权限保持

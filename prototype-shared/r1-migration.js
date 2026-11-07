@@ -2,16 +2,31 @@
 export const R1_SCHEMA = 2
 const archives = ['communities', 'estates', 'buildings', 'units', 'houses', 'residents', 'applications', 'relations', 'missing', 'statistics', 'vehicles', 'facilities', 'parking', 'personnel', 'files', 'messages']
 const writable = archives.filter(t => !['applications', 'relations', 'messages'].includes(t))
+export const DEFAULT_SPACE_ROOT_NAME = '大光路社区'
+export const platformMenus = [...archives, 'orgs', 'accounts', 'roles']
+export const platformPermissions = [...platformMenus.map(t => 'read:' + t), ...[...writable, 'orgs', 'accounts', 'roles'].map(t => 'write:' + t), 'review:applications']
+export const platformSensitive = ['phone', 'proof', 'export']
+function upgradeDemoSettings(s) {
+  let changed = false
+  if (typeof s.spaceRootName !== 'string' || !s.spaceRootName.trim()) { s.spaceRootName = DEFAULT_SPACE_ROOT_NAME; changed = true }
+  const role = s.roles.find(r => r._id === 'platform')
+  if (role) for (const [field, grants] of [['可见菜单', platformMenus], ['允许操作', platformPermissions], ['敏感查看与导出权限', platformSensitive]]) {
+    const current = Array.isArray(role[field]) ? role[field] : []
+    const next = [...new Set([...current, ...grants])]
+    if (JSON.stringify(current) !== JSON.stringify(next)) { role[field] = next; changed = true }
+  }
+  return changed
+}
 export const defaultIdentity = { web: 'platform-admin', staff: 'property-admin', resident: 'resident-a', merchant: 'merchant' }
 const addRole = (s, id, name, menus, permissions, sensitive) => {
   if (!s.roles.some(r => r._id === id)) s.roles.push({ _id: id, _rev: 1, 角色名称: name, 角色说明: '当前原型默认身份；生产岗位另行确认', 可见菜单: menus, 允许操作: permissions, 敏感查看与导出权限: sensitive, 角色状态: '启用' })
 }
 export function upgradeState(s, fresh = false) {
-  if (s.schemaVersion === R1_SCHEMA) return false
   if (s.schemaVersion > R1_SCHEMA || s.version !== 'stage00-v1') throw Error('演示数据版本不兼容，未修改原数据；请保留当前会话并联系维护人员')
   for (const key of ['accounts', 'roles', 'communities', 'estates', 'buildings', 'units', 'houses', 'applications', 'relations', 'facilities', 'files', 'history'])
     if (!Array.isArray(s[key])) throw Error('演示数据结构不完整，升级未执行；原记录已保留，请勿复位')
   if (s.parking !== undefined && !Array.isArray(s.parking)) throw Error('车位数据结构异常，升级未执行')
+  if (s.schemaVersion === R1_SCHEMA) return upgradeDemoSettings(s)
   s.parking = s.parking || []
   const reads = archives.map(t => 'read:' + t), writes = writable.map(t => 'write:' + t)
   addRole(s, 'platform', '平台管理员', [...archives, 'orgs', 'accounts', 'roles'], [...reads, ...writes, 'review:applications', ...['orgs', 'accounts', 'roles'].flatMap(t => ['read:' + t, 'write:' + t])], ['export'])
@@ -29,8 +44,8 @@ export function upgradeState(s, fresh = false) {
   }
   for (const f of s.facilities) {
     if (!f._spaceTable) {
-      f._spaceTable = f['关联楼栋'] ? 'buildings' : f['所属小区'] ? 'estates' : 'communities'
-      f._spaceId = f['关联楼栋'] || f['所属小区'] || f['所属社区']
+      f._spaceTable = f['所属单元'] ? 'units' : f['关联楼栋'] ? 'buildings' : f['所属小区'] ? 'estates' : 'communities'
+      f._spaceId = f['所属单元'] || f['关联楼栋'] || f['所属小区'] || f['所属社区']
     }
   }
   // Transfer the former file-maintenance capability to the ordinary property role.
@@ -40,6 +55,7 @@ export function upgradeState(s, fresh = false) {
       if (Array.isArray(version[field]) && version[field].includes('file-manager') && !version[field].includes('property')) version[field].push('property')
   s.schemaVersion = R1_SCHEMA
   s.migrations = [...(s.migrations || []), { id: 'stage00-r1', at: new Date().toISOString(), preserved: 'houses, applications, relations, attachments and history' }]
+  upgradeDemoSettings(s)
   return true
 }
 export function ordinaryAccounts(s, app) {

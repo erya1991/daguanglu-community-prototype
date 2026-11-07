@@ -1,0 +1,130 @@
+{
+  "run": "R2_FOLLOWUP_2026-11-06T07-24-32-151Z-54240",
+  "session": "R2_FOLLOWUP_2026-11-06T07-24-32-151Z-54240",
+  "base": "http://127.0.0.1:19201",
+  "runtime": ".runtime/stage00-r2/R2_FOLLOWUP_2026-11-06T07-24-32-151Z-54240",
+  "only": "R2-F04",
+  "results": [
+    {
+      "id": "R2-F04",
+      "name": "结构同级下级保存，C/E/B逐字段真实名称且已知上级禁用",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "communities",
+      "record": "COM-00103",
+      "parents": []
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "communities",
+      "record": "COM-00104",
+      "parents": []
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "estates",
+      "record": "EST-00105",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "estates",
+      "record": "EST-00106",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "buildings",
+      "record": "BUI-00107",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "buildings",
+      "record": "BUI-00108",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "units",
+      "record": "UNI-00109",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ],
+        [
+          "所属楼栋",
+          "01幢"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "units",
+      "record": "UNI-00110",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ],
+        [
+          "所属楼栋",
+          "01幢"
+        ]
+      ]
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "external": [],
+  "note": "独立QA会话；自动浏览器验证不代替负责人或微信人工验收"
+}

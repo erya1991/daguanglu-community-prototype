@@ -1,0 +1,262 @@
+[
+  {
+    "width": 1366,
+    "body": {
+      "scrollLeft": 196,
+      "maxScroll": 196
+    },
+    "headerScroll": 196,
+    "columns": {
+      "建筑面积（㎡）": {
+        "header": {
+          "text": "建筑面积（㎡）",
+          "width": 120.109375,
+          "left": 848.5,
+          "right": 968.609375,
+          "textLeft": 866.5,
+          "textRight": 914.5,
+          "textFits": true,
+          "points": [
+            {
+              "x": 856.5,
+              "y": 678.5,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 908.5546875,
+              "y": 678.5,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 960.609375,
+              "y": 678.5,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            }
+          ]
+        },
+        "data": {
+          "text": "未维护／不适用",
+          "width": 120.109375,
+          "left": 848.5,
+          "right": 968.609375,
+          "textLeft": 866.5,
+          "textRight": 938.5,
+          "textFits": true,
+          "points": [
+            {
+              "x": 856.5,
+              "y": 729,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 908.5546875,
+              "y": 729,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 960.609375,
+              "y": 729,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            }
+          ]
+        }
+      },
+      "档案状态": {
+        "header": {
+          "text": "档案状态",
+          "width": 120.109375,
+          "left": 968.609375,
+          "right": 1088.71875,
+          "textLeft": 986.609375,
+          "textRight": 1034.609375,
+          "textFits": true,
+          "points": [
+            {
+              "x": 976.609375,
+              "y": 678.5,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1028.6640625,
+              "y": 678.5,
+              "uncovered": true,
+              "hit": null
+            },
+            {
+              "x": 1080.71875,
+              "y": 678.5,
+              "uncovered": true,
+              "hit": "ivu-table-column-IIr07y"
+            }
+          ]
+        },
+        "data": {
+          "text": "启用",
+          "width": 120.109375,
+          "left": 968.609375,
+          "right": 1088.71875,
+          "textLeft": 986.609375,
+          "textRight": 1010.609375,
+          "textFits": true,
+          "points": [
+            {
+              "x": 976.609375,
+              "y": 729,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1028.6640625,
+              "y": 729,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1080.71875,
+              "y": 729,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "width": 1920,
+    "body": {
+      "scrollLeft": 0,
+      "maxScroll": 0
+    },
+    "headerScroll": 0,
+    "columns": {
+      "建筑面积（㎡）": {
+        "header": {
+          "text": "建筑面积（㎡）",
+          "width": 192.140625,
+          "left": 1258.546875,
+          "right": 1450.6875,
+          "textLeft": 1276.546875,
+          "textRight": 1360.546875,
+          "textFits": true,
+          "points": [
+            {
+              "x": 1266.546875,
+              "y": 602.5,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1354.6171875,
+              "y": 602.5,
+              "uncovered": true,
+              "hit": null
+            },
+            {
+              "x": 1442.6875,
+              "y": 602.5,
+              "uncovered": true,
+              "hit": "ivu-table-column-FIaa5v"
+            }
+          ]
+        },
+        "data": {
+          "text": "未维护／不适用",
+          "width": 192.140625,
+          "left": 1258.546875,
+          "right": 1450.6875,
+          "textLeft": 1276.546875,
+          "textRight": 1360.546875,
+          "textFits": true,
+          "points": [
+            {
+              "x": 1266.546875,
+              "y": 645,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1354.6171875,
+              "y": 645,
+              "uncovered": true,
+              "hit": null
+            },
+            {
+              "x": 1442.6875,
+              "y": 645,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            }
+          ]
+        }
+      },
+      "档案状态": {
+        "header": {
+          "text": "档案状态",
+          "width": 192.140625,
+          "left": 1450.6875,
+          "right": 1642.828125,
+          "textLeft": 1468.6875,
+          "textRight": 1516.6875,
+          "textFits": true,
+          "points": [
+            {
+              "x": 1458.6875,
+              "y": 602.5,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1546.7578125,
+              "y": 602.5,
+              "uncovered": true,
+              "hit": "ivu-table-column-IIr07y"
+            },
+            {
+              "x": 1634.828125,
+              "y": 602.5,
+              "uncovered": true,
+              "hit": "ivu-table-column-IIr07y"
+            }
+          ]
+        },
+        "data": {
+          "text": "启用",
+          "width": 192.140625,
+          "left": 1450.6875,
+          "right": 1642.828125,
+          "textLeft": 1468.6875,
+          "textRight": 1492.6875,
+          "textFits": true,
+          "points": [
+            {
+              "x": 1458.6875,
+              "y": 645,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1546.7578125,
+              "y": 645,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            },
+            {
+              "x": 1634.828125,
+              "y": 645,
+              "uncovered": true,
+              "hit": "ivu-table-cell"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

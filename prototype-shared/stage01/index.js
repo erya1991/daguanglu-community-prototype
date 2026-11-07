@@ -14,6 +14,7 @@ import {
   required,
   makeId,
   history,
+  isPropertyOperator,
 } from "./common.js";
 import { billingCommand, importPreview, refreshBill } from "./billing.js";
 import { parkingCommand } from "./parking.js";
@@ -66,7 +67,7 @@ function projection(s, a, table, row) {
     )
       delete r[key];
   r.history = clone(
-    (row.history || []).filter((h) => a.role === "property" || h._public)
+    (row.history || []).filter((h) => isPropertyOperator(a) || h._public)
   ).map((h) => {
     delete h._actor;
     delete h._public;
@@ -81,14 +82,14 @@ function projection(s, a, table, row) {
     if (table === "parkingRelations")
       for (const k of ["PK08", "PK09", "PK10", "PK11"]) delete r[k];
   }
-  if (table === "reports" && a.role === "property" && !sensitive(a, "phone"))
+  if (table === "reports" && isPropertyOperator(a) && !sensitive(a, "phone"))
     delete r.RP16;
   if (table === "bills") {
     r.relatedPayments = d.payments
       .filter(
         (p) =>
           p._business === row._id &&
-          (a.role === "property" || p._resident === a.resident)
+          (isPropertyOperator(a) || p._resident === a.resident)
       )
       .map((p) => projection(s, a, "payments", p));
     r._title = r.BL08;
@@ -221,7 +222,7 @@ function projection(s, a, table, row) {
       r._canEvaluate = !!(
         task?.UC06 === "已确认解决" && task.VA05 === "未评价"
       );
-      if (a.role === "property" && event) {
+      if (isPropertyOperator(a) && event) {
         r.event = projection(s, a, "events", event);
         r._workorder = task?._id;
       }
@@ -246,7 +247,7 @@ function projection(s, a, table, row) {
       }
     }
   }
-  if (a.role === "property")
+  if (isPropertyOperator(a))
     r._scope = { community: row._community, estate: row._estate };
   r._labels = Object.fromEntries(
     Object.entries(r)
@@ -268,9 +269,9 @@ export function query(s, ctx, table, filters = {}) {
   if (a.role === "resident")
     need(residentTables.includes(table), "住户不能查询内部办理记录");
   let rows = d[table].filter((r) => visible(s, a, r, table));
-  if (ctx.community && a.role === "property")
+  if (ctx.community && isPropertyOperator(a))
     rows = rows.filter((r) => r._community === ctx.community);
-  if (ctx.estate && a.role === "property")
+  if (ctx.estate && isPropertyOperator(a))
     rows = rows.filter((r) => r._estate === ctx.estate);
   rows = rows.map((r) => projection(s, a, table, r));
   if (filters.keyword)
@@ -357,17 +358,17 @@ export function options(s, ctx) {
       )
       .map((v) => ({ value: v._id, label: v["车牌号码"] })),
     personnel:
-      a.role === "property"
+      isPropertyOperator(a)
         ? s.personnel
             .filter(
               (p) =>
-                p["所属物业组织"] === a.org &&
+                (a.role === "platform" || p["所属物业组织"] === a.org) &&
                 p["在岗状态"] === "在岗" &&
                 s.accounts.some(
                   (x) =>
                     x._id === p["关联账号"] &&
                     x["账号状态"] === "启用" &&
-                    x["授权角色"].includes("property")
+                    (x["授权角色"].includes("property") || (a.role === "platform" && x["授权角色"].includes("platform")))
                 )
             )
             .map((p) => ({
@@ -391,7 +392,7 @@ export function options(s, ctx) {
 }
 export function overview(s, ctx) {
   const a = actor(s, ctx);
-  need(a.role === "property", "无权查看内部概况");
+  need(isPropertyOperator(a), "无权查看内部概况");
   const events = query(s, ctx, "events"),
     tasks = query(s, ctx, "workorders");
   return {
@@ -538,7 +539,7 @@ export function auxiliary(s, ctx, name, p = {}) {
   if (name === "funds") return auxiliaryFunds(s, ctx, p);
   if (name === "replay") return replayPayment(s, ctx, p);
   if (name === "sameHouse") {
-    need(a.role === "property" && ctx.app === "web", "由物业辅助入口准备专项");
+    need(isPropertyOperator(a) && ctx.app === "web", "由物业辅助入口准备专项");
     const c = { app: "resident", account: "resident-a", role: "resident" };
     const existing = s.relations.find(
       (r) =>

@@ -1,0 +1,35 @@
+{
+  "actor": "物业管理员 · 物业管理员\n 演示身份",
+  "app": {
+    "control": false,
+    "account": "property-admin"
+  },
+  "wraps": [
+    {
+      "display": "block",
+      "visibility": "visible",
+      "title": "演示身份与辅助工具"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "演示身份与辅助工具"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "新增基础工作台"
+    },
+    {
+      "display": "none",
+      "visibility": "visible",
+      "title": "基础工作台详情"
+    },
+    {
+      "display": "none",
+      "visibility": "visible"
+    }
+  ],
+  "bodyOverflow": "visible",
+  "transferred": 5
+}

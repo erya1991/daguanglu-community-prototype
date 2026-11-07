@@ -4,8 +4,8 @@ export type EntityTable='orgs'|'accounts'|'roles'|'communities'|'estates'|'build
 export interface DemoContext{app:AppKind;account:string;role?:string;community?:string;estate?:string;identityVersion?:number}
 export interface DemoRecord{_id:string;_rev:number;_labels?:Record<string,string>;[field:string]:any}
 export interface DemoActor extends DemoRecord{role:string;name:string;org:string;orgName:string;roleName:string;scopeLabel:string;permissions:string[];sensitive:string[];menus:string[];resident?:string}
-export interface DemoInfo{session:string;version:string;generation:number;actor:DemoActor;counts:Record<string,number|null>;accounts:Array<{id:string;name:string;roles:Array<{id:string;name:string}>}>}
-export type BusinessCommand='save'|'apply'|'withdraw'|'review'|'profile'|'status'|'verifyVehicle'|'fileVersion'|'messageRead'|'messageSend'|'remind'
+export interface DemoInfo{session:string;version:string;generation:number;spaceRootName:string;actor:DemoActor;counts:Record<string,number|null>;accounts:Array<{id:string;name:string;roles:Array<{id:string;name:string}>}>}
+export type BusinessCommand='save'|'apply'|'withdraw'|'review'|'profile'|'status'|'verifyVehicle'|'fileVersion'|'messageRead'|'messageSend'|'remind'|'space-root'
 export interface CommandResult{id:string;message:string}
 export interface Stage00Service{
  stage01:Stage01Service;

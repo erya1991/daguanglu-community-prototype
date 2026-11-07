@@ -63,7 +63,8 @@ test('R2-07 历史社区直属设施保留原编号，社区查看可见，但�
 test('R2-09 独立资源新增不增加房屋和人口统计，非法归属仍拒绝',()=>{
  const s=createSeed(),before=dashboard(s,platform).counts
  resource(s,'parking','estates','E-A','R2-PARK');resource(s,'facilities','buildings','B-N','R2-FAC');assert.deepEqual(dashboard(s,platform).counts,before)
- for(const [t,id] of [['communities','C-A'],['units','U-A'],['houses','H-A']])assert.throws(()=>resource(s,'parking',t,id,'R2-ILLEGAL'),/只能在小区或楼栋/)
+ resource(s,'parking','units','U-A','R2-UNIT');assert.deepEqual(dashboard(s,platform).counts,before)
+ for(const [t,id] of [['communities','C-A'],['houses','H-A']])assert.throws(()=>resource(s,'parking',t,id,'R2-ILLEGAL'),/只能在小区.*楼栋.*单元/)
 })
 test('R2-11 上级汇总查询下导入成功同步末级房屋，保留前导零及整批错误保护',()=>{
  const s=createSeed(),text=importTemplate.replace('\r\n,青禾','\r\n0000202,青禾'),before=query(s,platform,'houses',scope('communities','C-A')).length,p=previewImport(s,platform,text,'R2虚构来源',{table:'communities',id:'C-A'})

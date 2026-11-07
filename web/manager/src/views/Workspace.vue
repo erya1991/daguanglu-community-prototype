@@ -82,6 +82,7 @@
           }}</Button
           ><Button v-if="canExport" @click="exportRows">导出当前获准结果</Button>
         </div>
+        <p v-if="embedded" class="space-table-scroll-note">表格可横向滚动，查看完整字段及操作。</p>
         <Spin v-if="loading" fix /><Table
           :columns="columns"
           :data="pagedRows"
@@ -94,7 +95,7 @@
             ><div class="table-actions" :data-row-id="row._id">
               <a @click="details(row)">详情</a><a v-if="canWrite" @click="edit(row)">编辑</a>
               <a
-                v-if="canWrite && ['facilities', 'parking'].includes(table)"
+                v-if="canWrite && ['houses', 'facilities', 'parking'].includes(table)"
                 @click="openRowAction(row, 'status')"
                 >{{ row['档案状态'] === '停用' ? '启用' : '停用' }}</a
               >
@@ -124,25 +125,7 @@
       :mask-closable="false"
       :footer-hide="true"
       ><Alert v-if="formError" type="error">{{ formError }}</Alert>
-      <p v-if="formContext" class="form-context">所属位置：{{ formContext }}。普通编辑不迁移归属。</p>
       <Form label-position="top"
-        ><FormItem
-          v-if="!editing && isResource && resourceChoices.length"
-          label="实际所属空间"
-          required
-          :error="fieldErrors.space"
-          ><Select
-            v-model="resourceKey"
-            filterable
-            placeholder="选择小区或楼栋"
-            @on-change="chooseResourceParent"
-            ><Option
-              v-for="item in resourceChoices"
-              :key="item.table + ':' + item.id"
-              :value="item.table + ':' + item.id"
-              >{{ item.label }}</Option
-            ></Select
-          ></FormItem
         ><FieldEditor
           v-if="editor"
           :key="table + ':' + (editing || 'new')"
@@ -429,9 +412,7 @@ export default {
     loadTicket: 0,
     detailTicket: 0,
     editingSpace: null,
-    resourceKey: '',
     formParents: {},
-    formLocation: '',
     actionFromRow: false,
   }),
   computed: {
@@ -494,24 +475,14 @@ export default {
     pagedRows() {
       return this.rows.slice((this.page - 1) * this.pageSize, this.page * this.pageSize)
     },
-    formContext() {
-      if (this.editing)
-        return ['所属社区', '所属小区', '所属楼栋', '所属单元', '关联楼栋']
-          .filter((f) => this.form[f])
-          .map((f) => this.form._labels?.[f] || this.form[f])
-          .join(' / ')
-      return this.formLocation || ''
-    },
     lockedContext() {
       const locked = { ...this.formParents }
-      if (this.isResource)
-        for (const f of ['所属社区', '所属小区', '关联楼栋']) locked[f] = this.form[f] || ''
       if (
         this.editing &&
         ['estates', 'buildings', 'units', 'houses', 'facilities', 'parking'].includes(this.table)
       )
         for (const f of ['所属社区', '所属小区', '所属楼栋', '所属单元', '关联楼栋'])
-          if (f in this.form) locked[f] = this.form[f]
+          if (f in this.form || (this.isResource && f !== '所属楼栋')) locked[f] = this.form[f] || ''
       if (this.table === 'parking' && this.editing) locked['车位编号'] = this.form['车位编号']
       return locked
     },
@@ -565,7 +536,7 @@ export default {
                   : p.row._labels[f] || '未维护',
               ),
           })),
-          { title: '操作', slot: 'actions', width: this.table === 'houses' ? 230 : 160, fixed: 'right' },
+          { title: '操作', slot: 'actions', width: this.table === 'houses' ? 230 : 160 },
         ]
       }
       return [
@@ -702,17 +673,22 @@ export default {
     },
     async edit(r, settings = {}) {
       if (r && !r._labels) r = (await service.labels(this.table, [r]))[0]
-      this.formParents = { ...(settings.context || this.parentContext) }
-      this.formLocation = settings.label === undefined ? this.contextLabel || '' : settings.label
+      const context = { ...(settings.context || this.parentContext) }
+      if (this.isResource && context['所属楼栋']) {
+        context['关联楼栋'] = context['所属楼栋']
+        delete context['所属楼栋']
+      }
+      this.formParents = Object.fromEntries(Object.entries(context).filter(([, value]) => value !== '' && value !== undefined && value !== null))
       this.editing = r?._id || null
-      this.form = r ? { ...r } : Object.fromEntries(this.definition.form.map((f) => [f, '']))
-      if (!r) Object.assign(this.form, this.formParents)
+      const initial = Object.fromEntries(this.definition.form.map((f) => [f, '']))
+      if (this.isResource)
+        for (const f of ['所属社区', '所属小区', '关联楼栋', '所属单元']) initial[f] = ''
+      this.form = r ? { ...initial, ...r } : { ...initial, ...this.formParents }
       this.editingSpace = r
-        ? ['estates', 'buildings'].includes(r._spaceTable)
+        ? ['communities', 'estates', 'buildings', 'units'].includes(r._spaceTable)
           ? { table: r._spaceTable, id: r._spaceId }
           : null
         : this.resourceParent
-      this.resourceKey = this.editingSpace ? this.editingSpace.table + ':' + this.editingSpace.id : ''
       this.originalForm = r ? JSON.parse(JSON.stringify(r)) : null
       if (this.table === 'personnel') this.form['变更说明'] = ''
       for (const f of [
@@ -740,30 +716,39 @@ export default {
       this.formError = ''
       this.fieldErrors = {}
       try {
-        if (!this.editing && this.isResource && !this.editingSpace) {
-          this.fieldErrors = { space: '请选择实际归属的小区或楼栋' }
-          this.formError = '请选择实际所属空间'
-          return
+        let space = this.editingSpace
+        if (!this.editing && this.isResource) {
+          const requiredParents = ['所属社区', '所属小区'].filter((f) => !this.form[f])
+          if (requiredParents.length) {
+            this.fieldErrors = Object.fromEntries(requiredParents.map((f) => [f, '请选择' + f]))
+            this.formError = '请完成资源所属社区和小区'
+            return
+          }
+          space = this.form['所属单元']
+            ? { table: 'units', id: this.form['所属单元'] }
+            : this.form['关联楼栋']
+              ? { table: 'buildings', id: this.form['关联楼栋'] }
+              : { table: 'estates', id: this.form['所属小区'] }
         }
         const result = await service.command('save', {
           table: this.table,
           id: this.editing,
           data: this.form,
           reason: this.form['操作原因'] || this.form['变更说明'],
-          space: this.editingSpace,
+          space,
           fail: this.failSave,
           operation: 'save-' + Date.now(),
         })
         this.editor = false
         this.$Message.success(result.message)
-        if (!this.editing && ['communities', 'estates'].includes(this.table))
+        if (!this.editing && ['communities', 'estates'].includes(this.table) && this.info.actor.role !== 'platform')
           this.$Modal.info({
             title: '新档案与访问清单',
             content:
               '新档案已保存。请由平台管理员在账号授权中明确勾选新社区和小区后继续维护下级档案；选择社区不会自动授予全部小区。',
           })
         await this.load()
-        this.$emit('refresh')
+        this.$emit('refresh', { table: this.table, created: !this.editing, id: result.id })
       } catch (e) {
         this.formError = e.message
         this.fieldErrors = e.fields || {}
@@ -797,15 +782,6 @@ export default {
         this.detailOpen = false
         this.$Message.error(e.message)
       }
-    },
-    chooseResourceParent(key) {
-      const parent = this.resourceChoices.find((item) => item.table + ':' + item.id === key)
-      this.editingSpace = parent ? { table: parent.table, id: parent.id } : null
-      if (parent) {
-        Object.assign(this.form, parent.context)
-        this.formLocation = parent.label
-      }
-      this.fieldErrors = {}
     },
     async openRowAction(row, action) {
       const ticket = ++this.detailTicket

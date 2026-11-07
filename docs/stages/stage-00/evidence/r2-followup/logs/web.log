@@ -1,0 +1,62 @@
+yarn run v1.22.22
+$ node scripts/apply-compression-hash-fix.cjs
+[manager-md4-compat] already-applied compression-webpack-plugin@4.0.1 sha256=950b598eef25905c5f32bb2733937a4f10294ed5efa410deb5af6959f61c8d4c
+$ vue-cli-service build
+
+ WARNING  Compiled with 2 warnings15:11:17
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  img/ionicons.a2c4a261.svg (542 KiB)
+  css/app.aae2f64e.css (288 KiB)
+  js/chunk-vendors.4c902ff7.js (875 KiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (1.36 MiB)
+      js/chunk-vendors.4c902ff7.js
+      css/app.aae2f64e.css
+      js/app.a1dac6af.js
+
+
+  File                                  Size               Gzipped
+
+  dist\js\chunk-vendors.4c902ff7.js     874.97 KiB         224.72 KiB
+  dist\js\app.a1dac6af.js               233.19 KiB         62.60 KiB
+  dist\js\chunk-9f647590.99663155.js    97.92 KiB          25.82 KiB
+  dist\js\chunk-2d0b1bc2.1f77bfb1.js    45.38 KiB          13.60 KiB
+  dist\js\chunk-2d0e5450.19d74f71.js    24.87 KiB          7.60 KiB
+  dist\js\chunk-770e854f.0b9828a4.js    17.45 KiB          6.13 KiB
+  dist\js\chunk-2d208a96.62a52ba3.js    8.10 KiB           2.86 KiB
+  dist\js\chunk-2d0cbe2b.6b3b0f93.js    0.34 KiB           0.26 KiB
+  dist\js\chunk-2d0cf720.0317e5a1.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d0e9b32.26f50f63.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d215c24.8b94bac2.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d229214.6d951afa.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d0aa17c.07dc6cf0.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d0ab562.0e8c58e5.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d0d2fae.e473150f.js    0.33 KiB           0.26 KiB
+  dist\js\chunk-2d21f830.c0d3ba6c.js    0.33 KiB           0.26 KiB
+  dist\css\app.aae2f64e.css             287.76 KiB         41.68 KiB
+
+  Images and other types of assets omitted.
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+      
+Done in 12.38s.
+
+-  Building for production...
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+

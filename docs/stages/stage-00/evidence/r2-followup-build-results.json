@@ -1,0 +1,127 @@
+{
+  "recordedAt": "2026-11-06T07:13:38.633Z",
+  "node": "v24.14.0",
+  "results": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T07:11:05.582Z",
+      "end": "2026-11-06T07:11:18.125Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/web.log",
+      "archivedLog": "r2-followup/logs/web.log"
+    },
+    {
+      "id": "resident-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T07:11:18.127Z",
+      "end": "2026-11-06T07:11:33.784Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/resident-h5.log",
+      "archivedLog": "r2-followup/logs/resident-h5.log"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T07:11:33.784Z",
+      "end": "2026-11-06T07:11:45.376Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/resident-mp-weixin.log",
+      "archivedLog": "r2-followup/logs/resident-mp-weixin.log"
+    },
+    {
+      "id": "merchant-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T07:11:45.376Z",
+      "end": "2026-11-06T07:12:17.145Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/merchant-h5.log",
+      "archivedLog": "r2-followup/logs/merchant-h5.log"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T07:12:17.145Z",
+      "end": "2026-11-06T07:12:35.458Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/merchant-mp-weixin.log",
+      "archivedLog": "r2-followup/logs/merchant-mp-weixin.log"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T07:12:35.462Z",
+      "end": "2026-11-06T07:12:57.579Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/staff-h5.log",
+      "archivedLog": "r2-followup/logs/staff-h5.log"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-06T07:12:57.579Z",
+      "end": "2026-11-06T07:13:14.977Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/staff-mp-weixin.log",
+      "archivedLog": "r2-followup/logs/staff-mp-weixin.log"
+    },
+    {
+      "id": "resident-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T07:13:14.977Z",
+      "end": "2026-11-06T07:13:23.350Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/resident-types.log",
+      "archivedLog": "r2-followup/logs/resident-types.log"
+    },
+    {
+      "id": "merchant-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T07:13:23.350Z",
+      "end": "2026-11-06T07:13:30.628Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/merchant-types.log",
+      "archivedLog": "r2-followup/logs/merchant-types.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-06T07:13:30.628Z",
+      "end": "2026-11-06T07:13:38.633Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2-followup/BUILD_2026-11-06T07-11-05-355Z/staff-types.log",
+      "archivedLog": "r2-followup/logs/staff-types.log"
+    }
+  ],
+  "sourceHashes": {
+    "prototype-shared/core.js": "660f1aa2cf5630562fa16480bb47ec9e4f1a8034ba9f7d3be7590dc72518c4db",
+    "prototype-shared/spaces.js": "87de0a0a5e3b90adaf482938ffdce67a766676476b056356956dea47349856d5",
+    "prototype-shared/types.d.ts": "ef7ec59d809abf5c3d7dab5c4891cfe8d78ea77795dc851d2898797da2b0e80f",
+    "prototype-shared/r1-migration.js": "34e41ae624321e0bb017b27cb9e50facba6c2de1e104d6fc37d5a65ad57da378",
+    "web/manager/src/App.vue": "4d291a9a8aac6d972634166e9f4f75d863d51997961e54e18c82151c61f19087",
+    "web/manager/src/views/SpaceArchive.vue": "66f4f2a12204eac3d269d02f7fc69bb1a1d1cfc66bc81ed84635e90b54798db4",
+    "web/manager/src/views/Workspace.vue": "2e41a89a244e01a0767cb6973b03787d32cd213c98f0321c53fdd828b89f6cca",
+    "web/manager/src/components/FieldEditor.vue": "430c36c5dcd81d6e20f875f8e6232f0248bffaac4996eca9922c22157ee639d8",
+    "web/manager/src/styles/stage00.scss": "20f4567405ce145e5c9ebf76f123562f0f4b80ee081f8ee380d0480e9df14c9e"
+  }
+}

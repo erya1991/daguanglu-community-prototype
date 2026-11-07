@@ -1,6 +1,6 @@
 import { catalog } from './catalog.js'
 import { houseInSpace, resourceInSpace, spaceTables } from './spaces.js'
-import { upgradeState } from './r1-migration.js'
+import { upgradeState, DEFAULT_SPACE_ROOT_NAME, platformMenus, platformPermissions, platformSensitive } from './r1-migration.js'
 export { upgradeState } from './r1-migration.js'
 export const SEED_VERSION = 'stage00-v1'
 export const clone = (v) => JSON.parse(JSON.stringify(v))
@@ -71,6 +71,7 @@ const idNames = {
   files: '文件编号',
 }
 const titleNames = {
+  'space-root': '名称',
   orgs: '组织名称',
   accounts: '登录账号',
   roles: '角色名称',
@@ -475,19 +476,26 @@ export function actorFor(s, ctx) {
   if (!allowedRole(rid)) fail('该角色不属于当前应用入口')
   if (!list(a['授权角色']).includes(rid) || !active(role)) fail('当前角色已被收回或停用')
   if (rid !== 'resident' && a['当前工作身份状态'] === '离岗') fail('当前工作身份已离岗')
+  const platform = rid === 'platform',
+    communities = platform ? s.communities.map(c => c._id) : list(a['可查看社区']),
+    estates = platform ? s.estates.map(e => e._id) : list(a['可查看小区']),
+    permissions = platform ? [...new Set([...(role['允许操作'] || []), ...platformPermissions])] : role['允许操作'] || []
   return {
     ...a,
+    可查看社区: communities,
+    可查看小区: estates,
+    _orgs: platform ? s.orgs.map(o => o._id) : a._orgs,
     role: rid,
-    menus: role['可见菜单'] || [],
-    permissions: ctx.app === 'staff' ? (role['允许操作'] || []).filter(p => p.startsWith('read:')) : role['允许操作'] || [],
-    sensitive: role['敏感查看与导出权限'] || [],
+    menus: platform ? [...new Set([...(role['可见菜单'] || []), ...platformMenus])] : role['可见菜单'] || [],
+    permissions: ctx.app === 'staff' ? permissions.filter(p => p.startsWith('read:')) : permissions,
+    sensitive: platform ? [...new Set([...(role['敏感查看与导出权限'] || []), ...platformSensitive])] : role['敏感查看与导出权限'] || [],
     name: a['人员姓名'],
     org: a['所属组织'],
     resident: a._resident,
     orgName: find(s, 'orgs', a['所属组织'])?.['组织名称'] || '本人',
     roleName: role['角色名称'],
     scopeLabel:
-      list(a['可查看社区'])
+      communities
         .map((c) => find(s, 'communities', c)?.['社区名称'] || '待维护')
         .join('、') || '本人／本主体',
   }
@@ -496,6 +504,7 @@ export const permitted = (a, action, table) =>
   a.permissions.includes(`${action}:${table}`) && a.menus.includes(table)
 export const sensitive = (a, kind) => a.sensitive.includes(kind)
 export function inScope(s, a, r) {
+  if (a.role === 'platform') return true
   if (a.role === 'resident') return r._resident === a.resident
   const communities = list(r['适用社区'])
     .concat(list(r['所属社区'] || r._community))
@@ -557,8 +566,12 @@ function hydrate(s) {
       .filter((x) => x._house === h._id && x['关系状态'] === '有效')
       .map((x) => x['居民姓名'])
   for (const f of [...s.facilities, ...(s.parking || [])]) {
-    const table = f._spaceTable || (f['关联楼栋'] ? 'buildings' : f['所属小区'] ? 'estates' : 'communities')
-    const id = f._spaceId || f['关联楼栋'] || f['所属小区'] || f['所属社区']
+    const table = f._spaceTable || (f['所属单元'] ? 'units' : f['关联楼栋'] ? 'buildings' : f['所属小区'] ? 'estates' : 'communities')
+    const id = f._spaceId || f['所属单元'] || f['关联楼栋'] || f['所属小区'] || f['所属社区']
+    if (table === 'units') {
+      const unit = find(s, 'units', id)
+      if (unit) Object.assign(f, { 所属单元: unit._id, 关联楼栋: unit['所属楼栋'], 所属小区: unit['所属小区'], 所属社区: unit['所属社区'] })
+    }
     f['所属空间'] = titleOf(table, find(s, table, id))
     f._spaceTable = table
     f._spaceId = id
@@ -591,7 +604,7 @@ export function fileAllowed(s, a, f, action = 'view') {
   return (
     permitted(a, 'read', 'files') &&
     inScope(s, a, f) &&
-    list(f[action === 'download' ? '可下载角色' : '可查阅角色']).includes(a.role)
+    (a.role === 'platform' || list(f[action === 'download' ? '可下载角色' : '可查阅角色']).includes(a.role))
   )
 }
 export function query(s, ctx, table, filters = {}) {
@@ -609,7 +622,7 @@ export function query(s, ctx, table, filters = {}) {
       items = items.filter((r) => r._resident === a.resident)
     else if (table !== 'messages') fail('当前身份无权查询此页面')
   } else if (!permitted(a, 'read', table)) fail('当前角色无权访问此页面')
-  if (table === 'messages')
+  if (table === 'messages' && a.role !== 'platform')
     items = items.filter((r) => r._recipient === a._id && (!r._role || r._role === a.role))
   else if (a.role !== 'resident') items = items.filter((r) => inScope(s, a, r))
   if (table === 'files') items = items.filter((f) => fileAllowed(s, a, f))
@@ -752,6 +765,10 @@ function required(d, names) {
   if (Object.keys(errors).length) fail('请检查标记的必填字段', errors)
 }
 function scopeWrite(s, a, t, d) {
+  // Global administration removes scope limits, not the existence of referenced archives.
+  if (a.role === 'platform') for (const [field, table] of [['所属组织', 'orgs'], ['所属物业组织', 'orgs'], ['所属社区', 'communities'], ['适用社区', 'communities'], ['可查看社区', 'communities'], ['所属小区', 'estates'], ['适用小区', 'estates'], ['可查看小区', 'estates']]) {
+    if (list(d[field]).some(id => !find(s, table, id))) fail('关联档案不存在，请重新选择', { [field]: '请选择现有档案' })
+  }
   if (!inScope(s, a, d)) fail('不能维护当前组织或数据范围之外的记录')
 }
 function validateParents(s, t, d) {
@@ -781,10 +798,13 @@ function validateParents(s, t, d) {
   }
   if (['houses', 'facilities', 'parking'].includes(t)) {
     const e = find(s, 'estates', d['所属小区']),
-      b = find(s, 'buildings', d['所属楼栋'] || d['关联楼栋'])
+      b = find(s, 'buildings', d['所属楼栋'] || d['关联楼栋']),
+      u = find(s, 'units', d['所属单元'])
     if (e && e['所属社区'] !== d['所属社区']) fail('小区与社区不匹配')
     if (b && b['所属小区'] !== d['所属小区']) fail('楼栋与小区不匹配')
     if (t !== 'houses' && ((e && !active(e)) || (b && !active(b)))) fail('归属小区或楼栋已停用，不能新增或调整资源')
+    if (t !== 'houses' && d['所属单元'] && (!active(u) || !b || u['所属楼栋'] !== b._id))
+      fail('单元不存在、已停用或与楼栋不匹配', { 所属单元: '请选择归属楼栋下启用的单元' })
     if (t === 'houses' && b?.['是否设单元'] === '是') {
       required(d, ['所属单元'])
       const u = find(s, 'units', d['所属单元'])
@@ -819,16 +839,18 @@ export function validateSave(s, ctx, table, input, id) {
     fail('住户不能直接维护该档案')
   if (a.role !== 'resident') requirePermission(a, 'write', table)
   if (['facilities', 'parking'].includes(table)) {
-    const building = find(s, 'buildings', d['关联楼栋'])
+    const unit = find(s, 'units', d['所属单元']),
+      building = find(s, 'buildings', d['关联楼栋'])
+    if (d['所属单元'] && (!unit || !building || unit['所属楼栋'] !== building._id)) fail('单元与归属楼栋不匹配', { 所属单元: '请选择归属楼栋下的单元' })
     if (d['关联楼栋'] && !building) fail('归属楼栋不存在', { 关联楼栋: '请选择有效楼栋' })
     const estate = find(s, 'estates', building?.['所属小区'] || d['所属小区'])
-    const legacy = table === 'facilities' && old?._spaceTable === 'communities' && !d['所属小区'] && !d['关联楼栋']
+    const legacy = old?._spaceTable === 'communities' && !d['所属小区'] && !d['关联楼栋'] && !d['所属单元']
     if (!estate && !legacy) fail('新增资源必须归属小区或楼栋', { 所属小区: '请选择小区或从楼栋新增资源' })
     if (building && d['所属小区'] && d['所属小区'] !== building['所属小区']) fail('楼栋与小区不匹配')
     if (estate && d['所属社区'] && d['所属社区'] !== estate['所属社区']) fail('资源与所属社区不匹配')
     if (estate) { d['所属小区'] = estate._id; d['所属社区'] = estate['所属社区'] }
-    d._spaceTable = building ? 'buildings' : estate ? 'estates' : 'communities'
-    d._spaceId = building?._id || estate?._id || old?._spaceId
+    d._spaceTable = unit ? 'units' : building ? 'buildings' : estate ? 'estates' : 'communities'
+    d._spaceId = unit?._id || building?._id || estate?._id || old?._spaceId
     if (old && old._spaceId && (old._spaceId !== d._spaceId || old._spaceTable !== d._spaceTable)) fail('资源归属不能通过普通编辑迁移')
   }
   if (old) {
@@ -930,7 +952,7 @@ export function validateSave(s, ctx, table, input, id) {
       fail('关联房屋与点位所属社区不一致')
     if (d['关联房屋']) {
       const h = find(s, 'houses', d['关联房屋'])
-      if (!h || (d['所属小区'] && h['所属小区'] !== d['所属小区']) || (d['关联楼栋'] && h['所属楼栋'] !== d['关联楼栋'])) fail('关联房屋不在当前设施所属空间内')
+      if (!h || (d['所属小区'] && h['所属小区'] !== d['所属小区']) || (d['关联楼栋'] && h['所属楼栋'] !== d['关联楼栋']) || (d['所属单元'] && h['所属单元'] !== d['所属单元'])) fail('关联房屋不在当前设施所属空间内')
     }
     d['接入状态'] = old?.['接入状态'] || '未接入'
   }
@@ -966,23 +988,33 @@ export function validateSave(s, ctx, table, input, id) {
 // Legal business transitions. The persistence adapter commits the resulting graph atomically.
 export function execute(s, ctx, command, p = {}) {
   const a = actorFor(s, ctx)
+  if (command === 'space-root' && (ctx.app !== 'web' || a.role !== 'platform')) fail('仅平台管理员可修改空间根名称')
   if (p.operation && s.operations[p.operation]) return clone(s.operations[p.operation])
   if (p.fail) fail('模拟处理失败；输入已保留，可重试')
   let result
-  if (command === 'save') {
+  if (command === 'space-root') {
+    const name = typeof p.name === 'string' ? p.name.trim() : ''
+    if (!name || Array.from(name).length > 30 || /[\r\n\t\u0000-\u001f]/.test(name)) fail('请填写1～30个字符的空间根名称', { name: '名称必填，最多30个字符，不能包含换行或控制字符' })
+    const before = { 名称: s.spaceRootName || DEFAULT_SPACE_ROOT_NAME }
+    s.spaceRootName = name
+    audit(s, a, 'space-root', 'root', '修改空间根名称', before, { 名称: name }, '仅修改汇总容器名称，不改变社区及业务编号')
+    result = { name, message: '空间根名称已更新' }
+  } else if (command === 'save') {
     const { table, id } = p,
       old = find(s, table, id)
     const data = Object.fromEntries(
       (catalog[table]?.form || []).filter((k) => k in p.data).map((k) => [k, p.data[k]]),
     )
     if (['facilities', 'parking'].includes(table)) {
+      if ('所属单元' in p.data) data['所属单元'] = p.data['所属单元']
       if (p.space) {
-        if (!['estates', 'buildings'].includes(p.space.table)) fail('设施和车位只能在小区或楼栋下新增')
+        if (!['estates', 'buildings', 'units'].includes(p.space.table)) fail('设施和车位只能在小区、楼栋或单元下新增')
         const parent = record(s, ctx, p.space.table, p.space.id)
         data['所属社区'] = parent['所属社区']
         data['所属小区'] = p.space.table === 'estates' ? parent._id : parent['所属小区']
-        data['关联楼栋'] = p.space.table === 'buildings' ? parent._id : ''
-      } else if (old) for (const key of ['所属社区', '所属小区', '关联楼栋']) if (!(key in data)) data[key] = old[key] || ''
+        data['关联楼栋'] = p.space.table === 'buildings' ? parent._id : p.space.table === 'units' ? parent['所属楼栋'] : ''
+        data['所属单元'] = p.space.table === 'units' ? parent._id : ''
+      } else if (old) for (const key of ['所属社区', '所属小区', '关联楼栋', '所属单元']) if (!(key in data)) data[key] = old[key] || ''
     }
     if (table === 'files') data._reminder = !!p.data._reminder
     if (old) data._rev = p.data._rev
@@ -1052,7 +1084,7 @@ export function execute(s, ctx, command, p = {}) {
       id: after._id,
       message:
         ['communities', 'estates'].includes(table) && !old
-          ? '新档案已保存；请由配置演示身份分配社区/小区访问清单后查询'
+          ? a.role === 'platform' ? '新档案已保存' : '新档案已保存；请由配置演示身份分配社区/小区访问清单后查询'
           : '已保存模拟资料',
     }
   } else if (command === 'apply') {
@@ -1320,6 +1352,7 @@ export function dashboard(s, ctx) {
     residents = safe('residents')
   return {
     actor: a,
+    spaceRootName: s.spaceRootName || DEFAULT_SPACE_ROOT_NAME,
     counts: {
       已建档房屋数: houses.filter(active).length,
       居民档案人数: new Set(residents.map((r) => r._id)).size,
@@ -1497,7 +1530,7 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
           return false
         if (t === 'estates' && data['所属社区'] && r['所属社区'] !== data['所属社区']) return false
         if (t === 'buildings' && data['所属小区'] && r['所属小区'] !== data['所属小区']) return false
-        if (t === 'units' && r['所属楼栋'] !== data['所属楼栋']) return false
+        if (t === 'units' && r['所属楼栋'] !== (data['所属楼栋'] || data['关联楼栋'])) return false
         if (t === 'houses' && field === '关联房屋') {
           const resident = a.role === 'resident' ? a.resident : data['关联居民']
           return s.relations.some(
@@ -1505,9 +1538,9 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
           )
         }
       }
-      if (t === 'orgs') return (a._orgs || [a.org]).includes(r._id) || a.role === 'config'
+      if (t === 'orgs') return (a._orgs || [a.org]).includes(r._id) || ['config', 'platform'].includes(a.role)
       if (t === 'residents') return a.role === 'resident' ? r._id === a.resident : inScope(s, a, r)
-      if (t === 'accounts') return r['所属组织'] === a.org || r._id === a._id
+      if (t === 'accounts') return a.role === 'platform' || r['所属组织'] === a.org || r._id === a._id
       return true
     })
     .map((r) => ({ value: r._id, label: titleOf(t, r) }))

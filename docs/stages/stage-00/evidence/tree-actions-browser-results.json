@@ -1,0 +1,194 @@
+{
+  "run": "TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992",
+  "session": "TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992",
+  "base": "http://127.0.0.1:19201",
+  "runtime": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992",
+  "only": null,
+  "results": [
+    {
+      "id": "TA01",
+      "name": "双视口工具栏与树名称图标区域分离，左右布局可用",
+      "status": "PASS"
+    },
+    {
+      "id": "TA02",
+      "name": "点击名称选中高亮，各层新增按钮及只读权限匹配",
+      "status": "PASS"
+    },
+    {
+      "id": "TA03",
+      "name": "图标悬停及键盘焦点可达，编辑启停不误选中或展开，房间无操作",
+      "status": "PASS"
+    },
+    {
+      "id": "TA04",
+      "name": "根名称图标编辑不改变当前选中和展开，保存后持久且可恢复",
+      "status": "PASS"
+    },
+    {
+      "id": "TA05",
+      "name": "独立新增下级工具栏实际新建楼栋和单元，上级名称仍禁用带入",
+      "status": "PASS"
+    },
+    {
+      "id": "TA06",
+      "name": "图标停用恢复保留历史与下级引用，停用节点可选且新增下级禁用",
+      "status": "PASS"
+    },
+    {
+      "id": "TA07",
+      "name": "本次浏览器全过程无页面异常、控制台错误或外部请求",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "id": "TA01",
+      "width": 1366,
+      "layout": {
+        "tree": {
+          "left": 224,
+          "right": 564,
+          "top": 202.5,
+          "bottom": 708.5,
+          "width": 340
+        },
+        "toolbar": {
+          "left": 237,
+          "right": 551,
+          "top": 296.5,
+          "bottom": 341.5,
+          "width": 314
+        },
+        "list": {
+          "left": 237,
+          "right": 551,
+          "top": 385.5,
+          "bottom": 689.5,
+          "width": 314
+        },
+        "viewport": {
+          "left": 237,
+          "right": 551,
+          "top": 383.5,
+          "bottom": 691.5,
+          "width": 314
+        },
+        "search": {
+          "left": 237,
+          "right": 551,
+          "top": 252.5,
+          "bottom": 284.5,
+          "width": 314
+        },
+        "controlsInsideTree": false,
+        "inlineTextActions": []
+      },
+      "mainWidth": 760
+    },
+    {
+      "id": "TA01",
+      "width": 1920,
+      "layout": {
+        "tree": {
+          "left": 224,
+          "right": 564,
+          "top": 202.5,
+          "bottom": 708.5,
+          "width": 340
+        },
+        "toolbar": {
+          "left": 237,
+          "right": 551,
+          "top": 296.5,
+          "bottom": 341.5,
+          "width": 314
+        },
+        "list": {
+          "left": 237,
+          "right": 551,
+          "top": 385.5,
+          "bottom": 689.5,
+          "width": 314
+        },
+        "viewport": {
+          "left": 237,
+          "right": 551,
+          "top": 383.5,
+          "bottom": 691.5,
+          "width": 314
+        },
+        "search": {
+          "left": 237,
+          "right": 551,
+          "top": 252.5,
+          "bottom": 284.5,
+          "width": 314
+        },
+        "controlsInsideTree": false,
+        "inlineTextActions": []
+      },
+      "mainWidth": 1314
+    },
+    {
+      "id": "TA02",
+      "key": "root",
+      "child": true,
+      "sibling": false,
+      "context": "当前节点\n大光路社区"
+    },
+    {
+      "id": "TA02",
+      "key": "communities:C-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n青禾示例社区"
+    },
+    {
+      "id": "TA02",
+      "key": "estates:E-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n青禾示例花园"
+    },
+    {
+      "id": "TA02",
+      "key": "buildings:B-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n01幢"
+    },
+    {
+      "id": "TA02",
+      "key": "buildings:B-N",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n02幢"
+    },
+    {
+      "id": "TA02",
+      "key": "units:U-A",
+      "child": true,
+      "sibling": true,
+      "context": "当前节点\n1单元"
+    },
+    {
+      "id": "TA02",
+      "key": "houses:H-A",
+      "child": false,
+      "sibling": true,
+      "context": "当前节点\n0101室"
+    },
+    {
+      "id": "TA06",
+      "building": "BUI-00101",
+      "unit": "UNI-00102",
+      "historyBefore": 1,
+      "historyAfter": 3
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "external": [],
+  "note": "独立QA会话；Web树操作布局与必要回归，未替代人工验收或微信验证"
+}

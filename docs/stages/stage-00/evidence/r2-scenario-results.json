@@ -1,0 +1,831 @@
+{
+  "recordedAt": "2026-11-06T06:45:45.623Z",
+  "browser": {
+    "run": "R2_2026-11-06T06-30-19-348Z-30896",
+    "base": "http://127.0.0.1:19201",
+    "session": "R2_2026-11-06T06-30-19-348Z-30896",
+    "cases": [
+      {
+        "id": "R2-01",
+        "name": "连续身份切换及关闭按钮、遮罩、Escape后页面仍可操作",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-02",
+        "name": "树层级、展开收起、同名房间与无单元模式",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-03",
+        "name": "左树新增同级下级、节点编辑与同一房间表单",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-04",
+        "name": "停用节点可选历史并从树重新启用，子孙不级联改变",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-05",
+        "name": "每一层始终显示三个资源页签，单元房间资源正常空态",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-06",
+        "name": "社区至房间均为全部末级房屋，分页无遗漏无重复且切范围清筛选",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-07",
+        "name": "设施车位随当前节点汇总，小区包含楼栋且未授权范围拒绝",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-08",
+        "name": "完整所属路径区分同名房间，无单元不显示假单元",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-09",
+        "name": "右侧只建末级资源，社区资源选择实际归属，单元直接带入",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-10",
+        "name": "列表操作栏办理、空间详情只读，关闭详情保留范围筛选",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-11",
+        "name": "CSV两种楼栋、错误范围、超限清旧文件、失败重选与树表同步",
+        "status": "PASS"
+      },
+      {
+        "id": "R2-12",
+        "name": "物业审核、住户和管理端共享结果、敏感与附件权限保持",
+        "status": "PASS"
+      }
+    ],
+    "errors": [],
+    "external": [],
+    "exit": 0,
+    "archivedReport": "r2/runs/R2_2026-11-06T06-30-19-348Z-30896.json",
+    "note": "Complete 12-case pass before final table-only layout polish; affected 06/08/10 retested below after Web rebuild."
+  },
+  "layoutRegression": [
+    {
+      "run": "R2_2026-11-06T06-44-04-296Z-53632",
+      "session": "R2_2026-11-06T06-44-04-296Z-53632",
+      "base": "http://127.0.0.1:19201",
+      "baseline": false,
+      "path": ".runtime/stage00-r2/R2_2026-11-06T06-44-04-296Z-53632",
+      "results": [
+        {
+          "id": "R2-06",
+          "name": "社区至房间均为全部末级房屋，分页无遗漏无重复且切范围清筛选",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "exit": 0
+    },
+    {
+      "run": "R2_2026-11-06T06-44-03-367Z-23048",
+      "session": "R2_2026-11-06T06-44-03-367Z-23048",
+      "base": "http://127.0.0.1:19201",
+      "baseline": false,
+      "path": ".runtime/stage00-r2/R2_2026-11-06T06-44-03-367Z-23048",
+      "results": [
+        {
+          "id": "R2-08",
+          "name": "完整所属路径区分同名房间，无单元不显示假单元",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "exit": 0
+    },
+    {
+      "run": "R2_2026-11-06T06-44-04-179Z-30964",
+      "session": "R2_2026-11-06T06-44-04-179Z-30964",
+      "base": "http://127.0.0.1:19201",
+      "baseline": false,
+      "path": ".runtime/stage00-r2/R2_2026-11-06T06-44-04-179Z-30964",
+      "results": [
+        {
+          "id": "R2-10",
+          "name": "列表操作栏办理、空间详情只读，关闭详情保留范围筛选",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "exit": 0
+    }
+  ],
+  "layoutFinding": {
+    "before": "r2/before-width/all-leaf-rooms.png",
+    "observation": "At 1366px, fixed right actions overlaid area/status columns despite correct minWidth; removed fixed overlay only for embedded spatial tables and made horizontal scrolling explicit.",
+    "after": "r2/screenshots/house-table-readability.json"
+  },
+  "rules": {
+    "status": "PASS",
+    "total": 81,
+    "passed": 81,
+    "failed": 0,
+    "priorBaseline": 70,
+    "added": 11,
+    "log": "r2/logs/rules-first.log"
+  },
+  "builds": {
+    "builds": {
+      "pass": 7,
+      "total": 7
+    },
+    "types": {
+      "pass": 3,
+      "total": 3
+    }
+  },
+  "previousRuns": [
+    {
+      "run": "R2_2026-11-06T06-09-17-090Z",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "FAIL"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-09-17-090Z.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-10-16-854Z",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "FAIL"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-10-16-854Z.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-16-06-849Z",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "FAIL"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-16-06-849Z.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-18-25-059Z",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "FAIL"
+        },
+        {
+          "id": "R2-02",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-03",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-04",
+          "status": "FAIL"
+        },
+        {
+          "id": "R2-05",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-06",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-07",
+          "status": "FAIL"
+        },
+        {
+          "id": "R2-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-09",
+          "status": "FAIL"
+        },
+        {
+          "id": "R2-10",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-11",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-12",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-18-25-059Z.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-25-06-415Z-37936",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "PASS"
+        }
+      ],
+      "errors": [
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-25-06-415Z-37936#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        }
+      ],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-25-06-415Z-37936.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-25-08-395Z-35568",
+      "results": [
+        {
+          "id": "R2-04",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-25-08-395Z-35568.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-25-08-912Z-11964",
+      "results": [
+        {
+          "id": "R2-07",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-25-08-912Z-11964.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-25-56-976Z-14828",
+      "results": [
+        {
+          "id": "R2-09",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-25-56-976Z-14828.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-26-33-971Z-21908",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "PASS"
+        }
+      ],
+      "errors": [
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+          "kind": "console-render-error"
+        },
+        {
+          "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+          "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+          "kind": "console-render-error"
+        }
+      ],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-26-33-971Z-21908.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-26-35-507Z-55956",
+      "results": [
+        {
+          "id": "R2-04",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-26-35-507Z-55956.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-30-19-348Z-30896",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-02",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-03",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-04",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-05",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-06",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-07",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-09",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-10",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-11",
+          "status": "PASS"
+        },
+        {
+          "id": "R2-12",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-30-19-348Z-30896.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-44-03-367Z-23048",
+      "results": [
+        {
+          "id": "R2-08",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-44-03-367Z-23048.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-44-04-179Z-30964",
+      "results": [
+        {
+          "id": "R2-10",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-44-04-179Z-30964.json"
+    },
+    {
+      "run": "R2_2026-11-06T06-44-04-296Z-53632",
+      "results": [
+        {
+          "id": "R2-06",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_2026-11-06T06-44-04-296Z-53632.json"
+    },
+    {
+      "run": "R2_PROBE_2026-11-06T06-21-21-035Z",
+      "results": [
+        {
+          "id": "R2-01",
+          "status": "FAIL"
+        }
+      ],
+      "errors": [],
+      "external": [],
+      "evidence": "r2/runs/R2_PROBE_2026-11-06T06-21-21-035Z.json"
+    }
+  ],
+  "ownerOriginalR1": {
+    "pass": 2,
+    "fail": 4,
+    "pending": 9
+  },
+  "ownerR2": "OWNER_RETEST_PENDING",
+  "originalH08": "FAIL_OWNER_RETEST_PENDING",
+  "wechatDevtools": "NOT_RUN",
+  "realDevice": "NOT_RUN",
+  "status": [
+    "R2_IMPLEMENTED",
+    "R2_SELF_TEST_RECORDED",
+    "OWNER_RETEST_PENDING",
+    "NOT_STAGE_PASS"
+  ],
+  "artifacts": [
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-09-17-090Z/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-09-17-090Z.json",
+      "sha256": "83247270e2d0e09a01ba054f5b410d51ccd95616050057eb1780d64c677a0560"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-10-16-854Z/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-10-16-854Z.json",
+      "sha256": "eeeea75f3838303b5a57595ce839668040890717afb77682e9166af28a387d82"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-16-06-849Z/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-16-06-849Z.json",
+      "sha256": "517eeb850653c0b04e0f83232a5feccf170f8a49c42a383fc55b49a011177b62"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-18-25-059Z.json",
+      "sha256": "8b05b656c2c409abb507d0a3e03685acb55f93127aa78768fc90e24774f09d9c"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-25-06-415Z-37936/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-06-415Z-37936.json",
+      "sha256": "4dc6a3ca1f426bfb96a0b5c3811c598e45c6db100b8b80bc5aef771e02805e41"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-25-08-395Z-35568/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-08-395Z-35568.json",
+      "sha256": "bf53ed5081fb160fa048b35c58ba5a7f11d855f416da1baf70db4f85eb6d1a0f"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-25-08-912Z-11964/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-08-912Z-11964.json",
+      "sha256": "5e0cf4c9bbd3aff55b9f188713043cc309ef821383e0029d6a5876b00c66b4d1"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-25-56-976Z-14828/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-25-56-976Z-14828.json",
+      "sha256": "e05cf9380c73b9bbfc1fc9a68ad21c0668b57aa87429c28974db038565822f26"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-26-33-971Z-21908/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-26-33-971Z-21908.json",
+      "sha256": "57ee5197a31d1ff56ad72333562708017ef4686810ec9e504d46fdb4c5bc8a08"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-26-35-507Z-55956/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-26-35-507Z-55956.json",
+      "sha256": "6343fc63542a8e59201cd659911035fd163ff80113bcd472826f0dc28714541e"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-30-19-348Z-30896.json",
+      "sha256": "8aadf527aabb28f0f553b01d6e323ccd22315ec11d9a820a2285aabb55e08358"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-03-367Z-23048/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-44-03-367Z-23048.json",
+      "sha256": "c5d87050d834096db7c09639cb67308ac63039e8fcc32ce844a694c7d354523a"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-04-179Z-30964/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-44-04-179Z-30964.json",
+      "sha256": "ab9dd9b73149a292c4a1850faef64b130cb8b58e63db059cf2025177b6829671"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-04-296Z-53632/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_2026-11-06T06-44-04-296Z-53632.json",
+      "sha256": "757314e81a504fb37110279042e690c622d7306ba4039ef07febb956b1fa0bdd"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_PROBE_2026-11-06T06-21-21-035Z/results.json",
+      "target": "docs/stages/stage-00/evidence/r2/runs/R2_PROBE_2026-11-06T06-21-21-035Z.json",
+      "sha256": "41fec0b93e2fb4e94880d4845c19fdc9933dcf80282cb239ff96516ebaf8fd34"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-04-296Z-53632/all-leaf-rooms.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/all-leaf-rooms.png",
+      "sha256": "dca1dd7f63b59d9d6c7520bec7adaa79dacaf64b3447dcf38e630a1bd6a437d9"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/csv-success-tree-list.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/csv-success-tree-list.png",
+      "sha256": "8647847c9074fa13c68d687e1a363f1ff9f62f0feab25b3be4148667ff70d726"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/csv-too-large-clears-preview.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/csv-too-large-clears-preview.png",
+      "sha256": "d9419f69a31f7ad6e3310d8fde8200fa224d74eabc632d96365520bbf8698e00"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/identity-observations.json",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/identity-observations.json",
+      "sha256": "7e254f3d43150ab84e9a9f3c37d21a73b7234e4358d16b7095319632d8fec8a6"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/identity-usable.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/identity-usable.png",
+      "sha256": "7ea099db789671691c852d212e4d19fc5de5094eb99a2721fe5a7d2e177c75c0"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/inactive-node-history.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/inactive-node-history.png",
+      "sha256": "8e1e1e06feda9306ebc57a5af9d8d139f7f153b41178efdb7c14a38fbdfc0077"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/resource-parent-selection.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/resource-parent-selection.png",
+      "sha256": "4a247bb00cf30965712acc218842402763d63cfa5e267251eeeeaade6099872a"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-04-179Z-30964/resource-row-actions.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/resource-row-actions.png",
+      "sha256": "68acb934261bb4158ad4cedac942b43b6f370bbff533fd3a25d20e25baddf83f"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-03-367Z-23048/same-number-full-path.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/same-number-full-path.png",
+      "sha256": "1d26360ea97489d65ebed79e416133da86fcda49d43d8c6187aa86ccfecc7847"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/tree-structural-actions.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/tree-structural-actions.png",
+      "sha256": "f5a38a232b6aca0ae5f434e731c1ad259ca930007b46278790a07d2b6790a7b7"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/tree-with-and-without-unit.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/tree-with-and-without-unit.png",
+      "sha256": "b2ab97ecc50f875f20e8d8c015c6c99d2222ff3ff0994006ccc61b4587dd8e10"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896/all-leaf-rooms.png",
+      "target": "docs/stages/stage-00/evidence/r2/before-width/all-leaf-rooms.png",
+      "sha256": "a91940eef38cda1c7389dca609baad2a12ea47006da769ed0cd654c69824385e"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-03-367Z-23048/house-columns-1366.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/house-columns-1366.png",
+      "sha256": "3a163cef4f65bf3f3d7281e0ada876f55c85db73f04322ab6ea33a1b78a9752e"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-03-367Z-23048/house-columns-1920.png",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/house-columns-1920.png",
+      "sha256": "e79ee77b776673ca99c5bb0def154bfc0ade9541b0917360ae61f16aa18057ae"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-44-03-367Z-23048/house-table-readability.json",
+      "target": "docs/stages/stage-00/evidence/r2/screenshots/house-table-readability.json",
+      "sha256": "392f129be3034483de20c94380f6a04af653e28d74a6dab421ab3df6b80e9a38"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-10-16-854Z/R2-01-failure.png",
+      "target": "docs/stages/stage-00/evidence/r2/before/R2-01-failure.png",
+      "sha256": "e5f33cffe0c1a94fd39d6fcda1101b5f5538b6b433b5d7ec52e18fcfbfe65702"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-10-16-854Z/identity-failure-state.json",
+      "target": "docs/stages/stage-00/evidence/r2/before/identity-failure-state.json",
+      "sha256": "0956bcbfbda932cef8f6651765a5ac5de5f4abc45bd4827fdb360b1220ec9392"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z/R2-01-failure.png",
+      "target": "docs/stages/stage-00/evidence/r2/first-run/R2-01-failure.png",
+      "sha256": "d7328186a5837ab99630a9f46d2d0cd0d6292b0d38c790bc8e378153df9ce844"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z/R2-04-failure.png",
+      "target": "docs/stages/stage-00/evidence/r2/first-run/R2-04-failure.png",
+      "sha256": "052fd1a090c6d8644769c98d0269f48d085d3f41cf0497acd11ffab170d186b8"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z/R2-07-failure.png",
+      "target": "docs/stages/stage-00/evidence/r2/first-run/R2-07-failure.png",
+      "sha256": "99ebde41b99668db8e3a445fa4966062c72bcc0888567ea59b8ae01640397ebc"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z/R2-09-failure.png",
+      "target": "docs/stages/stage-00/evidence/r2/first-run/R2-09-failure.png",
+      "sha256": "2df8180d0288fcd2dc3e6f769d5879e8956d60ddca61bde38ac350d099fd8bcf"
+    },
+    {
+      "source": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z/identity-failure-state.json",
+      "target": "docs/stages/stage-00/evidence/r2/first-run/identity-failure-state.json",
+      "sha256": "42e8a8bca3875e75b54ea1536548640fb146586a38b05369ecd9a84434a47c02"
+    },
+    {
+      "source": ".runtime/stage00-r2/web-width-fix.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/web.log",
+      "sha256": "55f8d755979991e617a797e8e4d27e76925185e6deb5690ea11dd2a58493a1b2"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/web.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/web-prior-0.log",
+      "sha256": "9e29cd9e32be996f9f70d76e9d263a84c09d01edae18c637afa4a8d70088920c"
+    },
+    {
+      "source": ".runtime/stage00-r2/web-editor-fix.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/web-prior-1.log",
+      "sha256": "f8ff5ee139424f0213a705f8b7caee2ac4b0ad7f0c79882426f6ed72ac84173a"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-h5.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/resident-h5.log",
+      "sha256": "596211be2c50b1774defe41e81fff0ad13207ee7e72d27e09fea7af154bc30f7"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-mp-weixin.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/resident-mp-weixin.log",
+      "sha256": "1826e58802a2eefc6571f3b6ab57d8c1bd3a30be9d94f182b062be6366f9c44c"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-h5.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/merchant-h5.log",
+      "sha256": "e2e69b7693f15f35afb73fe4ff304c5dca11d7ff64a01e9d63118ad4f9535b97"
+    },
+    {
+      "source": ".runtime/stage00-r2/merchant-mp-retry.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/merchant-mp-weixin.log",
+      "sha256": "4bd4c6b839d1728e18f0b3e1f8d2bd7a8e1d5399c2e3cce6c8571d26c83b3784"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-mp-weixin.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/merchant-mp-weixin-prior-0.log",
+      "sha256": "b88a433f1124ab693d370a7cb20a6d47a119ef4d458ac40461b0259cbb8f8e53"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-h5.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/staff-h5.log",
+      "sha256": "f4e22baeff320b2040540ff956565e2d383a5f2e40085b87ec57f87e2f6416f9"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-mp-weixin.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/staff-mp-weixin.log",
+      "sha256": "95edc1debd9a85efecc276c5dd13d03a81f28f33e68b91bb765a9f1c2e9e78c1"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-types.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/resident-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-types.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/merchant-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "source": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-types.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/staff-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "source": ".runtime/stage00-r2/baseline-tests.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/baseline-tests.log",
+      "sha256": "d414349bac8563289c88beab2c79273390ca2e1c6d08c8f145ed49be4f7de642"
+    },
+    {
+      "source": ".runtime/stage00-r2/rules-first.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/rules-first.log",
+      "sha256": "8ade1cb93bb8b296f2e4f5a97c7f69801025f6ef24e7c8b4bc35fcc084ea29c1"
+    },
+    {
+      "source": ".runtime/stage00-r2/browser-full-first.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/browser-full-first.log",
+      "sha256": "7941506822a45ce63ba7ea0b4da297fbd4628a014b2aabcdadd639403417c17e"
+    },
+    {
+      "source": ".runtime/stage00-r2/browser-final.log",
+      "target": "docs/stages/stage-00/evidence/r2/logs/browser-final.log",
+      "sha256": "b701202ddfe425ccc9535f14973df8d644eda2ec4dc11573cce4fc84cb29ec26"
+    }
+  ]
+}

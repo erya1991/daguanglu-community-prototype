@@ -1,15 +1,14 @@
 {
-  "run": "R2_2026-11-06T06-18-25-059Z",
-  "session": "R2_2026-11-06T06-18-25-059Z",
+  "run": "R2_2026-11-06T06-30-19-348Z-30896",
+  "session": "R2_2026-11-06T06-30-19-348Z-30896",
   "base": "http://127.0.0.1:19201",
   "baseline": false,
-  "path": ".runtime/stage00-r2/R2_2026-11-06T06-18-25-059Z",
+  "path": ".runtime/stage00-r2/R2_2026-11-06T06-30-19-348Z-30896",
   "results": [
     {
       "id": "R2-01",
       "name": "连续身份切换及关闭按钮、遮罩、Escape后页面仍可操作",
-      "status": "FAIL",
-      "error": "page.waitForFunction: Timeout 7000ms exceeded.\n    at overlaysSettled (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:51:46)\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:62:106\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:40:9)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:53:1"
+      "status": "PASS"
     },
     {
       "id": "R2-02",
@@ -24,8 +23,7 @@
     {
       "id": "R2-04",
       "name": "停用节点可选历史并从树重新启用，子孙不级联改变",
-      "status": "FAIL",
-      "error": "locator.fill: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.ivu-modal-wrap:visible').filter({ has: locator('.ivu-modal-header-inner').filter({ hasText: '受控状态变更' }) }).last().locator('textarea')\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:128:108\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:40:9)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:126:1"
+      "status": "PASS"
     },
     {
       "id": "R2-05",
@@ -40,8 +38,7 @@
     {
       "id": "R2-07",
       "name": "设施车位随当前节点汇总，小区包含楼栋且未授权范围拒绝",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.space-main') to be visible\u001b[22m\n\n    at freshWeb (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:32:188)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:152:5\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:40:9)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:149:1"
+      "status": "PASS"
     },
     {
       "id": "R2-08",
@@ -51,8 +48,7 @@
     {
       "id": "R2-09",
       "name": "右侧只建末级资源，社区资源选择实际归属，单元直接带入",
-      "status": "FAIL",
-      "error": "locator.click: Timeout 7000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.ivu-modal-wrap:visible').filter({ has: locator('.ivu-modal-header-inner').filter({ hasText: '新增车位资源' }) }).last().locator('.ivu-form-item').filter({ has: locator('.ivu-modal-wrap:visible').filter({ has: locator('.ivu-modal-header-inner').filter({ hasText: '新增车位资源' }) }).last().locator('.ivu-form-item-label').filter({ hasText: '实际所属空间' }) }).locator('.ivu-select-selection')\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:166:325\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r2.mjs:40:9)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:162:1"
+      "status": "PASS"
     },
     {
       "id": "R2-10",

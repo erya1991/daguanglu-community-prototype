@@ -6,11 +6,48 @@
       "id": "web",
       "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
       "cwd": "D:\\git\\daguanglu-community-prototype",
-      "start": "2026-11-06T06:13:43.997Z",
-      "end": "2026-11-06T06:14:16.612Z",
+      "start": null,
+      "end": "2026-11-06T06:43:01.134Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/web.log"
+      "log": ".runtime/stage00-r2/web-width-fix.log",
+      "note": "Final table layout polish; exec session31291 observed exit0. Complete twelve-case run preceded this table-only change; affected 06/08/10 retested afterward.",
+      "priorAttempts": [
+        {
+          "id": "web",
+          "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+          "cwd": "D:\\git\\daguanglu-community-prototype",
+          "start": "2026-11-06T06:13:43.997Z",
+          "end": "2026-11-06T06:14:16.612Z",
+          "exit": 0,
+          "status": "PASS",
+          "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/web.log",
+          "archivedLog": "r2/logs/web-prior-0.log"
+        },
+        {
+          "id": "web",
+          "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+          "cwd": "D:\\git\\daguanglu-community-prototype",
+          "start": null,
+          "end": "2026-11-06T06:29:36.683Z",
+          "exit": 0,
+          "status": "PASS",
+          "log": ".runtime/stage00-r2/web-editor-fix.log",
+          "note": "Final Web build after identity lifecycle, tree action labels, and editor mount fixes. Observed exec session 16231 exit 0. Start timestamp was not separately recorded.",
+          "intermediateBuildLogs": [
+            ".runtime/stage00-r2/web-final.log",
+            ".runtime/stage00-r2/web-close-fix.log",
+            ".runtime/stage00-r2/web-actions-fix.log"
+          ],
+          "archivedLog": "r2/logs/web-prior-1.log"
+        }
+      ],
+      "intermediateBuildLogs": [
+        ".runtime/stage00-r2/web-final.log",
+        ".runtime/stage00-r2/web-close-fix.log",
+        ".runtime/stage00-r2/web-actions-fix.log"
+      ],
+      "archivedLog": "r2/logs/web.log"
     },
     {
       "id": "resident-h5",
@@ -20,7 +57,8 @@
       "end": "2026-11-06T06:14:41.430Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-h5.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-h5.log",
+      "archivedLog": "r2/logs/resident-h5.log"
     },
     {
       "id": "resident-mp-weixin",
@@ -30,7 +68,8 @@
       "end": "2026-11-06T06:14:56.223Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-mp-weixin.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-mp-weixin.log",
+      "archivedLog": "r2/logs/resident-mp-weixin.log"
     },
     {
       "id": "merchant-h5",
@@ -40,17 +79,33 @@
       "end": "2026-11-06T06:15:10.938Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-h5.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-h5.log",
+      "archivedLog": "r2/logs/merchant-h5.log"
     },
     {
       "id": "merchant-mp-weixin",
       "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
       "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
-      "start": "2026-11-06T06:15:10.938Z",
-      "end": "2026-11-06T06:15:20.510Z",
-      "exit": 1,
-      "status": "FAIL",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-mp-weixin.log"
+      "start": null,
+      "end": "2026-11-06T06:16:39.262Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-r2/merchant-mp-retry.log",
+      "note": "Initial sandbox mkdir EPERM retained; exact target retry completed with observed process exit 0. No dependencies changed.",
+      "priorAttempts": [
+        {
+          "id": "merchant-mp-weixin",
+          "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+          "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+          "start": "2026-11-06T06:15:10.938Z",
+          "end": "2026-11-06T06:15:20.510Z",
+          "exit": 1,
+          "status": "FAIL",
+          "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-mp-weixin.log",
+          "archivedLog": "r2/logs/merchant-mp-weixin-prior-0.log"
+        }
+      ],
+      "archivedLog": "r2/logs/merchant-mp-weixin.log"
     },
     {
       "id": "staff-h5",
@@ -60,7 +115,8 @@
       "end": "2026-11-06T06:15:36.938Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-h5.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-h5.log",
+      "archivedLog": "r2/logs/staff-h5.log"
     },
     {
       "id": "staff-mp-weixin",
@@ -70,7 +126,8 @@
       "end": "2026-11-06T06:15:51.173Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-mp-weixin.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-mp-weixin.log",
+      "archivedLog": "r2/logs/staff-mp-weixin.log"
     },
     {
       "id": "resident-types",
@@ -80,7 +137,8 @@
       "end": "2026-11-06T06:15:56.823Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-types.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/resident-types.log",
+      "archivedLog": "r2/logs/resident-types.log"
     },
     {
       "id": "merchant-types",
@@ -90,7 +148,8 @@
       "end": "2026-11-06T06:16:01.208Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-types.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/merchant-types.log",
+      "archivedLog": "r2/logs/merchant-types.log"
     },
     {
       "id": "staff-types",
@@ -100,7 +159,25 @@
       "end": "2026-11-06T06:16:05.903Z",
       "exit": 0,
       "status": "PASS",
-      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-types.log"
+      "log": ".runtime/stage00-r2/BUILD_2026-11-06T06-13-43-729Z/staff-types.log",
+      "archivedLog": "r2/logs/staff-types.log"
     }
-  ]
+  ],
+  "recordedAt": "2026-11-06T06:44:25.372Z",
+  "summary": {
+    "builds": {
+      "pass": 7,
+      "total": 7
+    },
+    "types": {
+      "pass": 3,
+      "total": 3
+    }
+  },
+  "finalWebSourceHashes": {
+    "web/manager/src/App.vue": "0474ed18fde6d9cd40383d620693116ad9599cdacbe0ceab35b048eda6c35b7d",
+    "web/manager/src/views/SpaceArchive.vue": "d62a3a40712398ae5389500111585f4ef7fc52ef4abccde4f6272b829e39361b",
+    "web/manager/src/views/Workspace.vue": "e5dbff730c61210167b21865ce67c0252670f364e4c7ea10673b88dc3ea6fca3",
+    "web/manager/src/styles/stage00.scss": "b02725d2e0a3ae947b0f3c4dfc184b9c5cdcf9c32332eb187e570d98e604a3c2"
+  }
 }

@@ -1,0 +1,161 @@
+{
+  "recordedAt": "2026-11-06T08:53:05.524Z",
+  "base": "http://127.0.0.1:19201",
+  "build": {
+    "status": "PASS",
+    "exit": 0,
+    "log": "tree-actions/logs/web-icons-build.log",
+    "note": "Observed exec session7738 exit0; final existing-library icon substitution only."
+  },
+  "cases": [
+    {
+      "id": "TA01",
+      "name": "双视口工具栏与树名称图标区域分离，左右布局可用",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results-TA01.json"
+    },
+    {
+      "id": "TA02",
+      "name": "点击名称选中高亮，各层新增按钮及只读权限匹配",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results.json"
+    },
+    {
+      "id": "TA03",
+      "name": "图标悬停及键盘焦点可达，编辑启停不误选中或展开，房间无操作",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results.json"
+    },
+    {
+      "id": "TA04",
+      "name": "根名称图标编辑不改变当前选中和展开，保存后持久且可恢复",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results.json"
+    },
+    {
+      "id": "TA05",
+      "name": "独立新增下级工具栏实际新建楼栋和单元，上级名称仍禁用带入",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results.json"
+    },
+    {
+      "id": "TA06",
+      "name": "图标停用恢复保留历史与下级引用，停用节点可选且新增下级禁用",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results.json"
+    },
+    {
+      "id": "TA07",
+      "name": "本次浏览器全过程无页面异常、控制台错误或外部请求",
+      "status": "PASS",
+      "evidence": "tree-actions-browser-results.json"
+    }
+  ],
+  "phases": {
+    "complete": {
+      "run": "TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992",
+      "exit": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "external": []
+    },
+    "afterIconSubstitution": {
+      "run": "TREE_ACTIONS_2026-11-06T08-51-59-509Z-452",
+      "exit": 0,
+      "results": [
+        {
+          "id": "TA01",
+          "name": "双视口工具栏与树名称图标区域分离，左右布局可用",
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "external": []
+    }
+  },
+  "sourceHashes": {
+    "web/manager/src/views/SpaceArchive.vue": "7fedb13def5e473732adfd8de96304730c93251de9d340e6f3c9c88e2ea9339c",
+    "web/manager/src/styles/stage00.scss": "6e5acfd22be21bc433113f054fb087596f35c3e0dba4290301fe10b345003e70"
+  },
+  "protection": {
+    "baseline": "r2-followup-snapshot.json",
+    "protectedCount": 443,
+    "drift": [],
+    "initialHead": "c3d51eb35e487a5677d463d7754ed646ae9f2ddd",
+    "head": "c3d51eb35e487a5677d463d7754ed646ae9f2ddd",
+    "index": "",
+    "gitWrites": false
+  },
+  "artifacts": [
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-47-35-262Z-36636/results.json",
+      "target": "docs/stages/stage-00/evidence/tree-actions/runs/TREE_ACTIONS_2026-11-06T08-47-35-262Z-36636.json",
+      "sha256": "5b60ac72709e939f1c2d89b4c3f03624b933a5a5e816a3356937be4e41f1e3e5"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992/results.json",
+      "target": "docs/stages/stage-00/evidence/tree-actions/runs/TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992.json",
+      "sha256": "c8b3e375d54100f6db78c11b7db7afd2ff3776d3bb7c86ad81e51d6cadf24bd0"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-51-59-509Z-452/results.json",
+      "target": "docs/stages/stage-00/evidence/tree-actions/runs/TREE_ACTIONS_2026-11-06T08-51-59-509Z-452.json",
+      "sha256": "dfb9a16cfc65dff90fdb70dfa8eabbdb5cf371c09ae91b1b6c3aaa007959a212"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-51-59-509Z-452/tree-actions-1366.png",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-actions-1366.png",
+      "sha256": "bb992e1e7fbdc3753420c148074d70daea1156c96a44fa3ced3ddbaccba7f285"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-51-59-509Z-452/tree-actions-1920.png",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-actions-1920.png",
+      "sha256": "bb97f1086e1362e2967bed9c40dac9fe54cef3f67a1159017a1c7e2baaf53668"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992/tree-icons-focus-and-room.png",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-icons-focus-and-room.png",
+      "sha256": "13ab912c9b79a79dc04a8bf6d5374afb2da179019dad190b602f10fed8c8f402"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992/tree-status-restored.png",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-status-restored.png",
+      "sha256": "5d94ec211a26892302e04d230cec5b86f1145fc455d58eb91f175238c63650e0"
+    },
+    {
+      "source": ".runtime/tree-actions/TREE_ACTIONS_2026-11-06T08-49-16-083Z-40992/tree-toolbar-created-building-unit.png",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-toolbar-created-building-unit.png",
+      "sha256": "8f13d0797cb8eae8eb5641c8e872755e4dc41d2293ff32d57e52dfb65402d6b8"
+    },
+    {
+      "source": ".runtime/tree-actions/web-build.log",
+      "target": "docs/stages/stage-00/evidence/tree-actions/logs/web-build.log",
+      "sha256": "884fb8495316c63709aafd2dabf77e2e5e500f6002e32f7fa98a9a7dbed44517"
+    },
+    {
+      "source": ".runtime/tree-actions/web-final-build.log",
+      "target": "docs/stages/stage-00/evidence/tree-actions/logs/web-final-build.log",
+      "sha256": "326bcdf751d802a2a208205567fb6e66c85320fd61ab96778c264573dfae44f9"
+    },
+    {
+      "source": ".runtime/tree-actions/web-icons-build.log",
+      "target": "docs/stages/stage-00/evidence/tree-actions/logs/web-icons-build.log",
+      "sha256": "2ef009295820a7f888a767b05b963a9677f6b47293b9ba40473cb2371763ca1b"
+    },
+    {
+      "source": "Actual isolated browser capture",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-actions-panel.png",
+      "sha256": "b1d55113fed26934b9670683e20fef0b1ad3f5b02de7f38a94a7a36acda42937"
+    },
+    {
+      "source": "Actual isolated browser capture",
+      "target": "docs/stages/stage-00/evidence/tree-actions/screenshots/tree-actions-preview.png",
+      "sha256": "abf6c7ee868ef53e5901ff5f784ac28b8cc111bd771ca2ddd216b2cef980c52e"
+    }
+  ],
+  "mobileBuilds": "NOT_RUN_UNAFFECTED",
+  "wechatDevtools": "NOT_RUN",
+  "ownerAcceptance": "OWNER_RETEST_PENDING",
+  "stage": "NOT_STAGE_PASS"
+}

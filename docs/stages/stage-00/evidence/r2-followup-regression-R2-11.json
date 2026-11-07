@@ -1,0 +1,17 @@
+{
+  "run": "R2F_2026-11-06T07-18-02-027Z-44464",
+  "session": "R2F_2026-11-06T07-18-02-027Z-44464",
+  "base": "http://127.0.0.1:19201",
+  "baseline": false,
+  "followup": true,
+  "path": ".runtime/stage00-r2-followup/regression/R2F_2026-11-06T07-18-02-027Z-44464",
+  "results": [
+    {
+      "id": "R2-11",
+      "name": "CSV两种楼栋、错误范围、超限清旧文件、失败重选与树表同步",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": []
+}

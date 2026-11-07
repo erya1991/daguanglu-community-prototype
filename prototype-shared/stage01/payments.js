@@ -10,6 +10,7 @@ import {
   houseFor,
   revision,
   attachments,
+  isPropertyOperator,
 } from "./common.js";
 import { relationFor } from "./parking.js";
 import { refreshBill } from "./billing.js";
@@ -282,7 +283,7 @@ export function paymentCommand(s, ctx, command, p) {
     return { id, message: pay.PY16 };
   }
   if (command === "createCheck") {
-    need(a.role === "property" && ctx.app === "web", "核查在物业Web办理");
+    need(isPropertyOperator(a) && ctx.app === "web", "核查在物业Web办理");
     const existing = d.payments.find((x) => x._id === p.id);
     const target = existing
       ? get(s, a, "payments", p.id)
@@ -292,7 +293,7 @@ export function paymentCommand(s, ctx, command, p) {
     return { id: r._id, message: "核查记录已建立" };
   }
   if (command === "saveCheck") {
-    need(a.role === "property" && ctx.app === "web", "核查在物业Web办理");
+    need(isPropertyOperator(a) && ctx.app === "web", "核查在物业Web办理");
     const r = get(s, a, "checks", p.id);
     revision(r, p);
     need(p.note?.trim(), "请填写核查说明", { EX06: "此项必填" });
@@ -315,7 +316,7 @@ export function paymentCommand(s, ctx, command, p) {
   }
   if (command === "recoverPayment") {
     need(
-      a.role === "property" && ctx.app === "web" && pay.PY12 === "成功",
+      isPropertyOperator(a) && ctx.app === "web" && pay.PY12 === "成功",
       "仅可核对已有成功支付"
     );
     result(s, a, pay, "成功", true);
@@ -326,7 +327,7 @@ export function paymentCommand(s, ctx, command, p) {
 // Auxiliary delivery events use the same reconciliation path; never directly edit business terminal state.
 export function replayPayment(s, ctx, p) {
   const a = actor(s, ctx);
-  need(ctx.app === "web" && a.role === "property", "仅演示辅助入口可回放");
+  need(ctx.app === "web" && isPropertyOperator(a), "仅演示辅助入口可回放");
   const r = get(s, a, "payments", p.id);
   result(s, a, r, p.outcome || "成功");
   return { id: r._id, message: "已按原交易处理回执" };
@@ -335,7 +336,7 @@ export function replayPayment(s, ctx, p) {
 export function auxiliaryFunds(s, ctx, p) {
   const a = actor(s, ctx);
   need(
-    a.role === "property" && ctx.app === "web",
+    isPropertyOperator(a) && ctx.app === "web",
     "仅物业演示辅助入口可准备资金场景"
   );
   const d = domain(s),

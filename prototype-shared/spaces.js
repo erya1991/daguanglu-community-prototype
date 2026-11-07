@@ -25,5 +25,6 @@ export function resourceInSpace(resource, scope) {
   if (scope?.table === 'communities') return resource['所属社区'] === scope.id
   if (scope.table === 'estates') return resource['所属小区'] === scope.id
   if (scope.table === 'buildings') return (resource._spaceTable === 'buildings' && resource._spaceId === scope.id) || resource['关联楼栋'] === scope.id
+  if (scope.table === 'units') return resource._spaceTable === 'units' && resource._spaceId === scope.id
   return false
 }

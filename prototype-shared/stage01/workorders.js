@@ -14,9 +14,10 @@ import {
   attachments,
   houseFor,
   requireProperty,
+  isPropertyOperator,
 } from "./common.js";
 export const allowedActions = (s, a, r) => {
-  if (a.role !== "property") return [];
+  if (!isPropertyOperator(a)) return [];
   const status = r.WO06,
     owner = r._assignee === a._id;
   return [
@@ -36,9 +37,9 @@ function personnel(s, a, id) {
   need(
     p &&
       p["在岗状态"] === "在岗" &&
-      p["所属物业组织"] === a.org &&
+      (a.role === "platform" || p["所属物业组织"] === a.org) &&
       account?.["账号状态"] === "启用" &&
-      account["授权角色"].includes("property"),
+      (account["授权角色"].includes("property") || (a.role === "platform" && account["授权角色"].includes("platform"))),
     "请选择本物业有效在岗且关联账号的人员"
   );
   return p;
@@ -108,7 +109,7 @@ export function workorderCommand(s, ctx, command, p) {
         x["档案状态"] !== "停用"
     );
     need(estate, "请核对社区与小区");
-    if (a.role === "property")
+    if (isPropertyOperator(a))
       need(a["可查看小区"].includes(estate._id), "上报位置不在授权范围");
     else
       need(
@@ -149,9 +150,9 @@ export function workorderCommand(s, ctx, command, p) {
             : ctx.app === "staff"
             ? "管理端现场上报"
             : "Web人工登记",
-        RP03: a.role === "property" && data.RP03 ? data.RP03 : a.name,
+        RP03: isPropertyOperator(a) && data.RP03 ? data.RP03 : a.name,
         RP04:
-          a.role === "property" && data.RP03 && data.RP03 !== a.name
+          isPropertyOperator(a) && data.RP03 && data.RP03 !== a.name
             ? a.name
             : "",
         RP05: now(),

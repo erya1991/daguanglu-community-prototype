@@ -1,0 +1,321 @@
+{
+  "run": "R2_FOLLOWUP_2026-11-06T07-22-33-504Z-28936",
+  "session": "R2_FOLLOWUP_2026-11-06T07-22-33-504Z-28936",
+  "base": "http://127.0.0.1:19201",
+  "runtime": ".runtime/stage00-r2/R2_FOLLOWUP_2026-11-06T07-22-33-504Z-28936",
+  "only": null,
+  "results": [
+    {
+      "id": "R2-F01",
+      "name": "平台完整菜单、跨范围新档案与附件；受限身份服务拒绝",
+      "status": "PASS"
+    },
+    {
+      "id": "R2-F02",
+      "name": "空间树独立宽度与直接添加下级可见可点击",
+      "status": "PASS"
+    },
+    {
+      "id": "R2-F03",
+      "name": "虚拟根默认名称、空值校验、保存刷新持久且社区记录不变",
+      "status": "PASS"
+    },
+    {
+      "id": "R2-F04",
+      "name": "结构同级下级保存，C/E/B逐字段真实名称且已知上级禁用",
+      "status": "PASS"
+    },
+    {
+      "id": "R2-F05",
+      "name": "末级房间无更多且右列表编辑、停用、启用可办",
+      "status": "PASS"
+    },
+    {
+      "id": "R2-F06",
+      "name": "根及C/E/B/U/H创建房间，按层锁定、选择单元和H回父可见",
+      "status": "PASS"
+    },
+    {
+      "id": "R2-F07",
+      "name": "设施车位实际E/B/U归属、B下选U、聚合查询与编辑不迁移",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "id": "R2-F02",
+      "width": 1366,
+      "treeWidth": 340,
+      "rightWidth": 760
+    },
+    {
+      "id": "R2-F02",
+      "width": 1920,
+      "treeWidth": 340,
+      "rightWidth": 1314
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "communities",
+      "record": "COM-00103",
+      "parents": []
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "communities",
+      "record": "COM-00104",
+      "parents": []
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "estates",
+      "record": "EST-00105",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "estates",
+      "record": "EST-00106",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "buildings",
+      "record": "BUI-00107",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "buildings",
+      "record": "BUI-00108",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "direct",
+      "table": "units",
+      "record": "UNI-00109",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ],
+        [
+          "所属楼栋",
+          "01幢"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F04",
+      "action": "新增同级",
+      "table": "units",
+      "record": "UNI-00110",
+      "parents": [
+        [
+          "所属社区",
+          "青禾示例社区"
+        ],
+        [
+          "所属小区",
+          "青禾示例花园"
+        ],
+        [
+          "所属楼栋",
+          "01幢"
+        ]
+      ]
+    },
+    {
+      "id": "R2-F06",
+      "key": "root",
+      "room": "HOU-00111",
+      "building": "B-N",
+      "unit": null
+    },
+    {
+      "id": "R2-F06",
+      "key": "communities:C-A",
+      "room": "HOU-00112",
+      "building": "B-N",
+      "unit": null
+    },
+    {
+      "id": "R2-F06",
+      "key": "estates:E-A",
+      "room": "HOU-00113",
+      "building": "B-N",
+      "unit": null
+    },
+    {
+      "id": "R2-F06",
+      "key": "buildings:B-A",
+      "room": "HOU-00114",
+      "building": "B-A",
+      "unit": "UNI-00101"
+    },
+    {
+      "id": "R2-F06",
+      "key": "units:U-A",
+      "room": "HOU-00115",
+      "building": "B-A",
+      "unit": "U-A"
+    },
+    {
+      "id": "R2-F06",
+      "key": "houses:H-A",
+      "room": "HOU-00116",
+      "building": "B-A",
+      "unit": "U-A"
+    },
+    {
+      "id": "R2-F06",
+      "key": "houses:H-N",
+      "room": "HOU-00117",
+      "building": "B-N",
+      "unit": null
+    },
+    {
+      "id": "R2-F07",
+      "table": "facilities",
+      "key": "units:U-A",
+      "record": "FAC-00118",
+      "parent": [
+        "units",
+        "U-A"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "facilities",
+      "key": "buildings:B-A",
+      "record": "FAC-00119",
+      "parent": [
+        "units",
+        "UNI-00101"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "facilities",
+      "key": "estates:E-A",
+      "record": "FAC-00120",
+      "parent": [
+        "estates",
+        "E-A"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "facilities",
+      "key": "buildings:B-N",
+      "record": "FAC-00121",
+      "parent": [
+        "buildings",
+        "B-N"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "facilities",
+      "key": "houses:H-A",
+      "record": "FAC-00122",
+      "parent": [
+        "units",
+        "U-A"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "parking",
+      "key": "units:U-A",
+      "record": "PAR-00123",
+      "parent": [
+        "units",
+        "U-A"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "parking",
+      "key": "buildings:B-A",
+      "record": "PAR-00124",
+      "parent": [
+        "units",
+        "UNI-00101"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "parking",
+      "key": "estates:E-A",
+      "record": "PAR-00125",
+      "parent": [
+        "estates",
+        "E-A"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "parking",
+      "key": "buildings:B-N",
+      "record": "PAR-00126",
+      "parent": [
+        "buildings",
+        "B-N"
+      ]
+    },
+    {
+      "id": "R2-F07",
+      "table": "parking",
+      "key": "houses:H-A",
+      "record": "PAR-00127",
+      "parent": [
+        "units",
+        "U-A"
+      ]
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "external": [],
+  "note": "独立QA会话；自动浏览器验证不代替负责人或微信人工验收"
+}

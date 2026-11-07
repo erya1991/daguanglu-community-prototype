@@ -93,12 +93,13 @@ test("非破坏迁移、两小区范围和住户有效关系隔离", () => {
   assert.equal(query(s, R, "bills").length, 1);
   assert.equal(query(s, { ...R, account: "resident-a" }, "bills").length, 0);
   assert.throws(() => record(s, R, "bills", s.stage01.bills[1]._id));
-  assert.throws(() =>
+  assert.equal(
     query(
       s,
       { app: "web", account: "platform-admin", role: "platform" },
       "bills"
-    )
+    ).length,
+    s.stage01.bills.length
   );
   const relations = structuredClone(s.relations);
   prepare(s, "stage01-test");

@@ -152,7 +152,7 @@ export function choices(id, options = {}, records = []) {
 }
 export function activeFields(action, data, role = "property", kind = "") {
   return (formFields[action] || []).filter((id) => {
-    if (id === "RP03") return role === "property";
+    if (id === "RP03") return ["property", "platform"].includes(role);
     if (id === "RP07" && role === "resident" && kind) return false;
     if (id === "RP12") return data.RP11 === "房屋内";
     if (["RP15", "RP16"].includes(id)) return data.RP07 === "报修";

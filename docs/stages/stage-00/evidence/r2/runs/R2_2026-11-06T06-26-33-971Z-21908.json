@@ -1,0 +1,77 @@
+{
+  "run": "R2_2026-11-06T06-26-33-971Z-21908",
+  "session": "R2_2026-11-06T06-26-33-971Z-21908",
+  "base": "http://127.0.0.1:19201",
+  "baseline": false,
+  "path": ".runtime/stage00-r2/R2_2026-11-06T06-26-33-971Z-21908",
+  "results": [
+    {
+      "id": "R2-01",
+      "name": "连续身份切换及关闭按钮、遮罩、Escape后页面仍可操作",
+      "status": "PASS"
+    }
+  ],
+  "errors": [
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.l (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:12676)\n    at Pn.e._render (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:22189)\n    at o.r (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32278)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at new e (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28400)\n    at Ar (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:32371)",
+      "kind": "console-render-error"
+    },
+    {
+      "url": "http://127.0.0.1:19201/web/?session=R2_2026-11-06T06-26-33-971Z-21908#/dashboard",
+      "error": "TypeError: Cannot read properties of undefined (reading 'form')\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15703)\n    at e.get (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:28487)\n    at e.evaluate (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:29487)\n    at o.fields (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43153)\n    at o.load (http://127.0.0.1:19201/web/js/chunk-2d0b1bc2.7e6036da.js:1:15892)\n    at Ln (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:24932)\n    at Qi.e.$watch (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43981)\n    at Xi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43537)\n    at Ji (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:43442)\n    at Bi (http://127.0.0.1:19201/web/js/chunk-vendors.4c902ff7.js:7:42118)",
+      "kind": "console-render-error"
+    }
+  ],
+  "external": []
+}

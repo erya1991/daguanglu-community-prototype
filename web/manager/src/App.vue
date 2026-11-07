@@ -11,7 +11,7 @@
             menuTitle(t)
           }}</MenuItem></MenuGroup
         >
-        <MenuGroup v-if="info.actor.role==='property'" title="物业服务"><MenuItem v-for="entry in stage01Entries" :key="entry[0]" :name="entry[0]">{{entry[1]}}</MenuItem></MenuGroup><MenuItem name="messages">结果消息 <Badge :count="info.counts['未读结果消息数']" /></MenuItem>
+        <MenuGroup v-if="['property','platform'].includes(info.actor.role)" title="物业服务"><MenuItem v-for="entry in stage01Entries" :key="entry[0]" :name="entry[0]">{{entry[1]}}</MenuItem></MenuGroup><MenuItem name="messages">结果消息 <Badge :count="info.counts['未读结果消息数']" /></MenuItem>
       </Menu>
     </aside>
     <header class="main-header-con">
@@ -82,7 +82,7 @@
       ><Alert data-field="demo:数据复位说明" type="warning"
         >复位仅清除本原型当前会话的修改和本地附件，恢复虚构种子。其他会话和商城不受影响。</Alert
       ><Button type="error" ghost @click="reset">复位当前会话</Button>
-      <div v-if="info.actor.role==='property'" class="s1"><h3>Stage01场景辅助</h3><p>演示价格、自然月期间、评价字典和附件限制均为可替换样例。</p><Select v-model="paymentMode" @on-change="stage01Mode"><Option value="normal">正常缴费</Option><Option value="unknown">支付结果未知</Option><Option value="pending">支付在途</Option><Option value="failure">付款失败</Option><Option value="reconcile">成功待核销</Option></Select><Checkbox v-model="uploadFailure" @on-change="uploadMode">下次上传失败</Checkbox><div class="s1-actions"><Button @click="sameHouse">准备同房多人专项</Button><Button @click="replayLast">回放最近付款回执</Button><Button @click="closeLast">回放原支付关闭结果</Button><Button @click="funds('duplicate')">准备重复收款事实</Button><Button @click="funds('refund')">准备已有退款事实</Button><Button @click="resetStage01">仅复位Stage01</Button></div></div>
+      <div v-if="['property','platform'].includes(info.actor.role)" class="s1"><h3>Stage01场景辅助</h3><p>演示价格、自然月期间、评价字典和附件限制均为可替换样例。</p><Select v-model="paymentMode" @on-change="stage01Mode"><Option value="normal">正常缴费</Option><Option value="unknown">支付结果未知</Option><Option value="pending">支付在途</Option><Option value="failure">付款失败</Option><Option value="reconcile">成功待核销</Option></Select><Checkbox v-model="uploadFailure" @on-change="uploadMode">下次上传失败</Checkbox><div class="s1-actions"><Button @click="sameHouse">准备同房多人专项</Button><Button @click="replayLast">回放最近付款回执</Button><Button @click="closeLast">回放原支付关闭结果</Button><Button @click="funds('duplicate')">准备重复收款事实</Button><Button @click="funds('refund')">准备已有退款事实</Button><Button @click="resetStage01">仅复位Stage01</Button></div></div>
     </Modal>
   </div>
   <div v-else class="startup">
@@ -172,7 +172,7 @@ export default {
       try {
         const next = await service.info()
         const scopes = await service.scopes()
-        if(next.actor.role==='property')next.accounts.push(...await service.stage01.accounts())
+        if(['property','platform'].includes(next.actor.role))next.accounts.push(...await service.stage01.accounts())
         if (ticket !== this.refreshTicket) return
         if (
           this.info &&

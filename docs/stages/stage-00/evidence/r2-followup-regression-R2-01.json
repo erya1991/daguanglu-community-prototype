@@ -1,0 +1,17 @@
+{
+  "run": "R2F_2026-11-06T07-18-04-944Z-8780",
+  "session": "R2F_2026-11-06T07-18-04-944Z-8780",
+  "base": "http://127.0.0.1:19201",
+  "baseline": false,
+  "followup": true,
+  "path": ".runtime/stage00-r2-followup/regression/R2F_2026-11-06T07-18-04-944Z-8780",
+  "results": [
+    {
+      "id": "R2-01",
+      "name": "连续身份切换及关闭按钮、遮罩、Escape后页面仍可操作",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": []
+}

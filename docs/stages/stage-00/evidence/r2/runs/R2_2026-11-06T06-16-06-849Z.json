@@ -1,0 +1,17 @@
+{
+  "run": "R2_2026-11-06T06-16-06-849Z",
+  "session": "R2_2026-11-06T06-16-06-849Z",
+  "base": "http://127.0.0.1:19201",
+  "baseline": false,
+  "path": ".runtime/stage00-r2/R2_2026-11-06T06-16-06-849Z",
+  "results": [
+    {
+      "id": "R2-01",
+      "name": "连续身份切换及关闭按钮、遮罩、Escape后页面仍可操作",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:61:162\n    at async check (file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:40:9)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r2.mjs:52:1"
+    }
+  ],
+  "errors": [],
+  "external": []
+}
