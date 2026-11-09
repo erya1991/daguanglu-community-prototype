@@ -1,0 +1,62 @@
+{
+  "session": "R3_2026-11-09T03-27-48-250Z",
+  "base": "http://127.0.0.1:19201",
+  "out": ".runtime/stage00-r3/R3_2026-11-09T03-27-48-250Z",
+  "results": [
+    {
+      "id": "R3-W01-W16",
+      "name": "菜单、正常身份切换及废弃链接",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '切换身份', exact: true }).filter({ visible: true })\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:28:80\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:26:1"
+    },
+    {
+      "id": "R3-W02-01-08",
+      "name": "树层级、三资源、分列、当前选中操作",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   ' 房屋空间 ',\n+   ' 设施点位 ',\n+   ' 车位资源 '\n-   '房屋空间',\n-   '设施点位',\n-   '车位资源'\n  ]\n\n    at file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:34:9\n    at async check (file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:32:1"
+    },
+    {
+      "id": "R3-W02-04-12",
+      "name": "新增与删除的确认、取消、非空保护及同步",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '新增下级', exact: true }).filter({ visible: true })\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:38:57\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:37:1"
+    },
+    {
+      "id": "R3-W03",
+      "name": "多选自动统计、分类及无依据指标的空值",
+      "status": "FAIL",
+      "error": "locator.check: Clicking the checkbox did not change its state\nCall log:\n\u001b[2m  - waiting for locator('.space-tree .ivu-checkbox-input').first()\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"checkbox\" class=\"ivu-checkbox-input\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\u001b[2m    - click action done\u001b[22m\n\u001b[2m    - waiting for scheduled navigations to finish\u001b[22m\n\u001b[2m    - navigations have finished\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:42:97\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:41:1"
+    },
+    {
+      "id": "R3-W04-W09",
+      "name": "详情只读、记录子表及资源按钮横排",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.table-actions a').filter({ hasText: '详情' }).first()\u001b[22m\n\u001b[2m    - locator resolved to <a>详情</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:45:335\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:44:1"
+    },
+    {
+      "id": "R3-W11",
+      "name": "文件格式校验、失败保留输入、重选上传、预览下载",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '新增文件资料', exact: true }).filter({ visible: true })\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:49:58\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:48:1"
+    },
+    {
+      "id": "R3-X01-W05",
+      "name": "住户实际提交→物业列表审核→住户结果→管理端查询",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.uni-picker-action-confirm:visible')\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:52:217\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:24:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:51:1"
+    },
+    {
+      "id": "R3-FOUR-APPS",
+      "name": "三端全部Tab、两种视口、正常账号切换无辅助入口",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-NETWORK",
+      "name": "冷启动、查询、保存、上传等只访问同源静态资源",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "visibleIssues": []
+}

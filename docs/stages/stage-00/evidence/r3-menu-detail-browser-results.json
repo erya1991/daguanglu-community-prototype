@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-09T06:28:32.514Z",
+  "base": "http://127.0.0.1:19201",
+  "session": "MENU_DETAIL_1794205707626",
+  "out": ".runtime/stage00-menu-detail/MENU_DETAIL_1794205707626",
+  "results": [
+    {
+      "id": "MENU-DEFAULT-OPEN",
+      "status": "PASS"
+    },
+    {
+      "id": "MENU-MANUAL-FOLD-RETAINED",
+      "status": "PASS"
+    },
+    {
+      "id": "ESTATE-DETAIL-NO-NUMBER",
+      "status": "PASS"
+    },
+    {
+      "id": "LOCAL-ONLY-NO-JS-ERROR",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "native": "NOT_RUN by owner scope"
+}

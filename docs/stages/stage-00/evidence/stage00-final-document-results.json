@@ -1,0 +1,38 @@
+{
+  "baselineRef": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "date": "2026-11-09T07:07:51.876Z",
+  "files": 36,
+  "localLinks": 1993,
+  "markdownTables": 1044,
+  "scenarios": 31,
+  "pass": 27,
+  "blocked": 0,
+  "scenarioCountsScope": "Current retained scope; exclusions and deferred native cases remain separate; historical results in immutable archive",
+  "currentDocumentVerification": {
+    "version": "V1.1",
+    "templateChapterOrder": true,
+    "currentFieldGroups": 26,
+    "currentFieldRows": 212,
+    "mappedRows": 212,
+    "scenes": 31,
+    "legacyDefinitions": {
+      "tables": 24,
+      "rows": 295
+    },
+    "historicalBaseline": {
+      "tables": 23,
+      "rows": 287
+    },
+    "immutableHistoricalDocuments": 4,
+    "protectedTemplates": 4,
+    "protectedOtherStageFiles": 11,
+    "ownerStatus": "OWNER_ACCEPTED_WEB_H5",
+    "nativeCurrent": "NOT_RUN by owner scope",
+    "businessTestsOrBuildsExecuted": false
+  },
+  "externalQuestionsUnchanged": true,
+  "authorizedScope": "Stage00 R3 including two appended unresolved questions",
+  "outsideAuthorizedStagePackagesUnchanged": true,
+  "protectedPackageCount": 53,
+  "errors": []
+}

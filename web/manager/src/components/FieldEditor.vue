@@ -27,7 +27,7 @@
             "
             @change="upload($event, f)"
           />
-          <p>{{ uploadState[f.name] || '待选择本地演示文件；文件不会发送到服务器' }}</p>
+          <p>{{ uploadState[f.name] || '支持 PDF、PNG/JPEG、TXT、DOCX、XLSX，单文件不超过 10 MiB' }}</p>
           <p v-if="value[f.name]">已选：{{ fileNames[f.name] || value[f.name] }}</p>
         </div></template
       >
@@ -68,18 +68,15 @@
       />
       <div v-if="help(f.name)" class="field-help">{{ help(f.name) }}</div>
     </FormItem>
-    <FormItem v-if="table === 'files'" label="到期提醒（样例配置）" class="field-full"
-      ><Checkbox :value="value._reminder" @on-change="set('_reminder', $event)"
-        >启用本地样例提醒；Q06正式参数待确认</Checkbox
-      ></FormItem
-    >
-    <div v-if="fields.some(isFile)" class="field-full"><details class="demo-tools"><summary>演示辅助</summary><Checkbox v-model="uploadFail">下一次附件处理失败</Checkbox></details></div>
+
+
   </div>
 </template>
 <script>
 import { catalog } from '../../../../prototype-shared/catalog.js'
 import { service } from '../services/foundation'
 import { fieldHelp, fieldLabel } from '../../../../prototype-shared/field-help.js'
+import { publicField } from '../../../../prototype-shared/r3-product.js'
 const multis = [
   '授权角色',
   '可查看社区',
@@ -101,7 +98,7 @@ const spaceReferences = {
   所属单元: ['units', '单元名称／单元号'],
 }
 const spaceTables = ['communities', 'estates', 'buildings', 'units', 'houses']
-const resourceParents = ['所属社区', '所属小区', '关联楼栋', '所属单元']
+const resourceParents = ['所属小区', '关联楼栋', '所属单元']
 export default {
   props: {
     table: String,
@@ -118,7 +115,7 @@ export default {
     },
     fields() {
       const def = catalog[this.table]
-      const names = this.names || def.form
+      const names = (this.names || def.form).filter(name => publicField(this.table, name))
       if (this.isResource) {
         // These controls project the existing resource ownership, rather than defining new archive fields.
         return [...resourceParents, ...names.filter((name) => !resourceParents.includes(name))]
@@ -126,7 +123,7 @@ export default {
           .filter(Boolean)
       }
       const projected = spaceTables.includes(this.table)
-        ? Object.keys(spaceReferences).filter((name) => this.isLocked(name) && !names.includes(name))
+        ? Object.keys(spaceReferences).filter((name) => name !== '所属社区' && this.isLocked(name) && !names.includes(name))
         : []
       return [...projected, ...names].map((name) => def.fields.find((f) => f.name === name)).filter(Boolean)
     },
@@ -180,7 +177,7 @@ export default {
     help(n) { return fieldHelp(this.table, n) },
     label(n) { return this.isResource && n === '关联楼栋' ? '所属楼栋' : fieldLabel(this.table, n) },
     required(f) {
-      if (this.isResource && resourceParents.includes(f.name)) return ['所属社区', '所属小区'].includes(f.name)
+      if (this.isResource && resourceParents.includes(f.name)) return ['所属小区', '关联楼栋'].includes(f.name)
       if (f.name === '来源说明') return !!this.value['资料来源'] && this.value['资料来源'] !== '人工维护'
       if (this.table === 'personnel' && f.name === '变更说明') return this.visible(f.name)
       if (f.name === '数量单位') return this.value['数量'] !== '' && this.value['数量'] !== undefined
@@ -209,6 +206,7 @@ export default {
         所属社区: ['所属小区', '关联楼栋', '所属单元', '关联房屋'],
         所属小区: ['关联楼栋', '所属单元', '关联房屋'],
         关联楼栋: ['所属单元', '关联房屋'],
+        所属单元: ['关联房屋'],
       } : {
         所属社区: ['所属小区', '所属楼栋', '所属单元'],
         所属小区: ['所属楼栋', '所属单元'],
@@ -222,10 +220,10 @@ export default {
       if (!file) return
       this.$set(this.uploadState, f.name, '处理中')
       try {
-        const r = await service.upload(file, { fail: this.uploadFail })
+        const r = await service.upload(file)
         this.$set(this.fileNames, f.name, r.name)
         this.set(f.name, ['证明附件', '点位照片'].includes(f.name) ? [r.id] : r.id)
-        this.$set(this.uploadState, f.name, '成功（本地模拟处理）')
+        this.$set(this.uploadState, f.name, '上传成功')
       } catch (e) {
         this.$set(this.uploadState, f.name, '失败：' + e.message)
       }

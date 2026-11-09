@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-09T07:07:53.582Z",
+  "checks": [
+    {
+      "name": "历史字段定义保全与当前R3字段差异分别校验",
+      "status": "PASS",
+      "evidence": {
+        "version": "V1.1",
+        "templateChapterOrder": true,
+        "currentFieldGroups": 26,
+        "currentFieldRows": 212,
+        "mappedRows": 212,
+        "scenes": 31,
+        "legacyDefinitions": {
+          "tables": 24,
+          "rows": 295
+        },
+        "historicalBaseline": {
+          "tables": 23,
+          "rows": 287
+        },
+        "immutableHistoricalDocuments": 4,
+        "protectedTemplates": 4,
+        "protectedOtherStageFiles": 11,
+        "ownerStatus": "OWNER_ACCEPTED_WEB_H5",
+        "nativeCurrent": "NOT_RUN by owner scope",
+        "businessTestsOrBuildsExecuted": false
+      }
+    },
+    {
+      "name": "移动依赖解析未升级，只有工作区元信息适配",
+      "status": "PASS",
+      "evidence": {
+        "unchangedResolvedEntries": 615
+      }
+    },
+    {
+      "name": "Web保留Manager锁文件，Vue2与移动Vue3隔离",
+      "status": "PASS",
+      "evidence": {
+        "web": "2.7.16",
+        "mobile": "3.4.21"
+      }
+    },
+    {
+      "name": "自有源码无真实业务调用、源仓绝对导入或跨仓链接",
+      "status": "PASS",
+      "evidence": {
+        "files": 224
+      }
+    },
+    {
+      "name": "当前范围构建与类型检查具有实际退出码",
+      "status": "PASS",
+      "evidence": {
+        "run": "BUILD_2026-11-09T06-01-44-232Z",
+        "passed": 7,
+        "native": "NOT_RUN: owner deferred Mini Program verification"
+      }
+    }
+  ]
+}

@@ -141,7 +141,7 @@ test('T08 实际CSV解析、错误批次阻止、修正后导入、重复和过�
   assert.equal(bad['导入处理状态'], '校验未通过')
   assert.equal(parseCSV('a,b\n"含,逗号","含""引号"\n')[1][0], '含,逗号')
 })
-test('T09 离岗只禁用工作身份，无账号名录可建立，居民身份保留', () => {
+test('T09 离岗只禁用工作身份，无账号名录可建立，居民身份保留', {skip:'R3负责人取消人员维护、离岗及手工指标；历史断言保留，当前只读名录和自动统计见r3.test.mjs'}, () => {
   const f = fixture()
   const r = f.run(archive, 'save', {
     table: 'personnel',
@@ -152,7 +152,7 @@ test('T09 离岗只禁用工作身份，无账号名录可建立，居民身份�
   assert.throws(() => actorFor(f.s, { app: 'staff', account: 'dual', role: 'query' }), /离岗/)
   assert.equal(actorFor(f.s, { app: 'resident', account: 'dual', role: 'resident' }).resident, 'R-C')
 })
-test('T10 来源统计与档案去重分开，未知来源不伪造0', () => {
+test('T10 来源统计与档案去重分开，未知来源不伪造0', {skip:'R3负责人取消人员维护、离岗及手工指标；历史断言保留，当前只读名录和自动统计见r3.test.mjs'}, () => {
   const f = fixture(),
     counts = dashboard(f.s, archive).counts
   assert.equal(counts['居民档案人数'], 3)
@@ -180,7 +180,7 @@ test('T11 车辆规范化、本人重复返回、他人冲突不泄露、核实�
   const again = f.run(resident, 'save', { table: 'vehicles', data: d })
   assert.equal(again.id, car.id)
   assert.throws(
-    () => f.run(resident, 'save', { table: 'vehicles', data: { 车牌号码: '苏ADEMO2' } }),
+    () => f.run(resident, 'save', { table: 'vehicles', data: { 车牌号码: '苏A32018' } }),
     (e) => e.message.includes('需进一步核实') && !e.message.includes('周'),
   )
   f.run(archive, 'verifyVehicle', { id: car.id, decision: '退回', feedback: '请核对资料' })
@@ -194,7 +194,7 @@ test('T12 数量未知与0分开，单位条件必填，点位不推导设备在
     () =>
       f.run(archive, 'save', {
         table: 'facilities',
-        data: { 点位名称: '数量例', 点位类别: '消防', 所属社区: 'C-A', 所属小区: 'E-A', 具体位置: '示例位置', 数量: 2 },
+        data: { 点位名称: '数量例', 点位类别: '消防', 所属社区: 'C-A', 所属小区: 'E-A', 关联楼栋: 'B-N', 具体位置: '示例位置', 数量: 2 },
       }),
     /必填/,
   )
@@ -205,6 +205,7 @@ test('T12 数量未知与0分开，单位条件必填，点位不推导设备在
       点位类别: '消防',
       所属社区: 'C-A',
       所属小区: 'E-A',
+      关联楼栋: 'B-N',
       具体位置: '示例位置',
       数量: 2,
       数量单位: '个',
@@ -300,7 +301,7 @@ test('T20 停用账号和权限撤回即刻生效', () => {
   f.run(admin, 'status', { table: 'accounts', id: 'staff', reason: '演示停用' })
   assert.throws(() => query(f.s, staff, 'houses'), /身份不可用/)
 })
-test('T18 保留23表287行历史基线；R1增量24表295行且全部表单字段有定义', async () => {
+test('T18 保留23表287行历史基线；R1定义295行及R3新增账号手机号，全部表单字段有定义', async () => {
   const { catalog } = await import('../prototype-shared/catalog.js')
   const { readFileSync } = await import('node:fs')
   const old = JSON.parse(readFileSync(new URL('../docs/stages/stage-00/evidence/field-baseline.json', import.meta.url)))
@@ -309,8 +310,9 @@ test('T18 保留23表287行历史基线；R1增量24表295行且全部表单字�
   assert.equal(Object.keys(catalog).length, 24)
   assert.equal(
     Object.values(catalog).reduce((n, t) => n + t.fields.length, 0),
-    295,
+    296,
   )
+  assert.equal(Object.entries(catalog).reduce((n,[table,t])=>n+t.fields.filter(f=>!(table==='accounts'&&f.name==='手机号')).length,0),295)
   for (const t of Object.values(catalog))
     for (const name of t.form)
       assert.ok(
@@ -394,7 +396,7 @@ test('T02/T20 社区授权不隐式授予全部小区，空小区清单返回无
     /不能授予/,
   )
 })
-test('T09/T13/T20 人员重要变更和文件权限修改必须有本次原因', () => {
+test('T09/T13/T20 人员重要变更和文件权限修改必须有本次原因', {skip:'R3负责人取消人员维护、离岗及手工指标；历史断言保留，当前只读名录和自动统计见r3.test.mjs'}, () => {
   const f = fixture(),
     person = clone(f.s.personnel.find((p) => p._id === 'P-A'))
   person['岗位'] = '新岗位（样例）'
@@ -434,7 +436,7 @@ test('T01/T02 新社区小区保存后由演示配置动作显式授权，不从
   f.run(admin, 'save', { table: 'accounts', id: account._id, data: account })
   assert.equal(record(f.s, archive, 'estates', e)['小区名称'], '新增虚构小区')
 })
-test('T09/T19 离岗操作拒绝非法日期并保留原工作身份', () => {
+test('T09/T19 离岗操作拒绝非法日期并保留原工作身份', {skip:'R3负责人取消人员维护、离岗及手工指标；历史断言保留，当前只读名录和自动统计见r3.test.mjs'}, () => {
   const f = fixture()
   assert.throws(
     () =>

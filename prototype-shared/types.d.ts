@@ -5,7 +5,7 @@ export interface DemoContext{app:AppKind;account:string;role?:string;community?:
 export interface DemoRecord{_id:string;_rev:number;_labels?:Record<string,string>;[field:string]:any}
 export interface DemoActor extends DemoRecord{role:string;name:string;org:string;orgName:string;roleName:string;scopeLabel:string;permissions:string[];sensitive:string[];menus:string[];resident?:string}
 export interface DemoInfo{session:string;version:string;generation:number;spaceRootName:string;actor:DemoActor;counts:Record<string,number|null>;accounts:Array<{id:string;name:string;roles:Array<{id:string;name:string}>}>}
-export type BusinessCommand='save'|'apply'|'withdraw'|'review'|'profile'|'status'|'verifyVehicle'|'fileVersion'|'messageRead'|'messageSend'|'remind'|'space-root'
+export type BusinessCommand='save'|'apply'|'withdraw'|'review'|'profile'|'status'|'verifyVehicle'|'fileVersion'|'messageRead'|'messageSend'|'remind'|'space-root'|'delete'
 export interface CommandResult{id:string;message:string}
 export interface Stage00Service{
  stage01:Stage01Service;
@@ -20,6 +20,7 @@ export interface Stage00Service{
  scopes():Promise<{communities:Array<{value:string;label:string}>;estates:Array<{value:string;label:string}>}>
  scope(community:string,estate?:string):Promise<void>;reset():Promise<void>;sample?(name:string):Promise<void>
  summary(id:string):Promise<{counts:Record<string,number>;sources:DemoRecord[]}>
+ statistics(filters:Record<string,any>):Promise<Record<string,any>[]>
  upload(file:any,options?:{fail?:boolean}):Promise<{id:string;name:string;size:number;type?:string}>
  /** H5 returns a local Blob; WeChat returns a saved sandbox file path. Never a production URL. */
  ownedAttachment(id:string):Promise<any>;attachment(parameters:Record<string,any>):Promise<any>

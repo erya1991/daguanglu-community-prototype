@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Alert show-icon>导入对象：房间（房屋）。UTF-8 CSV文件，演示限制2 MiB；错误批次整批不写入。</Alert><p v-if="scopeLabel" class="form-context">导入范围：{{ scopeLabel }}。文件实际归属必须匹配，系统不会替换文件中的上级。</p>
+    <Alert show-icon>导入对象：房间（房屋）。UTF-8 CSV文件，单文件不超过2 MiB；错误批次整批不写入。</Alert><p v-if="scopeLabel" class="form-context">导入范围：{{ scopeLabel }}。文件实际归属必须匹配，系统不会替换文件中的上级。</p>
     <div class="toolbar">
       <Button @click="template">下载导入模板</Button><input type="file" accept=".csv" :disabled="busy" @change="choose" />
     </div>
-    <Form label-position="top"
+    <Form @submit.native.prevent label-position="top"
       ><FormItem label="文件名称"
         ><span>{{ name || '未选择' }}</span></FormItem
       ><FormItem label="资料来源">台账导入</FormItem
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     template() {
-      download(importTemplate, 'Stage00房屋导入-演示模板.csv')
+      download(importTemplate, '房屋导入模板.csv')
     },
     async choose(e) {
       this.result = null
@@ -74,7 +74,7 @@ export default {
       if (!f) return
       this.name = f.name
       if (f.size > 2 * 1024 * 1024) {
-        this.error = '超过本轮2 MiB演示限制'
+        this.error = '文件不能超过2 MiB'
         return
       }
       this.busy = true
@@ -120,7 +120,7 @@ export default {
             .filter((r) => r['错误原因'].length)
             .map((r) => r['数据行号'] + ',"' + r['错误原因'].join('；').replace(/"/g, '""') + '"')
             .join('\r\n'),
-        'Stage00导入错误.csv',
+        '房屋导入错误.csv',
       )
     },
   },

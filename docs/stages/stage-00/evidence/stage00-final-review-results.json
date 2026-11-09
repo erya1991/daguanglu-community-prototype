@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-09T07:07:40.653Z",
+  "version": "V1.1",
+  "templateChapterOrder": true,
+  "currentFieldGroups": 26,
+  "currentFieldRows": 212,
+  "mappedRows": 212,
+  "scenes": 31,
+  "legacyDefinitions": {
+    "tables": 24,
+    "rows": 295
+  },
+  "historicalBaseline": {
+    "tables": 23,
+    "rows": 287
+  },
+  "immutableHistoricalDocuments": 4,
+  "protectedTemplates": 4,
+  "protectedOtherStageFiles": 11,
+  "ownerStatus": "OWNER_ACCEPTED_WEB_H5",
+  "nativeCurrent": "NOT_RUN by owner scope",
+  "businessTestsOrBuildsExecuted": false,
+  "verifiedFragments": 226,
+  "documents": [
+    {
+      "file": "docs/stages/stage-00/REQUIREMENTS.md",
+      "sha256": "027256f9a7f2e87b556b73ccff0722234853d5b3ff0fd972c8ea095b173898df",
+      "bytes": 104252
+    },
+    {
+      "file": "docs/stages/stage-00/PLAN.md",
+      "sha256": "c3c25380d14c7f1397d4a85ab897bec050106cb6afe25fc4189f1557082f76c1",
+      "bytes": 92431
+    },
+    {
+      "file": "docs/stages/stage-00/ACCEPTANCE.md",
+      "sha256": "0ee09577aa91644f57cb4ac37712d2366117753c927268cc20cc07751decf6b8",
+      "bytes": 69453
+    },
+    {
+      "file": "docs/stages/stage-00/RESULT.md",
+      "sha256": "21440b59f63954821c249c81e799a603aca4979c65100a69d427f88513cdadce",
+      "bytes": 29255
+    }
+  ],
+  "errors": [],
+  "businessBuildsRunThisRound": false,
+  "status": "PASS"
+}

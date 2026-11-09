@@ -75,7 +75,7 @@ async function upload() {
     }
   } catch (e: any) {
     error.value = String(e.message).includes("10 MiB")
-      ? "图片超过演示处理上限10 MiB，请重新选择"
+      ? "图片不能超过10 MiB，请重新选择"
       : "照片保存失败，请重试；已填内容保留";
   } finally {
     busy.value = false;

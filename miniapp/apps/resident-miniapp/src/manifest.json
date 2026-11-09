@@ -1,7 +1,7 @@
 {
-  "name": "大光路住户原型",
+  "name": "大光路社区",
   "appid": "__UNI__DGL_STAGE00_RESIDENT",
-  "description": "仅限虚构数据原型演示",
+  "description": "大光路社区住户服务",
   "versionName": "0.1.0",
   "versionCode": "10",
   "transformPx": false,

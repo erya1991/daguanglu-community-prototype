@@ -1,0 +1,6 @@
+PASS R3-W01-W16
+FAIL R3-FOLLOWUP-STATUS-PHONE locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-row-id]').first() to be visible[22m
+[2m    24 × locator resolved to hidden <div class="table-actions" data-row-id="platform-admin">…</div>[22m
+

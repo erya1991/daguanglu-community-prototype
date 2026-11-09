@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-09T06:26:31.340Z",
+  "scope": "Menu expansion and estate detail only; native deferred by owner",
+  "results": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "start": "2026-11-09T06:25:49.050Z",
+      "end": "2026-11-09T06:26:06.458Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-menu-detail/web.log"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+      "start": "2026-11-09T06:26:06.461Z",
+      "end": "2026-11-09T06:26:25.910Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-menu-detail/staff-h5.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "start": "2026-11-09T06:26:25.911Z",
+      "end": "2026-11-09T06:26:31.340Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-menu-detail/staff-types.log"
+    }
+  ]
+}

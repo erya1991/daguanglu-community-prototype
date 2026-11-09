@@ -1,0 +1,1888 @@
+{
+  "date": "2026-11-09",
+  "baseline": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "sourceRows": 108,
+  "rows": [
+    {
+      "id": "W01-01",
+      "operation": "切换平台/物业身份查看数值、待办和快捷入口",
+      "oldExpected": "仅展示获准范围的数据，角色切换后不残留旧身份数据",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W01-W16",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W01-02",
+      "operation": "从快捷入口进入房屋绑定、基础资料并返回",
+      "oldExpected": "页面可达、菜单名称一致、无需重复跳转或空白页",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W01-W16",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W01-03",
+      "operation": "核对“居民档案人数”等统计说明",
+      "oldExpected": "人数口径清楚，不把注册人数当常住人口",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W01-W16",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-01",
+      "operation": "依次选择根/社区/小区/楼栋/单元/房间",
+      "oldExpected": "左侧选中准确；右侧恒有房屋空间、设施点位、车位资源三页签",
+      "priority": "P0",
+      "feedback": "现在根和社区有些重复,建议就修改成根目录下,直接创建小区,社区那一层级直接去掉",
+      "issue": "",
+      "handling": "根直接到小区，保留三资源及末级汇总",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-02",
+      "operation": "分别选择社区、小区、楼栋，查看房屋空间",
+      "oldExpected": "展示选中节点范围内所有末级房间，不列中间层、不漏不重",
+      "priority": "P0",
+      "feedback": "现在空间结构树中，名称后面的数字指代不清楚，建议去掉",
+      "issue": "",
+      "handling": "去掉树名称后的数量，保留选中与结构操作",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-03",
+      "operation": "查看不同楼栋相同房号及无单元楼栋",
+      "oldExpected": "列表完整上层路径可区分；无单元不制造假单元",
+      "priority": "P0",
+      "feedback": "房屋空间列表,不要用所属位置直接合并,可以把非根节点都单独展示,按照小区、楼栋、单元、房间号这样统一展示,房屋编号非必要直接去掉",
+      "issue": "",
+      "handling": "小区、楼栋、单元、房间号分列，内部房屋标识保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-04",
+      "operation": "在左侧新增同级/下级、编辑节点",
+      "oldExpected": "归属自动带入且合法；树和右侧列表同步，工具栏操作可辨认",
+      "priority": "P0",
+      "feedback": "手动创建成功,不过手动创建时资料来源需要默认为人工维护",
+      "issue": "",
+      "handling": "手建来源自动人工维护，上级逐字段带入",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-05",
+      "operation": "停用再启用空间节点",
+      "oldExpected": "停用有文字和视觉状态；历史保留，不能在停用上级下错误新增",
+      "priority": "P0",
+      "feedback": "建议去掉停用/启用功能,停用改为删除,并且给出二次确认弹窗,删除时需要校验节点下没有房屋、设施和车位",
+      "issue": "",
+      "handling": "二次确认删除；全部后代资源、结构及业务引用保护",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-06",
+      "operation": "选房屋空间右侧新增房间，在列表编辑和看详情",
+      "oldExpected": "新增实体归属正确；操作在列表栏；详情仅只读",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "新增编辑在列表办理，详情只读",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-07",
+      "operation": "在小区/楼栋/单元下新增设施和车位，再选社区汇总",
+      "oldExpected": "按最新代码可定位到实际归属层；社区汇总不重复创建，车位不计房屋",
+      "priority": "P0",
+      "feedback": "设施点位和车位资源现在需要默认只能建在楼栋或者单元下,列表和房屋一样需要社区、小区、楼栋、单元单独展示,如果创建在楼栋下的则单元字段为空",
+      "issue": "",
+      "handling": "新增和重新定位只归属楼栋或单元；旧记录不搬迁，位置分列",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-RESOURCE",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-08",
+      "operation": "在不同节点切三个资源页签并筛选分页",
+      "oldExpected": "范围、权限、分页随节点更新；不显示上一节点的数据",
+      "priority": "P0",
+      "feedback": "需要等上面提的修改完成后验证",
+      "issue": "",
+      "handling": "节点／页签／筛选／分页刷新，按新规则待复验",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-FILTER-PAGE",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-09",
+      "operation": "导入合法有单元和无单元CSV，检查新房间",
+      "oldExpected": "预览→确认→入库；树、列表及关联房屋选择器一致",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "新CSV及旧社区列兼容，有无单元及来源保持",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-CSV",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-10",
+      "operation": "导入重复、上级不符、混合错误CSV",
+      "oldExpected": "错误定位到具体行且无静默部分写入，不覆盖现有房屋",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "重复、上级冲突、混合错误整批拒绝",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-CSV",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-11",
+      "operation": "先选合法文件再选超限文件，随后重选正确文件",
+      "oldExpected": "错误后旧预览不残留、不误导入；可恢复重试",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "超限清旧预览，重选后可恢复",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-CSV",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W02-12",
+      "operation": "已有绑定房间改名、停用/恢复后看申请与历史",
+      "oldExpected": "原业务编号、申请、正式关系、消息等稳定保留",
+      "priority": "P0",
+      "feedback": "停用和启用功能去掉，改为删除，并给出二次确认弹窗",
+      "issue": "",
+      "handling": "房间删除保护申请、关系、车辆和Stage01引用；改名保留编号及快照",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W02-01-08",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W02-04-12",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W03-01",
+      "operation": "查看按社区/小区和统计日期筛选来源记录",
+      "oldExpected": "指标、数据来源、口径、统计时间与维护信息可读",
+      "priority": "P0",
+      "feedback": "这部分功能整体重做,我看现在统计的数值都是手动录入,我觉得应该改成统计范围可以选择空间树,并且是多选,指标名称可以选择人口、户数、设施类别、车位,选择统计日期后,统计的数据自动生成",
+      "issue": "",
+      "handling": "自动统计：空间树多选、并集去重、分类及日期；设施与车位可算；人口户数口径及日期语义未决",
+      "currentVerification": "设施／车位规则已测；人口／户数BLOCKED（R3-Q01）",
+      "technicalChecks": [
+        {
+          "id": "R3-W03",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W03-02",
+      "operation": "新增或编辑人口/户数来源记录（若当前角色有权限）",
+      "oldExpected": "来源与统计日期明确，已定义必填/条件规则生效",
+      "priority": "P0",
+      "feedback": "按照上一条修改",
+      "issue": "",
+      "handling": "自动统计：空间树多选、并集去重、分类及日期；设施与车位可算；人口户数口径及日期语义未决",
+      "currentVerification": "设施／车位规则已测；人口／户数BLOCKED（R3-Q01）",
+      "technicalChecks": [
+        {
+          "id": "R3-W03",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W03-03",
+      "operation": "对照社区档案概况与居民/房屋统计",
+      "oldExpected": "来源人口/户数与实时房屋数、账号数区分；未知不伪造0",
+      "priority": "P0",
+      "feedback": "按照上一条修改",
+      "issue": "",
+      "handling": "自动统计：空间树多选、并集去重、分类及日期；设施与车位可算；人口户数口径及日期语义未决",
+      "currentVerification": "设施／车位规则已测；人口／户数BLOCKED（R3-Q01）",
+      "technicalChecks": [
+        {
+          "id": "R3-W03",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W04-01",
+      "operation": "搜索并查看居民详情、账号关联及脱敏信息",
+      "oldExpected": "同名居民可区分；不展示无权敏感资料",
+      "priority": "P0",
+      "feedback": "详情页中的编辑资料按钮去掉,详情页不需要有操作按钮,操作按钮统一在列表的操作栏体现",
+      "issue": "",
+      "handling": "编辑移到列表；详情只读，变更记录为独立页签子表，稳定居民编号和关联保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W04-02",
+      "operation": "编辑获准资料或查询已有档案",
+      "oldExpected": "不因编辑姓名手机号改变居民编号或自动建立房屋关系",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "编辑移到列表；详情只读，变更记录为独立页签子表，稳定居民编号和关联保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W04-03",
+      "operation": "查看同一居民关联多个房屋的情况",
+      "oldExpected": "人员档案与房屋关系能正确互相引用，数据不重复",
+      "priority": "P0",
+      "feedback": "详情页中,操作与变更记录可以用另一个页签,并且用子表的形式来呈现多条数据",
+      "issue": "",
+      "handling": "编辑移到列表；详情只读，变更记录为独立页签子表，稳定居民编号和关联保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W04-04",
+      "operation": "切换物业小区数据范围后访问详情",
+      "oldExpected": "未授权居民不能经详情或列表绕权",
+      "priority": "P0",
+      "feedback": "这部分忽略,数据权限原型不体现",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W05-01",
+      "operation": "筛选绑定/变更/解除、申请状态、日期及房屋",
+      "oldExpected": "结果正确、操作列和申请编号可定位",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "申请记录／当前绑定承接；四页签、审核子表；列表独立审核，驳回重提变更解除保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W05-02",
+      "operation": "打开详情四页签：绑定信息/居民信息/房屋信息/审核记录",
+      "oldExpected": "字段精简不遗漏关键资料；历史和内部意见按权限展示",
+      "priority": "P0",
+      "feedback": "审核记录建议用子表的形式展示,方便后期查看,详情页不要放操作按钮,统一放到操作栏",
+      "issue": "",
+      "handling": "申请记录／当前绑定承接；四页签、审核子表；列表独立审核，驳回重提变更解除保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W05-03",
+      "operation": "物业管理员通过住户提交的绑定申请",
+      "oldExpected": "住户状态和正式人房关系同步增加，不需切换专项audit账号",
+      "priority": "P0",
+      "feedback": "正式人房关系菜单去掉,房屋绑定菜单已经可以承接人房关系的功能了",
+      "issue": "",
+      "handling": "申请记录／当前绑定承接；四页签、审核子表；列表独立审核，驳回重提变更解除保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W05-04",
+      "operation": "驳回并填写原因，再让住户补充重提",
+      "oldExpected": "原因必填、旧轮次保留；重提不篡改历史",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "申请记录／当前绑定承接；四页签、审核子表；列表独立审核，驳回重提变更解除保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W05-05",
+      "operation": "通过变更、解除申请并检查历史",
+      "oldExpected": "变更与解除只修改相应有效关系；原申请审核事实保留",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "申请记录／当前绑定承接；四页签、审核子表；列表独立审核，驳回重提变更解除保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W06-01",
+      "operation": "审核通过绑定后查看正式人房关系列表",
+      "oldExpected": "出现同一居民、房屋、关系类型的有效记录",
+      "priority": "P0",
+      "feedback": "菜单整体去掉",
+      "issue": "",
+      "handling": "独立菜单取消；关系查询迁入房屋绑定的当前绑定，不删除关系",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W06-02",
+      "operation": "执行解除后查看正式关系及原申请",
+      "oldExpected": "当前关系失效但旧通过申请保留，不把状态混在一起",
+      "priority": "P0",
+      "feedback": "菜单整体去掉",
+      "issue": "",
+      "handling": "独立菜单取消；关系查询迁入房屋绑定的当前绑定，不删除关系",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W06-03",
+      "operation": "查一人多房及一房多人样例",
+      "oldExpected": "关系不重复；不因同住自动开放其他住户隐私",
+      "priority": "P0",
+      "feedback": "菜单整体去掉",
+      "issue": "",
+      "handling": "独立菜单取消；关系查询迁入房屋绑定的当前绑定，不删除关系",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W06-04",
+      "operation": "从列表进入居民或房屋信息",
+      "oldExpected": "对象与申请引用正确，未经授权不能查阅",
+      "priority": "P0",
+      "feedback": "菜单整体去掉",
+      "issue": "",
+      "handling": "独立菜单取消；关系查询迁入房屋绑定的当前绑定，不删除关系",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W07-01",
+      "operation": "住户端找不到房屋时提交地址缺失反馈",
+      "oldExpected": "不允许住户直接新增权威房屋，反馈保留描述和联系方式",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留独立反馈和跨端查询；详情只读不带变更记录",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W07-02",
+      "operation": "Web查看并筛选缺失反馈",
+      "oldExpected": "能看到必要的社区/小区/房屋描述，且只对有权人可见",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留独立反馈和跨端查询；详情只读不带变更记录",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W07-03",
+      "operation": "依据反馈去社区房屋档案核查或补录",
+      "oldExpected": "反馈与档案职责清楚；未获支持的自动处理或状态流转不伪称已实现",
+      "priority": "P0",
+      "feedback": "操作按钮不要放到详情页,并且详情页不需要操作与变更记录",
+      "issue": "",
+      "handling": "保留独立反馈和跨端查询；详情只读不带变更记录",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W08-01",
+      "operation": "搜索车牌、查看车辆详情及关联居民/房屋",
+      "oldExpected": "车牌、归属、来源和核实状态正确",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "列表编辑核实、详情精简只读；本人、重复和冲突校验及底层历史保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W08-DETAIL-FINAL",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W08-02",
+      "operation": "登记本人车辆并重复登记",
+      "oldExpected": "不产生重复车辆记录，重复响应清晰",
+      "priority": "P0",
+      "feedback": "详情页不要放操作按钮,操作按钮统一放到操作栏",
+      "issue": "",
+      "handling": "列表编辑核实、详情精简只读；本人、重复和冲突校验及底层历史保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W08-DETAIL-FINAL",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W08-03",
+      "operation": "尝试关联他人的冲突车牌",
+      "oldExpected": "不泄露已有车主资料，不直接转移关联",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "列表编辑核实、详情精简只读；本人、重复和冲突校验及底层历史保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W08-DETAIL-FINAL",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W08-04",
+      "operation": "核实/退回车辆并查看记录",
+      "oldExpected": "保留核实历史；已登记不显示为已获得停车权益",
+      "priority": "P0",
+      "feedback": "详情页面字段精简,操作与变更记录去掉",
+      "issue": "",
+      "handling": "列表编辑核实、详情精简只读；本人、重复和冲突校验及底层历史保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W08-DETAIL-FINAL",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W09-01",
+      "operation": "在社区房屋档案新增点位后到本菜单搜索",
+      "oldExpected": "同一设施在两处可见，编号和归属一致，没有第二套副本",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "独立设施菜单与空间页签共用实体；位置分列，移除启停，按钮横排",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-RESOURCE",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W09-HOUSE-SELECTOR",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W09-02",
+      "operation": "按类别、位置、编号及接入状态筛选",
+      "oldExpected": "车棚/监控/充电/消防等类别和小区楼栋单元定位清楚",
+      "priority": "P0",
+      "feedback": "列表前面需要分开展示小区、楼栋、单元",
+      "issue": "",
+      "handling": "独立设施菜单与空间页签共用实体；位置分列，移除启停，按钮横排",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-RESOURCE",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W09-HOUSE-SELECTOR",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W09-03",
+      "operation": "查看或编辑设施详情及状态",
+      "oldExpected": "档案启停与接入/在线/告警严格区分，不把未接入写成在线",
+      "priority": "P0",
+      "feedback": "启用停用功能去掉,并且操作栏按钮样式优化,现在文字变成竖向的了",
+      "issue": "",
+      "handling": "独立设施菜单与空间页签共用实体；位置分列，移除启停，按钮横排",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-RESOURCE",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W09-HOUSE-SELECTOR",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W09-04",
+      "operation": "物业管理员查未授权小区设施",
+      "oldExpected": "列表、直接链接均按可见范围限制",
+      "priority": "P0",
+      "feedback": "忽略,原型不体现数据权限",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W10-01",
+      "operation": "按组织、岗位、在岗状态筛选并查看名录",
+      "oldExpected": "工作联系方式按授权可见，无网格或责任区域字段",
+      "priority": "P0",
+      "feedback": "这里不要做新增,仅查看,通过账号的所属组织展示",
+      "issue": "",
+      "handling": "按账号所属物业组织实时投影只读名录，旧无账号人员不补账号、不出现在当前名录",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W04-W09",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W10-02",
+      "operation": "创建无登录账号的物业人员",
+      "oldExpected": "允许名录存在而不生成实际登录账号",
+      "priority": "P0",
+      "feedback": "此功能去掉,不能没有账号的无业人员",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W10-03",
+      "operation": "模拟离岗或复岗并查看历史",
+      "oldExpected": "工作身份相应变化，原办理记录保留",
+      "priority": "P0",
+      "feedback": "",
+      "issue": "此功能先去掉",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W10-04",
+      "operation": "检查同一人另有住户身份的样例",
+      "oldExpected": "离岗不删除住户身份、绑定和历史",
+      "priority": "P0",
+      "feedback": "离岗功能先不考虑",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W11-01",
+      "operation": "新增一份示例文件，设置分类和归属",
+      "oldExpected": "上传与表单结果一致，不放真实敏感合同",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "简单文件上传编辑、预览下载；格式／大小失败保留输入后可重选；旧附件字节保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W11",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W11-DETAIL-FINAL",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W11-02",
+      "operation": "为同一资料上传V2再查看V1",
+      "oldExpected": "历史版本和原附件保留，版本说明可追溯",
+      "priority": "P0",
+      "feedback": "忽略,不做版本管理",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W11-03",
+      "operation": "检查可查阅但不可下载的角色/测试夹具",
+      "oldExpected": "能看受控预览但下载受阻；访问附件本身也受限",
+      "priority": "P0",
+      "feedback": "权限控制原型不体现",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W11-04",
+      "operation": "设置/不设置有效期查看提示",
+      "oldExpected": "有效期可以为空，无到期日不生成伪提醒",
+      "priority": "P0",
+      "feedback": "暂不考虑有效期",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W11-05",
+      "operation": "模拟上传失败后重试",
+      "oldExpected": "失败保留输入，不显示成功，重试后有真实模拟记录",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "简单文件上传编辑、预览下载；格式／大小失败保留输入后可重选；旧附件字节保留",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W11",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-W11-DETAIL-FINAL",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W11-06",
+      "operation": "修改组织/可见范围/下载权限",
+      "oldExpected": "关键调整需原因和历史；不能因权限编辑无意扩大访问",
+      "priority": "P0",
+      "feedback": "权限控制原型中不体现,默认全部权限",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W12-01",
+      "operation": "新增/编辑组织、类型、上级和工作联系人",
+      "oldExpected": "资料完整；组织名称与地理社区不是一物",
+      "priority": "P0",
+      "feedback": "本菜单不需要了,lilishop中有组织管理的功能,直接复用",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W12-02",
+      "operation": "编辑上下级隶属并尝试循环关系",
+      "oldExpected": "不允许自身为上级或形成循环",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W12-03",
+      "operation": "停用组织并查询关联人员历史",
+      "oldExpected": "历史保留，不无依据删除账号或居民关系",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W13-01",
+      "operation": "为物业管理员检查账号、组织、岗位、角色",
+      "oldExpected": "人员、账号和组织身份独立，管理范围明确",
+      "priority": "P0",
+      "feedback": "不需要了,复用lilishop自带的账号与授权功能",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W13-02",
+      "operation": "设置可见社区/小区并切角色验证",
+      "oldExpected": "空授权不等于全量，不可跨小区越权",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W13-03",
+      "operation": "撤销或停用某个工作身份",
+      "oldExpected": "工作权限收回，不删除其他合法居民身份",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W13-04",
+      "operation": "查看授权变更历史",
+      "oldExpected": "关键权限变更有原因；菜单可见不替代敏感操作权限",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W14-01",
+      "operation": "查看平台管理员/物业管理员/住户角色与菜单配置",
+      "oldExpected": "默认三角色清晰，未公开大量专项测试身份",
+      "priority": "P0",
+      "feedback": "不需要了,复用lilishop自带的账号与角色授权功能",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W14-02",
+      "operation": "检查菜单权限与编辑/审核/下载权限区别",
+      "oldExpected": "拥有菜单不自动获得全部操作或敏感资料",
+      "priority": "P0",
+      "feedback": "不需要了,复用lilishop自带的账号与角色授权功能",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W14-03",
+      "operation": "调整角色或禁用角色（如当前原型支持）",
+      "oldExpected": "被影响账号行为正确、历史保留；仍受数据范围限制",
+      "priority": "P0",
+      "feedback": "不需要了,复用lilishop自带的账号与角色授权功能",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W15-01",
+      "operation": "通过或驳回房屋申请后进入结果消息",
+      "oldExpected": "消息类别、接收人、时间、已读与未读数一致",
+      "priority": "P0",
+      "feedback": "不需要了,复用lilishop自带的消息通知",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W15-02",
+      "operation": "从消息进入对应申请或房屋详情",
+      "oldExpected": "业务对象正确，跳转时重新校验权限",
+      "priority": "P0",
+      "feedback": "待验",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W15-03",
+      "operation": "模拟消息失败和重试（如工具支持）",
+      "oldExpected": "发送模拟状态与真实业务事实分离，不声称短信或微信订阅成功",
+      "priority": "P0",
+      "feedback": "待验",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W16-01",
+      "operation": "连续在平台管理员和物业管理员之间切换",
+      "oldExpected": "弹窗能关闭，菜单和数据同步刷新，不留下遮罩",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "正常身份切换、导航及持久化保留；前台复位／样例／故障／回放与会话技术信息取消",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W01-W16",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W16-02",
+      "operation": "单击关闭、遮罩和Esc重复打开关闭",
+      "oldExpected": "不会卡死、锁滚动或停留在旧身份",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "正常身份切换、导航及持久化保留；前台复位／样例／故障／回放与会话技术信息取消",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-W01-W16",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "W16-03",
+      "operation": "用物业身份访问不在授权范围内的资料",
+      "oldExpected": "看不到、也不能经详情链接绕过；平台权限仍遵守业务动作规则",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "W16-04",
+      "operation": "复位当前会话后检查其他会话",
+      "oldExpected": "只清当前Mock数据，不清商城或其他会话",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "R01-01",
+      "operation": "检查四Tab与首页快捷入口、返回",
+      "oldExpected": "页面加载和跳转正常，不出现错误白屏",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R01-02",
+      "operation": "通过首页发起房屋绑定并进入查看申请进度",
+      "oldExpected": "进入正确路径，操作后回首页不丢状态",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R02-01",
+      "operation": "打开服务Tab并查看当前基础功能",
+      "oldExpected": "能进入我的房屋等已实现基础入口",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R02-02",
+      "operation": "检查物业缴费、停车、报修等入口",
+      "oldExpected": "明确识别为Stage01，不计Stage00通过；不发真实支付",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R03-01",
+      "operation": "点击商城Tab",
+      "oldExpected": "显示原项目交付说明，导航可返回，不出现假交易或真实请求",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R04-01",
+      "operation": "查看本人资料并修改模拟头像/昵称等",
+      "oldExpected": "只修改当前虚构住户，不读真实微信资料",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R04-02",
+      "operation": "进入我的房屋、我的车辆、申请记录、结果消息",
+      "oldExpected": "列表、详情和主操作路径正常；无无关信息",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R04-03",
+      "operation": "展开演示身份与复位工具",
+      "oldExpected": "住户A/B身份数据隔离；复位仅当前演示会话",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "正常身份切换、导航及持久化保留；前台复位／样例／故障／回放与会话技术信息取消",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R05-01",
+      "operation": "选社区小区房屋并提交绑定申请",
+      "oldExpected": "必要字段正确、找房不暴露他人资料",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R05-02",
+      "operation": "Web审核通过后回来查看申请和我的房屋",
+      "oldExpected": "申请结果和当前关系一致",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R05-03",
+      "operation": "驳回后补充重提；待审核时撤回",
+      "oldExpected": "历史轮次保留，不产生重复关系",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R05-04",
+      "operation": "有效关系发起变更或解除",
+      "oldExpected": "成功与失败反馈清楚，未审核通过前关系不应失效",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R06-01",
+      "operation": "新增车辆并关联本人有效房屋",
+      "oldExpected": "车牌和房屋选择正确，提交可恢复",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R06-02",
+      "operation": "查看核实结果、冲突或更正后重提",
+      "oldExpected": "不泄露他人信息，不授予停车权益",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R07-01",
+      "operation": "查看未读、已读与业务结果消息",
+      "oldExpected": "状态和消息数据正确",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "R07-02",
+      "operation": "点击关联业务",
+      "oldExpected": "进入本人有权页面，其他人不能查询",
+      "priority": "P0",
+      "feedback": "忽略",
+      "issue": "",
+      "handling": "按复用决定退出本仓独立入口；未实连LiLiShop服务，不计功能实现或PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "R08-01",
+      "operation": "在房屋选择中点击找不到房屋并提交说明",
+      "oldExpected": "社区、小区、位置和联系方式符合条件，得到明确提交反馈",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "R08-02",
+      "operation": "到Web房屋缺失反馈菜单查询",
+      "oldExpected": "同一反馈可见；不会自动新增正式房屋",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "M01-01",
+      "operation": "打开工作台检查主体身份、组织与范围",
+      "oldExpected": "内容清晰，不读取真实订单或资金",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "M01-02",
+      "operation": "查看经营入口并返回",
+      "oldExpected": "路由正常，不伪造已完成的商家业务",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "M02-01",
+      "operation": "点击经营Tab与返回我的",
+      "oldExpected": "显示范围说明和下一步入口，不出现空白或真实商品操作",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "M03-01",
+      "operation": "点击订单Tab",
+      "oldExpected": "显示“由商城原项目交付”的说明，不展示虚构订单成功",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "M04-01",
+      "operation": "查看当前主体及工作身份",
+      "oldExpected": "不串住户身份，不提供无权居民资料",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "M04-02",
+      "operation": "演示工具复位、导航检查",
+      "oldExpected": "只修改本端Mock，工作台和Tab可返回",
+      "priority": "P1",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "正常身份切换、导航及持久化保留；前台复位／样例／故障／回放与会话技术信息取消",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S01-01",
+      "operation": "查看当前物业组织与小区可见范围",
+      "oldExpected": "与Web当前物业权限原则一致，不默认全部小区",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S01-02",
+      "operation": "通过工作台进入获准档案",
+      "oldExpected": "能找到房屋、居民、车辆、设施等入口，不额外开放审核",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S02-01",
+      "operation": "在档案入口依次查看社区、小区、房屋",
+      "oldExpected": "显示正确位置、数据来源和状态，返回正常",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S02-02",
+      "operation": "查看居民档案、车辆、设施、物业人员",
+      "oldExpected": "按小区/角色过滤；敏感资料脱敏",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S02-03",
+      "operation": "试图进入无权小区或无权详情",
+      "oldExpected": "无权提示清晰，不泄露明细",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "原范围取消／暂不考虑；历史数据与证据保留，不记实现或验收PASS",
+      "currentVerification": "范围取消／复用（不计PASS）",
+      "technicalChecks": [],
+      "ownerStatus": "范围退出／复用，不计验收PASS"
+    },
+    {
+      "id": "S02-04",
+      "operation": "确认没有移动审核和编辑入口",
+      "oldExpected": "只读定位；工单/收费等为Stage01功能",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S03-01",
+      "operation": "查看工作身份、范围及结果消息",
+      "oldExpected": "身份数据与当前工作账号一致",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "S03-02",
+      "operation": "切换或复位模拟身份后重进档案",
+      "oldExpected": "旧身份缓存不泄露、流程可恢复",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "正常身份切换、导航及持久化保留；前台复位／样例／故障／回放与会话技术信息取消",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X01-01",
+      "operation": "住户发起绑定→Web物业审核→住户查看结果→管理端查询",
+      "oldExpected": "申请、正式关系、消息和空间引用一致，没有人工双写",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X01-02",
+      "operation": "驳回→重提→解除跨端联动",
+      "oldExpected": "保留审核轮次，关系状态正确，私有数据隔离",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-X01-W05",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-DATA",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-LEGACY-UI",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X02-01",
+      "operation": "浏览器观察初始化、保存、附件、失败重试的网络",
+      "oldExpected": "没有真实业务API、支付、微信登录、短信或设备请求",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "保留原正常业务与导航；清除阶段说明、演示标签及辅助入口，针对共享数据和界面改动回归",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-NETWORK",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-STATIC-HTTP",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X02-02",
+      "operation": "同源演示刷新、复位和分端账号",
+      "oldExpected": "同会话数据一致；其他会话不被清空",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "正常身份切换、导航及持久化保留；前台复位／样例／故障／回放与会话技术信息取消",
+      "currentVerification": "当前适用自测见下方实际证据；负责人待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-NETWORK",
+          "status": "PASS"
+        },
+        {
+          "id": "R3-STATIC-HTTP",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X03-01",
+      "operation": "分别导入住户、商户、管理端最新mp-weixin构建产物",
+      "oldExpected": "三个App能启动、Tab可用；明确使用此次SHA的产物",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "七类构建与移动适配分开记录；新产物微信工具交互受服务端口关闭影响，H5不替代",
+      "currentVerification": "构建PASS；本轮微信工具交互BLOCKED／NOT_RUN",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X03-02",
+      "operation": "检查安全区、键盘、长页面、滚动及状态反馈",
+      "oldExpected": "无遮挡、控制台错误或不可点击问题",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "七类构建与移动适配分开记录；新产物微信工具交互受服务端口关闭影响，H5不替代",
+      "currentVerification": "构建PASS；本轮微信工具交互BLOCKED／NOT_RUN",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    },
+    {
+      "id": "X03-03",
+      "operation": "对照商城已确认的主页面视觉",
+      "oldExpected": "品牌、Tab、主题、组件和布局有可观察的对照，不是像素随意重制",
+      "priority": "P0",
+      "feedback": "pass",
+      "issue": "",
+      "handling": "七类构建与移动适配分开记录；新产物微信工具交互受服务端口关闭影响，H5不替代",
+      "currentVerification": "已保留原主题并检查新截图；负责人对照待复验",
+      "technicalChecks": [
+        {
+          "id": "R3-FOUR-APPS",
+          "status": "PASS"
+        }
+      ],
+      "ownerStatus": "待负责人复验"
+    }
+  ]
+}

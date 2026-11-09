@@ -1,0 +1,494 @@
+{
+  "date": "2026-11-09",
+  "productMenus": [
+    "spaces",
+    "statistics",
+    "residents",
+    "applications",
+    "missing",
+    "vehicles",
+    "facilities",
+    "personnel",
+    "files"
+  ],
+  "removedIndependentMenus": [
+    "relations",
+    "orgs",
+    "accounts",
+    "roles",
+    "messages"
+  ],
+  "note": "历史catalog字段用于兼容与依据保全，不要求前台恢复旧295行。当前字段定义以REQUIREMENTS第13节为准；这是生成的差异证据，不是第二套字段字典。",
+  "statisticsFields": [
+    "统计范围",
+    "指标",
+    "设施类别",
+    "统计日期",
+    "数值",
+    "单位",
+    "状态"
+  ],
+  "changes": [
+    {
+      "table": "orgs",
+      "titleBefore": "组织资料",
+      "titleAfter": "组织资料",
+      "disposition": "通用能力复用退出",
+      "currentForm": [
+        "组织名称",
+        "组织类型",
+        "上级组织",
+        "工作联系人",
+        "工作联系电话",
+        "备注",
+        "资料来源",
+        "来源说明"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "accounts",
+      "titleBefore": "账号与授权",
+      "titleAfter": "账号与授权",
+      "disposition": "通用能力复用退出",
+      "currentForm": [
+        "登录账号",
+        "人员姓名",
+        "所属组织",
+        "岗位",
+        "授权角色",
+        "可查看社区",
+        "可查看小区",
+        "授权变更原因"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "roles",
+      "titleBefore": "角色权限",
+      "titleAfter": "角色权限",
+      "disposition": "通用能力复用退出",
+      "currentForm": [
+        "角色名称",
+        "角色说明",
+        "可见菜单",
+        "允许操作",
+        "敏感查看与导出权限"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "communities",
+      "titleBefore": "社区档案",
+      "titleAfter": "社区档案",
+      "disposition": "社区层退出前台，字段内部兼容",
+      "currentForm": [
+        "社区名称",
+        "社区地址",
+        "社区简介",
+        "维护单位",
+        "维护联系人",
+        "维护联系电话",
+        "资料来源",
+        "来源说明"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "estates",
+      "titleBefore": "小区档案",
+      "titleAfter": "小区档案",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "小区名称",
+        "小区地址",
+        "物业管理单位"
+      ],
+      "removedFormControls": [
+        "所属社区",
+        "资料来源",
+        "来源说明"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "所属社区",
+        "档案状态"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "buildings",
+      "titleBefore": "楼栋档案",
+      "titleAfter": "楼栋档案",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "所属小区",
+        "楼栋名称／楼栋号",
+        "是否设单元"
+      ],
+      "removedFormControls": [
+        "资料来源",
+        "来源说明"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "所属社区",
+        "档案状态"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "units",
+      "titleBefore": "单元档案",
+      "titleAfter": "单元档案",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "所属楼栋",
+        "单元名称／单元号"
+      ],
+      "removedFormControls": [
+        "资料来源",
+        "来源说明"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "所属社区",
+        "档案状态"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "houses",
+      "titleBefore": "房间（房屋）",
+      "titleAfter": "房间（房屋）",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "所属小区",
+        "所属楼栋",
+        "所属单元",
+        "楼层",
+        "房号",
+        "房屋用途",
+        "房屋面积"
+      ],
+      "removedFormControls": [
+        "所属社区",
+        "资料来源",
+        "来源说明"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "所属社区",
+        "房屋编号",
+        "档案状态"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "imports",
+      "titleBefore": "房屋导入",
+      "titleAfter": "房屋导入",
+      "disposition": "保留并定向整改",
+      "currentForm": [],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "residents",
+      "titleBefore": "居民档案",
+      "titleAfter": "居民档案",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "居民姓名",
+        "联系电话",
+        "关联账号",
+        "资料来源",
+        "来源说明"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "applications",
+      "titleBefore": "房屋绑定",
+      "titleAfter": "房屋绑定",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "申请类型",
+        "所属社区",
+        "所属小区",
+        "所属楼栋",
+        "所属单元",
+        "房号",
+        "申请关系类型",
+        "申请说明",
+        "证明说明",
+        "证明附件",
+        "申请有效起始日",
+        "申请有效结束日"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "relations",
+      "titleBefore": "正式人房关系",
+      "titleAfter": "正式人房关系",
+      "disposition": "合并到房屋绑定当前绑定",
+      "currentForm": [],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "missing",
+      "titleBefore": "房屋缺失反馈",
+      "titleAfter": "房屋缺失反馈",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "社区",
+        "小区名称或地址",
+        "具体房屋描述",
+        "联系号码"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "statistics",
+      "titleBefore": "基础概况来源",
+      "titleAfter": "基础数据统计",
+      "disposition": "重做自动统计，旧手工记录不作自动数值",
+      "currentForm": [],
+      "removedFormControls": [
+        "统计范围",
+        "指标名称",
+        "指标数值",
+        "统计口径说明",
+        "统计日期",
+        "数据来源",
+        "提供单位"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "vehicles",
+      "titleBefore": "车辆档案",
+      "titleAfter": "车辆档案",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "车牌号码",
+        "车辆类型",
+        "车辆颜色",
+        "关联居民",
+        "关联房屋",
+        "登记说明",
+        "资料来源",
+        "来源说明"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "facilities",
+      "titleBefore": "设施点位",
+      "titleAfter": "设施点位",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "点位名称",
+        "点位类别",
+        "所属小区",
+        "具体位置",
+        "关联楼栋",
+        "关联房屋",
+        "设备或设施编号",
+        "数量",
+        "数量单位",
+        "厂商名称",
+        "维护单位",
+        "工作联系人",
+        "工作联系电话",
+        "点位照片",
+        "接入说明",
+        "备注"
+      ],
+      "removedFormControls": [
+        "所属社区",
+        "资料来源",
+        "来源说明"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "档案状态",
+        "接入说明"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "personnel",
+      "titleBefore": "物业人员",
+      "titleAfter": "物业人员",
+      "disposition": "账号组织只读投影",
+      "currentForm": [],
+      "removedFormControls": [
+        "人员姓名",
+        "所属物业组织",
+        "岗位",
+        "工作联系电话",
+        "关联账号",
+        "入岗日期",
+        "变更说明",
+        "资料来源",
+        "来源说明"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "人员编号",
+        "关联账号",
+        "在岗状态",
+        "入岗日期",
+        "离岗日期",
+        "变更说明"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "files",
+      "titleBefore": "文件资料",
+      "titleAfter": "文件资料",
+      "disposition": "简单资料，旧字节内部保留",
+      "currentForm": [
+        "文件名称",
+        "文件分类",
+        "所属组织",
+        "适用小区",
+        "文件附件"
+      ],
+      "removedFormControls": [
+        "适用社区",
+        "生效日期",
+        "到期日期",
+        "可查阅角色",
+        "可下载角色",
+        "到期提醒接收人",
+        "提前提醒天数"
+      ],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "版本号",
+        "变更说明",
+        "生效日期",
+        "到期日期",
+        "提前提醒天数",
+        "到期提醒接收人",
+        "有效期提示",
+        "可查阅角色",
+        "可下载角色",
+        "资料使用状态"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "fileFeedback",
+      "titleBefore": "文件处理反馈",
+      "titleAfter": "文件处理反馈",
+      "disposition": "保留并定向整改",
+      "currentForm": [],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "profile",
+      "titleBefore": "本人资料",
+      "titleAfter": "本人资料",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "头像",
+        "昵称",
+        "姓名",
+        "手机号"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "demo",
+      "titleBefore": "演示控制",
+      "titleAfter": "演示控制",
+      "disposition": "保留并定向整改",
+      "currentForm": [],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "messages",
+      "titleBefore": "结果消息",
+      "titleAfter": "结果消息",
+      "disposition": "通用能力复用退出",
+      "currentForm": [],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "history",
+      "titleBefore": "操作记录",
+      "titleAfter": "操作记录",
+      "disposition": "保留并定向整改",
+      "currentForm": [],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [],
+      "stableIdsAndHistoricalStorageRetained": true
+    },
+    {
+      "table": "parking",
+      "titleBefore": "车位资源",
+      "titleAfter": "车位资源",
+      "disposition": "保留并定向整改",
+      "currentForm": [
+        "车位编号",
+        "车位类型",
+        "备注"
+      ],
+      "removedFormControls": [],
+      "addedFormControls": [],
+      "hiddenDetailFields": [
+        "档案状态"
+      ],
+      "stableIdsAndHistoricalStorageRetained": true
+    }
+  ]
+}

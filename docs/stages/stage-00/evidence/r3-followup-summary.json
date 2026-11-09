@@ -1,0 +1,611 @@
+{
+  "date": "2026-11-09T06:17:55.392Z",
+  "branch": "stage/00-foundation",
+  "head": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "ownerFeedback": {
+    "source": "r3-followup-owner-feedback.json",
+    "menuOrAppPasses": 8,
+    "notStagePass": true
+  },
+  "rules": {
+    "total": 102,
+    "pass": 98,
+    "fail": 0,
+    "skip": 4
+  },
+  "builds": {
+    "WebAndH5": 4,
+    "typeChecks": 3,
+    "results": [
+      {
+        "id": "web",
+        "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-09T06:16:47.555Z",
+        "end": "2026-11-09T06:16:58.722Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/web-final-1794205007562.log"
+      },
+      {
+        "id": "resident-h5",
+        "command": "npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-09T06:02:13.186Z",
+        "end": "2026-11-09T06:02:34.427Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/resident-h5.log"
+      },
+      {
+        "id": "merchant-h5",
+        "command": "npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-09T06:02:34.428Z",
+        "end": "2026-11-09T06:02:48.358Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/merchant-h5.log"
+      },
+      {
+        "id": "staff-h5",
+        "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-09T06:02:48.359Z",
+        "end": "2026-11-09T06:03:02.171Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/staff-h5.log"
+      },
+      {
+        "id": "resident-types",
+        "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-09T06:03:02.172Z",
+        "end": "2026-11-09T06:03:07.033Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/resident-types.log"
+      },
+      {
+        "id": "merchant-types",
+        "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-09T06:03:07.034Z",
+        "end": "2026-11-09T06:03:10.687Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/merchant-types.log"
+      },
+      {
+        "id": "staff-types",
+        "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-09T06:03:10.687Z",
+        "end": "2026-11-09T06:03:14.657Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/staff-types.log"
+      }
+    ]
+  },
+  "browser": {
+    "cases": 14,
+    "currentResults": [
+      {
+        "id": "R3-W01-W16",
+        "name": "菜单、正常身份切换及废弃链接",
+        "status": "PASS",
+        "source": "r3-followup-browser-retest.json"
+      },
+      {
+        "id": "R3-W02-01-08",
+        "name": "树层级、三资源、分列、当前选中操作",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-W02-04-12",
+        "name": "新增与删除的确认、取消、非空保护及同步",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-CSV",
+        "name": "合法CSV、超限清预览、重选导入与重复整批拒绝",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-RESOURCE",
+        "name": "根范围新增需选楼栋；原设施可编辑补全位置",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-FILTER-PAGE",
+        "name": "房间分页筛选、切节点清理及删除同步",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-W03",
+        "name": "独立统计退出；三资源数字跟随节点、增删实时更新",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-W04-W09",
+        "name": "详情只读、记录子表及资源按钮横排",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-W11",
+        "name": "文件格式校验、失败保留输入、重选上传、预览下载",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-X01-W05",
+        "name": "住户实际提交→物业列表审核→住户结果→管理端查询",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-FOLLOWUP-STATUS-PHONE",
+        "name": "申请四种状态有色边框，物业名录手机号完整",
+        "status": "PASS",
+        "source": "r3-followup-browser-status-retest.json"
+      },
+      {
+        "id": "R3-FOLLOWUP-STAFF-CARDS",
+        "name": "管理端小区和房屋卡片用名称及地址识别",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-FOUR-APPS",
+        "name": "三端全部Tab、两种视口、正常账号切换无辅助入口",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      },
+      {
+        "id": "R3-NETWORK",
+        "name": "冷启动、查询、保存、上传等只访问同源静态资源",
+        "status": "PASS",
+        "source": "r3-followup-browser-results.json"
+      }
+    ],
+    "observations": {
+      "R3-W01-W16": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "FAIL",
+          "error": "locator.innerText: Error: strict mode violation: locator('.ivu-menu-item-active:visible') resolved to 2 elements:\n    1) <li class=\"property-menu-root ivu-menu-submenu ivu-menu-item-active ivu-menu-opened ivu-menu-child-item-active\">…</li> aka getByText('物业管理 工作台 物业工作台社区与房屋 社区房屋档案居民与绑定 居民档案房屋绑定房屋缺失反馈基础资料 车辆档案设施点位物业人员文件资料物业服务 物业费账单缴费记')\n    2) <li class=\"ivu-menu-item ivu-menu-item-active ivu-menu-item-selected\">房屋绑定</li> aka getByRole('complementary').getByText('房屋绑定')\n\nCall log:\n\u001b[2m  - waiting for locator('.ivu-menu-item-active:visible')\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:29:526\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:25:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:27:1"
+        },
+        {
+          "source": "r3-followup-browser-retest.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-W02-01-08": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-W02-04-12": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-CSV": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-RESOURCE": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-FILTER-PAGE": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-W03": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-W04-W09": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-W11": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-X01-W05": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-FOLLOWUP-STATUS-PHONE": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "FAIL",
+          "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(tags.some(tag=>tag.text==='待审核'))\n\n    at file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:75:397\n    at async check (file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:25:69)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:74:1"
+        },
+        {
+          "source": "r3-followup-browser-retest.json",
+          "status": "FAIL",
+          "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-row-id]').first() to be visible\u001b[22m\n\u001b[2m    24 × locator resolved to hidden <div class=\"table-actions\" data-row-id=\"platform-admin\">…</div>\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:79:78\n    at async check (D:\\git\\daguanglu-community-prototype\\scripts\\browser-r3.mjs:26:111)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:75:1"
+        },
+        {
+          "source": "r3-followup-browser-status-before-style.json",
+          "status": "PASS"
+        },
+        {
+          "source": "r3-followup-browser-contrast-first.json",
+          "status": "FAIL",
+          "error": "AssertionError [ERR_ASSERTION]: 状态文字应清晰可读\n    at file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:78:1082\n    at async check (file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:26:111)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:75:1"
+        },
+        {
+          "source": "r3-followup-browser-status-retest.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-FOLLOWUP-STAFF-CARDS": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-FOUR-APPS": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ],
+      "R3-NETWORK": [
+        {
+          "source": "r3-followup-browser-results.json",
+          "status": "PASS"
+        }
+      ]
+    },
+    "note": "Full run had 12 PASS and two probe failures; two focused retests resolved menu selection, explicit pending/withdrawn data preparation, and readonly personnel row selection. Prior failures remain unchanged. A later contrast check found the View UI palette important rule taking precedence; a scoped important override darkened only these labels, Web was rebuilt and all four label contrast ratios were retested at 4.5 or above."
+  },
+  "native": {
+    "build": "NOT_RUN",
+    "tool": "NOT_RUN",
+    "device": "NOT_RUN",
+    "reason": "负责人本轮只验Web/H5，微信检查暂缓；此前结果保留历史"
+  },
+  "removedStatisticsMenu": "Scope removed, not implementation or owner PASS",
+  "artifacts": [
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/facilities-1366.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-facilities-1366.png",
+      "bytes": 60898,
+      "sha256": "f7b55c0aac81438f4345df04a2ddcbb3294ec8af55369233dfa207b1057a43b9"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/files-preview.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-files-preview.png",
+      "bytes": 50530,
+      "sha256": "b36aa3dc7c728d0d4be8f002851cac5bb10b98f3a16523486e5d524aa99d665c"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/merchant-profile-390.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-merchant-profile-390.png",
+      "bytes": 19354,
+      "sha256": "60c3bbf85d4ce74b9b5483b69d2dbf8ae29db5428cc3fc236e78554d44242ff9"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/merchant-profile-414.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-merchant-profile-414.png",
+      "bytes": 19639,
+      "sha256": "1bf1d9bffcacae0e6cd05ac5a91dc59ba56b76d54555dbb5acab417f79192873"
+    },
+    {
+      "kind": "retained-probe-failure-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "bytes": 56814,
+      "sha256": "c541f693850e8533d6a08bcfbca9ccd9de496e3f0ddcd1467a600fdb13284567"
+    },
+    {
+      "kind": "retained-probe-failure-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/R3-W01-W16-failure.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-R3-W01-W16-failure.png",
+      "bytes": 51317,
+      "sha256": "7f392258657d1fde61efa3897e2db0e709151bdc996612b436c1487aab07bb22"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/resident-binding-result.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resident-binding-result.png",
+      "bytes": 55835,
+      "sha256": "d922821507dfe0ef8d9b3f896ec419f4e7e2d80d59ea6da2258053c1304e6ff1"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/resident-profile-390.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resident-profile-390.png",
+      "bytes": 27796,
+      "sha256": "e6facfbebc1e96bd264378618a174e9b27ed116aa8d3f71a09fe6ca6a10ee3d3"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/resident-profile-414.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resident-profile-414.png",
+      "bytes": 29140,
+      "sha256": "1118b3e14cca2bfa35f865e7fd38ffbabdfaac965795e7132d02cfc510026c7e"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/resource-counts-unit.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resource-counts-unit.png",
+      "bytes": 58416,
+      "sha256": "1b8646df9ca7ffe4e17809bbe2b17362845edc0ea61a9058fe33ce154be439d3"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/spaces-1366.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-spaces-1366.png",
+      "bytes": 75440,
+      "sha256": "1ab41c9edf290b2e9e55df9df201d02cf3a5a49a5a9901f3d1e4baf365ce85d3"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/spaces-1920.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-spaces-1920.png",
+      "bytes": 80297,
+      "sha256": "0a65947190a11832d674372401b2fcd2cd808ae78ede6c431061b2d8bf1f05c5"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/staff-estates-names.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-estates-names.png",
+      "bytes": 13194,
+      "sha256": "2064a133da581dfff1a85dd6a8ab77209ee40e4be70a3c989115bf1b5d3fb611"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/staff-houses-names.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-houses-names.png",
+      "bytes": 131900,
+      "sha256": "cf9f1a521d49e05d0cc67180663feac9e0c93943589dc0a7afa3ffccadbb1053"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/staff-profile-390.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-profile-390.png",
+      "bytes": 24882,
+      "sha256": "7d823d13a4b50bf40c2f73564bb35e64eafe5d206f09f9470ca7e1ee61ad3775"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-03-48-630Z/staff-profile-414.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-profile-414.png",
+      "bytes": 25200,
+      "sha256": "7583ee0529f64fc33e1064e2a38bf391e5ad2ab973a8f72f4e43efa289d0fbd0"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-08-53-114Z/application-status.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run2-application-status.png",
+      "bytes": 68375,
+      "sha256": "e326279a7fafaa9352ef77b8292a65acf13bbab9f71f7db9fb9184df7744c0d6"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-08-53-114Z/dashboard-1366.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run2-dashboard-1366.png",
+      "bytes": 47546,
+      "sha256": "ce12b7dd70cdd674c57b6095f82e9da43b8a1752c2b1613bee53336c55503de6"
+    },
+    {
+      "kind": "retained-probe-failure-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-08-53-114Z/R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run2-R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "bytes": 45710,
+      "sha256": "7f8dd4d1a5a4609e97477cd72a778ef249827ef1a77ab6af704c4ebc0e5dc666"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-10-58-473Z/application-status.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run3-application-status.png",
+      "bytes": 68284,
+      "sha256": "912df8072c3dac89e922cba2e5a67f7e4e9b59268a85b9c901e01508ff081bb4"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-10-58-473Z/personnel-phone.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run3-personnel-phone.png",
+      "bytes": 45710,
+      "sha256": "7f8dd4d1a5a4609e97477cd72a778ef249827ef1a77ab6af704c4ebc0e5dc666"
+    },
+    {
+      "kind": "retained-probe-failure-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-15-47-768Z/R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run4-R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "bytes": 68693,
+      "sha256": "3aa83627f94a33d630276631652b950b09a9482a93e3754b5fe2c9494da0fa52"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-17-30-660Z/application-status.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run5-application-status.png",
+      "bytes": 68731,
+      "sha256": "dd3ae76d17ecbfbac3a565fe6357aae127b63226b0fd3ae9d76fb68265289e52"
+    },
+    {
+      "kind": "actual-browser-screenshot",
+      "source": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-17-30-660Z/personnel-phone.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run5-personnel-phone.png",
+      "bytes": 45710,
+      "sha256": "7f8dd4d1a5a4609e97477cd72a778ef249827ef1a77ab6af704c4ebc0e5dc666"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/web-final-1794205007562.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-web.log",
+      "bytes": 2609,
+      "sha256": "c942b0dfbfad4e759514fd9d48ae0c1374ca878ca6b486b913ab9f40ba00eec6"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/resident-h5.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-resident-h5.log",
+      "bytes": 7480,
+      "sha256": "da116261ff8bd035333ed9c4adbb04e1ea433f18c7be310697a4875ada640a57"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/merchant-h5.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-merchant-h5.log",
+      "bytes": 5540,
+      "sha256": "6ee6d95cbca8ea462064b482ae204e0a98247487da873b76fe13513b98cc9bc5"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/staff-h5.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-staff-h5.log",
+      "bytes": 6510,
+      "sha256": "e708ed43441d726ac112a1702e84edfe1f731bc8ce207482a27d82d5c93b9481"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/resident-types.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-resident-types.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/merchant-types.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-merchant-types.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "kind": "current-build-log",
+      "source": ".runtime/stage00-r3-followup/BUILD_2026-11-09T06-01-44-232Z/staff-types.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-staff-types.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/rules-first.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/rules-first.log",
+      "bytes": 10337,
+      "sha256": "031167fab91904562b9daf55458590f704e68963ff343cc6543a92a8b427ad1f"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/rules-second.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/rules-second.log",
+      "bytes": 12005,
+      "sha256": "3d3cc184aaede4f907fa0e64cf90c5b21701aeb3255b8df2d5a0807909ca4a89"
+    },
+    {
+      "kind": "current-check-log",
+      "source": ".runtime/stage00-r3-followup/rules-final.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/rules-final.log",
+      "bytes": 10142,
+      "sha256": "ce75072c6a042791fc82b19ee9beded574e9c0a25a482e376828c6acd13d760e"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/browser-first.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-first.log",
+      "bytes": 8482,
+      "sha256": "3b98e9807c4c2e7a138cabb8dd0e4c7860ad30c0b609defb2be68af3f1f67167"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/browser-second.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-second.log",
+      "bytes": 1085,
+      "sha256": "52732d6a72a96ae3274a12c2b4e397a2cff1b85fcb05852cc974f6c01e0923e1"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/browser-retest.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-retest.log",
+      "bytes": 290,
+      "sha256": "7730ee5d5d3acca6e75b3a76e87f28349509264631c5e64a4e351a024ca38a07"
+    },
+    {
+      "kind": "current-check-log",
+      "source": ".runtime/stage00-r3-followup/browser-status-final.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-final.log",
+      "bytes": 31,
+      "sha256": "d99233ed540af5ab1207a81a307a0cf639a1286f49808796a8dcac0276cebab7"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/browser-status-contrast-first.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-contrast-first.log",
+      "bytes": 59,
+      "sha256": "c30ae6096b85d7e7e951043487eccd4f7a8cf646b9bb94f8923edf6ca06aa2ab"
+    },
+    {
+      "kind": "retained-attempt-log",
+      "source": ".runtime/stage00-r3-followup/browser-status-contrast.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-contrast.log",
+      "bytes": 31,
+      "sha256": "d99233ed540af5ab1207a81a307a0cf639a1286f49808796a8dcac0276cebab7"
+    },
+    {
+      "kind": "current-check-log",
+      "source": ".runtime/stage00-r3-followup/static-final.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/static-final.log",
+      "bytes": 384,
+      "sha256": "c05df148da27ba93d3bbc1bedad62289aa2f838cef08c4a0ba577993b1d74309"
+    },
+    {
+      "kind": "current-check-log",
+      "source": ".runtime/stage00-r3-followup/docs-final.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/docs-final.log",
+      "bytes": 568,
+      "sha256": "a6758e6f751ede6edfc5b14e4ea996b3ec95155feba801d29905302c35f68efb"
+    }
+  ],
+  "finalizedAt": "2026-11-09T06:19:02.400Z",
+  "static": {
+    "status": "PASS",
+    "checks": 5,
+    "source": "r3-followup-static-results.json"
+  },
+  "documents": {
+    "status": "PASS",
+    "errors": 0,
+    "source": "r3-followup-document-results.json",
+    "historicalSceneCountsAreNotCurrentAcceptance": true
+  },
+  "diffCheck": {
+    "status": "PASS",
+    "command": "git diff --check"
+  }
+}

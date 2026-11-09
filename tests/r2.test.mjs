@@ -1,3 +1,4 @@
+// R3: 小区直属资源仅作为历史数据夹具；当前新增归属由r3.test.mjs验证。
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { createSeed, execute, query, record, dashboard, authorizeAttachment } from '../prototype-shared/core.js'
@@ -8,7 +9,7 @@ const property = {app:'web',account:'property-admin',role:'property'}
 const resident = {app:'resident',account:'resident-a',role:'resident'}
 const scope = (table,id) => ({_space:{table,id}})
 const ids = rows => rows.map(r=>r._id).sort()
-function resource(s,table,parent,id,code){return execute(s,platform,'save',{table,space:{table:parent,id},data:table==='parking'?{车位编号:code,车位类型:'其他（演示候选）'}:{点位名称:code,点位类别:'消防',具体位置:'虚构北侧',资料来源:'人工维护'}}).id}
+function resource(s,table,parent,id,code){if(parent==='estates'){const estate=s.estates.find(e=>e._id===id), legacy={...(table==='facilities'?s.facilities[0]:{}),_id:'LEGACY-'+code,_rev:1,_spaceTable:'estates',_spaceId:id,所属社区:estate['所属社区'],所属小区:id,关联楼栋:'',所属单元:'',车位编号:code,点位名称:code};s[table].push(legacy);return legacy._id}return execute(s,platform,'save',{table,space:{table:parent,id},data:table==='parking'?{车位编号:code,车位类型:'其他（演示候选）'}:{点位名称:code,点位类别:'消防',具体位置:'虚构北侧',资料来源:'人工维护'}}).id}
 function house(s,building,number,unit=''){return execute(s,platform,'save',{table:'houses',data:{所属社区:'C-A',所属小区:'E-A',所属楼栋:building,所属单元:unit,房号:number,房屋用途:'住宅',资料来源:'人工维护'}}).id}
 
 test('R2-06 社区、小区、楼栋、单元、房间查询全部末级房间，且不返回中间节点',()=>{
@@ -27,11 +28,11 @@ test('R2-07 小区汇总直属和下属楼栋设施车位，楼栋只查自身�
  }
 })
 test('R2-06/07 Mock在查询层拒绝无权和不存在的空间，不只靠页面隐藏',()=>{
- const s=createSeed();resource(s,'parking','estates','E-B','R2-X');resource(s,'facilities','estates','E-B','R2-XF')
+ const s=createSeed();const fixture=s.roles.find(r=>r._id==='maintainer');fixture['可见菜单'].push('parking');fixture['允许操作'].push('read:parking');resource(s,'parking','estates','E-B','R2-X');resource(s,'facilities','estates','E-B','R2-XF')
  for(const t of ['houses','facilities','parking']){
-  assert.throws(()=>query(s,property,t,scope('estates','E-B')),/无权/)
+  assert.throws(()=>query(s,{app:'web',account:'archive',role:'maintainer'},t,scope('estates','E-B')),/无权/)
   assert.throws(()=>query(s,property,t,scope('buildings','missing')),/不存在|未找到/)
-  assert(query(s,property,t,scope('root','')).every(r=>r['所属小区']!=='E-B'))
+  assert(query(s,{app:'web',account:'archive',role:'maintainer'},t,scope('root','')).every(r=>r['所属小区']!=='E-B'))
  }
 })
 test('R2-08 不同楼栋同名房间保持独立引用，范围结果不按房号去重',()=>{
@@ -64,7 +65,7 @@ test('R2-09 独立资源新增不增加房屋和人口统计，非法归属仍�
  const s=createSeed(),before=dashboard(s,platform).counts
  resource(s,'parking','estates','E-A','R2-PARK');resource(s,'facilities','buildings','B-N','R2-FAC');assert.deepEqual(dashboard(s,platform).counts,before)
  resource(s,'parking','units','U-A','R2-UNIT');assert.deepEqual(dashboard(s,platform).counts,before)
- for(const [t,id] of [['communities','C-A'],['houses','H-A']])assert.throws(()=>resource(s,'parking',t,id,'R2-ILLEGAL'),/只能在小区.*楼栋.*单元/)
+ for(const [t,id] of [['communities','C-A'],['houses','H-A']])assert.throws(()=>resource(s,'parking',t,id,'R2-ILLEGAL'),/楼栋或单元/)
 })
 test('R2-11 上级汇总查询下导入成功同步末级房屋，保留前导零及整批错误保护',()=>{
  const s=createSeed(),text=importTemplate.replace('\r\n,青禾','\r\n0000202,青禾'),before=query(s,platform,'houses',scope('communities','C-A')).length,p=previewImport(s,platform,text,'R2虚构来源',{table:'communities',id:'C-A'})
@@ -73,12 +74,12 @@ test('R2-11 上级汇总查询下导入成功同步末级房屋，保留前导�
  const wrong=previewImport(s,platform,text.replace('0000202','0000203').replace(',0202,',',0203,'),'R2虚构来源',{table:'buildings',id:'B-A'});assert.equal(wrong['不通过行数'],1);assert.match(wrong.rows[0]['错误原因'].join(),/范围不一致/)
 })
 test('R2-11 有单元、缺上级及非法数值的混合批次不留下半批',()=>{
- const s=createSeed(),text='\uFEFF'+importColumns.join(',')+'\r\n,青禾示例社区,青禾示例花园,01幢,1单元,3,0303,住宅,,台账导入,R2\r\n,青禾示例社区,青禾示例花园,不存在,,3,0304,住宅,坏数值,台账导入,R2\r\n',n=s.houses.length,p=previewImport(s,platform,text,'R2虚构来源',{table:'communities',id:'C-A'})
+ const s=createSeed(),text='\uFEFF房屋编号,所属社区,所属小区,所属楼栋,所属单元,楼层,房号,房屋用途,房屋面积,资料来源,来源说明'+'\r\n,青禾示例社区,青禾示例花园,01幢,1单元,3,0303,住宅,,台账导入,R2\r\n,青禾示例社区,青禾示例花园,不存在,,3,0304,住宅,坏数值,台账导入,R2\r\n',n=s.houses.length,p=previewImport(s,platform,text,'R2虚构来源',{table:'communities',id:'C-A'})
  assert.equal(p['通过行数'],1);assert.equal(p['不通过行数'],1);assert.throws(()=>commitImport(s,platform,text,'R2虚构来源',p.revision,{table:'communities',id:'C-A'}),/整批未写入/);assert.equal(s.houses.length,n)
 })
 test('R2-12 物业审核、本人消息、文件可查不可下载与管理端只读保持',()=>{
  const s=createSeed(),app=execute(s,resident,'apply',{data:{_house:'H-N',申请类型:'绑定',申请关系类型:'租户'}});execute(s,property,'review',{id:app.id,decision:'通过',内部审核备注:'R2内部备注'})
  assert.equal(record(s,resident,'applications',app.id)['申请状态'],'已通过');assert(!('内部审核备注' in record(s,resident,'applications',app.id)));assert(query(s,resident,'messages').length>0)
  assert.throws(()=>record(s,{...resident,account:'resident-b'},'applications',app.id),/无权/);const reader={app:'web',account:'file-reader',role:'file-reader'};assert.equal(authorizeAttachment(s,reader,{table:'files',id:'FILE-A',action:'view'}),'seed-file-v1');assert.throws(()=>authorizeAttachment(s,reader,{table:'files',id:'FILE-A',action:'download'}),/下载权限/)
- assert.throws(()=>execute(s,{...property,app:'staff'},'save',{table:'parking',space:{table:'estates',id:'E-A'},data:{车位编号:'STAFF',车位类型:'其他（演示候选）'}}),/操作权限/)
+ assert.throws(()=>execute(s,{...property,app:'staff'},'save',{table:'parking',space:{table:'buildings',id:'B-A'},data:{车位编号:'STAFF',车位类型:'其他（演示候选）'}}),/操作权限/)
 })

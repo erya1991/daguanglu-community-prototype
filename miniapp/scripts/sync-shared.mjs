@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import './apply-h5-picker-fix.mjs'
 const root=path.resolve(import.meta.dirname,'..')
 for(const app of ['resident','merchant','staff']){
  const src=path.join(root,`apps/${app}-miniapp/src`)

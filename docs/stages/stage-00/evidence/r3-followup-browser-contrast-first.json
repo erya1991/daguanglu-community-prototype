@@ -1,0 +1,19 @@
+{
+  "session": "R3_RETEST_2026-11-09T06-15-47-768Z",
+  "base": "http://127.0.0.1:19201",
+  "out": ".runtime/stage00-r3-followup/R3_RETEST_2026-11-09T06-15-47-768Z",
+  "scope": [
+    "R3-FOLLOWUP-STATUS-PHONE"
+  ],
+  "results": [
+    {
+      "id": "R3-FOLLOWUP-STATUS-PHONE",
+      "name": "申请四种状态有色边框，物业名录手机号完整",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: 状态文字应清晰可读\n    at file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:78:1082\n    at async check (file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:26:111)\n    at async file:///D:/git/daguanglu-community-prototype/scripts/browser-r3.mjs:75:1"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "visibleIssues": []
+}

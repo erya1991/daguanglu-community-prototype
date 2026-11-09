@@ -143,7 +143,7 @@ async function pay() {
       options.value.config.company +
       "；应付 " +
       money(amount.value) +
-      "。演示环境，不会实际扣款。",
+      "元。",
     success: async (r) => {
       if (!r.confirm || saving.value) return;
       saving.value = true;
@@ -366,7 +366,6 @@ onUnmounted(() => {
           ><view class="card"
             ><text class="card-title">收款方</text
             ><text>{{ options.config?.company }}</text
-            ><text class="muted">演示环境，不会实际扣款</text
             ><text v-if="!paymentRow" class="amount">{{
               money(amount)
             }}</text></view

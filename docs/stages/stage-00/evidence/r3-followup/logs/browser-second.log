@@ -1,0 +1,23 @@
+FAIL R3-W01-W16 locator.innerText: Error: strict mode violation: locator('.ivu-menu-item-active:visible') resolved to 2 elements:
+    1) <li class="property-menu-root ivu-menu-submenu ivu-menu-item-active ivu-menu-opened ivu-menu-child-item-active">…</li> aka getByText('物业管理 工作台 物业工作台社区与房屋 社区房屋档案居民与绑定 居民档案房屋绑定房屋缺失反馈基础资料 车辆档案设施点位物业人员文件资料物业服务 物业费账单缴费记')
+    2) <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">房屋绑定</li> aka getByRole('complementary').getByText('房屋绑定')
+
+Call log:
+[2m  - waiting for locator('.ivu-menu-item-active:visible')[22m
+
+PASS R3-W02-01-08
+PASS R3-W02-04-12
+PASS R3-CSV
+PASS R3-RESOURCE
+PASS R3-FILTER-PAGE
+PASS R3-W03
+PASS R3-W04-W09
+PASS R3-W11
+PASS R3-X01-W05
+FAIL R3-FOLLOWUP-STATUS-PHONE The expression evaluated to a falsy value:
+
+  assert(tags.some(tag=>tag.text==='待审核'))
+
+PASS R3-FOLLOWUP-STAFF-CARDS
+PASS R3-FOUR-APPS
+PASS R3-NETWORK

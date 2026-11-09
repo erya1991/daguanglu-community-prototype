@@ -1,0 +1,24 @@
+{
+  "session": "R3_legacy_1794197623550",
+  "ref": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "base": "http://127.0.0.1:19201",
+  "out": ".runtime/stage00-r3/R3_legacy_1794197623550",
+  "results": [
+    {
+      "id": "R3-LEGACY-DATA",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-LEGACY-UI",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-STATIC-HTTP",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "external": [],
+  "note": "由e8ad276源码生成独立旧版夹具后升级，不读取或复位负责人原会话；原历史和附件正文按字节保留，图片为当前实现实拍。"
+}

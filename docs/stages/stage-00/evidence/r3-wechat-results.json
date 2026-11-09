@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-09",
+  "cli": "C:/Program Files (x86)/Tencent/微信web开发者工具/cli.bat",
+  "attemptedCommand": "open --project D:\\git\\daguanglu-community-prototype/miniapp/apps/resident-miniapp/dist/build/mp-weixin",
+  "observedExit": 0,
+  "status": "BLOCKED",
+  "reason": "IDE service port disabled，出现Enable IDE Service (y/N)；未启用端口，结束本次CLI等待，未访问其他项目窗口。命令包装退出0不代表打开成功。",
+  "log": ".runtime/stage00-r3/checks/wechat-open-resident.log",
+  "apps": [
+    {
+      "app": "resident",
+      "interaction": "BLOCKED",
+      "attempted": true
+    },
+    {
+      "app": "merchant",
+      "interaction": "NOT_RUN",
+      "attempted": false
+    },
+    {
+      "app": "staff",
+      "interaction": "NOT_RUN",
+      "attempted": false
+    }
+  ],
+  "device": "NOT_RUN"
+}

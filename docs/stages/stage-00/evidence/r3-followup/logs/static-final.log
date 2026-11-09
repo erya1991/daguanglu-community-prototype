@@ -1,0 +1,9 @@
+
+> check
+> node scripts/check-stage00.mjs --r3-web
+
+PASS 历史字段定义保全与当前R3字段差异分别校验
+PASS 移动依赖解析未升级，只有工作区元信息适配
+PASS Web保留Manager锁文件，Vue2与移动Vue3隔离
+PASS 自有源码无真实业务调用、源仓绝对导入或跨仓链接
+PASS 当前范围构建与类型检查具有实际退出码

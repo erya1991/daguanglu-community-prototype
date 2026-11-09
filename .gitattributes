@@ -27,3 +27,9 @@ docs/stages/stage-00/evidence/tree-actions*.json -text
 docs/stages/stage-00/evidence/tree-actions/** -text
 # PowerShell JSON captures use CRLF; retain ordinary whitespace checks.
 docs/stages/stage-00/evidence/r2-followup/logs/old-browser-evidence-hashes-*.json whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# R3 owner inputs and tool logs are immutable raw-byte evidence.
+docs/stages/stage-00/evidence/r3/input/** -text
+docs/stages/stage-00/evidence/r3/logs/** -text
+docs/stages/stage-00/evidence/r3-followup/logs/** -text
+docs/stages/stage-00/evidence/pre-main-20261109/** -text

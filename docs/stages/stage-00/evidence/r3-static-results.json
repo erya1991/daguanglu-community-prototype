@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-09T04:28:38.091Z",
+  "checks": [
+    {
+      "name": "历史字段定义保全与当前R3字段差异分别校验",
+      "status": "PASS",
+      "evidence": {
+        "historic": {
+          "tables": 23,
+          "rows": 287
+        },
+        "legacyDefinitions": {
+          "tables": 24,
+          "rows": 295
+        },
+        "r3StatisticsFields": 7
+      }
+    },
+    {
+      "name": "移动依赖解析未升级，只有工作区元信息适配",
+      "status": "PASS",
+      "evidence": {
+        "unchangedResolvedEntries": 615
+      }
+    },
+    {
+      "name": "Web保留Manager锁文件，Vue2与移动Vue3隔离",
+      "status": "PASS",
+      "evidence": {
+        "web": "2.7.16",
+        "mobile": "3.4.21"
+      }
+    },
+    {
+      "name": "自有源码无真实业务调用、源仓绝对导入或跨仓链接",
+      "status": "PASS",
+      "evidence": {
+        "files": 224
+      }
+    },
+    {
+      "name": "微信产物组件路径完整且浏览器存储未进入运行链",
+      "status": "PASS",
+      "evidence": [
+        {
+          "app": "resident",
+          "componentReferences": 68
+        },
+        {
+          "app": "merchant",
+          "componentReferences": 18
+        },
+        {
+          "app": "staff",
+          "componentReferences": 51
+        }
+      ]
+    },
+    {
+      "name": "七构建与三类型检查具有实际退出码",
+      "status": "PASS",
+      "evidence": {
+        "run": "BUILD_2026-11-09T04-16-48-093Z",
+        "passed": 10
+      }
+    }
+  ]
+}

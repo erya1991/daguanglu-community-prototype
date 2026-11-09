@@ -1,0 +1,70 @@
+{
+  "session": "R3_2026-11-09T04-04-48-814Z",
+  "base": "http://127.0.0.1:19201",
+  "out": ".runtime/stage00-r3/R3_2026-11-09T04-04-48-814Z",
+  "results": [
+    {
+      "id": "R3-W01-W16",
+      "name": "菜单、正常身份切换及废弃链接",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-W02-01-08",
+      "name": "树层级、三资源、分列、当前选中操作",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-W02-04-12",
+      "name": "新增与删除的确认、取消、非空保护及同步",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-CSV",
+      "name": "合法CSV、超限清预览、重选导入与重复整批拒绝",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-RESOURCE",
+      "name": "根范围新增需选楼栋；原设施可编辑补全位置",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-FILTER-PAGE",
+      "name": "房间分页筛选、切节点清理及删除同步",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-W03",
+      "name": "多选自动统计、分类及无依据指标的空值",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-W04-W09",
+      "name": "详情只读、记录子表及资源按钮横排",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-W11",
+      "name": "文件格式校验、失败保留输入、重选上传、预览下载",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-X01-W05",
+      "name": "住户实际提交→物业列表审核→住户结果→管理端查询",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-FOUR-APPS",
+      "name": "三端全部Tab、两种视口、正常账号切换无辅助入口",
+      "status": "PASS"
+    },
+    {
+      "id": "R3-NETWORK",
+      "name": "冷启动、查询、保存、上传等只访问同源静态资源",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "visibleIssues": []
+}

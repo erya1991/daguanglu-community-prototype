@@ -1,4 +1,4 @@
-// Stage00 field correspondence, derived from REQUIREMENTS including authorized R1; not a database schema.
+// Historical field definitions remain for stored data compatibility; R3 controls current UI below.
 export const catalog = {
   orgs: {
     key: 'orgs',
@@ -2736,3 +2736,17 @@ export const catalog = {
     filters: ['车位编号', '车位类型', '档案状态'],
   },
 }
+
+// R3 removes cancelled controls without discarding stored facts or historical attachments.
+for (const table of ['estates', 'buildings', 'units', 'houses', 'facilities', 'parking']) {
+  catalog[table].form = catalog[table].form.filter(n => !['所属社区', '资料来源', '来源说明', '房屋编号'].includes(n))
+  catalog[table].filters = catalog[table].filters.filter(n => !['所属社区', '档案状态', '房屋编号'].includes(n))
+}
+catalog.statistics.title = '基础数据统计'
+catalog.statistics.form = []
+catalog.personnel.form = []
+catalog.personnel.filters = ['人员姓名', '所属物业组织', '岗位']
+catalog.files.form = ['文件名称', '文件分类', '所属组织', '适用小区', '文件附件']
+catalog.files.filters = ['文件名称', '文件分类', '所属组织', '适用小区']
+catalog.accounts.fields.push({ name: '手机号', type: '文本／手机号输入', meaning: '用户录入平台的联系手机号', source: '账号资料', rule: '有效11位手机号；既有非空资料保留，不用姓名推断号码', condition: '必填；账号资料可见和编辑，物业人员名录只读展示' })
+catalog.accounts.form = [...catalog.accounts.form, '手机号']

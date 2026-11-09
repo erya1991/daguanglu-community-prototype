@@ -1,0 +1,1 @@
+{"date":"2026-11-09T04:23:10.778Z","base":"http://127.0.0.1:19201","session":"R3_legacy_1794197623550","out":".runtime/stage00-r3/FINAL_WEB_1794198187088","results":[{"id":"R3-W08-DETAIL-FINAL","status":"PASS"},{"id":"R3-W09-HOUSE-SELECTOR","status":"PASS"},{"id":"R3-W11-DETAIL-FINAL","status":"PASS"},{"id":"R3-FINAL-NO-JS-ERROR","status":"PASS"}],"errors":[]}

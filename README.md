@@ -6,18 +6,20 @@
 
 ## 当前状态
 
-- 当前Git保存轮（2026-11-07）：用户确认将工作区全部有效修改提交到`stage/00-foundation`。该分支承接现有`c3d51eb`基线和两个既有提交，再保存R2全部整改、权限适配、测试证据及Stage02四份准备文档；不推送、不合并main，其他分支位置保持。实际本地检查点以包含本段的提交及Git回执为准；验收状态仍待负责人确认。
+**2026-11-09当前：Stage00当前Web／H5原型已由负责人确认全部验证通过。** 四文档已按实际原型归并为V1.1正文，先完成文档核对再按授权本地合并main；不自动推送。微信检查沿用负责人暂缓决定，真实生产、研发接收及Stage01／02验收不因此改变。统一入口19201，当前规则见Stage00四文档，历史状态和原批注不覆盖。
+
+- 历史Git保存轮（2026-11-07）：用户确认将工作区全部有效修改提交到`stage/00-foundation`。该分支承接现有`c3d51eb`基线和两个既有提交，再保存R2全部整改、权限适配、测试证据及Stage02四份准备文档；不推送、不合并main，其他分支位置保持。实际本地检查点以包含本段的提交及Git回执为准；验收状态仍待负责人确认。
 - 上一实施轮记录（保留）：Stage00 R2人工验收整改，修复身份切换并调整空间资源查询与操作；本次R1人工反馈2 PASS、4 FAIL、9待验，R2实际结果见Stage00 RESULT第14节，OWNER_RETEST_PENDING、NOT_STAGE_PASS。
 - 此前Git交付轮（历史）：模板归整完成后，用户追加授权一次工作区提交并推送Stage01同名分支；包含继承R1／R2、Stage01原型、证据与V0.4文档。不合并、不上线、不改变人工验收结论；实际检查点以包含Stage01 RESULT第8.6节的提交及远端回执为准。
 - 已有联合原型及模板轮历史：Stage01联合原型已实现，自测记录已形成，待lee统一人工验收；Stage00 R1历史反馈及H08 FAIL保持。先前模板轮只归整Stage01四文档；后续R2按用户授权最小适配既有平台管理权限，未新增Stage01业务。
 - Stage01：01A物业收费停车与01B工单报修隐患已实施，本地自测已记录，待lee统一人工验收；V0.3需求设计基线保留，未标PASS。
-- 需求与计划：Stage00 REQUIREMENTS V0.6 R2补充、PLAN／ACCEPTANCE V0.7、RESULT V0.8；此前文档复核、R1及人工沿革保留，当前事实见RESULT第15节。
+- 需求与计划：Stage00 REQUIREMENTS、PLAN、ACCEPTANCE、RESULT统一V1.1；当前菜单、字段、状态、范围、映射、技术记录和人工确认已经归入正文，修订前全文原字节归档。
 - Git历史（R1及首次导入轮）：本轮R1开始基线为`234bf251f429e77e0996ce2854a237021c1914f4`，分支`stage/00-foundation`，开始时工作区及暂存区为空；本轮不暂存、提交、推送或合并。以下为历史交付授权：首次导入轮开始HEAD为`a4210cd8ec9319df3a7092738ac889ae522b406c`；文档导入结束后，用户于2026-11-05追加授权将15份文档保存为一次提交并推送到`origin/stage/00-foundation`。本次版本以包含本段记录的Git提交为准，实际推送以Git回执及远端SHA核对为准；不合并、不切换分支。
-- 原型：三个独立uni-app＋Manager兼容Web＋DGL-001～011 Mock基础业务；Stage00仍为NOT_STAGE_PASS，Stage01联合原型已实现、待lee统一人工验收，Stage02～05未启动。
+- 原型：三个独立uni-app＋Manager兼容Web＋DGL-001～011 Mock基础业务；Stage00当前Web／H5原型已人工验收通过（微信暂缓），Stage01联合原型已实现、待lee统一人工验收；Stage02已有准备文档，未实施，本轮不修改，Stage03～05未启动。
 - 技术方向：Web沿用实际LiLiShop Manager的Vue 2、View UI/view-design、Vue Router 3、Vuex 3与Vue CLI；三小程序使用uni-app、Vue 3＋TypeScript＋Vite。依赖、锁文件与构建按Web/移动端隔离，精确环境实施前核验，见[AGENTS第6.1节](AGENTS.md#61-分端前端技术基线2026-11-04用户确认)。
 - 生产进度：以研发和原商城项目实际记录为准，本仓库尚未核定。
 
-Stage00文档整合、复核、实施自测及本地Git检查点属于此前记录，人工验收、真实研发接收和Stage通过仍需实际依据。此前首次导入轮只更新长期协作规则和Stage01完整文档，不安装、不启动、不构建、不做代码测试。六阶段分组与产品交接日期仍为讨论建议。三角色、产品语言与演示辅助、Web布局及微信验证的长期原则以[根AGENTS](AGENTS.md)为主维护位置。
+Stage00文档整合、复核、实施自测及本地Git检查点属于此前记录，人工验收、真实研发接收和Stage通过仍需实际依据。此前首次导入轮只更新长期协作规则和Stage01完整文档，不安装、不启动、不构建、不做代码测试。六阶段分组与产品交接日期仍为讨论建议。三角色、最终产品呈现与前台无辅助工具、Web布局及微信验证的长期原则以[根AGENTS](AGENTS.md)为主维护位置。
 
 ## 第一次使用
 
@@ -36,7 +38,7 @@ Stage00文档整合、复核、实施自测及本地Git检查点属于此前记�
 | [OVERALL_REQUIREMENTS.md](docs/OVERALL_REQUIREMENTS.md) | 总体范围、角色对象、业务关系和公共原则 |
 | [STAGES.md](docs/STAGES.md) | 阶段分组、依赖、实际状态及交接安排 |
 | [SCOPE_REGISTER.md](docs/SCOPE_REGISTER.md) | 64个需求包的唯一范围与条目状态台账 |
-| [OPEN_QUESTIONS.md](docs/OPEN_QUESTIONS.md) | 27项待确认问题、实际结论和确认依据 |
+| [OPEN_QUESTIONS.md](docs/OPEN_QUESTIONS.md) | 原27项问题及R3追加的统计／社区映射问题、实际结论和确认依据 |
 | [SOURCE_COVERAGE.md](docs/SOURCE_COVERAGE.md) | 建设方案117条功能行、12项其他约束及15项历史差异 |
 | [sources/README.md](docs/sources/README.md) | 资料索引、原文归档及使用优先级 |
 | [stages/README.md](docs/stages/README.md) | 阶段目录建立和模板使用方式 |
@@ -101,7 +103,7 @@ npm.cmd run build:preview
 npm.cmd run preview
 ```
 
-预览器默认绑定`http://127.0.0.1:19200/`；冲突时顺延至可用端口，实际地址记录在`.runtime/stage00/preview.json`，不会停止已有服务。安装命令仅改变当前进程缓存变量，不修改全局工具配置。Manager沿用原锁定栈及compression-webpack-plugin的受控兼容补丁；Sass弃用和包体积警告见构建日志，不通过全量升级或关闭校验消除。
+R3预览器默认绑定`http://127.0.0.1:19201/`；冲突时顺延至可用端口，实际地址记录在`.runtime/stage00/preview.json`，不会停止已有服务。安装命令仅改变当前进程缓存变量，不修改全局工具配置。Manager沿用原锁定栈及compression-webpack-plugin的受控兼容补丁；Sass弃用和包体积警告见构建日志，不通过全量升级或关闭校验消除。
 
 | 入口 | 默认虚构账号 | 本轮功能 |
 | --- | --- | --- |
@@ -112,7 +114,7 @@ npm.cmd run preview
 
 住户与商户保留原四Tab，管理端为三Tab。三个应用有独立App/main/pages/manifest和产物，不使用单App切角色替代。手机H5可使用390×844或414×896视口；Web已检查1366×768及1920×1080。
 
-## 演示身份、主流程与复位
+## R3以前的身份、流程与复位说明（历史，不作为当前操作步骤）
 
 R1普通演示采用[根AGENTS第5.2节](AGENTS.md#52-社区物业原型的演示角色)的三个角色类型：平台管理员、物业管理员、住户。住户A/B是同一角色下的不同账号；商户保留固定主体与独立App，不加入三角色选择器。管理端的物业身份不包含移动审核。
 
@@ -193,7 +195,7 @@ D:\git\daguanglu-community-prototype\miniapp\apps\staff-miniapp\dist\build\mp-we
 R1交付停止在工作区待复验版本，**未暂存、未提交、未推送、未合并，NOT_STAGE_PASS**。该R1轮未改Stage01四文档；空间资源关联变化在Stage00交接中记录，等待后续研发衔接。
 
 
-## Stage00 R2：当前操作与复验约定
+## Stage00 R2：历史操作与复验约定
 
 本轮只使用 **19201**。负责人原反馈环境为`session=R1-demo`，请保留该会话的数据和历史；自动测试另用独立会话。现有工作区已包含Stage01增量，R2在实际`stage/01-property-parking-workorder`上保护既有成果，不切换分支或重建工程。
 
@@ -210,7 +212,7 @@ R2最新补充：平台管理员拥有全部已实现的后台演示管理权限
 
 负责人本次R1-H03、H06 PASS原样保留，R1-H01、H02、H04、H05 FAIL不因自动测试而改成人工PASS；R1-H07～H15仍待验。当前R2执行与真实分项结果见[RESULT第14节](docs/stages/stage-00/RESULT.md#14-r2人工验收整改空间资源查询与操作2026-11-06)及[专项验收](docs/stages/stage-00/ACCEPTANCE.md#11-r2专项验收空间资源查询与操作)。未完成的微信工具／真机单独记录，NOT_STAGE_PASS，不自动提交、推送或合并。
 
-## Stage01联合原型（待统一人工验收）
+## Stage01联合原型历史实施记录（待统一人工验收）
 
 当前分支stage/01-property-parking-workorder，基线234bf25加继承R1及本轮未提交差异。完整结果、验收、字段路径与限制见[Stage01 RESULT实现与自测](docs/stages/stage-01/RESULT.md#2-实际需求实现对应表)、[ACCEPTANCE](docs/stages/stage-01/ACCEPTANCE.md)及[PLAN实际路由与字段路径](docs/stages/stage-01/PLAN.md#stage01-actual-routes)。Stage00历史H08 FAIL与NOT_STAGE_PASS保持。
 
@@ -230,3 +232,46 @@ R2最新补充：平台管理员拥有全部已实现的后台演示管理权限
 本轮70项规则、七构建与三类型通过；23视图和实际字段证据见阶段记录。微信开发者工具只读状态授权超时，运行与真机未验，lee人工验收未执行。金额、自然月、字典和附件上限为可替换演示假设；真实支付、厂商、消息、生产鉴权与上线均不在本轮。无感未开放、积分关闭，不进入Stage02；保留工作区，不暂存、提交、推送或合并。
 
 Stage01复核使用npm test，以及node scripts/check-stage01.mjs、node scripts/check-stage01-fields.mjs、node scripts/check-stage00.mjs --stage01和node scripts/check-docs.mjs --stage01；后两者必须带阶段参数以保护Stage00历史输出。
+
+## Stage00 R3首轮操作入口（历史，2026-11-09）
+
+- [Web管理后台](http://127.0.0.1:19201/web/)：账号区“切换身份”选择平台／物业管理员；社区房屋档案左树、右侧三资源查询；绑定菜单切申请记录／当前绑定。
+- [住户服务](http://127.0.0.1:19201/resident/)：首页或我的进入房屋绑定／申请记录／我的房屋／车辆；我的仅保留正常账号切换。
+- [商户中心](http://127.0.0.1:19201/merchant/)：工作台、经营、订单、我的；商品／订单是正常空态，本轮不建设交易副本。
+- [物业工作台](http://127.0.0.1:19201/staff/)：档案只读查询及现有物业办理入口。
+
+四端默认同源默认会话，共享业务事实、各端身份独立；正常页面不显示会话和种子信息，不提供复位／故障／回放入口。开发QA使用独立session隔离，不清负责人原会话。
+
+住户提交绑定→Web列表操作审核→住户申请记录及我的房屋查看→物业移动档案查询。文件先填写名称分类归属再上传，格式或大小失败后可重选；手建空间来源自动人工维护。空间删除必须确认且有关联时拒绝；旧小区直属设施需编辑补全楼栋。
+
+当前统计设施按档案条目、车位按资源去重，多选取并集。人口／户数定义、日期语义与新小区社区映射未确认，不填猜测值；历史无快照显示暂无数据。旧版本／有效期／授权配置及通用管理菜单属于取消或复用，不计本轮实现或PASS。
+
+自测：`node --test tests/*.test.mjs`、`node scripts/browser-r3.mjs`；构建按上文各端独立命令，七类及三类型结果见`docs/stages/stage-00/evidence/r3-build-results.json`。负责人复验以ACCEPTANCE第13节为准，原批注及Prompt按原字节保存在evidence/r3/input。生产待接：LiLiShop账号组织角色通知适配、后端鉴权事务、真实附件、支付、设备和微信渠道，本轮均未接入。
+
+R3构建与文档检查命令：`node scripts/verify-builds.mjs --r3`、`npm.cmd run check`、`node scripts/check-docs.mjs --r3`。移动同步时自动校验并应用锁定uni-h5的选择器卸载保护补丁，版本或摘要不符会停止，不升级依赖。已有含session参数的原标签页仍沿原会话保存；新入口无参数使用默认会话。技术会话只记文档，前台没有切换或复位工具。Stage01四文档本轮未改，其中旧辅助表达由项目R3现行原则覆盖，业务规则及原验收记录保留。
+
+本轮实际验证：七类构建、三项类型检查通过；规则回归94项通过、4项已取消范围的历史测试保留为跳过；12组完整浏览器流程、3组旧数据兼容及移动资源检查、4组最终Web定向检查通过。后两组补验覆盖完整流程后发生的展示与房屋选择器调整，不把先前检查扩写为所有分支已执行。微信新产物工具交互及真机结果单列，不能用H5或编译结果代替。
+
+负责人从[最新复验表](docs/stages/stage-00/ACCEPTANCE.md#13-r3负责人复验按实际菜单2026-11-09)填写实际结果；[108项原编号落实](docs/stages/stage-00/evidence/r3-acceptance-mapping.json)、[字段／菜单差异](docs/stages/stage-00/evidence/r3-field-menu-delta.json)及[27张实拍截图与原始日志索引](docs/stages/stage-00/evidence/r3-artifacts.json)供对照。当前为工作区待复验快照，未暂存、提交、推送或合并。
+
+## Stage00 R3复验实施记录（历史，2026-11-09）
+
+本段覆盖前面首轮R3及历史操作中的统计菜单和旧名称。左侧为物业管理→工作台／社区与房屋／居民与绑定／基础资料／物业服务→实际功能；基础工作台改物业工作台。社区房屋档案三页签直接显示所选树节点范围内总数，列表筛选和分页不改变此范围总数。设施、车位按小区／楼栋／单元展示，无社区列；旧归属和内部编号保留。
+
+绑定申请状态使用彩色边框标签；物业人员显示关联账号手机号，录入账号必须有有效11位号码；管理端H5的小区／房屋卡片用名称／完整地址。8个菜单／端的负责人原pass已记录，本次变化按[增量复验表](docs/stages/stage-00/ACCEPTANCE.md#14-r3本次增量复验清单2026-11-09)另行复验。
+
+继续使用[Web](http://127.0.0.1:19201/web/)、[住户](http://127.0.0.1:19201/resident/)、[商户](http://127.0.0.1:19201/merchant/)、[管理端](http://127.0.0.1:19201/staff/)。不清会话；打开旧统计链接会回到社区房屋档案。构建使用node scripts/verify-builds.mjs --r3-web（Web、三H5和三类型）；npm run check做对应静态检查；node scripts/browser-r3.mjs验证当前页面，结果另存r3-followup-*.json。按负责人意见，本次不执行微信构建／工具或真机检查，不把暂缓当PASS或本轮阻塞。当前仍为待复验工作区，不提交、推送或合并。
+
+本次实际结果：[汇总及截图日志](docs/stages/stage-00/evidence/r3-followup-summary.json)、[RESULT第19节](docs/stages/stage-00/RESULT.md#19-r3负责人复验反馈整改2026-11-09)。当前Web＋三个H5和三类型通过；规则98通过、4历史跳过；14组浏览器场景由完整运行及定向复测共同覆盖，原失败保留。
+
+菜单补充：首次进入默认全部展开，可手动折叠；选择末级功能不自动收起或重开其他分组。物业Web及物业端H5的小区详情隐藏小区编号，仅改变展示，原编号及引用保留。
+
+## Stage00已验收原型与文档基线（2026-11-09）
+
+当前以[需求V1.1](docs/stages/stage-00/REQUIREMENTS.md)、[页面和字段映射](docs/stages/stage-00/PLAN.md)、[现行31编号及人工结论](docs/stages/stage-00/ACCEPTANCE.md)、[实际结果与交接](docs/stages/stage-00/RESULT.md)为主维护版本，前面R1～R3段仅历史。负责人已确认当前保留范围全部验证；取消／复用不计实现，微信当前暂缓。
+
+物业管理下为工作台／社区与房屋／居民与绑定／基础资料／物业服务，末级功能维持当前已验收范围。默认全展开，可手动折叠，末级选择不改变开合；资源按小区／楼栋／单元，三个页签显示范围总数；绑定四页签及彩色状态；人员只读有号码；文件简单维护；物业端小区详情隐藏编号。
+
+[Web](http://127.0.0.1:19201/web/)、[住户H5](http://127.0.0.1:19201/resident/)、[商户H5](http://127.0.0.1:19201/merchant/)、[物业H5](http://127.0.0.1:19201/staff/)继续使用19201，原标签页直接刷新，不清原会话。运行和安装命令沿本文已有说明；文档核对用node scripts/check-docs.mjs --r3，工程静态检查用npm run check，不因纯文档更新重跑无关构建。
+
+本轮允许本地保存Stage00成果并合并main；未授权推送。源分支已有Stage01原型和Stage02准备文档会保留，不改变对应验收状态，独立Stage02 worktree不操作。实际Git固定版本以含本版的提交和main指针／最终Git回执为准，不在提交前编造SHA。

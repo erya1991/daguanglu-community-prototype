@@ -2,7 +2,6 @@ import { query, execute, clone, DomainError, record, actorFor, permitted } from 
 import { houseInSpace, spaceTables } from './spaces.js'
 export const importColumns = [
   '房屋编号',
-  '所属社区',
   '所属小区',
   '所属楼栋',
   '所属单元',
@@ -10,13 +9,12 @@ export const importColumns = [
   '房号',
   '房屋用途',
   '房屋面积',
-  '资料来源',
   '来源说明',
 ]
 export const importTemplate =
   '\uFEFF' +
   importColumns.join(',') +
-  '\r\n,青禾示例社区,青禾示例花园,02幢,,2,0202,住宅,,台账导入,虚构示例台账\r\n'
+  '\r\n,青禾花园,02幢,,2,0202,住宅,,物业房屋台账\r\n'
 export function parseCSV(text) {
   const rows = []
   let cells = [],
@@ -70,7 +68,7 @@ export function previewImport(state, ctx, text, source, scope) {
     headers = parsed.shift() || []
   if (!source) throw new DomainError('请填写台账来源说明')
   if (importColumns.some((c) => !headers.includes(c)))
-    throw new DomainError('模板缺少字段，请下载本轮演示模板')
+    throw new DomainError('模板缺少字段，请下载最新模板')
   const draft = clone(state),
     rows = []
   const nameKey = {
@@ -92,20 +90,20 @@ export function previewImport(state, ctx, text, source, scope) {
       if (!raw[f]) continue
       const found = query(draft, ctx, t).filter(
         (r) =>
-          r[nameKey[t]] === raw[f] &&
+          (r._id === raw[f] || [r[nameKey[t]], r[nameKey[t]]?.replace('青禾', '青禾示例').replace('望江', '望江示例')].includes(raw[f])) &&
           (t === 'communities' || !data['所属社区'] || r['所属社区'] === data['所属社区']) &&
           (t !== 'buildings' || r['所属小区'] === data['所属小区']) &&
           (t !== 'units' || r['所属楼栋'] === data['所属楼栋']),
       )
       if (found.length !== 1) errors.push(f + '没有唯一可用上级档案')
-      else data[f] = found[0]._id
+      else { data[f] = found[0]._id; if (t === 'estates' && !raw['所属社区']) data['所属社区'] = found[0]['所属社区'] || '' }
     }
     if (raw['房屋编号'] && draft.houses.some((h) => h['房屋编号'] === raw['房屋编号']))
       errors.push('房屋编号重复')
     if (!errors.length && !houseInSpace(data, scope)) errors.push('文件房屋归属与当前导入范围不一致')
     if (!errors.length)
       try {
-        const r = execute(draft, ctx, 'save', { table: 'houses', data })
+        const r = execute(draft, ctx, 'save', { table: 'houses', data, source: 'import' })
         if (raw['房屋编号']) {
           const h = draft.houses.find((h) => h._id === r.id)
           h['房屋编号'] = raw['房屋编号']
@@ -137,7 +135,7 @@ export function commitImport(state, ctx, text, source, revision, scope) {
   if (preview['导入处理状态'] !== '待确认导入') throw new DomainError('存在错误，整批未写入')
   const draft = clone(state)
   for (const r of preview.rows) {
-    const x = execute(draft, ctx, 'save', { table: 'houses', data: r._data })
+    const x = execute(draft, ctx, 'save', { table: 'houses', data: r._data, source: 'import' })
     if (r['待导入房屋资料']['房屋编号'])
       draft.houses.find((h) => h._id === x.id)['房屋编号'] = r['待导入房屋资料']['房屋编号']
   }

@@ -7,6 +7,7 @@ import './styles/theme.less'
 import './styles/stage00.scss'
 import './styles/stage01.scss'
 import App from './App.vue'
+import { service } from './services/foundation'
 Vue.use(ViewUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -14,6 +15,13 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   mode: 'hash',
   routes: [
+    { path: '/statistics', redirect: '/spaces' },
+    { path: '/relations', redirect: to => ({ path: '/applications', query: { ...to.query, tab: 'bindings', relation: to.query.id || '' } }) },
+    ...['orgs', 'accounts', 'roles'].map(table => ({ path: '/' + table, redirect: '/dashboard' })),
+    { path: '/messages', beforeEnter: async (to, from, next) => {
+      try { if(to.query.id) { const message=await service.record('messages',to.query.id); if(message._table && message._object) { const spatial=['communities','estates','buildings','units','houses'].includes(message._table); return next(spatial ? {path:'/spaces',query:{node:message._table+':'+message._object}} : {path:'/'+(message._table==='relations'?'applications':message._table),query:message._table==='relations'?{tab:'bindings',id:message._object}:{id:message._object}}) } } } catch {}
+      next('/dashboard')
+    } },
     { path: '/spaces', name: 'spaces', component: () => import('./views/SpaceArchive.vue') },
     ...['communities', 'estates', 'buildings', 'units', 'houses'].map(table => ({ path: '/' + table, redirect: to => ({ name: 'spaces', query: { node: to.query.id ? table + ':' + to.query.id : to.query.node || 'root' } }) })),
     { path: '/property/bills', component: () => import('./views/stage01/Bills.vue'), meta:{stage01:true,title:'物业费账单'} },

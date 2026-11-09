@@ -55,14 +55,14 @@ async function image(f: string) {
     count: 1,
     success: async (r) => {
       try {
-        let file: any = { path: r.tempFilePaths[0], name: '本地演示图片.png' }
+        let file: any = { path: r.tempFilePaths[0], name: '图片.png' }
         // #ifdef H5
         const blob = await fetch(r.tempFilePaths[0]).then((r) => r.blob())
-        file = new File([blob], '本地演示图片.png', { type: blob.type })
+        file = new File([blob], '图片.png', { type: blob.type })
         // #endif
         const saved = await service.upload(file)
         set(f, f === '证明附件' || f === '点位照片' ? [saved.id] : saved.id)
-        status.value = { ...status.value, [f]: '成功（本地处理），可重新选择' }
+        status.value = { ...status.value, [f]: '上传成功，可重新选择' }
       } catch (e: any) {
         status.value = { ...status.value, [f]: '失败：' + e.message }
       }
@@ -95,7 +95,7 @@ async function preview(f: string) {
         :data-field="table + ':' + name"
       >
         <template v-if="/图片|附件|上传/.test(field(name)?.type || '')"
-          ><AppButton variant="quiet" @click="image(name)">选择本地演示图片</AppButton
+          ><AppButton variant="quiet" @click="image(name)">选择图片</AppButton
           ><view
             v-if="modelValue[name] && (!Array.isArray(modelValue[name]) || modelValue[name].length)"
             class="actions"
@@ -103,7 +103,7 @@ async function preview(f: string) {
             ><AppButton variant="secondary" @click="set(name, Array.isArray(modelValue[name]) ? [] : '')"
               >移除</AppButton
             ></view
-          ><text class="hint">{{ status[name] || '可选；不上传真实服务器' }}</text></template
+          ><text class="hint">{{ status[name] || '支持 PNG、JPEG 图片' }}</text></template
         >
         <picker
           v-else-if="choices[name]?.length"

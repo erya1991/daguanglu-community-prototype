@@ -22,9 +22,9 @@ const addRole = (s, id, name, menus, permissions, sensitive) => {
   if (!s.roles.some(r => r._id === id)) s.roles.push({ _id: id, _rev: 1, 角色名称: name, 角色说明: '当前原型默认身份；生产岗位另行确认', 可见菜单: menus, 允许操作: permissions, 敏感查看与导出权限: sensitive, 角色状态: '启用' })
 }
 export function upgradeState(s, fresh = false) {
-  if (s.schemaVersion > R1_SCHEMA || s.version !== 'stage00-v1') throw Error('演示数据版本不兼容，未修改原数据；请保留当前会话并联系维护人员')
+  if (s.schemaVersion > R1_SCHEMA || s.version !== 'stage00-v1') throw Error('本地数据版本不兼容，原数据已保留，请联系维护人员')
   for (const key of ['accounts', 'roles', 'communities', 'estates', 'buildings', 'units', 'houses', 'applications', 'relations', 'facilities', 'files', 'history'])
-    if (!Array.isArray(s[key])) throw Error('演示数据结构不完整，升级未执行；原记录已保留，请勿复位')
+    if (!Array.isArray(s[key])) throw Error('本地数据结构不完整，原记录已保留，请联系维护人员')
   if (s.parking !== undefined && !Array.isArray(s.parking)) throw Error('车位数据结构异常，升级未执行')
   if (s.schemaVersion === R1_SCHEMA) return upgradeDemoSettings(s)
   s.parking = s.parking || []

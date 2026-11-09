@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-09",
+  "note": "用户称验收表(1)，本机实际只有不带(1)的已批注文件；原文逐字节保留。",
+  "sources": [
+    {
+      "name": "stage00_menu_acceptance_e8ad276.md",
+      "source": "C:\\Users\\65410\\Downloads\\stage00_menu_acceptance_e8ad276.md",
+      "target": "docs/stages/stage-00/evidence/r3/input/stage00_menu_acceptance_e8ad276.md",
+      "sha256": "db816eb47eeddc941ac64b10bb4ef6bce26a1fd8059cf0fc9085904c221897c9"
+    },
+    {
+      "name": "Stage00_R3_所见即所得与验收整改_Codex_Prompt.md",
+      "source": "C:\\Users\\65410\\Downloads\\Stage00_R3_所见即所得与验收整改_Codex_Prompt.md",
+      "target": "docs/stages/stage-00/evidence/r3/input/Stage00_R3_所见即所得与验收整改_Codex_Prompt.md",
+      "sha256": "fd5f3684d216b3d5c9851e822075814bfa4c3bd6e97c5db2d12f00e540b7542e"
+    }
+  ]
+}

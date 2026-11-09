@@ -41,6 +41,12 @@ export function domain(s) {
 }
 export function actor(s, ctx, write = false, finance = false) {
   const a = actorFor(s, ctx);
+  // R3 broadens Stage00 administration only. Retain Stage01's approved scope
+  // and contact permissions while consuming the same stable spatial IDs.
+  if (a.role === 'property') {
+    const account = s.accounts.find(r => r._id === ctx.account), role = s.roles.find(r => r._id === a.role);
+    Object.assign(a, { stage00FullScope: false, 可查看社区: account['可查看社区'], 可查看小区: account['可查看小区'], _orgs: account._orgs || [account['所属组织']], sensitive: role['敏感查看与导出权限'] || [] });
+  }
   need(isPropertyOperator(a) || a.role === "resident", "当前身份没有本阶段业务权限");
   if (finance)
     need(

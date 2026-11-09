@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-09",
+  "owner": "lee（本会话产品负责人）",
+  "status": "OWNER_ACCEPTED_WEB_H5",
+  "scope": [
+    "Stage00当前Web管理后台",
+    "住户H5",
+    "商户H5",
+    "物业管理端H5"
+  ],
+  "baseline": "e8ad276e72b81ca6dfd3146097fc320a60b30d11叠加已验收R3及末轮工作区；本版所属验收提交固定版本",
+  "source": "本会话用户原文，不是Codex代签",
+  "messages": [
+    "已全部验证，stage00我建议现在直接合并到main分支",
+    "已全部验证，在合并到main分支前，需要按照我们对原型的改动，修改stage00对应的4份文档，特别是需求文档"
+  ],
+  "scopeDecision": "暂时只验证web构建的页面，不检查小程序",
+  "native": {
+    "currentBuild": "NOT_RUN",
+    "tools": "NOT_RUN",
+    "device": "NOT_RUN",
+    "reason": "负责人此前明确暂缓且未撤销"
+  },
+  "scopeExits": [
+    "通用组织账号角色和消息独立菜单按LiLiShop复用",
+    "独立人口户数与日期统计",
+    "无账号人员新增和离岗维护",
+    "文件版本／有效期／前台权限配置",
+    "前台复位／样例／故障／回执回放"
+  ],
+  "productionAcceptance": "NOT_RUN",
+  "otherStagesAccepted": false,
+  "gitAuthorization": {
+    "saveStage00": true,
+    "mergeLocalMain": true,
+    "prerequisite": "先将四文档按已验收原型修订",
+    "push": false,
+    "forceReset": false,
+    "clean": false
+  }
+}

@@ -292,6 +292,27 @@ body {
   border-right: 1px solid #eee;
   overflow: auto;
 }
+.property-menu-root > .ivu-menu-submenu-title {
+  font-weight: 600;
+  border-bottom: 1px solid #f0f0f0;
+}
+.property-menu-group > .ivu-menu-submenu-title {
+  padding-left: 28px !important;
+  color: #333;
+  font-weight: 600;
+}
+.property-menu-group > .ivu-menu > .ivu-menu-item {
+  padding: 12px 16px 12px 44px !important;
+  line-height: 22px;
+  white-space: normal;
+}
+.application-status {
+  white-space: nowrap;
+}
+// View UI marks palette text important; override only these status labels for contrast.
+.application-status.ivu-tag-green .ivu-tag-text { color: #237804 !important; }
+.application-status.ivu-tag-red .ivu-tag-text { color: #a8071a !important; }
+.application-status.ivu-tag-orange .ivu-tag-text { color: #ad4e00 !important; }
 .logo-con {
   height: 100px;
   padding: 22px 16px;
@@ -458,6 +479,8 @@ body {
   margin: 12px 0;
 }
 .table-actions {
+  align-items: center;
+  a { display: inline-block; white-space: nowrap; word-break: keep-all; line-height: 28px; }
   display: flex;
   gap: 10px;
 }

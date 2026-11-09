@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-09T06:27:22.634Z",
+  "base": "http://127.0.0.1:19201",
+  "session": "MENU_DETAIL_1794205629789",
+  "out": ".runtime/stage00-menu-detail/MENU_DETAIL_1794205629789",
+  "results": [
+    {
+      "id": "MENU-DEFAULT-OPEN",
+      "status": "PASS"
+    },
+    {
+      "id": "MENU-MANUAL-FOLD-RETAINED",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.property-menu-group > .ivu-menu-submenu-title').filter({ hasText: /^社区与房屋$/ })\u001b[22m\n\n    at D:\\git\\daguanglu-community-prototype\\.runtime\\stage00-menu-detail\\probe.mjs:20:23\n    at check (D:\\git\\daguanglu-community-prototype\\.runtime\\stage00-menu-detail\\probe.mjs:12:40)\n    at D:\\git\\daguanglu-community-prototype\\.runtime\\stage00-menu-detail\\probe.mjs:19:7"
+    },
+    {
+      "id": "ESTATE-DETAIL-NO-NUMBER",
+      "status": "PASS"
+    },
+    {
+      "id": "LOCAL-ONLY-NO-JS-ERROR",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "native": "NOT_RUN by owner scope"
+}

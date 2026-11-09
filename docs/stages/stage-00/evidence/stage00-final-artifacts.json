@@ -1,0 +1,512 @@
+{
+  "date": "2026-11-09T07:09:23.396Z",
+  "note": "本地保存及合并前的有效交付白名单与原字节证据检查；仅原型和资料，未授权远程推送。日志按逐文件白名单纳入，不纳入.runtime、依赖、dist或真实配置。",
+  "verified": [
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-dashboard-1366.png",
+      "sha256": "b66cfcd0187c03becd8f0c487ec2b4feea91a5780cff98de978af249d016d71e"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-facilities-1366.png",
+      "sha256": "48d89b42b2ce698c491057a1fb724b1f814c9e308039b7a642cfa47140b31563"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-files-preview.png",
+      "sha256": "73cec9ceee433bc61232dc8907163df6dcb64deea7ea325fa948e9f8fb9a78dd"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-merchant-profile-390.png",
+      "sha256": "60c3bbf85d4ce74b9b5483b69d2dbf8ae29db5428cc3fc236e78554d44242ff9"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-merchant-profile-414.png",
+      "sha256": "1bf1d9bffcacae0e6cd05ac5a91dc59ba56b76d54555dbb5acab417f79192873"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-resident-binding-result.png",
+      "sha256": "2f480a346a8fd2752652b85af54baed81e930ec677fceb8841260bf2185b43db"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-resident-profile-390.png",
+      "sha256": "e6facfbebc1e96bd264378618a174e9b27ed116aa8d3f71a09fe6ca6a10ee3d3"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-resident-profile-414.png",
+      "sha256": "1118b3e14cca2bfa35f865e7fd38ffbabdfaac965795e7132d02cfc510026c7e"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-spaces-1366.png",
+      "sha256": "9262858d258d756356d484bba50f3f31876ee62fd6d56c2116d9d45067ff7105"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-spaces-1920.png",
+      "sha256": "9e8811b9e4c02ed8a164d5540e40c79018e65c0c267ef99eea177ee203d95ab3"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-staff-profile-390.png",
+      "sha256": "7d823d13a4b50bf40c2f73564bb35e64eafe5d206f09f9470ca7e1ee61ad3775"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-staff-profile-414.png",
+      "sha256": "7583ee0529f64fc33e1064e2a38bf391e5ad2ab973a8f72f4e43efa289d0fbd0"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/flow-statistics-history.png",
+      "sha256": "9b3b411e9ca48a6c5e10f75b5245e430faa5bea3bf3fae7b9557950d36ae8e14"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-legacy-binding.png",
+      "sha256": "c4d57d300a39b98e65ae2b25d92809c7075cf76815bc8a7c4d5a0f3ec4c203b4"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-merchant-0.png",
+      "sha256": "b2cbd3965695e771f38a88b9f1e1b924270f9d69bf5ea77be33bf22f782d1240"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-merchant-1.png",
+      "sha256": "a0a8c66bff1938275ae983a0fd2ec8177d69057e599ccd3ff721f37a95e87ca8"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-merchant-2.png",
+      "sha256": "9ecde7050fd1e637a571f92def2cfe8fd1302fd198f8e919ac297783c485622d"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-merchant-3.png",
+      "sha256": "60c3bbf85d4ce74b9b5483b69d2dbf8ae29db5428cc3fc236e78554d44242ff9"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-resident-0.png",
+      "sha256": "971e80e316dfd00a1846cb113836782e3e4a223786081142a0c4fd7fad4f6c3c"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-resident-1.png",
+      "sha256": "04ff01d571d678d1998924f004b3ea1e3c3a92abd8f5f4fef0443a2ddb84a4bd"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-resident-2.png",
+      "sha256": "866a07b22d9256b89ecb33228a9f1916fa601e115372eb4572951e4caf5a8170"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-resident-3.png",
+      "sha256": "5bb67318e987bac38d2ee56c65701d66de3c1114bdb0605fac18fdc0f068a221"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-staff-0.png",
+      "sha256": "1af8320dbcee8bbcb5f46807033db0c164745f6328aba9e8ead02b2757e11d63"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-staff-1.png",
+      "sha256": "ffbb8f571da53985c7c8dbad57ce9073ae465964db9c29c7b53daa4dbc2d26a4"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/legacy-staff-2.png",
+      "sha256": "7d823d13a4b50bf40c2f73564bb35e64eafe5d206f09f9470ca7e1ee61ad3775"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/final-web-facility-location.png",
+      "sha256": "d156e4b5b83a1eebe8cf7dc8f2d04e537a7c9807e7df6a88f214480fcbe0be7b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/screenshots/final-web-vehicle-detail.png",
+      "sha256": "33ac72f0822c7ed24689efb9447bed9045a6ac222962aeaee5f73339f655114b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-web.log",
+      "sha256": "a25803b1f266bcd513746f334e8f29900550a044ba578cdef95cb5b6f648ffc0"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-resident-h5.log",
+      "sha256": "efaaaf7e9e0b0eff9d7efcaf4b39961699c5e314e2da642c695311eacd3a35f4"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-resident-mp-weixin.log",
+      "sha256": "bfd4506d1dc281c949d1182498f4594f10a14eb8ff7c2dba0b13004b256e1a4c"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-merchant-h5.log",
+      "sha256": "49200d2014d11e3be03d85bb997ff7bc6716fe87faf53f06009769c2a1a3752b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-merchant-mp-weixin.log",
+      "sha256": "e0918d6c59c0842657a6b48dc8dcba14b15beb1059336701256a35a2eb23e971"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-staff-h5.log",
+      "sha256": "987c39a3ed8a5b5f96058ca7a7318a8b4c7a6167b89f8319f390a0e2a7b1d65b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-staff-mp-weixin.log",
+      "sha256": "3e5cc4fa0bed8e69b3e5ed6584fc281ca741b367b3bbce0ca875ffb299dfb02a"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-resident-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-merchant-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/build-staff-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/rules-final.log",
+      "sha256": "47c0d59f7cb935e2db27cd075101e5b5028250c01d8f8d282681a2e75541a2e3"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/browser-final.log",
+      "sha256": "615870a65e0e9b8673c3f8a9c8f4f77d9c5ffacba272fad9319d3eff08ca4c95"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/legacy-visual.log",
+      "sha256": "439931f4425118de64624efadf15a86fa514a2f255c469147d2b148ed1baa866"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/final-web-smoke.log",
+      "sha256": "1c2661acdc3c853b73797860473c973fcd226ca2bfbc40f11d723cf83080fdfe"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/wechat-open-resident.log",
+      "sha256": "a11a68928ce9d60cd831a0871a148b419e824904f290c7187270532d28be82bd"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-1-merchant-mp-weixin.log",
+      "sha256": "771337439cb2d05e8d2ea1004fe3a80ad861e7cbe7c6862060e6c590fb9b63ba"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-2-resident-h5.log",
+      "sha256": "e1927c68a6f66fd6a3028f04044827f1c4e13784b8b4a5da2b890c9afb39f36f"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-3-resident-mp-weixin.log",
+      "sha256": "ec0da3db199d2dc194b6990402d392e7de229af3c91d21fb8af25c6137a57bd2"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-4-merchant-h5.log",
+      "sha256": "6cb39024618a009e04a8c88914fb5bd77633a63c4125fd3388dc738e70bc2708"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-5-merchant-mp-weixin.log",
+      "sha256": "503d0f4f29b4cb7f153553c9ed47ab7646511e12b03a9f9462e3b3029c820c24"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-6-staff-h5.log",
+      "sha256": "938ff3eb50518c1cae44b0c0cf6b14ad63f7e81c6cb29a792f52392280dd992a"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-7-staff-mp-weixin.log",
+      "sha256": "21a53b84c27d4c5580acf0f4750b05771ed540a29d7ffd4d4172d0babb54efdc"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/logs/failure-8-merchant-mp-weixin.log",
+      "sha256": "5b01ac45b74b64f31ccbf955c6280c591ee26a42e6ae3678e32e0b2d9fd5c929"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/input/stage00_menu_acceptance_e8ad276.md",
+      "sha256": "db816eb47eeddc941ac64b10bb4ef6bce26a1fd8059cf0fc9085904c221897c9"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3/input/Stage00_R3_所见即所得与验收整改_Codex_Prompt.md",
+      "sha256": "fd5f3684d216b3d5c9851e822075814bfa4c3bd6e97c5db2d12f00e540b7542e"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-facilities-1366.png",
+      "sha256": "f7b55c0aac81438f4345df04a2ddcbb3294ec8af55369233dfa207b1057a43b9"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-files-preview.png",
+      "sha256": "b36aa3dc7c728d0d4be8f002851cac5bb10b98f3a16523486e5d524aa99d665c"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-merchant-profile-390.png",
+      "sha256": "60c3bbf85d4ce74b9b5483b69d2dbf8ae29db5428cc3fc236e78554d44242ff9"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-merchant-profile-414.png",
+      "sha256": "1bf1d9bffcacae0e6cd05ac5a91dc59ba56b76d54555dbb5acab417f79192873"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "sha256": "c541f693850e8533d6a08bcfbca9ccd9de496e3f0ddcd1467a600fdb13284567"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-R3-W01-W16-failure.png",
+      "sha256": "7f392258657d1fde61efa3897e2db0e709151bdc996612b436c1487aab07bb22"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resident-binding-result.png",
+      "sha256": "d922821507dfe0ef8d9b3f896ec419f4e7e2d80d59ea6da2258053c1304e6ff1"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resident-profile-390.png",
+      "sha256": "e6facfbebc1e96bd264378618a174e9b27ed116aa8d3f71a09fe6ca6a10ee3d3"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resident-profile-414.png",
+      "sha256": "1118b3e14cca2bfa35f865e7fd38ffbabdfaac965795e7132d02cfc510026c7e"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-resource-counts-unit.png",
+      "sha256": "1b8646df9ca7ffe4e17809bbe2b17362845edc0ea61a9058fe33ce154be439d3"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-spaces-1366.png",
+      "sha256": "1ab41c9edf290b2e9e55df9df201d02cf3a5a49a5a9901f3d1e4baf365ce85d3"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-spaces-1920.png",
+      "sha256": "0a65947190a11832d674372401b2fcd2cd808ae78ede6c431061b2d8bf1f05c5"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-estates-names.png",
+      "sha256": "2064a133da581dfff1a85dd6a8ab77209ee40e4be70a3c989115bf1b5d3fb611"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-houses-names.png",
+      "sha256": "cf9f1a521d49e05d0cc67180663feac9e0c93943589dc0a7afa3ffccadbb1053"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-profile-390.png",
+      "sha256": "7d823d13a4b50bf40c2f73564bb35e64eafe5d206f09f9470ca7e1ee61ad3775"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run1-staff-profile-414.png",
+      "sha256": "7583ee0529f64fc33e1064e2a38bf391e5ad2ab973a8f72f4e43efa289d0fbd0"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run2-application-status.png",
+      "sha256": "e326279a7fafaa9352ef77b8292a65acf13bbab9f71f7db9fb9184df7744c0d6"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run2-dashboard-1366.png",
+      "sha256": "ce12b7dd70cdd674c57b6095f82e9da43b8a1752c2b1613bee53336c55503de6"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run2-R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "sha256": "7f8dd4d1a5a4609e97477cd72a778ef249827ef1a77ab6af704c4ebc0e5dc666"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run3-application-status.png",
+      "sha256": "912df8072c3dac89e922cba2e5a67f7e4e9b59268a85b9c901e01508ff081bb4"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run3-personnel-phone.png",
+      "sha256": "7f8dd4d1a5a4609e97477cd72a778ef249827ef1a77ab6af704c4ebc0e5dc666"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run4-R3-FOLLOWUP-STATUS-PHONE-failure.png",
+      "sha256": "3aa83627f94a33d630276631652b950b09a9482a93e3754b5fe2c9494da0fa52"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run5-application-status.png",
+      "sha256": "dd3ae76d17ecbfbac3a565fe6357aae127b63226b0fd3ae9d76fb68265289e52"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/run5-personnel-phone.png",
+      "sha256": "7f8dd4d1a5a4609e97477cd72a778ef249827ef1a77ab6af704c4ebc0e5dc666"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-web.log",
+      "sha256": "c942b0dfbfad4e759514fd9d48ae0c1374ca878ca6b486b913ab9f40ba00eec6"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-resident-h5.log",
+      "sha256": "da116261ff8bd035333ed9c4adbb04e1ea433f18c7be310697a4875ada640a57"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-merchant-h5.log",
+      "sha256": "6ee6d95cbca8ea462064b482ae204e0a98247487da873b76fe13513b98cc9bc5"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-staff-h5.log",
+      "sha256": "e708ed43441d726ac112a1702e84edfe1f731bc8ce207482a27d82d5c93b9481"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-resident-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-merchant-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/build-staff-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/rules-first.log",
+      "sha256": "031167fab91904562b9daf55458590f704e68963ff343cc6543a92a8b427ad1f"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/rules-second.log",
+      "sha256": "3d3cc184aaede4f907fa0e64cf90c5b21701aeb3255b8df2d5a0807909ca4a89"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/rules-final.log",
+      "sha256": "ce75072c6a042791fc82b19ee9beded574e9c0a25a482e376828c6acd13d760e"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-first.log",
+      "sha256": "3b98e9807c4c2e7a138cabb8dd0e4c7860ad30c0b609defb2be68af3f1f67167"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-second.log",
+      "sha256": "52732d6a72a96ae3274a12c2b4e397a2cff1b85fcb05852cc974f6c01e0923e1"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-retest.log",
+      "sha256": "7730ee5d5d3acca6e75b3a76e87f28349509264631c5e64a4e351a024ca38a07"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-final.log",
+      "sha256": "d99233ed540af5ab1207a81a307a0cf639a1286f49808796a8dcac0276cebab7"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-contrast-first.log",
+      "sha256": "c30ae6096b85d7e7e951043487eccd4f7a8cf646b9bb94f8923edf6ca06aa2ab"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-contrast.log",
+      "sha256": "d99233ed540af5ab1207a81a307a0cf639a1286f49808796a8dcac0276cebab7"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/static-final.log",
+      "sha256": "c05df148da27ba93d3bbc1bedad62289aa2f838cef08c4a0ba577993b1d74309"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/docs-final.log",
+      "sha256": "a6758e6f751ede6edfc5b14e4ea996b3ec95155feba801d29905302c35f68efb"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-web.log",
+      "sha256": "1026ea8b70c5e364a3393ed359591c8ec6e858bcab21b840799bd69ff4a712dc"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-staff-h5.log",
+      "sha256": "8392e97af599152b7b42415aa872e17e3966337e56bab660dab8ece6c33b1573"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-staff-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-browser-first.log",
+      "sha256": "6e7b170fe40ff23a0ea8c3edc1fb24f2519553c4f5c84f54939cf634f033aa9c"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-browser-final.log",
+      "sha256": "c97664ce79a7ab2cf4d5d0a8d9b3a1a0a209288bd78f633aacbe2e0a95fdc737"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/menu-detail-menu-expanded.png",
+      "sha256": "f1431a7c8db67700ba55cb986d1d963b72dc221a692fac198bb8731ad0480161"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/menu-detail-staff-estate-detail.png",
+      "sha256": "3559f085dc7d507ee02a6eeee2e54704fdfdcf676b89308e5a62b9ea5a551c4e"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/menu-detail-web-estate-detail.png",
+      "sha256": "cf688eecf9026e71209bb5adf63e949ecb45688a0a46ee56c03be1dd9586a152"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/final-baseline-documents-final.log",
+      "sha256": "767ed047abe33f7965ba6efc1597f5f0ed5597ce0875639d8e37710282476a61"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/final-baseline-static-final.log",
+      "sha256": "c05df148da27ba93d3bbc1bedad62289aa2f838cef08c4a0ba577993b1d74309"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/pre-main-20261109/REQUIREMENTS.txt",
+      "sha256": "8b44b0f8219f06e900ab06b24e59de35c5d9ab9a9dbbbdb28dd9150a3d551d87"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/pre-main-20261109/PLAN.txt",
+      "sha256": "75fe6f8454eef2e2b1fe9d5cf8781eaea2c23e4c2c280dacfc407d72259c8e9f"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/pre-main-20261109/ACCEPTANCE.txt",
+      "sha256": "c654e93e0aaeb46fb207ee1cc71c875867fe5fd443b7683df228d86e999b0ebd"
+    },
+    {
+      "path": "docs/stages/stage-00/evidence/pre-main-20261109/RESULT.txt",
+      "sha256": "c63e3450171bb7a19a64c69cdadeede3edc7ea6b9375c9a1acae7d804f201a76"
+    }
+  ],
+  "rawLogs": [
+    "docs/stages/stage-00/evidence/r3-followup/logs/browser-first.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/browser-retest.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/browser-second.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-contrast-first.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-contrast.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/browser-status-final.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-merchant-h5.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-merchant-types.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-resident-h5.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-resident-types.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-staff-h5.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-staff-types.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/build-web.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/docs-final.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/final-baseline-documents-final.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/final-baseline-static-final.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-browser-final.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-browser-first.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-staff-h5.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-staff-types.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-web.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/rules-final.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/rules-first.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/rules-second.log",
+    "docs/stages/stage-00/evidence/r3-followup/logs/static-final.log",
+    "docs/stages/stage-00/evidence/r3/logs/browser-final.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-merchant-h5.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-merchant-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-merchant-types.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-resident-h5.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-resident-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-resident-types.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-staff-h5.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-staff-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-staff-types.log",
+    "docs/stages/stage-00/evidence/r3/logs/build-web.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-1-merchant-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-2-resident-h5.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-3-resident-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-4-merchant-h5.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-5-merchant-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-6-staff-h5.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-7-staff-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/failure-8-merchant-mp-weixin.log",
+    "docs/stages/stage-00/evidence/r3/logs/final-web-smoke.log",
+    "docs/stages/stage-00/evidence/r3/logs/legacy-visual.log",
+    "docs/stages/stage-00/evidence/r3/logs/rules-final.log",
+    "docs/stages/stage-00/evidence/r3/logs/wechat-open-resident.log"
+  ],
+  "documents": [
+    {
+      "file": "docs/stages/stage-00/REQUIREMENTS.md",
+      "sha256": "027256f9a7f2e87b556b73ccff0722234853d5b3ff0fd972c8ea095b173898df",
+      "bytes": 104252
+    },
+    {
+      "file": "docs/stages/stage-00/PLAN.md",
+      "sha256": "c3c25380d14c7f1397d4a85ab897bec050106cb6afe25fc4189f1557082f76c1",
+      "bytes": 92431
+    },
+    {
+      "file": "docs/stages/stage-00/ACCEPTANCE.md",
+      "sha256": "0ee09577aa91644f57cb4ac37712d2366117753c927268cc20cc07751decf6b8",
+      "bytes": 69453
+    },
+    {
+      "file": "docs/stages/stage-00/RESULT.md",
+      "sha256": "21440b59f63954821c249c81e799a603aca4979c65100a69d427f88513cdadce",
+      "bytes": 29255
+    }
+  ],
+  "ownerAcceptance": "stage00-owner-acceptance-20261109.json",
+  "review": "stage00-final-review-results.json"
+}

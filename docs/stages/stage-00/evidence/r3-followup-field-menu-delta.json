@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-09",
+  "source": "本次负责人复验反馈",
+  "activeStage00Menus": [
+    "物业工作台",
+    "spaces",
+    "residents",
+    "applications",
+    "missing",
+    "vehicles",
+    "facilities",
+    "personnel",
+    "files"
+  ],
+  "renamed": {
+    "from": "基础工作台",
+    "to": "物业工作台"
+  },
+  "removed": {
+    "menu": "基础数据统计",
+    "oldRoute": "/statistics",
+    "redirect": "/spaces",
+    "notPass": true
+  },
+  "currentFields": [
+    "房屋空间数量",
+    "设施点位数量",
+    "车位资源数量",
+    "手机号",
+    "申请状态",
+    "卡片名称"
+  ],
+  "resourcePosition": [
+    "小区",
+    "楼栋",
+    "单元"
+  ],
+  "internallyPreserved": [
+    "社区字段与ID",
+    "房屋业务编号",
+    "申请／人房关系",
+    "设施／车位独立对象",
+    "Stage01数据及八份Stage01／02文档"
+  ],
+  "implementation": [
+    "web/manager/src/App.vue",
+    "web/manager/src/views/SpaceArchive.vue",
+    "web/manager/src/views/Workspace.vue",
+    "web/manager/src/components/ApplicationStatus.vue",
+    "web/manager/src/components/BindingDetail.vue",
+    "prototype-shared/r3-product.js",
+    "prototype-shared/core.js",
+    "prototype-shared/catalog.js",
+    "miniapp/packages/foundation/FoundationPage.vue"
+  ]
+}

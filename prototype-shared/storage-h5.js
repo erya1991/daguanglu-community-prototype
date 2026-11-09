@@ -1,4 +1,5 @@
 import * as stage01 from './stage01/index.js'
+import { upgradeProductState } from './r3-product.js'
 import { seed as seedStage01 } from './stage01/seed.js'
 import { roleInApp } from './core.js'
 import { upgradeState, upgradeIdentity, defaultIdentity, ordinaryAccounts, R1_SCHEMA } from './r1-migration.js'
@@ -19,6 +20,7 @@ import {
   scopeOptions,
   exportData,
   communitySummary,
+  statistics,
 } from './core.js'
 import { previewImport, commitImport } from './import-houses.js'
 export const NAMESPACE = 'dgl-community-prototype-stage00'
@@ -83,6 +85,7 @@ export function createBrowserAdapter(app) {
         try {
           const state = q.result || createSeed()
           upgradeState(state)
+          upgradeProductState(state)
           stage01.prepare(state, session)
           seedStage01(state)
           value = fn(state, tx.objectStore('blobs'))
@@ -102,6 +105,7 @@ export function createBrowserAdapter(app) {
       s = await req(database.transaction('sessions').objectStore('sessions').get(session))
     const state = s || createSeed()
     upgradeState(state)
+    upgradeProductState(state)
           stage01.prepare(state, session)
           seedStage01(state)
     return fn(state)
@@ -165,6 +169,7 @@ export function createBrowserAdapter(app) {
     async summary(id) {
       return read((s) => communitySummary(s, context, id))
     },
+    async statistics(filters) { return read(s => statistics(s, context, filters)) },
     async record(table, id) {
       return read((s) => record(s, context, table, id))
     },
@@ -219,11 +224,11 @@ export function createBrowserAdapter(app) {
       notify()
     },
     async upload(file, { fail = false } = {}) {
-      if (fail) throw new DomainError('模拟附件处理失败，请重试；表单未清空')
+      if (fail) throw new DomainError('附件上传失败，请重试；表单内容已保留')
       const ext = file.name.split('.').pop().toLowerCase()
       if (!['pdf', 'png', 'jpg', 'jpeg', 'txt', 'docx', 'xlsx'].includes(ext))
-        throw new DomainError('本轮演示不支持该格式（Q06正式范围待确认）')
-      if (file.size > 10 * 1024 * 1024) throw new DomainError('超过本轮演示10 MiB技术限制（非生产政策）')
+        throw new DomainError('不支持该文件格式，请选择 PDF、PNG/JPEG、TXT、DOCX 或 XLSX')
+      if (file.size > 10 * 1024 * 1024) throw new DomainError('文件不能超过10 MiB')
       const id = 'local-' + Date.now() + '-' + Math.random().toString(36).slice(2)
       await transact((s, blobs) => {
         actorFor(s, context)
@@ -259,7 +264,7 @@ export function createBrowserAdapter(app) {
             .get(session + ':' + descriptor.id),
         )
       }
-      if (!blob) throw new DomainError('本地附件不可用，请重新选择样例文件')
+      if (!blob) throw new DomainError('附件不可用，请重新选择文件')
       return { blob, name: descriptor.meta.name, type: descriptor.meta.type }
     },
     async ownedAttachment(id) {

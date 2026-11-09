@@ -13,7 +13,7 @@
         <div class="space-tree-heading">
           <strong>空间结构</strong>
         </div>
-        <Input v-model="treeSearch" search placeholder="查找社区、楼栋或房间" aria-label="查找空间" />
+        <Input v-model="treeSearch" search placeholder="查找小区、楼栋或房间" aria-label="查找空间" />
         <div class="space-tree-toolbar" data-space-tree-toolbar>
           <Button
             type="primary"
@@ -59,8 +59,8 @@
           </div>
         </div>
         <Tabs :value="category" @on-click="category = $event" class="space-tabs"
-          ><TabPane label="房屋空间" name="space" /><TabPane label="设施点位" name="facilities" /><TabPane
-            label="车位资源"
+          ><TabPane :label="'房屋空间（' + resourceCounts.houses + '）'" name="space" /><TabPane :label="'设施点位（' + resourceCounts.facilities + '）'" name="facilities" /><TabPane
+            :label="'车位资源（' + resourceCounts.parking + '）'"
             name="parking"
         /></Tabs>
         <div v-if="category === 'space'" class="space-resource-toolbar">
@@ -109,7 +109,7 @@
     /></Modal>
     <Modal v-model="rootNameOpen" title="编辑空间目录名称" :footer-hide="true" width="500">
       <Alert v-if="rootNameError" type="error">{{ rootNameError }}</Alert>
-      <Form label-position="top"
+      <Form @submit.native.prevent label-position="top"
         ><FormItem label="目录名称" required
           ><Input
             v-model="rootNameValue"
@@ -127,6 +127,7 @@
 import Workspace from './Workspace.vue'
 import ImportPanel from '../components/ImportPanel.vue'
 import { service } from '../services/foundation'
+import { countSpaceResources } from '../../../../prototype-shared/r3-product.js'
 import {
   spaceTables,
   spaceNames,
@@ -141,7 +142,7 @@ export default {
     graph: {},
     selected: 'root',
     category: 'space',
-    expanded: ['root', 'communities:C-A', 'estates:E-A'],
+    expanded: ['root', 'estates:E-A'],
     treeSearch: '',
     busy: false,
     error: '',
@@ -167,13 +168,13 @@ export default {
           row: null,
         },
       }
-      for (const table of spaceTables)
+      for (const table of spaceTables.filter(t => t !== 'communities'))
         for (const row of this.graph[table] || []) {
           const parentKey =
             table === 'communities'
               ? 'root'
               : table === 'estates'
-                ? spaceKey('communities', row['所属社区'])
+                ? 'root'
                 : table === 'buildings'
                   ? spaceKey('estates', row['所属小区'])
                   : table === 'units'
@@ -216,6 +217,7 @@ export default {
     scope() {
       return { table: this.node.table, id: this.node.id }
     },
+    resourceCounts() { return countSpaceResources(this.graph, this.scope) },
     breadcrumb() {
       return this.pathForNode(this.node) || '当前身份授权范围'
     },
@@ -229,7 +231,7 @@ export default {
       return this.pathForNode(this.creationNode) || this.nodes.root.title
     },
     resourceParent() {
-      return ['estates', 'buildings', 'units'].includes(this.creationNode.table)
+      return ['buildings', 'units'].includes(this.creationNode.table)
         ? { table: this.creationNode.table, id: this.creationNode.id }
         : null
     },
@@ -238,7 +240,7 @@ export default {
       return Object.values(this.nodes)
         .filter(
           (n) =>
-            ['estates', 'buildings', 'units'].includes(n.table) &&
+            ['buildings', 'units'].includes(n.table) &&
             this.activeBranch(n) &&
             (scope.table === 'root' ||
               (scope.table === 'communities' && n.row['所属社区'] === scope.id) ||
@@ -290,13 +292,13 @@ export default {
     },
     creationHint() {
       if (!this.activeBranch(this.creationNode))
-        return '当前所属位置已停用，可查看历史；恢复启用后才能新增资源。'
+        return '当前所属位置已停用，可查看历史；请核对档案后再新增资源。'
       if (this.category === 'space' && this.node.table === 'houses')
         return '新增房间沿用当前房间的上级位置，当前房间不作为容器；CSV导入请选择上级位置。'
       if (this.category !== 'space' && this.node.table === 'houses')
         return '当前房间不作为资源归属；新增资源将归属于它的单元，无单元时归属于楼栋。'
       return this.category !== 'space' && ['root', 'communities'].includes(this.node.table)
-        ? '汇总当前范围内资源；新增时请选择实际归属的小区、楼栋或单元。'
+        ? '汇总当前范围内资源；新增时请选择实际归属的楼栋或单元。'
         : ''
     },
   },
@@ -354,11 +356,12 @@ export default {
       this.error = ''
       try {
         const graph = {}
-        for (const t of spaceTables)
+        for (const t of [...spaceTables, 'facilities', 'parking'])
           graph[t] = this.info.actor.permissions.includes('read:' + t) ? await service.query(t) : []
         if (token !== this.token) return
         this.graph = graph
         let key = this.$route.query.node || this.selected
+        if (key.startsWith('communities:')) { const estates = (graph.estates || []).filter(e => e['所属社区'] === key.slice(12)); key = estates.length === 1 ? spaceKey('estates', estates[0]._id) : 'root' }
         if (!this.nodes[key] && previous?.parentKey) key = previous.parentKey
         this.choose(key, false)
       } catch (e) {
@@ -386,7 +389,7 @@ export default {
     },
     childTable(node) {
       return {
-        root: 'communities',
+        root: 'estates',
         communities: 'estates',
         estates: 'buildings',
         buildings: node.row?.['是否设单元'] === '是' ? 'units' : 'houses',
@@ -402,7 +405,7 @@ export default {
     },
     canAddChild(node) {
       const table = this.childTable(node)
-      if (node.table === 'root') return this.canCreateCommunity
+      if (node.table === 'root') return this.canWrite('estates')
       return !!table && this.canWrite(table) && this.activeBranch(node)
     },
     renderNode(h, { data }) {
@@ -430,11 +433,7 @@ export default {
         [
           h('Icon', { class: 'space-node-icon', props: { type: icons[data.table] }, attrs: { 'aria-hidden': 'true' } }),
           h('span', { class: 'space-node-name' }, data.title),
-          inactive
-            ? h('small', { class: 'space-node-state' }, '已停用')
-            : data.children?.length
-              ? h('small', { class: 'space-node-count' }, '(' + data.children.length + ')')
-              : null,
+          inactive ? h('small', {class:'space-node-state'}, '不可用') : null,
         ],
       )
       const controls = []
@@ -450,10 +449,10 @@ export default {
       } else if (data.table !== 'houses' && this.canWrite(data.table)) {
         controls.push(iconButton('ios-create-outline', '编辑' + data.title, { 'data-space-edit': data.key }, () => this.treeAction(data, 'edit')))
         controls.push(iconButton(
-          inactive ? 'ios-checkmark-circle-outline' : 'ios-remove-circle-outline',
-          (inactive ? '启用' : '停用') + data.title,
-          { 'data-space-status': data.key },
-          () => this.treeAction(data, 'status'),
+          'ios-trash-outline',
+          '删除' + data.title,
+          { 'data-space-delete': data.key },
+          () => this.treeAction(data, 'delete'),
         ))
       }
       return h('span', { class: { 'space-tree-node': true, 'is-current': data.key === this.selected } }, [
@@ -513,8 +512,8 @@ export default {
       await this.$nextTick()
       if (action === 'view') return this.$refs.nodeActions.details(node.row)
       if (action === 'edit' && this.canWrite(node.table)) return this.$refs.nodeActions.edit(node.row)
-      if (action === 'status' && this.canWrite(node.table))
-        return this.$refs.nodeActions.openRowAction(node.row, 'status')
+      if (action === 'delete' && this.canWrite(node.table))
+        return this.$refs.nodeActions.removeRow(node.row)
     },
     locateRoom(row) {
       const key = spaceKey('houses', row._id)

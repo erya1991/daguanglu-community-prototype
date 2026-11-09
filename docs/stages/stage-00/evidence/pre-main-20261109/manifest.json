@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-09T06:36:44.519Z",
+  "branch": "stage/00-foundation",
+  "head": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "index": "",
+  "documents": [
+    {
+      "file": "docs/stages/stage-00/REQUIREMENTS.md",
+      "target": "docs/stages/stage-00/evidence/pre-main-20261109/REQUIREMENTS.txt",
+      "sha256": "8b44b0f8219f06e900ab06b24e59de35c5d9ab9a9dbbbdb28dd9150a3d551d87",
+      "bytes": 158076
+    },
+    {
+      "file": "docs/stages/stage-00/PLAN.md",
+      "target": "docs/stages/stage-00/evidence/pre-main-20261109/PLAN.txt",
+      "sha256": "75fe6f8454eef2e2b1fe9d5cf8781eaea2c23e4c2c280dacfc407d72259c8e9f",
+      "bytes": 48105
+    },
+    {
+      "file": "docs/stages/stage-00/ACCEPTANCE.md",
+      "target": "docs/stages/stage-00/evidence/pre-main-20261109/ACCEPTANCE.txt",
+      "sha256": "c654e93e0aaeb46fb207ee1cc71c875867fe5fd443b7683df228d86e999b0ebd",
+      "bytes": 41489
+    },
+    {
+      "file": "docs/stages/stage-00/RESULT.md",
+      "target": "docs/stages/stage-00/evidence/pre-main-20261109/RESULT.txt",
+      "sha256": "c63e3450171bb7a19a64c69cdadeede3edc7ea6b9375c9a1acae7d804f201a76",
+      "bytes": 129320
+    }
+  ],
+  "templates": [
+    {
+      "file": "docs/templates/stage/REQUIREMENTS.md",
+      "sha256": "33c78906cfc60864e5232e1016760f6c244429ba37dda417ef3a3634d1f6a94a"
+    },
+    {
+      "file": "docs/templates/stage/PLAN.md",
+      "sha256": "8aab5bb2554ce95cefd364b017957631ef079910899136b21b38863ab10dc0ab"
+    },
+    {
+      "file": "docs/templates/stage/ACCEPTANCE.md",
+      "sha256": "55371b9caf5da822e3317165c4b5666571c643caefcda88c3df822bcddcde967"
+    },
+    {
+      "file": "docs/templates/stage/RESULT.md",
+      "sha256": "5f80a2155b9d81eb63bc88ac57428055574b1a13e945d7ff8900ff46879862f2"
+    }
+  ],
+  "protectedFiles": [
+    {
+      "file": "docs/stages/stage-01/REQUIREMENTS.md",
+      "sha256": "f92cded9beebd6702f5b3efb135bcf0e5dc6df17bbce92eb305fe4647d085aba"
+    },
+    {
+      "file": "docs/stages/stage-01/PLAN.md",
+      "sha256": "e31fb47bc4877b180fc1ffda7ccfe62712e2132be9a642b31f440ead4e6930c7"
+    },
+    {
+      "file": "docs/stages/stage-01/ACCEPTANCE.md",
+      "sha256": "6708fc0d93a181f635f79009a93a90abfe9355440ff0c9f9a558e367724202c9"
+    },
+    {
+      "file": "docs/stages/stage-01/RESULT.md",
+      "sha256": "ce3a075c672145c04cac938582481a401c55c0d4e9e4dc5fea91cadec14a2b4c"
+    },
+    {
+      "file": "docs/stages/stage-02/REQUIREMENTS.md",
+      "sha256": "fca92d85f287f3eceb13a3047fcf42d9ced2dfecbef43c198a910765adb91ab7"
+    },
+    {
+      "file": "docs/stages/stage-02/PLAN.md",
+      "sha256": "b9054ddb5bfa6740174da4252f16ec0d935d229dfb7a67990f5e8021b6d9f182"
+    },
+    {
+      "file": "docs/stages/stage-02/ACCEPTANCE.md",
+      "sha256": "2e8023082658f9bc49663d96d6b0f020d01faaba827c169320305b22fbfe7557"
+    },
+    {
+      "file": "docs/stages/stage-02/RESULT.md",
+      "sha256": "be2bf113adc40bc93ff14755e1d3fe4b3a253a817b75db6101694bf9788a39af"
+    },
+    {
+      "file": "prototype-shared/stage01/common.js",
+      "sha256": "64039ac5f80c3ab47d8114f22dc404947b8d1563e93f135f4373800f6be6cab9"
+    },
+    {
+      "file": "miniapp/packages/stage01/Evidence.vue",
+      "sha256": "e73bb51b7d14c22292b061acce534ea708b2d5f4db130d84e9dc73f0d60cac73"
+    },
+    {
+      "file": "miniapp/packages/stage01/FeesPage.vue",
+      "sha256": "d396afc051d4f9d5ed26af034c61da877f71775dbe38dc20fb34817e9d3bcec5"
+    }
+  ],
+  "source": "当前工作区完整四文档原字节快照；只用于历史，不是第二套现行阶段文档"
+}

@@ -1,4 +1,5 @@
 import * as stage01 from './stage01/index.js'
+import { upgradeProductState } from './r3-product.js'
 import { seed as seedStage01 } from './stage01/seed.js'
 import { roleInApp } from './core.js'
 import { upgradeState, upgradeIdentity, defaultIdentity, ordinaryAccounts, R1_SCHEMA } from './r1-migration.js'
@@ -16,6 +17,7 @@ import {
   fileVersions,
   scopeOptions,
   communitySummary,
+  statistics,
   authorizeAttachment,
 } from './core.js'
 export function createUniAdapter(app) {
@@ -26,7 +28,7 @@ export function createUniAdapter(app) {
     listeners = [],
     queue = Promise.resolve()
   context = upgradeIdentity(context, app)
-  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); return s },
+  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); upgradeProductState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); return s },
     save = (s) => uni.setStorageSync(key, s)
   const notify = () => listeners.forEach((f) => f())
   const api = {
@@ -99,6 +101,7 @@ export function createUniAdapter(app) {
     async summary(id) {
       return communitySummary(read(), context, id)
     },
+    async statistics(filters) { return statistics(read(), context, filters) },
     async labels(t, rows) {
       const s = read()
       return rows.map((r) => ({
@@ -159,8 +162,8 @@ export function createUniAdapter(app) {
       notify()
     },
     async upload(file, { fail = false } = {}) {
-      if (fail) throw Error('模拟附件失败，请重试')
-      if (file.size > 10 * 1024 * 1024) throw Error('超过本轮10 MiB演示技术限制')
+      if (fail) throw Error('附件上传失败，请重试')
+      if (file.size > 10 * 1024 * 1024) throw Error('文件不能超过10 MiB')
       const stored = await new Promise((res, rej) =>
         uni.saveFile({ tempFilePath: file.path, success: res, fail: rej }),
       )

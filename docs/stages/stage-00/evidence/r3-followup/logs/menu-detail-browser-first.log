@@ -1,0 +1,7 @@
+PASS MENU-DEFAULT-OPEN
+FAIL MENU-MANUAL-FOLD-RETAINED locator.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('.property-menu-group > .ivu-menu-submenu-title').filter({ hasText: /^社区与房屋$/ })[22m
+
+PASS ESTATE-DETAIL-NO-NUMBER
+PASS LOCAL-ONLY-NO-JS-ERROR

@@ -1,0 +1,1492 @@
+{
+  "note": "由当前需求正文和PLAN逐字段映射生成的证据，不是额外业务字典；历史287／295不作为当前UI数量要求",
+  "version": "V1.1",
+  "fieldGroups": 26,
+  "fieldRows": 212,
+  "mapping": [
+    {
+      "group": "fields-dashboard",
+      "name": "当前人员",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "当前角色",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "所属组织",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "已建档房屋数",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "居民档案人数",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "有效人房关系数",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "已关联账号人数",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "待审核申请数",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-dashboard",
+      "name": "功能入口名称",
+      "page": "/dashboard",
+      "implementation": "web/manager/src/App.vue；web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T02／T17／T30"
+    },
+    {
+      "group": "fields-space-root",
+      "name": "目录名称",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T18"
+    },
+    {
+      "group": "fields-space-root",
+      "name": "所选空间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T18"
+    },
+    {
+      "group": "fields-estates",
+      "name": "小区名称",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-estates",
+      "name": "小区地址",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-estates",
+      "name": "物业管理单位",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-estates",
+      "name": "资料来源",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-estates",
+      "name": "来源说明",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-estates",
+      "name": "维护人",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-estates",
+      "name": "更新时间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "楼栋编号",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "所属小区",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "楼栋名称／楼栋号",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "是否设单元",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "资料来源",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "来源说明",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "维护人",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-buildings",
+      "name": "更新时间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "单元编号",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "所属小区",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "所属楼栋",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "单元名称／单元号",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "资料来源",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "来源说明",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "维护人",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-units",
+      "name": "更新时间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "所属小区",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "所属楼栋",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "所属单元",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "楼层",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "房号",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "完整房屋地址",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "房屋用途",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "房屋面积",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "关联居民",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "资料来源",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "来源说明",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "维护人",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-houses",
+      "name": "更新时间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue；FieldEditor.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T08／T14／T18／T19"
+    },
+    {
+      "group": "fields-resource-position",
+      "name": "所属小区",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T01／T12／T14"
+    },
+    {
+      "group": "fields-resource-position",
+      "name": "关联楼栋",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T01／T12／T14"
+    },
+    {
+      "group": "fields-resource-position",
+      "name": "所属单元",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T01／T12／T14"
+    },
+    {
+      "group": "fields-parking",
+      "name": "所属空间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T10／T14"
+    },
+    {
+      "group": "fields-parking",
+      "name": "车位编号",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T10／T14"
+    },
+    {
+      "group": "fields-parking",
+      "name": "车位类型",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T10／T14"
+    },
+    {
+      "group": "fields-parking",
+      "name": "备注",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T10／T14"
+    },
+    {
+      "group": "fields-parking",
+      "name": "维护人",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T10／T14"
+    },
+    {
+      "group": "fields-parking",
+      "name": "更新时间",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T01／T10／T14"
+    },
+    {
+      "group": "fields-resource-counts",
+      "name": "房屋空间数量",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T10／T14"
+    },
+    {
+      "group": "fields-resource-counts",
+      "name": "设施点位数量",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T10／T14"
+    },
+    {
+      "group": "fields-resource-counts",
+      "name": "车位资源数量",
+      "page": "/spaces",
+      "implementation": "web/manager/src/views/SpaceArchive.vue",
+      "scenarios": "S00-T10／T14"
+    },
+    {
+      "group": "fields-import",
+      "name": "文件名称",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "资料来源",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "来源说明",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "房屋编号",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "所属小区",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "所属楼栋",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "所属单元",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "楼层",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "房号",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "房屋用途",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "房屋面积",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "数据行号",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "校验结果",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "错误原因",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "总行数",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "通过行数",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "不通过行数",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "导入处理状态",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "提交人",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-import",
+      "name": "提交时间",
+      "page": "/spaces → 房间CSV导入",
+      "implementation": "web/manager/src/components/ImportPanel.vue；prototype-shared/import-houses.js",
+      "scenarios": "S00-T08／T18／T19"
+    },
+    {
+      "group": "fields-residents",
+      "name": "居民编号",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "居民姓名",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "联系电话",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "关联账号",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "账号关联情况",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "关联房屋",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "资料来源",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "来源说明",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "维护人",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-residents",
+      "name": "更新时间",
+      "page": "/residents；住户／物业H5居民相关页面",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T18／T19／T20"
+    },
+    {
+      "group": "fields-profile",
+      "name": "头像",
+      "page": "/pages/profile/edit",
+      "implementation": "miniapp/packages/foundation/FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T19／T20"
+    },
+    {
+      "group": "fields-profile",
+      "name": "昵称",
+      "page": "/pages/profile/edit",
+      "implementation": "miniapp/packages/foundation/FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T19／T20"
+    },
+    {
+      "group": "fields-profile",
+      "name": "姓名",
+      "page": "/pages/profile/edit",
+      "implementation": "miniapp/packages/foundation/FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T19／T20"
+    },
+    {
+      "group": "fields-profile",
+      "name": "手机号",
+      "page": "/pages/profile/edit",
+      "implementation": "miniapp/packages/foundation/FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T06／T19／T20"
+    },
+    {
+      "group": "fields-history",
+      "name": "操作时间",
+      "page": "/residents → 详情 → 操作与变更记录",
+      "implementation": "web/manager/src/components/HistoryPanel.vue；prototype-shared/core.js",
+      "scenarios": "S00-T20"
+    },
+    {
+      "group": "fields-history",
+      "name": "操作人",
+      "page": "/residents → 详情 → 操作与变更记录",
+      "implementation": "web/manager/src/components/HistoryPanel.vue；prototype-shared/core.js",
+      "scenarios": "S00-T20"
+    },
+    {
+      "group": "fields-history",
+      "name": "操作名称",
+      "page": "/residents → 详情 → 操作与变更记录",
+      "implementation": "web/manager/src/components/HistoryPanel.vue；prototype-shared/core.js",
+      "scenarios": "S00-T20"
+    },
+    {
+      "group": "fields-history",
+      "name": "变更字段",
+      "page": "/residents → 详情 → 操作与变更记录",
+      "implementation": "web/manager/src/components/HistoryPanel.vue；prototype-shared/core.js",
+      "scenarios": "S00-T20"
+    },
+    {
+      "group": "fields-history",
+      "name": "操作说明／原因",
+      "page": "/residents → 详情 → 操作与变更记录",
+      "implementation": "web/manager/src/components/HistoryPanel.vue；prototype-shared/core.js",
+      "scenarios": "S00-T20"
+    },
+    {
+      "group": "fields-history",
+      "name": "操作结果",
+      "page": "/residents → 详情 → 操作与变更记录",
+      "implementation": "web/manager/src/components/HistoryPanel.vue；prototype-shared/core.js",
+      "scenarios": "S00-T20"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请编号",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请类型",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请人姓名",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "联系号码",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "所属社区",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "所属小区",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "所属楼栋",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "所属单元",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "房号",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "房屋地址",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "当前关系类型",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请关系类型",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请说明",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "证明说明",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "证明附件",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请有效起始日",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请有效结束日",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "申请状态",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "审核轮次",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "提交时间",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "审核操作",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "对外审核说明",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "内部审核备注",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "审核人",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "审核时间",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "撤回时间",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "维护人",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-applications",
+      "name": "更新时间",
+      "page": "/applications；住户申请及申请记录",
+      "implementation": "BindingDetail.vue；Workspace.vue；FoundationPage.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04～T07／T19／T20／T28"
+    },
+    {
+      "group": "fields-relation-validity",
+      "name": "设置关系有效期",
+      "page": "住户绑定／变更／解除申请",
+      "implementation": "miniapp/packages/foundation/FoundationPage.vue",
+      "scenarios": "S00-T19"
+    },
+    {
+      "group": "fields-relations",
+      "name": "居民姓名",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "房屋地址",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "关系类型",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "关系状态",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "有效起始日",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "有效结束日",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "来源申请编号",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "建立时间",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "失效原因",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-relations",
+      "name": "失效时间",
+      "page": "/applications?tab=bindings；住户我的房屋",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T04／T06／T07／T28"
+    },
+    {
+      "group": "fields-binding-house",
+      "name": "房屋编号",
+      "page": "/applications → 详情 → 房屋信息",
+      "implementation": "web/manager/src/components/BindingDetail.vue",
+      "scenarios": "S00-T14／T18"
+    },
+    {
+      "group": "fields-binding-house",
+      "name": "当前关系状态",
+      "page": "/applications → 详情 → 房屋信息",
+      "implementation": "web/manager/src/components/BindingDetail.vue",
+      "scenarios": "S00-T14／T18"
+    },
+    {
+      "group": "fields-missing",
+      "name": "社区",
+      "page": "/missing；住户地址缺失反馈",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T08／T19／T28"
+    },
+    {
+      "group": "fields-missing",
+      "name": "小区名称或地址",
+      "page": "/missing；住户地址缺失反馈",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T08／T19／T28"
+    },
+    {
+      "group": "fields-missing",
+      "name": "具体房屋描述",
+      "page": "/missing；住户地址缺失反馈",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T08／T19／T28"
+    },
+    {
+      "group": "fields-missing",
+      "name": "联系号码",
+      "page": "/missing；住户地址缺失反馈",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T08／T19／T28"
+    },
+    {
+      "group": "fields-missing",
+      "name": "提交时间",
+      "page": "/missing；住户地址缺失反馈",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T08／T19／T28"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "车辆档案编号",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "车牌号码",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "车辆类型",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "车辆颜色",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "关联居民",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "关联房屋",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "登记说明",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "核实状态",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "核实操作",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "核实反馈",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "核实人",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "核实时间",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "资料来源",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "来源说明",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "维护人",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicles",
+      "name": "更新时间",
+      "page": "/vehicles；住户车辆申报；物业H5车辆详情",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T19"
+    },
+    {
+      "group": "fields-vehicle-filters",
+      "name": "所属社区",
+      "page": "/vehicles → 查询条件",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T18"
+    },
+    {
+      "group": "fields-vehicle-filters",
+      "name": "所属小区",
+      "page": "/vehicles → 查询条件",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T11／T18"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "点位编号",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "所属空间",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "点位名称",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "点位类别",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "所属小区",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "具体位置",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "关联楼栋",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "关联房屋",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "设备或设施编号",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "数量",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "数量单位",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "厂商名称",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "维护单位",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "工作联系人",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "工作联系电话",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "点位照片",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "接入状态",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "备注",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "资料来源",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "来源说明",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "维护人",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "更新时间",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-facilities",
+      "name": "所属单元",
+      "page": "/facilities；/spaces → 设施点位",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T12／T14／T18／T19"
+    },
+    {
+      "group": "fields-personnel",
+      "name": "人员姓名",
+      "page": "/personnel；物业H5人员查询",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T09／T19"
+    },
+    {
+      "group": "fields-personnel",
+      "name": "所属物业组织",
+      "page": "/personnel；物业H5人员查询",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T09／T19"
+    },
+    {
+      "group": "fields-personnel",
+      "name": "岗位",
+      "page": "/personnel；物业H5人员查询",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T09／T19"
+    },
+    {
+      "group": "fields-personnel",
+      "name": "工作联系电话",
+      "page": "/personnel；物业H5人员查询",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T09／T19"
+    },
+    {
+      "group": "fields-files",
+      "name": "文件编号",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "文件名称",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "文件分类",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "所属组织",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "适用社区",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "适用小区",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "文件附件",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "附件文件名",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "文件格式",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "文件大小",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "上传人",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "上传时间",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "维护人",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-files",
+      "name": "更新时间",
+      "page": "/files",
+      "implementation": "web/manager/src/views/Workspace.vue；prototype-shared/core.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-file-reason",
+      "name": "操作原因",
+      "page": "/files → 编辑",
+      "implementation": "web/manager/src/views/Workspace.vue",
+      "scenarios": "S00-T13／T19"
+    },
+    {
+      "group": "fields-upload-feedback",
+      "name": "附件处理结果",
+      "page": "文件编辑／住户证明及本人头像上传",
+      "implementation": "FieldEditor.vue；MobileFields.vue；storage-h5.js；storage-uni.js",
+      "scenarios": "S00-T13／T19／T27"
+    },
+    {
+      "group": "fields-account-contract",
+      "name": "登录账号",
+      "page": "复用LiLiShop；本仓正常身份及人员名录",
+      "implementation": "prototype-shared/r1-migration.js；r3-product.js；core.js；App.vue",
+      "scenarios": "S00-T02／T03／T09"
+    },
+    {
+      "group": "fields-account-contract",
+      "name": "人员姓名",
+      "page": "复用LiLiShop；本仓正常身份及人员名录",
+      "implementation": "prototype-shared/r1-migration.js；r3-product.js；core.js；App.vue",
+      "scenarios": "S00-T02／T03／T09"
+    },
+    {
+      "group": "fields-account-contract",
+      "name": "手机号",
+      "page": "复用LiLiShop；本仓正常身份及人员名录",
+      "implementation": "prototype-shared/r1-migration.js；r3-product.js；core.js；App.vue",
+      "scenarios": "S00-T02／T03／T09"
+    },
+    {
+      "group": "fields-account-contract",
+      "name": "所属组织",
+      "page": "复用LiLiShop；本仓正常身份及人员名录",
+      "implementation": "prototype-shared/r1-migration.js；r3-product.js；core.js；App.vue",
+      "scenarios": "S00-T02／T03／T09"
+    },
+    {
+      "group": "fields-account-contract",
+      "name": "岗位",
+      "page": "复用LiLiShop；本仓正常身份及人员名录",
+      "implementation": "prototype-shared/r1-migration.js；r3-product.js；core.js；App.vue",
+      "scenarios": "S00-T02／T03／T09"
+    },
+    {
+      "group": "fields-account-contract",
+      "name": "授权角色",
+      "page": "复用LiLiShop；本仓正常身份及人员名录",
+      "implementation": "prototype-shared/r1-migration.js；r3-product.js；core.js；App.vue",
+      "scenarios": "S00-T02／T03／T09"
+    }
+  ]
+}

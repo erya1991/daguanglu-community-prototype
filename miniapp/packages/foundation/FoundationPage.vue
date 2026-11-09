@@ -8,7 +8,7 @@ import AppTabbar from '../ui/components/AppTabbar.vue'
 import AppButton from '../ui/components/AppButton.vue'
 import AppIcon from '../ui/components/AppIcon.vue'
 import BaseCard from '../ui/components/BaseCard.vue'
-import DemoControl from './DemoControl.vue'
+import AccountSwitch from './AccountSwitch.vue'
 import MobileFields from './MobileFields.vue'
 import { catalog } from '@core/catalog.js'
 import { detailVisible } from '@core/core.js'
@@ -61,7 +61,7 @@ const title = computed(
     '基础档案',
 )
 const permittedTables = computed(() =>
-  ['communities', 'houses', 'residents', 'vehicles', 'facilities', 'personnel'].filter((t) =>
+  ['estates', 'houses', 'residents', 'vehicles', 'facilities', 'personnel'].filter((t) =>
     info.value?.actor.permissions.includes('read:' + t),
   ),
 )
@@ -78,7 +78,6 @@ const currentFields = computed(() =>
 const applyNames = computed(() => [
   '申请类型',
   '联系号码',
-  '所属社区',
   '所属小区',
   '所属楼栋',
   '所属单元',
@@ -91,7 +90,6 @@ const applyNames = computed(() => [
 const houseOptions = computed(() =>
   houses.value.filter(
     (h) =>
-      h['所属社区'] === form.value['所属社区'] &&
       h['所属小区'] === form.value['所属小区'] &&
       h['所属楼栋'] === form.value['所属楼栋'] &&
       (!form.value['所属单元'] || h['所属单元'] === form.value['所属单元']),
@@ -102,13 +100,18 @@ const vehicleFormNames = ['车牌号码', '车辆类型', '车辆颜色', '关�
 const shortFields: Record<string, string[]> = {
   applications: ['申请类型', '房屋地址', '申请关系类型', '申请状态', '审核轮次', '提交时间'],
   relations: ['房屋地址', '关系类型', '关系状态'],
-  houses: ['完整房屋地址', '房屋用途', '档案状态'],
+  houses: ['完整房屋地址', '房屋用途'],
   communities: ['社区地址', '社区简介'],
   vehicles: ['车牌号码', '车辆类型', '核实状态', '关联房屋'],
-  facilities: ['点位类别', '具体位置', '档案状态', '接入状态'],
-  personnel: ['岗位', '工作联系电话', '在岗状态'],
+  facilities: ['点位类别', '具体位置', '接入状态'],
+  personnel: ['岗位', '工作联系电话'],
   messages: ['消息内容', '发生时间', '阅读状态', '模拟发送状态'],
   residents: ['居民姓名', '联系电话', '关联房屋'],
+}
+function cardTitle(row: any) {
+  if (APP === 'staff' && props.table === 'estates') return row._labels?.['小区名称'] || row['小区名称'] || '小区档案'
+  if (APP === 'staff' && props.table === 'houses') return row._labels?.['完整房屋地址'] || row['完整房屋地址'] || [row._labels?.['所属小区'], row._labels?.['所属楼栋'], row._labels?.['所属单元'], row['房号'] && row['房号'] + '室'].filter(Boolean).join(' ') || '房屋档案'
+  return row._labels?.[(catalog as any)[props.table].fields[0].name] || row._id
 }
 function open(mode: string, table = '', id = '', extra = '') {
   const path =
@@ -162,6 +165,10 @@ async function load() {
         // #endif
         avatarUrl.value = ''
       }
+    }
+    if (props.table === 'messages') {
+      if (props.id) { const message=await service.record('messages',props.id); if(message._table && message._object){open('detail',message._table,message._object);return} }
+      uni.redirectTo({url: APP === 'resident' ? '/pages/foundation/applications/index' : '/pages/profile/index'});return
     }
     if (['list', 'detail'].includes(props.mode)) {
       if (props.mode === 'list')
@@ -349,22 +356,17 @@ onUnmounted(() => {
         :show-brand="props.mode === 'home'"
         :large="props.mode === 'home' || props.mode === 'workbench'"
     /></template>
-    <view class="demo-strip"
-      ><text>演示模式 · 虚构数据</text><text>{{ info?.actor.name || '正在读取' }}</text></view
-    >
+
     <view class="foundation-body" :class="{ 'has-tabs': top }">
       <view v-if="error" class="form-error"
         ><text>{{ error }}</text
         ><AppButton variant="quiet" @click="load">重新读取</AppButton></view
       ><text v-if="success" class="success-tip">{{ success }}</text
-      ><view v-if="busy && !info" class="hint">正在读取演示数据…</view>
+      ><view v-if="busy && !info" class="hint">正在加载…</view>
       <view v-if="APP==='resident' && ['home','service','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业服务</text><view class="s1-entry-grid"><button @click="stage01('fees/index')">物业缴费</button><button @click="stage01('parking/index')">停车服务</button><button @click="stage01('repairs/index')">报事报修</button><button @click="stage01('hazards/index')">隐患随手拍</button><button @click="stage01('records/index')">业务记录</button></view></view><view v-if="APP==='staff' && ['workbench','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业办理</text><view class="s1-entry-grid"><button @click="stage01('tasks/index')">工单待办</button><button @click="stage01('reports/create')">现场上报</button><button @click="stage01('charges/index')">收费查询</button></view></view>
       <template v-if="props.mode === 'home'"
         ><view class="community-line"
-          ><AppIcon name="location" :size="18" /><text>青禾示例社区</text><text class="muted">仅演示</text
-          ><view class="bell" @click="open('list', 'messages')"
-            ><AppIcon name="bell" :size="22" /><text>{{ info?.counts['未读结果消息数'] || 0 }}</text></view
-          ></view
+          ><AppIcon name="location" :size="18" /><text>大光路社区</text></view
         ><view class="home-hero"
           ><image src="/static/images/home/hero-community-life.png" mode="aspectFill" /><view
             ><text class="hero-title">邻里相伴，生活更安心</text><text>社区基础服务，从这里开始</text></view
@@ -374,12 +376,10 @@ onUnmounted(() => {
             ><view @click="open('list', 'relations')"
               ><AppIcon name="home" :size="28" /><text>我的房屋</text></view
             ><view @click="open('apply', '', '', '&kind=绑定')"
-              ><AppIcon name="bill" :size="28" /><text>关系申请</text></view
+              ><AppIcon name="bill" :size="28" /><text>房屋绑定</text></view
             ><view @click="open('list', 'vehicles')"
               ><AppIcon name="car" :size="28" /><text>我的车辆</text></view
-            ><view @click="open('list', 'messages')"
-              ><AppIcon name="bell" :size="28" /><text>结果消息</text></view
-            ></view
+            ><view @click="open('list','applications')"><AppIcon name="bill" :size="28"/><text>申请记录</text></view></view
           ></BaseCard
         ><text class="group-title">社区基础服务</text
         ><BaseCard
@@ -393,7 +393,7 @@ onUnmounted(() => {
           ><view class="entry-row" @click="tab('/pages/mall/index')"
             ><view
               ><text class="entry-title">社区商城</text
-              ><text class="hint">原商城项目交付，本原型提供范围说明</text></view
+              ><text class="hint">发现身边好物</text></view
             ><text>›</text></view
           ></BaseCard
         ></template
@@ -403,9 +403,9 @@ onUnmounted(() => {
           ><view class="identity-panel"
             ><view class="avatar"><AppIcon name="user" :size="32" /></view
             ><view
-              ><text class="identity-name">{{ info?.actor.name }}</text
+              ><text class="identity-name">{{ APP === 'resident' ? profileName || info?.actor.name : info?.actor.name }}</text
               ><text class="hint"
-                >{{ APP === 'resident' ? '本人模拟资料' : info?.actor.orgName || '模拟组织' }} ·
+                >{{ APP === 'resident' ? '个人资料' : info?.actor.orgName || '' }} ·
                 {{ info?.actor.roleName }}</text
               ></view
             ></view
@@ -418,7 +418,6 @@ onUnmounted(() => {
               { t: 'relations', n: '我的房屋' },
               { t: 'applications', n: '申请记录' },
               { t: 'vehicles', n: '我的车辆' },
-              { t: 'messages', n: '结果消息' },
               { t: 'missing', n: '地址缺失反馈' },
             ]"
             :key="item.t"
@@ -427,24 +426,15 @@ onUnmounted(() => {
             ><text>{{ item.n }}</text
             ><text>›</text></view
           ></BaseCard
-        ><BaseCard v-else
-          ><text class="group-title">当前主体与范围</text
-          ><text class="hint">{{
-            APP === 'merchant'
-              ? '商户框架仅展示身份和原项目交付边界，不查询订单、资金或资质。'
-              : 'Stage00档案与关系仅供查询；工单待办可办理当前物业任务。'
-          }}</text
-          ><view class="entry-row" v-if="APP === 'staff'" @click="open('list', 'messages')"
-            ><text>结果消息</text><text>›</text></view
-          ></BaseCard
-        ><DemoControl v-if="info" :info="info" @changed="load"
+        ><BaseCard v-else><text class="group-title">所属组织</text><text class="hint">{{info?.actor.orgName}}</text></BaseCard
+        ><AccountSwitch v-if="info" :info="info" @changed="load"
       /></template>
       <template v-else-if="props.mode === 'workbench'"
         ><BaseCard
           ><text class="eyebrow">{{ APP === 'merchant' ? '商户工作台' : '社区与物业管理' }}</text
           ><text class="identity-name">{{ info?.actor.name }}</text
           ><text class="hint">当前所属组织：{{ info?.actor.orgName }}</text
-          ><text class="hint">可见范围：{{ info?.actor.scopeLabel || '本主体' }}</text></BaseCard
+          ><text class="hint">服务范围：{{ info?.actor.scopeLabel || '本主体' }}</text></BaseCard
         ><template v-if="APP === 'staff'"
           ><text class="group-title">基础档案查询</text
           ><view class="archive-grid"
@@ -453,21 +443,21 @@ onUnmounted(() => {
                 ><AppIcon :name="t === 'houses' ? 'home' : 'bill'" :size="28" /><text class="entry-title">{{
                   (catalog as any)[t].title
                 }}</text
-                ><text class="hint">按当前授权查询 ›</text></view
+                ><text class="hint">查看档案 ›</text></view
               ></BaseCard
             ></view
           ></template
         ><BaseCard v-else
           ><text class="group-title">经营入口</text
           ><text class="hint"
-            >商品与商城交易由原项目交付；便民服务在后续阶段开展。此处不生成经营、订单或资金统计。</text
+            >商品与订单管理</text
           ><AppButton variant="quiet" @click="tab('/pages/operation/index')"
-            >查看经营范围</AppButton
+            >商品管理</AppButton
           ></BaseCard
         ></template
       >
       <template v-else-if="props.mode === 'archive'"
-        ><text class="hint">社区、小区、房屋、居民、设施和工作联系均按当前身份授权查询。</text
+        ><text class="hint">查找小区、房屋与物业工作联系。</text
         ><BaseCard v-for="t in permittedTables" :key="t"
           ><view class="entry-row" @click="open('list', t)"
             ><text>{{ (catalog as any)[t].title }}</text
@@ -475,33 +465,9 @@ onUnmounted(() => {
           ></BaseCard
         ></template
       >
-      <template v-else-if="['service', 'mall', 'operation', 'order'].includes(props.mode)"
-        ><BaseCard
-          ><AppIcon name="bill" :size="36" /><text class="group-title">{{
-            props.mode === 'mall'
-              ? '原商城项目交付说明'
-              : props.mode === 'order'
-                ? '订单入口说明'
-                : props.mode === 'operation'
-                  ? '经营入口说明'
-                  : '社区服务入口'
-          }}</text
-          ><text class="hint">{{
-            props.mode === 'mall'
-              ? '商城由原项目独立交付，本原型不重复演示交易全链路。'
-              : props.mode === 'order'
-                ? '商品订单由原商城项目交付，服务订单在后续阶段实施。'
-                : props.mode === 'operation'
-                  ? '商品经营沿用原商城项目；后续服务入口在获准阶段增量接入。'
-                  : '当前可使用房屋关系、个人车辆和结果消息；预约、支付等业务待对应阶段。'
-          }}</text
-          ><AppButton v-if="APP === 'resident'" variant="quiet" @click="open('list', 'relations')"
-            >进入我的房屋</AppButton
-          ><AppButton v-else variant="quiet" @click="tab('/pages/profile/index')"
-            >查看当前身份</AppButton
-          ></BaseCard
-        ></template
-      >
+      <template v-else-if="props.mode === 'service'"><text class="group-title">房屋服务</text><BaseCard><view class="entry-row" @click="open('list','relations')"><text>我的房屋</text><text>›</text></view><view class="entry-row" @click="open('list','applications')"><text>申请记录</text><text>›</text></view><view class="entry-row" @click="open('list','vehicles')"><text>我的车辆</text><text>›</text></view></BaseCard></template>
+      <template v-else-if="props.mode === 'mall' || props.mode === 'operation'"><view class="list-toolbar"><input v-model="filter" :placeholder="props.mode === 'mall' ? '搜索商品' : '搜索商品名称'"/></view><BaseCard><view class="empty-state"><AppIcon name="shop" :size="42"/><text class="group-title">暂无商品</text><text class="hint">{{filter ? '未找到符合条件的商品' : '商品上架后将在这里展示'}}</text></view></BaseCard></template>
+      <template v-else-if="props.mode === 'order'"><view class="order-filters"><button v-for="state in ['全部','待付款','待发货','待收货','已完成']" :key="state" :class="{'is-current':filter===state || (!filter && state==='全部')}" @click="filter=state">{{state}}</button></view><BaseCard><view class="empty-state"><AppIcon name="order" :size="42"/><text class="group-title">暂无订单</text></view></BaseCard></template>
       <template v-else-if="props.mode === 'list'"
         ><view class="list-toolbar"
           ><input v-model="filter" placeholder="搜索当前列表" :maxlength="-1" /><AppButton
@@ -519,12 +485,12 @@ onUnmounted(() => {
           >查看申请记录（与正式关系分开） ›</text
         ><view v-if="!filteredRows.length && !busy" class="empty-state"
           ><text class="group-title">暂无符合条件的记录</text
-          ><text class="hint">可调整筛选，或从上方发起本阶段支持的操作。</text
+          ><text class="hint">可调整搜索条件后重试。</text
           ><AppButton variant="quiet" @click="load">重新读取</AppButton></view
         ><BaseCard v-for="r in filteredRows" :key="r._id"
           ><view @click="open('detail', props.table, r._id)"
             ><text class="entry-title">{{
-              r._labels[(catalog as any)[props.table].fields[0].name] || r._id
+              cardTitle(r)
             }}</text
             ><view v-for="f in shortFields[props.table] || []" :key="f" class="card-field"
               ><text>{{ f }}</text
@@ -565,12 +531,8 @@ onUnmounted(() => {
           v-if="APP === 'resident' && props.table === 'vehicles'"
           variant="secondary"
           @click="open('edit', 'vehicles', record._id)"
-          >补充／更正后重提</AppButton
-        ><view v-if="props.table === 'messages'" class="actions"
-          ><AppButton variant="quiet" @click="follow">查看关联业务</AppButton
-          ><AppButton variant="secondary" @click="messageSend(false)">模拟处理／重试</AppButton
-          ><AppButton variant="secondary" @click="messageSend(true)">模拟失败</AppButton></view
-        ><template v-if="props.table === 'communities'"
+          >补充／更正后重提</AppButton>
+<template v-if="props.table === 'communities'"
           ><text class="group-title">基础概况</text
           ><BaseCard
             ><view v-for="(v, k) in communityCounts" :key="k" class="control-row"
@@ -593,7 +555,7 @@ onUnmounted(() => {
         ><BaseCard
           ><text class="group-title">{{ props.kind }}申请</text
           ><text class="hint"
-            >本人姓名及联系号码来自个人资料。证明材料及关系字典为演示方案，正式规则待Q05。</text
+            >姓名及联系号码自动带入个人资料，请核对房屋信息。</text
           ><text class="hint">申请人姓名：{{ form['申请人姓名'] }}；房屋选择不显示其他住户。</text></BaseCard
         ><BaseCard
           ><MobileFields
@@ -620,11 +582,9 @@ onUnmounted(() => {
             ></picker
           ><text class="hint link" @click="missing">找不到房屋？反馈地址缺失 ›</text
           ><switch :checked="validity" @change="setValidity" /><text class="hint"
-            >启用有效期样例（非正式政策）</text
-          ></BaseCard
-        ><view class="failure-control"
-          ><switch :checked="failSave" @change="setFailure" /><text>本次模拟失败</text></view
-        ><AppButton variant="secondary" @click="saveDraft">保存本地草稿</AppButton
+            >设置关系有效期</text
+          ></BaseCard>
+<AppButton variant="secondary" @click="saveDraft">保存本地草稿</AppButton
         ><AppButton :loading="busy" @click="save">提交{{ props.kind }}申请</AppButton></template
       >
       <template v-else-if="props.mode === 'edit'"
@@ -639,16 +599,14 @@ onUnmounted(() => {
                   ? ['社区', '小区名称或地址', '具体房屋描述', '联系号码']
                   : vehicleFormNames
             "
-            :errors="fieldErrors" /></BaseCard
-        ><view class="failure-control"
-          ><switch :checked="failSave" @change="setFailure" /><text>本次模拟失败</text></view
-        ><AppButton :loading="busy" @click="props.table === 'missing' ? saveMissing() : save()">{{
-          props.table === 'missing' ? '提交地址缺失反馈' : '保存模拟资料'
-        }}</AppButton
-        ><text class="hint">所有修改仅保存于原型；不更新真实商城资料或授予停车权益。</text></template
+            :errors="fieldErrors" /></BaseCard>
+<AppButton :loading="busy" @click="props.table === 'missing' ? saveMissing() : save()">{{
+          props.table === 'missing' ? '提交地址缺失反馈' : '保存资料'
+        }}</AppButton>
+</template
       > </view
     ><template #tabbar><AppTabbar v-if="top" :items="navigation" :active-path="activePath" /></template
   ></AppPage>
 </template>
 
-<style scoped>.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}</style>
+<style scoped>.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}.order-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.order-filters button{font-size:14px;padding:8px;min-height:40px}.order-filters .is-current{color:#225e46;background:#edf5f0}</style>

@@ -1,12 +1,11 @@
 <template>
   <div class="binding-detail">
     <header class="binding-detail-header">
-      <div><Tag>{{ record['申请类型'] }}</Tag><Tag :color="record['申请状态'] === '待审核' ? 'orange' : 'default'">{{ record['申请状态'] }}</Tag><span class="muted">{{ record['申请编号'] }}</span></div>
-      <Button v-if="canReview && record['申请状态'] === '待审核'" type="primary" @click="$emit('review')">审核申请</Button>
+      <div><Tag>{{ record['申请类型'] }}</Tag><ApplicationStatus :status="record['申请状态']"/><span class="muted">{{ record['申请编号'] }}</span></div>
     </header>
     <Tabs v-model="tab" :animated="false">
       <TabPane label="绑定信息" name="binding">
-        <div class="binding-summary"><strong>{{ record['申请人姓名'] }}</strong><span>{{ record['房屋地址'] }}</span></div>
+        <div class="binding-summary"><strong>{{ record['申请人姓名'] }}</strong><span>{{ text(record, '房屋地址') }}</span></div>
         <Alert v-if="record['申请类型'] === '解除'" type="warning">审核通过后仅解除本次对应关系，申请及其他历史记录保留。</Alert>
         <dl class="detail-grid"><div v-for="name in bindingFields" :key="name" class="detail-row" :data-field="'applications:' + name"><dt>{{ bindingLabel(name) }}</dt><dd>{{ text(record, name) }}</dd></div>
           <div v-if="relation" class="detail-row"><dt>当前关系状态</dt><dd>{{ relation['关系状态'] }}（与本次申请状态分别记录）</dd></div></dl>
@@ -20,20 +19,21 @@
       </TabPane>
       <TabPane label="审核记录" name="history">
         <dl class="detail-grid"><div v-for="name in reviewFields" :key="name" class="detail-row" :data-field="'applications:' + name"><dt>{{ name }}</dt><dd>{{ text(record, name) }}</dd></div></dl>
-        <h3>提交与审核轮次</h3><div v-for="r in rounds" :key="r._id" class="review-round"><strong>{{ r['申请类型'] }} · 第{{ r['审核轮次'] }}轮</strong><span>{{ r['申请状态'] }} · {{ text(r, '提交时间') }}</span><Button size="small" v-if="r._id !== record._id" @click="$emit('application', r)">查看该申请</Button></div>
+        <h3>提交与审核轮次</h3><Table :columns="roundColumns" :data="rounds" border no-data-text="暂无审核记录"/>
         <details v-if="record['维护人'] || record['更新时间']" class="binding-maintenance"><summary>维护信息</summary><p v-for="name in ['维护人', '更新时间'].filter(n => has(record, n))" :key="name">{{ name }}：{{ text(record, name) }}</p></details>
-        <HistoryPanel :records="history" />
       </TabPane>
     </Tabs>
   </div>
 </template>
 <script>
 import HistoryPanel from './HistoryPanel.vue'
+import ApplicationStatus from './ApplicationStatus.vue'
 import { service } from '../services/foundation'
 export default {
-  components: { HistoryPanel }, props: ['record', 'history', 'canReview', 'proofError'],
+  components: { HistoryPanel, ApplicationStatus }, props: ['record', 'history', 'canReview', 'proofError'],
   data: () => ({ tab: 'binding', house: null, relation: null, rounds: [], houseError: '', ticket: 0, loadedId: '' }),
   computed: {
+    roundColumns() { return ['申请类型','审核轮次','申请状态','提交时间','审核人','审核时间','对外审核说明','内部审核备注'].map(key => ({title:key,key,minWidth:/说明|备注/.test(key)?220:130,render:(h,p)=>key==='申请状态'?h(ApplicationStatus,{props:{status:p.row[key]}}):h('span',this.text(p.row,key)||'—')})) },
     bindingFields() { return ['当前关系类型', '申请关系类型', '申请有效起始日', '申请有效结束日', '申请说明', '证明说明', '提交时间'].filter(n => this.has(this.record, n)) },
     houseFields() { return ['所属社区', '所属小区', '所属楼栋', '所属单元', '房号', '房屋编号', '房屋用途', '房屋面积'].filter(n => this.has(this.house, n)) },
     reviewFields() { return ['审核操作', '审核人', '审核时间', '对外审核说明', '内部审核备注', '撤回时间'].filter(n => this.has(this.record, n)) },

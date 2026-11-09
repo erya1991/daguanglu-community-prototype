@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-09T06:29:21.010Z",
+  "builds": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "start": "2026-11-09T06:25:49.050Z",
+      "end": "2026-11-09T06:26:06.458Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-menu-detail/web.log"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+      "start": "2026-11-09T06:26:06.461Z",
+      "end": "2026-11-09T06:26:25.910Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-menu-detail/staff-h5.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "start": "2026-11-09T06:26:25.911Z",
+      "end": "2026-11-09T06:26:31.340Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage00-menu-detail/staff-types.log"
+    }
+  ],
+  "browser": [
+    {
+      "id": "MENU-DEFAULT-OPEN",
+      "status": "PASS"
+    },
+    {
+      "id": "MENU-MANUAL-FOLD-RETAINED",
+      "status": "PASS"
+    },
+    {
+      "id": "ESTATE-DETAIL-NO-NUMBER",
+      "status": "PASS"
+    },
+    {
+      "id": "LOCAL-ONLY-NO-JS-ERROR",
+      "status": "PASS"
+    }
+  ],
+  "artifacts": [
+    {
+      "source": ".runtime/stage00-menu-detail/web.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-web.log",
+      "sha256": "1026ea8b70c5e364a3393ed359591c8ec6e858bcab21b840799bd69ff4a712dc",
+      "bytes": 2609
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/staff-h5.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-staff-h5.log",
+      "sha256": "8392e97af599152b7b42415aa872e17e3966337e56bab660dab8ece6c33b1573",
+      "bytes": 6510
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/staff-types.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-staff-types.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/browser-first.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-browser-first.log",
+      "sha256": "6e7b170fe40ff23a0ea8c3edc1fb24f2519553c4f5c84f54939cf634f033aa9c",
+      "bytes": 294
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/browser-final.log",
+      "path": "docs/stages/stage-00/evidence/r3-followup/logs/menu-detail-browser-final.log",
+      "sha256": "c97664ce79a7ab2cf4d5d0a8d9b3a1a0a209288bd78f633aacbe2e0a95fdc737",
+      "bytes": 115
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/MENU_DETAIL_1794205707626/menu-expanded.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/menu-detail-menu-expanded.png",
+      "sha256": "f1431a7c8db67700ba55cb986d1d963b72dc221a692fac198bb8731ad0480161",
+      "bytes": 49788
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/MENU_DETAIL_1794205707626/staff-estate-detail.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/menu-detail-staff-estate-detail.png",
+      "sha256": "3559f085dc7d507ee02a6eeee2e54704fdfdcf676b89308e5a62b9ea5a551c4e",
+      "bytes": 23008
+    },
+    {
+      "source": ".runtime/stage00-menu-detail/MENU_DETAIL_1794205707626/web-estate-detail.png",
+      "path": "docs/stages/stage-00/evidence/r3-followup/screenshots/menu-detail-web-estate-detail.png",
+      "sha256": "cf688eecf9026e71209bb5adf63e949ecb45688a0a46ee56c03be1dd9586a152",
+      "bytes": 92583
+    }
+  ],
+  "protectedDocuments": 8,
+  "protectedStage01Sources": 3,
+  "branch": "stage/00-foundation",
+  "head": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "indexEmpty": true,
+  "commitPushMerge": "NOT_RUN",
+  "native": "NOT_RUN per owner scope",
+  "owner": "待负责人复验；NOT_STAGE_PASS",
+  "note": "默认全展开；手动折叠保留；叶子选择不改展开状态。Web及物业H5小区详情隐藏编号，内部编号和关联保留。首次浏览器标题正则匹配空白失败，修正探针后四项复测通过；原失败和日志保留。"
+}

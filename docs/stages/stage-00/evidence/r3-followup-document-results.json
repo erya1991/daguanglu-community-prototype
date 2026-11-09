@@ -1,0 +1,16 @@
+{
+  "baselineRef": "e8ad276e72b81ca6dfd3146097fc320a60b30d11",
+  "date": "2026-11-09T06:29:21.753Z",
+  "files": 36,
+  "localLinks": 1837,
+  "markdownTables": 1039,
+  "scenarios": 31,
+  "pass": 27,
+  "blocked": 4,
+  "scenarioCountsScope": "Preserved historical S00-T01 through T31 records; not current R3 execution or owner acceptance",
+  "externalQuestionsUnchanged": true,
+  "authorizedScope": "Stage00 R3 including two appended unresolved questions",
+  "outsideAuthorizedStagePackagesUnchanged": true,
+  "protectedPackageCount": 53,
+  "errors": []
+}

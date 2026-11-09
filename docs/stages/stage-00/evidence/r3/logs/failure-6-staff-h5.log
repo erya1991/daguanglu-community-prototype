@@ -1,0 +1,63 @@
+
+> build:h5
+> node ../../scripts/run-uni.mjs h5 build
+
+Compiler version: 5.24（vue3）
+Compiling...
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+4 │ @import './_shared/theme/global.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 4:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+5 │ @import './_shared/foundation/foundation.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 5:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import './foundation-base.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\foundation\foundation.scss 1:9  @import
+    src\App.vue 5:9                             root stylesheet
+
+x Build failed in 3.06s
+[vite:vue] [plugin vite:vue] src/_shared/foundation/FoundationPage.vue (355:5): Element is missing end tag.
+file: D:/git/daguanglu-community-prototype/miniapp/apps/staff-miniapp/src/_shared/foundation/FoundationPage.vue:355:5
+Build failed with errors.
+npm error Lifecycle script `build:h5` failed with error:
+npm error code 1
+npm error path D:\git\daguanglu-community-prototype\miniapp\apps\staff-miniapp
+npm error workspace @daguanglu/staff-miniapp
+npm error location D:\git\daguanglu-community-prototype\miniapp\apps\staff-miniapp
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node ../../scripts/run-uni.mjs h5 build
