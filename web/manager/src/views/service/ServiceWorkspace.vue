@@ -154,7 +154,7 @@
         >当前范围暂无可计算的经营事实。</Alert
       >
     </div>
-    <div v-else class="list-card">
+    <div v-else class="list-card" :class="{ 'category-list': activeView === 'categories' }">
       <div class="list-heading">
         <strong>{{ config.title }}记录</strong
         ><span>{{ filteredRows.length }} 条</span>
@@ -175,7 +175,7 @@
                 :data-field="fieldIdFor(column)"
               >
                 <span
-                  :class="{ 'status-badge': /状态|进度|有效性/.test(column) }"
+                  :class="{ 'status-badge': /状态|进度|有效性/.test(column), 'category-child': activeView === 'categories' && column === '类目名称' && row['上级类目'] }"
                   >{{ cell(row, column) }}</span
                 >
               </td>
@@ -1088,6 +1088,12 @@ export default {
   min-width: 0;
   overflow: hidden;
 }
+.category-list .service-table th { background: #e9f3fd; color: #314154; }
+.category-list .service-table td { height: 49px; }
+.category-list .service-table tbody tr:hover { background: #f5f8fc; }
+.category-list .service-table .action-column .ivu-btn { color: #2d8cf0; }
+.category-list .category-child { display: inline-block; padding-left: 22px; }
+.category-list .category-child::before { content: "— "; color: #9ba7b4; }
 .list-heading {
   padding: 16px 18px;
   display: flex;
