@@ -285,9 +285,12 @@ export function paymentCommand(s, ctx, command, p) {
   if (command === "createCheck") {
     need(isPropertyOperator(a) && ctx.app === "web", "核查在物业Web办理");
     const existing = d.payments.find((x) => x._id === p.id);
+    const table = existing ? 'payments' : p.table || 'bills';
+    need(['payments','bills','monthly','temporary'].includes(table),'核对对象无效');
     const target = existing
       ? get(s, a, "payments", p.id)
-      : get(s, a, "bills", p.id);
+      : get(s, a, table, p.id);
+    revision(target,p);
     const pay = existing || { ...target, _business: target._id, PY10: "" };
     const r = addCheck(s, a, pay, p.kind || "业务核查", p.note || "");
     return { id: r._id, message: "核查记录已建立" };

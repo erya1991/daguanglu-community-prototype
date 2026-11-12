@@ -1,7 +1,7 @@
 <template>
   <form class="s1-form" @submit.prevent="$emit('submit')">
     <div v-for="id in active" :key="id" class="s1-form-field" :data-field="id">
-      <label :for="'s1-' + id">{{ fields[id].name }}</label
+      <label :for="'s1-' + id">{{ fields[id].name }}<span v-if="required(id)" class="s1-required" aria-hidden="true"> *</span></label
       ><Evidence
         v-if="attachmentIds.includes(id) && id !== 'EV13'"
         :value="value[id] || []"
@@ -21,9 +21,11 @@
       <select
         v-else-if="opts(id)"
         :id="'s1-' + id"
+        :aria-required="required(id) ? 'true' : undefined"
         :value="value[id] || ''"
         :disabled="
           (id === 'TB03' && value.TB13 === '已发布') ||
+          (id === 'WO15' && !!value.WO10) ||
           (id === 'PK02' && value._identityLocked)
         "
         @change="set(id, $event.target.value)"
@@ -35,12 +37,14 @@
       ><textarea
         v-else-if="/多行/.test(fields[id].type)"
         :id="'s1-' + id"
+        :aria-required="required(id) ? 'true' : undefined"
         :value="value[id] || ''"
         @input="set(id, $event.target.value)"
         rows="3"
       /><input
         v-else
         :id="'s1-' + id"
+        :aria-required="required(id) ? 'true' : undefined"
         :type="inputType(id)"
         :value="value[id] === undefined ? '' : value[id]"
         :readonly="id === 'RV02' || (id === 'PK04' && value._identityLocked)"
@@ -54,6 +58,7 @@
 import {
   fieldById,
   activeFields,
+  isRequiredField,
   choices,
   attachmentFields,
 } from "../../../../../prototype-shared/stage01/ui.js";
@@ -68,6 +73,7 @@ export default {
     errors: { type: Object, default: () => ({}) },
     role: { default: "property" },
     kind: String,
+    record: { type: Object, default: () => ({}) },
     publicCandidates: { type: Array, default: () => [] },
   },
   data: () => ({ fields: fieldById, attachmentIds: attachmentFields }),
@@ -77,6 +83,7 @@ export default {
     },
   },
   methods: {
+    required(id) { return isRequiredField(this.action, id, this.value, this.record); },
     set(id, v) {
       const n = { ...this.value, [id]: v };
       if (id === "RP09") n.RP10 = "";

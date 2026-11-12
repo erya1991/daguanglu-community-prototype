@@ -1,0 +1,214 @@
+{
+  "candidate": "S02_2026-11-09T03-25-51-330Z",
+  "createdAt": "2026-11-09T03:25:51.330Z",
+  "workspace": "D:\\git\\daguanglu-community-prototype-stage02",
+  "branch": "stage/02-service-prototype",
+  "committedBaseline": "348363b7410ff90f062f75b93242f03bb246d4c1",
+  "implementationUncommitted": true,
+  "contentManifestSha256": "2cb96e78d095d723eb8189ec950242ae258c290ef87bea28b6a6061f604a3532",
+  "files": [
+    {
+      "path": "docs/stages/stage-02/ACCEPTANCE.md",
+      "sha256": "022c96925a09be6c51248c5268db067f177c0a14d11d6913279c2ea9b44b209a",
+      "bytes": 157312
+    },
+    {
+      "path": "docs/stages/stage-02/RESULT.md",
+      "sha256": "3aa5e8c0c276bcc0513510ecfdb9e0d8233575199e7f8340e631fa716c13c2e7",
+      "bytes": 39072
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json",
+      "sha256": "1dbc16d5f5ae3e6d532c3a651e82c9dfdcaf970c0f2e06969c1d944eb6957912",
+      "bytes": 164666
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+      "sha256": "bc7f6e1942201a95d8512a6b549d7b6452ea1a3dc9fef9a4a7b60b1246ec6c69",
+      "bytes": 160569
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/browser-regression.json",
+      "sha256": "5e580f49d4aca870216c03c10917a3ec688057a14b336f48dd8649ab44dd485c",
+      "bytes": 3420
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+      "sha256": "14dd54c6356b45745e2316365a26fd1acc2ebcb5f796f97de0b8f341c934abfd",
+      "bytes": 4183
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/browser-web.json",
+      "sha256": "64b0d109640a06e206d22c7557b5f478a8ac8a09561ffcf2eb2d67e16f508581",
+      "bytes": 196865
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/build-artifacts.json",
+      "sha256": "25ae1a417183e71ee5a47cdaa19570d288a470b53f7551ea89bfac06404b07f3",
+      "bytes": 167396
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/build-results.json",
+      "sha256": "80f11e729cce7a0ac808022e5375294c96d4f0d26ec18050f3416874ab26977f",
+      "bytes": 4323
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/field-gap-classification.json",
+      "sha256": "cab995c3a076a8bc8241d45bf4fba57586be5592d1893d7391b405cdbffd242a",
+      "bytes": 169728
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/security-browser.json",
+      "sha256": "142e3181acd9abc82a13f2d2c7a61271f175428e90a07d4eb7384a275b86232c",
+      "bytes": 14884
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/source-protection-final.json",
+      "sha256": "9a09a14496fc1ab8eacf6a32ebc47c2e238a7ef26664df204dd84b1773277de2",
+      "bytes": 2578
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/static-results.json",
+      "sha256": "46c9e0f93668a3f684955fc1c8237209eace201303362453c74ac2b955b8071b",
+      "bytes": 1788
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-20261109/validation-summary.json",
+      "sha256": "6bfc120fb6ca64704dc2e2d000115625d4e195d693a09b69c6d25b04cded2dd6",
+      "bytes": 2725
+    },
+    {
+      "path": "docs/stages/stage-02/evidence/review-gap-verification.json",
+      "sha256": "7914d4ce71b52ee0d73c1c85bdf60282a3a126ff9e6ca38f31c6deaf554767f4",
+      "bytes": 5082
+    },
+    {
+      "path": "miniapp/packages/service/FieldGroup.vue",
+      "sha256": "9bc0018e90bf3418494681604f8f81eeacb4f432ada88c92b2604eecba0e50c9",
+      "bytes": 21966
+    },
+    {
+      "path": "miniapp/packages/service/ServicePage.vue",
+      "sha256": "a00799241abffe7d201c2a13e8f48326ee5e4c81b4cba9c9206664b80ca9149b",
+      "bytes": 68418
+    },
+    {
+      "path": "miniapp/packages/service/SupplyEditor.vue",
+      "sha256": "994be1238ab8bab2345a1d81bd251afee7296501789f233e2e58803d79c0010f",
+      "bytes": 8576
+    },
+    {
+      "path": "prototype-shared/service/aftersale.js",
+      "sha256": "781124ec81c12f26149b2a53acd7117003835ae091ec8c8b5c87ae4ff80e58a4",
+      "bytes": 19196
+    },
+    {
+      "path": "prototype-shared/service/common.js",
+      "sha256": "3f57fc6a6b9b2600742827f95bba7b5035b68f31c0422ea10e4a6dedf0b717aa",
+      "bytes": 19786
+    },
+    {
+      "path": "prototype-shared/service/funds.js",
+      "sha256": "465f8710277b3f5cd7a7b6d4758301436b0053bfe93f52aef4683ff90a6316ca",
+      "bytes": 14256
+    },
+    {
+      "path": "prototype-shared/service/index.js",
+      "sha256": "8389481467f5712e184beed94b780200f3324be5131e84b5a4f9cbaf14ef77da",
+      "bytes": 51656
+    },
+    {
+      "path": "prototype-shared/service/orders.js",
+      "sha256": "56480a8f9c280370aaaaabd705526217a1c35d17f96f10acb8235421cd18079d",
+      "bytes": 32454
+    },
+    {
+      "path": "prototype-shared/service/seed.js",
+      "sha256": "d730c013c5c25b17b5c582f60f492f312311d980415f4818fc7be2c58f9fc5ff",
+      "bytes": 17356
+    },
+    {
+      "path": "prototype-shared/service/supply.js",
+      "sha256": "ab2e224ff6649fa83b6f7e16537d77a42add9f591d1ca27637ebe3ce757c293f",
+      "bytes": 27047
+    },
+    {
+      "path": "scripts/audit-service-field-gaps.mjs",
+      "sha256": "20788520f2b93d80996d582834497b63eaac60057bf3c5e6ee9a40312b523f7a",
+      "bytes": 20722
+    },
+    {
+      "path": "scripts/browser-service-fields.mjs",
+      "sha256": "b0098c13df8ca1b3b992592d2d17641a02b29556d1bad5df612f003a7f8474de",
+      "bytes": 33195
+    },
+    {
+      "path": "scripts/browser-service-flows.mjs",
+      "sha256": "3a35d199c94bfc11b779dbb8e4a6a215bd6620de4c838c568c9f664ba23acf58",
+      "bytes": 33680
+    },
+    {
+      "path": "scripts/browser-service-review.mjs",
+      "sha256": "51879a646b2b4fa31cc9312f859c2a02651f7f748c63f4d9802f82bd4592f50c",
+      "bytes": 20476
+    },
+    {
+      "path": "scripts/browser-service-security.mjs",
+      "sha256": "b80371396b5e2e920e6380e98e61363e12a7ada5375faf33f4840a2b7492b4c0",
+      "bytes": 35703
+    },
+    {
+      "path": "scripts/browser-service-web.mjs",
+      "sha256": "4c21a3bd19567bb1b7ef9f9da6c07a94791eca9b4f840a6a9de0fad71e55da02",
+      "bytes": 25141
+    },
+    {
+      "path": "scripts/browser-stage02-regression.mjs",
+      "sha256": "7f0650cab5521f61fda9f77e793334e0a7788e92e28fa565b8101cd52a0eb56d",
+      "bytes": 5514
+    },
+    {
+      "path": "scripts/check-stage02.mjs",
+      "sha256": "4c71fa3dff2f2a8f198329006e1f11eee00f8f81fa259c46c3aca400e780b666",
+      "bytes": 8092
+    },
+    {
+      "path": "scripts/snapshot-stage02.mjs",
+      "sha256": "81185cf18b7275da70d0cde47924890ada697080a24d4c777279fa0c247b5f1b",
+      "bytes": 5772
+    },
+    {
+      "path": "scripts/verify-builds.mjs",
+      "sha256": "c5c491a753c39d749503403534d8cbed4f90d279268e1ff9263ffb5330f49209",
+      "bytes": 6263
+    },
+    {
+      "path": "tests/service-review.test.mjs",
+      "sha256": "2a60161018a2d1d27e530474fb3f4552dd438ef47131b830fca8b56137c3743b",
+      "bytes": 20515
+    },
+    {
+      "path": "tests/service-variants.test.mjs",
+      "sha256": "70b7fd8470ca099d753e4f1083870b897bce506ffd70032e8bae3a45b706564b",
+      "bytes": 34997
+    },
+    {
+      "path": "tests/service.test.mjs",
+      "sha256": "4cb9a45d8721d5362d07933e24b6f81c26acb7c2b13c2f11f2bf634323bafcb0",
+      "bytes": 59028
+    },
+    {
+      "path": "web/manager/src/components/service/ServiceFields.vue",
+      "sha256": "178b464ef5a54f47634418f00ae114f4c48344ddb3c0567ec531ebe6300bba55",
+      "bytes": 20743
+    },
+    {
+      "path": "web/manager/src/views/service/ServiceWorkspace.vue",
+      "sha256": "471849ebc8ba1a26f6b07cbf1586802b1c514bdba703ca27df864b97ecb9319c",
+      "bytes": 39567
+    }
+  ],
+  "sourceProtection": "docs/stages/stage-02/evidence/review-20261109/source-protection-final.json",
+  "ownerAcceptance": "NOT_RUN",
+  "stagePass": false
+}

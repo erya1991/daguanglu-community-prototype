@@ -1,0 +1,42 @@
+[
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/bill-tabs.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-13-42-733Z/bill-tabs.png",
+    "sha256": "906f47b5cb893240bce81895367e7767ede36b40e88f3bd658a25991aca4751d"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/parking-details-list.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-13-42-733Z/parking-details-list.png",
+    "sha256": "712919872e6fc42eb980040390325148a5785407536d13ff649b4d44e3e61fc7"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/web-1024.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-13-42-733Z/web-1024.png",
+    "sha256": "669e1d11a0af655ea4f7b5a1e13d237dcfc916c34b85be8d5db82e7500b24e2b"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/resident-320.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-13-42-733Z/resident-320.png",
+    "sha256": "234ac9866c5009be89509f0c84008e9915eed2113018f86f3df7479f43460ff3"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/repair-evaluated.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/repair-evaluated.png",
+    "sha256": "cacd1f73e2f9a8e58952b62ea9a0738b225127f61f0d598735ecba3e9213ba15"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/hazard-public-result.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/hazard-public-result.png",
+    "sha256": "5131f5cb95d4ad3a08224efb2e7fbeab7f66267eeccb9120ad080235d4b51ccd"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/detail-probe.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/detail-probe.png",
+    "sha256": "e4bff6848a2dc54adcac25d6479d603b776b1c7254d62c2f7cd12b9253ebeb48"
+  },
+  {
+    "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/stage00-spaces.png",
+    "source": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/stage00-spaces.png",
+    "sha256": "de572442deacc7a3f93bb26ea3305a188b4b4ccdc304ebcd6e3b834de8a8ad83"
+  }
+]

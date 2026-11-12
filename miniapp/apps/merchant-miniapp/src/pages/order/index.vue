@@ -1,8 +1,9 @@
 <script setup lang="ts">
+defineOptions({inheritAttrs:false})
 import {ref} from 'vue'
 import {onLoad} from '@dcloudio/uni-app'
-import FoundationPage from '@/_shared/foundation/FoundationPage.vue'
-const id=ref(''),kind=ref('绑定'),previous=ref('')
-onLoad((q:any)=>{id.value=q?.id||'';kind.value=q?.kind||'绑定';previous.value=q?.previous||''})
+import PortalPage from '@/_shared/portal/PortalPage.vue'
+const status=ref('')
+onLoad((q:any)=>{let value=q?.status||'';for(let i=0;i<3;i++){try{const next=decodeURIComponent(value);if(next===value)break;value=next}catch{break}}status.value=value})
 </script>
-<template><FoundationPage mode="order" table="" :id="id" :kind="kind" :previous="previous"/></template>
+<template><PortalPage mode="order" :initial-status="status"/></template>

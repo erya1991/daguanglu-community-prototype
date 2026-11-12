@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-09T13:19:14.248Z",
+  "installed": "微信开发者工具2.01.2510290",
+  "probe": "cli.bat islogin",
+  "result": "BLOCKED",
+  "reason": "IDE service port disabled / 工具的服务端口已关闭；未输入y、未改变安全设置，结束本次等待进程",
+  "build": "三端mp-weixin全部成功；组件引用完整性另有静态检查",
+  "toolPages": "NOT_RUN",
+  "device": "NOT_RUN，无真机证据",
+  "ownerRetest": "NOT_RUN",
+  "realIntegration": "NOT_RUN"
+}

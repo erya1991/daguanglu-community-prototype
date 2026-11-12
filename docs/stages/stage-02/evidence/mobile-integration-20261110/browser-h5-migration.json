@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-09T15:01:59.145Z",
+  "run": "MIGRATION-1794236518100",
+  "status": "PASS",
+  "result": {
+    "namespace": "dgl-community-prototype-stage00",
+    "houseMarker": "旧工作区独立验收标记",
+    "stableIds": true,
+    "rootDataAfterWrite": true,
+    "stage01AfterWrite": true,
+    "serviceAfterWrite": true,
+    "oldDraft": "原未提交输入",
+    "newDraft": "新输入",
+    "otherSessionUnchanged": true,
+    "blob": "unchanged-evidence",
+    "versions": {
+      "root": 2,
+      "product": 3,
+      "stage01": 2,
+      "service": 1
+    }
+  },
+  "scope": "Isolated browser profile with a copied R3 fixture; no user browser data read, cleared or modified"
+}

@@ -1,0 +1,97 @@
+{
+  "run": "R1-FLOW-2026-11-09T13-04-12-719Z",
+  "session": "stage01-R1-FLOW-2026-11-09T13-04-12-719Z",
+  "base": "http://127.0.0.1:19202",
+  "results": [
+    {
+      "id": "property-pay",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/property-paid.png",
+        "url": "http://127.0.0.1:19202/resident/?session=stage01-R1-FLOW-2026-11-09T13-04-12-719Z#/pages/stage01/payments/detail?id=S1-PY-000014"
+      },
+      "at": "2026-11-09T13:04:23.759Z"
+    },
+    {
+      "id": "repair-submit",
+      "status": "PASS",
+      "detail": {
+        "url": "http://127.0.0.1:19202/resident/?session=stage01-R1-FLOW-2026-11-09T13-04-12-719Z#/pages/stage01/repairs/detail?id=S1-RP-000020&table=reports",
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/repair-submitted.png"
+      },
+      "at": "2026-11-09T13:04:26.868Z"
+    },
+    {
+      "id": "repair-property-work",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/repair-review.png"
+      },
+      "at": "2026-11-09T13:04:45.680Z"
+    },
+    {
+      "id": "repair-resident-confirm-evaluate",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/repair-evaluated.png"
+      },
+      "at": "2026-11-09T13:05:02.153Z"
+    },
+    {
+      "id": "monthly-new-and-renewal",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/monthly-renewed.png"
+      },
+      "at": "2026-11-09T13:05:18.611Z"
+    },
+    {
+      "id": "temporary-payment",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/temporary-paid.png"
+      },
+      "at": "2026-11-09T13:05:28.805Z"
+    },
+    {
+      "id": "hazard-resident-to-staff-close",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/hazard-public-result.png",
+        "staff": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/hazard-closed.png"
+      },
+      "at": "2026-11-09T13:05:35.973Z"
+    },
+    {
+      "id": "r1-import-publish-manual-check",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/merged-payment-check.png"
+      },
+      "at": "2026-11-09T13:05:54.806Z"
+    },
+    {
+      "id": "r1-manual-task-classification-and-cancel",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/manual-task-original-report.png"
+      },
+      "at": "2026-11-09T13:06:27.752Z"
+    },
+    {
+      "id": "stage00-affected-readonly-regression",
+      "status": "PASS",
+      "detail": {
+        "checks": "Stage00空间入口与绑定可达；住户身份保留；管理端收费只读"
+      },
+      "at": "2026-11-09T13:06:33.361Z"
+    },
+    {
+      "id": "r1-list-detail-filters",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n2 !== 1\n",
+      "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T13-04-12-719Z/r1-list-detail-filters-resident-failure.png"
+    }
+  ],
+  "errors": []
+}

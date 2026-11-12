@@ -1,0 +1,81 @@
+{
+  "run": "REGRESSION-2026-11-09T03-12-15-277Z",
+  "base": "http://127.0.0.1:19220",
+  "session": "stage02-REGRESSION-2026-11-09T03-12-15-277Z",
+  "results": [
+    {
+      "id": "existing-web-routes",
+      "acs": [
+        "AC02-052"
+      ],
+      "status": "PASS",
+      "detail": [
+        {
+          "route": "spaces",
+          "title": "社区房屋档案"
+        },
+        {
+          "route": "property/bills",
+          "title": "物业费账单"
+        },
+        {
+          "route": "property/payments",
+          "title": "缴费记录与异常"
+        },
+        {
+          "route": "parking/business",
+          "title": "停车业务"
+        },
+        {
+          "route": "workorders/events",
+          "title": "待核实事件"
+        },
+        {
+          "route": "workorders/tasks",
+          "title": "工单办理"
+        }
+      ]
+    },
+    {
+      "id": "h5-service-reset-preserves-existing-facts",
+      "acs": [
+        "AC02-052"
+      ],
+      "status": "PASS",
+      "detail": {
+        "foundationUnchanged": true,
+        "stage01Unchanged": true
+      }
+    },
+    {
+      "id": "three-mobile-home-shells",
+      "acs": [
+        "AC02-052"
+      ],
+      "status": "PASS",
+      "detail": [
+        {
+          "app": "resident",
+          "route": "/pages/home/index",
+          "text": "大光路社区\n演示模式 · 虚构数据\n林示例\n便民服务\n入驻服务商 · 上门服务与预约到点\n发现服务\n我的服务订单\n物业服务\n物业缴费\n停车服务\n报事报修\n隐患随手拍\n业务记录\n青禾示例社区\n仅演示\n0\n邻里相伴，生活更安心\n社区基础服务，从这里开始\n我的房屋\n关系申请\n我的车辆\n结果消息\n社区基础服务\n查看申请进度\n绑定、变更和解除的每一轮都有记录\n›\n社区商城\n原商城项目交付，本原型提供范围说明\n›\n首页\n服务\n商城\n我的",
+          "horizontalOverflow": false
+        },
+        {
+          "app": "merchant",
+          "route": "/pages/workbench/index",
+          "text": "工作台\n演示模式 · 虚构数据\n演示商户\n服务经营\n服务待办\n服务经营\n商户工作台\n演示商户\n当前所属组织：望江物业（虚构）\n可见范围：本人／本主体\n经营入口\n商品与商城交易由原项目交付；便民服务在后续阶段开展。此处不生成经营、订单或资金统计。\n查看经营范围\n工作台\n经营\n订单\n我的",
+          "horizontalOverflow": false
+        },
+        {
+          "app": "staff",
+          "route": "/pages/workbench/index",
+          "text": "工作台\n演示模式 · 虚构数据\n物业管理员\n物业办理\n工单待办\n现场上报\n收费查询\n社区与物业管理\n物业管理员\n当前所属组织：青禾物业（虚构）\n可见范围：青禾示例社区\n基础档案查询\n社区档案\n按当前授权查询 ›\n房间（房屋）\n按当前授权查询 ›\n居民档案\n按当前授权查询 ›\n车辆档案\n按当前授权查询 ›\n设施点位\n按当前授权查询 ›\n物业人员\n按当前授权查询 ›\n工作台\n档案\n我的",
+          "horizontalOverflow": false
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "blockedRequests": [],
+  "scope": "Actual shared-entry regression in this isolated worktree only; does not import or test uncommitted Stage01 work."
+}

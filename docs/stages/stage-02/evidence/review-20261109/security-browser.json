@@ -1,0 +1,462 @@
+{
+  "run": "SECURITY-2026-11-09T03-11-57-000Z",
+  "session": "stage02-SECURITY-2026-11-09T03-11-57-000Z",
+  "base": "http://127.0.0.1:19220",
+  "executedAt": "2026-11-09T03:12:13.783Z",
+  "skipped": [],
+  "results": [
+    {
+      "id": "internal-ruling-binding-authority",
+      "acs": [
+        "AC02-031",
+        "AC02-042"
+      ],
+      "status": "PASS",
+      "detail": {
+        "saleId": "S02-SALE-000114",
+        "attachmentId": "local-1794193921165-5j5fx2wyw1g",
+        "bindingVisibilityWasPublicAtUpload": true,
+        "attempts": [
+          {
+            "app": "resident",
+            "account": "resident-a",
+            "name": "omitted-field",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "resident",
+            "account": "resident-a",
+            "name": "forged-public-field",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "resident",
+            "account": "resident-a",
+            "name": "no-record-context",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "resident",
+            "account": "resident-a",
+            "name": "base-owned",
+            "allowed": false,
+            "message": "无权读取此本地附件"
+          },
+          {
+            "app": "resident",
+            "account": "resident-a",
+            "name": "base-attachment",
+            "allowed": false,
+            "message": "未获准的附件访问"
+          },
+          {
+            "app": "merchant",
+            "account": "merchant",
+            "name": "omitted-field",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "merchant",
+            "account": "merchant",
+            "name": "forged-public-field",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "merchant",
+            "account": "merchant",
+            "name": "no-record-context",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "merchant",
+            "account": "merchant",
+            "name": "base-owned",
+            "allowed": false,
+            "message": "无权读取此本地附件"
+          },
+          {
+            "app": "merchant",
+            "account": "merchant",
+            "name": "base-attachment",
+            "allowed": false,
+            "message": "未获准的附件访问"
+          },
+          {
+            "app": "staff",
+            "account": "property-admin",
+            "name": "omitted-field",
+            "allowed": false,
+            "message": "当前应用或身份不办理便民服务"
+          },
+          {
+            "app": "staff",
+            "account": "property-admin",
+            "name": "forged-public-field",
+            "allowed": false,
+            "message": "当前应用或身份不办理便民服务"
+          },
+          {
+            "app": "staff",
+            "account": "property-admin",
+            "name": "no-record-context",
+            "allowed": false,
+            "message": "当前应用或身份不办理便民服务"
+          },
+          {
+            "app": "staff",
+            "account": "property-admin",
+            "name": "base-owned",
+            "allowed": false,
+            "message": "当前应用或身份不办理便民服务"
+          },
+          {
+            "app": "staff",
+            "account": "property-admin",
+            "name": "base-attachment",
+            "allowed": false,
+            "message": "未获准的附件访问"
+          },
+          {
+            "app": "web",
+            "account": "service-web-limited",
+            "name": "omitted-field",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "web",
+            "account": "service-web-limited",
+            "name": "forged-public-field",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "web",
+            "account": "service-web-limited",
+            "name": "no-record-context",
+            "allowed": false,
+            "message": "内部裁定依据仅授权Web可见"
+          },
+          {
+            "app": "web",
+            "account": "service-web-limited",
+            "name": "base-owned",
+            "allowed": false,
+            "message": "无权读取此本地附件"
+          },
+          {
+            "app": "web",
+            "account": "service-web-limited",
+            "name": "base-attachment",
+            "allowed": false,
+            "message": "未获准的附件访问"
+          }
+        ],
+        "authorized": {
+          "allowed": true,
+          "name": "线下裁定内部依据.png",
+          "bytes": 690
+        },
+        "rulingVersion": 1,
+        "screenshot": ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/ruling-security-web.png"
+      }
+    },
+    {
+      "id": "owner-cannot-bypass-internal-visibility",
+      "acs": [
+        "AC02-042"
+      ],
+      "status": "PASS",
+      "detail": [
+        {
+          "app": "resident",
+          "account": "resident-a",
+          "kind": "service",
+          "attachmentId": "local-1794193921831-7p3qo2ghstq",
+          "allowed": false,
+          "message": "内部附件仅授权Web可见"
+        },
+        {
+          "app": "resident",
+          "account": "resident-a",
+          "kind": "owned",
+          "attachmentId": "local-1794193921831-7p3qo2ghstq",
+          "allowed": false,
+          "message": "内部附件仅授权Web可见"
+        },
+        {
+          "app": "resident",
+          "account": "resident-a",
+          "kind": "base",
+          "attachmentId": "local-1794193921831-7p3qo2ghstq",
+          "allowed": false,
+          "message": "未获准的附件访问"
+        },
+        {
+          "app": "merchant",
+          "account": "merchant",
+          "kind": "service",
+          "attachmentId": "local-1794193921912-iihf5k1hjud",
+          "allowed": false,
+          "message": "内部附件仅授权Web可见"
+        },
+        {
+          "app": "merchant",
+          "account": "merchant",
+          "kind": "owned",
+          "attachmentId": "local-1794193921912-iihf5k1hjud",
+          "allowed": false,
+          "message": "内部附件仅授权Web可见"
+        },
+        {
+          "app": "merchant",
+          "account": "merchant",
+          "kind": "base",
+          "attachmentId": "local-1794193921912-iihf5k1hjud",
+          "allowed": false,
+          "message": "未获准的附件访问"
+        }
+      ]
+    },
+    {
+      "id": "unbound-owner-preview-is-preserved",
+      "acs": [
+        "AC02-043",
+        "AC02-047"
+      ],
+      "status": "PASS",
+      "detail": [
+        {
+          "app": "resident",
+          "account": "resident-a",
+          "kind": "service",
+          "allowed": true,
+          "name": "resident本人未提交图片.png",
+          "bytes": 690
+        },
+        {
+          "app": "resident",
+          "account": "resident-a",
+          "kind": "owned",
+          "allowed": true,
+          "name": "resident本人未提交图片.png",
+          "bytes": 690
+        },
+        {
+          "app": "merchant",
+          "account": "merchant",
+          "kind": "service",
+          "allowed": true,
+          "name": "merchant本人未提交图片.png",
+          "bytes": 690
+        },
+        {
+          "app": "merchant",
+          "account": "merchant",
+          "kind": "owned",
+          "allowed": true,
+          "name": "merchant本人未提交图片.png",
+          "bytes": 690
+        },
+        {
+          "app": "web",
+          "account": "property-admin",
+          "kind": "service",
+          "allowed": true,
+          "name": "web本人未提交图片.png",
+          "bytes": 690
+        },
+        {
+          "app": "web",
+          "account": "property-admin",
+          "kind": "owned",
+          "allowed": true,
+          "name": "web本人未提交图片.png",
+          "bytes": 690
+        }
+      ]
+    },
+    {
+      "id": "personnel-material-web-review-不认可",
+      "acs": [
+        "AC02-004",
+        "AC02-042",
+        "AC02-043"
+      ],
+      "status": "PASS",
+      "detail": {
+        "personId": "S02-PERSON-000120",
+        "conclusion": "不认可",
+        "material": {
+          "材料名称": "空调清洗示例证明",
+          "对应服务类目": [
+            "CAT-AC"
+          ],
+          "证明编号": "DEMO-不认可",
+          "发证机构": "示例培训机构",
+          "生效日期": "2026-01-01",
+          "长期有效": true,
+          "证明文件": [
+            {
+              "id": "local-1794193922179-bio6vpb37im",
+              "name": "新人员空调证明-不认可.png",
+              "type": "image/png",
+              "size": 690,
+              "status": "成功",
+              "uploader": "演示商户",
+              "uploadedAt": "2026-11-09T03:12:02.187Z",
+              "description": "本轮本人真实上传的新材料",
+              "order": 1
+            }
+          ],
+          "核验结论": "不认可",
+          "核验意见": "本轮材料无法证明对应能力，核验不认可",
+          "材料有效性": "待核实"
+        },
+        "screenshot": ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/personnel-review-不认可.png"
+      }
+    },
+    {
+      "id": "personnel-material-web-review-认可",
+      "acs": [
+        "AC02-004",
+        "AC02-042",
+        "AC02-043"
+      ],
+      "status": "PASS",
+      "detail": {
+        "personId": "S02-PERSON-000123",
+        "conclusion": "认可",
+        "material": {
+          "材料名称": "空调清洗示例证明",
+          "对应服务类目": [
+            "CAT-AC"
+          ],
+          "证明编号": "DEMO-认可",
+          "发证机构": "示例培训机构",
+          "生效日期": "2026-01-01",
+          "长期有效": true,
+          "证明文件": [
+            {
+              "id": "local-1794193925045-433egv0nbd4",
+              "name": "新人员空调证明-认可.png",
+              "type": "image/png",
+              "size": 690,
+              "status": "成功",
+              "uploader": "演示商户",
+              "uploadedAt": "2026-11-09T03:12:05.060Z",
+              "description": "本轮本人真实上传的新材料",
+              "order": 1
+            }
+          ],
+          "核验结论": "认可",
+          "核验意见": "已核对本轮上传材料与人员及服务类目，核验认可",
+          "材料有效性": "有效"
+        },
+        "screenshot": ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/personnel-review-认可.png"
+      }
+    },
+    {
+      "id": "mobile-upload-save-failure-retains-form",
+      "acs": [
+        "AC02-045"
+      ],
+      "status": "PASS",
+      "detail": {
+        "serviceId": "S02-SUPPLY-000101",
+        "existingMainImageRetained": true,
+        "successfulPictureRetainedAcrossUploadFailure": true,
+        "retryPictureCount": 2,
+        "textRetainedAcrossBothFailures": true,
+        "noRecordOnFailedSave": true,
+        "oneRecordAfterRecovery": true,
+        "screenshots": [
+          ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/mobile-upload-failure-retains.png",
+          ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/mobile-save-failure-retains.png",
+          ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/mobile-failures-recovered.png"
+        ]
+      }
+    },
+    {
+      "id": "aftersale-repeat-and-stale-entry-return-original",
+      "acs": [
+        "AC02-027",
+        "AC02-045"
+      ],
+      "status": "PASS",
+      "detail": {
+        "originalSaleId": "S02-SALE-000114",
+        "concurrentSaleId": "S02-SALE-000113",
+        "ongoingCount": 1,
+        "draftRetained": true,
+        "originalRequestPreserved": true,
+        "screenshots": [
+          ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/aftersale-existing-entry-original.png",
+          ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/aftersale-stale-submit-original.png"
+        ]
+      }
+    },
+    {
+      "id": "public-review-displays-only-public-fields-and-withdraws-image",
+      "acs": [
+        "AC02-036",
+        "AC02-042",
+        "AC02-043"
+      ],
+      "status": "PASS",
+      "detail": {
+        "evaluation": "S02-EVAL-000117",
+        "publicNameMasked": true,
+        "noOrderOrContact": true,
+        "imageWithdrawalDenied": true,
+        "screenshot": ".runtime/stage02/SECURITY-2026-11-09T03-11-57-000Z/public-review-privacy.png"
+      }
+    },
+    {
+      "id": "refund-recovery-rechecks-current-budget-in-shared-store",
+      "acs": [
+        "AC02-028",
+        "AC02-039"
+      ],
+      "status": "PASS",
+      "detail": {
+        "order": "S02-ORDER-000101",
+        "failedRequest": "S02-REF-000106",
+        "successfulRefund": "99.00",
+        "noExcessRecovery": true
+      }
+    },
+    {
+      "id": "service-security-work-preserves-other-domain-facts",
+      "acs": [
+        "AC02-047",
+        "AC02-052"
+      ],
+      "status": "PASS",
+      "detail": {
+        "legacyBefore": "e0e0af140d2516d19f9ee7d8a1456cfcdaa0d89e4df46872b4d0c54809945b96",
+        "legacyAfter": "e0e0af140d2516d19f9ee7d8a1456cfcdaa0d89e4df46872b4d0c54809945b96",
+        "scope": "Persisted Stage00 houses/relations/applications/files and non-Stage02 attachments plus Stage01 domain unchanged"
+      }
+    }
+  ],
+  "artifactHashesBefore": {
+    "web/manager/dist/index.html": "7e47027f84db8a114ae35547ba8c294356e6dbb8ed612bb3ac853d8122515e3f",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "a74873a071d8922f9236839ce77d7f29664838cb5dfe647cb8da1eea32401152",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "0df52fd62bb67aad9bf897868d28258cbac7683ddc4c78a2b01df54f32e87eb1"
+  },
+  "artifactHashesAfter": {
+    "web/manager/dist/index.html": "7e47027f84db8a114ae35547ba8c294356e6dbb8ed612bb3ac853d8122515e3f",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "a74873a071d8922f9236839ce77d7f29664838cb5dfe647cb8da1eea32401152",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "0df52fd62bb67aad9bf897868d28258cbac7683ddc4c78a2b01df54f32e87eb1"
+  },
+  "errors": [],
+  "blockedRequests": [],
+  "scope": "Actual H5 adapters and actual Web personnel review controls. Fixture preparation uses authorized Service commands; no direct final-state writes; this is prototype authorization evidence, not production auth acceptance."
+}

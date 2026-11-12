@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-11T07:49:21.358Z",
+  "checks": [
+    {
+      "name": "开始基线与其他阶段保护",
+      "status": "FAIL",
+      "error": "Unexpected changed path miniapp/packages/foundation/FoundationPage.vue"
+    },
+    {
+      "name": "Stage00当前文档、字段和历史证据回归",
+      "status": "PASS",
+      "detail": {
+        "version": "V1.1",
+        "templateChapterOrder": true,
+        "currentFieldGroups": 26,
+        "currentFieldRows": 212,
+        "mappedRows": 212,
+        "scenes": 31,
+        "legacyDefinitions": {
+          "tables": 24,
+          "rows": 295
+        },
+        "historicalBaseline": {
+          "tables": 23,
+          "rows": 287
+        },
+        "immutableHistoricalDocuments": 4,
+        "protectedTemplates": 4,
+        "protectedOtherStageFiles": 0,
+        "sourceProtectionMode": "current-stage-checked-separately",
+        "ownerStatus": "OWNER_ACCEPTED_WEB_H5",
+        "nativeCurrent": "NOT_RUN by owner scope",
+        "businessTestsOrBuildsExecuted": false
+      }
+    },
+    {
+      "name": "Stage01字段311项、原294编号保留、中文字段名及六列定义",
+      "status": "PASS",
+      "detail": {
+        "definitions": 311,
+        "originalIds": 294,
+        "documentRows": 311,
+        "groups": 26
+      }
+    },
+    {
+      "name": "72条工程验收编号与原人工反馈记录保留",
+      "status": "PASS",
+      "detail": {
+        "engineeringAcceptance": 72,
+        "originalOwnerRows": 95,
+        "ownerRetest": "NOT_RUN"
+      }
+    },
+    {
+      "name": "原生三端产物独立与组件引用完整",
+      "status": "PASS",
+      "detail": {
+        "apps": 3,
+        "componentReferences": 137,
+        "nativeRuntime": "NOT_RUN"
+      }
+    }
+  ]
+}

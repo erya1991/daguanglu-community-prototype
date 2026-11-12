@@ -1,0 +1,51 @@
+{
+  "at": "2026-11-09T15:10:36.809Z",
+  "checks": [
+    {
+      "name": "Original REQUIREMENTS retained against authoritative source disk",
+      "status": "PASS",
+      "detail": "Stage01 R1 and Stage02 source content unchanged"
+    },
+    {
+      "name": "Six phase documents retain eight template sections",
+      "status": "PASS",
+      "detail": "Only current integration subsection appended; historical sections remain"
+    },
+    {
+      "name": "Stage00 history and dependency locks untouched",
+      "status": "PASS",
+      "detail": [
+        "docs/stages/stage-00",
+        "web/manager/yarn.lock",
+        "miniapp/package-lock.json",
+        "miniapp/yarn.lock"
+      ]
+    },
+    {
+      "name": "Source protection and migration evidence",
+      "status": "PASS",
+      "detail": "707+467 source files, H5 existing state and unit adapter regression"
+    },
+    {
+      "name": "Static preview and current builds",
+      "status": "PASS",
+      "detail": {
+        "builds": 7,
+        "types": 3,
+        "ruleJob": 1,
+        "preview": {
+          "url": "http://127.0.0.1:19210",
+          "port": 19210,
+          "pid": 27072,
+          "started": "2026-11-09T14:31:56.071Z",
+          "type": "static-only"
+        }
+      }
+    },
+    {
+      "name": "Git branch and empty index",
+      "status": "PASS",
+      "detail": "Unstaged worktree only"
+    }
+  ]
+}

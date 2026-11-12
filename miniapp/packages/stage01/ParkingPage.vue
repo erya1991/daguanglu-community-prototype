@@ -273,7 +273,7 @@ onUnmounted(off);
               >
                 续费
               </button></view
-            ><picker
+            ><text class="choice-label">月租产品 <text class="required-mark">*</text></text><picker
               :range="products"
               range-key="MP02"
               @change="product = products[Number($event.detail.value)]._id"
@@ -295,14 +295,14 @@ onUnmounted(off);
               :value="start"
               @change="start = $event.detail.value"
               ><view class="choice" data-field="MO07"
-                >本次开始 {{ start }} ›</view
+                >本次开始 <text class="required-mark">*</text> {{ start }} ›</view
               ></picker
             ><picker
               mode="date"
               :value="end"
               @change="end = $event.detail.value"
               ><view class="choice" data-field="MO08"
-                >本次结束 {{ end }} ›</view
+                >本次结束 <text class="required-mark">*</text> {{ end }} ›</view
               ></picker
             ><button class="primary" :disabled="saving" @click="create">
               确认期间并创建订单

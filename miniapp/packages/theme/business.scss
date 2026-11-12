@@ -1,0 +1,32 @@
+/* Shared product surface for existing foundation, property and service views. */
+page{color:$color-text-primary;background:$color-page-bg}
+.foundation-body{max-width:100%;color:$color-text-primary}
+.foundation-body .base-card,.foundation-body .form-section{border-radius:$radius-card;border-color:$color-border;box-shadow:0 2px 8px rgba(27,77,83,.025)}
+.foundation-body .hint{color:$color-text-secondary}
+.s1-mobile{max-width:100%;padding:$space-4;color:$color-text-primary}
+.s1-mobile .card{border:1px solid $color-border;border-radius:$radius-card;box-shadow:0 2px 8px rgba(27,77,83,.025)}
+.s1-mobile .card:first-child{margin-top:0}
+.s1-mobile .amount{color:$color-accent;font-weight:700}
+.s1-mobile .muted{color:$color-text-secondary}
+.s1-mobile .state{color:$color-primary;background:$color-primary-light;border-radius:6px;line-height:1.6;max-width:100%}
+.s1-mobile button{min-height:$touch-target-min;border-color:$color-border;color:$color-primary;border-radius:$radius-md}
+.s1-mobile button.primary{background:$color-primary;border-color:$color-primary;color:#fff;min-height:$button-height}
+.s1-mobile .filters input,.s1-mobile .filters picker{border-color:$color-border;border-radius:$radius-md;background:#fff;min-width:0}
+.s1-mobile .filters>input{flex-basis:100%}
+.s1-mobile .filters>picker{flex-basis:120px}
+.s1-mobile .link{color:$color-primary}
+.s1-mobile .fixed-action{max-width:100%;border-top:1px solid $color-border;background:rgba(255,255,255,.98)}
+.s1-mobile input,.s1-mobile textarea{color:$color-text-primary}
+.s1-mobile textarea,.service-page textarea{min-height:110px;max-width:100%}
+.s1-mobile .group-title,.foundation-body .group-title{color:$color-text-primary;font-size:17px}
+.service-page .amount{color:$color-accent}
+.service-page .status{max-width:48%;white-space:normal}
+.service-page .record-card,.service-page .hero,.service-page .form-card{box-shadow:0 2px 8px rgba(27,77,83,.025)}
+.service-page .record-card .service-picture{height:140px}
+.service-page .field-label,.service-page .label{color:$color-text-secondary}
+.service-page .bottom-actions{border-top:1px solid rgba(225,228,230,.6);background:rgba(248,249,252,.98)}
+.service-page input{min-height:44px}
+.service-page .sheet-mask{z-index:210}
+@media(max-width:340px){.service-page .card-top{gap:8px}.service-page .new-button{min-width:88px}.s1-mobile .actions button{min-width:90px}.s1-mobile .field-row{flex-wrap:wrap}}
+
+.service-page .new-button{min-height:44px;line-height:1.5;padding:10px 14px}.service-page .image-error{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}

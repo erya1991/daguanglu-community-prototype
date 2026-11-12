@@ -1,7 +1,9 @@
+import * as serviceDomain from './service/index.js'
 import * as stage01 from './stage01/index.js'
+import { attachmentIsReferenced } from './stage01/upgrade.js'
 import { upgradeProductState } from './r3-product.js'
 import { seed as seedStage01 } from './stage01/seed.js'
-import { roleInApp } from './core.js'
+import { roleInApp, DomainError } from './core.js'
 import { upgradeState, upgradeIdentity, defaultIdentity, ordinaryAccounts, R1_SCHEMA } from './r1-migration.js'
 // WeChat-only local storage; no browser module or browser global is imported here.
 import {
@@ -28,8 +30,32 @@ export function createUniAdapter(app) {
     listeners = [],
     queue = Promise.resolve()
   context = upgradeIdentity(context, app)
-  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); upgradeProductState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); return s },
+  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); upgradeProductState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); serviceDomain.prepare(s, "stage02-wechat"); return s },
     save = (s) => uni.setStorageSync(key, s)
+  let cleanupPromise
+  async function ensureStage01Cleanup() {
+    if (cleanupPromise) return cleanupPromise
+    cleanupPromise = (async () => {
+      let s = read()
+      if (!s.stage01?.pendingAttachmentCleanup?.length) return
+      // Persist the cleanup queue before removing any native file, so failures can be retried.
+      save(s)
+      for (const item of [...s.stage01.pendingAttachmentCleanup]) {
+        s = read()
+        if (!attachmentIsReferenced(s, item.id)) {
+          const sharedPath = item.path && Object.entries(s.attachments || {}).some(([id, meta]) => id !== item.id && meta?.path === item.path)
+          if (item.path && !sharedPath) {
+            if (typeof uni.removeSavedFile !== 'function') throw Error('旧工单图片尚未清理，请重试')
+            await new Promise((resolve, reject) => uni.removeSavedFile({filePath:item.path,success:resolve,fail:e=>/no such file|not exist|enoent|不存在/i.test(e?.errMsg || '') ? resolve() : reject(new Error('旧工单图片清理失败，请重试'))}))
+          }
+          delete s.attachments[item.id]
+        }
+        s.stage01.pendingAttachmentCleanup = s.stage01.pendingAttachmentCleanup.filter(p => p.id !== item.id)
+        save(s)
+      }
+    })()
+    try { return await cleanupPromise } finally { cleanupPromise = null }
+  }
   const notify = () => listeners.forEach((f) => f())
   const api = {
     app,
@@ -41,10 +67,12 @@ export function createUniAdapter(app) {
     },
     async start() {
       save(read())
+      await ensureStage01Cleanup()
       uni.setStorageSync(identityKey, context)
       return api.info()
     },
     async info() {
+      await ensureStage01Cleanup()
       const s = read()
       return {
         session: api.session,
@@ -182,21 +210,23 @@ export function createUniAdapter(app) {
       return fileVersions(read(), context, id)
     },
     async ownedAttachment(id) {
-      const m = read().attachments[id]
+      const state=read(),m=state.attachments[id]
       if (!m || m.owner !== context.account) throw Error('无权读取本地附件')
+      if(m.stage02)serviceDomain.attachmentId(state,context,{attachmentId:id})
       return m
     },
     async attachment(p) {
       const s = read(),
         id = authorizeAttachment(s, context, p)
+      if(s.attachments[id]?.stage02)serviceDomain.attachmentId(s,context,{attachmentId:id})
       return s.attachments[id]
     },
   }
-  const stage01Write = fn => { const pending = queue.then(() => { const s = read(), value = fn(s); save(s); notify(); return value }); queue = pending.catch(() => {}); return pending }
+  const stage01Write = (fn, signal = true) => { const pending = queue.then(async () => { await ensureStage01Cleanup(); const s = read(), value = fn(s); save(s); if(signal)notify(); return value }); queue = pending.catch(() => {}); return pending }
   api.stage01 = {
-    query: async (table, filters) => stage01.query(read(), context, table, filters),
-    record: async (table, id) => stage01.record(read(), context, table, id),
-    options: async () => stage01.options(read(), context),
+    query: async (table, filters) => { await ensureStage01Cleanup(); return stage01.query(read(), context, table, filters) },
+    record: async (table, id) => { await ensureStage01Cleanup(); return stage01.record(read(), context, table, id) },
+    options: async () => { await ensureStage01Cleanup(); return stage01.options(read(), context) },
     overview: async () => stage01.overview(read(), context),
     importPreview: async p => stage01.importPreview(read(), context, p),
     command: (name, p = {}) => stage01Write(s => stage01.command(s, context, name, p)),
@@ -205,6 +235,40 @@ export function createUniAdapter(app) {
     async upload(file, options = {}) { const r = await api.upload(file, options); await stage01Write(s => { Object.assign(s.attachments[r.id], {stage01:true, uploadedAt:new Date().toISOString(), uploader:stage01.options(s, context).actor.name, status:'成功'}) }); return r },
     async attachment(p) { const s = read(), id = stage01.attachmentId(s, context, p); return s.attachments[id] },
     async accounts() { return [{id:'property-colleague',name:'陈晓',roles:[{id:'property',name:'物业管理员'}]}] },
+  }
+
+  api.service = {
+    query: async (table, filters) => serviceDomain.query(read(), context, table, filters),
+    record: async (table, id) => serviceDomain.record(read(), context, table, id),
+    options: async () => serviceDomain.options(read(), context),
+    overview: async filters => serviceDomain.overview(read(), context, filters),
+    command: (name, p = {}) => stage01Write(s => serviceDomain.command(s, context, name, p)),
+    auxiliary: (name, p = {}) => stage01Write(s => serviceDomain.auxiliary(s, context, name, p)),
+    async reset() {
+      const files=Object.values(read().attachments).filter(f => f.stage02 && f.path).map(f=>f.path)
+      await stage01Write(s => serviceDomain.reset(s, context),false)
+      try { if(typeof uni.removeSavedFile==='function') for(const filePath of files) await new Promise((resolve,reject)=>uni.removeSavedFile({filePath,success:resolve,fail:()=>reject(new Error('服务数据已复位，部分本端附件清理失败，请重试本端文件清理'))})) }
+      finally { notify() }
+    },
+    draft: async (key, data) => api.draft('service:' + key, data),
+    async upload(file, options = {}) {
+      await api.service.options()
+      if ((read().service?.outcomes?.upload) === "failure") throw new DomainError("上传失败，已保留所选文件与其他输入")
+      const r=await api.upload(file,options)
+      await stage01Write(s => Object.assign(s.attachments[r.id], {stage02:true, uploadedAt:new Date().toISOString(), uploader:serviceDomain.options(s,context).actor.name, status:'成功', table:options.table || '', recordId:options.id || options.recordId || '', visibility:options.visibility || '业务可见', description:options.description || '', order:options.order || 0}))
+      return {...r,stage02:true,status:'成功'}
+    },
+    async attachment(p) {
+      const state=read(),id=serviceDomain.attachmentId(state,context,p),meta=state.attachments[id]
+      if(meta.path)return {...meta,id}
+      if(!meta.base64 && !meta.text)throw new Error('本端附件已失效，请重新选择')
+      const filesystem=uni.getFileSystemManager(), extension=(meta.name.match(/\.([a-z0-9]+)$/i)||[])[1]||'txt'
+      const filePath=uni.env.USER_DATA_PATH+'/stage02-'+String(id).replace(/[^a-zA-Z0-9_-]/g,'')+'.'+extension
+      await new Promise((resolve,reject)=>filesystem.writeFile({filePath,data:meta.base64||meta.text,encoding:meta.base64?'base64':'utf8',success:resolve,fail:()=>reject(new Error('本端演示附件保存失败，请重试'))}))
+      await stage01Write(s=>{if(s.attachments[id]?.stage02)s.attachments[id].path=filePath},false)
+      return {...meta,id,path:filePath}
+    },
+    accounts: async () => serviceDomain.accounts(read(), context),
   }
   return api
 }

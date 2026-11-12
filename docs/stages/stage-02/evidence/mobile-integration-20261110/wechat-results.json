@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-09T15:06:50.379Z",
+  "build": "PASS: three mp-weixin builds; see build-results.json",
+  "developerTools": {
+    "status": "NOT_RUN",
+    "reason": "Official CLI current probe: IDE service port disabled; answered n, settings unchanged.",
+    "command": "cli.bat islogin",
+    "log": ".runtime/mobile-integration/logs/wechat-probe.log"
+  },
+  "realDevice": {
+    "status": "NOT_RUN",
+    "reason": "No test device/experience connection provided or observed"
+  },
+  "nativeKeyboard": "NOT_RUN",
+  "ownerAcceptance": "NOT_RUN",
+  "productionIntegration": "NOT_RUN"
+}

@@ -160,7 +160,7 @@ function choose() {
     ></view
   >
 </template>
-<style scoped>
+<style scoped lang="scss">
 .photos {
   display: flex;
   flex-wrap: wrap;
@@ -184,7 +184,7 @@ function choose() {
 .photo-links {
   display: flex;
   justify-content: space-between;
-  color: #175a43;
+  color: $color-primary;
   padding: 10px 0;
 }
 .photo-links text {
@@ -194,10 +194,10 @@ function choose() {
 .metadata text {
   display: block;
   font-size: 12px;
-  color: #59676b;
+  color: $color-text-secondary;
 }
 .error {
-  color: #a3252d;
+  color: $color-error;
   display: block;
   margin: 8px 0;
 }

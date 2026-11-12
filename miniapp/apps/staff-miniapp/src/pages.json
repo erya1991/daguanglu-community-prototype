@@ -181,6 +181,12 @@
         "navigationStyle": "custom",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/unavailable/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {

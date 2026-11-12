@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-11-09T03:19:49.983Z",
+  "baseline": "348363b7410ff90f062f75b93242f03bb246d4c1",
+  "implementationUncommitted": true,
+  "scope": "Six verified gaps plus directly related 117-field classification, local frontend prototype only",
+  "node": {
+    "tests": 197,
+    "pass": 197,
+    "fail": 0,
+    "log": ".runtime/stage02/review-20261109/tests-full.tap"
+  },
+  "build": {
+    "run": "BUILD_2026-11-09T03-06-10-905Z",
+    "builds": 7,
+    "types": 3,
+    "pass": 10
+  },
+  "browser": [
+    {
+      "file": "browser-web.json",
+      "run": "WEB-2026-11-09T03-10-40-264Z",
+      "pass": 12,
+      "fail": 0,
+      "pageErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "file": "security-browser.json",
+      "run": "SECURITY-2026-11-09T03-11-57-000Z",
+      "pass": 10,
+      "fail": 0,
+      "pageErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "file": "browser-regression.json",
+      "run": "REGRESSION-2026-11-09T03-12-15-277Z",
+      "pass": 3,
+      "fail": 0,
+      "pageErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "file": "browser-flows.json",
+      "run": "FLOWS-2026-11-09T03-10-35-138Z",
+      "pass": 2,
+      "fail": 0,
+      "pageErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "file": "browser-custom-supply-flows.json",
+      "run": "FLOWS-CUSTOM-2026-11-09T03-10-40-146Z",
+      "pass": 2,
+      "fail": 0,
+      "pageErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "file": "browser-review.json",
+      "run": "REVIEW-2026-11-09T03-14-30-053Z",
+      "pass": 6,
+      "fail": 0,
+      "pageErrors": 0,
+      "blockedRequests": 0
+    }
+  ],
+  "fields": {
+    "originalCount": 117,
+    "classification": {
+      "条件未触发": 36,
+      "合法为空": 49,
+      "实际实现缺陷": 14,
+      "缺少演示数据": 18
+    },
+    "factChecks": 37,
+    "emptyFilterChecks": 50,
+    "original621FieldAuditUnchanged": true,
+    "fullFieldAcceptance": false
+  },
+  "knownLimitations": [
+    "All 52 full scenario variants and all 621 field permission/condition combinations are not automatically closed",
+    "WeChat-tool retest, real-device, actual scan and lee acceptance not completed",
+    "No production interface/authentication or real-money integration"
+  ],
+  "ownerAcceptance": "NOT_RUN",
+  "stagePass": false,
+  "gitWritesThisRound": false,
+  "static": {
+    "pass": 9,
+    "fail": 0,
+    "scope": "Static project/document/metadata checks, not owner acceptance"
+  },
+  "fieldClassificationClarification": "The service cover was already bound; its prior image-value observation condition was not triggered. Final original-gap categories are 49 lawful empty, 36 conditional, 18 fixture-data gaps, and 14 implementation defects."
+}

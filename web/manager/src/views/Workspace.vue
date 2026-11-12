@@ -144,11 +144,9 @@
     >
     <Modal v-model="detailOpen" :title="definition.title + '详情'" width="1000" :footer-hide="true">
       <template v-if="selected && detailOpen">
-        <BindingDetail v-if="table === 'applications'" :record="selected" :history="history" :proof-error="proofError" @preview="proofPreview" @application="details" @close="detailOpen = false"/>
+        <BindingDetail v-if="table === 'applications'" :record="selected" :proof-error="proofError" @preview="proofPreview" @close="detailOpen = false"/>
         <template v-else>
-          <Tabs v-if="table === 'residents'" v-model="detailTab" :animated="false"><TabPane label="基本信息" name="info"/><TabPane label="操作与变更记录" name="history"/></Tabs>
-          <dl v-if="table !== 'residents' || detailTab === 'info'" class="detail-grid"><div v-for="f in detailFields" :key="f.name" class="detail-row" :data-field="table + ':' + f.name"><dt>{{f.name === '房号' ? '房间号' : f.name}}</dt><dd>{{selected._labels[f.name] || '—'}}</dd></div></dl>
-          <HistoryPanel v-if="table === 'residents' && detailTab === 'history'" :records="history"/>
+          <dl class="detail-grid"><div v-for="f in detailFields" :key="f.name" class="detail-row" :data-field="table + ':' + f.name"><dt>{{f.name === '房号' ? '房间号' : f.name}}</dt><dd>{{selected._labels[f.name] || '—'}}</dd></div></dl>
         </template>
       </template>
     </Modal>
@@ -218,7 +216,6 @@ import { service } from '../services/foundation'
 import { productMenus } from '../../../../prototype-shared/r3-product.js'
 import { detailVisible } from '../../../../prototype-shared/core.js'
 import FieldEditor from '../components/FieldEditor.vue'
-import HistoryPanel from '../components/HistoryPanel.vue'
 import BindingDetail from '../components/BindingDetail.vue'
 import ApplicationStatus from '../components/ApplicationStatus.vue'
 const listFields = {
@@ -263,7 +260,7 @@ const listFields = {
   messages: ['消息标题', '消息类型', '发生时间', '阅读状态', '模拟发送状态'],
 }
 export default {
-  components: { FieldEditor, HistoryPanel, BindingDetail },
+  components: { FieldEditor, BindingDetail },
   props: {
     info: Object,
     module: String,
@@ -281,7 +278,7 @@ export default {
   },
   data: () => ({
     catalog,
-    bindingTab: 'applications', detailTab: 'info', previewOpen: false,
+    bindingTab: 'applications', previewOpen: false,
     rows: [],
     filters: {},
     filterOptions: {},
@@ -297,7 +294,6 @@ export default {
     failSave: false,
     detailOpen: false,
     selected: null,
-    history: [],
     actionOpen: false,
     action: '',
     actionForm: {},
@@ -616,11 +612,8 @@ export default {
       this.releasePreview(false)
       try {
         const selected = (await service.labels(this.table, [await service.record(this.table, r._id)]))[0]
-        const history = await service.history(this.table, r._id)
         if (ticket !== this.detailTicket) return
         this.selected = selected
-        this.history = history
-        this.detailTab = 'info'
         this.detailOpen = true
         if (this.table === 'files') {
           this.versions = await service.versions(r._id)

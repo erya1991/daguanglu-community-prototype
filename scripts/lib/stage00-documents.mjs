@@ -18,10 +18,10 @@ export function currentFields(text){
  return groups
 }
 export function currentScenes(text){return text.split(/\r?\n/).filter(line=>/^\| S00-T\d{2} \|/.test(line)).map(line=>line.split('|').slice(1,-1).map(value=>value.trim()))}
-export function verifyCurrentStage00Documents(root){
+export function verifyCurrentStage00Documents(root,{historicalSourceProtection=true}={}){
  const dir=path.join(root,'docs/stages/stage-00'),read=file=>fs.readFileSync(path.join(dir,file),'utf8'),sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex'),manifest=JSON.parse(read('evidence/pre-main-20261109/manifest.json')),names=['REQUIREMENTS','PLAN','ACCEPTANCE','RESULT'],documents=Object.fromEntries(names.map(name=>[name,read(name+'.md')]))
  for(const item of manifest.documents){assert.equal(sha(fs.readFileSync(path.join(root,item.target))),item.sha256,'Historical bytes changed '+item.target)}
- for(const item of [...manifest.templates,...manifest.protectedFiles])assert.equal(sha(fs.readFileSync(path.join(root,item.file))),item.sha256,'Protected source/template changed '+item.file)
+ for(const item of [...manifest.templates,...(historicalSourceProtection?manifest.protectedFiles:[])])assert.equal(sha(fs.readFileSync(path.join(root,item.file))),item.sha256,'Protected source/template changed '+item.file)
  for(const [name,text] of Object.entries(documents)){
   assert(text.includes(currentStage00Marker),name+' current version marker');assert(text.includes('V1.1'),name+' version');assert(text.includes('微信'),name+' native scope missing');assert(text.includes('H5'),name+' H5 scope missing')
   const titles=source=>[...source.matchAll(/^## \d+\. (.+)$/gm)].map(match=>match[1].replace(/模板$/,''))
@@ -51,5 +51,5 @@ export function verifyCurrentStage00Documents(root){
  const baseline=JSON.parse(read('evidence/field-baseline.json'));assert.equal(baseline.length,23);assert.equal(baseline.reduce((count,group)=>count+group.rows.length,0),287)
  const legacy=[];let legacyRows=null;for(const line of read('evidence/pre-main-20261109/REQUIREMENTS.txt').split(/\r?\n/)){if(line.startsWith('| 字段名称 |')){legacyRows=[];legacy.push(legacyRows)}else if(legacyRows&&line.startsWith('| ')&&!line.startsWith('| ---'))legacyRows.push(line.split('|').slice(1,-1).map(value=>value.trim()));else if(!line.startsWith('|'))legacyRows=null}
  let legacyCount=0;Object.entries(catalog).forEach(([object,definition],index)=>{const active=definition.fields.filter(field=>!(object==='accounts'&&field.name==='手机号'));assert.deepEqual(active.map(field=>[field.name,field.type,field.meaning,field.source,field.rule,field.condition]),legacy[index]);legacyCount+=active.length});assert.equal(legacyCount,295)
- return {version:'V1.1',templateChapterOrder:true,currentFieldGroups:groups.size,currentFieldRows:all.length,mappedRows:mapped.length,scenes:rows.length,legacyDefinitions:{tables:24,rows:295},historicalBaseline:{tables:23,rows:287},immutableHistoricalDocuments:manifest.documents.length,protectedTemplates:manifest.templates.length,protectedOtherStageFiles:manifest.protectedFiles.length,ownerStatus:owner.status,nativeCurrent:'NOT_RUN by owner scope',businessTestsOrBuildsExecuted:false}
+ return {version:'V1.1',templateChapterOrder:true,currentFieldGroups:groups.size,currentFieldRows:all.length,mappedRows:mapped.length,scenes:rows.length,legacyDefinitions:{tables:24,rows:295},historicalBaseline:{tables:23,rows:287},immutableHistoricalDocuments:manifest.documents.length,protectedTemplates:manifest.templates.length,protectedOtherStageFiles:historicalSourceProtection?manifest.protectedFiles.length:0,sourceProtectionMode:historicalSourceProtection?"historical-closeout":"current-stage-checked-separately",ownerStatus:owner.status,nativeCurrent:'NOT_RUN by owner scope',businessTestsOrBuildsExecuted:false}
 }

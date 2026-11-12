@@ -39,5 +39,6 @@ onLoad((q: any) => {
     :table="query.table || ''"
     :relation="query.relation || ''"
     :action="query.action || ''"
+    :initial-status="query.status || ''"
   />
 </template>

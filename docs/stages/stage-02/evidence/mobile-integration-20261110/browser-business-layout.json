@@ -1,0 +1,256 @@
+{
+  "at": "2026-11-09T14:56:58.903Z",
+  "results": [
+    {
+      "app": "resident",
+      "name": "bill-detail",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-detail",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-form",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "staff",
+      "name": "charge-query",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "bill-detail",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-detail",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-form",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "staff",
+      "name": "charge-query",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "bill-detail",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-detail",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-form",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "staff",
+      "name": "charge-query",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "bill-detail",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-detail",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "repair-form",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": null,
+      "card": 16
+    },
+    {
+      "app": "staff",
+      "name": "charge-query",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": "rgb(200, 90, 50)",
+      "card": 16
+    },
+    {
+      "app": "resident",
+      "name": "service-booking",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-order",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": null
+    },
+    {
+      "app": "merchant",
+      "name": "fulfillment-detail",
+      "width": 375,
+      "status": "PASS",
+      "scroll": 375,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-booking",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-order",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": null
+    },
+    {
+      "app": "merchant",
+      "name": "fulfillment-detail",
+      "width": 390,
+      "status": "PASS",
+      "scroll": 390,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-booking",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-order",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": null
+    },
+    {
+      "app": "merchant",
+      "name": "fulfillment-detail",
+      "width": 430,
+      "status": "PASS",
+      "scroll": 430,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-booking",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": null
+    },
+    {
+      "app": "resident",
+      "name": "service-order",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": null
+    },
+    {
+      "app": "merchant",
+      "name": "fulfillment-detail",
+      "width": 320,
+      "status": "PASS",
+      "scroll": 320,
+      "amount": null
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-bill-detail.png",
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-detail.png",
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-form.png",
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-charge-query.png",
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-booking.png",
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-order.png",
+    "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-fulfillment-detail.png"
+  ],
+  "nativeKeyboard": "NOT_RUN"
+}

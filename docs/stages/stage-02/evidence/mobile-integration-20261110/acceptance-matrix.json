@@ -1,0 +1,103 @@
+{
+  "at": "2026-11-09T15:06:48.817Z",
+  "items": [
+    {
+      "id": "M01",
+      "status": "PASS（H5）",
+      "detail": "三端11个一级页签，选中态、单导航和单底栏均检查。",
+      "evidence": "browser-portal.json"
+    },
+    {
+      "id": "M02",
+      "status": "PASS（H5）",
+      "detail": "40个已开放入口逐一点击，包含分类入口、查询、返回及权限可见性。",
+      "evidence": "browser-portal.json"
+    },
+    {
+      "id": "M03",
+      "status": "PASS（H5）",
+      "detail": "商城、积分、邻里等提示一致；旧商品／购物车／商城深链与未知积分路由不进入交易。",
+      "evidence": "browser-portal.json"
+    },
+    {
+      "id": "M04",
+      "status": "PASS（本轮H5范围）",
+      "detail": "本人房屋、车辆、申请查询和绑定入口可达，身份切换／刷新保留；不重述Stage00全量人工验收。",
+      "evidence": "browser-portal.json"
+    },
+    {
+      "id": "M05",
+      "status": "PASS（H5）",
+      "detail": "物业费单笔支付、普通凭证、管理侧记录及原支付恢复。",
+      "evidence": "../../../stage-01/evidence/mobile-integration-20261110/browser-flows.json"
+    },
+    {
+      "id": "M06",
+      "status": "PASS（H5）",
+      "detail": "月租新办和续费、临停付款、查询已执行；无真实闸机接入。",
+      "evidence": "../../../stage-01/evidence/mobile-integration-20261110/browser-flows.json"
+    },
+    {
+      "id": "M07",
+      "status": "PASS（H5）",
+      "detail": "住户报修直成单→物业办理复核→住户确认评价，保留R1现行流程。",
+      "evidence": "../../../stage-01/evidence/mobile-integration-20261110/browser-flows.json"
+    },
+    {
+      "id": "M08",
+      "status": "PASS（H5）",
+      "detail": "住户隐患上报、物业整改复核销号、住户公开结果；住户不代安全复核。",
+      "evidence": "../../../stage-01/evidence/mobile-integration-20261110/browser-flows.json"
+    },
+    {
+      "id": "M09",
+      "status": "PASS（H5）",
+      "detail": "上门供给／审核／上架→预约付款→安排→住户接受→到场／开始／过程／结果→住户完成确认与评价；工作台计数下钻同步。",
+      "evidence": "browser-flows.json"
+    },
+    {
+      "id": "M10",
+      "status": "PASS（H5）",
+      "detail": "预约到点全链含两次住户确认、凭证核验和重复核销保护；刷新后事实保持。",
+      "evidence": "browser-flows.json"
+    },
+    {
+      "id": "M11",
+      "status": "PASS（H5）",
+      "detail": "供给、人员、订单、售后、评价、经营、资金均可达；供给新增编辑审核和履约办理及查询返回已执行。",
+      "evidence": "browser-flows.json、browser-portal.json"
+    },
+    {
+      "id": "M12",
+      "status": "PASS（本轮范围）",
+      "detail": "H5旧R3数据注入隔离profile后升级读写，原ID／附件／草稿／另一会话保留；Uni同类回归及跨端刷新通过。",
+      "evidence": "browser-h5-migration.json、build-results.json"
+    },
+    {
+      "id": "M13",
+      "status": "PASS（检查页面）",
+      "detail": "普通页面未出现阶段、Mock、技术会话、复位或注入控件；图片失败重试保留。",
+      "evidence": "browser-portal.json、handoff-preview.json"
+    },
+    {
+      "id": "M14",
+      "status": "PARTIAL",
+      "detail": "375／390／430／320px共32个一级页和28个业务页布局检查通过；原生键盘、胶囊与真机安全区未执行，H5不代替。",
+      "evidence": "browser-portal.json、browser-business-layout.json"
+    },
+    {
+      "id": "M15",
+      "status": "PASS（影响范围）",
+      "detail": "保留原字段分组和动作；新供给、预约、安排、办理、凭证、附件失败重试与草稿恢复已检；未重验全部历史621字段条件。",
+      "evidence": "browser-flows.json、../../stage-01/evidence/mobile-integration-20261110/browser-exceptions.json"
+    },
+    {
+      "id": "M16",
+      "status": "PARTIAL",
+      "detail": "226规则通过、4项既有skip、0失败；3类型及7构建通过。微信CLI服务端口关闭，本轮工具运行与真机NOT_RUN。",
+      "evidence": "build-results.json、wechat-results.json"
+    }
+  ],
+  "owner": "NOT_RUN",
+  "stagePass": false
+}

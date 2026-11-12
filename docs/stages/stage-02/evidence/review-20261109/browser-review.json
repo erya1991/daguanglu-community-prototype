@@ -1,0 +1,112 @@
+{
+  "run": "REVIEW-2026-11-09T03-14-30-053Z",
+  "session": "stage02-REVIEW-2026-11-09T03-14-30-053Z",
+  "base": "http://127.0.0.1:19220",
+  "results": [
+    {
+      "id": "web-maintained-name-keeps-stable-reference",
+      "acs": [
+        "AC02-005",
+        "AC02-007"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "HOME",
+        "version": 2,
+        "screenshot": ".runtime/stage02/REVIEW-2026-11-09T03-14-30-053Z/renamed-method.png"
+      }
+    },
+    {
+      "id": "authorized-merchant-coverage-and-point-options",
+      "acs": [
+        "AC02-006",
+        "AC02-042"
+      ],
+      "status": "PASS",
+      "detail": {
+        "authorizedCommunities": "上门覆盖社区\n✓ 青禾示例社区",
+        "authorizedEstates": "上门覆盖小区\n✓ 青禾示例花园",
+        "screenshot": ".runtime/stage02/REVIEW-2026-11-09T03-14-30-053Z/authorized-range-points.png"
+      }
+    },
+    {
+      "id": "object-requirement-draft-switch-and-required-hint",
+      "acs": [
+        "AC02-006",
+        "AC02-010",
+        "AC02-043",
+        "AC02-045"
+      ],
+      "status": "PASS",
+      "detail": {
+        "service": "S02-SUPPLY-000101",
+        "staleDescriptionCleared": true,
+        "requiredHint": "请说明需要清洁的设备或部位",
+        "screenshot": ".runtime/stage02/REVIEW-2026-11-09T03-14-30-053Z/object-requirements.png"
+      }
+    },
+    {
+      "id": "completed-aftercare-ruling-executes-selected-treatment",
+      "acs": [
+        "AC02-032",
+        "AC02-035",
+        "AC02-038"
+      ],
+      "status": "PASS",
+      "detail": {
+        "sale": "S02-SALE-000117",
+        "businessTreatment": "完成后售后解决",
+        "orderClosure": "正常完成",
+        "screenshot": ".runtime/stage02/REVIEW-2026-11-09T03-14-30-053Z/completed-aftercare.png"
+      }
+    },
+    {
+      "id": "web-and-merchant-project-category-metric-drill-context",
+      "acs": [
+        "AC02-041",
+        "AC02-042"
+      ],
+      "status": "PASS",
+      "detail": {
+        "expected": 1,
+        "webUrl": "http://127.0.0.1:19220/web/?session=stage02-REVIEW-2026-11-09T03-14-30-053Z#/service/orders?merchant=&service=SV-HOME&category=CAT-CLEAN&start=2026-11-01&end=2026-11-06&serviceDate=2026-11-06&metric=%E5%88%9B%E5%BB%BA%E8%AE%A2%E5%8D%95%E6%95%B0",
+        "merchantFilters": {
+          "service": "SV-HOME",
+          "category": "CAT-CLEAN",
+          "start": "2026-11-01",
+          "end": "2026-11-06",
+          "serviceDate": "2026-11-07",
+          "metric": "创建订单数"
+        },
+        "screenshot": ".runtime/stage02/REVIEW-2026-11-09T03-14-30-053Z/filtered-drill.png"
+      }
+    },
+    {
+      "id": "actual-upload-and-verification-rejection-field-feedback",
+      "acs": [
+        "AC02-020",
+        "AC02-045",
+        "AC02-043"
+      ],
+      "status": "PASS",
+      "detail": {
+        "verificationRejection": "未找到可核验的服务凭证，请检查后重试",
+        "uploadFailure": "上传失败，已保留所选文件与其他输入",
+        "screenshot": ".runtime/stage02/REVIEW-2026-11-09T03-14-30-053Z/real-failure-fields.png"
+      }
+    }
+  ],
+  "errors": [],
+  "blockedRequests": [],
+  "artifactHashesBefore": {
+    "web/manager/dist/index.html": "7e47027f84db8a114ae35547ba8c294356e6dbb8ed612bb3ac853d8122515e3f",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "a74873a071d8922f9236839ce77d7f29664838cb5dfe647cb8da1eea32401152",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "0df52fd62bb67aad9bf897868d28258cbac7683ddc4c78a2b01df54f32e87eb1"
+  },
+  "artifactHashesAfter": {
+    "web/manager/dist/index.html": "7e47027f84db8a114ae35547ba8c294356e6dbb8ed612bb3ac853d8122515e3f",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "a74873a071d8922f9236839ce77d7f29664838cb5dfe647cb8da1eea32401152",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "0df52fd62bb67aad9bf897868d28258cbac7683ddc4c78a2b01df54f32e87eb1"
+  },
+  "scope": "Targeted actual H5/Web controls and persisted Service transactions. Legal fixture preparation is explicitly separate from UI actions. No native-device, owner acceptance or real-money claim."
+}

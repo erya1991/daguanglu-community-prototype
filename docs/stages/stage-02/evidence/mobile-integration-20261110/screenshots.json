@@ -1,0 +1,222 @@
+{
+  "at": "2026-11-09T15:10:36.844Z",
+  "note": "Actual final-build pages; layout and business facts verified separately",
+  "files": [
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-fulfillment-detail-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "9712ba1928018887f9ffd8c1852556bee4fa874d6a08b88286614c6f1fc5fd89"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-fulfillment-detail.png",
+      "width": 390,
+      "height": 1024,
+      "sha256": "4329f9349df8750d4824516b28b7cf0830e4014877f87b7b43cba34124ec6555"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-operation-full.png",
+      "width": 390,
+      "height": 2443,
+      "sha256": "e00af85a352d97f5c0fe362e8df753bfced35da7853736eb9698442f44b05bd6"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-operation.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "05a5c56820675220a8573195a2b9e3fb9bd8a341842a588ddaac09064230cc01"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-order-full.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "a28ec614532cb18f13bd177865022f1c345e4a7ddf729dab6138dcbfec95f946"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-order.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "a28ec614532cb18f13bd177865022f1c345e4a7ddf729dab6138dcbfec95f946"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-profile-full.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "a22a7948ba54c1712242abc71a54f4add6f057a6baa9bd6a6f77b1c2402f64c9"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-profile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "a22a7948ba54c1712242abc71a54f4add6f057a6baa9bd6a6f77b1c2402f64c9"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-workbench-full.png",
+      "width": 390,
+      "height": 998,
+      "sha256": "068762f81b316cb7aac900433f10b66c0c66a1cb33e144e7eeeff8c998336696"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-workbench.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "e0510caa2ef4427a2f2f6c756fd98fb203639782419c8d61a57e05d7877f976e"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-bill-detail-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "1fc91533cfd653cf73c86e38249187671acd04553e36022f0a5abdfe3d9efa7c"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-bill-detail.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "1fc91533cfd653cf73c86e38249187671acd04553e36022f0a5abdfe3d9efa7c"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-home-full.png",
+      "width": 390,
+      "height": 1117,
+      "sha256": "8534353e8ca24bdc2485f57e7bef91437c4ca732bb2fa78fd4092ed5e6b8046f"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-home.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "d9b80ac59231923bed010e403a658cd7182e197a85fc5389d3dfba3e727891e8"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-mall-full.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "9e7df09df583bbe4e0344cea981b743ff5e0bafce754902133c307d5c9ca5594"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-mall.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "9e7df09df583bbe4e0344cea981b743ff5e0bafce754902133c307d5c9ca5594"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-profile-full.png",
+      "width": 390,
+      "height": 1173,
+      "sha256": "2a987e902514e92ba9f35ebcaac42ca4b1e2cddd206496cd096957d11f3dbb02"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-profile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "775c6088a265972edd450ea8c9af76987e379e4d4eaecd4d46ce0845edf1c1fe"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-detail-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "2c15785936076194d8d7c97ed576ebb4c3c464d8649b557ae08e6513431c1cb2"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-detail.png",
+      "width": 390,
+      "height": 2183,
+      "sha256": "b8488085ead24a61a8487455e0518f7bcca433dd56e2b2903b107c413dfc1068"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-form-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "c67f5c0a536cafa05090c3c6404949d7d83a74189211f42dd6c33abc6e310d5d"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-form.png",
+      "width": 390,
+      "height": 1397,
+      "sha256": "222467e647eed16b5c92507ef2f3db9d63e08b0b396aac7975d7b8d6d65666a2"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-booking-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "d4ea57950c96e8695d90d97e6f91b6d60d11b1b783ff148bd84f8948384cff92"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-booking.png",
+      "width": 390,
+      "height": 3694,
+      "sha256": "0b3d95335a5324c0dbf1e0c2c1bfe8854bf982c280a66e5cfe9c4f8091f87409"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-full.png",
+      "width": 390,
+      "height": 1637,
+      "sha256": "a9dd91150896874913acf2656826914268a900c13d3fd077201f169967a75275"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-order-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "5f9306885e25205e6e0e3141d3a81d7e18d5a9bf55b7f195c261c7dfdd706c0e"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-order.png",
+      "width": 390,
+      "height": 1201,
+      "sha256": "8e96191d60f024183e8b1d01560c286cc1210df7a230de1746dbee0e88eb5aaa"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "9b96d156902a2b3dec97770f603defa2b7c3412dfb8302772ec2f8b6c4a8e162"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-archive-full.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "621e84eea6c5b5b28aa2592454adfe0376abab2dd7f2b2c9855f828c0fcec304"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-archive.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "621e84eea6c5b5b28aa2592454adfe0376abab2dd7f2b2c9855f828c0fcec304"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-charge-query-viewport.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "357c60573729a5792bbccd8c4017ad879e46193114c11c7f6911c4da3f64c337"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-charge-query.png",
+      "width": 390,
+      "height": 1628,
+      "sha256": "818c5a3c4976c548b672d5d5a5b3901403a8e07f4e913a090b3c73710d7a4056"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-profile-full.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "306f485377042b06bd0a1fa1826a584d53a13be9153fc557ee8c8a4ccecd312a"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-profile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "306f485377042b06bd0a1fa1826a584d53a13be9153fc557ee8c8a4ccecd312a"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-workbench-full.png",
+      "width": 390,
+      "height": 876,
+      "sha256": "f7cf011a88fb4b64b46776ef07f9931678a3ccc7f1e60ac4d375776acabe03e4"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-workbench.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "8a2485ac15390b0d80ddc19e0ab02c707f0d620d1db41eab088200e3c146d0bb"
+    }
+  ]
+}

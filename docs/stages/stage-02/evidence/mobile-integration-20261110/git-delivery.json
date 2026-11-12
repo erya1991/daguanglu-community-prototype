@@ -1,0 +1,1616 @@
+{
+  "at": "2026-11-09T15:10:37.331Z",
+  "workspace": "D:\\git\\daguanglu-community-prototype-demo-20261110",
+  "branch": "demo/2026-11-10-mobile-integration",
+  "head": "bf154b5d8aaaa614badac290f75caa0652953117",
+  "trackedModified": 59,
+  "untrackedFiles": 207,
+  "indexEmpty": true,
+  "committed": false,
+  "pushed": false,
+  "merged": false,
+  "productionDeployed": false,
+  "counts": {
+    "inherited_stage01_r1": 52,
+    "imported_stage02_current": 81,
+    "mobile_integration": 133
+  },
+  "entries": [
+    {
+      "file": "AGENTS.md",
+      "bytes": 34177,
+      "sha256": "a026f4d82761631284bc337ce018d25671a197d42e20ac0aa28f871b8f3bf2f5",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "README.md",
+      "bytes": 37200,
+      "sha256": "8adb851f9e83893ddee81e71bced8e90d2d35aa41338320534dff26d9825947f",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1881,
+      "sha256": "a569b600cea11a826f5231552366e73a31a2fa3d05f45b3eec0678353afa935c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-01/ACCEPTANCE.md",
+      "bytes": 348706,
+      "sha256": "21e93ee81d7cb3742abcc049d717f1096d23890db6b1ecb5be8f52a3e5996dd9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-01/PLAN.md",
+      "bytes": 90983,
+      "sha256": "756107e441ddc1650a27806065f3e3d15687986e5f3de52d0a6e33281f095b18",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-01/REQUIREMENTS.md",
+      "bytes": 224958,
+      "sha256": "d9bc538cd5e51c8e291cd8cf4ea4d287d780a45c69530b9f201a944cd3d9fcca",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/RESULT.md",
+      "bytes": 71554,
+      "sha256": "321cc52e0f0ba1bec48643f35e3862c934207ece3d24697ab08d5d3b3333a8df",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/ACCEPTANCE.md",
+      "bytes": 160761,
+      "sha256": "f231eb77e40cb50095c8216e873b72d3f3f57d21378863bc2d877e553b67c5ad",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/PLAN.md",
+      "bytes": 234567,
+      "sha256": "d8b64df29d0fc45c571a964e442f6d1802ac749c81b7b1d8cd1d79d9c1ac3392",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/RESULT.md",
+      "bytes": 46194,
+      "sha256": "f8a2d177c9334da83d67eb81c7282ab705eb0af31f4fafe5952a50be0f672671",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/App.vue",
+      "bytes": 509,
+      "sha256": "d855ec18ec09203ad19aa64927947d23c9659a87538e2a243c7ad5245c5bad84",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages.json",
+      "bytes": 3102,
+      "sha256": "6b2147e2b768277c64b1a9ff69286388cca09cf8e1cfefc544e042631a000eae",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/operation/index.vue",
+      "bytes": 348,
+      "sha256": "405eedc339663ce06f5d2d5b6347fab72f15a119908691e7b4a689bc11b61925",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/order/index.vue",
+      "bytes": 457,
+      "sha256": "fd349e1f2b44c96489acaabf30c3e0aa521efc6763d5526606f486c24ac921bb",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/profile/index.vue",
+      "bytes": 346,
+      "sha256": "0ed06f19c95143b8028504395458fe1c60e69681308d68731f9a077a803daa5c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/workbench/index.vue",
+      "bytes": 348,
+      "sha256": "2769ee7d0bb0d0847922299087aea2b91daf6d331a12b69bc4f9f1e1f83ca6d9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/App.vue",
+      "bytes": 509,
+      "sha256": "d855ec18ec09203ad19aa64927947d23c9659a87538e2a243c7ad5245c5bad84",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages.json",
+      "bytes": 8445,
+      "sha256": "cc7b9b4bf87f10d47f95a0f3a6917a95bd2849c165871604ea2e4b9d5faa1545",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/home/index.vue",
+      "bytes": 343,
+      "sha256": "600b5f9f67b8e43e5cc1c0aa66334d09fd7387f217e282270a96e2bdb852d2a8",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/index.vue",
+      "bytes": 343,
+      "sha256": "ddbd4defeec5a97c097d7ad0b734d1fc3695d6db78cc0d0b472bc4df89c56774",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/profile/index.vue",
+      "bytes": 346,
+      "sha256": "0ed06f19c95143b8028504395458fe1c60e69681308d68731f9a077a803daa5c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/index.vue",
+      "bytes": 346,
+      "sha256": "6f79a807d774490d28608f8390ee565217c168f4edb0fe37b8dc5d6e7e60a89b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/App.vue",
+      "bytes": 509,
+      "sha256": "d855ec18ec09203ad19aa64927947d23c9659a87538e2a243c7ad5245c5bad84",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages.json",
+      "bytes": 4455,
+      "sha256": "99938fa0bad76f6579e5427b537fe7537e8eefb36f515ac60c8139eb4467c6a9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/archive/index.vue",
+      "bytes": 346,
+      "sha256": "0bb81c5c4e399a65ca61a1d76b84a840bc9013fd71fcd578fc1b76431b818d5b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/profile/index.vue",
+      "bytes": 346,
+      "sha256": "0ed06f19c95143b8028504395458fe1c60e69681308d68731f9a077a803daa5c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/stage01/tasks/index.vue",
+      "bytes": 971,
+      "sha256": "e1157c8e0a6abd6df21bc777f570ed1cc6c58794052b477e797f594cebde4efd",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/workbench/index.vue",
+      "bytes": 348,
+      "sha256": "2769ee7d0bb0d0847922299087aea2b91daf6d331a12b69bc4f9f1e1f83ca6d9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/common/utils/navigation.ts",
+      "bytes": 1204,
+      "sha256": "9313801c70411c471d4cecaf912297a488b074cabcc9bb889d7e96a1c77dad2f",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/foundation/FoundationPage.vue",
+      "bytes": 20862,
+      "sha256": "cb5752b8fdae7c81620ee74457b37fe2c0ed33c8be0e55522596dbc01b355dcb",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/stage01/ActionForm.vue",
+      "bytes": 4532,
+      "sha256": "9b09b2d26378ccec92437390fb3471f50267517a1e5c69ef6f475c0457f782b9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/stage01/Details.vue",
+      "bytes": 7268,
+      "sha256": "630ba8d3feda0cf8447efb8dda51e8f94e691fe4dcbd5f6334cb69fe15a70612",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/stage01/Evidence.vue",
+      "bytes": 5491,
+      "sha256": "e30e510794eab77c805da010d1d3f11cfc20f5ad455e5b4a64c56634afb51ef0",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/stage01/Fields.vue",
+      "bytes": 1826,
+      "sha256": "96110e592192060e25c53ce1c401e39ee2ec6acccfaf0fdcdcf842269cabdd8e",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/stage01/WorkPage.vue",
+      "bytes": 12279,
+      "sha256": "48426f111156c5c843571f4f0de570a756c3c791ae1ce45659caec2a7f9cc138",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/stage01/stage01.scss",
+      "bytes": 2851,
+      "sha256": "7d8ebb358ab5605a96ae4721c290f4957a5926fb8c5a0534fa5d1b33fcfb7494",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "prototype-shared/stage01/common.js",
+      "bytes": 6299,
+      "sha256": "590a460f0226f7888fc0e4a611c646408c9b3e976fe2c7a9d2ac02ec717e5f86",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/fields.js",
+      "bytes": 110021,
+      "sha256": "d88e238637be2f422f1d35790a899fc0afbc0abd39d0dec5ca9f3bebac09e94e",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/index.js",
+      "bytes": 23288,
+      "sha256": "904c77a2c137de3eca3aeb7205b7cd38eaf2e640dc24345603e64c7a0b135eb9",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/parking.js",
+      "bytes": 9489,
+      "sha256": "90f21f8bae07e6e2d0ff67e765f925b96d0b81001f7a9eb5b0ee8523fffd9d5d",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/payments.js",
+      "bytes": 11079,
+      "sha256": "57650662f0e2893d90a2c3aa114ef1c2b6cf1b27a303d55aaa5885a3f987112b",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/seed.js",
+      "bytes": 1707,
+      "sha256": "8dc3a5e20a74639f7df4168967c6ae90778d9ab4c12d5c9057c5d1adc4415c4d",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/ui.js",
+      "bytes": 9764,
+      "sha256": "cc4a3523f684ded022eb05054c8bcc40ec079fe6f38bbd5feb32b17bbf8ff363",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/stage01/workorders.js",
+      "bytes": 17825,
+      "sha256": "15f3e21e53ee0f737d180d687bbd200ab77df0ed89d5e878a0b7a6bfc3168a45",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/storage-h5.js",
+      "bytes": 14715,
+      "sha256": "42491ebb2d853159e470373dc5e4ddc247984a5524270392d33d66c6101dbdc9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "prototype-shared/storage-uni.js",
+      "bytes": 10608,
+      "sha256": "1f59d5ef7424db058dfa500502bd17a4d7edce45eeb5ad0dc680c628ed4138a3",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "prototype-shared/types.d.ts",
+      "bytes": 4058,
+      "sha256": "851bd81a2c5cc71bf8b4cff4d58192569e1350b8e6f6ce9b27b7295e9da00af5",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/check-stage00.mjs",
+      "bytes": 8602,
+      "sha256": "7847e44897f99dab503cbc99c2d413e29e68e2f48433746c45db0ea669d9db5b",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "scripts/lib/stage00-documents.mjs",
+      "bytes": 8035,
+      "sha256": "a6175663b6e33fc9bcca3dededfafcd0579c0b3f7700c265f84ce9afa4c6bcd7",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "scripts/prepare-wechat.mjs",
+      "bytes": 1129,
+      "sha256": "b64af9258418a1bd4e27986701ddd2263c8f0caecc2654ff0c94065ce38a1f10",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/preview.mjs",
+      "bytes": 3487,
+      "sha256": "8da3a76492d475da947e3456c0c3561b1549a274214f3a9933cfc01961bb1528",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "tests/stage01.test.mjs",
+      "bytes": 27124,
+      "sha256": "228e77b33b925fc895b0a573287fa75c4157871f2d9c5ae25c3f91a532cf52cf",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/App.vue",
+      "bytes": 9926,
+      "sha256": "3facc6d69be4364e1cc8a8872a4d2ca2da91c6a0f4b44711da3a2b7b371e7afd",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "web/manager/src/components/stage01/ActionForm.vue",
+      "bytes": 3456,
+      "sha256": "65cf0317925f98852285462b6d59d63b088f7c4dd9eeb624be459d51cb31cb5f",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/components/stage01/Business.vue",
+      "bytes": 23920,
+      "sha256": "3f73f5cbc42e88d3f1c0895cae9b5ecbebf8d48d2599b7d41009ad934b8b06b5",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/components/stage01/Fields.vue",
+      "bytes": 2117,
+      "sha256": "d6052cb2fead6b65bd19e04f46110b2fb97740dcb80efdbc6ab9c103b89f259c",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/main.js",
+      "bytes": 5059,
+      "sha256": "fc681b2aaaa0b6a1cce4b9da4f7524ab4407d13f3423c8112c5feb9bd4efa5ac",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "web/manager/src/styles/stage01.scss",
+      "bytes": 6239,
+      "sha256": "d78479bb35f9915ee97075578ece8034c87316fa6620f1c401d15250ddfd1a1e",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/views/stage01/BillImport.vue",
+      "bytes": 8737,
+      "sha256": "f155da5ae2638318d4567a694c2c4491a8ba4c8d14534538099c768fc41868cf",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/browser-exceptions.json",
+      "bytes": 1385,
+      "sha256": "789beebbd435fb6d8b4bc316d36d7eb77cc2fec0ffffb315188d556cd4d8ff29",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/browser-flows.json",
+      "bytes": 3239,
+      "sha256": "28851176fdf9b08c4c1b072081a3e62c3563fbdd3c6899e006e63ee008e2c20b",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/browser-layout.json",
+      "bytes": 419,
+      "sha256": "ca767c83d95d024591b88e0d4cd6d65a963d852b0cec04b6dad5d6fe37d2f983",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/browser-results.json",
+      "bytes": 5861,
+      "sha256": "019e009cf9da1ed8a1116b5cc146eec092af1fcff86617e6abeaa9e5464dae3f",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/build-results.json",
+      "bytes": 2766,
+      "sha256": "b1ef5eb73d93d97e8f764e010fabcf33c1838cf0f0a3a7aa8ba4c6413faf81b1",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/field-paths.json",
+      "bytes": 5036,
+      "sha256": "a1ab09e0af115eb0b62b83ea10cdfa0d1515ed31bade98d2a4c3349e14412b31",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/git-delivery.json",
+      "bytes": 11012,
+      "sha256": "81bf4c284a5f5d6a087f4151ab01d983a2fbea4e319031bc84483a481ec1522a",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/implementation-start.json",
+      "bytes": 87380,
+      "sha256": "08eb5007831273df25c30511a6475ad1c077ad13c6bfdc64b32a318ab93e1c71",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/retest-scenarios.json",
+      "bytes": 13142,
+      "sha256": "8e81aafcd44fafc35c014ba19c9d24b4d1229285e9a5ab162c73f8ed436c16af",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots.json",
+      "bytes": 2129,
+      "sha256": "5e83ba84af1001e558c8a85d572218a1c85b409f8fdd6f3100b5f4149ccfbe02",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/bill-tabs.png",
+      "bytes": 72783,
+      "sha256": "906f47b5cb893240bce81895367e7767ede36b40e88f3bd658a25991aca4751d",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/detail-probe.png",
+      "bytes": 91497,
+      "sha256": "e4bff6848a2dc54adcac25d6479d603b776b1c7254d62c2f7cd12b9253ebeb48",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/hazard-public-result.png",
+      "bytes": 37934,
+      "sha256": "5131f5cb95d4ad3a08224efb2e7fbeab7f66267eeccb9120ad080235d4b51ccd",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/parking-details-list.png",
+      "bytes": 68781,
+      "sha256": "712919872e6fc42eb980040390325148a5785407536d13ff649b4d44e3e61fc7",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/repair-evaluated.png",
+      "bytes": 62003,
+      "sha256": "cacd1f73e2f9a8e58952b62ea9a0738b225127f61f0d598735ecba3e9213ba15",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/resident-320.png",
+      "bytes": 13229,
+      "sha256": "234ac9866c5009be89509f0c84008e9915eed2113018f86f3df7479f43460ff3",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/stage00-spaces.png",
+      "bytes": 91651,
+      "sha256": "de572442deacc7a3f93bb26ea3305a188b4b4ccdc304ebcd6e3b834de8a8ad83",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/web-1024.png",
+      "bytes": 46157,
+      "sha256": "669e1d11a0af655ea4f7b5a1e13d237dcfc916c34b85be8d5db82e7500b24e2b",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/source-feedback.json",
+      "bytes": 93486,
+      "sha256": "73a300fe4826813d28257e2daf688c45fb9eeb6c89e3a5bb72984bbd2447aeaf",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/source-manifest.json",
+      "bytes": 292,
+      "sha256": "64dcca8f8297a515789a2b963d88ad16bdba7a4cf66549dff146f83f685ccfda",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/stage00-static.json",
+      "bytes": 1243,
+      "sha256": "ea8912b693a465a585b91b31a12b717d52f83adbfacd6dd8a2bd879171a76043",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/static-results.json",
+      "bytes": 3231,
+      "sha256": "d97e5601c4b97fdf035ef0b1796347363a1d5b54e4c4bdbcc1bc109fb07607cb",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/test-results.json",
+      "bytes": 466,
+      "sha256": "8f883e7b926f266ee8365746acf631725655aedff7fe56e8fa52d87691b9ffc4",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/acceptance-r1/wechat-results.json",
+      "bytes": 493,
+      "sha256": "9d9229dad4dd5226f209a4263d77adae0caa77fb086f22d3d5cdec029281b626",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/mobile-integration-20261110/browser-exceptions.json",
+      "bytes": 1385,
+      "sha256": "0ae725dd57e9df74dc9f8d2f7e87a590edaac3932ee70b35f7a82125ffaac436",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-01/evidence/mobile-integration-20261110/browser-flows.json",
+      "bytes": 3222,
+      "sha256": "0ee02f5c1a96012b8c223f29f55015f5768731519331756aef32f80d863bd8c3",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/acceptance-execution.json",
+      "bytes": 632118,
+      "sha256": "b25d537fb44e1b8b081672ba44e64877080f55d1a4f56a76ef1e5c2aa25fcf65",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/browser-flows.json",
+      "bytes": 156012,
+      "sha256": "da8d7c68f4dc356fb49943a92d7ba1845c6266058ee7f5a4ba332aeeae443cbd",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/browser-regression.json",
+      "bytes": 3420,
+      "sha256": "3cb80cbe83205050d0c5418db7f2b7a858092862d4152ff6b4bdda059e9e4c93",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/browser-web-followup.json",
+      "bytes": 920,
+      "sha256": "2de06498670e05bbc65380c20b35c64194be41d7bd057985f4477725a88a0479",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/browser-web.json",
+      "bytes": 195133,
+      "sha256": "934b23862838c3bdb3ed10adacb90d76797e186832b5d9503ecc0b22c88d6873",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/build-artifacts.json",
+      "bytes": 167392,
+      "sha256": "8da88ba6d77d98740bcd971673b17a5ce85bbaca90e562b9f50899a29cd160aa",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/build-results.json",
+      "bytes": 4323,
+      "sha256": "2240c62eab6521ba93bd02b18789826836ade899299d7222846712e3328b3cd2",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/candidate-snapshot.json",
+      "bytes": 16156,
+      "sha256": "0843c9ddacd30de897077a378deef63e0c9ee49f84c6783eacd11cdd61717061",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/field-runtime-results.json",
+      "bytes": 18220701,
+      "sha256": "daf861d5d76e505bc776f80126e5135795434cfe1a745d2c852dc654b64281a8",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/acceptance-matrix.json",
+      "bytes": 4367,
+      "sha256": "8f01e78806d4b8d2fc8a7ed86d3cfbf0e82ff75ada28989dbb7736241c41c3cd",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-business-layout-initial.json",
+      "bytes": 5590,
+      "sha256": "10c9ee1bfd9eea43b722e7eaea302f4d57dd79e46529ff9d6c1baf658132fe86",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-business-layout.json",
+      "bytes": 5590,
+      "sha256": "03e88dc8c3d02041d767f2661a8d3834d4c349c4f932d3af6a354f19ad6476f4",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-flows-dashboard-failure.json",
+      "bytes": 7105,
+      "sha256": "e7ec4faedc6ebb2b95f48a9b63ab5bfef984203282a64ee4b1e53ce3d97a1892",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-flows-initial.json",
+      "bytes": 160521,
+      "sha256": "304eb962522ac71fd08df8d060a027aba862d17af4d9addeadcbd431d8d79b49",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-flows.json",
+      "bytes": 160517,
+      "sha256": "2bb17b8189fb6f7499cab26e1371f76e127329ecb7d7a78ed090d377099b65fc",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-h5-migration.json",
+      "bytes": 683,
+      "sha256": "a88a0269c6f1273b4034332f88d171b13ce36a5af3b869cf0b83da27d2c3fa2d",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-portal-initial.json",
+      "bytes": 9715,
+      "sha256": "8de0b9df89a62b2dac2a147f68f9bde41bec17d072f96cc43bc49d76991aa51b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/browser-portal.json",
+      "bytes": 17951,
+      "sha256": "ad5abe7b5025756e76e73192cf326cb81f8444c321fcdbdcba63d37dad307cef",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/build-results.json",
+      "bytes": 4103,
+      "sha256": "12213ea08d89c177dad4c41888ded5d4f3493af6dd07d9e4252c5230ffd5d42a",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/git-delivery.json",
+      "bytes": null,
+      "sha256": "self-excluded",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/handoff-preview.json",
+      "bytes": 4488,
+      "sha256": "25e7c1233dd7eaf6c6e3cae7902318c4cafcdffd9f28f2f714a45e068fad2651",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/integration-decisions.json",
+      "bytes": 11987,
+      "sha256": "67dcd61d1214ed2e3382d3fcd7424cb9ec40756c5b2d87ce89c06dc8c338eb09",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots.json",
+      "bytes": 9148,
+      "sha256": "f24efb1dd4cb0d770b3eabbee83057177aeb7154602dc771a8dd5f5b9857cb8b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-fulfillment-detail-viewport.png",
+      "bytes": 33368,
+      "sha256": "9712ba1928018887f9ffd8c1852556bee4fa874d6a08b88286614c6f1fc5fd89",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-fulfillment-detail.png",
+      "bytes": 36206,
+      "sha256": "4329f9349df8750d4824516b28b7cf0830e4014877f87b7b43cba34124ec6555",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-operation-full.png",
+      "bytes": 506949,
+      "sha256": "e00af85a352d97f5c0fe362e8df753bfced35da7853736eb9698442f44b05bd6",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-operation.png",
+      "bytes": 142512,
+      "sha256": "05a5c56820675220a8573195a2b9e3fb9bd8a341842a588ddaac09064230cc01",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-order-full.png",
+      "bytes": 20991,
+      "sha256": "a28ec614532cb18f13bd177865022f1c345e4a7ddf729dab6138dcbfec95f946",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-order.png",
+      "bytes": 20991,
+      "sha256": "a28ec614532cb18f13bd177865022f1c345e4a7ddf729dab6138dcbfec95f946",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-profile-full.png",
+      "bytes": 55496,
+      "sha256": "a22a7948ba54c1712242abc71a54f4add6f057a6baa9bd6a6f77b1c2402f64c9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-profile.png",
+      "bytes": 55496,
+      "sha256": "a22a7948ba54c1712242abc71a54f4add6f057a6baa9bd6a6f77b1c2402f64c9",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-workbench-full.png",
+      "bytes": 66225,
+      "sha256": "068762f81b316cb7aac900433f10b66c0c66a1cb33e144e7eeeff8c998336696",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-workbench.png",
+      "bytes": 63509,
+      "sha256": "e0510caa2ef4427a2f2f6c756fd98fb203639782419c8d61a57e05d7877f976e",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-bill-detail-viewport.png",
+      "bytes": 22944,
+      "sha256": "1fc91533cfd653cf73c86e38249187671acd04553e36022f0a5abdfe3d9efa7c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-bill-detail.png",
+      "bytes": 22944,
+      "sha256": "1fc91533cfd653cf73c86e38249187671acd04553e36022f0a5abdfe3d9efa7c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-home-full.png",
+      "bytes": 266163,
+      "sha256": "8534353e8ca24bdc2485f57e7bef91437c4ca732bb2fa78fd4092ed5e6b8046f",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-home.png",
+      "bytes": 256514,
+      "sha256": "d9b80ac59231923bed010e403a658cd7182e197a85fc5389d3dfba3e727891e8",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-mall-full.png",
+      "bytes": 19066,
+      "sha256": "9e7df09df583bbe4e0344cea981b743ff5e0bafce754902133c307d5c9ca5594",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-mall.png",
+      "bytes": 19066,
+      "sha256": "9e7df09df583bbe4e0344cea981b743ff5e0bafce754902133c307d5c9ca5594",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-profile-full.png",
+      "bytes": 78140,
+      "sha256": "2a987e902514e92ba9f35ebcaac42ca4b1e2cddd206496cd096957d11f3dbb02",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-profile.png",
+      "bytes": 66135,
+      "sha256": "775c6088a265972edd450ea8c9af76987e379e4d4eaecd4d46ce0845edf1c1fe",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-detail-viewport.png",
+      "bytes": 27897,
+      "sha256": "2c15785936076194d8d7c97ed576ebb4c3c464d8649b557ae08e6513431c1cb2",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-detail.png",
+      "bytes": 62447,
+      "sha256": "b8488085ead24a61a8487455e0518f7bcca433dd56e2b2903b107c413dfc1068",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-form-viewport.png",
+      "bytes": 21172,
+      "sha256": "c67f5c0a536cafa05090c3c6404949d7d83a74189211f42dd6c33abc6e310d5d",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-repair-form.png",
+      "bytes": 31639,
+      "sha256": "222467e647eed16b5c92507ef2f3db9d63e08b0b396aac7975d7b8d6d65666a2",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-booking-viewport.png",
+      "bytes": 42525,
+      "sha256": "d4ea57950c96e8695d90d97e6f91b6d60d11b1b783ff148bd84f8948384cff92",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-booking.png",
+      "bytes": 121914,
+      "sha256": "0b3d95335a5324c0dbf1e0c2c1bfe8854bf982c280a66e5cfe9c4f8091f87409",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-full.png",
+      "bytes": 68347,
+      "sha256": "a9dd91150896874913acf2656826914268a900c13d3fd077201f169967a75275",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-order-viewport.png",
+      "bytes": 33791,
+      "sha256": "5f9306885e25205e6e0e3141d3a81d7e18d5a9bf55b7f195c261c7dfdd706c0e",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service-order.png",
+      "bytes": 37509,
+      "sha256": "8e96191d60f024183e8b1d01560c286cc1210df7a230de1746dbee0e88eb5aaa",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service.png",
+      "bytes": 40803,
+      "sha256": "9b96d156902a2b3dec97770f603defa2b7c3412dfb8302772ec2f8b6c4a8e162",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-archive-full.png",
+      "bytes": 26247,
+      "sha256": "621e84eea6c5b5b28aa2592454adfe0376abab2dd7f2b2c9855f828c0fcec304",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-archive.png",
+      "bytes": 26247,
+      "sha256": "621e84eea6c5b5b28aa2592454adfe0376abab2dd7f2b2c9855f828c0fcec304",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-charge-query-viewport.png",
+      "bytes": 29479,
+      "sha256": "357c60573729a5792bbccd8c4017ad879e46193114c11c7f6911c4da3f64c337",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-charge-query.png",
+      "bytes": 60119,
+      "sha256": "818c5a3c4976c548b672d5d5a5b3901403a8e07f4e913a090b3c73710d7a4056",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-profile-full.png",
+      "bytes": 50598,
+      "sha256": "306f485377042b06bd0a1fa1826a584d53a13be9153fc557ee8c8a4ccecd312a",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-profile.png",
+      "bytes": 50598,
+      "sha256": "306f485377042b06bd0a1fa1826a584d53a13be9153fc557ee8c8a4ccecd312a",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-workbench-full.png",
+      "bytes": 53026,
+      "sha256": "f7cf011a88fb4b64b46776ef07f9931678a3ccc7f1e60ac4d375776acabe03e4",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-workbench.png",
+      "bytes": 52754,
+      "sha256": "8a2485ac15390b0d80ddc19e0ab02c707f0d620d1db41eab088200e3c146d0bb",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/source-protection.json",
+      "bytes": 853,
+      "sha256": "57768069a63362f88c51b1aa95bfc73f93d292f13e9548165f57b918a8689f38",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/static-checks.json",
+      "bytes": 1378,
+      "sha256": "961fc8bae48a4dd6ce51d7aec93702adf07d0d2a2126ff88cf6c4777ca799f80",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/mobile-integration-20261110/wechat-results.json",
+      "bytes": 581,
+      "sha256": "d40a396cb5926c060dc29349164d6288abee3445705842d4f65ce3abeab9e81e",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/public-rule-differences.json",
+      "bytes": 699,
+      "sha256": "030973de64e43ad499d0f1b7408f61768372075b650fff804c9b580d59c673c2",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json",
+      "bytes": 164666,
+      "sha256": "1dbc16d5f5ae3e6d532c3a651e82c9dfdcaf970c0f2e06969c1d944eb6957912",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+      "bytes": 160569,
+      "sha256": "bc7f6e1942201a95d8512a6b549d7b6452ea1a3dc9fef9a4a7b60b1246ec6c69",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/browser-regression.json",
+      "bytes": 3420,
+      "sha256": "5e580f49d4aca870216c03c10917a3ec688057a14b336f48dd8649ab44dd485c",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+      "bytes": 4183,
+      "sha256": "14dd54c6356b45745e2316365a26fd1acc2ebcb5f796f97de0b8f341c934abfd",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/browser-web.json",
+      "bytes": 196865,
+      "sha256": "64b0d109640a06e206d22c7557b5f478a8ac8a09561ffcf2eb2d67e16f508581",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/build-artifacts.json",
+      "bytes": 167396,
+      "sha256": "25ae1a417183e71ee5a47cdaa19570d288a470b53f7551ea89bfac06404b07f3",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/build-results.json",
+      "bytes": 4323,
+      "sha256": "80f11e729cce7a0ac808022e5375294c96d4f0d26ec18050f3416874ab26977f",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/candidate-snapshot.json",
+      "bytes": 7805,
+      "sha256": "1f858e9c8482be9624bc4ce0312f29b3ca560d5e1568450fc2cd159a1549a4ee",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/field-gap-classification.json",
+      "bytes": 169728,
+      "sha256": "cab995c3a076a8bc8241d45bf4fba57586be5592d1893d7391b405cdbffd242a",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/security-browser.json",
+      "bytes": 14884,
+      "sha256": "142e3181acd9abc82a13f2d2c7a61271f175428e90a07d4eb7384a275b86232c",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/source-protection-final.json",
+      "bytes": 2578,
+      "sha256": "9a09a14496fc1ab8eacf6a32ebc47c2e238a7ef26664df204dd84b1773277de2",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/static-results.json",
+      "bytes": 1788,
+      "sha256": "46c9e0f93668a3f684955fc1c8237209eace201303362453c74ac2b955b8071b",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-20261109/validation-summary.json",
+      "bytes": 2725,
+      "sha256": "6bfc120fb6ca64704dc2e2d000115625d4e195d693a09b69c6d25b04cded2dd6",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/review-gap-verification.json",
+      "bytes": 5082,
+      "sha256": "7914d4ce71b52ee0d73c1c85bdf60282a3a126ff9e6ca38f31c6deaf554767f4",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/security-browser.json",
+      "bytes": 14885,
+      "sha256": "08e9d2d293fd5a10d227267c834a98c8034d4157bb0b2ab50dca6b18f4b927f5",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/source-protection-final.json",
+      "bytes": 3621,
+      "sha256": "41ea5401a7c0a6ae965bbbc0114730eb32b062a2cc1e2b3af4893f430eb73886",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/static-results.json",
+      "bytes": 1788,
+      "sha256": "1af767b6e20d385d69d4197d76d81d0776d7ed6ee8680dd51ba704ee2fa8ca3b",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/validation-impact.json",
+      "bytes": 1463,
+      "sha256": "cd19bd37bdedbdbb4094c71ce5f425f42c1029fd71e6766fef93d804ad1b40c2",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "docs/stages/stage-02/evidence/wechat-results.json",
+      "bytes": 2773,
+      "sha256": "bc00981242a0860ea04f50881b5e996a3a9233e27f11befd469533f09acdcbe5",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/order/detail/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/product/editor/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/action.vue",
+      "bytes": 663,
+      "sha256": "f530af4a672053b6cdaac07f3800aca4ad7d27689b39f973e52edd761d08f5cd",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/after-sale.vue",
+      "bytes": 671,
+      "sha256": "f2b446166719c9154865049445e11e6a50d241e3d483fbef8cbee0a142226979",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/aftersales.vue",
+      "bytes": 671,
+      "sha256": "5271a64514238d96d7d6b7f12972b556b1e598c10c55c2f09ac264dcd62032e0",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/evaluations.vue",
+      "bytes": 673,
+      "sha256": "8a601d0e1c1aef9544e9bc4892bf4f247b945fcc54edc7b8aedc82a8ac43dfbb",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/funds.vue",
+      "bytes": 661,
+      "sha256": "e0c07d365473bd2f1e500135edd35d011113f04b113b0149dbc786670c947a71",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/order.vue",
+      "bytes": 662,
+      "sha256": "7ff733cec939d45aae156caf06b9ae1e0e51a24a3fa1f0816bc53095ca309084",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/orders.vue",
+      "bytes": 663,
+      "sha256": "e98eb1904566786d17dbc6e224a9f54adaa66d944f1c07aaf62252fc5ebcdeb5",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/overview.vue",
+      "bytes": 665,
+      "sha256": "2d9e5398dfb55c78b411c12758cdf59bd8aaa31de2021993f79d0583a23911a2",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/personnel.vue",
+      "bytes": 669,
+      "sha256": "5d3ed6f0cb7ca57075bfd8fee789a1d57663b6a75d69e4cdeb3ff43272658c86",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/qualification.vue",
+      "bytes": 678,
+      "sha256": "02f8e02a3ab035979954e50abedc252129104415837c5f2a48c9818f8472a555",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/supply.vue",
+      "bytes": 665,
+      "sha256": "29a1bcf0510ace4c4939437c1a8990fee3038bfac486854868842b10eec6e721",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/verify.vue",
+      "bytes": 663,
+      "sha256": "04476f7cd87102390e05da62cb92ed94316503129d306af68034a3c85510aaae",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/service/workbench.vue",
+      "bytes": 666,
+      "sha256": "d0874b8ac77125d615192e35dcf56bae7a1a910bed35807f4196a7d58bb6e891",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/src/pages/unavailable/index.vue",
+      "bytes": 1002,
+      "sha256": "5f8808e40085c0e1f425b76cef2948930530ada02778f8247d9c840317f1aedc",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/cart/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/confirm/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/detail/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/list/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/order-detail/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/order-list/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/mall/pending/index.vue",
+      "bytes": 220,
+      "sha256": "6e1ccb5d6c4f5a65e64021f14f809d2d8957e8bdb4eec7d67b751caa63dc4472",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/action.vue",
+      "bytes": 663,
+      "sha256": "f530af4a672053b6cdaac07f3800aca4ad7d27689b39f973e52edd761d08f5cd",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/after-sale.vue",
+      "bytes": 671,
+      "sha256": "f2b446166719c9154865049445e11e6a50d241e3d483fbef8cbee0a142226979",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/booking.vue",
+      "bytes": 666,
+      "sha256": "e6ad1e7882fe3c36744acaa9fa6859666149f06d74cb0d3f8d25e4562c653121",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/catalog.vue",
+      "bytes": 698,
+      "sha256": "4498e8e0d789d07fdf7d547391681df7557178bdec541142b0ad439d20078f3b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/detail.vue",
+      "bytes": 665,
+      "sha256": "c9415455f875a7970bdc97c95213744f08dd38dde4401f5bc683745a1a330e5b",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/evaluation.vue",
+      "bytes": 667,
+      "sha256": "9aec6a4ea02c4f1f7f15ecf0289721d64d294c11be3aee68902d9290be871d2f",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/order.vue",
+      "bytes": 662,
+      "sha256": "7ff733cec939d45aae156caf06b9ae1e0e51a24a3fa1f0816bc53095ca309084",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/orders.vue",
+      "bytes": 663,
+      "sha256": "e98eb1904566786d17dbc6e224a9f54adaa66d944f1c07aaf62252fc5ebcdeb5",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/voucher.vue",
+      "bytes": 664,
+      "sha256": "605003d0a806f1bd0bca4115cb3bbd1d4ea084affafdee5b0ecf0dae7a23ad66",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/unavailable/index.vue",
+      "bytes": 1002,
+      "sha256": "5f8808e40085c0e1f425b76cef2948930530ada02778f8247d9c840317f1aedc",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/src/pages/unavailable/index.vue",
+      "bytes": 1002,
+      "sha256": "5f8808e40085c0e1f425b76cef2948930530ada02778f8247d9c840317f1aedc",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/portal/ModuleGrid.vue",
+      "bytes": 1601,
+      "sha256": "d3ffee4055fd80216e279318bec8ea7db4c92d6826b8e53e12bab048e37db712",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/portal/PortalPage.vue",
+      "bytes": 17110,
+      "sha256": "ff50741313e1087598cefa6a656cdf4bb04ddef8cf1baa1b58faa3ed828a6a57",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/portal/modules.ts",
+      "bytes": 4402,
+      "sha256": "1b2d9217e9d36b73f4a4964f48df59042ec1d1c77e1d418f65c719700b47a7a2",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/portal/portal.scss",
+      "bytes": 6372,
+      "sha256": "953588ae3dd507ae3b4c8d87f5801962de5270c4f5b9640a89fc967e7693641c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/Details.vue",
+      "bytes": 11175,
+      "sha256": "7f5cf7d7ab04d58ba88950a244001b9f90cdaea7a653eec10a4b3d9d1029cb8c",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/packages/service/Evidence.vue",
+      "bytes": 12340,
+      "sha256": "dcd0f40b18cea880afad9a6760e21740e5b324120be79e95cc2874df050b0e13",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/FieldGroup.vue",
+      "bytes": 22076,
+      "sha256": "1955c88d60a344f4af5732f18bded4ac522f91e7723cd06b65e7e33e7c6a66a1",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/Picture.vue",
+      "bytes": 3002,
+      "sha256": "1bb08d7db1109dd672728a4c35e841318d849c55abf657754d8204e4818e51b7",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/ServicePage.vue",
+      "bytes": 68793,
+      "sha256": "769a3e6ca4faebef6d00ead0958a970f86d62a0a5ee9c40dcac6833b23ab7250",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/SupplyEditor.vue",
+      "bytes": 8634,
+      "sha256": "63d68e5e40d1bb4dbfd8233b04da2aa7dace4c18e60fffcb1941e16b0e8e8e33",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/VoucherCode.vue",
+      "bytes": 2165,
+      "sha256": "e9025950ebc69986cbe9a9a98b51dab4803dfc80d20702a0719b6ed74a01971b",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/packages/service/presentation.ts",
+      "bytes": 643,
+      "sha256": "cb850937b4fb26c0585a99bf79676980ba49f7686aad9cad8ca73b6b7bf1d304",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/service/vendor-qr.d.ts",
+      "bytes": 376,
+      "sha256": "a182168146022a9c0e98e81171749bea88d876ef271f0063b53d5c8afd4e8d61",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "miniapp/packages/theme/business.scss",
+      "bytes": 2604,
+      "sha256": "b386747ab953df6a2bc0e5d3284d473a081d0bd5d2a6b8256714f06c969df5bd",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/images/service-cleaning.png",
+      "bytes": 2025698,
+      "sha256": "dafc9267c248b239d174b96af75a0c4932d08cf427bac194f7e5680e1b907998",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "miniapp/packages/ui/assets/images/service-repair.png",
+      "bytes": 1887690,
+      "sha256": "2d8884af2b3faaf466c4de86d7775a9aba5f3961aa20cc55b97d594ad7fd8b63",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "outputs/stage01-acceptance-r1-20261109/R1账单导入样例.csv",
+      "bytes": 303,
+      "sha256": "9665692f04b47b820cdb1c7dbfa8dc454101f8c9785a985a7a7eb04ddeafdc76",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "outputs/stage01-acceptance-r1-20261109/Stage01_R1_修改及模块复验清单.xlsx",
+      "bytes": 14316,
+      "sha256": "9440355f736457bc82b0a966f1680cc469297fc76005a634bc0fe1546fd2a5b0",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "outputs/stage01-acceptance-r1-20261109/Stage01_R1_修改及模块复验清单.xlsx.inspect.ndjson",
+      "bytes": 93094,
+      "sha256": "b1ac56445f131a8c145d0d4bc766bf3d6f1768dda1e0e17f6e9efa912d49abcb",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "outputs/stage01-acceptance-r1-20261109/changes-preview.png",
+      "bytes": 111645,
+      "sha256": "fef400e7159049f0954bb9c9e6969eba7ce58cd8c7a79ea4916798bf590df073",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "outputs/stage01-acceptance-r1-20261109/retest-preview.png",
+      "bytes": 155861,
+      "sha256": "2f90d48d80f273aff9a9c6b1b6d99e893f3de4620ded94ddcaaff7001e113771",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "outputs/stage01-acceptance-r1-20261109/workbook-check.json",
+      "bytes": 134,
+      "sha256": "f9fb7afc442e482ba8f02e43098a416b2996d3f9770d8cfee20711cb8a591b2d",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "prototype-shared/service/aftersale.js",
+      "bytes": 19196,
+      "sha256": "781124ec81c12f26149b2a53acd7117003835ae091ec8c8b5c87ae4ff80e58a4",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/common.js",
+      "bytes": 19786,
+      "sha256": "3f57fc6a6b9b2600742827f95bba7b5035b68f31c0422ea10e4a6dedf0b717aa",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/fields.js",
+      "bytes": 430896,
+      "sha256": "456732f32a295b368c6d57ae3ba6d28f4c9b16c2cd4a6e0d053fbdd7b75db0b7",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/funds.js",
+      "bytes": 14256,
+      "sha256": "465f8710277b3f5cd7a7b6d4758301436b0053bfe93f52aef4683ff90a6316ca",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/index.js",
+      "bytes": 51656,
+      "sha256": "8389481467f5712e184beed94b780200f3324be5131e84b5a4f9cbaf14ef77da",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/orders.js",
+      "bytes": 32454,
+      "sha256": "56480a8f9c280370aaaaabd705526217a1c35d17f96f10acb8235421cd18079d",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/scenarios.js",
+      "bytes": 11231,
+      "sha256": "b6aa9b3e88efdfe25299c60a2268f30ecd1399272113655971d8a2116f4a36f7",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/seed.js",
+      "bytes": 17356,
+      "sha256": "d730c013c5c25b17b5c582f60f492f312311d980415f4818fc7be2c58f9fc5ff",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/service/supply.js",
+      "bytes": 27047,
+      "sha256": "ab2e224ff6649fa83b6f7e16537d77a42add9f591d1ca27637ebe3ce757c293f",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "prototype-shared/stage01/upgrade.js",
+      "bytes": 3348,
+      "sha256": "97407c7b606649e75df1156d94e9249c234e1c7a87be3af6f94480a3c62e376a",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "scripts/audit-service-field-gaps.mjs",
+      "bytes": 20722,
+      "sha256": "20788520f2b93d80996d582834497b63eaac60057bf3c5e6ee9a40312b523f7a",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/browser-mobile-integration-handoff.mjs",
+      "bytes": 1828,
+      "sha256": "c3bafe86e86c456fc148c8faf069f5c2969d24fa46b0babf64d15a6fd31764e4",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-mobile-integration-layout.mjs",
+      "bytes": 3247,
+      "sha256": "1c92728794bbb3585027c191fc9f83b12c83ff03c2149c843c99bafb8ec17b8e",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-mobile-integration-migration.mjs",
+      "bytes": 3798,
+      "sha256": "a5e8c6b945ef3256789a74e2f40904a63e41883467ec9603ac6ff165e4e5763c",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-mobile-integration.mjs",
+      "bytes": 7381,
+      "sha256": "66a575b9318be408b270db22a541593361e45328700f2700e636203509336495",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-service-fields.mjs",
+      "bytes": 33195,
+      "sha256": "b0098c13df8ca1b3b992592d2d17641a02b29556d1bad5df612f003a7f8474de",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/browser-service-flows.mjs",
+      "bytes": 35238,
+      "sha256": "b71e8d1f2febd581ff29d9b12f0ee8caad3b56c0952ac5e1a5ffc20f62a639b0",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-service-review.mjs",
+      "bytes": 20476,
+      "sha256": "51879a646b2b4fa31cc9312f859c2a02651f7f748c63f4d9802f82bd4592f50c",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/browser-service-security.mjs",
+      "bytes": 35703,
+      "sha256": "b80371396b5e2e920e6380e98e61363e12a7ada5375faf33f4840a2b7492b4c0",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/browser-service-web.mjs",
+      "bytes": 25141,
+      "sha256": "4c21a3bd19567bb1b7ef9f9da6c07a94791eca9b4f840a6a9de0fad71e55da02",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/browser-stage01-r1-exceptions.mjs",
+      "bytes": 6148,
+      "sha256": "87513cac994cac7769ad42fe11ef5a197d91cfd359f5083738f0df4539438f2b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-stage01-r1.mjs",
+      "bytes": 20151,
+      "sha256": "d184b6841291750aa85121ee38c3e6e74a2d8edefff468341f967255042ad101",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "scripts/browser-stage02-regression.mjs",
+      "bytes": 5514,
+      "sha256": "7f0650cab5521f61fda9f77e793334e0a7788e92e28fa565b8101cd52a0eb56d",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/check-stage01-r1.mjs",
+      "bytes": 5707,
+      "sha256": "679305cbf157fa4957a69febe502771bb055dff556721b0df3accb0e384aca63",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "scripts/check-stage02.mjs",
+      "bytes": 8092,
+      "sha256": "4c71fa3dff2f2a8f198329006e1f11eee00f8f81fa259c46c3aca400e780b666",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/create-service-fields.mjs",
+      "bytes": 2085,
+      "sha256": "c776d850556d54e1db7b55c49909cb879fca5405bdf7b4bf988297e46087575f",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/snapshot-stage02.mjs",
+      "bytes": 5772,
+      "sha256": "81185cf18b7275da70d0cde47924890ada697080a24d4c777279fa0c247b5f1b",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/summarize-service-validation.mjs",
+      "bytes": 7569,
+      "sha256": "540750d4af685960cf6718794f8d30183b4d6a176130180f7283123b7dd269ae",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "scripts/verify-mobile-integration.mjs",
+      "bytes": 1901,
+      "sha256": "d13afeb865006667fd7874fc6ef65dc55c6d78220841f77fc965dcee09775b51",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "tests/mobile-integration.test.mjs",
+      "bytes": 2660,
+      "sha256": "cc6784ae9244e3dcbf1915efd035dd5c207d6e49dfa782b1e4d0244d0db45485",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "tests/service-adapters.test.mjs",
+      "bytes": 5326,
+      "sha256": "ef022d2f880cb4a17fa2ca2866d8075e6ee70c7d2b6f7dddd8cf38be256532f8",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "tests/service-review.test.mjs",
+      "bytes": 20561,
+      "sha256": "0d6a27d8b51945a89942e91d196497f93a28570ae94479300ad48f53759dcef3",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "tests/service-variants.test.mjs",
+      "bytes": 34997,
+      "sha256": "70b7fd8470ca099d753e4f1083870b897bce506ffd70032e8bae3a45b706564b",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "tests/service.test.mjs",
+      "bytes": 59028,
+      "sha256": "4cb9a45d8721d5362d07933e24b6f81c26acb7c2b13c2f11f2bf634323bafcb0",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "tests/stage01-r1.test.mjs",
+      "bytes": 10212,
+      "sha256": "74b60e2d17abcf996843ccb8e7d012d8bc709564a2db0d356f71e3e5bd3ec71f",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceDetail.vue",
+      "bytes": 20204,
+      "sha256": "43f0180908315822c03caf94e608b148d95a299a66d82689b8cb1192276f63b1",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceEvidence.vue",
+      "bytes": 10137,
+      "sha256": "4f2a6b066714409ef3d12253b74ed27c5b0b9a660939084a3bc32a2935ac937b",
+      "origin": "mobile_integration"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceFields.vue",
+      "bytes": 20743,
+      "sha256": "178b464ef5a54f47634418f00ae114f4c48344ddb3c0567ec531ebe6300bba55",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceValues.vue",
+      "bytes": 4775,
+      "sha256": "5227c5fbf6e9e10f00ac845cab46f9d8dae1fbd41686467b04ebf45c8d6d8f4e",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "web/manager/src/components/service/model.js",
+      "bytes": 8348,
+      "sha256": "029bc4d9f386fbfb83b8d2ac3812b24e1266a2f9da52ad64013c4060266e9a3d",
+      "origin": "imported_stage02_current"
+    },
+    {
+      "file": "web/manager/src/components/stage01/BusinessDetail.vue",
+      "bytes": 6995,
+      "sha256": "b5357a08182937108692d26e887fe102f1a80d5026a9dd092fffe7db5130a3da",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/components/stage01/SpaceFilter.vue",
+      "bytes": 1740,
+      "sha256": "703a035aab3b3566ad7d4bee670c07e79a02ac20f0a37652c9f1930f857cb222",
+      "origin": "inherited_stage01_r1"
+    },
+    {
+      "file": "web/manager/src/views/service/ServiceWorkspace.vue",
+      "bytes": 39567,
+      "sha256": "471849ebc8ba1a26f6b07cbf1586802b1c514bdba703ca27df864b97ecb9319c",
+      "origin": "imported_stage02_current"
+    }
+  ]
+}

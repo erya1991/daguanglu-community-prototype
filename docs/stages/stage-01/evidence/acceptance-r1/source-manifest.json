@@ -1,0 +1,11 @@
+{
+  "file": "C:/Users/65410/Downloads/Stage01_验收清单.xlsx",
+  "sha256": "999fa5101d1be0369ab2bcbae61a51d2d63a94bf8e0e1ab1a763d4822706dcd8",
+  "originalStatusCounts": {
+    "失败": 19,
+    "通过": 6,
+    "不适用": 6,
+    "未执行": 64
+  },
+  "originalWorkbookModified": false
+}

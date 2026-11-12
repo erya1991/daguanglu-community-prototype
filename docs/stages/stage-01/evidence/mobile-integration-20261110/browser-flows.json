@@ -1,0 +1,99 @@
+{
+  "run": "R1-FLOW-2026-11-09T14-40-58-941Z",
+  "session": "stage01-R1-FLOW-2026-11-09T14-40-58-941Z",
+  "base": "http://127.0.0.1:19210",
+  "results": [
+    {
+      "id": "property-pay",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/property-paid.png",
+        "url": "http://127.0.0.1:19210/resident/?session=stage01-R1-FLOW-2026-11-09T14-40-58-941Z#/pages/stage01/payments/detail?id=S1-PY-000014"
+      },
+      "at": "2026-11-09T14:41:10.611Z"
+    },
+    {
+      "id": "repair-submit",
+      "status": "PASS",
+      "detail": {
+        "url": "http://127.0.0.1:19210/resident/?session=stage01-R1-FLOW-2026-11-09T14-40-58-941Z#/pages/stage01/repairs/detail?id=S1-RP-000020&table=reports",
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/repair-submitted.png"
+      },
+      "at": "2026-11-09T14:41:13.674Z"
+    },
+    {
+      "id": "repair-property-work",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/repair-review.png"
+      },
+      "at": "2026-11-09T14:41:40.413Z"
+    },
+    {
+      "id": "repair-resident-confirm-evaluate",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/repair-evaluated.png"
+      },
+      "at": "2026-11-09T14:41:57.852Z"
+    },
+    {
+      "id": "monthly-new-and-renewal",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/monthly-renewed.png"
+      },
+      "at": "2026-11-09T14:42:14.341Z"
+    },
+    {
+      "id": "temporary-payment",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/temporary-paid.png"
+      },
+      "at": "2026-11-09T14:42:24.548Z"
+    },
+    {
+      "id": "hazard-resident-to-staff-close",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/hazard-public-result.png",
+        "staff": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/hazard-closed.png"
+      },
+      "at": "2026-11-09T14:42:31.844Z"
+    },
+    {
+      "id": "r1-import-publish-manual-check",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/merged-payment-check.png"
+      },
+      "at": "2026-11-09T14:42:51.695Z"
+    },
+    {
+      "id": "r1-manual-task-classification-and-cancel",
+      "status": "PASS",
+      "detail": {
+        "screenshot": ".runtime/stage01/R1-FLOW-2026-11-09T14-40-58-941Z/manual-task-original-report.png"
+      },
+      "at": "2026-11-09T14:43:18.127Z"
+    },
+    {
+      "id": "stage00-affected-readonly-regression",
+      "status": "PASS",
+      "detail": {
+        "checks": "Stage00空间入口与绑定可达；住户身份保留；管理端收费只读"
+      },
+      "at": "2026-11-09T14:43:23.746Z"
+    },
+    {
+      "id": "r1-list-detail-filters",
+      "status": "PASS",
+      "detail": {
+        "checks": "空间树、只读详情、完整状态、停车资料、旧链接、四种视口"
+      },
+      "at": "2026-11-09T14:43:44.190Z"
+    }
+  ],
+  "errors": []
+}

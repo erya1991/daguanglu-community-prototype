@@ -1,0 +1,164 @@
+{
+  "run": "FLOWS-2026-11-09T14-55-54-207Z",
+  "session": "stage02-FLOWS-2026-11-09T14-55-54-207Z",
+  "base": "http://127.0.0.1:19210",
+  "executedAt": "2026-11-09T14:58:36.364Z",
+  "results": [
+    {
+      "id": "AC02-001",
+      "additional": [
+        "AC02-037"
+      ],
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 14000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.record-card').filter({ hasText: 'S02-ORDER-000106' }) to be visible\u001b[22m\n",
+      "screenshot": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-failure.png"
+    },
+    {
+      "id": "AC02-002",
+      "additional": [
+        "AC02-037"
+      ],
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 14000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.record-card').filter({ hasText: 'S02-ORDER-000116' }) to be visible\u001b[22m\n",
+      "screenshot": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-failure.png"
+    }
+  ],
+  "steps": [
+    {
+      "flow": "上门",
+      "name": "new-supply-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:55:58.223Z",
+      "detail": {
+        "id": "S02-SUPPLY-000101",
+        "price": "137.35",
+        "mainImage": [
+          {
+            "id": "local-1794236170058-5n4r52pujp8",
+            "name": "demo-service.png",
+            "type": "image/png",
+            "size": 690,
+            "status": "成功",
+            "uploader": "邻里生活馆",
+            "uploadedAt": "2026-11-09T14:56:10.063Z",
+            "description": "",
+            "order": 1
+          }
+        ]
+      }
+    },
+    {
+      "flow": "上门",
+      "name": "submit-review-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:56:21.739Z",
+      "detail": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-submitted-review.png"
+    },
+    {
+      "flow": "上门",
+      "name": "web-review-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:56:30.010Z",
+      "detail": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-web-reviewed.png"
+    },
+    {
+      "flow": "上门",
+      "name": "publish-and-list-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:56:32.451Z",
+      "detail": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-published.png"
+    },
+    {
+      "flow": "上门",
+      "name": "resident-book-and-pay-ui",
+      "status": "FAIL",
+      "started": "2026-11-09T14:56:39.985Z",
+      "error": "locator.waitFor: Timeout 14000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.record-card').filter({ hasText: 'S02-ORDER-000106' }) to be visible\u001b[22m\n"
+    },
+    {
+      "flow": "预约到点",
+      "name": "new-supply-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:57:21.559Z",
+      "detail": {
+        "id": "S02-SUPPLY-000111",
+        "price": "63.28",
+        "mainImage": [
+          {
+            "id": "local-1794236254973-0zn6qltg03z",
+            "name": "demo-service.png",
+            "type": "image/png",
+            "size": 690,
+            "status": "成功",
+            "uploader": "邻里生活馆",
+            "uploadedAt": "2026-11-09T14:57:34.979Z",
+            "description": "",
+            "order": 1
+          }
+        ]
+      }
+    },
+    {
+      "flow": "预约到点",
+      "name": "submit-review-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:57:42.604Z",
+      "detail": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-submitted-review.png"
+    },
+    {
+      "flow": "预约到点",
+      "name": "web-review-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:57:50.379Z",
+      "detail": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-web-reviewed.png"
+    },
+    {
+      "flow": "预约到点",
+      "name": "publish-and-list-ui",
+      "status": "PASS",
+      "started": "2026-11-09T14:57:52.471Z",
+      "detail": ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-published.png"
+    },
+    {
+      "flow": "预约到点",
+      "name": "resident-book-and-pay-ui",
+      "status": "FAIL",
+      "started": "2026-11-09T14:58:01.062Z",
+      "error": "locator.waitFor: Timeout 14000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.record-card').filter({ hasText: 'S02-ORDER-000116' }) to be visible\u001b[22m\n"
+    }
+  ],
+  "errors": [],
+  "blockedRequests": [],
+  "artifacts": [
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-new-supply-form.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-validation-preserves-input.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-submitted-review.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-web-reviewed.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-published.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-booking-layout.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-booking-draft-restored.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-failure.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-resident-failure.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/上门-web-failure.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-new-supply-form.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-submitted-review.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-web-reviewed.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-published.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-booking-layout.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-failure.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-resident-failure.png",
+    ".runtime/stage02/FLOWS-2026-11-09T14-55-54-207Z/预约到点-web-failure.png"
+  ],
+  "artifactHashesBefore": {
+    "web/manager/dist/index.html": "c00e6344e5797088025fd11b6791a8cc355514b9afebad3c522632b7ee722e88",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "b53498afcea6b5a5a620860f9731225985260a93607adfc61288609fcf6caf68",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "3ea6c5664a0fb122d8945b848f5b031dbb9834af7f4c177f449d3c041149020d"
+  },
+  "artifactHashesAfter": {
+    "web/manager/dist/index.html": "c00e6344e5797088025fd11b6791a8cc355514b9afebad3c522632b7ee722e88",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "b53498afcea6b5a5a620860f9731225985260a93607adfc61288609fcf6caf68",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "3ea6c5664a0fb122d8945b848f5b031dbb9834af7f4c177f449d3c041149020d"
+  },
+  "configurationFixtureUsed": false,
+  "scope": "Actual UI new supply, retained failed input and restored booking draft, default payment, arrangement, process with evidence, fulfillment, resident completion, independent split and one evaluation. 390/414 form layout checks. Read-only helpers inspect; only identity and legal scene clock are prepared. No real payment, owner acceptance, WeChat-tool or real-device claim."
+}

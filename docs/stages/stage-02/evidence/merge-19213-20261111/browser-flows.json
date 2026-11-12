@@ -1,0 +1,23 @@
+{
+  "run": "FLOWS-2026-11-11T08-03-27-857Z",
+  "session": "stage02-FLOWS-2026-11-11T08-03-27-857Z",
+  "base": "http://127.0.0.1:19213",
+  "executedAt": "2026-11-11T08:03:32.437Z",
+  "results": [],
+  "steps": [],
+  "errors": [],
+  "blockedRequests": [],
+  "artifacts": [],
+  "artifactHashesBefore": {
+    "web/manager/dist/index.html": "2250b62cd71f4294649e69c702b635d64009cf78e17502d66744fb646910a7e0",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "c311705b339d933537ac6228f1f9470c3848b784e79518217ddf9ae0edeea652",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "42aa29f3051721982d8e4c8bdebcc3919ed0667087ba94cf03fc366b09fc871c"
+  },
+  "artifactHashesAfter": {
+    "web/manager/dist/index.html": "2250b62cd71f4294649e69c702b635d64009cf78e17502d66744fb646910a7e0",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "c311705b339d933537ac6228f1f9470c3848b784e79518217ddf9ae0edeea652",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "42aa29f3051721982d8e4c8bdebcc3919ed0667087ba94cf03fc366b09fc871c"
+  },
+  "configurationFixtureUsed": false,
+  "scope": "Actual UI new supply, retained failed input and restored booking draft, default payment, arrangement, process with evidence, fulfillment, resident completion, independent split and one evaluation. 390/414 form layout checks. Read-only helpers inspect; only identity and legal scene clock are prepared. No real payment, owner acceptance, WeChat-tool or real-device claim."
+}

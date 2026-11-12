@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-09T13:19:14.248Z",
+  "command": "npm.cmd test",
+  "exitCode": 0,
+  "total": 111,
+  "passed": 107,
+  "failed": 0,
+  "skipped": 4,
+  "stage01": 38,
+  "log": ".runtime/stage01/acceptance-r1/tests-final.log",
+  "sha256": "c2fb1ce707b52e0d741a2f2adc0a334060310735683e3f20aefbd83a9bb1a963",
+  "skipReason": "原Stage00 R3负责人取消人员维护、离岗及手工指标的4条历史测试原封保留skip；当前只读名录及统计另有测试"
+}

@@ -1,0 +1,67 @@
+{
+  "at": "2026-11-09T13:19:14.237Z",
+  "results": [
+    {
+      "command": "node .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-web-final.log",
+      "sha256": "d6f0960152902720ae5120f63d5b53759e2930c168c564554715718e118a4186"
+    },
+    {
+      "command": "npm.cmd run type-check:resident",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/type-check-resident-final.log",
+      "sha256": "13210bd543133e8bd9adbab600dd4b13eda065c388b7f46017db310ebe6a02b7"
+    },
+    {
+      "command": "npm.cmd run type-check:merchant",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/type-check-merchant-final.log",
+      "sha256": "a5b971da650fa9d34c85d4486090d9fa0519447602eba3fd7f3719820276551e"
+    },
+    {
+      "command": "npm.cmd run type-check:staff",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/type-check-staff-final.log",
+      "sha256": "d63effd58ae6032e50ebc2a581ab416a7ac40362e5d8ba7cc78703f7e719edbe"
+    },
+    {
+      "command": "npm.cmd run build:resident:h5",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-resident-h5-final.log",
+      "sha256": "c2b57558cd0b4877cd5349b02f2708155cd46ca5ba7ed19f0c0cae5a96c226ef"
+    },
+    {
+      "command": "npm.cmd run build:merchant:h5",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-merchant-h5-final.log",
+      "sha256": "c93e0f06372e405ec41d312264acbcd5bc5ac564671d43c349a2feed6d5d127c"
+    },
+    {
+      "command": "npm.cmd run build:staff:h5",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-staff-h5-final.log",
+      "sha256": "80257881b18e86a4eb6b4922ccc31fca9ace45d62fd1b3c19b744c1984f1f403"
+    },
+    {
+      "command": "npm.cmd run build:resident:mp-weixin",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-resident-mp-weixin-final.log",
+      "sha256": "36333eddcbdfb838678f11fee966e02fd6cde11539c96ab476a11ad793843df1"
+    },
+    {
+      "command": "npm.cmd run build:merchant:mp-weixin",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-merchant-mp-weixin-final.log",
+      "sha256": "06a657db3863c2bc9ee71b21143245674b8a3cf460cbd15a2ab9b7ed3f40166e"
+    },
+    {
+      "command": "npm.cmd run build:staff:mp-weixin",
+      "exitCode": 0,
+      "log": ".runtime/stage01/acceptance-r1/build-staff-mp-weixin-final.log",
+      "sha256": "de67e5f2ad006166d0339e6735b4665e186cca378e072d16b913db32e18f9b2b"
+    }
+  ],
+  "initialFailure": "商户微信首次构建EPERM，使用已批准的本仓构建权限重试及最终全量均退出0",
+  "warnings": "沿用VueCLI体积提示、Sass弃用及uni-app选择器提示；未升级依赖"
+}

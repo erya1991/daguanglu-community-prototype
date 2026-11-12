@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-11-06T18:01:57.790Z",
+  "toolVersion": "2.01.2510290",
+  "libraryObserved": "3.18.0",
+  "scope": "Actual Windows tool observations are separate from builds, H5, QR decoding and owner/device acceptance",
+  "resident": {
+    "status": "PARTIAL",
+    "project": "D:\\git\\daguanglu-community-prototype-stage02\\miniapp\\apps\\resident-miniapp\\dist\\build\\mp-weixin",
+    "observations": [
+      "Imported this exact resident output into the installed developer tool",
+      "Observed home page with existing tabs and Stage02 service entry",
+      "Opened service discovery page and observed catalog/cards and return navigation"
+    ],
+    "observedRuntimeErrors": 0,
+    "issues": [
+      {
+        "issue": "Seed SVG metadata had no native sandbox path, so service cover was unavailable",
+        "sourceFix": "PNG seed and authorized native sandbox attachment materialization, with adapter regression passed",
+        "toolRetest": "NOT_COMPLETED_AFTER_REBUILD"
+      },
+      {
+        "issue": "New service component WXSS tag selectors generated tool warnings",
+        "sourceFix": "Explicit svc-* classes added in new components only",
+        "toolRetest": "Pending final tool round; inherited UI warnings tracked separately"
+      }
+    ],
+    "finalRevisionRetest": "NOT_RUN"
+  },
+  "merchant": {
+    "status": "BLOCKED",
+    "reason": "Official CLI reports IDE service port disabled; did not enable it. Native menu import/focus was not stable enough to claim completed tool validation."
+  },
+  "staff": {
+    "status": "NOT_RUN",
+    "reason": "Separate App tool interaction not completed; all build/type evidence recorded independently"
+  },
+  "realDevice": {
+    "status": "NOT_RUN",
+    "reason": "No actual test device/experience session was provided or observed"
+  },
+  "cli": {
+    "command": "cli.bat open --project <this-worktree merchant mp-weixin output>",
+    "log": ".runtime/stage02/wechat-merchant-open.log",
+    "result": "BLOCKED_SERVICE_PORT_DISABLED",
+    "securitySettingsChanged": false,
+    "confirmationPromptAccepted": false,
+    "ownedCliProcessEnded": true
+  },
+  "noProductionAppIdCopied": true,
+  "noActualPayments": true,
+  "ownerAcceptance": "NOT_RUN",
+  "desktopControl": {
+    "status": "STOPPED_BY_USER",
+    "observedAt": "2026-11-06T18:26:58.610Z",
+    "reason": "Computer Use tool reported the physical Escape key; no further Computer Use calls made in this turn."
+  },
+  "resumeAttempt": {
+    "checkedAt": "2026-11-07T05:02:42.313Z",
+    "project": "miniapp/apps/merchant-miniapp/dist/build/mp-weixin",
+    "result": "BLOCKED",
+    "message": "IDE service port disabled; declined to enable CLI capability. Only own CLI probe stopped.",
+    "log": ".runtime/stage02/resume-20261107/wechat-open.log"
+  }
+}

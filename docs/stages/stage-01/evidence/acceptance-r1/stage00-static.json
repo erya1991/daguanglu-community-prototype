@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-09T12:50:43.291Z",
+  "checks": [
+    {
+      "name": "历史字段定义保全与当前R3字段差异分别校验",
+      "status": "FAIL",
+      "error": "Protected source/template changed prototype-shared/stage01/common.js\n+ actual - expected\n\n+ '590a460f0226f7888fc0e4a611c646408c9b3e976fe2c7a9d2ac02ec717e5f86'\n- '64039ac5f80c3ab47d8114f22dc404947b8d1563e93f135f4373800f6be6cab9'\n"
+    },
+    {
+      "name": "移动依赖解析未升级，只有工作区元信息适配",
+      "status": "PASS",
+      "evidence": {
+        "unchangedResolvedEntries": 615
+      }
+    },
+    {
+      "name": "Web保留Manager锁文件，Vue2与移动Vue3隔离",
+      "status": "PASS",
+      "evidence": {
+        "web": "2.7.16",
+        "mobile": "3.4.21"
+      }
+    },
+    {
+      "name": "自有源码无真实业务调用、源仓绝对导入或跨仓链接",
+      "status": "PASS",
+      "evidence": {
+        "files": 227
+      }
+    },
+    {
+      "name": "当前范围构建与类型检查具有实际退出码",
+      "status": "PASS",
+      "evidence": {
+        "run": "BUILD_2026-11-09T06-01-44-232Z",
+        "passed": 7,
+        "native": "NOT_RUN: owner deferred Mini Program verification"
+      }
+    }
+  ]
+}

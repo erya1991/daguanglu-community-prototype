@@ -1,0 +1,1 @@
+export function serviceText(value:any):string {const text=String(value);const labels:Record<string,string>={'演示资料维护人':'资料维护人员','虚构业务资料，按有效前置事实预置':'经营资料初始化','虚构样例：需核验对应服务证明':'需核验对应服务证明','虚构样例：需核验对应人员证明':'需核验对应人员证明','虚构演示机构':'社区服务培训中心','虚构样例资料':'材料已核验','样例已获准':'审核通过','虚构演示人员；不是登录岗位':'服务人员档案','DEMO-ALLOC-V1':'规则V1','DEMO-ALLOC-V2':'规则V2'};return labels[text]||text}

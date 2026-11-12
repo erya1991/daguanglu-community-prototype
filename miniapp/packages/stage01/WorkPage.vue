@@ -6,7 +6,7 @@ import AppPage from "../ui/components/AppPage.vue";
 import AppNavbar from "../ui/components/AppNavbar.vue";
 import ActionForm from "./ActionForm.vue";
 import Details from "./Details.vue";
-import { actionNames, format } from "@core/stage01/ui.js";
+import { actionNames, format, listStates } from "@core/stage01/ui.js";
 const names: Record<string, string> = actionNames;
 const props = withDefaults(
   defineProps<{
@@ -15,8 +15,9 @@ const props = withDefaults(
     id?: string;
     table?: string;
     action?: string;
+    initialStatus?: string;
   }>(),
-  { id: "", table: "", action: "" }
+  { id: "", table: "", action: "", initialStatus: "" }
 );
 const options = ref<any>({ actor: {} }),
   rows = ref<any[]>([]),
@@ -31,8 +32,9 @@ const options = ref<any>({ actor: {} }),
   success = ref(""),
   startDate = ref(""),
   endDate = ref(""),
-  status = ref(""),
+  status = ref(props.initialStatus),
   keyboard = ref(0);
+watch(() => props.initialStatus, v => { status.value = v || ""; });
 let loaded = false,
   generation = 0,
   identityStamp = "";
@@ -49,19 +51,20 @@ const table = computed(
 const editing = computed(() =>
   ["create", "action", "supplement"].includes(props.mode)
 );
+const retired = computed(() => props.mode === 'supplement' || ['supplement','requestSupplement','markDuplicate','markFalse','accept','return','review','closeHazard'].includes(props.action));
 const kind = computed(() =>
   props.view === "hazards"
     ? "隐患"
-    : props.view === "repairs"
-    ? "报修"
     : row.value?._kind || form.value.RP07 || "报修"
 );
 const title = computed(() =>
-  editing.value
+  retired.value
+    ? "工单"
+    : editing.value
     ? names[action.value] || "现场上报"
     : (
         {
-          repairs: "我的报修",
+          repairs: "我的工单",
           hazards: "隐患随手拍",
           reports: "现场上报",
           tasks: "工单待办",
@@ -101,7 +104,7 @@ function open(r: any) {
   go(props.view + "/detail", { id: r._id, table: r._table || table.value });
 }
 function act(name: string) {
-  if (["accept", "closeHazard"].includes(name)) {
+  if (name === "startProcess") {
     uni.showModal({
       title: names[name],
       content: "核对当前事项，确认办理。",
@@ -137,6 +140,7 @@ async function load() {
   error.value = "";
   busy.value = true;
   try {
+    if (retired.value) { error.value = '该工单操作已取消，请返回工单列表按当前流程办理'; return; }
     options.value = await service.stage01.options();
     if (identityStamp && identityStamp !== options.value.actor.id) {
       loaded = false;
@@ -146,16 +150,10 @@ async function load() {
     identityStamp = options.value.actor.id;
     if (props.mode === "index") {
       if (props.view === "tasks") {
-        const e = (await service.stage01.query("events"))
-          .filter((r) => ["待核实", "待补充", "待重新核实"].includes(r.EV09))
-          .map((r) => ({ ...r, _table: "events" }));
-        const w = (await service.stage01.query("workorders"))
-          .filter((r) => !["已完成", "已销号", "待居民确认"].includes(r.WO06))
-          .map((r) => ({ ...r, _table: "workorders" }));
-        rows.value = [...e, ...w];
+        rows.value = await service.stage01.query("workorders");
       } else
         rows.value = (await service.stage01.query("reports")).filter(
-          (r) => props.view === "reports" || r.RP07 === kind.value
+          (r) => props.view !== "hazards" || r.RP07 === "隐患"
         );
     } else if (props.id) {
       const r = await service.stage01.record(table.value, props.id);
@@ -165,7 +163,11 @@ async function load() {
     if (editing.value && !loaded) {
       const saved = await service.draft(draftKey.value);
       form.value = saved || {
+        ...row.value,
         ...row.value?.draft,
+        WO19: [], WO18: "",
+        WO22:row.value?.WO22||row.value?.report?.RP15||"",
+        WO23:row.value?.WO23||row.value?.report?.RP16||"",
         RP07: kind.value,
         RP08: kind.value === "隐患" ? "公共安全" : "设施维修",
         RP09: "C-A",
@@ -185,8 +187,8 @@ async function load() {
           )?.value || "",
         EV13: [],
       };
-      if (action.value === "verify")
-        events.value = await service.stage01.query("events");
+      if (action.value === "markDuplicate")
+        events.value = (await service.stage01.query("workorders")).filter(r=>r._id!==props.id);
       loaded = true;
     }
   } catch (e: any) {
@@ -230,8 +232,8 @@ async function save() {
           "/pages/stage01/" +
           (APP === "resident" ? props.view : "tasks") +
           "/detail?id=" +
-          result.id +
-          "&table=reports",
+          (APP === "resident" ? result.id : result.workorderId) +
+          (APP === "resident" ? "&table=reports" : "&table=workorders"),
       });
     else uni.navigateBack({ delta: 1 });
   } catch (e: any) {
@@ -289,7 +291,7 @@ onUnmounted(() => {
             view === "hazards"
               ? "上报隐患"
               : view === "repairs"
-              ? "提交报修"
+              ? "上报工单"
               : "现场上报"
           }}</button
         ><view class="filters"
@@ -312,9 +314,9 @@ onUnmounted(() => {
               >{{ endDate || "上报结束日期" }} ›</view
             ></picker
           ><picker
-            :range="['全部状态', ...new Set(rows.map((r) => r._status))]"
+            :range="['全部状态', ...listStates.workorders]"
             @change="
-              status = ['', ...new Set(rows.map((r) => r._status))][
+              status = ['', ...listStates.workorders][
                 Number($event.detail.value)
               ]
             "
@@ -330,7 +332,7 @@ onUnmounted(() => {
         ><view v-if="!busy && !filtered.length" class="card" data-field="QF13"
           >当前暂无记录</view
         ></template
-      ><template v-else-if="editing"
+      ><template v-else-if="editing && !retired"
         ><view class="card"
           ><ActionForm
             :action="action"
@@ -340,6 +342,7 @@ onUnmounted(() => {
             :errors="errors"
             :role="options.actor.role"
             :kind="kind"
+            :record="row || {}"
             :records="events"
             :public-candidates="candidates" /></view
         ><view class="bottom-space" /><view
@@ -356,7 +359,6 @@ onUnmounted(() => {
           ><text class="state">{{ row._status }}</text></view
         ><view class="actions"
           ><template v-if="APP === 'resident'"
-            ><button @click="act('supplement')">补充信息</button
             ><button
               v-if="row._canConfirm"
               class="primary"
@@ -372,29 +374,13 @@ onUnmounted(() => {
             </button></template
           ><template v-else
             ><button
-              v-if="
-                table === 'events' &&
-                ['待核实', '待补充', '待重新核实'].includes(row.EV09)
-              "
-              class="primary"
-              @click="act('verify')"
-            >
-              核实事项</button
-            ><button
               v-for="a in row._actions || []"
               :key="a"
               :disabled="saving"
               @click="act(a)"
             >
               {{ names[a] }}</button
-            ><button
-              v-if="table === 'reports'"
-              @click="
-                go('reports/supplement', { id: row._id, table: 'reports' })
-              "
-            >
-              补充现场证据
-            </button></template
+            ></template
           ></view
         ><Details :row="row" :table="table" /></template
       ><button v-if="error" @click="load">重新读取</button></view

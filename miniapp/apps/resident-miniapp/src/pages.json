@@ -263,6 +263,117 @@
         "navigationStyle": "custom",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/service/catalog",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/booking",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/orders",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/order",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/action",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/after-sale",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/evaluation",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/voucher",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/unavailable/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/list/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/detail/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/pending/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/cart/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/confirm/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/order-list/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mall/order-detail/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {

@@ -1,0 +1,41 @@
+export type ModuleEntry = { id: string; title: string; icon: string; group: string; apps: string[]; path: string; available: boolean; roles?: string[]; permission?: string; notice?: string }
+const r = ['resident'], m = ['merchant'], s = ['staff']
+const item = (id:string,title:string,icon:string,group:string,apps:string[],path:string,available=true,permission=''):ModuleEntry => ({id,title,icon,group,apps,path,available,permission,notice: available ? '' : '功能开发中，敬请期待'})
+export const modules:ModuleEntry[] = [
+ item('fees','物业缴费','bill','生活缴费',r,'/pages/stage01/fees/index'),
+ item('parking','停车服务','parking','生活缴费',r,'/pages/stage01/parking/index'),
+ item('houses','我的房屋','house','我的社区',r,'/pages/foundation/relations/index'),
+ item('binding','房屋绑定','key','我的社区',r,'/pages/foundation/relations/apply?kind=绑定'),
+ item('vehicles','车辆管理','car','我的社区',r,'/pages/foundation/vehicles/index'),
+ item('applications','申请记录','bill','我的社区',r,'/pages/foundation/applications/index'),
+ item('repair','报事报修','repair','物业服务',r,'/pages/stage01/repairs/index'),
+ item('records','业务记录','order','物业服务',r,'/pages/stage01/records/index'),
+ item('catalog','生活服务','services','便民生活',r,'/pages/service/catalog'),
+ item('service-orders','我的服务订单','order','便民生活',r,'/pages/service/orders'),
+ item('all','全部服务','more','快捷入口',r,'/pages/service/index'),
+ item('payments','缴费记录','bill','我的记录',r,'/pages/stage01/payments/index'),
+ item('missing','地址缺失反馈','location','更多',r,'/pages/foundation/missing/index'),
+ item('profile-edit','个人资料','user','更多',r,'/pages/profile/edit'),
+ item('idle','闲置共享','recycle','邻里生活',r,'/pages/unavailable/index?feature=闲置共享',false),
+ item('neighbor','邻里互助','neighbor','邻里生活',r,'/pages/unavailable/index?feature=邻里互助',false),
+ item('mall','社区商城','bag','购物消费',r,'/pages/mall/index',false),
+ item('points','我的积分','points','更多',r,'/pages/unavailable/index?feature=我的积分',false),
+ item('messages','消息中心','message','更多',[...r,...m,...s],'/pages/unavailable/index?feature=消息中心',false),
+ item('supply','服务供给','services','经营管理',m,'/pages/service/supply'),
+ item('personnel','服务人员','neighbor','经营管理',m,'/pages/service/personnel'),
+ item('evaluations','服务评价','message','经营管理',m,'/pages/service/evaluations'),
+ item('overview','经营概览','dashboard','经营管理',m,'/pages/service/overview'),
+ item('orders','服务订单','order','商户办理',m,'/pages/order/index'),
+ item('verify','到点核验','qr','商户办理',m,'/pages/service/verify'),
+ item('aftersales','服务售后','recycle','商户办理',m,'/pages/service/aftersales'),
+ item('qualification','经营资格','verified','商户资料',m,'/pages/service/qualification'),
+ item('funds','服务资金','bill','商户资料',m,'/pages/service/funds'),
+ item('goods','商品管理','bag','商城经营',m,'/pages/unavailable/index?feature=商品管理',false),
+ item('goods-settings','商城设置','settings','商城经营',m,'/pages/unavailable/index?feature=商城设置',false),
+ item('tasks','工单办理','order','物业办理',s,'/pages/stage01/tasks/index'),
+ item('report','现场上报','edit','物业办理',s,'/pages/stage01/reports/create'),
+ item('charges','收费查询','bill','物业办理',s,'/pages/stage01/charges/index'),
+ ...['communities','estates','houses','residents','vehicles','facilities','personnel'].map((t,i)=>item('archive-'+t,['社区档案','小区档案','房屋档案','住户档案','车辆档案','设施档案','人员档案'][i],['location','home','house','user','car','repair','neighbor'][i],'授权档案',s,'/pages/foundation/'+t+'/index',true,'read:'+t)),
+]
+export function moduleEntries(app:string,actor:any){return modules.filter(e=>e.apps.includes(app)&&(!e.permission||actor?.permissions?.includes(e.permission))&&(!e.roles||e.roles.includes(actor?.role)))}
+export function pickEntries(entries:ModuleEntry[],ids:string[]){return ids.map(id=>entries.find(e=>e.id===id)).filter(Boolean) as ModuleEntry[]}

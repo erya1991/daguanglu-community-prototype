@@ -16,6 +16,7 @@
             <MenuItem v-for="entry in stage01Entries" :key="entry[0]" :name="entry[0]">{{entry[1]}}</MenuItem>
           </Submenu>
         </Submenu>
+        <Submenu v-for="g in serviceMenuGroups" :key="'service-'+g.title" :name="g.title"><template slot="title">{{g.title}}</template><MenuItem v-for="entry in g.entries" :key="entry.path" :name="entry.path">{{entry.title}}</MenuItem></Submenu>
       </Menu>
     </aside>
     <header class="main-header-con">
@@ -33,7 +34,7 @@
           ><BreadcrumbItem>物业管理</BreadcrumbItem><BreadcrumbItem>{{ activeGroup }}</BreadcrumbItem
           ><BreadcrumbItem>{{ pageTitle }}</BreadcrumbItem></Breadcrumb
         >
-        <div class="header-context" v-if="!identityChanging && $route.meta.stage01">
+        <div class="header-context" v-if="!identityChanging && $route.meta.stage01 && $route.path !== '/property/bills'">
           <Select
             :value="context.community || ''"
             clearable
@@ -84,7 +85,7 @@ export default {
     scopes: { communities: [], estates: [] },
     context: {},
     catalog,
-    stage01Entries: [['property/bills','物业费账单'],['property/payments','缴费记录与异常'],['parking/business','停车业务'],['parking/checks','停车核查'],['workorders/events','待核实事件'],['workorders/tasks','工单办理'],['workorders/overview','工单概况'],['workorders/repairs','报修反馈'],['workorders/hazards','隐患台账']],
+    stage01Entries: [['property/bills','物业费账单'],['property/payments','缴费记录'],['parking/business','停车业务'],['workorders/tasks','工单办理']],
 
 
     groups: [
@@ -99,18 +100,19 @@ export default {
     ],
   }),
   computed: {
+    serviceMenuGroups(){const role=this.info?.actor.role;const groups=[{title:'商户与合作管理',entries:[['qualifications','服务经营资格'],['personnel','服务人员']]},{title:'商品与服务运营',entries:[['categories','服务分类'],['review','服务审核']]},{title:'订单与履约管理',entries:[['orders','服务订单']]},{title:'售后与评价',entries:[['aftersales','服务售后'],['evaluations','服务评价']]},{title:'经营与资金',entries:[['overview','服务经营'],['funds','服务资金'],['exceptions','资金异常核查']]}];return groups.map(g=>({...g,entries:g.entries.filter(e=>e[0]==='categories'?role==='platform':role==='property').map(e=>({path:'service/'+e[0],title:e[1]}))})).filter(g=>g.entries.length)},
     visibleGroups() {
       return this.groups.map(group => ({ ...group, items: group.items.filter(this.available) })).filter(group => group.items.length)
     },
     activeGroup() {
-      return this.$route.meta.stage01 ? '物业服务' : this.groups.find(group => group.items.includes(this.table))?.title || '工作台'
+      return this.$route.meta.service ? this.serviceMenuGroups.find(g=>g.entries.some(e=>e.path===this.table))?.title || '便民服务' : this.$route.meta.stage01 ? '物业服务' : this.groups.find(group => group.items.includes(this.table))?.title || '工作台'
     },
     table() {
-      if(this.$route.meta.stage01)return this.$route.path.slice(1)
+      if(this.$route.meta.stage01 || this.$route.meta.service)return this.$route.path.slice(1)
       return this.$route.name === 'spaces' ? 'spaces' : this.$route.params.table || 'dashboard'
     },
     pageTitle() {
-      if(this.$route.meta.stage01)return this.$route.meta.title
+      if(this.$route.meta.stage01 || this.$route.meta.service)return this.$route.meta.title
       return this.table === 'spaces' ? '社区房屋档案' : this.catalog[this.table]?.title || '物业工作台'
     },
     currentAccount() {
@@ -124,7 +126,7 @@ export default {
     },
   },
   async created() {
-    this.openGroups = ['property-management', ...this.groups.map(group => group.title), '物业服务']
+    this.openGroups = ['property-management', ...this.groups.map(group => group.title), '物业服务','商户与合作管理','商品与服务运营','订单与履约管理','售后与评价','经营与资金']
     this.unsubscribe = service.onChange(this.refresh)
     try {
       await service.start()

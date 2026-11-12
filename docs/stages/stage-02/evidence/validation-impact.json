@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-11-07T05:15:58.582Z",
+  "previousBuild": "BUILD_2026-11-07T05-02-42-410Z",
+  "currentBuild": "BUILD_2026-11-07T05-12-52-952Z",
+  "changes": [
+    {
+      "id": "web",
+      "same": false,
+      "fileCount": 33
+    },
+    {
+      "id": "resident-h5",
+      "same": false,
+      "fileCount": 69
+    },
+    {
+      "id": "resident-mp-weixin",
+      "same": false,
+      "fileCount": 317
+    },
+    {
+      "id": "merchant-h5",
+      "same": false,
+      "fileCount": 27
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "same": false,
+      "fileCount": 191
+    },
+    {
+      "id": "staff-h5",
+      "same": false,
+      "fileCount": 42
+    },
+    {
+      "id": "staff-mp-weixin",
+      "same": false,
+      "fileCount": 216
+    }
+  ],
+  "productChangesAfterFieldAudit": [
+    "ServicePage success return routing, with explicit evaluation return to the original order",
+    "Fund recovery checks for current refund budget and original split basis"
+  ],
+  "fieldEvidenceBoundary": "The field renderer, field metadata, public review cards and field layout did not change after the last targeted field audit. Observations keep their originRun; new fund recovery business conditions are verified by strict rules and shared-store recovery checks, not inferred from visibility.",
+  "currentValidation": "Full Web, same-build both mainlines, security/recovery and shared-entry regressions rerun on current output; builds and types all passed."
+}

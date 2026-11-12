@@ -1,0 +1,5398 @@
+{
+  "run": "WEB-2026-11-07T05-15-04-179Z",
+  "base": "http://127.0.0.1:19220",
+  "session": "stage02-WEB-2026-11-07T05-15-04-179Z",
+  "selectedChecks": null,
+  "executedAt": "2026-11-07T05:16:00.569Z",
+  "results": [
+    {
+      "id": "classification-create-edit-and-toggle",
+      "acs": [
+        "AC02-005",
+        "AC02-044"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "S02-CAT-000101",
+        "history": 4,
+        "observedFields": 56,
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/classification.png"
+      }
+    },
+    {
+      "id": "qualification-return-and-approved-range",
+      "acs": [
+        "AC02-003",
+        "AC02-044"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "Q-A",
+        "authorizedCategories": [
+          "CAT-CLEAN",
+          "CAT-AC",
+          "CAT-FAN",
+          "CAT-GLASS"
+        ],
+        "observedFields": 37,
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/qualification-reviewed.png"
+      }
+    },
+    {
+      "id": "supply-review-version",
+      "acs": [
+        "AC02-007",
+        "AC02-044"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "SV-HOME",
+        "publishedVersion": 1,
+        "reviewedVersion": 2,
+        "observedFields": 117,
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/supply-reviewed.png"
+      }
+    },
+    {
+      "id": "ruling-全额退款",
+      "acs": [
+        "AC02-031",
+        "AC02-032",
+        "AC02-033",
+        "AC02-034"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "S02-SALE-000114",
+        "result": "全额退款",
+        "execution": "待执行",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/ruling-全额退款.png",
+        "observedFields": 28
+      }
+    },
+    {
+      "id": "ruling-部分退款",
+      "acs": [
+        "AC02-031",
+        "AC02-032",
+        "AC02-033",
+        "AC02-034"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "S02-SALE-000114",
+        "result": "部分退款",
+        "execution": "待执行",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/ruling-部分退款.png",
+        "observedFields": 28
+      }
+    },
+    {
+      "id": "ruling-继续或补充履约",
+      "acs": [
+        "AC02-031",
+        "AC02-032",
+        "AC02-033",
+        "AC02-034"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "S02-SALE-000114",
+        "result": "继续或补充履约",
+        "execution": "待执行",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/ruling-继续或补充履约.png",
+        "observedFields": 28
+      }
+    },
+    {
+      "id": "ruling-不予退款",
+      "acs": [
+        "AC02-031",
+        "AC02-032",
+        "AC02-033",
+        "AC02-034"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "S02-SALE-000114",
+        "result": "不予退款",
+        "execution": "待执行",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/ruling-不予退款.png",
+        "observedFields": 28
+      }
+    },
+    {
+      "id": "ruling-correction-version",
+      "acs": [
+        "AC02-035"
+      ],
+      "status": "PASS",
+      "detail": {
+        "id": "S02-SALE-000114",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/ruling-corrected.png"
+      }
+    },
+    {
+      "id": "executed-ruling-note-and-rule-version",
+      "acs": [
+        "AC02-035",
+        "AC02-037",
+        "AC02-042"
+      ],
+      "status": "PASS",
+      "detail": {
+        "sale": "S02-SALE-000114",
+        "noteOnly": true,
+        "fundsUnchanged": true,
+        "ruleVersion": "DEMO-ALLOC-V2",
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/executed-ruling-note.png"
+      }
+    },
+    {
+      "id": "stats-fixed-values-and-drill",
+      "acs": [
+        "AC02-041",
+        "AC02-044"
+      ],
+      "status": "PASS",
+      "detail": {
+        "values": {
+          "创建订单数": 5,
+          "付款成功订单数": 5,
+          "已确认服务安排数": 1,
+          "正常完成订单数": 1,
+          "未服务取消订单数": 1,
+          "部分履行终止订单数": 1,
+          "当前待接单数": 1,
+          "当前待安排数": 1,
+          "当前售后待处理数": 1,
+          "期间支付成功金额": "495.00",
+          "期间退款成功金额": "189.00",
+          "期间分账成功金额": "89.00",
+          "期间回退成功金额": "30.00",
+          "期间净收款": "306.00"
+        },
+        "drillRows": 5,
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/stats-fixed.png",
+        "drillScreenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/stats-drill.png"
+      }
+    },
+    {
+      "id": "funds-time-basis-filter",
+      "acs": [
+        "AC02-040",
+        "AC02-041"
+      ],
+      "status": "PASS",
+      "detail": {
+        "rows": [
+          "S02-REF-000122",
+          "S02-REF-000143",
+          "S02-REF-000178"
+        ],
+        "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/funds-refund-time-basis.png",
+        "observedFields": 37
+      }
+    },
+    {
+      "id": "web-viewports-and-business-routes",
+      "acs": [
+        "AC02-044",
+        "AC02-052"
+      ],
+      "status": "PASS",
+      "detail": [
+        {
+          "view": "qualifications",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 15,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/qualifications-1366.png"
+        },
+        {
+          "view": "qualifications",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 15,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/qualifications-1920.png"
+        },
+        {
+          "view": "personnel",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 13,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/personnel-1366.png"
+        },
+        {
+          "view": "personnel",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 13,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/personnel-1920.png"
+        },
+        {
+          "view": "categories",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 59,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/categories-1366.png"
+        },
+        {
+          "view": "categories",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 59,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/categories-1920.png"
+        },
+        {
+          "view": "review",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 67,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/review-1366.png"
+        },
+        {
+          "view": "review",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 67,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/review-1920.png"
+        },
+        {
+          "view": "orders",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 67,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/orders-1366.png"
+        },
+        {
+          "view": "orders",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 67,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/orders-1920.png"
+        },
+        {
+          "view": "aftersales",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 15,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/aftersales-1366.png"
+        },
+        {
+          "view": "aftersales",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 15,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/aftersales-1920.png"
+        },
+        {
+          "view": "evaluations",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 3,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/evaluations-1366.png"
+        },
+        {
+          "view": "evaluations",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 3,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/evaluations-1920.png"
+        },
+        {
+          "view": "overview",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 18,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/overview-1366.png"
+        },
+        {
+          "view": "overview",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 18,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/overview-1920.png"
+        },
+        {
+          "view": "funds",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 24,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/funds-1366.png"
+        },
+        {
+          "view": "funds",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 24,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/funds-1920.png"
+        },
+        {
+          "view": "exceptions",
+          "viewport": {
+            "width": 1366,
+            "height": 768
+          },
+          "overflow": false,
+          "visibleFields": 3,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/exceptions-1366.png"
+        },
+        {
+          "view": "exceptions",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "overflow": false,
+          "visibleFields": 3,
+          "screenshot": ".runtime/stage02/WEB-2026-11-07T05-15-04-179Z/exceptions-1920.png"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "blockedRequests": [],
+  "observed": {
+    "demo:演示模式标识": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "evaluations",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/evaluations",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "evaluations",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/evaluations",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "exceptions",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/exceptions",
+        "text": "演示模式 · 虚构数据"
+      },
+      {
+        "view": "exceptions",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/exceptions",
+        "text": "演示模式 · 虚构数据"
+      }
+    ],
+    "demo:当前社区": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "evaluations",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/evaluations",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "evaluations",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/evaluations",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "exceptions",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/exceptions",
+        "text": "当前社区：全部获准"
+      },
+      {
+        "view": "exceptions",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/exceptions",
+        "text": "当前社区：全部获准"
+      }
+    ],
+    "demo:当前小区": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "evaluations",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/evaluations",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "evaluations",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/evaluations",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "exceptions",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/exceptions",
+        "text": "当前小区：全部获准"
+      },
+      {
+        "view": "exceptions",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/exceptions",
+        "text": "当前小区：全部获准"
+      }
+    ],
+    "27-A.01": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": ""
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": ""
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": ""
+      }
+    ],
+    "27-A.02": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "全部状态\n启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "全部状态\n启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "全部状态\n启用"
+      }
+    ],
+    "27-A.03": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类目编号\nS02-CAT-000101"
+      }
+    ],
+    "27-A.04": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类目名称\n家政验收分类--04-179Z"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "空调清洗"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "空调清洗"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "洗衣机安装"
+      }
+    ],
+    "27-A.05": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "上级类目\n未填写"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "—"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "—"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "—"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "家政服务"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "—"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "安装维修"
+      }
+    ],
+    "27-A.06": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类目图标\ncategory.png\n成功\n类型：image/png\n大小：68 B\n文件记录\n查看图片"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "category.png\n成功\n类型：image/png\n大小：68 B\n文件记录\n查看图片"
+      }
+    ],
+    "C1.01": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "category.png"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁-虚构示意.png"
+      }
+    ],
+    "C1.07": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "成功"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "成功"
+      }
+    ],
+    "C1.02": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类型：image/png"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "类型：image/png"
+      }
+    ],
+    "C1.03": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "大小：68 B"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "大小：690 B"
+      }
+    ],
+    "C1.04": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "查看图片"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "查看图片"
+      }
+    ],
+    "27-A.07": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类目说明\nWeb修改后的说明"
+      }
+    ],
+    "27-A.08": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "商户证明是否必需\n否"
+      }
+    ],
+    "27-A.10": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "人员证明是否必需\n否"
+      }
+    ],
+    "27-A.12": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "允许履约方式\n未填写"
+      }
+    ],
+    "27-A.13": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类目排序\n0"
+      }
+    ],
+    "27-A.14": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "类目状态\n停用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "启用"
+      }
+    ],
+    "27-A.21": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "配置变更原因\n核对停用对新交易的影响"
+      }
+    ],
+    "27-A.22": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "配置历史\n配置历史 1\n记录编号\nS02-HI-000102\n动作名称\ncategory.save\n记录时间\n2026-11-07T08:00:00+08:00\n操作人\n平台管理员\n操作人业务身份\n平台管理员\n结果状态\n成功\n原因说明\n—\n关联凭证\n\n暂无记录\n\n变更明细\n\n暂无记录\n\n配置历史 2\n记录编号\nS02-HI-000103\n动作名称\ncategory.save\n记录时间\n2026-11-07T08:00:00+08:00\n操作人\n平台管理员\n操作人业务身份\n平台管理员\n结果状态\n成功\n原因说明\n修正类目说明，保留原业务快照\n关联凭证\n\n暂无记录\n\n变更明细\n变更明细 1\n变更字段名称\n类目说明\n变更前值\n通过实际Web表单创建的演示类目\n变更后值\nWeb修改后的说明\n配置历史 3\n记录编号\nS02-HI-000104\n动作名称\ncategory.status\n记录时间\n2026-11-07T08:00:00+08:00\n操作人\n平台管理员\n操作人业务身份\n平台管理员\n结果状态\n成功\n原因说明\n核对停用对新交易的影响\n关联凭证\n\n暂无记录\n\n变更明细\n变更明细 1\n变更字段"
+      }
+    ],
+    "C2.01": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "记录编号\nS02-HI-000102"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "记录编号\nS02-HI-000103"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "记录编号\nS02-HI-000104"
+      }
+    ],
+    "C2.02": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "动作名称\ncategory.save"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "动作名称\ncategory.save"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "动作名称\ncategory.status"
+      }
+    ],
+    "C2.03": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "记录时间\n2026-11-07T08:00:00+08:00"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "记录时间\n2026-11-07T08:00:00+08:00"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "记录时间\n2026-11-07T08:00:00+08:00"
+      }
+    ],
+    "C2.04": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "操作人\n平台管理员"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "操作人\n平台管理员"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "操作人\n平台管理员"
+      }
+    ],
+    "C2.05": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "操作人业务身份\n平台管理员"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "操作人业务身份\n平台管理员"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "操作人业务身份\n平台管理员"
+      }
+    ],
+    "C2.06": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "结果状态\n成功"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "结果状态\n成功"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "结果状态\n成功"
+      }
+    ],
+    "C2.07": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "原因说明\n—"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "原因说明\n修正类目说明，保留原业务快照"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "原因说明\n核对停用对新交易的影响"
+      }
+    ],
+    "C2.08": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "关联凭证\n\n暂无记录"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "关联凭证\n\n暂无记录"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "关联凭证\n\n暂无记录"
+      }
+    ],
+    "27-A.22:0:changes": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更明细\n\n暂无记录"
+      }
+    ],
+    "27-A.22:1:changes": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更明细\n变更明细 1\n变更字段名称\n类目说明\n变更前值\n通过实际Web表单创建的演示类目\n变更后值\nWeb修改后的说明"
+      }
+    ],
+    "C3.01": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更字段名称\n类目说明"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更字段名称\n类目状态"
+      }
+    ],
+    "C3.02": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更前值\n通过实际Web表单创建的演示类目"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更前值\n启用"
+      }
+    ],
+    "C3.03": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更后值\nWeb修改后的说明"
+      },
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更后值\n停用"
+      }
+    ],
+    "27-A.22:2:changes": [
+      {
+        "view": "W03",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "变更明细\n变更明细 1\n变更字段名称\n类目状态\n变更前值\n启用\n变更后值\n停用"
+      }
+    ],
+    "26-B.01": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "MER-A"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "MER-B"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "商户编号\nMER-A"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "MER-A"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "MER-B"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "MER-A"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "MER-B"
+      }
+    ],
+    "26-B.02": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "商户名称\n青禾家政服务有限公司"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "安居维修服务有限公司"
+      }
+    ],
+    "26-B.05": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "经营店铺名称\n青禾社区家政"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "安居维修服务"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "青禾社区家政"
+      }
+    ],
+    "26-A.03": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "已通过"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "已通过"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "已通过"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "已通过"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "已通过"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "已通过"
+      }
+    ],
+    "26-B.18": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "有效"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "有效"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "服务经营有效性\n有效"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "有效"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "有效"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "有效"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "有效"
+      }
+    ],
+    "26-B.22": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "2026-11-07T08:00:00+08:00"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "2026-11-01T08:00:00+08:00"
+      },
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "最近审核时间\n2026-11-07T08:00:00+08:00"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "2026-11-01T08:00:00+08:00"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "2026-11-01T08:00:00+08:00"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "2026-11-01T08:00:00+08:00"
+      },
+      {
+        "view": "qualifications",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "2026-11-01T08:00:00+08:00"
+      }
+    ],
+    "26-B.03": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "主体类型\n已入驻企业"
+      }
+    ],
+    "26-B.04": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "经营店铺编号\nSHOP-A"
+      }
+    ],
+    "26-B.06": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "商户状态\n正常"
+      }
+    ],
+    "26-B.07": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "负责人姓名\n李青"
+      }
+    ],
+    "26-B.08": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "经营联系电话\n13800001111"
+      }
+    ],
+    "26-B.09": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "合作协议编号\nPACT-A"
+      }
+    ],
+    "26-B.10": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "合作协议名称\n社区便民服务合作协议"
+      }
+    ],
+    "26-B.11": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "协议版本\nV1"
+      }
+    ],
+    "26-B.12": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "协议生效日期\n2026-01-01"
+      }
+    ],
+    "26-B.13": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "协议截止日期\n长期"
+      }
+    ],
+    "26-B.14": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "协议状态\n有效"
+      }
+    ],
+    "26-B.15": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "获准服务类目\n家庭保洁\n空调清洗\n循环扇清洗\n居家玻璃清洗"
+      }
+    ],
+    "26-B.16": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "获准社区\n青禾示例社区"
+      }
+    ],
+    "26-B.17": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "获准小区\n青禾示例花园"
+      }
+    ],
+    "26-B.19": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "新增交易资格\n可交易"
+      }
+    ],
+    "26-B.20": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "资格限制原因\n\n暂无记录"
+      }
+    ],
+    "26-B.21": [
+      {
+        "view": "W01",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/qualifications",
+        "text": "当前授权生效时间\n2026-11-07T08:00:00+08:00"
+      }
+    ],
+    "summary:服务项目编号": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-HOME"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-AC"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-FAN"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-GLASS"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-DRAIN"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-HINGE"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-INSTALL"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-POINT"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-HOME"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-AC"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-FAN"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-GLASS"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-DRAIN"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-HINGE"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-INSTALL"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-POINT"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-HOME"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-AC"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-FAN"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-GLASS"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-DRAIN"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-HINGE"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-INSTALL"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "SV-POINT"
+      }
+    ],
+    "29-E.05": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "挂式空调清洗"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "台式循环扇清洗"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "挂式空调清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "台式循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "挂式空调清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "台式循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "挂式空调清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "台式循环扇清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "挂式空调清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "台式循环扇清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "到点循环扇清洗"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "冰箱门铰链调整"
+      }
+    ],
+    "26-A.05": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调清洗"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "循环扇清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "居家玻璃清洗"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "空调排水故障维修"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "冰箱门铰链调整"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "洗衣机安装"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "循环扇清洗"
+      }
+    ],
+    "27-C.16": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "审核状态\n通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "通过"
+      }
+    ],
+    "27-C.17": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "上架状态\n已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "已上架"
+      }
+    ],
+    "summary:接收预约状态": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "接收中"
+      }
+    ],
+    "summary:展示价格": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "129.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "59.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "119.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "159.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "59.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "129.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "59.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "119.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "159.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "59.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "129.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "59.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "119.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "159.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "99.00"
+      },
+      {
+        "view": "review",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "59.00"
+      }
+    ],
+    "27-C.01": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务编号\nSV-HOME"
+      }
+    ],
+    "27-C.02": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务名称\n家庭保洁"
+      }
+    ],
+    "27-C.03": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "所属服务类目\n家庭保洁"
+      }
+    ],
+    "27-C.04": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "经营主体名称\n青禾家政服务有限公司"
+      }
+    ],
+    "27-C.05": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "经营店铺名称\n青禾社区家政"
+      }
+    ],
+    "27-C.06": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务主图\n家庭保洁-虚构示意.png\n成功\n类型：image/png\n大小：690 B\n\n 虚构服务示意图片 \n\n文件记录\n查看图片"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "家庭保洁-虚构示意.png\n成功\n类型：image/png\n大小：690 B\n\n 虚构服务示意图片 \n\n文件记录\n查看图片"
+      }
+    ],
+    "C1.05": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": " 虚构服务示意图片 "
+      }
+    ],
+    "27-C.07": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "介绍图片\n\n暂无文件"
+      },
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "暂无文件"
+      }
+    ],
+    "27-C.08": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务简介\n新编辑版本未发布，居民仍看V1"
+      }
+    ],
+    "27-C.09": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务详细说明\n按选定规格和方式提供服务，不包含未约定的额外项目。"
+      }
+    ],
+    "27-C.10": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "适用对象说明\n社区居民"
+      }
+    ],
+    "27-C.11": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "预约须知\n期望时间不代表预约成功，具体安排需双方确认"
+      }
+    ],
+    "27-C.12": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "公开服务电话\n13800001111"
+      }
+    ],
+    "27-C.13": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务规格集合\n服务规格集合 1\n规格编号\nSPEC-HOME\n规格名称\n单次2小时基础保洁\n规格说明\n单次2小时基础保洁\n包含内容\n单次2小时基础保洁\n不包含内容\n材料配件及其他未约定项目\n预计服务时长\n120\n服务对象填写要求\n选填\n服务对象填写提示\n请说明设备或服务对象\n允许履约方式\n上门\n规格启用状态\n启用\n组合集合\n组合集合 1\n组合履约方式名称\n上门\n组合流程模板\n上门\n组合计价方式\n固定规格价\n组合固定价格\n99.00\n上门覆盖社区\n青禾示例社区\n上门覆盖小区\n青禾示例花园\n可服务门店或服务点\n\n暂无记录\n\n完成证据要求\n可选图片\n组合启用状态\n启用"
+      }
+    ],
+    "27-C.13:0:规格编号": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "规格编号\nSPEC-HOME"
+      }
+    ],
+    "27-C.13:0:规格名称": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "规格名称\n单次2小时基础保洁"
+      }
+    ],
+    "27-C.13:0:规格说明": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "规格说明\n单次2小时基础保洁"
+      }
+    ],
+    "27-C.13:0:包含内容": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "包含内容\n单次2小时基础保洁"
+      }
+    ],
+    "27-C.13:0:不包含内容": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "不包含内容\n材料配件及其他未约定项目"
+      }
+    ],
+    "27-C.13:0:预计服务时长": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "预计服务时长\n120"
+      }
+    ],
+    "27-C.13:0:服务对象填写要求": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务对象填写要求\n选填"
+      }
+    ],
+    "27-C.13:0:服务对象填写提示": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "服务对象填写提示\n请说明设备或服务对象"
+      }
+    ],
+    "27-C.13:0:允许履约方式": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "允许履约方式\n上门"
+      }
+    ],
+    "27-C.13:0:规格启用状态": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "规格启用状态\n启用"
+      }
+    ],
+    "27-C.13:0:组合集合": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "组合集合\n组合集合 1\n组合履约方式名称\n上门\n组合流程模板\n上门\n组合计价方式\n固定规格价\n组合固定价格\n99.00\n上门覆盖社区\n青禾示例社区\n上门覆盖小区\n青禾示例花园\n可服务门店或服务点\n\n暂无记录\n\n完成证据要求\n可选图片\n组合启用状态\n启用"
+      }
+    ],
+    "27-C.13:0:组合集合:0:组合履约方式名称": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "组合履约方式名称\n上门"
+      }
+    ],
+    "27-C.13:0:组合集合:0:组合流程模板": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "组合流程模板\n上门"
+      }
+    ],
+    "27-C.13:0:组合集合:0:组合计价方式": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "组合计价方式\n固定规格价"
+      }
+    ],
+    "27-C.13:0:组合集合:0:组合固定价格": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "组合固定价格\n99.00"
+      }
+    ],
+    "27-C.13:0:组合集合:0:上门覆盖社区": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "上门覆盖社区\n青禾示例社区"
+      }
+    ],
+    "27-C.13:0:组合集合:0:上门覆盖小区": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "上门覆盖小区\n青禾示例花园"
+      }
+    ],
+    "27-C.13:0:组合集合:0:可服务门店或服务点": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "可服务门店或服务点\n\n暂无记录"
+      }
+    ],
+    "27-C.13:0:组合集合:0:完成证据要求": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "完成证据要求\n可选图片"
+      }
+    ],
+    "27-C.13:0:组合集合:0:组合启用状态": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "组合启用状态\n启用"
+      }
+    ],
+    "27-C.14": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前发布版本\n1"
+      }
+    ],
+    "27-C.15": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前编辑版本\n2"
+      }
+    ],
+    "27-C.18": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "平台限制原因\n未记录"
+      }
+    ],
+    "27-C.19": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "当前展示价\n99.00"
+      }
+    ],
+    "27-C.20": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "可售状态说明\n可预约"
+      }
+    ],
+    "27-C.21": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "创建时间\n2026-11-07T08:00:00+08:00"
+      }
+    ],
+    "27-C.22": [
+      {
+        "view": "W04",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/review",
+        "text": "最近更新时间\n2026-11-07T08:00:00+08:00"
+      }
+    ],
+    "31-A.08": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后编号\nS02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后编号\nS02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后编号\nS02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000114"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后编号\nS02-SALE-000114"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000155"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000173"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000155"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-SALE-000173"
+      }
+    ],
+    "31-E.02": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-DEMO-ORDER"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-DEMO-ORDER"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-DEMO-ORDER"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "S02-DEMO-ORDER"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T02"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T03"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T06"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "T04"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "T06"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "T04"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "T06"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T02"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T03"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T06"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T02"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T03"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "T06"
+      }
+    ],
+    "31-A.13": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请类型\n申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请类型\n申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请类型\n申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请类型\n申请退款"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "核实取消"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "核实取消"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款"
+      }
+    ],
+    "29-E.29": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "待执行"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "待执行"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "待执行"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "待执行"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待处理"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "已解决"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待处理"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "已解决"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "无"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "待处理"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已解决"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "待处理"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已解决"
+      }
+    ],
+    "31-A.25": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时间\n2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时间\n2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时间\n2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时间\n2026-11-07T10:00:00+08:00"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-06T08:00:00+08:00"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-03T10:00:00+08:00"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-06T08:00:00+08:00"
+      },
+      {
+        "view": "aftersales",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "2026-11-03T10:00:00+08:00"
+      }
+    ],
+    "31-A.09": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "原服务订单号\nS02-DEMO-ORDER"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "原服务订单号\nS02-DEMO-ORDER"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "原服务订单号\nS02-DEMO-ORDER"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "原服务订单号\nS02-DEMO-ORDER"
+      }
+    ],
+    "31-A.10": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务项目名称\n家庭保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务项目名称\n家庭保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务项目名称\n家庭保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务项目名称\n家庭保洁"
+      }
+    ],
+    "31-A.11": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务规格名称\n单次2小时基础保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务规格名称\n单次2小时基础保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务规格名称\n单次2小时基础保洁"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "服务规格名称\n单次2小时基础保洁"
+      }
+    ],
+    "31-A.12": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "履约方式名称\n上门"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "履约方式名称\n上门"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "履约方式名称\n上门"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "履约方式名称\n上门"
+      }
+    ],
+    "31-A.14": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请原因\n居民反馈服务问题"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请原因\n居民反馈服务问题"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请原因\n居民反馈服务问题"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请原因\n居民反馈服务问题"
+      }
+    ],
+    "31-A.15": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时服务阶段\n结果已提交"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时服务阶段\n结果已提交"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时服务阶段\n结果已提交"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请时服务阶段\n结果已提交"
+      }
+    ],
+    "31-A.16": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已确认付款金额\n99.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已确认付款金额\n99.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已确认付款金额\n99.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已确认付款金额\n99.00"
+      }
+    ],
+    "31-A.17": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已成功退款金额\n0.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已成功退款金额\n0.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已成功退款金额\n0.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "已成功退款金额\n0.00"
+      }
+    ],
+    "31-A.18": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "在途退款占用金额\n0.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "在途退款占用金额\n0.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "在途退款占用金额\n0.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "在途退款占用金额\n0.00"
+      }
+    ],
+    "31-A.19": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "本次可申请退款上限\n99.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "本次可申请退款上限\n99.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "本次可申请退款上限\n99.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "本次可申请退款上限\n99.00"
+      }
+    ],
+    "31-A.20": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款金额\n30.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款金额\n30.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款金额\n30.00"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请退款金额\n30.00"
+      }
+    ],
+    "31-A.21": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "期望解决方式\n未记录"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "期望解决方式\n未记录"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "期望解决方式\n未记录"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "期望解决方式\n未记录"
+      }
+    ],
+    "31-A.22": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "问题说明\n请按原记录核实"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "问题说明\n请按原记录核实"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "问题说明\n请按原记录核实"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "问题说明\n请按原记录核实"
+      }
+    ],
+    "31-A.24": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请人\n林示例"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请人\n林示例"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请人\n林示例"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "申请人\n林示例"
+      }
+    ],
+    "31-A.26": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后状态\n待执行"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后状态\n待执行"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后状态\n待执行"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "售后状态\n待执行"
+      }
+    ],
+    "31-A.27": [
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前处理说明\n线下已核对双方材料，本记录仅保存裁定结果"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前处理说明\n线下已核对双方材料，本记录仅保存裁定结果"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前处理说明\n线下已核对双方材料，本记录仅保存裁定结果"
+      },
+      {
+        "view": "W06",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/aftersales",
+        "text": "当前处理说明\n线下已核对双方材料，本记录仅保存裁定结果"
+      }
+    ],
+    "32-A.01": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "经营店铺筛选"
+      }
+    ],
+    "32-A.02": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "服务项目筛选"
+      }
+    ],
+    "32-A.03": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "服务类目筛选"
+      }
+    ],
+    "32-A.04": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "服务订单号筛选"
+      }
+    ],
+    "32-A.05": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "资金单据号筛选"
+      }
+    ],
+    "32-A.06": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "时间口径 *"
+      }
+    ],
+    "32-A.07": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "查询开始日期 *"
+      }
+    ],
+    "32-A.08": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "查询结束日期 *"
+      }
+    ],
+    "32-A.09": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "支付状态筛选"
+      }
+    ],
+    "32-A.10": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款状态筛选"
+      }
+    ],
+    "32-A.11": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "分账状态筛选"
+      }
+    ],
+    "32-A.12": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "回退状态筛选"
+      }
+    ],
+    "32-A.13": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "仅看异常\n是\n否"
+      }
+    ],
+    "summary:资金业务单号": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000122"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000143"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000178"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000122"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000143"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000178"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000122"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000143"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "S02-REF-000178"
+      }
+    ],
+    "summary:资金类型": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "退款"
+      }
+    ],
+    "summary:金额": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "129.00"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "40.00"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "20.00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "129.00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "40.00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "20.00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "129.00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "40.00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "20.00"
+      }
+    ],
+    "summary:资金状态": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "成功"
+      }
+    ],
+    "summary:发生时间": [
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-02T08:00:00+08:00"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-04T08:00:00+08:00"
+      },
+      {
+        "view": "W09",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-03T10:00:00+08:00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-02T08:00:00+08:00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-04T08:00:00+08:00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-03T10:00:00+08:00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-02T08:00:00+08:00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-04T08:00:00+08:00"
+      },
+      {
+        "view": "funds",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/funds",
+        "text": "2026-11-03T10:00:00+08:00"
+      }
+    ],
+    "26-E.01": [
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "P-A"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "P-B"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "P-A"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "P-B"
+      }
+    ],
+    "26-A.08": [
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "陈师傅"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "王师傅"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "陈师傅"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "王师傅"
+      }
+    ],
+    "26-E.04": [
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "安居维修服务有限公司"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "青禾家政服务有限公司"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "安居维修服务有限公司"
+      }
+    ],
+    "26-E.06": [
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "家庭保洁、空调清洗、循环扇清洗、居家玻璃清洗"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "空调排水故障维修、冰箱门铰链调整、洗衣机安装"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "家庭保洁、空调清洗、循环扇清洗、居家玻璃清洗"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "空调排水故障维修、冰箱门铰链调整、洗衣机安装"
+      }
+    ],
+    "26-A.10": [
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "启用"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "启用"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "启用"
+      },
+      {
+        "view": "personnel",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/personnel",
+        "text": "启用"
+      }
+    ],
+    "summary:商户材料必需": [
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "是"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "是"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      }
+    ],
+    "summary:人员材料必需": [
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "是"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "是"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "是"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "是"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "否"
+      }
+    ],
+    "summary:排序": [
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "0"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "1"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "2"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "3"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "4"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "5"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "6"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "7"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "8"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "0"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "1"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "2"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "3"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "4"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "5"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "6"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "7"
+      },
+      {
+        "view": "categories",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/categories",
+        "text": "8"
+      }
+    ],
+    "29-E.01": [
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T01"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T02"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T03"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T04"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T05"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T06"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T07"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T08"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T01"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T02"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T03"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T04"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T05"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T06"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T07"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "T08"
+      }
+    ],
+    "29-E.06": [
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次2小时基础保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台标准清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次排水软管疏通"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台可拆洗款到点清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次2小时基础保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台门铰链调整"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台可拆洗款"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次2小时室内可及玻璃"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次2小时基础保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台标准清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次排水软管疏通"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台可拆洗款到点清洗"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次2小时基础保洁"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台门铰链调整"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单台可拆洗款"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "单次2小时室内可及玻璃"
+      }
+    ],
+    "27-A.16": [
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "预约到点"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "预约到点"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "上门"
+      }
+    ],
+    "summary:业务进度": [
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "正常完成"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "未服务取消"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "正常完成"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "售后处理中"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待付款"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "部分履行终止"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待接单"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待商家安排"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "正常完成"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "未服务取消"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "正常完成"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "售后处理中"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待付款"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "部分履行终止"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待接单"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待商家安排"
+      }
+    ],
+    "29-E.21": [
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "99.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "129.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "159.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "59.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "99.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "99.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "89.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "119.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "99.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "129.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "159.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "59.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "99.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "99.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "89.00"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "119.00"
+      }
+    ],
+    "29-E.25": [
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待发起"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "待发起"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      },
+      {
+        "view": "orders",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/orders",
+        "text": "成功"
+      }
+    ],
+    "32-B.01": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "创建订单数\n5\n对应业务事实发生时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "创建订单数\n5\n对应业务事实发生时间\n查看明细 →"
+      }
+    ],
+    "32-B.02": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "付款成功订单数\n5\n对应业务事实发生时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "付款成功订单数\n5\n对应业务事实发生时间\n查看明细 →"
+      }
+    ],
+    "32-B.04": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "正常完成订单数\n1\n对应业务事实发生时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "正常完成订单数\n1\n对应业务事实发生时间\n查看明细 →"
+      }
+    ],
+    "32-B.05": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "未服务取消订单数\n1\n对应业务事实发生时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "未服务取消订单数\n1\n对应业务事实发生时间\n查看明细 →"
+      }
+    ],
+    "32-B.06": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "部分履行终止订单数\n1\n对应业务事实发生时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "部分履行终止订单数\n1\n对应业务事实发生时间\n查看明细 →"
+      }
+    ],
+    "32-B.10": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间支付成功金额\n495.00\n对应资金成功时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间支付成功金额\n495.00\n对应资金成功时间\n查看明细 →"
+      }
+    ],
+    "32-B.11": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间退款成功金额\n189.00\n对应资金成功时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间退款成功金额\n189.00\n对应资金成功时间\n查看明细 →"
+      }
+    ],
+    "32-B.13": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间分账成功金额\n89.00\n对应资金成功时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间分账成功金额\n89.00\n对应资金成功时间\n查看明细 →"
+      }
+    ],
+    "32-B.14": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间回退成功金额\n30.00\n对应资金成功时间\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间回退成功金额\n30.00\n对应资金成功时间\n查看明细 →"
+      }
+    ],
+    "32-B.12": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间净收款\n306.00\n本期支付成功额减本期退款成功额，允许负数\n查看明细 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "期间净收款\n306.00\n本期支付成功额减本期退款成功额，允许负数\n查看明细 →"
+      }
+    ],
+    "32-B.15": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "2026-11-06T18:00:00+08:00"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "2026-11-06T18:00:00+08:00"
+      }
+    ],
+    "32-B.03": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "已确认服务安排数\n1\n当前有效安排的服务日\n查看记录 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "已确认服务安排数\n1\n当前有效安排的服务日\n查看记录 →"
+      }
+    ],
+    "32-B.07": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前待接单数\n1\n当前状态\n查看记录 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前待接单数\n1\n当前状态\n查看记录 →"
+      }
+    ],
+    "32-B.08": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前待安排数\n1\n当前状态\n查看记录 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前待安排数\n1\n当前状态\n查看记录 →"
+      }
+    ],
+    "32-B.09": [
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前售后待处理数\n1\n当前状态\n查看记录 →"
+      },
+      {
+        "view": "overview",
+        "url": "http://127.0.0.1:19220/web/?session=stage02-WEB-2026-11-07T05-15-04-179Z#/service/overview",
+        "text": "当前售后待处理数\n1\n当前状态\n查看记录 →"
+      }
+    ]
+  },
+  "scope": "Actual Web UI checks; legal Service helpers only prepare fixtures and inspect persisted outcomes. This report is not a full AC pass or owner acceptance."
+}

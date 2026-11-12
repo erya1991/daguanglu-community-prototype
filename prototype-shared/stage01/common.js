@@ -1,4 +1,5 @@
 import { actorFor, inScope, DomainError, clone } from "../core.js";
+import { upgradeStage01 } from './upgrade.js';
 export { clone, DomainError };
 export const isPropertyOperator = (a) => ["property", "platform"].includes(a.role);
 export const now = () => new Date().toISOString();
@@ -23,7 +24,7 @@ export const need = (ok, message, fields = {}) => {
 export function domain(s) {
   if (!s.stage01)
     s.stage01 = {
-      schemaVersion: 1,
+      schemaVersion: 4,
       sequence: 0,
       operations: {},
       scenarios: {},
@@ -36,7 +37,8 @@ export function domain(s) {
       },
       ...Object.fromEntries(tables.map((t) => [t, []])),
     };
-  need(s.stage01.schemaVersion === 1, "本阶段数据版本不兼容，原数据已保留");
+  upgradeStage01(s.stage01, s);
+  need(s.stage01.schemaVersion === 4, "本阶段数据版本不兼容，原数据已保留，请刷新页面");
   return s.stage01;
 }
 export function actor(s, ctx, write = false, finance = false) {

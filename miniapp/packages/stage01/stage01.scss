@@ -3,9 +3,11 @@
   max-width: 650px;
   margin: 0 auto;
   min-width: 0;
-  color: #243a37;
+  color: $color-text-primary;
   overflow-wrap: anywhere;
 }
+.s1-mobile .required-mark { color: $color-error; }
+.s1-mobile .choice-label { display: block; font-size: 14px; font-weight: 600; margin-top: 12px; }
 .s1-mobile h1,
 .s1-mobile .hero-title {
   font-size: 22px;
@@ -15,15 +17,15 @@
 }
 .s1-mobile .muted {
   display: block;
-  color: #5d7070;
+  color: $color-text-secondary;
   font-size: 13px;
   line-height: 1.7;
   margin: 6px 0;
 }
 .s1-mobile .card {
   padding: 16px;
-  border: 1px solid #e3eae6;
-  border-radius: 12px;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
   background: white;
   margin: 16px 0;
   min-width: 0;
@@ -37,16 +39,16 @@
 .s1-mobile .amount {
   font-size: 28px;
   font-weight: 650;
-  color: #164f3c;
+  color: $color-accent;
   display: block;
   margin: 12px 0;
 }
 .s1-mobile .state {
   font-size: 13px;
-  color: #71501a;
-  background: #fff7df;
+  color: $color-primary;
+  background: $color-primary-light;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 6px;
   display: inline-block;
   margin-top: 8px;
 }
@@ -55,15 +57,16 @@
   line-height: 1.45;
   padding: 12px 16px;
   font-size: 15px;
-  color: #215b46;
+  color: $color-primary;
   background: #fff;
-  border: 1px solid #c5d8ce;
-  border-radius: 6px;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
   margin: 8px 0;
 }
 .s1-mobile button.primary {
-  background: #0c5a3e;
-  border-color: #0c5a3e;
+  background: $color-primary;
+  border-color: $color-primary;
+  min-height: $button-height;
   color: white;
 }
 .s1-mobile button[disabled] {
@@ -80,9 +83,9 @@
 }
 .s1-mobile .error {
   padding: 12px;
-  background: #fff0ef;
-  border: 1px solid #e7b7b6;
-  color: #9b2026;
+  background: $color-error-light;
+  border: 1px solid $color-error;
+  color: $color-error;
   display: block;
   line-height: 1.6;
   margin: 12px 0;
@@ -96,15 +99,15 @@
 .s1-mobile .filters input,
 .s1-mobile .filters picker {
   background: white;
-  border: 1px solid #d1ddd7;
+  border: 1px solid $color-border;
   padding: 12px;
-  border-radius: 6px;
+  border-radius: $radius-md;
   min-height: 44px;
   flex: 1;
   min-width: 120px;
 }
 .s1-mobile .link {
-  color: #215d47;
+  color: $color-primary;
   padding: 12px 0;
   display: block;
   min-height: 44px;
@@ -119,7 +122,7 @@
   right: 0;
   padding: 12px 16px calc(env(safe-area-inset-bottom) + 12px);
   background: white;
-  border-top: 1px solid #dfe8e1;
+  border-top: 1px solid $color-border;
   z-index: 30;
 }
 .s1-mobile .fixed-action button {
@@ -128,9 +131,9 @@
 }
 .s1-mobile .notice {
   font-size: 13px;
-  color: #526c60;
+  color: $color-text-secondary;
   padding: 12px;
-  background: #eef5f0;
+  background: $color-primary-light;
   line-height: 1.7;
   border-radius: 8px;
 }

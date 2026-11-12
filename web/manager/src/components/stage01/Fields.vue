@@ -18,7 +18,7 @@
           :value="Array.isArray(row[id]) ? row[id] : []"
           :table="table"
           :record-id="recordId"
-        /><span v-else>{{ display(id, row[id], row._labels) }}</span>
+        /><span v-else>{{ ['MP10','MO20','TB17'].includes(id) && !row[id] ? '未登记' : display(id, row[id], row._labels) }}</span>
       </dd></template
     >
   </dl>
@@ -42,6 +42,7 @@ export default {
   methods: {
     display: format,
     show(id) {
+      if(['MP10','MO20','TB17'].includes(id)) return true;
       if (id === "PY05") return false; // Stage03 points rules are disabled in this prototype.
       if (
         ["RP04", "RP12", "RP15", "RP16", "EV07", "EV08"].includes(id) &&

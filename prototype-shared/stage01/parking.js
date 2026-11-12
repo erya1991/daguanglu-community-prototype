@@ -112,7 +112,7 @@ export function parkingCommand(s, ctx, command, p) {
     const id = old?._id || makeId(s, "MP"),
       values = {
         ...Object.fromEntries(
-          ["MP02", "MP03", "MP05", "MP06", "MP07", "MP09"].map((k) => [
+          ["MP02", "MP03", "MP05", "MP06", "MP07", "MP09", "MP10"].map((k) => [
             k,
             p.data[k] || "",
           ])
@@ -219,6 +219,7 @@ export function parkingCommand(s, ctx, command, p) {
         MO16: "付款后登记平台期间；通行信息暂未同步",
         MO17: now(),
         MO18: product.MP08,
+        MO20: product.MP10 || '',
         history: [],
       };
     d.monthly.push(r);
@@ -265,7 +266,7 @@ export function parkingCommand(s, ctx, command, p) {
       };
     Object.assign(r, {
       ...Object.fromEntries(
-        ["TB02", "TB03", "TB04", "TB05", "TB09", "TB10", "TB12"].map((k) => [
+        ["TB02", "TB03", "TB04", "TB05", "TB09", "TB10", "TB12", "TB17"].map((k) => [
           k,
           p.data[k] || "",
         ])

@@ -1,0 +1,408 @@
+{
+  "at": "2026-11-09T14:42:10.430Z",
+  "base": "http://127.0.0.1:19210",
+  "run": "MOBILE-2026-11-09T14-41-02-055Z",
+  "session": "stage01-MOBILE-2026-11-09T14-41-02-055Z",
+  "results": [
+    {
+      "id": "M01-tabs",
+      "status": "PASS",
+      "detail": [
+        "resident:首页",
+        "resident:服务",
+        "resident:商城",
+        "resident:我的",
+        "merchant:工作台",
+        "merchant:经营",
+        "merchant:订单",
+        "merchant:我的",
+        "staff:工作台",
+        "staff:档案",
+        "staff:我的"
+      ]
+    },
+    {
+      "id": "M02-open-modules",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n1 !== 0\n"
+    },
+    {
+      "id": "M03-unavailable",
+      "status": "PASS",
+      "detail": [
+        [
+          "resident",
+          "/pages/mall/detail/index?id=old"
+        ],
+        [
+          "resident",
+          "/pages/mall/cart/index"
+        ],
+        [
+          "merchant",
+          "/pages/product/editor/index"
+        ],
+        [
+          "resident",
+          "/pages/points/index"
+        ]
+      ]
+    },
+    {
+      "id": "M04-profile-and-identity",
+      "status": "PASS",
+      "detail": {
+        "initial": "周明",
+        "current": "林悦",
+        "refreshRetained": true
+      }
+    },
+    {
+      "id": "M13-M14-layout-language",
+      "status": "PASS",
+      "detail": [
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        }
+      ]
+    },
+    {
+      "id": "M11-merchant-views",
+      "status": "PASS",
+      "detail": {
+        "embeddedSupply": true,
+        "search": true,
+        "detailBack": true
+      }
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    {
+      "name": "M02-open-modules-failure",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/M02-open-modules-failure.png"
+    },
+    {
+      "name": "resident-home-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/resident-home-390.png"
+    },
+    {
+      "name": "resident-service-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/resident-service-390.png"
+    },
+    {
+      "name": "resident-profile-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/resident-profile-390.png"
+    },
+    {
+      "name": "resident-mall-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/resident-mall-390.png"
+    },
+    {
+      "name": "merchant-workbench-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/merchant-workbench-390.png"
+    },
+    {
+      "name": "merchant-operation-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/merchant-operation-390.png"
+    },
+    {
+      "name": "merchant-order-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/merchant-order-390.png"
+    },
+    {
+      "name": "staff-workbench-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/staff-workbench-390.png"
+    },
+    {
+      "name": "resident-home-320",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-41-02-055Z/resident-home-320.png"
+    }
+  ],
+  "boundary": "Real Web/H5 pages; no native keyboard/device or owner acceptance claim"
+}

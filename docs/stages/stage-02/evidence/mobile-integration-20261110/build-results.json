@@ -1,0 +1,104 @@
+{
+  "node": "v24.14.0",
+  "results": [
+    {
+      "id": "rules",
+      "command": "npm.cmd test",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110",
+      "start": "2026-11-09T14:53:58.620Z",
+      "end": "2026-11-09T14:53:59.640Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/rules.log"
+    },
+    {
+      "id": "resident-types",
+      "command": "npm.cmd run type-check:resident",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:53:59.641Z",
+      "end": "2026-11-09T14:54:05.295Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/resident-types.log"
+    },
+    {
+      "id": "staff-types",
+      "command": "npm.cmd run type-check:staff",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:54:10.579Z",
+      "end": "2026-11-09T14:54:16.017Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/staff-types.log"
+    },
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110",
+      "start": "2026-11-09T14:54:16.018Z",
+      "end": "2026-11-09T14:54:22.474Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/web.log"
+    },
+    {
+      "id": "resident-h5",
+      "command": "npm.cmd run build:resident:h5",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:54:22.474Z",
+      "end": "2026-11-09T14:54:36.213Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/resident-h5.log"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "command": "npm.cmd run build:resident:mp-weixin",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:54:36.213Z",
+      "end": "2026-11-09T14:54:47.834Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/resident-mp-weixin.log"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:staff:h5",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:55:11.706Z",
+      "end": "2026-11-09T14:55:24.807Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/staff-h5.log"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "command": "npm.cmd run build:staff:mp-weixin",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:55:24.807Z",
+      "end": "2026-11-09T14:55:36.147Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/staff-mp-weixin.log"
+    },
+    {
+      "id": "merchant-types",
+      "command": "npm.cmd run type-check:merchant",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:59:51.665Z",
+      "end": "2026-11-09T14:59:57.070Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/merchant-types.log"
+    },
+    {
+      "id": "merchant-h5",
+      "command": "npm.cmd run build:merchant:h5",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T14:59:57.072Z",
+      "end": "2026-11-09T15:00:11.207Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/merchant-h5.log"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "command": "npm.cmd run build:merchant:mp-weixin",
+      "cwd": "D:\\git\\daguanglu-community-prototype-demo-20261110\\miniapp",
+      "start": "2026-11-09T15:00:11.207Z",
+      "end": "2026-11-09T15:00:22.043Z",
+      "exit": 0,
+      "log": "docs/stages/stage-02/evidence/mobile-integration-20261110/logs/merchant-mp-weixin.log"
+    }
+  ]
+}

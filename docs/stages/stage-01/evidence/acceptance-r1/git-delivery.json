@@ -1,0 +1,275 @@
+{
+  "at": "2026-11-09T13:19:14.702Z",
+  "branch": "stage/01-acceptance-r1",
+  "head": "bf154b5d8aaaa614badac290f75caa0652953117",
+  "trackedModified": 29,
+  "newFiles": 37,
+  "staged": "",
+  "committed": false,
+  "pushed": false,
+  "merged": false,
+  "baseline": "bf154b5d8aaaa614badac290f75caa0652953117；开始main干净",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "64151d6ec22de6c84514af1a21a6ac3dc09b6b5b5ce127bc6393d5bfe95a4c0c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "420647db2aedf7d108b70d143850b7af7d3251e3ca37ccad36cee695660571a5"
+    },
+    {
+      "path": "docs/stages/stage-01/ACCEPTANCE.md",
+      "sha256": "7ecbc7d385794cb40cf4fc52a8a301cf40ad6ecfa679733c4ea68df7f93541fe"
+    },
+    {
+      "path": "docs/stages/stage-01/PLAN.md",
+      "sha256": "2869be774b4cadc18e3ad217708ea0549239373f1ef2cfb32a7c4c1fc40c76ec"
+    },
+    {
+      "path": "docs/stages/stage-01/REQUIREMENTS.md",
+      "sha256": "d9bc538cd5e51c8e291cd8cf4ea4d287d780a45c69530b9f201a944cd3d9fcca"
+    },
+    {
+      "path": "docs/stages/stage-01/RESULT.md",
+      "sha256": "733a5901ab825d27a634f2acb917d5788572afbc0b0670c2ae61f5027b0fd900"
+    },
+    {
+      "path": "miniapp/packages/stage01/ActionForm.vue",
+      "sha256": "f0be4e17b07929de2b9d1e1ff223a103d60924b80293761909746fbade6a5452"
+    },
+    {
+      "path": "miniapp/packages/stage01/Details.vue",
+      "sha256": "d34d62f5cacb6b1df570e84944f23028141a3cf2d58fae76ca8a1f5e413007bc"
+    },
+    {
+      "path": "miniapp/packages/stage01/Fields.vue",
+      "sha256": "49eb4b699d70d288a836597dc74cd5d0189292b76fe6392b63f10fc289cd990d"
+    },
+    {
+      "path": "miniapp/packages/stage01/WorkPage.vue",
+      "sha256": "a89b7ebaf869bb47ec254807ee2827060ecb2db17e6290675af9b29287eab2f8"
+    },
+    {
+      "path": "prototype-shared/stage01/common.js",
+      "sha256": "590a460f0226f7888fc0e4a611c646408c9b3e976fe2c7a9d2ac02ec717e5f86"
+    },
+    {
+      "path": "prototype-shared/stage01/fields.js",
+      "sha256": "d88e238637be2f422f1d35790a899fc0afbc0abd39d0dec5ca9f3bebac09e94e"
+    },
+    {
+      "path": "prototype-shared/stage01/index.js",
+      "sha256": "904c77a2c137de3eca3aeb7205b7cd38eaf2e640dc24345603e64c7a0b135eb9"
+    },
+    {
+      "path": "prototype-shared/stage01/parking.js",
+      "sha256": "90f21f8bae07e6e2d0ff67e765f925b96d0b81001f7a9eb5b0ee8523fffd9d5d"
+    },
+    {
+      "path": "prototype-shared/stage01/payments.js",
+      "sha256": "57650662f0e2893d90a2c3aa114ef1c2b6cf1b27a303d55aaa5885a3f987112b"
+    },
+    {
+      "path": "prototype-shared/stage01/seed.js",
+      "sha256": "8dc3a5e20a74639f7df4168967c6ae90778d9ab4c12d5c9057c5d1adc4415c4d"
+    },
+    {
+      "path": "prototype-shared/stage01/ui.js",
+      "sha256": "cc4a3523f684ded022eb05054c8bcc40ec079fe6f38bbd5feb32b17bbf8ff363"
+    },
+    {
+      "path": "prototype-shared/stage01/workorders.js",
+      "sha256": "15f3e21e53ee0f737d180d687bbd200ab77df0ed89d5e878a0b7a6bfc3168a45"
+    },
+    {
+      "path": "prototype-shared/types.d.ts",
+      "sha256": "484b88664a1901eb0380b1f549ae7c870dce80a44c322e33db36092b5db678fc"
+    },
+    {
+      "path": "scripts/check-stage00.mjs",
+      "sha256": "7847e44897f99dab503cbc99c2d413e29e68e2f48433746c45db0ea669d9db5b"
+    },
+    {
+      "path": "scripts/lib/stage00-documents.mjs",
+      "sha256": "a6175663b6e33fc9bcca3dededfafcd0579c0b3f7700c265f84ce9afa4c6bcd7"
+    },
+    {
+      "path": "tests/stage01.test.mjs",
+      "sha256": "228e77b33b925fc895b0a573287fa75c4157871f2d9c5ae25c3f91a532cf52cf"
+    },
+    {
+      "path": "web/manager/src/App.vue",
+      "sha256": "d1308737e58aaf1a8369e9381114a4f62a808fe733cb2b5514e61acd64988773"
+    },
+    {
+      "path": "web/manager/src/components/stage01/ActionForm.vue",
+      "sha256": "65cf0317925f98852285462b6d59d63b088f7c4dd9eeb624be459d51cb31cb5f"
+    },
+    {
+      "path": "web/manager/src/components/stage01/Business.vue",
+      "sha256": "3f73f5cbc42e88d3f1c0895cae9b5ecbebf8d48d2599b7d41009ad934b8b06b5"
+    },
+    {
+      "path": "web/manager/src/components/stage01/Fields.vue",
+      "sha256": "d6052cb2fead6b65bd19e04f46110b2fb97740dcb80efdbc6ab9c103b89f259c"
+    },
+    {
+      "path": "web/manager/src/main.js",
+      "sha256": "4d546728f983b1a74f41abf9b415690ac20f8eaf337345dd47fc6b7d809f9499"
+    },
+    {
+      "path": "web/manager/src/styles/stage01.scss",
+      "sha256": "d78479bb35f9915ee97075578ece8034c87316fa6620f1c401d15250ddfd1a1e"
+    },
+    {
+      "path": "web/manager/src/views/stage01/BillImport.vue",
+      "sha256": "f155da5ae2638318d4567a694c2c4491a8ba4c8d14534538099c768fc41868cf"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/browser-exceptions.json",
+      "sha256": "789beebbd435fb6d8b4bc316d36d7eb77cc2fec0ffffb315188d556cd4d8ff29"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/browser-flows.json",
+      "sha256": "28851176fdf9b08c4c1b072081a3e62c3563fbdd3c6899e006e63ee008e2c20b"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/browser-layout.json",
+      "sha256": "ca767c83d95d024591b88e0d4cd6d65a963d852b0cec04b6dad5d6fe37d2f983"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/browser-results.json",
+      "sha256": "019e009cf9da1ed8a1116b5cc146eec092af1fcff86617e6abeaa9e5464dae3f"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/build-results.json",
+      "sha256": "b1ef5eb73d93d97e8f764e010fabcf33c1838cf0f0a3a7aa8ba4c6413faf81b1"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/field-paths.json",
+      "sha256": "a1ab09e0af115eb0b62b83ea10cdfa0d1515ed31bade98d2a4c3349e14412b31"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/implementation-start.json",
+      "sha256": "08eb5007831273df25c30511a6475ad1c077ad13c6bfdc64b32a318ab93e1c71"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/retest-scenarios.json",
+      "sha256": "8e81aafcd44fafc35c014ba19c9d24b4d1229285e9a5ab162c73f8ed436c16af"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots.json",
+      "sha256": "5e83ba84af1001e558c8a85d572218a1c85b409f8fdd6f3100b5f4149ccfbe02"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/bill-tabs.png",
+      "sha256": "906f47b5cb893240bce81895367e7767ede36b40e88f3bd658a25991aca4751d"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/detail-probe.png",
+      "sha256": "e4bff6848a2dc54adcac25d6479d603b776b1c7254d62c2f7cd12b9253ebeb48"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/hazard-public-result.png",
+      "sha256": "5131f5cb95d4ad3a08224efb2e7fbeab7f66267eeccb9120ad080235d4b51ccd"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/parking-details-list.png",
+      "sha256": "712919872e6fc42eb980040390325148a5785407536d13ff649b4d44e3e61fc7"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/repair-evaluated.png",
+      "sha256": "cacd1f73e2f9a8e58952b62ea9a0738b225127f61f0d598735ecba3e9213ba15"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/resident-320.png",
+      "sha256": "234ac9866c5009be89509f0c84008e9915eed2113018f86f3df7479f43460ff3"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/stage00-spaces.png",
+      "sha256": "de572442deacc7a3f93bb26ea3305a188b4b4ccdc304ebcd6e3b834de8a8ad83"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/screenshots/web-1024.png",
+      "sha256": "669e1d11a0af655ea4f7b5a1e13d237dcfc916c34b85be8d5db82e7500b24e2b"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/source-feedback.json",
+      "sha256": "73a300fe4826813d28257e2daf688c45fb9eeb6c89e3a5bb72984bbd2447aeaf"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/source-manifest.json",
+      "sha256": "64dcca8f8297a515789a2b963d88ad16bdba7a4cf66549dff146f83f685ccfda"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/stage00-static.json",
+      "sha256": "ea8912b693a465a585b91b31a12b717d52f83adbfacd6dd8a2bd879171a76043"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/static-results.json",
+      "sha256": "d97e5601c4b97fdf035ef0b1796347363a1d5b54e4c4bdbcc1bc109fb07607cb"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/test-results.json",
+      "sha256": "8f883e7b926f266ee8365746acf631725655aedff7fe56e8fa52d87691b9ffc4"
+    },
+    {
+      "path": "docs/stages/stage-01/evidence/acceptance-r1/wechat-results.json",
+      "sha256": "9d9229dad4dd5226f209a4263d77adae0caa77fb086f22d3d5cdec029281b626"
+    },
+    {
+      "path": "outputs/stage01-acceptance-r1-20261109/R1账单导入样例.csv",
+      "sha256": "9665692f04b47b820cdb1c7dbfa8dc454101f8c9785a985a7a7eb04ddeafdc76"
+    },
+    {
+      "path": "outputs/stage01-acceptance-r1-20261109/Stage01_R1_修改及模块复验清单.xlsx",
+      "sha256": "9440355f736457bc82b0a966f1680cc469297fc76005a634bc0fe1546fd2a5b0"
+    },
+    {
+      "path": "outputs/stage01-acceptance-r1-20261109/Stage01_R1_修改及模块复验清单.xlsx.inspect.ndjson",
+      "sha256": "b1ac56445f131a8c145d0d4bc766bf3d6f1768dda1e0e17f6e9efa912d49abcb"
+    },
+    {
+      "path": "outputs/stage01-acceptance-r1-20261109/changes-preview.png",
+      "sha256": "fef400e7159049f0954bb9c9e6969eba7ce58cd8c7a79ea4916798bf590df073"
+    },
+    {
+      "path": "outputs/stage01-acceptance-r1-20261109/retest-preview.png",
+      "sha256": "2f90d48d80f273aff9a9c6b1b6d99e893f3de4620ded94ddcaaff7001e113771"
+    },
+    {
+      "path": "outputs/stage01-acceptance-r1-20261109/workbook-check.json",
+      "sha256": "f9fb7afc442e482ba8f02e43098a416b2996d3f9770d8cfee20711cb8a591b2d"
+    },
+    {
+      "path": "prototype-shared/stage01/upgrade.js",
+      "sha256": "97407c7b606649e75df1156d94e9249c234e1c7a87be3af6f94480a3c62e376a"
+    },
+    {
+      "path": "scripts/browser-stage01-r1-exceptions.mjs",
+      "sha256": "d0496e39423886ad90e0b07dfbb420a976b63b8ed32a7c80233779bafc8087bf"
+    },
+    {
+      "path": "scripts/browser-stage01-r1.mjs",
+      "sha256": "0d6fc0469d9423ea31791ad423fbba71027a8e4ecddd5c5969370f5ed0606988"
+    },
+    {
+      "path": "scripts/check-stage01-r1.mjs",
+      "sha256": "679305cbf157fa4957a69febe502771bb055dff556721b0df3accb0e384aca63"
+    },
+    {
+      "path": "tests/stage01-r1.test.mjs",
+      "sha256": "74b60e2d17abcf996843ccb8e7d012d8bc709564a2db0d356f71e3e5bd3ec71f"
+    },
+    {
+      "path": "web/manager/src/components/stage01/BusinessDetail.vue",
+      "sha256": "b5357a08182937108692d26e887fe102f1a80d5026a9dd092fffe7db5130a3da"
+    },
+    {
+      "path": "web/manager/src/components/stage01/SpaceFilter.vue",
+      "sha256": "703a035aab3b3566ad7d4bee670c07e79a02ac20f0a37652c9f1930f857cb222"
+    }
+  ],
+  "manifestNote": "清单自身不计算递归摘要；运行日志与依赖在忽略的.runtime内"
+}

@@ -1,0 +1,88 @@
+{
+  "at": "2026-11-09T15:03:21.251Z",
+  "base": "http://127.0.0.1:19210",
+  "session": "stage01-street-20261110",
+  "pages": [
+    {
+      "app": "resident",
+      "route": "home",
+      "url": "http://127.0.0.1:19210/resident/?session=stage01-street-20261110#/pages/home/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-home.png"
+    },
+    {
+      "app": "resident",
+      "route": "service",
+      "url": "http://127.0.0.1:19210/resident/?session=stage01-street-20261110#/pages/service/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-service.png"
+    },
+    {
+      "app": "resident",
+      "route": "profile",
+      "url": "http://127.0.0.1:19210/resident/?session=stage01-street-20261110#/pages/profile/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-profile.png"
+    },
+    {
+      "app": "resident",
+      "route": "mall",
+      "url": "http://127.0.0.1:19210/resident/?session=stage01-street-20261110#/pages/mall/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/resident-mall.png"
+    },
+    {
+      "app": "merchant",
+      "route": "workbench",
+      "url": "http://127.0.0.1:19210/merchant/?session=stage01-street-20261110#/pages/workbench/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-workbench.png"
+    },
+    {
+      "app": "merchant",
+      "route": "operation",
+      "url": "http://127.0.0.1:19210/merchant/?session=stage01-street-20261110#/pages/operation/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-operation.png"
+    },
+    {
+      "app": "merchant",
+      "route": "order",
+      "url": "http://127.0.0.1:19210/merchant/?session=stage01-street-20261110#/pages/order/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-order.png"
+    },
+    {
+      "app": "merchant",
+      "route": "profile",
+      "url": "http://127.0.0.1:19210/merchant/?session=stage01-street-20261110#/pages/profile/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/merchant-profile.png"
+    },
+    {
+      "app": "staff",
+      "route": "workbench",
+      "url": "http://127.0.0.1:19210/staff/?session=stage01-street-20261110#/pages/workbench/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-workbench.png"
+    },
+    {
+      "app": "staff",
+      "route": "archive",
+      "url": "http://127.0.0.1:19210/staff/?session=stage01-street-20261110#/pages/archive/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-archive.png"
+    },
+    {
+      "app": "staff",
+      "route": "profile",
+      "url": "http://127.0.0.1:19210/staff/?session=stage01-street-20261110#/pages/profile/index",
+      "screenshot": "docs/stages/stage-02/evidence/mobile-integration-20261110/screenshots/staff-profile.png"
+    }
+  ],
+  "identities": [
+    {
+      "app": "resident",
+      "text": "我的\n周明\n住户 · 青禾社区\n13900000002\n切换身份\n周明 ›\n我的服务订单\n全部订单 ›\n0\n进行中的服务\n预约与服务进度\n我的社区\n我的房屋\n房屋绑定\n车辆管理\n物业缴费\n停车服务\n申请记录\n我的记录\n报事报修\n隐患随手拍\n缴费记录\n业务记录\n更多\n个人资料\n地址缺失反馈\n我的积分\n开发中\n消息中心\n开发中\n大光路智慧社区 · 让生活更便利\n首页\n服务\n商城\n我的"
+    },
+    {
+      "app": "merchant",
+      "text": "我的\n邻里生活馆\n商户 · 青禾社区家政\n切换身份\n邻里生活馆 ›\n商户资料与资金\n经营资格\n服务资金\n服务人员\n消息中心\n开发中\n商城经营\n商城设置\n开发中\n商品管理\n开发中\n大光路智慧社区 · 让生活更便利\n工作台\n经营\n订单\n我的"
+    },
+    {
+      "app": "staff",
+      "text": "我的\n物业管理员\n物业管理员 · 青禾社区、望江社区\n当前身份\n物业管理员\n工作记录\n工单办理\n收费查询\n消息中心\n开发中\n所属组织\n青禾物业\n青禾社区、望江社区\n大光路智慧社区 · 让生活更便利\n工作台\n档案\n我的"
+    }
+  ],
+  "errors": []
+}

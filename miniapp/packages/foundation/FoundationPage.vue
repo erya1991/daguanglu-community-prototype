@@ -16,10 +16,21 @@ const props = withDefaults(
   defineProps<{ mode: string; table?: string; id?: string; kind?: string; previous?: string }>(),
   { table: '', id: '', kind: '绑定', previous: '' },
 )
+const previewUrls: string[] = []
+async function previewApplicationAttachment(id: string) {
+  try {
+    const file = await service.attachment({ table: 'applications', id: props.id, blob: id, action: 'view' })
+    let url = file.path
+    // #ifdef H5
+    url = URL.createObjectURL(file.blob)
+    previewUrls.push(url)
+    // #endif
+    uni.previewImage({ urls: [url] })
+  } catch (e: any) { error.value = e.message }
+}
 const info = ref<any>(null),
   rows = ref<any[]>([]),
   record = ref<any>(null),
-  history = ref<any[]>([]),
   error = ref(''),
   success = ref(''),
   busy = ref(false),
@@ -72,7 +83,7 @@ const filteredRows = computed(() =>
 )
 const currentFields = computed(() =>
   ((catalog as any)[props.table]?.fields || []).filter(
-    (f: any) => record.value && f.name in record.value && detailVisible(props.table, record.value, f.name),
+    (f: any) => record.value && !/操作历史|操作记录|办理轨迹|变更历史|变更记录|审核轮次/.test(f.name) && f.name in record.value && detailVisible(props.table, record.value, f.name),
   ),
 )
 const applyNames = computed(() => [
@@ -175,7 +186,6 @@ async function load() {
         rows.value = await service.labels(props.table, await service.query(props.table))
       else {
         record.value = (await service.labels(props.table, [await service.record(props.table, props.id)]))[0]
-        history.value = await service.history(props.table, props.id)
         if (props.table === 'communities') {
           const summary = await service.summary(props.id)
           communityCounts.value = summary.counts
@@ -345,6 +355,9 @@ const unsubscribe = service.onChange(() => {
 onUnmounted(() => {
   unsubscribe()
   generation.value++
+  // #ifdef H5
+  previewUrls.forEach((url) => URL.revokeObjectURL(url))
+  // #endif
 })
 </script>
 <template>
@@ -363,112 +376,7 @@ onUnmounted(() => {
         ><AppButton variant="quiet" @click="load">重新读取</AppButton></view
       ><text v-if="success" class="success-tip">{{ success }}</text
       ><view v-if="busy && !info" class="hint">正在加载…</view>
-      <view v-if="APP==='resident' && ['home','service','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业服务</text><view class="s1-entry-grid"><button @click="stage01('fees/index')">物业缴费</button><button @click="stage01('parking/index')">停车服务</button><button @click="stage01('repairs/index')">报事报修</button><button @click="stage01('hazards/index')">隐患随手拍</button><button @click="stage01('records/index')">业务记录</button></view></view><view v-if="APP==='staff' && ['workbench','profile'].includes(props.mode)" class="s1-entry"><text class="group-title">物业办理</text><view class="s1-entry-grid"><button @click="stage01('tasks/index')">工单待办</button><button @click="stage01('reports/create')">现场上报</button><button @click="stage01('charges/index')">收费查询</button></view></view>
-      <template v-if="props.mode === 'home'"
-        ><view class="community-line"
-          ><AppIcon name="location" :size="18" /><text>大光路社区</text></view
-        ><view class="home-hero"
-          ><image src="/static/images/home/hero-community-life.png" mode="aspectFill" /><view
-            ><text class="hero-title">邻里相伴，生活更安心</text><text>社区基础服务，从这里开始</text></view
-          ></view
-        ><BaseCard
-          ><view class="quick-grid"
-            ><view @click="open('list', 'relations')"
-              ><AppIcon name="home" :size="28" /><text>我的房屋</text></view
-            ><view @click="open('apply', '', '', '&kind=绑定')"
-              ><AppIcon name="bill" :size="28" /><text>房屋绑定</text></view
-            ><view @click="open('list', 'vehicles')"
-              ><AppIcon name="car" :size="28" /><text>我的车辆</text></view
-            ><view @click="open('list','applications')"><AppIcon name="bill" :size="28"/><text>申请记录</text></view></view
-          ></BaseCard
-        ><text class="group-title">社区基础服务</text
-        ><BaseCard
-          ><view class="entry-row" @click="open('list', 'applications')"
-            ><view
-              ><text class="entry-title">查看申请进度</text
-              ><text class="hint">绑定、变更和解除的每一轮都有记录</text></view
-            ><text>›</text></view
-          ></BaseCard
-        ><BaseCard
-          ><view class="entry-row" @click="tab('/pages/mall/index')"
-            ><view
-              ><text class="entry-title">社区商城</text
-              ><text class="hint">发现身边好物</text></view
-            ><text>›</text></view
-          ></BaseCard
-        ></template
-      >
-      <template v-else-if="props.mode === 'profile'"
-        ><BaseCard
-          ><view class="identity-panel"
-            ><view class="avatar"><AppIcon name="user" :size="32" /></view
-            ><view
-              ><text class="identity-name">{{ APP === 'resident' ? profileName || info?.actor.name : info?.actor.name }}</text
-              ><text class="hint"
-                >{{ APP === 'resident' ? '个人资料' : info?.actor.orgName || '' }} ·
-                {{ info?.actor.roleName }}</text
-              ></view
-            ></view
-          ><view v-if="APP === 'resident'" class="entry-row" @click="open('profileEdit')"
-            ><text>个人资料</text><text>编辑 ›</text></view
-          ></BaseCard
-        ><BaseCard v-if="APP === 'resident'"
-          ><view
-            v-for="item in [
-              { t: 'relations', n: '我的房屋' },
-              { t: 'applications', n: '申请记录' },
-              { t: 'vehicles', n: '我的车辆' },
-              { t: 'missing', n: '地址缺失反馈' },
-            ]"
-            :key="item.t"
-            class="entry-row"
-            @click="open('list', item.t)"
-            ><text>{{ item.n }}</text
-            ><text>›</text></view
-          ></BaseCard
-        ><BaseCard v-else><text class="group-title">所属组织</text><text class="hint">{{info?.actor.orgName}}</text></BaseCard
-        ><AccountSwitch v-if="info" :info="info" @changed="load"
-      /></template>
-      <template v-else-if="props.mode === 'workbench'"
-        ><BaseCard
-          ><text class="eyebrow">{{ APP === 'merchant' ? '商户工作台' : '社区与物业管理' }}</text
-          ><text class="identity-name">{{ info?.actor.name }}</text
-          ><text class="hint">当前所属组织：{{ info?.actor.orgName }}</text
-          ><text class="hint">服务范围：{{ info?.actor.scopeLabel || '本主体' }}</text></BaseCard
-        ><template v-if="APP === 'staff'"
-          ><text class="group-title">基础档案查询</text
-          ><view class="archive-grid"
-            ><BaseCard v-for="t in permittedTables" :key="t"
-              ><view @click="open('list', t)"
-                ><AppIcon :name="t === 'houses' ? 'home' : 'bill'" :size="28" /><text class="entry-title">{{
-                  (catalog as any)[t].title
-                }}</text
-                ><text class="hint">查看档案 ›</text></view
-              ></BaseCard
-            ></view
-          ></template
-        ><BaseCard v-else
-          ><text class="group-title">经营入口</text
-          ><text class="hint"
-            >商品与订单管理</text
-          ><AppButton variant="quiet" @click="tab('/pages/operation/index')"
-            >商品管理</AppButton
-          ></BaseCard
-        ></template
-      >
-      <template v-else-if="props.mode === 'archive'"
-        ><text class="hint">查找小区、房屋与物业工作联系。</text
-        ><BaseCard v-for="t in permittedTables" :key="t"
-          ><view class="entry-row" @click="open('list', t)"
-            ><text>{{ (catalog as any)[t].title }}</text
-            ><text>›</text></view
-          ></BaseCard
-        ></template
-      >
-      <template v-else-if="props.mode === 'service'"><text class="group-title">房屋服务</text><BaseCard><view class="entry-row" @click="open('list','relations')"><text>我的房屋</text><text>›</text></view><view class="entry-row" @click="open('list','applications')"><text>申请记录</text><text>›</text></view><view class="entry-row" @click="open('list','vehicles')"><text>我的车辆</text><text>›</text></view></BaseCard></template>
-      <template v-else-if="props.mode === 'mall' || props.mode === 'operation'"><view class="list-toolbar"><input v-model="filter" :placeholder="props.mode === 'mall' ? '搜索商品' : '搜索商品名称'"/></view><BaseCard><view class="empty-state"><AppIcon name="shop" :size="42"/><text class="group-title">暂无商品</text><text class="hint">{{filter ? '未找到符合条件的商品' : '商品上架后将在这里展示'}}</text></view></BaseCard></template>
-      <template v-else-if="props.mode === 'order'"><view class="order-filters"><button v-for="state in ['全部','待付款','待发货','待收货','已完成']" :key="state" :class="{'is-current':filter===state || (!filter && state==='全部')}" @click="filter=state">{{state}}</button></view><BaseCard><view class="empty-state"><AppIcon name="order" :size="42"/><text class="group-title">暂无订单</text></view></BaseCard></template>
-      <template v-else-if="props.mode === 'list'"
+      <template v-if="props.mode === 'list'"
         ><view class="list-toolbar"
           ><input v-model="filter" placeholder="搜索当前列表" :maxlength="-1" /><AppButton
             v-if="APP === 'resident' && props.table === 'relations'"
@@ -495,7 +403,7 @@ onUnmounted(() => {
             ><view v-for="f in shortFields[props.table] || []" :key="f" class="card-field"
               ><text>{{ f }}</text
               ><text>{{ r._labels[f] || '未维护' }}</text></view
-            ><text class="hint link">查看详情与记录 ›</text></view
+            ><text class="hint link">查看详情 ›</text></view
           ></BaseCard
         ></template
       >
@@ -507,7 +415,8 @@ onUnmounted(() => {
             class="detail-field"
             :data-field="props.table + ':' + f.name"
             ><text class="hint">{{ f.name }}</text
-            ><text>{{ record._labels[f.name] || '未维护／不适用' }}</text></view
+            ><template v-if="props.table === 'applications' && f.name === '证明附件' && Array.isArray(record[f.name]) && record[f.name].length"><button v-for="(id, index) in record[f.name]" :key="id" @click="previewApplicationAttachment(id)">查看材料 {{ index + 1 }}</button></template
+            ><text v-else>{{ record._labels[f.name] || '未维护／不适用' }}</text></view
           ></BaseCard
         ><view
           class="actions"
@@ -544,12 +453,7 @@ onUnmounted(() => {
               {{ r['统计日期'] }}</text
             ></BaseCard
           ></template
-        ><text class="group-title">操作记录</text
-        ><BaseCard v-for="(h, i) in history" :key="i"
-          ><text>{{ h['操作名称'] }} · {{ h['操作结果'] }}</text
-          ><text class="hint">{{ h['操作时间'] }} · {{ h['操作人'] }}</text
-          ><text class="hint">{{ h['操作说明／原因'] || '无补充说明' }}</text></BaseCard
-        ><text v-if="!history.length" class="hint">暂无本轮操作记录</text></template
+        ></template
       >
       <template v-else-if="props.mode === 'apply'"
         ><BaseCard
@@ -578,7 +482,7 @@ onUnmounted(() => {
             range-key="完整房屋地址"
             @change="setHouse"
             ><view class="control-row"
-              ><text>房号 *</text><text>{{ form['房号'] || '选择房屋' }} ›</text></view
+              ><text>房号 <text class="required-mark">*</text></text><text>{{ form['房号'] || '选择房屋' }} ›</text></view
             ></picker
           ><text class="hint link" @click="missing">找不到房屋？反馈地址缺失 ›</text
           ><switch :checked="validity" @change="setValidity" /><text class="hint"
@@ -609,4 +513,4 @@ onUnmounted(() => {
   ></AppPage>
 </template>
 
-<style scoped>.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}.order-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.order-filters button{font-size:14px;padding:8px;min-height:40px}.order-filters .is-current{color:#225e46;background:#edf5f0}</style>
+<style scoped>.required-mark{color:#ba1a1a}.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}.order-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.order-filters button{font-size:14px;padding:8px;min-height:40px}.order-filters .is-current{color:#225e46;background:#edf5f0}</style>

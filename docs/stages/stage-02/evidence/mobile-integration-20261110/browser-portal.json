@@ -1,0 +1,605 @@
+{
+  "at": "2026-11-09T14:57:27.569Z",
+  "base": "http://127.0.0.1:19210",
+  "run": "MOBILE-2026-11-09T14-56-09-258Z",
+  "session": "stage01-MOBILE-2026-11-09T14-56-09-258Z",
+  "results": [
+    {
+      "id": "M01-tabs",
+      "status": "PASS",
+      "detail": [
+        "resident:首页",
+        "resident:服务",
+        "resident:商城",
+        "resident:我的",
+        "merchant:工作台",
+        "merchant:经营",
+        "merchant:订单",
+        "merchant:我的",
+        "staff:工作台",
+        "staff:档案",
+        "staff:我的"
+      ]
+    },
+    {
+      "id": "M02-open-modules",
+      "status": "PASS",
+      "detail": [
+        {
+          "app": "resident",
+          "id": "fees",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/fees/index"
+        },
+        {
+          "app": "resident",
+          "id": "parking",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/parking/index"
+        },
+        {
+          "app": "resident",
+          "id": "repair",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/repairs/index"
+        },
+        {
+          "app": "resident",
+          "id": "hazard",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/hazards/index"
+        },
+        {
+          "app": "resident",
+          "id": "houses",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/relations/index"
+        },
+        {
+          "app": "resident",
+          "id": "vehicles",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/vehicles/index"
+        },
+        {
+          "app": "resident",
+          "id": "catalog",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog"
+        },
+        {
+          "app": "resident",
+          "id": "all",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/index"
+        },
+        {
+          "app": "resident",
+          "id": "binding",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/relations/apply?kind=%E7%BB%91%E5%AE%9A"
+        },
+        {
+          "app": "resident",
+          "id": "applications",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/applications/index"
+        },
+        {
+          "app": "resident",
+          "id": "records",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/records/index"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-CLEAN",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-CLEAN"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-AC",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-AC"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-FAN",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-FAN"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-GLASS",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-GLASS"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-DRAIN",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-DRAIN"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-HINGE",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-HINGE"
+        },
+        {
+          "app": "resident",
+          "id": "category-CAT-INSTALL",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/catalog?category=CAT-INSTALL"
+        },
+        {
+          "app": "resident",
+          "id": "service-orders",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/orders"
+        },
+        {
+          "app": "resident",
+          "id": "payments",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/payments/index"
+        },
+        {
+          "app": "resident",
+          "id": "profile-edit",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/profile/edit"
+        },
+        {
+          "app": "resident",
+          "id": "missing",
+          "url": "http://127.0.0.1:19210/resident/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/missing/index"
+        },
+        {
+          "app": "merchant",
+          "id": "supply",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/supply"
+        },
+        {
+          "app": "merchant",
+          "id": "verify",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/verify"
+        },
+        {
+          "app": "merchant",
+          "id": "personnel",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/personnel"
+        },
+        {
+          "app": "merchant",
+          "id": "aftersales",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/aftersales"
+        },
+        {
+          "app": "merchant",
+          "id": "evaluations",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/evaluations"
+        },
+        {
+          "app": "merchant",
+          "id": "overview",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/overview"
+        },
+        {
+          "app": "merchant",
+          "id": "qualification",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/qualification"
+        },
+        {
+          "app": "merchant",
+          "id": "funds",
+          "url": "http://127.0.0.1:19210/merchant/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/service/funds"
+        },
+        {
+          "app": "staff",
+          "id": "tasks",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/tasks/index"
+        },
+        {
+          "app": "staff",
+          "id": "report",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/reports/create"
+        },
+        {
+          "app": "staff",
+          "id": "charges",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/stage01/charges/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-communities",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/communities/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-estates",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/estates/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-houses",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/houses/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-residents",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/residents/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-vehicles",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/vehicles/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-facilities",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/facilities/index"
+        },
+        {
+          "app": "staff",
+          "id": "archive-personnel",
+          "url": "http://127.0.0.1:19210/staff/?session=stage01-MOBILE-2026-11-09T14-56-09-258Z#/pages/foundation/personnel/index"
+        }
+      ]
+    },
+    {
+      "id": "M03-unavailable",
+      "status": "PASS",
+      "detail": [
+        [
+          "resident",
+          "/pages/mall/detail/index?id=old"
+        ],
+        [
+          "resident",
+          "/pages/mall/cart/index"
+        ],
+        [
+          "merchant",
+          "/pages/product/editor/index"
+        ],
+        [
+          "resident",
+          "/pages/points/index"
+        ]
+      ]
+    },
+    {
+      "id": "M04-profile-and-identity",
+      "status": "PASS",
+      "detail": {
+        "initial": "周明",
+        "current": "林悦",
+        "refreshRetained": true
+      }
+    },
+    {
+      "id": "M13-M14-layout-language",
+      "status": "PASS",
+      "detail": [
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 375,
+          "viewport": 375,
+          "scroll": 375,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 430,
+          "viewport": 430,
+          "scroll": 430,
+          "bottom": 844,
+          "height": 844
+        },
+        {
+          "app": "resident",
+          "tab": "home",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "resident",
+          "tab": "service",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "resident",
+          "tab": "profile",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "resident",
+          "tab": "mall",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "merchant",
+          "tab": "workbench",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "merchant",
+          "tab": "operation",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "merchant",
+          "tab": "order",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        },
+        {
+          "app": "staff",
+          "tab": "workbench",
+          "width": 320,
+          "viewport": 320,
+          "scroll": 320,
+          "bottom": 568,
+          "height": 568
+        }
+      ]
+    },
+    {
+      "id": "M11-merchant-views",
+      "status": "PASS",
+      "detail": {
+        "embeddedSupply": true,
+        "search": true,
+        "detailBack": true
+      }
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    {
+      "name": "resident-home-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/resident-home-390.png"
+    },
+    {
+      "name": "resident-service-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/resident-service-390.png"
+    },
+    {
+      "name": "resident-profile-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/resident-profile-390.png"
+    },
+    {
+      "name": "resident-mall-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/resident-mall-390.png"
+    },
+    {
+      "name": "merchant-workbench-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/merchant-workbench-390.png"
+    },
+    {
+      "name": "merchant-operation-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/merchant-operation-390.png"
+    },
+    {
+      "name": "merchant-order-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/merchant-order-390.png"
+    },
+    {
+      "name": "staff-workbench-390",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/staff-workbench-390.png"
+    },
+    {
+      "name": "resident-home-320",
+      "file": ".runtime/mobile-integration/MOBILE-2026-11-09T14-56-09-258Z/resident-home-320.png"
+    }
+  ],
+  "boundary": "Real Web/H5 pages; no native keyboard/device or owner acceptance claim"
+}

@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-09T15:06:50.338Z",
+  "checks": [
+    {
+      "path": "D:/git/daguanglu-community-prototype",
+      "head": "bf154b5d8aaaa614badac290f75caa0652953117",
+      "branch": "stage/01-acceptance-r1",
+      "filesChecked": 707,
+      "changed": [],
+      "gitUnchanged": true,
+      "protected": true
+    },
+    {
+      "path": "D:/git/daguanglu-community-prototype-stage02",
+      "head": "348363b7410ff90f062f75b93242f03bb246d4c1",
+      "branch": "stage/02-service-prototype",
+      "filesChecked": 467,
+      "changed": [],
+      "gitUnchanged": true,
+      "protected": true
+    }
+  ],
+  "reference": {
+    "path": "D:/git/daguanglu-p0/smart-community-miniapp",
+    "head": "8f15eed1255222ff9178b529d7a3039bfd67fab6",
+    "usage": "read-only source reference and two approved local service cover assets; no checkout/build/mutation"
+  }
+}

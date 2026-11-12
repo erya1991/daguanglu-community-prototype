@@ -1,0 +1,422 @@
+[
+  {
+    "file": "THIRD_PARTY_NOTICES.md",
+    "action": "conflict; local preserved"
+  },
+  {
+    "file": "docs/stages/stage-02/ACCEPTANCE.md",
+    "action": "new file collision requires review"
+  },
+  {
+    "file": "docs/stages/stage-02/PLAN.md",
+    "action": "new file collision requires review"
+  },
+  {
+    "file": "docs/stages/stage-02/RESULT.md",
+    "action": "new file collision requires review"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/acceptance-execution.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/browser-flows.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/browser-regression.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/browser-web-followup.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/browser-web.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/build-artifacts.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/build-results.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/candidate-snapshot.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/field-runtime-results.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/public-rule-differences.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/security-browser.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/source-protection-final.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/static-results.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/validation-impact.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/wechat-results.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/action.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/after-sale.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/aftersales.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/evaluations.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/funds.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/order.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/orders.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/overview.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/personnel.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/qualification.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/supply.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/verify.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/merchant-miniapp/src/pages/service/workbench.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/action.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/after-sale.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/booking.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/catalog.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/detail.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/evaluation.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/order.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/orders.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/apps/resident-miniapp/src/pages/service/voucher.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/foundation/DemoControl.vue",
+    "action": "retain R3; integrate navigation separately"
+  },
+  {
+    "file": "miniapp/packages/foundation/FoundationPage.vue",
+    "action": "retain R3; integrate navigation separately"
+  },
+  {
+    "file": "miniapp/packages/service/Details.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/Evidence.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/FieldGroup.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/Picture.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/ServicePage.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/SupplyEditor.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/VoucherCode.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "miniapp/packages/service/vendor-qr.d.ts",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/aftersale.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/common.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/fields.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/funds.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/index.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/orders.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/scenarios.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/seed.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/service/supply.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "prototype-shared/storage-h5.js",
+    "action": "three-way merged; semantic review pending"
+  },
+  {
+    "file": "prototype-shared/storage-uni.js",
+    "action": "conflict; local preserved"
+  },
+  {
+    "file": "prototype-shared/types.d.ts",
+    "action": "three-way merged; semantic review pending"
+  },
+  {
+    "file": "scripts/browser-service-fields.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/browser-service-flows.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/browser-service-security.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/browser-service-web.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/browser-stage02-regression.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/check-stage02.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/create-service-fields.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/prepare-wechat.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/preview.mjs",
+    "action": "conflict; local preserved"
+  },
+  {
+    "file": "scripts/snapshot-stage02.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/summarize-service-validation.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/verify-builds.mjs",
+    "action": "conflict; local preserved"
+  },
+  {
+    "file": "tests/service-adapters.test.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "tests/service-variants.test.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "tests/service.test.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "web/manager/src/App.vue",
+    "action": "conflict; local preserved"
+  },
+  {
+    "file": "web/manager/src/components/service/ServiceDetail.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "web/manager/src/components/service/ServiceEvidence.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "web/manager/src/components/service/ServiceFields.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "web/manager/src/components/service/ServiceValues.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "web/manager/src/components/service/model.js",
+    "action": "import service increment"
+  },
+  {
+    "file": "web/manager/src/main.js",
+    "action": "three-way merged; semantic review pending"
+  },
+  {
+    "file": "web/manager/src/views/service/ServiceWorkspace.vue",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/browser-regression.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/browser-web.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/build-artifacts.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/build-results.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/candidate-snapshot.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/field-gap-classification.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/security-browser.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/source-protection-final.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/static-results.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-20261109/validation-summary.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "docs/stages/stage-02/evidence/review-gap-verification.json",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/audit-service-field-gaps.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "scripts/browser-service-review.mjs",
+    "action": "import service increment"
+  },
+  {
+    "file": "tests/service-review.test.mjs",
+    "action": "import service increment"
+  }
+]

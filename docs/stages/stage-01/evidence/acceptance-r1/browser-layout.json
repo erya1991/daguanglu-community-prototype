@@ -1,0 +1,16 @@
+{
+  "run": "R1-FLOW-2026-11-09T13-13-42-733Z",
+  "session": "stage01-R1-FLOW-2026-11-09T13-13-42-733Z",
+  "base": "http://127.0.0.1:19202",
+  "results": [
+    {
+      "id": "r1-list-detail-filters",
+      "status": "PASS",
+      "detail": {
+        "checks": "空间树、只读详情、完整状态、停车资料、旧链接、四种视口"
+      },
+      "at": "2026-11-09T13:14:06.030Z"
+    }
+  ],
+  "errors": []
+}

@@ -11,6 +11,7 @@ const props = withDefaults(
   { row: () => ({}) }
 );
 function show(id: string) {
+  if(['MP10','MO20','TB17'].includes(id)) return true;
   if (id === "PY05") return false; // Stage03 points rules are disabled in this prototype.
   if (
     ["RP04", "RP12", "RP15", "RP16", "EV07", "EV08"].includes(id) &&
@@ -49,20 +50,20 @@ function show(id: string) {
         :table="table"
         :record-id="recordId"
       /><text v-else class="s1-value">{{
-        format(id, row[id], row._labels)
+        ['MP10','MO20','TB17'].includes(id) && !row[id] ? '未登记' : format(id, row[id], row._labels)
       }}</text></view
     ></view
   >
 </template>
-<style scoped>
+<style scoped lang="scss">
 .s1-field {
   padding: 10px 0;
-  border-bottom: 1px solid #edf0f1;
+  border-bottom: 1px solid $color-border;
 }
 .s1-label {
   display: block;
   font-size: 13px;
-  color: #607176;
+  color: $color-text-secondary;
   margin-bottom: 5px;
 }
 .s1-value {
@@ -71,6 +72,6 @@ function show(id: string) {
   overflow-wrap: anywhere;
   line-height: 1.65;
   font-size: 15px;
-  color: #253a3b;
+  color: $color-text-primary;
 }
 </style>

@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-09T03:25:49.019Z",
+  "head": "348363b7410ff90f062f75b93242f03bb246d4c1",
+  "checks": [
+    {
+      "name": "42张V1.1字段表与621条控件映射完整",
+      "status": "PASS",
+      "result": {
+        "tables": 42,
+        "fields": 621,
+        "scope": "Metadata completeness only; not runtime field acceptance"
+      }
+    },
+    {
+      "name": "52个验收场景总表与明细编号对应",
+      "status": "PASS",
+      "result": {
+        "scenarios": 52
+      }
+    },
+    {
+      "name": "四文档Markdown与相对文件引用",
+      "status": "PASS",
+      "result": {
+        "links": 138
+      }
+    },
+    {
+      "name": "需求原文和业务基线保留",
+      "status": "PASS",
+      "result": "Confirmed requirements byte-identical"
+    },
+    {
+      "name": "7类构建与3类类型检查输出独立Stage02目录",
+      "status": "PASS",
+      "result": "Stage02 parameter supported; actual build results recorded separately"
+    },
+    {
+      "name": "10个Web服务路由位于兜底路由之前",
+      "status": "PASS",
+      "result": {
+        "routes": 10
+      }
+    },
+    {
+      "name": "依赖锁文件保持实施前内容",
+      "status": "PASS",
+      "result": {
+        "lockfiles": 2
+      }
+    },
+    {
+      "name": "阶段隔离及Git停止点",
+      "status": "PASS",
+      "result": "No commits/staging or edits to protected Stage00/01 documents and implementation"
+    },
+    {
+      "name": "新业务不调用真实接口或全存储清理",
+      "status": "PASS",
+      "result": {
+        "files": 23,
+        "scope": "Static isolation scan; browser requests verified separately"
+      }
+    }
+  ],
+  "pass": 9,
+  "fail": 0,
+  "scope": "Static project/document/metadata checks, not owner acceptance"
+}

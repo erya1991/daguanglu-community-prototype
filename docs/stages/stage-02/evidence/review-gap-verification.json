@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-11-09T02:10:02.277Z",
+  "baseline": "348363b7410ff90f062f75b93242f03bb246d4c1",
+  "scope": "Read-only source review plus independent in-memory reproduction; no persistent app facts changed",
+  "findings": [
+    {
+      "id": "S02-GAP-01",
+      "confirmed": true,
+      "observation": "Rename HOME then save existing SV-HOME: combo._method becomes undefined",
+      "preserve": "Existing order snapshots remain independent",
+      "currentOutcome": "CONFIRMED_FIXED_TARGETED_RETEST_PASSED",
+      "implementation": [
+        "prototype-shared/service/supply.js",
+        "prototype-shared/service/index.js",
+        "miniapp/packages/service/SupplyEditor.vue"
+      ],
+      "validation": [
+        "tests/service-review.test.mjs",
+        "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json"
+      ]
+    },
+    {
+      "id": "S02-GAP-02",
+      "confirmed": true,
+      "observation": "C-A/E-A authorized merchant successfully submits a C-B/E-B coverage draft",
+      "currentOutcome": "CONFIRMED_FIXED_TARGETED_RETEST_PASSED",
+      "implementation": [
+        "prototype-shared/service/common.js",
+        "prototype-shared/service/supply.js",
+        "prototype-shared/service/orders.js"
+      ],
+      "validation": [
+        "tests/service-review.test.mjs",
+        "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json"
+      ]
+    },
+    {
+      "id": "S02-GAP-03",
+      "confirmed": true,
+      "observation": "options.points absent; FORGED-POINT supplied as enabled succeeds at review submission",
+      "currentOutcome": "CONFIRMED_FIXED_TARGETED_RETEST_PASSED",
+      "implementation": [
+        "prototype-shared/service/seed.js",
+        "prototype-shared/service/common.js",
+        "prototype-shared/service/index.js",
+        "prototype-shared/service/orders.js"
+      ],
+      "validation": [
+        "tests/service-review.test.mjs",
+        "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json"
+      ]
+    },
+    {
+      "id": "S02-GAP-04",
+      "confirmed": true,
+      "observation": "Completed S02-EVAL order receives partial refund with completed-aftercare handling, but fulfillment changes from result-submitted to terminated while resident confirmation remains unchanged",
+      "currentOutcome": "CONFIRMED_FIXED_TARGETED_RETEST_PASSED",
+      "implementation": [
+        "prototype-shared/service/aftersale.js",
+        "prototype-shared/service/funds.js",
+        "web/manager/src/components/service/ServiceFields.vue"
+      ],
+      "validation": [
+        "tests/service-review.test.mjs",
+        "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json"
+      ]
+    },
+    {
+      "id": "S02-GAP-05",
+      "confirmed": true,
+      "observation": "S02-STATS nonexistent category still returns 5 created orders; project metric drill filters omit service",
+      "sourceEvidence": "metricRows counts every active aftersale without responsibility actions",
+      "currentOutcome": "CONFIRMED_FIXED_TARGETED_RETEST_PASSED",
+      "implementation": [
+        "prototype-shared/service/index.js",
+        "web/manager/src/views/service/ServiceWorkspace.vue",
+        "miniapp/packages/service/ServicePage.vue"
+      ],
+      "validation": [
+        "tests/service-review.test.mjs",
+        "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json"
+      ]
+    },
+    {
+      "id": "S02-GAP-06",
+      "confirmed": true,
+      "observation": "Not-needed object description setting rejected with invalid setting message",
+      "currentOutcome": "CONFIRMED_FIXED_TARGETED_RETEST_PASSED",
+      "implementation": [
+        "prototype-shared/service/supply.js",
+        "prototype-shared/service/orders.js",
+        "miniapp/packages/service/FieldGroup.vue",
+        "miniapp/packages/service/ServicePage.vue"
+      ],
+      "validation": [
+        "tests/service-review.test.mjs",
+        "docs/stages/stage-02/evidence/review-20261109/browser-review.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-flows.json",
+        "docs/stages/stage-02/evidence/review-20261109/browser-custom-supply-flows.json"
+      ]
+    }
+  ],
+  "validatedAt": "2026-11-09T03:19:49.963Z",
+  "ownerAcceptance": "NOT_RUN",
+  "stagePass": false
+}

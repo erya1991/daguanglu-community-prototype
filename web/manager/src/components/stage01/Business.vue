@@ -29,145 +29,166 @@
       </button>
       <p data-field="ST09">统计时点：{{ display("ST09", stats.ST09) }}</p>
     </div>
-    <template v-else
-      ><Tabs v-if="tabs.length" :value="tab" @on-click="changeTab"
-        ><TabPane v-for="t in tabs" :key="t.key" :name="t.key" :label="t.label"
-      /></Tabs>
-      <div class="s1-toolbar">
-        <input
-          v-model="keyword"
-          data-field="QF01"
-          placeholder="搜索业务编号或内容"
-          aria-label="关键字"
-          @input="page = 1"
-        /><select
-          v-if="statusChoices.length"
-          v-model="status"
-          aria-label="状态"
-          @change="page = 1"
-        >
-          <option value="">全部状态</option>
-          <option v-for="v in statusChoices" :key="v">{{ v }}</option></select
-        ><select
-          v-if="table === 'bills'"
-          v-model="house"
-          data-field="QF04"
-          aria-label="房屋"
-        >
-          <option value="">全部授权房屋</option>
-          <option v-for="h in options.houses" :key="h.value" :value="h.value">
-            {{ h.label }}
-          </option></select
-        ><select
-          v-if="view === 'parking' && table !== 'products'"
-          v-model="vehicle"
-          data-field="QF05"
-          aria-label="车辆"
-          @change="
-            park = '';
-            page = 1;
-          "
-        >
-          <option value="">全部授权车辆</option>
-          <option v-for="v in options.vehicles" :key="v.value" :value="v.value">
-            {{ v.label }}
-          </option></select
-        ><select
-          v-if="view === 'parking'"
-          v-model="park"
-          data-field="QF06"
-          aria-label="停车场"
-          @change="page = 1"
-        >
-          <option value="">全部授权停车场</option>
-          <option v-for="v in parkChoices" :key="v.value" :value="v.value">
-            {{ v.label }}
-          </option></select
-        ><select
-          v-if="['payments', 'checks'].includes(table)"
-          v-model="business"
-          data-field="QF07"
-          aria-label="业务类型"
-          @change="page = 1"
-        >
-          <option value="">全部业务类型</option>
-          <option v-for="v in ['物业费', '停车月租', '临停']" :key="v">
-            {{ v }}
-          </option></select
-        ><input
-          type="date"
-          v-model="startDate"
-          data-field="QF08"
-          aria-label="查询开始日期"
-        /><span>至</span
-        ><input
-          type="date"
-          v-model="endDate"
-          data-field="QF09"
-          aria-label="查询结束日期"
-        /><span class="s1-muted">{{ dateLabel }}</span>
-      </div>
-      <p v-if="busy">正在读取…</p>
-      <div v-else class="s1-card">
-        <div class="s1-scroll">
-          <table class="s1-table">
-            <thead>
-              <tr>
-                <th class="s1-id-cell">业务编号</th>
-                <th>事项／对象</th>
-                <th class="s1-period-cell">期间／位置</th>
-                <th v-if="financial" class="s1-money-cell">
-                  {{ table === "bills" ? "待缴金额" : "金额" }}
-                </th>
-                <th class="s1-state-cell">状态</th>
-                <th class="s1-action-cell">操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="r in pageRows" :key="r._id">
-                <td class="s1-id-cell">{{ r._id }}</td>
-                <td>{{ r._title }}</td>
-                <td class="s1-period-cell">
-                  {{ r._subtitle || display(dateKey, r._date) }}
-                </td>
-                <td v-if="financial" class="s1-money-cell">
-                  {{ r._amount === undefined ? "—" : money(r._amount) }}
-                </td>
-                <td class="s1-state-cell">{{ r._status }}</td>
-                <td class="s1-action-cell">
-                  <Button size="small" @click="open(r)">查看办理</Button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p v-if="!filtered.length" data-field="QF13" class="s1-muted">
-          当前条件下暂无记录
-        </p>
+    <div v-else :class="{ 's1-with-tree': view === 'bills' }">
+      <SpaceFilter
+        v-if="view === 'bills'"
+        :spaces="options.spaces"
+        v-model="space"
+      />
+      <div class="s1-results">
+        <Tabs v-if="view === 'tasks'" :value="taskStatus" @on-click="selectTaskStatus">
+          <TabPane v-for="s in taskTabs" :key="s.value" :name="s.value" :label="s.label" />
+        </Tabs>
+        <Tabs v-if="tabs.length" :value="tab" @on-click="changeTab"
+          ><TabPane
+            v-for="t in tabs"
+            :key="t.key"
+            :name="t.key"
+            :label="t.label"
+        /></Tabs>
         <div class="s1-toolbar">
-          <span data-field="QF12">共 {{ filtered.length }} 条</span
-          ><Page
-            :total="filtered.length"
-            :current="page"
-            :page-size="pageSize"
-            show-sizer
-            :page-size-opts="[10, 20, 50]"
-            @on-change="page = $event"
-            @on-page-size-change="
-              pageSize = $event;
-              page = 1;
-            "
-            data-field="QF10"
-          /><span data-field="QF11">每页 {{ pageSize }} 条</span>
+          <input
+            v-model="keyword"
+            data-field="QF01"
+            placeholder="编号、名称或内容"
+            aria-label="关键字"
+          />
+          <select v-if="view !== 'tasks'" v-model="status" aria-label="状态">
+            <option value="">全部状态</option>
+            <option v-for="s in statusChoices" :key="s">{{ s }}</option>
+          </select>
+          <Checkbox v-if="view === 'tasks'" v-model="mineOnly">我处理的工单</Checkbox>
+          <template v-if="financial"
+            ><select v-model="paymentState" aria-label="付款状态">
+              <option value="">全部付款状态</option>
+              <option v-for="s in paymentStates" :key="s">
+                {{ s }}
+              </option></select
+            ><select v-model="settlementState" aria-label="核销登记状态">
+              <option value="">全部核销／登记状态</option>
+              <option v-for="s in settlementStates" :key="s">{{ s }}</option>
+            </select></template
+          >
+          <template v-if="view === 'parking'"
+            ><input
+              v-if="table !== 'products'"
+              v-model="plate"
+              placeholder="输入车牌"
+              aria-label="车牌"
+              data-field="QF05"
+            /><select v-model="park" aria-label="停车场" data-field="QF06">
+              <option value="">全部停车场</option>
+              <option v-for="p in parkChoices" :key="p.value" :value="p.value">
+                {{ p.label }}
+              </option>
+            </select></template
+          >
+          <select
+            v-if="['payments', 'dues', 'checks'].includes(table)"
+            v-model="business"
+            aria-label="业务类型"
+            data-field="QF07"
+          >
+            <option value="">全部业务类型</option>
+            <option v-for="s in businessTypes" :key="s">{{ s }}</option>
+          </select>
+          <input
+            type="date"
+            v-model="startDate"
+            aria-label="查询开始日期"
+            data-field="QF08"
+          /><span>至</span
+          ><input
+            type="date"
+            v-model="endDate"
+            aria-label="查询结束日期"
+            data-field="QF09"
+          /><Button @click="resetFilters">重置筛选</Button>
         </div>
-      </div></template
-    >
-    <p
-      v-if="['parking', 'checks'].includes(view)"
-      class="s1-muted"
-      data-field="XI01"
-    >
-      平台停车记录可查询；闸机尚未接入，通行信息暂未同步。
+        <p v-if="table === 'dues'" class="s1-muted">
+          按原单列示待缴事项。月租订单为预缴，付款确认中与待核销／登记单独显示。
+        </p>
+        <div class="s1-card">
+          <p v-if="busy">正在读取…</p>
+          <div v-else class="s1-scroll">
+            <table class="s1-table s1-business-table">
+              <thead>
+                <tr>
+                  <th class="s1-id-cell">{{ idLabel }}</th>
+                  <th v-for="c in columns" :key="c.key">{{ c.label }}</th>
+                  <th>状态</th>
+                  <th class="s1-list-actions">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="r in pageRows" :key="r._id" :data-record="r._id">
+                  <td>
+                    <a @click="open(r)">{{ r._id }}</a>
+                  </td>
+                  <td v-for="c in columns" :key="c.key">
+                    <a
+                      v-if="c.key === '_businessId'"
+                      @click="
+                        open({ _table: r._businessTable, _id: r._businessId })
+                      "
+                      >{{ r._businessId }}</a
+                    ><template v-else>{{ cell(r, c) }}</template>
+                  </td>
+                  <td>
+                    {{ r._status
+                    }}<small v-if="financial" class="s1-substate"
+                      >付款：{{ r._paymentState }}<br />核销／登记：{{
+                        r._settlementState
+                      }}</small
+                    >
+                  </td>
+                  <td class="s1-list-actions">
+                    <div class="s1-actions">
+                      <Button
+                        v-for="a in actionsFor(r)"
+                        :key="a"
+                        size="small"
+                        @click="start(a, r)"
+                        >{{ actionNames[a] }}</Button
+                      ><a
+                        v-if="r._workorder && r._table !== 'workorders'"
+                        @click="
+                          open({ _table: 'workorders', _id: r._workorder })
+                        "
+                        >查看工单</a
+                      ><a v-if="!actionsFor(r).length" @click="open(r)"
+                        >查看详情</a
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p v-if="!busy && !filtered.length" data-field="QF13">
+            当前条件下暂无记录
+          </p>
+          <div class="s1-toolbar">
+            <span data-field="QF12">共{{ filtered.length }}条</span
+            ><Page
+              :total="filtered.length"
+              :current="page"
+              :page-size="pageSize"
+              show-sizer
+              :page-size-opts="[10, 20, 50]"
+              @on-change="page = $event"
+              @on-page-size-change="
+                pageSize = $event;
+                page = 1;
+              "
+              data-field="QF10"
+            /><span data-field="QF11">每页{{ pageSize }}条</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p v-if="view === 'parking'" class="s1-muted" data-field="XI01">
+      闸机尚未接入，平台登记与通行结果分别记录。
     </p>
     <Drawer
       :value="!!selected"
@@ -175,205 +196,12 @@
       title="业务详情"
       class-name="s1-drawer"
       @on-close="close"
-      ><div v-if="selected" class="s1">
-        <div class="s1-summary">
-          <div>
-            <h2>{{ selected._title }}</h2>
-            <p>{{ selected._subtitle }}</p>
-            <Tag>{{ selected._status }}</Tag>
-          </div>
-          <strong v-if="selected._amount !== undefined" class="s1-money">{{
-            money(selected._amount)
-          }}</strong>
-        </div>
-        <div class="s1-actions">
-          <Button
-            v-for="a in actions"
-            :key="a"
-            :type="
-              [
-                'publish',
-                'dispatch',
-                'submitProcess',
-                'review',
-                'closeHazard',
-              ].includes(a)
-                ? 'primary'
-                : 'default'
-            "
-            @click="start(a)"
-            >{{ actionNames[a] }}</Button
-          ><Button
-            v-if="selected._workorder"
-            @click="
-              $router.push({
-                path: '/workorders/tasks',
-                query: { id: selected._workorder },
-              })
-            "
-            >查看关联工单</Button
-          >
-        </div>
-        <Tabs v-model="detailTab"
-          ><TabPane label="事项信息" name="info"
-            ><template v-if="selected.businessSummary">
-              <h3>原业务摘要</h3>
-              <Fields
-                :row="selected.businessSummary"
-                :ids="Object.keys(selected.businessSummary)"
-                :table="table"
-                :record-id="selected._id"
-              />
-            </template>
-            <div v-for="section in detailSections" :key="section[0]">
-              <h3>{{ section[0] }}</h3>
-              <Fields
-                :row="selected"
-                :ids="section[1]"
-                :table="table"
-                :record-id="selected._id"
-              />
-            </div>
-            <template v-if="selected.report"
-              ><h3>原始上报</h3>
-              <Fields
-                :row="selected.report"
-                :ids="range('RP', 1, 17)"
-                :table="table"
-                :record-id="selected._id" /></template
-            ><template v-if="selected.event"
-              ><h3>核实与公开反馈</h3>
-              <Fields
-                :row="selected.event"
-                :ids="range('EV', 1, 13)"
-                :table="table"
-                :record-id="selected._id" /></template
-            ><template v-if="selected.relation"
-              ><h3>车辆车场</h3>
-              <Fields
-                :row="selected.relation"
-                :ids="range('PK', 1, 7)" /></template
-            ><template v-if="table === 'bills'"
-              ><h3>缴费记录</h3>
-              <p v-if="!selected.relatedPayments.length">暂无本账单付款</p>
-              <button
-                v-for="p in selected.relatedPayments"
-                :key="p._id"
-                @click="gotoPayment(p)"
-              >
-                {{ p.PY01 }} · {{ p.PY12 }}／{{ p.PY17 }}
-              </button></template
-            ></TabPane
-          >
-          <TabPane
-            v-if="['workorders', 'events', 'reports'].includes(table)"
-            label="处理与复核"
-            name="process"
-            ><template v-if="table === 'workorders'"
-              ><label
-                >处理轮次
-                <select v-model="roundFilter" data-field="QF14">
-                  <option value="">全部轮次</option>
-                  <option
-                    v-for="r in selected.rounds"
-                    :key="r.PR01"
-                    :value="r.PR10"
-                  >
-                    第{{ r.PR10 }}轮
-                  </option>
-                </select></label
-              >
-              <div
-                v-for="r in selected.rounds.filter(
-                  (r) => !roundFilter || String(r.PR10) === String(roundFilter)
-                )"
-                :key="r.PR01"
-                class="s1-card"
-              >
-                <h3>第 {{ r.PR10 }} 轮处理</h3>
-                <Fields
-                  :row="r"
-                  :ids="range('PR', 1, 11)"
-                  :table="table"
-                  :record-id="selected._id"
-                />
-              </div>
-              <h3>复核记录</h3>
-              <div v-for="r in selected.reviews" :key="r.RV01" class="s1-card">
-                <Fields
-                  :row="r"
-                  :ids="range('RV', 1, 8)"
-                  :table="table"
-                  :record-id="selected._id"
-                />
-              </div>
-              <h3>退单与内部转派</h3>
-              <div v-for="(o, i) in selected.operations" :key="i">
-                <Fields :row="o" :ids="range('OP', 1, 6)" /></div
-            ></template>
-            <h3>追加补充</h3>
-            <div
-              v-for="s in selected.RP18 ||
-              (selected.report && selected.report.RP18) ||
-              []"
-              :key="s.SP01"
-              data-field="RP18"
-            >
-              <Fields
-                :row="s"
-                :ids="range('SP', 1, 6)"
-                :table="table"
-                :record-id="selected._id"
-              /></div
-          ></TabPane>
-          <TabPane
-            v-if="['workorders', 'reports'].includes(table)"
-            label="居民反馈"
-            name="feedback"
-            ><Fields
-              :row="selected.resolution || selected"
-              :ids="[...range('UC', 1, 6), ...range('VA', 1, 5)]"
-              :table="table"
-              :record-id="selected._id"
-            /><Fields
-              v-if="selected.feedback"
-              :row="selected.feedback"
-              :ids="['EV12', 'EV13']"
-              :table="table"
-              :record-id="selected._id"
-            />
-            <div
-              v-for="(confirmation, i) in selected.confirmations || []"
-              :key="'confirmation-' + i"
-              class="s1-card"
-            >
-              <h3>第 {{ i + 1 }} 次居民确认</h3>
-              <Fields
-                :row="confirmation"
-                :ids="range('UC', 1, 6)"
-                :table="table"
-                :record-id="selected._id"
-              />
-            </div>
-          </TabPane>
-          <TabPane label="操作记录" name="history"
-            ><History
-              :rows="selected.history"
-              :data-field="
-                {
-                  bills: 'BL24',
-                  payments: 'PY23',
-                  checks: 'EX11',
-                  parkingRelations: 'PK12',
-                  monthly: 'MO19',
-                  temporary: 'TB16',
-                  events: 'EV14',
-                  workorders: 'WO14',
-                  reports: 'RP20',
-                }[table]
-              " /></TabPane
-        ></Tabs></div
-    ></Drawer>
+      ><BusinessDetail
+        v-if="selected"
+        :row="selected"
+        :table="detailTable"
+        @open="open({ _table: $event.table, _id: $event.id })"
+    /></Drawer>
     <Modal
       :z-index="3200"
       :value="!!action"
@@ -381,92 +209,181 @@
       :footer-hide="true"
       width="720"
       :mask-closable="false"
-      @on-cancel="action = ''"
+      @on-cancel="cancel"
       class="s1"
-      ><Alert v-if="actionError" type="error">{{ actionError }}</Alert>
+    >
+      <Alert v-if="actionError" type="error">{{ actionError }}</Alert>
+      <p v-if="actionTarget">
+        {{ actionTarget._id }} · {{ actionTarget._title }}
+      </p>
       <div v-if="action === 'publish'">
         <Fields
-          :row="selected"
-          :ids="[
-            'BL01',
-            'BL07',
-            'BL08',
-            'BL10',
-            'BL11',
-            'BL13',
-            'BL16',
-            'BL18',
-          ]"
+          :row="actionTarget"
+          :ids="['BL01', 'BL08', 'BL10', 'BL11', 'BL13', 'BL16']"
         /><Checkbox v-model="form.IR09" data-field="IR09"
-          >已核对单张账单，确认发布</Checkbox
+          >已核对单张账单，确认发布 <span class="s1-required" aria-hidden="true">*</span></Checkbox
         >
       </div>
+      <p
+        v-else-if="
+          ['startProcess', 'queryPayment', 'recoverPayment'].includes(
+            action
+          )
+        "
+      >
+        确认按当前记录办理。
+      </p>
       <ActionForm
         v-else-if="action"
-        :action="action"
+        :action="action === 'createCheck' ? 'saveCheck' : action"
         v-model="form"
         :options="options"
-        :records="events"
+        :records="tasks"
         :errors="fieldErrors"
-        :kind="selected && selected._kind"
+        :kind="actionTarget && actionTarget._kind"
+        :role="options.actor && options.actor.role"
+        :record="actionTarget || {}"
         :public-candidates="publicCandidates"
       />
       <div class="s1-actions">
         <Button type="primary" :loading="saving" @click="save"
           >确认{{ actionNames[action] }}</Button
-        ><Button :disabled="saving" @click="action = ''">取消</Button>
-      </div></Modal
-    >
+        ><Button :disabled="saving" @click="cancel">取消</Button>
+      </div>
+    </Modal>
   </section>
 </template>
 <script>
 import { service } from "../../services/foundation";
 import Fields from "./Fields.vue";
-import History from "./History.vue";
+import BusinessDetail from "./BusinessDetail.vue";
+import SpaceFilter from "./SpaceFilter.vue";
 import ActionForm from "./ActionForm.vue";
 import {
-  sections,
   fieldById,
-  fieldRange,
   format,
   actionNames,
   moneyFields,
+  rowActions,
+  listStates,
+  paymentStates,
+  settlementStates,
 } from "../../../../../prototype-shared/stage01/ui.js";
 const definitions = {
-  bills: ["物业费账单", "核验发布与单张账单查询"],
-  payments: ["缴费记录与异常", "付款、核销和未缴费用分别核对"],
-  parking: ["停车业务", "停车关系、月租预缴和临停费用分别办理"],
-  checks: ["停车核查", "核对平台业务和支付事实"],
-  events: ["待核实事件", "先人工核实，再派单处理"],
-  tasks: ["工单办理", "每个动作独立记录处理人、时间与轮次"],
-  overview: ["工单概况", "状态数量和时间事实，不作响应考核"],
-  repairs: ["报修与居民反馈", "查看居民诉求、确认和评价"],
-  hazards: ["隐患整改台账", "整改证据与有效复核支持销号"],
+  bills: ["物业费账单", "按房屋范围查询、核验与发布"],
+  payments: ["缴费记录", "原单、付款与核销登记分别核对"],
+  parking: ["停车业务", "停车关系、月租预缴与临停费用"],
+  tasks: ["工单办理", "登记受理、人工派单与逐轮处理"],
+  overview: ["工单概况", "当前状态数量与办理进度"],
+  repairs: ["工单与居民反馈", "原始诉求、处理结果与居民确认评价"],
+  hazards: ["隐患整改台账", "整改证据、复核与销号"],
+};
+const col = (key, label, money = false) => ({ key, label, money });
+const layouts = {
+  bills: [
+    col("_title", "房屋"),
+    col("_subtitle", "费用期间"),
+    col("BL13", "应缴", true),
+    col("BL15", "已缴", true),
+    col("BL16", "剩余", true),
+  ],
+  payments: [
+    col("_businessType", "业务类型"),
+    col("_businessId", "原单编号"),
+    col("PY06", "实付金额", true),
+    col("_date", "付款时间"),
+  ],
+  dues: [
+    col("_businessType", "业务类型"),
+    col("_title", "事项"),
+    col("_subtitle", "期间"),
+    col("_amount", "待缴金额", true),
+  ],
+  parkingRelations: [
+    col("PK03", "车牌"),
+    col("PK15", "车辆类型"),
+    col("PK16", "车辆颜色"),
+    col("PK06", "关联居民"),
+    col("PK13", "关联房屋"),
+    col("PK14", "有效业主"),
+    col("PK05", "停车场"),
+  ],
+  products: [
+    col("MP02", "产品名称"),
+    col("_parkName", "停车场"),
+    col("MP04", "价格", true),
+    col("MP10", "闸机厂商名称"),
+  ],
+  monthly: [
+    col("_plate", "车牌"),
+    col("_residentName", "关联居民"),
+    col("_houseName", "关联房屋"),
+    col("_ownerName", "有效业主"),
+    col("_parkName", "停车场"),
+    col("MO03", "产品"),
+    col("_subtitle", "服务期间"),
+    col("MO09", "金额", true),
+    col("MO20", "闸机厂商名称"),
+  ],
+  temporary: [
+    col("_plate", "车牌"),
+    col("_parkName", "停车场"),
+    col("TB09", "收费标准／费用依据"),
+    col("TB04", "入场时间"),
+    col("TB05", "计费截止"),
+    col("TB18", "停放时长"),
+    col("TB06", "金额", true),
+    col("TB17", "闸机厂商名称"),
+  ],
+  checks: [
+    col("_businessType", "业务类型"),
+    col("_businessId", "原单编号"),
+    col("EX02", "核对事项"),
+    col("EX06", "处理意见"),
+    col("EX09", "登记时间"),
+  ],
+  workorders: [
+    col("_title", "事项"),
+    col("WO15", "工单类型"),
+    col("WO16", "问题类别"),
+    col("WO17", "位置"),
+    col("WO04", "处理人"),
+  ],
+  reports: [
+    col("_title", "原始诉求"),
+    col("_kind", "当前类型"),
+    col("_currentCategory", "当前类别"),
+    col("_subtitle", "上报位置"),
+  ],
 };
 export default {
-  components: { Fields, History, ActionForm },
+  components: { Fields, BusinessDetail, SpaceFilter, ActionForm },
   props: { view: String },
   data: () => ({
     rows: [],
     options: { houses: [] },
-    events: [],
+    tasks: [],
     stats: {},
     busy: false,
     error: "",
     keyword: "",
     status: "",
-    house: "",
-    vehicle: "",
+    taskStatus: "",
+    mineOnly: false,
+    plate: "",
     park: "",
     business: "",
+    paymentState: "",
+    settlementState: "",
     startDate: "",
     endDate: "",
+    space: {},
     page: 1,
     pageSize: 10,
     tab: "",
     selected: null,
-    detailTab: "info",
-    roundFilter: "",
+    detailTable: "",
+    actionTarget: null,
     action: "",
     form: {},
     fieldErrors: {},
@@ -474,6 +391,9 @@ export default {
     saving: false,
     actionNames,
     fieldById,
+    paymentStates,
+    settlementStates,
+    generation: 0,
   }),
   computed: {
     title() {
@@ -489,12 +409,13 @@ export default {
             { key: "products", label: "月租产品" },
             { key: "monthly", label: "月租订单" },
             { key: "temporary", label: "临停账单" },
+            { key: "checks", label: "待处理" },
           ]
         : this.view === "payments"
         ? [
             { key: "payments", label: "缴费记录" },
-            { key: "bills", label: "未缴费用" },
-            { key: "checks", label: "异常核查" },
+            { key: "dues", label: "待缴记录" },
+            { key: "checks", label: "待处理" },
           ]
         : [];
     },
@@ -503,54 +424,102 @@ export default {
         this.tab ||
         {
           bills: "bills",
-          payments: "payments",
-          parking: "parkingRelations",
-          checks: "checks",
-          events: "events",
           tasks: "workorders",
           repairs: "reports",
           hazards: "workorders",
         }[this.view]
       );
     },
+    columns() {
+      return layouts[this.table] || [];
+    },
+    idLabel() {
+      return {
+        bills: "账单编号",
+        payments: "缴费编号",
+        dues: "原单编号",
+        parkingRelations: "关系编号",
+        products: "产品编号",
+        monthly: "订单编号",
+        temporary: "临停单编号",
+        checks: "核对编号",
+        workorders: "工单编号",
+        reports: "上报编号",
+      }[this.table];
+    },
     financial() {
-      return ["bills", "payments", "parking", "checks"].includes(this.view);
+      return ["bills", "payments", "dues", "monthly", "temporary"].includes(
+        this.table
+      );
+    },
+    statusChoices() {
+      return listStates[this.table] || [];
+    },
+    taskTabs() {
+      return [{ value: "", label: `全部 (${this.rows.length})` },
+        ...this.statusChoices.map(value => ({ value, label: `${value} (${this.rows.filter(r => r._status === value).length})` }))];
+    },
+    businessTypes() {
+      return this.view === "parking"
+        ? ["停车月租", "临停"]
+        : ["物业费", "停车月租", "临停"];
+    },
+    parkChoices() {
+      return [
+        ...new Map(
+          (this.options.relations || []).map((r) => [
+            r.PK04,
+            { value: r.PK04, label: r.PK05 },
+          ])
+        ).values(),
+      ];
     },
     newAction() {
-      if (this.view === "events") return "report";
-      if (this.view === "parking")
-        return {
-          parkingRelations: "saveParkingRelation",
-          products: "saveProduct",
-          temporary: "saveTemporary",
-        }[this.table];
-      return "";
+      return this.view === "tasks"
+        ? "report"
+        : this.view === "parking"
+        ? {
+            parkingRelations: "saveParkingRelation",
+            products: "saveProduct",
+            temporary: "saveTemporary",
+          }[this.table]
+        : "";
+    },
+    publicCandidates() {
+      return this.actionTarget?.rounds?.slice(-1)[0]?.PR06 || [];
+    },
+    filterStamp() {
+      return [
+        this.keyword,
+        this.status,
+        this.taskStatus,
+        this.mineOnly,
+        this.plate,
+        this.park,
+        this.business,
+        this.paymentState,
+        this.settlementState,
+        this.startDate,
+        this.endDate,
+      ].join("|");
     },
     filtered() {
       return this.rows.filter(
         (r) =>
-          (!this.keyword ||
-            JSON.stringify([
-              r._id,
-              r._title,
-              r._subtitle,
-              r.BL02,
-              r.PY10,
-              r.PK03,
-              r.TB02,
-            ]).includes(this.keyword)) &&
+          (!this.keyword || JSON.stringify(r).includes(this.keyword)) &&
           (!this.status || r._status === this.status) &&
-          (!this.house || r.BL07 === this.house) &&
-          (!this.business ||
-            r.PY02 === this.business ||
-            (this.options.payments || []).some(
-              (p) => p.PY03 === r.EX03 && p.PY02 === this.business
-            )) &&
-          this.parkingFilter(r) &&
-          (!this.$route.query.states ||
-            this.$route.query.states.split(",").includes(r._status)) &&
+          (this.view !== "tasks" || !this.taskStatus || r._status === this.taskStatus) &&
+          (this.view !== "tasks" || !this.mineOnly || r._assignee === this.options.actor?.id) &&
+          (!this.plate || (r._plate || r.TB02 || "").includes(this.plate)) &&
+          (!this.park || r._parkId === this.park) &&
+          (!this.business || r._businessType === this.business) &&
+          (!this.paymentState || r._paymentState === this.paymentState) &&
+          (!this.settlementState ||
+            r._settlementState === this.settlementState) &&
           (!this.startDate || r._date?.slice(0, 10) >= this.startDate) &&
-          (!this.endDate || r._date?.slice(0, 10) <= this.endDate)
+          (!this.endDate || r._date?.slice(0, 10) <= this.endDate) &&
+          (!this.$route.query.states ||
+            this.$route.query.states.split(",").includes(r._status))
       );
     },
     pageRows() {
@@ -559,252 +528,220 @@ export default {
         this.page * this.pageSize
       );
     },
-    statusChoices() {
-      return [...new Set(this.rows.map((r) => r._status))];
-    },
-    parkChoices() {
-      return [
-        ...new Map(
-          (this.options.relations || [])
-            .filter((r) => !this.vehicle || r.PK02 === this.vehicle)
-            .map((r) => [r.PK04, { value: r.PK04, label: r.PK05 }])
-        ).values(),
-      ];
-    },
-    dateLabel() {
-      return this.table === "bills"
-        ? "费用开始日期"
-        : this.table === "payments"
-        ? "渠道付款日期"
-        : this.table === "monthly"
-        ? "订单创建日期"
-        : this.table === "temporary"
-        ? "入场日期"
-        : this.table === "workorders"
-        ? "首次派单日期"
-        : "上报／核查日期";
-    },
-    dateKey() {
-      return "HI04";
-    },
-    detailSections() {
-      return (sections[this.table] || []).filter(([title]) =>
-        title === "隐患整改"
-          ? this.selected?._kind === "隐患"
-          : title === "已有退款事实"
-          ? !!this.selected?.PY20
-          : true
-      );
-    },
-    actions() {
-      const r = this.selected;
-      if (!r) return [];
-      if (this.table === "bills")
-        return r.BL19 === "待发布" ? ["editBill", "publish"] : ["createCheck"];
-      if (this.table === "payments")
-        return [
-          "queryPayment",
-          ...(r.PY12 === "成功" && r.PY17 !== "成功" ? ["recoverPayment"] : []),
-        ];
-      if (this.table === "checks") return ["saveCheck"];
-      if (this.table === "events")
-        return ["待核实", "待补充", "待重新核实"].includes(r.EV09)
-          ? ["verify"]
-          : [];
-      if (this.table === "workorders") return r._actions;
-      if (this.table === "parkingRelations") return ["saveParkingRelation"];
-      if (this.table === "products") return ["saveProduct"];
-      if (this.table === "temporary") return ["saveTemporary"];
-      return [];
-    },
-    publicCandidates() {
-      return this.selected?.rounds?.slice(-1)[0]?.PR06 || [];
-    },
   },
   watch: {
-    "$route.query.id"() {
+    filterStamp() {
+      this.page = 1;
+    },
+    space: {
+      deep: true,
+      handler() {
+        this.page = 1;
+        this.load();
+      },
+    },
+    "$route.query"() {
       this.load();
     },
     view() {
-      this.tab = "";
+      this.tab = this.tabs[0]?.key || "";
       this.selected = null;
-      this.house =
-        this.vehicle =
-        this.park =
-        this.business =
-        this.status =
-        this.keyword =
-          "";
+      this.resetFilters();
       this.load();
     },
   },
   created() {
-    this.tab = this.tabs[0]?.key || "";
+    this.tab = this.$route.query.tab || this.tabs[0]?.key || "";
     this.off = service.onChange(this.load);
     this.load();
   },
   beforeDestroy() {
     this.off?.();
+    this.generation++;
   },
   methods: {
-    display: format,
-    range: fieldRange,
-    money(n) {
-      return "¥" + (Number(n) / 100).toFixed(2);
+    selectTaskStatus(value) {
+      this.taskStatus = value;
+      this.page = 1;
     },
-    parkingFilter(r) {
-      if (this.view !== "parking") return true;
-      const relation =
-        this.table === "parkingRelations"
-          ? r
-          : (this.options.relations || []).find(
-              (x) => x._id === (r._relation || r.TB03)
-            );
-      return (
-        (!this.vehicle ||
-          this.table === "products" ||
-          relation?.PK02 === this.vehicle) &&
-        (!this.park || (r.MP03 || relation?.PK04) === this.park)
-      );
+    display: format,
+    actionsFor: rowActions,
+    cell(r, c) {
+      const v = r[c.key];
+      if (c.money)
+        return v === undefined ? "—" : "¥" + (Number(v) / 100).toFixed(2);
+      if (["MP10", "MO20", "TB17"].includes(c.key) && !v) return "未登记";
+      return v === undefined || v === "" ? "—" : format(c.key, v, r._labels);
+    },
+    resetFilters() {
+      this.keyword =
+        this.status =
+        this.plate =
+        this.park =
+        this.business =
+        this.paymentState =
+        this.settlementState =
+        this.startDate =
+        this.endDate =
+          "";
+      this.taskStatus = "";
+      this.mineOnly = false;
+      this.page = 1;
     },
     async load() {
+      const gen = ++this.generation;
       this.busy = true;
       this.error = "";
       try {
-        this.options = await service.stage01.options();
-        if (this.table === "checks")
-          this.options.payments = await service.stage01.query("payments");
-        if (this.view === "overview")
+        const options = await service.stage01.options();
+        if (gen !== this.generation) return;
+        this.options = options;
+        if (this.view === "overview") {
           this.stats = await service.stage01.overview();
-        else {
-          this.rows = await service.stage01.query(this.table);
-          if (this.view === "repairs")
-            this.rows = this.rows.filter((r) => r.RP07 === "报修");
-          if (this.view === "hazards")
-            this.rows = this.rows.filter((r) => r._kind === "隐患");
-          if (this.view === "payments" && this.table === "bills")
-            this.rows = this.rows.filter((r) => r.BL16 > 0);
-          if (this.view === "checks") {
-            const ids = new Set(
-              (this.options.payments || [])
-                .filter((p) => p.PY02 !== "物业费")
-                .map((p) => p.PY03)
-            );
-            this.rows = this.rows.filter((r) => ids.has(r.EX03));
-          }
-          const id = this.$route.query.id || this.selected?._id;
-          if (id)
-            try {
-              this.selected = await service.stage01.record(this.table, id);
-            } catch {
-              this.selected = null;
-            }
+          return;
+        }
+        let rows = await service.stage01.query(this.table, {
+          space: this.space,
+          allScope: this.view === "bills",
+        });
+        if (gen !== this.generation) return;
+        if (this.view === "hazards")
+          rows = rows.filter((r) => r._kind === "隐患");
+        if (this.view === "parking" && this.table === "checks")
+          rows = rows.filter((r) => r._businessType !== "物业费");
+        this.rows = rows;
+        this.page = Math.min(
+          this.page,
+          Math.max(1, Math.ceil(this.filtered.length / this.pageSize))
+        );
+        const q = this.$route.query;
+        if (q.legacyEvent) {
+          const e = await service.stage01.record("events", q.legacyEvent);
+          if (e._workorder)
+            await this.open({ _id: e._workorder, _table: "workorders" });
+          return;
+        }
+        if (q.legacyReport) {
+          try {
+            const report = await service.stage01.record('reports', q.legacyReport);
+            if (!report._workorder) throw new Error('关联工单不存在');
+            await this.open({ _id: report._workorder, _table: 'workorders' });
+          } catch (e) { this.error = e.message || '记录不存在或无权访问'; }
+          return;
+        }
+        const id = q.id || this.selected?._id;
+        if (id) {
+          const t = q.detail || this.detailTable || this.table;
+          this.selected = await service.stage01.record(t, id);
+          this.detailTable = t;
         }
       } catch (e) {
         this.error = e.message;
         this.rows = [];
         this.selected = null;
       } finally {
-        this.busy = false;
+        if (gen === this.generation) this.busy = false;
       }
     },
     changeTab(t) {
       this.tab = t;
-      if (!["payments", "checks"].includes(t)) this.business = "";
-      this.page = 1;
       this.selected = null;
-      if (this.$route.query.id) this.$router.replace({ query: {} });
+      this.resetFilters();
+      this.$router.replace({ query: { tab: t } }).catch(() => {});
       this.load();
     },
     async open(r) {
-      this.selected = await service.stage01.record(this.table, r._id);
-      this.detailTab = "info";
-      this.$router.replace({ query: { ...this.$route.query, id: r._id } });
+      try {
+        this.detailTable = r._table || this.table;
+        this.selected = await service.stage01.record(this.detailTable, r._id);
+        this.$router
+          .replace({
+            query: {
+              tab: this.tab || undefined,
+              detail: this.detailTable,
+              id: r._id,
+            },
+          })
+          .catch(() => {});
+      } catch (e) {
+        this.error = e.message;
+      }
     },
     close() {
       this.selected = null;
-      this.$router.replace({ query: {} });
-    },
-    gotoPayment(p) {
-      this.$router.push({ path: "/property/payments", query: { id: p._id } });
+      this.$router
+        .replace({ query: { tab: this.tab || undefined } })
+        .catch(() => {});
     },
     drill(id) {
       this.$router.push({
-        path: id === "ST01" ? "/workorders/events" : "/workorders/tasks",
+        path: "/workorders/tasks",
         query: {
           states: {
-            ST01: "待核实,待重新核实",
+            ST01: "待处理",
             ST02: "待派单",
-            ST03: "待接单,处理中,退回整改",
-            ST04: "待复核",
-            ST05: "待居民确认",
+            ST03: "处理中",
+            ST04: "待评价",
+            ST05: "待确认",
           }[id],
         },
       });
     },
-    async start(a) {
+    cancel() {
+      if (!this.saving) {
+        this.action = "";
+        this.actionTarget = null;
+      }
+    },
+    async start(a, row) {
       this.actionError = "";
       this.fieldErrors = {};
-      if (a === "publish") {
-        this.action = a;
-        this.form = { IR09: false };
-        return;
-      }
-      if (
-        [
-          "accept",
-          "closeHazard",
-          "queryPayment",
-          "recoverPayment",
-          "createCheck",
-        ].includes(a)
-      ) {
-        this.action = a;
-        this.form = {};
-        return;
-      }
-      this.action = a;
-      const r = this.selected || {};
-      this.form = {
-        ...r,
-        ...(r.draft || {}),
-        RP07: "报修",
-        RP08: "设施维修",
-        EV03: r.EV03 || r.report?.RP08 || "设施维修",
-        RP09: "C-A",
-        RP10: "E-A",
-        RP11: "公共位置",
-        EV05: "有效",
-        RV02: r.WO12,
-        RV03: "通过",
-        UC01: "已解决",
-        VA01: "满意",
-        WO04:
-          this.options.personnel?.find(
-            (p) => p.account === this.options.actor?.id
-          )?.value || "",
-        PK07: r.PK07 || "有效",
-        MP07: r.MP07 || "启用",
-        EV13: [],
-      };
-      for (const k of moneyFields)
-        if (this.form[k] !== undefined)
-          this.form[k] = (Number(this.form[k]) / 100).toFixed(2);
-      if (a === "verify") this.events = await service.stage01.query("events");
-    },
-    async direct(name) {
       try {
-        await service.stage01.command(name, {
-          id: this.selected._id,
-          revision: this.selected._rev,
-          confirm: true,
-          operation:
-            "web-" + name + "-" + this.selected._id + "-" + this.selected._rev,
-        });
-        await this.load();
-        this.$Message.success("办理已保存");
+        let r = row
+          ? await service.stage01.record(row._table || this.table, row._id)
+          : null;
+        if (r && ["queryPayment", "recoverPayment"].includes(a))
+          r = await service.stage01.record("payments", r._paymentId);
+        this.actionTarget = r;
+        this.action = a;
+        this.form = {
+          ...(r || {}),
+          ...(r?.draft || {}),
+          RP07: "报修",
+          RP08: "设施维修",
+          RP09: this.options.communities?.[0]?.value || "",
+          RP10: this.options.estates?.[0]?.value || "",
+          RP11: "公共位置",
+          RV02: r?.WO12,
+          RV03: "通过",
+          WO04:
+            r?.WO04 ||
+            this.options.personnel?.find(
+              (p) => p.account === this.options.actor.id
+            )?.value ||
+            "",
+          WO22: r?.WO22 || r?.report?.RP15 || "",
+          WO23: r?.WO23 || r?.report?.RP16 || "",
+          WO18: "",
+          WO19: [],
+          PK07: r?.PK07 || "有效",
+          MP07: r?.MP07 || "启用",
+          EV13: [],
+          EX06: "",
+          EX10: "",
+          EX07: [],
+          IR09: false,
+        };
+        for (const k of moneyFields)
+          if (this.form[k] !== undefined)
+            this.form[k] = (Number(this.form[k]) / 100).toFixed(2);
+        if (a === "markDuplicate")
+          this.tasks = (await service.stage01.query("workorders")).filter(
+            (t) => t._id !== r._id
+          );
       } catch (e) {
         this.error = e.message;
+        this.action = "";
       }
     },
     async save() {
@@ -812,27 +749,43 @@ export default {
       this.saving = true;
       this.actionError = "";
       try {
-        const p = {
-          data: this.form,
-          id: this.selected?._id,
-          revision: this.selected?._rev,
-          operation:
-            "web-" +
-            this.action +
-            "-" +
-            (this.selected?._id || Date.now()) +
-            "-" +
-            this.selected?._rev,
-        };
+        const r = this.actionTarget,
+          p = {
+            data: this.form,
+            id: r?._id,
+            table: r?._table,
+            revision: r?._rev,
+            operation:
+              "web-" +
+              this.action +
+              "-" +
+              (r?._id ||
+                this.form._request ||
+                (this.form._request = Date.now())) +
+              "-" +
+              (r?._rev || "new"),
+          };
         if (this.action === "publish") p.confirm = this.form.IR09 === true;
-        if (this.action === "saveCheck") {
+        if (["saveCheck", "createCheck"].includes(this.action)) {
+          if (!this.form.EX06?.trim()) throw new Error("请填写处理意见");
           p.note = this.form.EX06;
           p.next = this.form.EX10;
           p.photos = this.form.EX07 || [];
         }
-        if (this.newAction === this.action && !this.selected) delete p.id;
-        await service.stage01.command(this.action, p);
+        if (this.action === "createCheck") {
+          const check = await service.stage01.command("createCheck", p);
+          const c = await service.stage01.record("checks", check.id);
+          await service.stage01.command("saveCheck", {
+            id: c._id,
+            revision: c._rev,
+            note: p.note,
+            next: p.next,
+            photos: p.photos,
+            operation: p.operation + "-note",
+          });
+        } else await service.stage01.command(this.action, p);
         this.action = "";
+        this.actionTarget = null;
         await this.load();
         this.$Message.success("办理已保存");
       } catch (e) {

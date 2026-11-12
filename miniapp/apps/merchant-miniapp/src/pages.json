@@ -27,6 +27,115 @@
         "navigationStyle": "custom",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/service/workbench",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/qualification",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/personnel",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/supply",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/orders",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/order",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/action",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/verify",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/aftersales",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/after-sale",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/evaluations",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/overview",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/service/funds",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/unavailable/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/product/editor/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/order/detail/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {

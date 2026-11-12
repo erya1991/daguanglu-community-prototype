@@ -10,8 +10,7 @@ const entries = [
   ["payments", "缴费记录", "payments/index"],
   ["monthly", "月租订单", "parking/monthly"],
   ["temporary", "临停账单", "parking/temporary"],
-  ["repairs", "我的报修", "repairs/index"],
-  ["hazards", "隐患反馈", "hazards/index"],
+  ["repairs", "我的工单", "repairs/index"],
 ];
 function go(path: string) {
   uni.navigateTo({ url: "/pages/stage01/" + path });
@@ -24,8 +23,7 @@ onShow(async () => {
       temporary: (await service.stage01.query("temporary")).length,
     };
     const reports = await service.stage01.query("reports");
-    counts.value.repairs = reports.filter((r) => r.RP07 === "报修").length;
-    counts.value.hazards = reports.filter((r) => r.RP07 === "隐患").length;
+    counts.value.repairs = reports.length;
   } catch (e: any) {
     error.value = e.message;
   }

@@ -3,6 +3,7 @@ import { computed } from "vue";
 import {
   fieldById,
   activeFields,
+  isRequiredField,
   choices,
   attachmentFields,
 } from "@core/stage01/ui.js";
@@ -16,6 +17,7 @@ const props = withDefaults(
     errors?: any;
     role?: string;
     kind?: string;
+    record?: any;
     records?: any[];
     publicCandidates?: string[];
   }>(),
@@ -24,6 +26,7 @@ const props = withDefaults(
     errors: () => ({}),
     records: () => [],
     publicCandidates: () => [],
+    record: () => ({}),
   }
 );
 const emit = defineEmits<{ input: [any] }>();
@@ -88,6 +91,7 @@ function toggle(photo: string) {
       v-for="id in active"
       :key="id"
       :label="fieldById[id].name"
+      :required="isRequiredField(action, id, value, record)"
       :error="errors[id]"
       :data-field="id"
       ><Evidence
@@ -105,6 +109,7 @@ function toggle(photo: string) {
         ><text class="hint">仅所选照片向上报住户公开</text></view
       ><picker
         v-else-if="opts(id)"
+        :disabled="id === 'WO15' && !!value.WO10"
         :range="opts(id)"
         range-key="label"
         @change="choose(id, $event)"
@@ -143,7 +148,7 @@ function toggle(photo: string) {
         @input="input(id, $event)" /></FormField
   ></view>
 </template>
-<style scoped>
+<style scoped lang="scss">
 .s1-form {
   display: flex;
   flex-direction: column;
@@ -158,7 +163,7 @@ function toggle(photo: string) {
 .hint {
   display: block;
   font-size: 12px;
-  color: #617276;
+  color: $color-text-secondary;
   padding-bottom: 8px;
 }
 </style>

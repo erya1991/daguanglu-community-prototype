@@ -11,14 +11,15 @@
     </div>
     <div v-if="!preview && !result" class="s1-card">
       <label data-field="IM02"
-        >来源名称 <input v-model="source" aria-label="来源名称" /></label
-      ><input
+        >来源名称 <span class="s1-required" aria-hidden="true">*</span> <input v-model="source" aria-label="来源名称" aria-required="true" /></label
+      ><label>账单文件 <span class="s1-required" aria-hidden="true">*</span><input
         type="file"
         accept=".csv,text/csv"
         aria-label="选择账单文件"
+        aria-required="true"
         data-field="IM01"
         @change="file"
-      /><Button @click="download">下载样表</Button
+      /></label><Button @click="download">下载样表</Button
       ><Button :disabled="!text" :loading="busy" @click="validate"
         >重新校验</Button
       >
@@ -69,7 +70,7 @@
               <td data-field="IR01">{{ r.IR01 }}</td>
               <td>
                 <span data-field="IR02">{{ r.IR02 }}</span>
-                <p data-field="IR03">{{ r.IR03 }}</p>
+                <p data-field="IR03">{{ (options.houses || []).find(h=>h.value===r.IR03)?.label || "未匹配" }}</p><small>{{r.IR03}}</small>
               </td>
               <td>
                 {{ r.data.BL10 }} 至 {{ r.data.BL11 }}
@@ -150,16 +151,17 @@
           <Fields :row="row.validated" :ids="range('BL', 2, 18)"
         /></template>
         <label
-          >匹配房屋
-          <select v-model="mapping.house" :disabled="!!result">
+          >匹配房屋 <span v-if="!result" class="s1-required" aria-hidden="true">*</span>
+          <select v-model="mapping.house" :disabled="!!result" :aria-required="!result ? 'true' : undefined">
             <option v-for="h in options.houses" :key="h.value" :value="h.value">
               {{ h.label }}
             </option>
           </select></label
         ><label
-          >核验说明<textarea
+          >核验说明 <span v-if="!result" class="s1-required" aria-hidden="true">*</span><textarea
             v-model="mapping.note"
             :readonly="!!result"
+            :aria-required="!result ? 'true' : undefined"
             data-field="IR08"
           /></label
         ><Button v-if="!result" type="primary" @click="map"

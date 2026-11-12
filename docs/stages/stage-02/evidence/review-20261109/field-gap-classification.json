@@ -1,0 +1,3366 @@
+{
+  "generatedAt": "2026-11-09T03:18:07.223Z",
+  "baseline": "348363b7410ff90f062f75b93242f03bb246d4c1",
+  "originalAudit": "FIELDS-2026-11-07T04-57-20-436Z",
+  "inputCount": 117,
+  "totals": {
+    "条件未触发": 36,
+    "合法为空": 49,
+    "实际实现缺陷": 14,
+    "缺少演示数据": 18
+  },
+  "checks": [
+    {
+      "name": "Read authorized fixture S02-BASE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-BOOKING",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-QUAL",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-VERSION",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-EXISTING",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-ISOLATION",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-PAY",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-PAY-CLOSE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-ARRANGE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-CHANGE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-HOME-READY",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-POINT-READY",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-IN-SERVICE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-NOSHOW",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-CANCEL-FIRST",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-CANCEL-CONFIRMED",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-UNABLE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-AFTERSALE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-REWORK",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-RULING",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-REFUND-LIMIT",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-FUNDS",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-FUNDS-RULE",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-FUNDS-REFUND",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-FUNDS-EXCEPTION",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-EVAL",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-OLD",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "Read authorized fixture S02-STATS",
+      "status": "PASS",
+      "result": "Seed facts read only; no terminal state injection"
+    },
+    {
+      "name": "New supply review, restriction and pause facts",
+      "status": "PASS",
+      "result": {
+        "service": "S02-SUPPLY-000101"
+      }
+    },
+    {
+      "name": "Valid review return feedback and staff stop cause",
+      "status": "PASS",
+      "result": "Persisted action feedback; not a placeholder value"
+    },
+    {
+      "name": "Arrangement answer and subsequent accepted change",
+      "status": "PASS",
+      "result": {
+        "changes": 2
+      }
+    },
+    {
+      "name": "Point verification outside arranged window with reason",
+      "status": "PASS",
+      "result": {
+        "order": "S02-DEMO-ORDER"
+      }
+    },
+    {
+      "name": "Declined aftersale response and valid withdrawal",
+      "status": "PASS",
+      "result": {
+        "sale": "S02-SALE-000114"
+      }
+    },
+    {
+      "name": "After-completion refund, actual rollback and original refund query",
+      "status": "PASS",
+      "result": {
+        "refund": "S02-REF-000124"
+      }
+    },
+    {
+      "name": "Cancellation effect and supplemental fulfillment references",
+      "status": "PASS",
+      "result": "Normal commands preserve original rounds"
+    },
+    {
+      "name": "Rejected acceptance and payment close/query conditions",
+      "status": "PASS",
+      "result": "Business cause and channel query are separate actual facts"
+    },
+    {
+      "name": "Explicit missing-rule case keeps a real split blocking reason",
+      "status": "PASS",
+      "result": "No rule configured is explicit auxiliary scenario only"
+    }
+  ],
+  "fields": [
+    {
+      "id": "C1.08",
+      "table": "C1",
+      "name": "上传失败原因",
+      "expectedControl": "文本／反馈",
+      "condition": "必填：失败时自动生成，无需填写；可见：上传表单；编辑：否",
+      "plannedPath": "按引用对象授权→引用附件的办理页与图片／文件预览",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "上传失败时显示真实错误；原审计为成功附件",
+      "requiredAndVisibility": "必填：失败时自动生成，无需填写；可见：上传表单；编辑：否",
+      "rule": "可读提示；支持重试并保留其他已成功文件",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.01",
+      "table": "26-A",
+      "name": "商户关键词",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：Web资格列表筛选；编辑：筛选时",
+      "plannedPath": "W01→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web资格列表筛选；编辑：筛选时",
+      "rule": "仅检索当前授权商户",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "qualifications",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.02",
+      "table": "26-A",
+      "name": "经营店铺",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web资格列表筛选；编辑：筛选时",
+      "plannedPath": "W01→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web资格列表筛选；编辑：筛选时",
+      "rule": "商户端固定当前店铺，不可扩大范围",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "qualifications",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.04",
+      "table": "26-A",
+      "name": "资格有效性",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web资格列表筛选；编辑：筛选时",
+      "plannedPath": "W01→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web资格列表筛选；编辑：筛选时",
+      "rule": "未获准、有效、受限；原因另列",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "qualifications",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.06",
+      "table": "26-A",
+      "name": "覆盖社区",
+      "expectedControl": "关联选择／多选",
+      "condition": "必填：否；可见：Web资格筛选；编辑：筛选时",
+      "plannedPath": "W01→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web资格筛选；编辑：筛选时",
+      "rule": "不包含网格或责任区域",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "qualifications",
+        "authorizedRows": 2,
+        "input": []
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.07",
+      "table": "26-A",
+      "name": "覆盖小区",
+      "expectedControl": "关联选择／多选",
+      "condition": "必填：否；可见：Web资格筛选；编辑：筛选时",
+      "plannedPath": "W01→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web资格筛选；编辑：筛选时",
+      "rule": "随社区联动；空选择不代表全部小区",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "qualifications",
+        "authorizedRows": 2,
+        "input": []
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.09",
+      "table": "26-A",
+      "name": "人员联系电话",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：商户及授权Web人员筛选；编辑：筛选时",
+      "plannedPath": "W02／M03→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及授权Web人员筛选；编辑：筛选时",
+      "rule": "仅在具备检索权限时使用",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "personnel",
+        "authorizedRows": 3,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-A.11",
+      "table": "26-A",
+      "name": "人员资质有效性",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：商户及Web人员筛选；编辑：筛选时",
+      "plannedPath": "W02／M03→列表筛选／移动筛选面板",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "人员资质筛选依赖缓存状态，补充按当前类目材料事实计算，并保留待核实",
+      "requiredAndVisibility": "必填：否；可见：商户及Web人员筛选；编辑：筛选时",
+      "rule": "无专项要求、待核实、有效、已失效；不设置无依据的临期天数",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "personnel",
+        "authorizedRows": 3,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-B.20",
+      "table": "26-B",
+      "name": "资格限制原因",
+      "expectedControl": "文本集合／逐项展示",
+      "condition": "必填：受限时自动生成，无需填写；可见：双方详情及卡片摘要；编辑：否",
+      "plannedPath": "W01／M02→资格卡片及详情→主体／协议／当前授权",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "资格受限后才有原因",
+      "requiredAndVisibility": "必填：受限时自动生成，无需填写；可见：双方详情及卡片摘要；编辑：否",
+      "rule": "一条原因一行；如协议失效、缺必要资质、资金关系未就绪",
+      "observedFacts": [
+        {
+          "source": "qualification-paused",
+          "path": "record.资格限制原因",
+          "value": [
+            "核对协议授权"
+          ]
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-D.07",
+      "table": "26-D",
+      "name": "有效截止日期",
+      "expectedControl": "日期／日期选择",
+      "condition": "必填：非长期且材料有期限时；可见：双方材料详情；编辑：提交前",
+      "plannedPath": "W01／W02／M02／M03→材料编辑／核验及证件详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "当前材料为长期有效、未关联账号/处理记录、居民未补充需求或无已确认手续费依据，按各自原字段定义允许空",
+      "requiredAndVisibility": "必填：非长期且材料有期限时；可见：双方材料详情；编辑：提交前",
+      "rule": "有期限时必填，过期不再支持新安排",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-E.05",
+      "table": "26-E",
+      "name": "关联工作人员账号",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：商户编辑及Web详情；编辑：商户维护时",
+      "plannedPath": "W02／M03→人员卡片／编辑／启停弹窗／影响订单",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "当前材料为长期有效、未关联账号/处理记录、居民未补充需求或无已确认手续费依据，按各自原字段定义允许空",
+      "requiredAndVisibility": "必填：否；可见：商户编辑及Web详情；编辑：商户维护时",
+      "rule": "可空，不自动创建登录账号或新岗位",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "26-E.12",
+      "table": "26-E",
+      "name": "启停原因",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：停用或恢复时；可见：商户弹窗及双方历史；编辑：操作提交前",
+      "plannedPath": "W02／M03→人员卡片／编辑／启停弹窗／影响订单",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "人员启停动作后有业务原因",
+      "requiredAndVisibility": "必填：停用或恢复时；可见：商户弹窗及双方历史；编辑：操作提交前",
+      "rule": "停用前提示未完成安排；不自动取消订单",
+      "observedFacts": [
+        {
+          "source": "personnel-stopped",
+          "path": "record.启停原因",
+          "value": "人员已离开当前服务店铺"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-A.01",
+      "table": "27-A",
+      "name": "配置名称关键词",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：Web配置筛选；编辑：筛选时",
+      "plannedPath": "W03→配置列表／编辑／类目材料要求提示／方式选择",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web配置筛选；编辑：筛选时",
+      "rule": "当前配置列表内检索",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "categories",
+        "authorizedRows": 9,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.01",
+      "table": "27-B",
+      "name": "服务关键词",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：Web及商户服务列表筛选；编辑：筛选时",
+      "plannedPath": "W04／M04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户服务列表筛选；编辑：筛选时",
+      "rule": "商户仅查本主体",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.02",
+      "table": "27-B",
+      "name": "服务类目筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "W04／M04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "可查询历史停用类目但不可用于新发布",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.03",
+      "table": "27-B",
+      "name": "经营店铺筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web筛选；编辑：筛选时",
+      "plannedPath": "W04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web筛选；编辑：筛选时",
+      "rule": "商户固定本人授权范围",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.04",
+      "table": "27-B",
+      "name": "审核状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "W04／M04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "草稿、待审核、通过、退回",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.05",
+      "table": "27-B",
+      "name": "上架状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "W04／M04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "未上架、已上架、已下架",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.06",
+      "table": "27-B",
+      "name": "平台限制筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "W04／M04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "平台限制筛选未接入Service",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "无限制、受限",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.07",
+      "table": "27-B",
+      "name": "履约方式筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "W04／M04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "供给方式筛选未按组合及稳定引用匹配",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "不建立两个业务菜单",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.08",
+      "table": "27-B",
+      "name": "创建开始日期",
+      "expectedControl": "日期／日期选择",
+      "condition": "必填：否；可见：Web筛选；编辑：筛选时",
+      "plannedPath": "W04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web筛选；编辑：筛选时",
+      "rule": "不得晚于结束日期",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-B.09",
+      "table": "27-B",
+      "name": "创建结束日期",
+      "expectedControl": "日期／日期选择",
+      "condition": "必填：否；可见：Web筛选；编辑：筛选时",
+      "plannedPath": "W04→服务列表筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web筛选；编辑：筛选时",
+      "rule": "与开始日期联动",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "services",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-C.18",
+      "table": "27-C",
+      "name": "平台限制原因",
+      "expectedControl": "文本／只读",
+      "condition": "必填：受限时自动生成，无需填写；可见：Web及商户列表摘要、详情；编辑：否",
+      "plannedPath": "W04／M04→项目列表／编辑分组／详情→服务内容",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "平台限制后才有原因",
+      "requiredAndVisibility": "必填：受限时自动生成，无需填写；可见：Web及商户列表摘要、详情；编辑：否",
+      "rule": "商户不能通过自行上架绕过",
+      "observedFacts": [
+        {
+          "source": "restricted-service",
+          "path": "record.平台限制原因",
+          "value": "核实本次经营材料"
+        },
+        {
+          "source": "service-qualification-invalid",
+          "path": "record.平台限制原因",
+          "value": "核实本次经营材料"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.03",
+      "table": "27-F",
+      "name": "送审版本",
+      "expectedControl": "文本／只读",
+      "condition": "必填：自动生成，无需填写；可见：双方详情及历史；编辑：否",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：双方详情及历史；编辑：否",
+      "rule": "审核通过仅批准此版",
+      "observedFacts": [
+        {
+          "source": "new-service-submitted",
+          "path": "record.送审版本",
+          "value": 1
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.送审版本",
+          "value": 1
+        },
+        {
+          "source": "merchant-paused-service",
+          "path": "record.送审版本",
+          "value": 1
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.04",
+      "table": "27-F",
+      "name": "提交时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：自动生成，无需填写；可见：Web待审列表及双方详情；编辑：否",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：Web待审列表及双方详情；编辑：否",
+      "rule": "逐轮保留",
+      "observedFacts": [
+        {
+          "source": "new-service-submitted",
+          "path": "record.提交时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.提交时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "merchant-paused-service",
+          "path": "record.提交时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.06",
+      "table": "27-F",
+      "name": "资格不满足原因",
+      "expectedControl": "文本集合／只读",
+      "condition": "必填：不满足时自动生成；可见：Web审核及商户反馈；编辑：否",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "经营条件不满足时才有原因",
+      "requiredAndVisibility": "必填：不满足时自动生成；可见：Web审核及商户反馈；编辑：否",
+      "rule": "不可以人工备注覆盖",
+      "observedFacts": [
+        {
+          "source": "service-qualification-invalid",
+          "path": "record.资格不满足原因",
+          "value": [
+            "当前主体、协议、类目或必要资质不满足"
+          ]
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.07",
+      "table": "27-F",
+      "name": "审核结果",
+      "expectedControl": "枚举／单选",
+      "condition": "必填：审核时；可见：Web弹窗及商户反馈；编辑：提交审核前",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：审核时；可见：Web弹窗及商户反馈；编辑：提交审核前",
+      "rule": "不直接改商户送审内容",
+      "observedFacts": [
+        {
+          "source": "S02-BASE:authorized-web",
+          "path": "record.versions.0.审核结果",
+          "value": "通过"
+        },
+        {
+          "source": "S02-BASE:authorized-web",
+          "path": "record.历史版本.0.审核结果",
+          "value": "通过"
+        },
+        {
+          "source": "S02-BASE:authorized-web",
+          "path": "record.versions.0.审核结果",
+          "value": "通过"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.08",
+      "table": "27-F",
+      "name": "审核意见",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：退回时；可见：Web及商户反馈；编辑：提交审核前",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：退回时；可见：Web及商户反馈；编辑：提交审核前",
+      "rule": "退回必填",
+      "observedFacts": [
+        {
+          "source": "new-service-reviewed",
+          "path": "record.versions.0.审核意见",
+          "value": "核对本次规格和合法范围后通过"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.审核意见",
+          "value": "核对本次规格和合法范围后通过"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.历史版本.0.审核意见",
+          "value": "核对本次规格和合法范围后通过"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.09",
+      "table": "27-F",
+      "name": "审核轮次",
+      "expectedControl": "正整数／只读",
+      "condition": "必填：自动生成，无需填写；可见：双方审核历史；编辑：否",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "供给审核轮次缺少真实历史投影",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：双方审核历史；编辑：否",
+      "rule": "绑定送审版本",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [
+        {
+          "source": "S02-BASE:authorized-web",
+          "path": "record.审核轮次",
+          "value": 1
+        },
+        {
+          "source": "S02-BASE:authorized-web",
+          "path": "record.审核轮次",
+          "value": 1
+        },
+        {
+          "source": "S02-BASE:authorized-web",
+          "path": "record.审核轮次",
+          "value": 1
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.10",
+      "table": "27-F",
+      "name": "审核人",
+      "expectedControl": "文本／只读",
+      "condition": "必填：自动生成，无需填写；可见：双方审核历史；编辑：否",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：双方审核历史；编辑：否",
+      "rule": "记录实际审核人",
+      "observedFacts": [
+        {
+          "source": "new-service-reviewed",
+          "path": "record.versions.0.审核人",
+          "value": "物业管理员"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.审核人",
+          "value": "物业管理员"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.历史版本.0.审核人",
+          "value": "物业管理员"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "27-F.11",
+      "table": "27-F",
+      "name": "审核时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：自动生成，无需填写；可见：双方审核历史；编辑：否",
+      "plannedPath": "W04／M04→审核／上下架抽屉、推荐引用、版本历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：双方审核历史；编辑：否",
+      "rule": "逐轮保留",
+      "observedFacts": [
+        {
+          "source": "new-service-reviewed",
+          "path": "record.versions.0.审核时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.审核时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "new-service-reviewed",
+          "path": "record.历史版本.0.审核时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-A.02",
+      "table": "28-A",
+      "name": "暂停原因",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：暂停时；可见：商户弹窗及Web历史；编辑：提交前",
+      "plannedPath": "M04／W04／M06／W05→接单开关弹窗／确认订单期望时间／订单原始期望",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "暂停接单时才要求填写",
+      "requiredAndVisibility": "必填：暂停时；可见：商户弹窗及Web历史；编辑：提交前",
+      "rule": "必填原因供内部查询；公开端仅显示暂停预约",
+      "observedFacts": [
+        {
+          "source": "merchant-paused-service",
+          "path": "record.暂停原因",
+          "value": "本周人员已安排其他订单"
+        },
+        {
+          "source": "restricted-service",
+          "path": "record.暂停原因",
+          "value": "本周人员已安排其他订单"
+        },
+        {
+          "source": "service-qualification-invalid",
+          "path": "record.暂停原因",
+          "value": "本周人员已安排其他订单"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-A.03",
+      "table": "28-A",
+      "name": "开关变更时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：自动生成，无需填写；可见：商户及Web供给历史；编辑：否",
+      "plannedPath": "M04／W04／M06／W05→接单开关弹窗／确认订单期望时间／订单原始期望",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "接单开关发生实际变化后自动生成",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：商户及Web供给历史；编辑：否",
+      "rule": "不取消已有付费订单",
+      "observedFacts": [
+        {
+          "source": "merchant-paused-service",
+          "path": "record.开关变更时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "restricted-service",
+          "path": "record.开关变更时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "service-qualification-invalid",
+          "path": "record.开关变更时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-A.08",
+      "table": "28-A",
+      "name": "约时提示",
+      "expectedControl": "文本／只读提示",
+      "condition": "必填：系统展示，无需填写；可见：住户下单确认；编辑：否",
+      "plannedPath": "R03／R06→接单开关弹窗／确认订单期望时间／订单原始期望",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "下单约时提示未绑定展示",
+      "requiredAndVisibility": "必填：系统展示，无需填写；可见：住户下单确认；编辑：否",
+      "rule": "下单前显示“期望时间不代表预约成功，具体安排需双方确认”",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-B.02",
+      "table": "28-B",
+      "name": "无法承接说明",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：无法承接时；可见：商户弹窗及各端订单结果；编辑：提交前",
+      "plannedPath": "M06／R07／R06／W05→接单与安排办理页／安排确认页／订单安排历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "明确无法承接时才填写",
+      "requiredAndVisibility": "必填：无法承接时；可见：商户弹窗及各端订单结果；编辑：提交前",
+      "rule": "无需编造固定拒单字典；居民可查看",
+      "observedFacts": [
+        {
+          "source": "merchant-unable-to-accept",
+          "path": "record.无法承接说明",
+          "value": "当前人员无法满足本单约定服务要求"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-B.19",
+      "table": "28-B",
+      "name": "居民答复说明",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：希望调整时；可见：各端安排详情；编辑：提交答复前",
+      "plannedPath": "M06／R07／R06／W05→接单与安排办理页／安排确认页／订单安排历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "居民希望调整安排时才填写",
+      "requiredAndVisibility": "必填：希望调整时；可见：各端安排详情；编辑：提交答复前",
+      "rule": "希望调整时需说明；接受时可不填",
+      "observedFacts": [
+        {
+          "source": "resident-requested-adjustment",
+          "path": "record.arrangements.1.居民答复说明",
+          "value": "希望改为次日下午"
+        },
+        {
+          "source": "accepted-change",
+          "path": "record.arrangements.1.居民答复说明",
+          "value": "希望改为次日下午"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.01",
+      "table": "28-C",
+      "name": "改期申请编号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：提交后自动生成，无需填写；可见：各端改期详情；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：提交后自动生成，无需填写；可见：各端改期详情；编辑：否",
+      "rule": "关联原订单和原安排",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.改期申请编号",
+          "value": "S02-CHG-000111"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.改期申请编号",
+          "value": "S02-CHG-000111"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.改期申请编号",
+          "value": "S02-CHG-000111"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.02",
+      "table": "28-C",
+      "name": "改期发起方",
+      "expectedControl": "枚举／只读",
+      "condition": "必填：自动生成，无需填写；可见：各端变更记录；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：各端变更记录；编辑：否",
+      "rule": "平台只能协调，不代双方同意",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.改期发起方",
+          "value": "林示例"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.改期发起方",
+          "value": "林示例"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.改期发起方",
+          "value": "林示例"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.03",
+      "table": "28-C",
+      "name": "原安排编号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "rule": "保留原版不覆盖",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.原安排编号",
+          "value": "S02-ARR-000107"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.原安排编号",
+          "value": "S02-ARR-000107"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.原安排编号",
+          "value": "S02-ARR-000107"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.04",
+      "table": "28-C",
+      "name": "原服务日期",
+      "expectedControl": "日期／只读",
+      "condition": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "rule": "没有已确认安排时显示未确认",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.原服务日期",
+          "value": "2026-11-07"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.原服务日期",
+          "value": "2026-11-07"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.原服务日期",
+          "value": "2026-11-07"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.05",
+      "table": "28-C",
+      "name": "原开始时间",
+      "expectedControl": "时间／只读",
+      "condition": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "rule": "单独展示",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.原开始时间",
+          "value": "09:00"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.原开始时间",
+          "value": "09:00"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.原开始时间",
+          "value": "09:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.06",
+      "table": "28-C",
+      "name": "原结束时间",
+      "expectedControl": "时间／只读",
+      "condition": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：已有安排时自动带出；可见：各端变更详情；编辑：否",
+      "rule": "单独展示",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.原结束时间",
+          "value": "11:00"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.原结束时间",
+          "value": "11:00"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.原结束时间",
+          "value": "11:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.11",
+      "table": "28-C",
+      "name": "改期申请状态",
+      "expectedControl": "枚举／状态标签",
+      "condition": "必填：自动生成，无需填写；可见：各端变更详情；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：各端变更详情；编辑：否",
+      "rule": "待商家安排、待居民确认、已生效、未达成、已撤回",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.改期申请状态",
+          "value": "待商家安排"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.改期申请状态",
+          "value": "待商家安排"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.改期申请状态",
+          "value": "待商家安排"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.12",
+      "table": "28-C",
+      "name": "改期申请时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：自动生成，无需填写；可见：各端变更历史；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：自动生成，无需填写；可见：各端变更历史；编辑：否",
+      "rule": "与安排提交、居民答复时间分开",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.changes.0.改期申请时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史.0.改期申请时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "resident-requested-change",
+          "path": "record.改期申请时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.13",
+      "table": "28-C",
+      "name": "改期生效时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：改期成功后自动生成，无需填写；可见：各端变更历史；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：改期成功后自动生成，无需填写；可见：各端变更历史；编辑：否",
+      "rule": "新旧有效关系一次性切换",
+      "observedFacts": [
+        {
+          "source": "accepted-change",
+          "path": "record.changes.1.改期生效时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "accepted-change",
+          "path": "record.安排变更历史.1.改期生效时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        },
+        {
+          "source": "accepted-change",
+          "path": "record.改期生效时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "28-C.14",
+      "table": "28-C",
+      "name": "安排变更历史",
+      "expectedControl": "历史集合／展开",
+      "condition": "必填：有变化后自动生成，无需填写；可见：各端订单历史；编辑：否",
+      "plannedPath": "M06／R07／R06／W05→改期表单／新旧安排卡片／变更历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "存在原有效安排并实际提出/接受改期后才生成，历史提案分别保留",
+      "requiredAndVisibility": "必填：有变化后自动生成，无需填写；可见：各端订单历史；编辑：否",
+      "rule": "逐条展开28-B、28-C，变化见C3，操作者见C2",
+      "observedFacts": [
+        {
+          "source": "resident-requested-change",
+          "path": "record.安排变更历史",
+          "value": [
+            {
+              "改期申请编号": "S02-CHG-000111",
+              "改期发起方": "林示例",
+              "原安排编号": "S02-ARR-000107",
+              "原服务日期": "2026-11-07",
+              "原开始时间": "09:00",
+              "原结束时间": "11:00",
+              "期望改期日期": "",
+              "期望改期时段偏好": "",
+              "改期原因": "居民临时无法在原时间到场",
+              "改期申请状态": "待商家安排",
+              "改期申请时间": "2026-11-07T08:00:00+08:00"
+            }
+          ]
+        },
+        {
+          "source": "resident-requested-adjustment",
+          "path": "record.安排变更历史",
+          "value": [
+            {
+              "改期申请编号": "S02-CHG-000111",
+              "改期发起方": "林示例",
+              "原安排编号": "S02-ARR-000107",
+              "原服务日期": "2026-11-07",
+              "原开始时间": "09:00",
+              "原结束时间": "11:00",
+              "期望改期日期": "",
+              "期望改期时段偏好": "",
+              "改期原因": "居民临时无法在原时间到场",
+              "改期申请状态": "未达成",
+              "改期申请时间": "2026-11-07T08:00:00+08:00",
+              "新安排编号": "S02-ARR-000113"
+            }
+          ]
+        },
+        {
+          "source": "accepted-change",
+          "path": "record.安排变更历史",
+          "value": [
+            {
+              "改期申请编号": "S02-CHG-000111",
+              "改期发起方": "林示例",
+              "原安排编号": "S02-ARR-000107",
+              "原服务日期": "2026-11-07",
+              "原开始时间": "09:00",
+              "原结束时间": "11:00",
+              "期望改期日期": "",
+              "期望改期时段偏好": "",
+              "改期原因": "居民临时无法在原时间到场",
+              "改期申请状态": "未达成",
+              "改期申请时间": "2026-11-07T08:00:00+08:00",
+              "新安排编号": "S02-ARR-000113"
+            },
+            {
+              "改期申请编号": "S02-CHG-000116",
+              "改期发起方": "演示商户",
+              "原安排编号": "S02-ARR-000107",
+              "原服务日期": "2026-11-07",
+              "原开始时间": "09:00",
+              "原结束时间": "11:00",
+              "改期原因": "双方协商变更服务时间",
+              "原安排仍可履行": true,
+              "改期申请状态": "已生效",
+              "改期申请时间": "2026-11-07T08:00:00+08:00",
+              "新安排编号": "S02-ARR-000117",
+              "改期生效时间": "2026-11-07T08:00:00+08:00"
+            }
+          ]
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-A.07",
+      "table": "29-A",
+      "name": "服务主图",
+      "expectedControl": "图片／只读",
+      "condition": "必填：从供给带出；可见：住户卡片；编辑：否",
+      "plannedPath": "R01／R02→服务发现筛选／服务卡片",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "服务主图已有真实附件绑定；原观察器未进入图像值采样分支，并非缺少主图或未实现。本轮真实上传及图片显示路径核验，保留原观察版本。",
+      "requiredAndVisibility": "必填：从供给带出；可见：住户卡片；编辑：否",
+      "rule": "沿用C1公开图片",
+      "observedFacts": [
+        {
+          "source": "S02-QUAL:authorized-web",
+          "path": "record.服务内容快照.项目.服务主图",
+          "value": [
+            {
+              "id": "S02-IMAGE-SV-HOME",
+              "name": "家庭保洁-虚构示意.png",
+              "type": "image/png",
+              "size": 690,
+              "status": "成功",
+              "uploader": "经营资料维护人",
+              "uploadedAt": "2026-11-07T08:00:00+08:00",
+              "description": "虚构服务示意图片",
+              "order": 1
+            }
+          ]
+        },
+        {
+          "source": "S02-EXISTING:authorized-web",
+          "path": "record.服务内容快照.项目.服务主图",
+          "value": [
+            {
+              "id": "S02-IMAGE-SV-HOME",
+              "name": "家庭保洁-虚构示意.png",
+              "type": "image/png",
+              "size": 690,
+              "status": "成功",
+              "uploader": "经营资料维护人",
+              "uploadedAt": "2026-11-07T08:00:00+08:00",
+              "description": "虚构服务示意图片",
+              "order": 1
+            }
+          ]
+        },
+        {
+          "source": "S02-ISOLATION:authorized-web",
+          "path": "record.服务内容快照.项目.服务主图",
+          "value": [
+            {
+              "id": "S02-IMAGE-SV-HOME",
+              "name": "家庭保洁-虚构示意.png",
+              "type": "image/png",
+              "size": 690,
+              "status": "成功",
+              "uploader": "经营资料维护人",
+              "uploadedAt": "2026-11-07T08:00:00+08:00",
+              "description": "虚构服务示意图片",
+              "order": 1
+            }
+          ]
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.01",
+      "table": "29-D",
+      "name": "服务订单号筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：各端服务订单列表筛选；编辑：筛选时",
+      "plannedPath": "R05／M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端服务订单列表筛选；编辑：筛选时",
+      "rule": "各端仅检索有权订单",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.02",
+      "table": "29-D",
+      "name": "服务名称关键词",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：各端订单列表筛选；编辑：筛选时",
+      "plannedPath": "R05／M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端订单列表筛选；编辑：筛选时",
+      "rule": "检索历史快照名称",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.03",
+      "table": "29-D",
+      "name": "经营店铺筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web订单筛选；编辑：筛选时",
+      "plannedPath": "W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web订单筛选；编辑：筛选时",
+      "rule": "商户端固定本身份；居民不借筛选扩大订单范围",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.04",
+      "table": "29-D",
+      "name": "联系人姓名筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：商户及授权Web筛选；编辑：筛选时",
+      "plannedPath": "M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及授权Web筛选；编辑：筛选时",
+      "rule": "按敏感检索权限控制",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.05",
+      "table": "29-D",
+      "name": "联系人电话筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：商户及授权Web筛选；编辑：筛选时",
+      "plannedPath": "M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及授权Web筛选；编辑：筛选时",
+      "rule": "按敏感检索权限控制",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.06",
+      "table": "29-D",
+      "name": "履约方式筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：各端列表筛选；编辑：筛选时",
+      "plannedPath": "R05／M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端列表筛选；编辑：筛选时",
+      "rule": "查询历史方式名称及模板",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.07",
+      "table": "29-D",
+      "name": "业务进度筛选",
+      "expectedControl": "枚举／下拉或页签",
+      "condition": "必填：否；可见：各端列表；编辑：筛选时",
+      "plannedPath": "R05／M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端列表；编辑：筛选时",
+      "rule": "待付款、待接单、待安排、待确认安排、待服务、服务中、待确认完成、已结案；异常单独标记",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.08",
+      "table": "29-D",
+      "name": "支付状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "plannedPath": "M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "rule": "与业务进度分开",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.09",
+      "table": "29-D",
+      "name": "售后状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：各端列表筛选；编辑：筛选时",
+      "plannedPath": "R05／M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端列表筛选；编辑：筛选时",
+      "rule": "无售后、进行中、已结束；明细见31",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.10",
+      "table": "29-D",
+      "name": "创建开始日期",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "不晚于结束日期",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.11",
+      "table": "29-D",
+      "name": "创建结束日期",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "与开始日期联动",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-D.12",
+      "table": "29-D",
+      "name": "确认服务日期筛选",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "M05／W05→订单列表筛选及进度页签",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "不等同居民期望日或创建日",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "orders",
+        "authorizedRows": 8,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-E.17",
+      "table": "29-E",
+      "name": "需求说明",
+      "expectedControl": "文本／只读",
+      "condition": "必填：有填写时保存；可见：各端详情；编辑：否",
+      "plannedPath": "R05／R06／M05／M06／W05→订单卡片／摘要／约定与状态详情／历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "当前材料为长期有效、未关联账号/处理记录、居民未补充需求或无已确认手续费依据，按各自原字段定义允许空",
+      "requiredAndVisibility": "必填：有填写时保存；可见：各端详情；编辑：否",
+      "rule": "新增沟通以记录追加，不能覆盖原说明",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-F.11",
+      "table": "29-F",
+      "name": "最近查询时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：查询后自动生成；可见：Web详情及住户查询反馈；编辑：否",
+      "plannedPath": "R04／R06／W09→付款结果／原支付详情／关闭反馈及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "查询原支付请求后生成",
+      "requiredAndVisibility": "必填：查询后自动生成；可见：Web详情及住户查询反馈；编辑：否",
+      "rule": "查询不产生新付款",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "29-F.12",
+      "table": "29-F",
+      "name": "支付关闭结果",
+      "expectedControl": "枚举／只读",
+      "condition": "必填：发生关闭时自动生成；可见：住户结果摘要、Web付款详情；编辑：否",
+      "plannedPath": "R04／R06／W09→付款结果／原支付详情／关闭反馈及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "实际关闭支付时生成",
+      "requiredAndVisibility": "必填：发生关闭时自动生成；可见：住户结果摘要、Web付款详情；编辑：否",
+      "rule": "未请求、处理中、已关闭、关闭失败、结果未知；付款成功不能当未支付关单",
+      "observedFacts": [
+        {
+          "source": "payment-close-request",
+          "path": "record.支付关闭结果",
+          "value": "关闭结果未知，需查询原支付"
+        },
+        {
+          "source": "payment-close-request",
+          "path": "record.fundRecords.0.支付关闭结果",
+          "value": "关闭结果未知，需查询原支付"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-A.15",
+      "table": "30-A",
+      "name": "关联售后编号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：补充履约时；可见：各端履约详情；编辑：否",
+      "plannedPath": "M06／R06／R09／W05→到场／开始办理弹窗，履约轮次详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "补充履约轮次关联原售后",
+      "requiredAndVisibility": "必填：补充履约时；可见：各端履约详情；编辑：否",
+      "rule": "首次服务为空，补充履约必须关联已接受方案或生效裁定结果",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.aftersales.0.fundRecords.0.关联售后编号",
+          "value": "S02-SALE-000173"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.aftersales.0.关联售后编号",
+          "value": "S02-SALE-000173"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.fundRecords.1.关联售后编号",
+          "value": "S02-SALE-000173"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.13",
+      "table": "30-B",
+      "name": "当前核验地点",
+      "expectedControl": "关联选择／只读或单选",
+      "condition": "必填：确认到点时；可见：商户核验确认页；编辑：确认前在允许范围内选择",
+      "plannedPath": "M07→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "凭证查询、偏离时间核验及确认节点分别生成，不在确认前伪造核验结果",
+      "requiredAndVisibility": "必填：确认到点时；可见：商户核验确认页；编辑：确认前在允许范围内选择",
+      "rule": "必须等于本订单约定点位；不自动跨店核销",
+      "observedFacts": [
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.credential.当前核验地点",
+          "value": "POINT-A"
+        },
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.当前核验地点",
+          "value": "POINT-A"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.14",
+      "table": "30-B",
+      "name": "核验说明",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：偏离约定时间且仍当日办理时；可见：各端核验记录；编辑：确认前",
+      "plannedPath": "R08／M07／W05→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "凭证查询、偏离时间核验及确认节点分别生成，不在确认前伪造核验结果",
+      "requiredAndVisibility": "必填：偏离约定时间且仍当日办理时；可见：各端核验记录；编辑：确认前",
+      "rule": "迟到等需记录事实，不自动认定违约；已换日需先改期",
+      "observedFacts": [
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.credential.核验说明",
+          "value": "双方沟通后居民于当日下午到点"
+        },
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.核验说明",
+          "value": "双方沟通后居民于当日下午到点"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.15",
+      "table": "30-B",
+      "name": "核验记录编号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：确认后自动生成，无需填写；可见：各端履约记录；编辑：否",
+      "plannedPath": "R08／M07／W05→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "凭证查询、偏离时间核验及确认节点分别生成，不在确认前伪造核验结果",
+      "requiredAndVisibility": "必填：确认后自动生成，无需填写；可见：各端履约记录；编辑：否",
+      "rule": "重复操作返回原记录",
+      "observedFacts": [
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.credential.核验记录编号",
+          "value": "S02-VERIFY-000111"
+        },
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.核验记录编号",
+          "value": "S02-VERIFY-000111"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.16",
+      "table": "30-B",
+      "name": "核验结果",
+      "expectedControl": "枚举／只读",
+      "condition": "必填：办理后自动生成，无需填写；可见：商户核验结果及Web记录；编辑：否",
+      "plannedPath": "M07／W05→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "凭证查询、偏离时间核验及确认节点分别生成，不在确认前伪造核验结果",
+      "requiredAndVisibility": "必填：办理后自动生成，无需填写；可见：商户核验结果及Web记录；编辑：否",
+      "rule": "成功、拒绝；查询成功不等于核验成功",
+      "observedFacts": [
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.credential.核验结果",
+          "value": "已到点"
+        },
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.核验结果",
+          "value": "已到点"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.17",
+      "table": "30-B",
+      "name": "拒绝核验原因",
+      "expectedControl": "文本／只读",
+      "condition": "必填：被拒绝时自动生成；可见：商户核验结果；编辑：否",
+      "plannedPath": "M07→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "核验拒绝仅通用报错，结果字段未显示实际原因",
+      "requiredAndVisibility": "必填：被拒绝时自动生成；可见：商户核验结果；编辑：否",
+      "rule": "无权、已失效、已核验、已取消等用可读提示",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [
+        {
+          "source": "actual-rejected-verification-error",
+          "path": "record.拒绝核验原因",
+          "value": "凭证不存在、已核验或属于旧安排"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.18",
+      "table": "30-B",
+      "name": "核验操作人",
+      "expectedControl": "文本／只读",
+      "condition": "必填：确认后自动生成，无需填写；可见：商户及Web记录；编辑：否",
+      "plannedPath": "M07／W05→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "凭证查询、偏离时间核验及确认节点分别生成，不在确认前伪造核验结果",
+      "requiredAndVisibility": "必填：确认后自动生成，无需填写；可见：商户及Web记录；编辑：否",
+      "rule": "只记真实操作人",
+      "observedFacts": [
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.credential.核验操作人",
+          "value": "演示商户"
+        },
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.核验操作人",
+          "value": "演示商户"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-B.19",
+      "table": "30-B",
+      "name": "核验时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：确认后自动生成，无需填写；可见：各端履约进度；编辑：否",
+      "plannedPath": "R08／M07／W05→凭证展示／查询／确认到点／核验记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "凭证查询、偏离时间核验及确认节点分别生成，不在确认前伪造核验结果",
+      "requiredAndVisibility": "必填：确认后自动生成，无需填写；可见：各端履约进度；编辑：否",
+      "rule": "不替代开始或完成时间",
+      "observedFacts": [
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.credential.核验时间",
+          "value": "2026-11-07T13:00:00+08:00"
+        },
+        {
+          "source": "actual-point-confirmation",
+          "path": "record.核验时间",
+          "value": "2026-11-07T13:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-D.03",
+      "table": "30-D",
+      "name": "问题说明",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：反馈问题时；可见：各端售后及结果详情；编辑：提交前",
+      "plannedPath": "R09／R10／R06／M06／W05→结果确认／反馈问题／本人确认记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "居民反馈异议时填写",
+      "requiredAndVisibility": "必填：反馈问题时；可见：各端售后及结果详情；编辑：提交前",
+      "rule": "反馈问题时必填；直接进入关联售后，不要求先确认完成",
+      "observedFacts": [
+        {
+          "source": "S02-AFTERSALE:authorized-web",
+          "path": "record.currentAftersale.问题说明",
+          "value": "请按原记录核实"
+        },
+        {
+          "source": "S02-AFTERSALE:authorized-web",
+          "path": "record.aftersales.0.问题说明",
+          "value": "请按原记录核实"
+        },
+        {
+          "source": "S02-REWORK:authorized-web",
+          "path": "record.currentAftersale.问题说明",
+          "value": "请按原记录核实"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "30-E.09",
+      "table": "30-E",
+      "name": "关联处理记录号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：建立处理关联后自动带出；可见：各端异常详情；编辑：否",
+      "plannedPath": "M06／R10／R06／W05→异常登记／异常详情与后续处理链接",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "当前材料为长期有效、未关联账号/处理记录、居民未补充需求或无已确认手续费依据，按各自原字段定义允许空",
+      "requiredAndVisibility": "必填：建立处理关联后自动带出；可见：各端异常详情；编辑：否",
+      "rule": "不存在时显示待处理，不伪造已处理",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.01",
+      "table": "31-A",
+      "name": "售后编号筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：Web及商户售后筛选；编辑：筛选时",
+      "plannedPath": "M08／W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户售后筛选；编辑：筛选时",
+      "rule": "仅当前授权数据",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.02",
+      "table": "31-A",
+      "name": "服务订单号筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：各端售后查询；编辑：筛选时",
+      "plannedPath": "R10／M08／W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端售后查询；编辑：筛选时",
+      "rule": "居民只查本人",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.03",
+      "table": "31-A",
+      "name": "售后类型筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "M08／W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "移动/Web售后类型字典与实际申请类型未对齐",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "使用本表申请类型字典",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.04",
+      "table": "31-A",
+      "name": "售后状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：各端售后列表；编辑：筛选时",
+      "plannedPath": "R10／M08／W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：各端售后列表；编辑：筛选时",
+      "rule": "独立于退款到账状态",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.05",
+      "table": "31-A",
+      "name": "申请开始日期",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "M08／W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "不晚于结束日期",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.06",
+      "table": "31-A",
+      "name": "申请结束日期",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "plannedPath": "M08／W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户筛选；编辑：筛选时",
+      "rule": "与开始日期联动",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-A.07",
+      "table": "31-A",
+      "name": "服务商筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web筛选；编辑：筛选时",
+      "plannedPath": "W06→售后筛选／申请／卡片／详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web筛选；编辑：筛选时",
+      "rule": "商户端固定当前身份",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "aftersales",
+        "authorizedRows": 2,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-B.15",
+      "table": "31-B",
+      "name": "居民方案答复说明",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：不同意时；可见：各端方案记录；编辑：提交前",
+      "plannedPath": "M08／R10／W06→核实取消／协商方案／居民答复／结案记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "不同意方案时填写",
+      "requiredAndVisibility": "必填：不同意时；可见：各端方案记录；编辑：提交前",
+      "rule": "不同意时必填，保留继续协商和补证操作",
+      "observedFacts": [
+        {
+          "source": "resident-declined-plan",
+          "path": "record.plans.0.居民方案答复说明",
+          "value": "希望先核对未完成的具体范围"
+        },
+        {
+          "source": "resident-declined-plan",
+          "path": "record.居民方案答复说明",
+          "value": "希望先核对未完成的具体范围"
+        },
+        {
+          "source": "resident-withdrew-before-execution",
+          "path": "record.plans.0.居民方案答复说明",
+          "value": "希望先核对未完成的具体范围"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-B.16",
+      "table": "31-B",
+      "name": "居民方案答复时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：答复后自动生成，无需填写；可见：各端方案历史；编辑：否",
+      "plannedPath": "M08／R10／W06→核实取消／协商方案／居民答复／结案记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "不同意方案分支未记答复时间",
+      "requiredAndVisibility": "必填：答复后自动生成，无需填写；可见：各端方案历史；编辑：否",
+      "rule": "对最新版本生效",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [
+        {
+          "source": "S02-REWORK:authorized-web",
+          "path": "record.plans.0.居民方案答复时间",
+          "value": "2026-11-07T10:00:00+08:00"
+        },
+        {
+          "source": "S02-REWORK:authorized-web",
+          "path": "record.居民方案答复时间",
+          "value": "2026-11-07T10:00:00+08:00"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.plans.0.居民方案答复时间",
+          "value": "2026-11-03T10:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-B.17",
+      "table": "31-B",
+      "name": "居民方案答复人",
+      "expectedControl": "文本／只读",
+      "condition": "必填：答复后自动生成，无需填写；可见：各端方案历史；编辑：否",
+      "plannedPath": "M08／R10／W06→核实取消／协商方案／居民答复／结案记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "不同意方案分支未记答复人",
+      "requiredAndVisibility": "必填：答复后自动生成，无需填写；可见：各端方案历史；编辑：否",
+      "rule": "不能由商户代填",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [
+        {
+          "source": "S02-REWORK:authorized-web",
+          "path": "record.plans.0.居民方案答复人",
+          "value": "林示例"
+        },
+        {
+          "source": "S02-REWORK:authorized-web",
+          "path": "record.居民方案答复人",
+          "value": "林示例"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.plans.0.居民方案答复人",
+          "value": "林示例"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-B.18",
+      "table": "31-B",
+      "name": "取消生效时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：取消生效后自动生成；可见：各端订单及售后结果；编辑：否",
+      "plannedPath": "M08／R10／W06→核实取消／协商方案／居民答复／结案记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "未服务取消生效后生成",
+      "requiredAndVisibility": "必填：取消生效后自动生成；可见：各端订单及售后结果；编辑：否",
+      "rule": "早于退款到账也可以存在；取消后禁止继续履约",
+      "observedFacts": [
+        {
+          "source": "confirmed-cancellation-executed",
+          "path": "record.取消生效时间",
+          "value": "2026-11-07T08:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-B.19",
+      "table": "31-B",
+      "name": "售后结案说明",
+      "expectedControl": "文本／只读",
+      "condition": "必填：售后结束时应有；可见：各端售后结果；编辑：否",
+      "plannedPath": "M08／R10／W06→核实取消／协商方案／居民答复／结案记录",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "退款结束及原请求恢复完成未带出真实结案说明",
+      "requiredAndVisibility": "必填：售后结束时应有；可见：各端售后结果；编辑：否",
+      "rule": "如退款仍未知，不写钱已退回",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.售后结案说明",
+          "value": "退还未履行部分"
+        },
+        {
+          "source": "successful-aftercare-closure",
+          "path": "record.售后结案说明",
+          "value": "返还该部分服务费用"
+        },
+        {
+          "source": "confirmed-cancellation-executed",
+          "path": "record.售后结案说明",
+          "value": "核实未提供服务，按原申请全退"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-C.03",
+      "table": "31-C",
+      "name": "撤回原因",
+      "expectedControl": "多行文本／输入框",
+      "condition": "必填：撤回时；可见：各端售后历史；编辑：提交前",
+      "plannedPath": "R10／M08／W06→补证／撤回表单／售后历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "不可逆动作之前撤回时填写",
+      "requiredAndVisibility": "必填：撤回时；可见：各端售后历史；编辑：提交前",
+      "rule": "未取消生效、未发起退款、未执行方案且无生效裁定时可撤回",
+      "observedFacts": [
+        {
+          "source": "resident-withdrew-before-execution",
+          "path": "record.撤回原因",
+          "value": "双方继续在线下核对，本次申请先撤回"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-D.11",
+      "table": "31-D",
+      "name": "退款最近查询时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：查询后自动生成；可见：Web详情及居民查询反馈；编辑：否",
+      "plannedPath": "R10／R06／W06／W09→退款结果卡片／单笔退款详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "查询原退款后生成",
+      "requiredAndVisibility": "必填：查询后自动生成；可见：Web详情及居民查询反馈；编辑：否",
+      "rule": "查原单不重复退款",
+      "observedFacts": [
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.退款最近查询时间",
+          "value": "2026-11-07T10:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-F.01",
+      "table": "31-F",
+      "name": "评价订单号筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：商户及Web评价筛选；编辑：筛选时",
+      "plannedPath": "M09／W07→评价筛选／Web限制恢复／本人反馈",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web评价筛选；编辑：筛选时",
+      "rule": "权限范围内查询",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "evaluations",
+        "authorizedRows": 0,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-F.02",
+      "table": "31-F",
+      "name": "评价项目筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：商户及Web评价筛选；编辑：筛选时",
+      "plannedPath": "M09／W07→评价筛选／Web限制恢复／本人反馈",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "移动评价项目筛选未提供实际项目候选",
+      "requiredAndVisibility": "必填：否；可见：商户及Web评价筛选；编辑：筛选时",
+      "rule": "商户仅本人项目",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "evaluations",
+        "authorizedRows": 0,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-F.03",
+      "table": "31-F",
+      "name": "评分筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "plannedPath": "M09／W07→评价筛选／Web限制恢复／本人反馈",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "rule": "沿31-E评分尺度，不自建复杂标签体系",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "evaluations",
+        "authorizedRows": 0,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-F.04",
+      "table": "31-F",
+      "name": "评价开始日期",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "plannedPath": "M09／W07→评价筛选／Web限制恢复／本人反馈",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "rule": "不晚于结束日期",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "evaluations",
+        "authorizedRows": 0,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-F.05",
+      "table": "31-F",
+      "name": "评价结束日期",
+      "expectedControl": "日期／选择",
+      "condition": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "plannedPath": "M09／W07→评价筛选／Web限制恢复／本人反馈",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web筛选；编辑：筛选时",
+      "rule": "与开始日期联动",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "evaluations",
+        "authorizedRows": 0,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "31-G.19",
+      "table": "31-G",
+      "name": "关联履约轮次",
+      "expectedControl": "正整数／只读",
+      "condition": "必填：生成后自动带出；可见：各端履约详情；编辑：否",
+      "plannedPath": "W06／R10／M08→Web裁定结果抽屉／双方公开结果卡片／执行详情",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "执行继续/补充履约时关联实际轮次",
+      "requiredAndVisibility": "必填：生成后自动带出；可见：各端履约详情；编辑：否",
+      "rule": "新轮次按原模板办理，不直接记录为完成",
+      "observedFacts": [
+        {
+          "source": "S02-REWORK:authorized-web",
+          "path": "record.关联履约轮次",
+          "value": 2
+        },
+        {
+          "source": "supplemental-order-association",
+          "path": "record.关联履约轮次",
+          "value": 2
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.01",
+      "table": "32-A",
+      "name": "经营店铺筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：Web经营及资金筛选；编辑：筛选时",
+      "plannedPath": "W08／W09／W10→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web经营及资金筛选；编辑：筛选时",
+      "rule": "商户端固定当前授权范围",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.02",
+      "table": "32-A",
+      "name": "服务项目筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：商户及Web经营筛选；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "商户经营项目筛选与下钻上下文未贯通",
+      "requiredAndVisibility": "必填：否；可见：商户及Web经营筛选；编辑：筛选时",
+      "rule": "历史停用项目仍可查历史",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.03",
+      "table": "32-A",
+      "name": "服务类目筛选",
+      "expectedControl": "关联选择／下拉",
+      "condition": "必填：否；可见：商户及Web经营筛选；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "类目统计及下钻未保持订单类目快照条件",
+      "requiredAndVisibility": "必填：否；可见：商户及Web经营筛选；编辑：筛选时",
+      "rule": "不以当前类目改动重写历史口径",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.04",
+      "table": "32-A",
+      "name": "服务订单号筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：商户及Web资金筛选；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web资金筛选；编辑：筛选时",
+      "rule": "按权限检索",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.05",
+      "table": "32-A",
+      "name": "资金单据号筛选",
+      "expectedControl": "文本／输入框",
+      "condition": "必填：否；可见：商户及Web资金筛选；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：商户及Web资金筛选；编辑：筛选时",
+      "rule": "按当前资金页业务类型检索原单",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.09",
+      "table": "32-A",
+      "name": "支付状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户支付查询；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户支付查询；编辑：筛选时",
+      "rule": "独立过滤，不影响其他资金状态值",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.10",
+      "table": "32-A",
+      "name": "退款状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户退款查询；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户退款查询；编辑：筛选时",
+      "rule": "无退款不伪造成退款失败",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.11",
+      "table": "32-A",
+      "name": "分账状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户分账查询；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户分账查询；编辑：筛选时",
+      "rule": "待条件、待处理、处理中、成功、失败、未知分别查询",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-A.12",
+      "table": "32-A",
+      "name": "回退状态筛选",
+      "expectedControl": "枚举／下拉",
+      "condition": "必填：否；可见：Web及商户授权回退查询；编辑：筛选时",
+      "plannedPath": "W08／W09／W10／M10／M11→经营及资金记录适用筛选",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "未选择该可选筛选条件时为空，表示不额外过滤；不补造查询值",
+      "requiredAndVisibility": "必填：否；可见：Web及商户授权回退查询；编辑：筛选时",
+      "rule": "回退成功不等于居民退款成功",
+      "observedFacts": [],
+      "emptyFilterCheck": {
+        "status": "PASS",
+        "table": "funds",
+        "authorizedRows": 13,
+        "input": ""
+      },
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-C.06",
+      "table": "32-C",
+      "name": "分账接收主体名称",
+      "expectedControl": "文本／只读",
+      "condition": "必填：分账前须核定；可见：Web及本商户资金详情；编辑：否",
+      "plannedPath": "W09／M11→订单资金摘要／规则快照／金额依据",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "实际实现缺陷",
+      "basis": "资金摘要未投影已匹配的接收主体名称",
+      "requiredAndVisibility": "必填：分账前须核定；可见：Web及本商户资金详情；编辑：否",
+      "rule": "读取公共模块中与本服务商匹配的接收关系；不因同名商户而套用其他业务账户",
+      "fixStatus": "FIXED_TARGETED_VALIDATION_PASSED",
+      "observedFacts": [
+        {
+          "source": "S02-QUAL:authorized-web",
+          "path": "record.分账接收主体名称",
+          "value": "青禾家政服务有限公司"
+        },
+        {
+          "source": "S02-EXISTING:authorized-web",
+          "path": "record.分账接收主体名称",
+          "value": "青禾家政服务有限公司"
+        },
+        {
+          "source": "S02-ISOLATION:authorized-web",
+          "path": "record.分账接收主体名称",
+          "value": "青禾家政服务有限公司"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-C.21",
+      "table": "32-C",
+      "name": "手续费金额",
+      "expectedControl": "金额／只读",
+      "condition": "必填：有明确依据时；可见：授权Web及本商户约定范围；编辑：否",
+      "plannedPath": "W09／M11→订单资金摘要／规则快照／金额依据",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "当前材料为长期有效、未关联账号/处理记录、居民未补充需求或无已确认手续费依据，按各自原字段定义允许空",
+      "requiredAndVisibility": "必填：有明确依据时；可见：授权Web及本商户约定范围；编辑：否",
+      "rule": "由公共资金能力返回；无法确定时显示待核查，不从居民端补收",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-C.22",
+      "table": "32-C",
+      "name": "手续费承担主体",
+      "expectedControl": "文本／只读",
+      "condition": "必填：费用适用时须有依据；可见：授权Web及本商户约定范围；编辑：否",
+      "plannedPath": "W09／M11→订单资金摘要／规则快照／金额依据",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "合法为空",
+      "basis": "当前材料为长期有效、未关联账号/处理记录、居民未补充需求或无已确认手续费依据，按各自原字段定义允许空",
+      "requiredAndVisibility": "必填：费用适用时须有依据；可见：授权Web及本商户约定范围；编辑：否",
+      "rule": "读取同一公共资金规则快照，不在服务订单重新配置",
+      "observedFacts": [],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-C.24",
+      "table": "32-C",
+      "name": "分账阻断原因",
+      "expectedControl": "文本集合／只读",
+      "condition": "必填：条件不满足时自动生成；可见：Web及本商户允许的摘要；编辑：否",
+      "plannedPath": "W09／M11→订单资金摘要／规则快照／金额依据",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "条件未触发",
+      "basis": "实际完成、售后或资金条件阻断时才生成",
+      "requiredAndVisibility": "必填：条件不满足时自动生成；可见：Web及本商户允许的摘要；编辑：否",
+      "rule": "多项逐条展示，不能人为跳过",
+      "observedFacts": [
+        {
+          "source": "original-payment-and-rule-block",
+          "path": "record.分账阻断原因",
+          "value": "规则缺失、冲突或接收关系未就绪"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.02",
+      "table": "32-E",
+      "name": "原退款业务单号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：生成资金处理时自动关联；可见：Web及本商户资金详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：生成资金处理时自动关联；可见：Web及本商户资金详情；编辑：否",
+      "rule": "一个准备动作不能无依据服务另一笔退款",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.原退款业务单号",
+          "value": "S02-REF-000143"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.原退款业务单号",
+          "value": "S02-REF-000124"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.03",
+      "table": "32-E",
+      "name": "原分账业务单号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：存在原分账时自动关联；可见：Web及本商户资金详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：存在原分账时自动关联；可见：Web及本商户资金详情；编辑：否",
+      "rule": "用实际分账结果，不用应分金额",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.原分账业务单号",
+          "value": "S02-SPLIT-000138"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.原分账业务单号",
+          "value": "S02-SPLIT-000138"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.原分账业务单号",
+          "value": "S02-SPLIT-000114"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.04",
+      "table": "32-E",
+      "name": "回退业务单号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：创建后自动生成；可见：Web及本商户回退列表详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：创建后自动生成；可见：Web及本商户回退列表详情；编辑：否",
+      "rule": "只在需要回退且创建后存在",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退业务单号",
+          "value": "S02-BACK-000141"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退业务单号",
+          "value": "S02-BACK-000141"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.回退业务单号",
+          "value": "S02-BACK-000122"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.05",
+      "table": "32-E",
+      "name": "回退主体名称",
+      "expectedControl": "文本／只读",
+      "condition": "必填：回退适用时自动带出；可见：Web及本商户回退详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：回退适用时自动带出；可见：Web及本商户回退详情；编辑：否",
+      "rule": "按原事实，不使用当前新账户替换",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退主体名称",
+          "value": "安居维修服务有限公司"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.回退主体名称",
+          "value": "青禾家政服务有限公司"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.06",
+      "table": "32-E",
+      "name": "需回退金额",
+      "expectedControl": "金额／只读",
+      "condition": "必填：规则明确且确需回退时；可见：Web及本商户回退详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：规则明确且确需回退时；可见：Web及本商户回退详情；编辑：否",
+      "rule": "不等同居民退款金额；由公共退款分账能力按原快照及实际分账计算",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.需回退金额",
+          "value": "30.00"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.需回退金额",
+          "value": "30.00"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.需回退金额",
+          "value": "8.99"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.07",
+      "table": "32-E",
+      "name": "请求回退金额",
+      "expectedControl": "金额／只读",
+      "condition": "必填：提交后自动记录；可见：Web及本商户回退详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：提交后自动记录；可见：Web及本商户回退详情；编辑：否",
+      "rule": "不超过原可回退实际分账额度",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.请求回退金额",
+          "value": "30.00"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.请求回退金额",
+          "value": "8.99"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.08",
+      "table": "32-E",
+      "name": "成功回退金额",
+      "expectedControl": "金额／只读",
+      "condition": "必填：成功后按事实记录；可见：Web及本商户回退详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：成功后按事实记录；可见：Web及本商户回退详情；编辑：否",
+      "rule": "回退成功不证明居民已收退款",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.成功回退金额",
+          "value": "30.00"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.成功回退金额",
+          "value": "30.00"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.成功回退金额",
+          "value": "8.99"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.09",
+      "table": "32-E",
+      "name": "回退状态",
+      "expectedControl": "枚举／状态标签",
+      "condition": "必填：创建后自动生成；可见：Web及本商户回退列表详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：创建后自动生成；可见：Web及本商户回退列表详情；编辑：否",
+      "rule": "待处理、处理中、成功、失败、结果未知",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退状态",
+          "value": "成功"
+        },
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退状态",
+          "value": "成功"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.回退状态",
+          "value": "成功"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.10",
+      "table": "32-E",
+      "name": "渠道回退单号",
+      "expectedControl": "文本／只读",
+      "condition": "必填：渠道返回后记录；可见：授权Web；编辑：否",
+      "plannedPath": "W09→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：渠道返回后记录；可见：授权Web；编辑：否",
+      "rule": "未返回不伪造",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.渠道回退单号",
+          "value": "DEMO-S02-BACK-000141"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.渠道回退单号",
+          "value": "DEMO-S02-BACK-000122"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.11",
+      "table": "32-E",
+      "name": "回退发起时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：发起后自动生成；可见：Web及本商户详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：发起后自动生成；可见：Web及本商户详情；编辑：否",
+      "rule": "自动留存",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退发起时间",
+          "value": "2026-11-04T08:00:00+08:00"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.回退发起时间",
+          "value": "2026-11-07T10:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.12",
+      "table": "32-E",
+      "name": "回退成功时间",
+      "expectedControl": "日期时间／只读",
+      "condition": "必填：成功后按事实记录；可见：Web及本商户详情；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：成功后按事实记录；可见：Web及本商户详情；编辑：否",
+      "rule": "与退款成功时间分开",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退成功时间",
+          "value": "2026-11-04T08:00:00+08:00"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.回退成功时间",
+          "value": "2026-11-07T10:00:00+08:00"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    },
+    {
+      "id": "32-E.13",
+      "table": "32-E",
+      "name": "回退结果说明",
+      "expectedControl": "文本／只读",
+      "condition": "必填：异常时应有；可见：授权Web及商户必要摘要；编辑：否",
+      "plannedPath": "W09／M11→原退款→资金准备／回退详情及历史",
+      "status": "VISIBLE_VALUE_NOT_VERIFIED",
+      "limitations": "Visible reachability/value observation only. Does not independently prove all dictionary, required, permission and lifecycle combinations.",
+      "classification": "缺少演示数据",
+      "basis": "原观察未进入含本字段事实的对象或控件值；本轮使用合法新审核/上传/退款回退事实核验，不回填原历史或伪造非空值",
+      "requiredAndVisibility": "必填：异常时应有；可见：授权Web及商户必要摘要；编辑：否",
+      "rule": "余额不足等实际问题不默认为已经回退",
+      "observedFacts": [
+        {
+          "source": "S02-STATS:authorized-web",
+          "path": "record.回退结果说明",
+          "value": "隔离演示结果已确认"
+        },
+        {
+          "source": "successful-refund-and-rollback",
+          "path": "record.回退结果说明",
+          "value": "隔离演示结果已确认"
+        }
+      ],
+      "evidence": "tests/service-review.test.mjs; review-20261109 checks and browser reports",
+      "boundary": "Classification and specified fact checks; not all device/DOM/permission combinations or owner acceptance"
+    }
+  ],
+  "scope": "No fake non-empty fee/account/history values; conditional examples use real local Service commands. Original 621/504/117 observation report is unchanged; this report is not full field acceptance or Stage PASS."
+}
