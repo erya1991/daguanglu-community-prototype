@@ -1,12 +1,26 @@
 # 大光路物业运营平台需求与演示原型
 
-> 2026-11-11：当前工作区已语义整合 demo/2026-11-10-mobile-integration 未提交的移动与 Stage02 内容及 Stage01 最新工单整改。本地局域网预览见 Stage01、Stage02 RESULT；这不是 Git 合并提交或人工验收通过。
+> 历史记录（2026-11-11）：当时工作区已语义整合 demo/2026-11-10-mobile-integration 未提交的移动与 Stage02 内容及 Stage01 最新工单整改。本地局域网预览见 Stage01、Stage02 RESULT；这不是 Git 合并提交或人工验收通过。
 
 仓库名称：`daguanglu-community-prototype`。
 
 本项目保存商城之外由 lee 统筹的产品需求、演示原型、验收与研发交接资料。商城继续由原项目推进；居民共享与邻里互助由同事设计。本项目保留整个建设方案的功能对应关系，方便后续整合。
 
-## 当前状态
+## 当前统一交付
+
+当前工作目录为 `D:\git\daguanglu-community-prototype`，统一使用 `main` 的完整代码与文档。本次交付包含既有Stage00／01基础、Stage02 V1.2最新实现及公共前端规范；Stage02仍待lee人工复验。后续Stage03以该main版本为已提交基础，新增工作按独立任务推进。
+
+| 使用目的 | 当前入口 |
+| --- | --- |
+| 开发共同规范 | [AGENTS第6.6节](AGENTS.md#66-前端交互与样式执行规范所有stage通用)、[WORKFLOW](docs/WORKFLOW.md) |
+| Stage02业务与实施 | [REQUIREMENTS](docs/stages/stage-02/REQUIREMENTS.md)、[PLAN](docs/stages/stage-02/PLAN.md)；当前规则以需求第5.8、5.9节为准，旧节点仅供历史订单兼容 |
+| Stage02人工验收 | [当前人工验收清单](docs/stages/stage-02/人工验收清单.md)：12项整改复验及6组补验，含各端入口、身份和明确数据 |
+| 验证、版本与运行 | [RESULT第7.1节](docs/stages/stage-02/RESULT.md#71-当前-v12-main统一交付)、[随仓验证记录](docs/stages/stage-02/evidence/main-delivery-20261116/README.md) |
+| 固定Stage02版本 | 包含本次交付记录首次新增的main提交；提交SHA在Git交付回执中提供，不用旧a9d8057代表本次实现 |
+
+已有依赖及产物时，在仓库根目录执行 `npm run preview -- --stage02`，本地入口为 http://127.0.0.1:19221 。修改源码后执行 `npm run build:preview` 再预览。全新检出先按下方“公共工程安装与运行”恢复锁定依赖；各端验收使用清单中的同一会话。实际Git推送状态以远端SHA核对为准，Git交付不代表Stage02人工验收或真实资金联调通过。
+
+## 历史阶段记录
 
 **2026-11-09 街道演示整合：当前独立工作区为`D:\git\daguanglu-community-prototype-demo-20261110`，分支`demo/2026-11-10-mobile-integration`。已接入最新Stage01 R1和Stage02本地修复，完成住户4／商户4／员工3页签、共享卡片及业务样式整合。入口http://127.0.0.1:19210；[完整运行与演示说明](docs/stages/stage-02/RESULT.md#mobile-integration)。自测已记录，微信工具／真机和lee人工验收未执行；没有暂存、提交、推送或合并。以下旧入口与说明是对应历史轮记录。**
 
@@ -21,7 +35,7 @@
 - Stage01：01A物业收费停车与01B工单报修隐患已实施，本地自测已记录，待lee统一人工验收；V0.3需求设计基线保留，未标PASS。
 - 需求与计划：Stage00 REQUIREMENTS、PLAN、ACCEPTANCE、RESULT统一V1.1；当前菜单、字段、状态、范围、映射、技术记录和人工确认已经归入正文，修订前全文原字节归档。
 - Git历史（R1及首次导入轮）：本轮R1开始基线为`234bf251f429e77e0996ce2854a237021c1914f4`，分支`stage/00-foundation`，开始时工作区及暂存区为空；本轮不暂存、提交、推送或合并。以下为历史交付授权：首次导入轮开始HEAD为`a4210cd8ec9319df3a7092738ac889ae522b406c`；文档导入结束后，用户于2026-11-05追加授权将15份文档保存为一次提交并推送到`origin/stage/00-foundation`。本次版本以包含本段记录的Git提交为准，实际推送以Git回执及远端SHA核对为准；不合并、不切换分支。
-- 原型：三个独立uni-app＋Manager兼容Web＋DGL-001～011 Mock基础业务；Stage00当前Web／H5原型已人工验收通过（微信暂缓），Stage01联合原型已实现、待lee统一人工验收；Stage02已有准备文档，未实施，本轮不修改，Stage03～05未启动。
+- 原型：三个独立uni-app＋Manager兼容Web＋DGL-001～011 Mock基础业务；Stage00当前Web／H5原型已人工验收通过（微信暂缓），Stage01联合原型已实现、待lee统一人工验收；Stage02当时只有准备文档；当前已形成V1.2候选，以本文“当前统一交付”和Stage02 RESULT为准。Stage03～05按后续独立授权推进。
 - 技术方向：Web沿用实际LiLiShop Manager的Vue 2、View UI/view-design、Vue Router 3、Vuex 3与Vue CLI；三小程序使用uni-app、Vue 3＋TypeScript＋Vite。依赖、锁文件与构建按Web/移动端隔离，精确环境实施前核验，见[AGENTS第6.1节](AGENTS.md#61-分端前端技术基线2026-11-04用户确认)。
 - 生产进度：以研发和原商城项目实际记录为准，本仓库尚未核定。
 
@@ -68,7 +82,7 @@ Stage00文档整合、复核、实施自测及本地Git检查点属于此前记�
 |---|---|---|
 | 00 | 公共基础与协作约定 | 原型待人工验收；构建与H5自测通过，微信及部分视觉证据受阻 |
 | 01 | 物业收费停车与统一事件闭环 | V0.3设计基线保留；01A／01B联合原型已实现，自测见RESULT，待lee统一人工验收 |
-| 02 | 便民服务闭环 | 未启动 |
+| 02 | 便民服务闭环 | V1.2实现与公共规范纳入main统一交付，待lee人工复验；见当前清单及RESULT |
 | 03 | 活动与积分运营 | 未启动；活动暂由lee负责 |
 | 04 | 网格党建与安全协同 | 未启动；业务及外部条件需并行确认 |
 | 05 | 运营汇总与整体交付 | 未启动；消息权限统计随各业务同步定义 |
@@ -92,7 +106,7 @@ Stage00承担三个独立小程序框架＋Manager兼容Web框架＋DGL-001～01
 
 本轮提交、推送及远程SHA核对以提交后的实际Git结果为准，不在提交文件中预填其自身SHA。文档已审或已提交不代表原型、生产、真实渠道或人工验收通过。
 
-## Stage00安装与运行
+## 公共工程安装与运行
 
 已验证环境为Windows、Node **24.14.0**、npm **11.9.0**，本仓专用Yarn **1.22.22**。Web与移动分别安装，根目录不安装统一Vue。精确版本、锁文件和来源见[实际来源清单](docs/stages/stage-00/evidence/source-manifest.json)及[构建记录](docs/stages/stage-00/evidence/build-results.json)。
 
@@ -106,10 +120,10 @@ npm.cmd --prefix miniapp ci --no-audit --no-fund
 $env:YARN_CACHE_FOLDER = 'D:\git\daguanglu-community-prototype\.runtime\stage00\cache\yarn'
 node .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager install --frozen-lockfile --non-interactive
 npm.cmd run build:preview
-npm.cmd run preview
+npm.cmd run preview -- --stage02
 ```
 
-R3预览器默认绑定`http://127.0.0.1:19201/`；冲突时顺延至可用端口，实际地址记录在`.runtime/stage00/preview.json`，不会停止已有服务。安装命令仅改变当前进程缓存变量，不修改全局工具配置。Manager沿用原锁定栈及compression-webpack-plugin的受控兼容补丁；Sass弃用和包体积警告见构建日志，不通过全量升级或关闭校验消除。
+Stage02使用上述 `--stage02` 参数固定19221端口，端口占用时不自动停服务或换端口。以下为Stage00历史默认入口说明：R3预览器默认绑定`http://127.0.0.1:19201/`；冲突时顺延至可用端口，实际地址记录在`.runtime/stage00/preview.json`，不会停止已有服务。安装命令仅改变当前进程缓存变量，不修改全局工具配置。Manager沿用原锁定栈及compression-webpack-plugin的受控兼容补丁；Sass弃用和包体积警告见构建日志，不通过全量升级或关闭校验消除。
 
 | 入口 | 默认虚构账号 | 本轮功能 |
 | --- | --- | --- |

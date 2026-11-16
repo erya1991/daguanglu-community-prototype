@@ -17,6 +17,9 @@ const rows = (s, t) => s.service[t];
 function setup(scene = "S02-BASE") {
   const s = createSeed();
   service.prepare(s);
+  // Historical V1.1 variants, independent from the new normal workflow.
+  s.service.fixtureLegacyOrders = true;
+  s.service.clockMode = "fixed";
   if (scene !== "S02-BASE")
     service.auxiliary(s, web, "scenario", { name: scene });
   return s;
@@ -438,6 +441,9 @@ test("AC02-037 辅助规则版本仅影响新单，旧单规则和金额快照�
     "DEMO-ALLOC-V2",
   );
   service.reset(s, web);
+  // This case replays the historical V1.1 fixture after reset, not the V2 checkout.
+  s.service.fixtureLegacyOrders = true;
+  s.service.clockMode = "fixed";
   const afterReset = paid(s);
   assert.equal(raw(s, afterReset._id).ruleSnapshot.version, "DEMO-ALLOC-V1");
 });

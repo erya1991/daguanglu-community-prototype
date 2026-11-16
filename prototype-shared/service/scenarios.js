@@ -10,6 +10,9 @@ const ctx = {
 };
 export function loadScenario(s, name) {
   const d = domain(s);
+  // Historical V1.1 fixtures retain their original workflow and event times.
+  d.fixtureLegacyOrders = true;
+  d.clockMode = "fixed";
   let seq = 0;
   const time = (v) => {
     d.clock = v;

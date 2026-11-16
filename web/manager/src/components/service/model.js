@@ -51,7 +51,7 @@ export const views = {
   },
   methods: {
     title: "履约方式",
-    intro: "沿用上门和预约到点两种流程，名称及说明可维护。",
+    intro: "沿用上门和预约到店两种流程，名称及说明可维护。",
     table: "methods",
     filter: [],
     columns: ["履约方式名称", "流程模板", "方式状态", "方式版本"],
@@ -103,7 +103,7 @@ export const views = {
   },
   aftersales: {
     title: "服务售后",
-    intro: "在原售后记录中查看协商、录入线下裁定结果并追踪执行。",
+    intro: "查看双方协商处理结果及关联退款。",
     table: "aftersales",
     filter: ["31-A"],
     columns: [
@@ -277,7 +277,7 @@ export function plain(value) {
       .filter(([k]) => !k.startsWith("_"))
       .map(([k, v]) => k + "：" + plain(v))
       .join("；");
-  return String(value);
+  return String(value).replace(/到点/g, "到店");
 }
 export function operationId() {
   return (

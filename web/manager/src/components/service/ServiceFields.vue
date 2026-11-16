@@ -1,5 +1,5 @@
 <template>
-  <div class="service-fields">
+  <div class="service-fields" :class="{ 'filter-mode': mode === 'filter' }">
     <section v-for="group in groups" :key="group.id" class="form-section">
       <h3 v-if="groups.length > 1">{{ cleanTitle(group.title) }}</h3>
       <div class="fields-grid">
@@ -560,6 +560,17 @@ export { statusField };
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px 20px;
+}
+.filter-mode > .form-section > .fields-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+.filter-mode > .form-section > .fields-grid > .field-wide { grid-column: auto; }
+@media (max-width: 1100px) {
+  .filter-mode > .form-section > .fields-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .filter-mode > .form-section > .fields-grid { grid-template-columns: 1fr; }
 }
 .service-field {
   min-width: 0;

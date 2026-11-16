@@ -1,0 +1,151 @@
+{
+  "recordedAt": "2026-11-16T08:07:13.078Z",
+  "root": "D:\\git\\daguanglu-community-prototype",
+  "scope": "Stage02 V1.2 feedback",
+  "tests": {
+    "total": 262,
+    "passed": 258,
+    "failed": 0,
+    "skipped": 4,
+    "skips": "Existing historical skips; no new skipped tests",
+    "log": ".runtime/stage02/feedback-20261116-151208/final-tests.log"
+  },
+  "builds": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-16T07:53:19.153Z",
+      "end": "2026-11-16T07:53:33.564Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/feedback-20261116-151208/web-confirmed.log",
+      "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/web.log",
+      "verification": "Successful targeted rerun after final changes; original log retained"
+    },
+    {
+      "id": "resident-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-16T07:53:33.568Z",
+      "end": "2026-11-16T07:53:52.484Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-h5.log"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/resident-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-16T07:53:52.484Z",
+      "end": "2026-11-16T07:54:02.385Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/feedback-20261116-151208/resident-weixin-confirmed.log",
+      "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-mp-weixin.log",
+      "verification": "Successful targeted rerun after final changes; original log retained"
+    },
+    {
+      "id": "merchant-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-16T07:54:02.385Z",
+      "end": "2026-11-16T07:54:19.361Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/feedback-20261116-151208/merchant-h5-confirmed.log",
+      "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/merchant-h5.log",
+      "verification": "Successful targeted rerun after final changes; original log retained"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-16T07:54:19.362Z",
+      "end": "2026-11-16T07:54:33.694Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/feedback-20261116-151208/merchant-weixin-confirmed.log",
+      "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/merchant-mp-weixin.log",
+      "verification": "Successful targeted rerun after final changes; original log retained"
+    },
+    {
+      "id": "staff-h5",
+      "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-16T07:54:33.694Z",
+      "end": "2026-11-16T07:54:51.362Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-h5.log"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/staff-miniapp",
+      "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+      "start": "2026-11-16T07:54:51.362Z",
+      "end": "2026-11-16T07:55:06.839Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-mp-weixin.log"
+    },
+    {
+      "id": "resident-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-16T07:55:06.839Z",
+      "end": "2026-11-16T07:55:14.215Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-types.log"
+    },
+    {
+      "id": "merchant-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-16T07:55:14.216Z",
+      "end": "2026-11-16T07:55:20.779Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/feedback-20261116-151208/merchant-types-confirmed.log",
+      "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/merchant-types.log",
+      "verification": "Successful targeted rerun after final changes; original log retained"
+    },
+    {
+      "id": "staff-types",
+      "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-16T07:55:20.779Z",
+      "end": "2026-11-16T07:55:27.210Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-types.log"
+    }
+  ],
+  "browser": {
+    "steps": 21,
+    "passed": 21,
+    "errors": 0,
+    "externalBusinessRequests": 0,
+    "evidence": ".runtime/stage02/feedback-20261116-151208/browser-1794816564325/results.json",
+    "method": "Retained same mobile artifacts; revalidated changed Web artifacts; resumeFrom links preserve source runs"
+  },
+  "wechatDevtools": "NOT_RUN",
+  "realDevice": "NOT_RUN",
+  "ownerAcceptance": "待人工复验",
+  "realFunds": "NOT_RUN",
+  "gitDelivery": "NOT_PERFORMED",
+  "preview": {
+    "resources": 221,
+    "allMatch": true,
+    "evidence": ".runtime/stage02/feedback-20261116-151208/preview-artifacts.json"
+  },
+  "git": {
+    "head": "a9d8057ff8a95ac7b85c9cb644ef2d891bb32a2b",
+    "branch": "main",
+    "staged": "",
+    "candidate": ".runtime/stage02/feedback-20261116-151208/candidate-snapshot.json",
+    "aggregateSha256": "7cfc31cc062ce010815270c8ba8691052e14800426f627ee8bc80bd77e178939"
+  },
+  "documents": ".runtime/stage02/feedback-20261116-151208/document-checks.json"
+}

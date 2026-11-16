@@ -307,6 +307,7 @@ export function createBrowserAdapter(app) {
   }
 
   api.service = {
+    preflight: data => read(s => serviceDomain.preflight(s, context, data)),
     query: (table, filters) => read(s => serviceDomain.query(s, context, table, filters)),
     record: (table, id) => read(s => serviceDomain.record(s, context, table, id)),
     options: () => read(s => serviceDomain.options(s, context)),

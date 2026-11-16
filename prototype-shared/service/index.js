@@ -1,4 +1,5 @@
 import { loadScenario } from "./scenarios.js";
+import { addressQuery, addressCommand, addressRegions } from "./addresses.js";
 import { fieldTables } from "./fields.js";
 import { prepare as seed, SCENARIOS } from "./seed.js";
 import { supplyCommand, saleability, methodFor, comboValid } from "./supply.js";
@@ -8,6 +9,7 @@ import {
   currentArrangement,
   proposal,
   currentRound,
+  validateBooking,
 } from "./orders.js";
 import { aftersaleCommand, businessTreatments } from "./aftersale.js";
 import {
@@ -50,6 +52,7 @@ import {
   qualified,
   pointFor,
   qualificationFor,
+  simplified,
 } from "./common.js";
 export { prepare } from "./seed.js";
 export function accounts(s, ctx) {
@@ -59,7 +62,7 @@ export function accounts(s, ctx) {
     a.app === "web"
       ? ["platform-admin", "property-admin", "service-web-limited"]
       : a.app === "merchant"
-        ? ["merchant", "service-merchant-b"]
+        ? ["merchant", "service-merchant-a", "service-merchant-b"]
         : ["resident-a", "resident-b"];
   return s.accounts
     .filter((x) => ids.includes(x._id))
@@ -156,6 +159,23 @@ function actions(s, a, t, r) {
     }
   }
   if (t === "orders") {
+    if (simplified(r)) {
+      const sale = activeAftersale(s, r), open = r["结案结果"] === "进行中";
+      const main = (...v) => { add(...v); ac[ac.length - 1].primary = true; };
+      if (a.role === "resident") {
+        if (open && ["待发起", "失败"].includes(r["支付状态"])) main("order.pay", "继续付款");
+        if (r["服务完成时间"] && !r["订单完成时间"]) main("evaluation.save", "评价服务", ["31-E"]);
+        if (open && !sale) add("order.cancel", currentArrangement(r) ? "申请取消" : "取消订单", ["31-A"]);
+        if (r["服务完成时间"] && !sale) add("aftersale.apply", "申请售后", ["31-A"]);
+      }
+      if (a.role === "merchant" && open && !sale && r["支付状态"] === "成功") {
+        if (r["接单状态"] === "待接单") {
+          main("order.accept", "接单并派工", ["28-B"], { 接单结果: "接单" });
+          add("order.accept", "无法接单", ["28-B"], { 接单结果: "无法承接" });
+        } else if (currentArrangement(r)) main("order.result", "提交服务结果", ["30-C"]);
+      }
+      return ac;
+    }
     const sale = activeAftersale(s, r),
       rework = sale?._id === r._reworkSale,
       open = r["结案结果"] === "进行中",
@@ -210,6 +230,13 @@ function actions(s, a, t, r) {
     }
   }
   if (t === "aftersales") {
+    const order = find(s, "orders", r._order);
+    if (simplified(order) && r["申请类型"] === "核实取消" && ["待处理", "协商中"].includes(r["售后状态"])) {
+      if (a.role === "merchant") { add("aftersale.cancelDecision", "核实取消"); ac[ac.length - 1].primary = true; }
+      if (a.role === "resident") add("aftersale.withdraw", "撤回取消申请", ["31-C"]);
+      if (a.grant.ruling && domain(s).fixtureLegacyOrders) add("aftersale.ruling", "录入裁定结果", ["31-G"]);
+      return ac;
+    }
     const currentRuling = [...(r.rulings || [])]
       .reverse()
       .find(
@@ -235,7 +262,7 @@ function actions(s, a, t, r) {
     )
       add("aftersale.withdraw", "撤回申请", ["31-C"]);
     if (
-      a.grant.ruling &&
+      a.grant.ruling && domain(s).fixtureLegacyOrders &&
       !["已解决", "已撤回"].includes(r["售后状态"]) &&
       !r._refund &&
       (!currentRuling || currentRuling["执行状态"] === "待执行") &&
@@ -246,7 +273,7 @@ function actions(s, a, t, r) {
       add("aftersale.ruling", currentRuling ? "更正裁定结果" : "录入裁定结果", [
         "31-G",
       ]);
-    if (a.grant.ruling && a.grant.sensitive && r.rulings?.length)
+    if (domain(s).fixtureLegacyOrders && a.grant.ruling && a.grant.sensitive && r.rulings?.length)
       add("aftersale.rulingNote", "追加裁定说明", ["31-C", "31-G"]);
     if (r["售后状态"] === "待执行" && (a.grant.ruling || a.role === "merchant"))
       add("aftersale.execute", "执行生效结果");
@@ -524,6 +551,8 @@ function project(s, a, t, row) {
     r.currentArrangement = clone(currentArrangement(r));
     r.proposal = clone(proposal(r));
     r.result = clone(r.results?.[r.results.length - 1] || null);
+    const evaluation = domain(s).evaluations.find(e => e._order === r._id);
+    r.evaluation = evaluation ? project(s, a, "evaluations", evaluation) : null;
     r.rounds = (r.rounds || []).map((round) => ({
       ...round,
       ...(round.process?.[round.process.length - 1] || {}),
@@ -561,6 +590,7 @@ function project(s, a, t, row) {
   }
   if (t === "aftersales") {
     const o = find(s, "orders", r._order);
+    if (o) r._flowVersion = o._flowVersion;
     if (o)
       r.handlingOptions = {
         plan: Object.fromEntries(
@@ -626,7 +656,7 @@ function project(s, a, t, row) {
       delete r[key];
     if (
       r.currentArrangement &&
-      !["已接受"].includes(r.currentArrangement["安排状态"])
+      !["已接受", "已生效"].includes(r.currentArrangement["安排状态"])
     )
       delete r.currentArrangement["服务人员工作联系电话"];
     if (r.proposal) delete r.proposal["服务人员工作联系电话"];
@@ -771,7 +801,7 @@ function personnelValidity(s, r) {
 }
 function filterRows(s, a, t, filters = {}) {
   let rows = domain(s)[t] || [];
-  rows = rows.filter((r) => visible(s, a, t, r));
+  rows = rows.filter((r) => !(t === "categories" && r._deleted) && visible(s, a, t, r));
   if (a.role === "resident" && t === "services")
     rows = rows.filter((r) => saleability(s, r).length === 0);
   const shop = value(
@@ -993,6 +1023,7 @@ function metricRows(s, rows, t, metric, f, a) {
   const start = f.start || f["查询开始日期"],
     end = f.end || f["查询结束日期"];
   if (t === "funds") {
+    if (metric === "商户净实分金额") return rows.filter(r => ["分账", "回退"].includes(r["资金类型"]) && r["资金状态"] === "成功" && inPeriod(r["成功时间"], start, end));
     if (metric === "期间净收款")
       return rows.filter(
         (r) =>
@@ -1036,7 +1067,7 @@ function metricRows(s, rows, t, metric, f, a) {
         sale["售后状态"] === "待执行"
           ? ["aftersale.execute"]
           : ["待处理", "协商中"].includes(sale["售后状态"])
-            ? ["aftersale.plan", "aftersale.ruling"]
+            ? ["aftersale.plan", "aftersale.ruling", "aftersale.cancelDecision"]
             : [];
       return actions(s, a, "aftersales", sale).some((action) =>
         responsibility.includes(action.name),
@@ -1057,8 +1088,12 @@ function metricRows(s, rows, t, metric, f, a) {
   if (metric === "正常完成订单数")
     return rows.filter(
       (o) =>
-        o["结案结果"] === "正常完成" && inPeriod(o["居民确认时间"], start, end),
+        o["结案结果"] === "正常完成" && inPeriod(o["服务完成时间"] || o["居民确认时间"], start, end),
     );
+  if (metric === "服务完成数") return rows.filter(o => simplified(o)
+    ? o["服务完成时间"] && inPeriod(o["服务完成时间"], start, end)
+    : o["居民确认时间"] && o["结案结果"] === "正常完成" && inPeriod(o["居民确认时间"], start, end));
+  if (metric === "已完成订单数") return rows.filter(o => o["订单完成时间"] && inPeriod(o["订单完成时间"], start, end));
   if (metric === "未服务取消订单数")
     return rows.filter(
       (o) =>
@@ -1074,12 +1109,23 @@ function metricRows(s, rows, t, metric, f, a) {
 export function query(s, ctx, table, filters = {}) {
   seed(s);
   const a = actor(s, ctx);
+  if (table === "addresses") return addressQuery(s, a);
   need(TABLES.includes(table), "未知服务业务表");
-  return filterRows(s, a, table, filters).map((r) => project(s, a, table, r));
+  const rows = filterRows(s, a, table, filters);
+  if (table === "orders") rows.sort((x, y) => String(y["创建时间"]).localeCompare(String(x["创建时间"])) || String(y._id).localeCompare(String(x._id), undefined, { numeric: true }));
+  return rows.map((r) => project(s, a, table, r));
+}
+export function preflight(s, ctx, data = {}) {
+  // Initialization/derived fields also stay on the disposable read snapshot.
+  const snapshot = clone(s);
+  seed(snapshot);
+  const result = validateBooking(snapshot, actor(snapshot, ctx), data);
+  return { valid: true, amount: moneyValue(result.amount) };
 }
 export function record(s, ctx, table, key) {
   seed(s);
   const a = actor(s, ctx);
+  if (table === "addresses") return addressQuery(s, a, key);
   return project(s, a, table, get(s, a, table, key));
 }
 export function options(s, ctx) {
@@ -1088,6 +1134,8 @@ export function options(s, ctx) {
   return {
     actor: a,
     clock: clock(s),
+    today: day(s),
+    addressRegions: clone(addressRegions),
     today: day(s),
     scenario: domain(s).scenario,
     ruleVersion: domain(s).ruleVersion || "DEMO-ALLOC-V1",
@@ -1102,7 +1150,7 @@ export function options(s, ctx) {
       })),
     categories: domain(s)
       .categories.filter(
-        (x) => a.role !== "resident" || x["类目状态"] === "启用",
+        (x) => !x._deleted && (a.role !== "resident" || x["类目状态"] === "启用"),
       )
       .map((x) =>
         a.role === "resident"
@@ -1197,7 +1245,11 @@ export function options(s, ctx) {
       业务进度筛选: [
         "待付款",
         "待接单",
-        "待安排",
+        "待服务",
+        "待评价",
+        "已完成",
+        "已取消",
+        ...(domain(s).orders.some(o=>!simplified(o)) ? ["待安排",
         "待居民确认安排",
         "已确认安排",
         "服务中",
@@ -1206,7 +1258,7 @@ export function options(s, ctx) {
         "正常完成",
         "未服务取消",
         "部分履行终止",
-        "未支付关闭",
+        "未支付关闭"] : []),
       ],
       售后类型筛选: ["核实取消", "申请退款", "服务问题"],
       售后状态筛选: [
@@ -1260,9 +1312,9 @@ export function overview(s, ctx, filters = {}) {
     funds = filterRows(s, a, "funds", context),
     f = {
       ...context,
-      start: filters.start || filters["查询开始日期"] || "2026-11-01",
-      end: filters.end || filters["查询结束日期"] || "2026-11-06",
-      serviceDate: filters.serviceDate || "2026-11-07",
+      start: filters.start || filters["查询开始日期"] || day(s).slice(0, 7) + "-01",
+      end: filters.end || filters["查询结束日期"] || day(s),
+      serviceDate: filters.serviceDate || day(s),
     },
     metrics = [];
   for (const name of [
@@ -1270,6 +1322,8 @@ export function overview(s, ctx, filters = {}) {
     "付款成功订单数",
     "已确认服务安排数",
     "正常完成订单数",
+    "服务完成数",
+    "已完成订单数",
     "未服务取消订单数",
     "部分履行终止订单数",
     "当前待接单数",
@@ -1309,6 +1363,8 @@ export function overview(s, ctx, filters = {}) {
   total["期间净收款"] = (
     Number(total["期间支付成功金额"]) - Number(total["期间退款成功金额"])
   ).toFixed(2);
+  total["商户净实分金额"] = (Number(total["期间分账成功金额"]) - Number(total["期间回退成功金额"])).toFixed(2);
+  metrics.push({ name: "商户净实分金额", value: total["商户净实分金额"], basis: "本期分账成功额减本期回退成功额", table: "funds", filters: { ...f, metric: "商户净实分金额" } });
   metrics.push({
     name: "期间净收款",
     value: total["期间净收款"],
@@ -1328,6 +1384,12 @@ export function command(s, ctx, name, p = {}) {
   seed(s);
   const a = actor(s, ctx),
     d = domain(s);
+  if (name.startsWith("address.")) {
+    need(d.outcomes.save !== "failure", "保存失败，输入已保留");
+    const work = clone(s), result = addressCommand(work, a, name, p);
+    s.residentAddressBook = work.residentAddressBook;
+    return result;
+  }
   const key = p.operationId ? a._id + ":" + name + ":" + p.operationId : null;
   if (key && d.operations[key]) {
     const cached = d.operations[key];
@@ -1424,6 +1486,7 @@ export function auxiliary(s, ctx, name, p = {}) {
   if (name === "clock") {
     need(Number.isFinite(Date.parse(p.time)), "场景时间无效");
     domain(s).clock = p.time;
+    domain(s).clockMode = "fixed";
     return { clock: clock(s) };
   }
   if (name === "scenario") {

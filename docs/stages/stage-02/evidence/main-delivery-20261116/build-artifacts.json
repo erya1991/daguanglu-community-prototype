@@ -1,0 +1,47 @@
+{
+  "createdAt": "2026-11-16T08:11:21.019Z",
+  "artifacts": [
+    {
+      "id": "web",
+      "folder": "web/manager/dist",
+      "files": 29,
+      "treeSha256": "447950dfe334cbd0f0338251f4c88aa03b0012081de78e496a4c94a7f33e673e"
+    },
+    {
+      "id": "resident-h5",
+      "folder": "miniapp/apps/resident-miniapp/dist/build/h5",
+      "files": 91,
+      "treeSha256": "8fbce4a3b6cc2fd972c0f501ec0230eb28e77a3ed78c65bbddb3d6a465518d64"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "folder": "miniapp/apps/resident-miniapp/dist/build/mp-weixin",
+      "files": 391,
+      "treeSha256": "25bdc176d0c1d107c15f7cd766ffa2eba519d8517ee64ef0c5041a591abb0956"
+    },
+    {
+      "id": "merchant-h5",
+      "folder": "miniapp/apps/merchant-miniapp/dist/build/h5",
+      "files": 39,
+      "treeSha256": "69fbf9c76b95fa150f9c7791eeba9115d0855a3c2f7126a4ea2e7640d699427d"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "folder": "miniapp/apps/merchant-miniapp/dist/build/mp-weixin",
+      "files": 249,
+      "treeSha256": "9a54b74d67c9caa9eae5a05e49f92d681128c601a8ac578a13888dd232ddabb0"
+    },
+    {
+      "id": "staff-h5",
+      "folder": "miniapp/apps/staff-miniapp/dist/build/h5",
+      "files": 51,
+      "treeSha256": "0d50bd6a5eec0093047cb90cfc8838ef62c3492763a077294ca7907df892280e"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "folder": "miniapp/apps/staff-miniapp/dist/build/mp-weixin",
+      "files": 291,
+      "treeSha256": "6dabe2986cbf5a8649cb8cef269dddbb198afe58138a44ef21c160d8582cbd15"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ export const modules:ModuleEntry[] = [
  item('all','全部服务','more','快捷入口',r,'/pages/service/index'),
  item('payments','缴费记录','bill','我的记录',r,'/pages/stage01/payments/index'),
  item('missing','地址缺失反馈','location','更多',r,'/pages/foundation/missing/index'),
+ item('addresses','常用地址','location','更多',r,'/pages/profile/addresses'),
  item('profile-edit','个人资料','user','更多',r,'/pages/profile/edit'),
  item('idle','闲置共享','recycle','邻里生活',r,'/pages/unavailable/index?feature=闲置共享',false),
  item('neighbor','邻里互助','neighbor','邻里生活',r,'/pages/unavailable/index?feature=邻里互助',false),

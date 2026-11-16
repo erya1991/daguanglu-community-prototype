@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import FilterBar from "../ui/components/FilterBar.vue";
+import {showFormError} from "../ui/formFeedback";
 import { computed, onUnmounted, ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { APP, service, navigation } from '@/services/foundation'
@@ -295,6 +297,7 @@ async function save() {
   } catch (e: any) {
     error.value = e.message
     fieldErrors.value = e.fields || {}
+    await showFormError(e)
   } finally {
     busy.value = false
   }
@@ -329,6 +332,7 @@ async function saveMissing() {
   } catch (e: any) {
     error.value = e.message
     fieldErrors.value = e.fields || {}
+    await showFormError(e)
   }
 }
 async function messageSend(failed = false) {
@@ -378,7 +382,7 @@ onUnmounted(() => {
       ><view v-if="busy && !info" class="hint">正在加载…</view>
       <template v-if="props.mode === 'list'"
         ><view class="list-toolbar"
-          ><input v-model="filter" placeholder="搜索当前列表" :maxlength="-1" /><AppButton
+          ><FilterBar v-model="filter" placeholder="搜索当前列表" style="flex:1;min-width:0;margin:0"/><AppButton
             v-if="APP === 'resident' && props.table === 'relations'"
             size="compact"
             @click="open('apply', '', '', '&kind=绑定')"

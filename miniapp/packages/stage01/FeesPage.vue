@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import FilterBar from "../ui/components/FilterBar.vue";
+import FormField from "../ui/components/FormField.vue";
 import { ref, computed, onUnmounted, watch, nextTick } from "vue";
 import { onShow } from "@dcloudio/uni-app";
 import { service, APP } from "@/services/foundation";
@@ -217,6 +219,13 @@ onUnmounted(() => {
   generation++;
   off();
 });
+const filterDraft=ref<any>({start:'',end:''});
+const feeFilters=computed(()=>[
+ ...(charging.value?[{key:'community',label:'社区',value:community.value,options:options.value.communities||[]},{key:'estate',label:'小区',value:estate.value,options:(options.value.estates||[]).filter((e:any)=>!community.value||e.community===community.value)}]:[]),
+ ...(table.value==='bills'?[{key:'house',label:'房屋',value:house.value,options:options.value.houses||[]}]:[]),
+ ...(table.value==='payments'?[{key:'business',label:'业务',value:business.value,options:['物业费','停车月租','临停'].map(v=>({value:v,label:v}))}]:[])
+]);
+function feeFilter(key:string,v:string){if(key==='community'){community.value=v;estate.value=''}if(key==='estate')estate.value=v;if(key==='house')house.value=v;if(key==='business')business.value=v}
 </script>
 <template>
   <AppPage secondary
@@ -242,97 +251,7 @@ onUnmounted(() => {
           >
             {{ t.name }}
           </button></view
-        ><view class="filters"
-          ><picker
-            v-if="charging"
-            :range="[
-              { value: '', label: '全部社区' },
-              ...(options.communities || []),
-            ]"
-            range-key="label"
-            @change="
-              community = [{ value: '' }, ...options.communities][
-                Number($event.detail.value)
-              ].value;
-              estate = '';
-            "
-            ><view data-field="QF02"
-              >{{
-                options.communities.find((c: any) => c.value === community)
-                  ?.label || "全部社区"
-              }}
-              ›</view
-            ></picker
-          ><picker
-            v-if="charging"
-            :range="[{value:'',label:'全部小区'},...(options.estates||[]).filter((e:any)=>!community||e.community===community)]"
-            range-key="label"
-            @change="
-              estate = [
-                { value: '' },
-                ...options.estates.filter(
-                  (e: any) => !community || e.community === community
-                ),
-              ][Number($event.detail.value)].value
-            "
-            ><view data-field="QF03"
-              >{{
-                options.estates.find((e: any) => e.value === estate)?.label ||
-                "全部小区"
-              }}
-              ›</view
-            ></picker
-          ><input
-            v-model="filter"
-            placeholder="搜索编号或内容"
-            data-field="QF01"
-          /><picker
-            v-if="table === 'bills'"
-            :range="[{ value: '', label: '全部授权房屋' }, ...options.houses]"
-            range-key="label"
-            @change="
-              house = [{ value: '' }, ...options.houses][
-                Number($event.detail.value)
-              ].value
-            "
-            ><view data-field="QF04">选择房屋 ›</view></picker
-          ><picker
-            mode="date"
-            :value="startDate"
-            @change="startDate = $event.detail.value"
-            ><view data-field="QF08"
-              >{{ startDate || "开始日期" }} ›</view
-            ></picker
-          ><picker
-            mode="date"
-            :value="endDate"
-            @change="endDate = $event.detail.value"
-            ><view data-field="QF09"
-              >{{ endDate || "结束日期" }} ›</view
-            ></picker
-          ><picker
-            v-if="table === 'payments'"
-            :range="['全部业务', '物业费', '停车月租', '临停']"
-            @change="
-              business = ['', '物业费', '停车月租', '临停'][
-                Number($event.detail.value)
-              ]
-            "
-            ><view data-field="QF07"
-              >{{ business || "全部业务" }} ›</view
-            ></picker
-          ><button
-            v-if="startDate || endDate || house || business"
-            @click="
-              startDate = '';
-              endDate = '';
-              house = '';
-              business = '';
-            "
-          >
-            清除筛选
-          </button></view
-        ><text class="muted"
+        ><FilterBar v-model="filter" placeholder="搜索编号或内容" :filters="feeFilters" has-more :active-more="!!startDate||!!endDate" @filter="feeFilter" @open="filterDraft={start:startDate,end:endDate}" @reset="filterDraft={start:'',end:''}" @apply="startDate=filterDraft.start;endDate=filterDraft.end"><FormField label="开始日期"><picker mode="date" :value="filterDraft.start" @change="filterDraft.start=$event.detail.value"><view>{{filterDraft.start||'全部日期'}}</view></picker></FormField><FormField label="结束日期"><picker mode="date" :value="filterDraft.end" @change="filterDraft.end=$event.detail.value"><view>{{filterDraft.end||'全部日期'}}</view></picker></FormField></FilterBar><text class="muted"
           >{{
             table === "bills"
               ? "按费用开始日期"

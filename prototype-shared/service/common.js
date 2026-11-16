@@ -25,7 +25,13 @@ export function domain(s) {
   need(s.service?.schemaVersion === 1, "便民服务数据版本不兼容，原数据已保留");
   return s.service;
 }
-export const clock = (s) => domain(s).clock;
+export const clock = (s) => domain(s).clockMode === "fixed"
+  ? domain(s).clock
+  : new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19) + "+08:00";
+export const simplified = (o) => o?._flowVersion === 2;
+export const serviceCompleted = (o) => simplified(o)
+  ? !!o["服务完成时间"]
+  : o["结案结果"] === "正常完成" && o["居民完成确认状态"] === "已确认";
 export const day = (s) => clock(s).slice(0, 10);
 export const id = (s, prefix) =>
   "S02-" + prefix + "-" + String(++domain(s).sequence).padStart(6, "0");
@@ -451,7 +457,7 @@ export function materialState(s, m) {
   if (m["核验结论"] !== "认可") return "待核实";
   return materialPresent(s, m) ? "有效" : "已失效";
 }
-export function materials(s, a, input, shop, allowedCategories) {
+export function materials(s, a, input, shop, allowedCategories, scope = "category") {
   const originals = [
     ...domain(s)
       .qualifications.filter((r) => r._shop === shop)
@@ -470,7 +476,7 @@ export function materials(s, a, input, shop, allowedCategories) {
         .filter((k) => item[k] !== undefined)
         .map((k) => [k, clone(item[k])]),
     );
-    m["对应服务类目"] = list(m["对应服务类目"]);
+    m["对应服务类目"] = scope === "application" ? [] : list(m["对应服务类目"]);
     need(
       m["对应服务类目"].every((c) => list(allowedCategories).includes(c)),
       "材料类目不得超出申请或人员范围",
@@ -512,6 +518,9 @@ export function catEnabled(s, key) {
 export function qualificationFor(s, shop) {
   return domain(s).qualifications.find((q) => q._shop === shop);
 }
+export function qualificationMaterialMatches(q, m, cat, application = false) {
+  return q[application ? "_applicationMaterialScope" : "_authorizationMaterialScope"] === "application" || list(m["对应服务类目"]).includes(cat);
+}
 export function qualified(s, shop, cat) {
   const q = qualificationFor(s, shop),
     c = find(s, "categories", cat);
@@ -523,7 +532,7 @@ export function qualified(s, shop, cat) {
     catEnabled(s, cat) &&
     (!c?.["商户证明是否必需"] ||
       list(q.authorizationMaterials || q["服务资质材料"]).some(
-        (m) => list(m["对应服务类目"]).includes(cat) && materialValid(s, m),
+        (m) => qualificationMaterialMatches(q, m, cat) && materialValid(s, m),
       ))
   );
 }

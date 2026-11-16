@@ -29,8 +29,10 @@ import {
   auditEvidence,
   pickInput,
   id,
+  simplified,
 } from "./common.js";
 import { comboFor, saleability, comboValid, methodFor } from "./supply.js";
+import { validateAddress } from "./addresses.js";
 import {
   fund,
   refund,
@@ -61,6 +63,12 @@ export function orderBlocked(s, o) {
   );
 }
 function progress(o) {
+  if (simplified(o)) {
+    if (["未服务取消", "未支付关闭"].includes(o["结案结果"])) return "已取消";
+    if (o["服务完成时间"]) return o["订单完成时间"] ? "已完成" : "待评价";
+    if (o["支付状态"] !== "成功") return "待付款";
+    return currentArrangement(o) ? "待服务" : "待接单";
+  }
   if (o["结案结果"] !== "进行中") return o["结案结果"];
   if (
     o["售后状态"] &&
@@ -104,7 +112,52 @@ function ensureRound(s, o, arr) {
   }
   return round;
 }
-export function makeOrder(s, a, data) {
+function activateDispatch(s, o, ar) {
+  ar["安排状态"] = "已生效";
+  o["当前有效安排编号"] = ar["安排编号"];
+  o["安排状态"] = "已安排";
+  ensureRound(s, o, ar);
+  if (o._mode === "预约到点") o.credential = {
+    到点凭证码: "S02-" + o._id + "-V" + ar["安排版本"],
+    到点凭证二维码: "S02:" + o._id + ":" + ar["安排版本"],
+    凭证状态: "有效", 凭证对应服务订单号: o["服务订单号"],
+    凭证对应项目名称: o["服务项目名称"], 凭证对应规格名称: o["服务规格名称"],
+    凭证对应地点名称: o["地点快照"]["地点名称"],
+    凭证对应服务日期: ar["安排服务日期"], 凭证对应开始时间: ar["安排开始时间"],
+    凭证对应结束时间: ar["安排结束时间"], 凭证联系人姓名: o["联系人姓名"],
+    凭证联系人电话: o["联系人电话"],
+  };
+}
+function completeService(s, a, o, data) {
+  const ar = currentArrangement(o);
+  need(ar && !orderBlocked(s, o), "需要有效派工，且无取消或售后处理中");
+  need(day(s) >= ar["安排服务日期"], "服务日期尚未到达");
+  need(staffEligible(s, find(s, "personnel", ar["服务人员"]), o._shop, o._category), "安排人员当前不可执行，请联系商户处理");
+  required(data, ["实际完成内容"]);
+  need(!data["服务结果"] || data["服务结果"] === "全部完成", "本期提交按约完成结果；无法完成请办理取消核实");
+  auditEvidence(s, a, data, ["结果图片"]);
+  if (o._combo["完成证据要求"] === "必需图片") need(list(data["结果图片"]).length, "本单要求提交结果图片", { 结果图片: "请补充结果图片" });
+  if (o._mode === "预约到点") {
+    const code = String(data["到点凭证码"] || "").trim(), cr = o.credential;
+    need(cr && cr["凭证状态"] === "有效" && [cr["到点凭证码"], cr["到点凭证二维码"]].includes(code), "到点凭证不匹配或已失效", { 到点凭证码: "请输入本订单有效凭证" });
+    need(day(s) === ar["安排服务日期"], "凭证对应服务日期与今天不符");
+    Object.assign(cr, { 凭证状态: "已核验", 核验时间: clock(s), 核验操作人: a.name, 核验地点: o["地点快照"]["地点名称"] });
+  }
+  const when = clock(s), result = {
+    服务结果: "全部完成", 实际完成内容: data["实际完成内容"],
+    实际服务结束时间: when, 结果图片: clone(data["结果图片"] || []),
+    结果补充说明: data["结果补充说明"] || "", 结果版本: 1,
+    结果提交人: a.name, 结果提交时间: when,
+  };
+  o.results = [result];
+  currentRound(o).results = [clone(result)];
+  currentRound(o)["本轮履约状态"] = "已完成";
+  Object.assign(o, { 结果版本: 1, 履约状态: "已完成", 服务完成时间: when,
+    服务完成人: a.name, 结案结果: "正常完成", 结案时间: when });
+  splitIfReady(s, a, o);
+}
+// Shared by the read-only preflight and the transactional order command.
+export function validateBooking(s, a, data) {
   resident(a);
   const service = find(s, "services", value(data, "选定服务项目", "serviceId"));
   need(service, "请选择服务项目");
@@ -162,6 +215,7 @@ export function makeOrder(s, a, data) {
       "联系人电话",
     ]);
     required(location, ["所属社区", "详细地址"]);
+    if (!domain(s).fixtureLegacyOrders) validateAddress(s, location, false);
     if (location["所属小区"])
       need(
         s.estates.some(
@@ -203,7 +257,13 @@ export function makeOrder(s, a, data) {
       Object.entries(currentPoint).filter(([k]) => !k.startsWith("_")),
     );
   }
-  const amount = fen(combo["组合固定价格"], "组合固定价格", true),
+  const amount = fen(combo["组合固定价格"], "组合固定价格", true);
+  const evidenceData = { 需求图片: clone(data["需求图片"] || []) };
+  auditEvidence(s, a, evidenceData, ["需求图片"]);
+  return { service, content, spec, combo, selectedMethod, frozenWay, expected, location, amount };
+}
+export function makeOrder(s, a, data) {
+  const { service, content, spec, combo, selectedMethod, frozenWay, expected, location, amount } = validateBooking(s, a, data),
     m = shopRecord(s, service._shop),
     o = create(
       s,
@@ -211,6 +271,7 @@ export function makeOrder(s, a, data) {
       "orders",
       {
         _shop: service._shop,
+        _flowVersion: domain(s).fixtureLegacyOrders ? 1 : 2,
         _resident: a.resident,
         _service: service._id,
         _spec: spec["规格编号"],
@@ -425,6 +486,7 @@ export function orderCommand(s, a, name, p) {
       start: ["开始说明"],
       process: ["过程记录类型", "过程说明", "过程图片"],
       result: [
+        "到点凭证码",
         "服务结果",
         "实际完成内容",
         "未完成内容",
@@ -448,6 +510,12 @@ export function orderCommand(s, a, name, p) {
     return { table: "orders", r: makeOrder(s, a, data) };
   const o = get(s, a, "orders", p.id),
     action = name.split(".")[1];
+  if (simplified(o)) {
+    need(!["arrange", "respond", "change", "arrive", "verify", "start", "process", "confirm", "anomaly"].includes(action), "此订单使用接单派工、提交结果和评价流程");
+    if (action === "result" && o["服务完成时间"]) { merchant(a); return { table: "orders", r: o }; }
+    if (action === "accept" && currentArrangement(o)) { merchant(a); return { table: "orders", r: o }; }
+    if (action === "cancel" && ["未服务取消", "未支付关闭"].includes(o["结案结果"])) { resident(a); return { table: "orders", r: o }; }
+  }
   if (action === "pay") {
     resident(a);
     const old = fundsFor(s, o, "支付")[0];
@@ -528,10 +596,14 @@ export function orderCommand(s, a, name, p) {
       o["结案时间"] = clock(s);
       refund(s, a, o, refundable(s, o), "REJECT:" + o._id);
     } else {
+      if (simplified(o)) required(data, ["服务人员", "安排服务日期", "安排开始时间", "安排结束时间"]);
       o["接单状态"] = "已接单";
       o["接单操作人"] = a.name;
       o["接单时间"] = clock(s);
-      if (data["服务人员"]) arrange(s, a, o, data);
+      if (data["服务人员"]) {
+        const ar = arrange(s, a, o, data);
+        if (simplified(o)) activateDispatch(s, o, ar);
+      }
     }
   } else if (action === "arrange") arrange(s, a, o, data);
   else if (action === "respond") {
@@ -698,6 +770,13 @@ export function orderCommand(s, a, name, p) {
       过程操作人: a.name,
     });
   } else if (action === "result") {
+    if (simplified(o)) {
+      completeService(s, a, o, data);
+      syncOrder(s, o);
+      o["当前业务进度"] = progress(o);
+      append(s, a, o, "提交服务结果");
+      return { table: "orders", r: o };
+    }
     need(
       ["服务中", "结果已提交"].includes(o["履约状态"]) && !orderBlocked(s, o),
       "请先开始服务且处理当前售后",

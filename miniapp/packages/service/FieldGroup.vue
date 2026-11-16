@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import {serviceText} from './presentation';
 import { computed } from "vue";
-import { APP } from "@/services/foundation";
+import {showFormError} from "../ui/formFeedback";
+import { service, APP } from "@/services/foundation";
 import { fieldsFor } from "@core/service/fields.js";
 import { requiredServiceField } from "@core/service/required.js";
 import FormField from "../ui/components/FormField.vue";
 import Evidence from "./Evidence.vue";
+import StarRating from "../ui/components/StarRating.vue";
+import CategoryPicker from "./CategoryPicker.vue";
 const props = withDefaults(
   defineProps<{
     tables?: string[];
@@ -20,6 +23,7 @@ const props = withDefaults(
     heading?: boolean;
     compact?: boolean;
     action?: string;
+    draftKey?: string;
     record?: any;
   }>(),
   {
@@ -35,6 +39,7 @@ const props = withDefaults(
     heading: true,
     compact: false,
     action: "",
+    draftKey: "",
     record: () => ({}),
   },
 );
@@ -113,6 +118,8 @@ function set(name: string, value: any) {
   emit("input", next);
 }
 function visible(f: any) {
+  if (props.action === 'qualification.save' && f.name === '对应服务类目') return false;
+  if (props.record?._flowVersion === 2 && props.action === 'aftersale.plan' && ['拟退款金额','金额依据说明'].includes(f.name) && props.value['方案处理类型'] !== '部分退款') return false;
   const visibility = (f.condition.split("可见：")[1] || "").split("；")[0];
   if (
     APP === "resident" &&
@@ -164,7 +171,7 @@ function visible(f: any) {
     return false;
   if (
     props.value?.["期望时间选择"] === "时间可协商" &&
-    f.name === "期望服务日期"
+    ["期望服务日期", "期望时段偏好"].includes(f.name)
   )
     return false;
   return true;
@@ -214,14 +221,16 @@ function choices(f: any): any[] {
   const n = f.name,
     o = props.options;
   let rows: any[] = [];
+  if (n === "期望解决方式" && props.record?._flowVersion === 2)
+    return ["全额退款", "部分退款", "协商解决"].map(v => ({ value: v, label: serviceText(v) }));
   if (n === "业务结案方式")
     return (o.handlingOptions?.plan?.[props.value["方案处理类型"]] || []).map(
-      (v: string) => ({ value: v, label: v }),
+      (v: string) => ({ value: v, label: serviceText(v) }),
     );
   if (n === "方案处理类型" && o.handlingOptions?.plan)
     return Object.entries(o.handlingOptions.plan)
       .filter(([, v]: any) => v.length)
-      .map(([v]) => ({ value: v, label: v }));
+      .map(([v]) => ({ value: v, label: serviceText(v) }));
   if (/履约方式/.test(n) && n !== "组合流程模板")
     return (o.methods || [])
       .filter(
@@ -239,16 +248,16 @@ function choices(f: any): any[] {
       (props.value["上门覆盖社区"] || []).includes(e.community),
     );
   if (o.dictionaries?.[n])
-    return o.dictionaries[n].map((v: any) => ({ value: v, label: String(v) }));
+    return o.dictionaries[n].map((v: any) => ({ value: v, label: serviceText(v) }));
   if (dictionaries[n])
-    return dictionaries[n].map((v: any) => ({ value: v, label: String(v) }));
+    return dictionaries[n].map((v: any) => ({ value: v, label: serviceText(v) }));
   if (/服务类目|申请经营类目|可执行类目/.test(n)) rows = o.categories || [];
   else if (/服务人员|拟安排人员/.test(n)) rows = o.personnel || [];
   else if (/选定服务项目|服务项目筛选|评价项目筛选/.test(n))
     rows = o.services || [];
   else if (/商户|经营主体|经营店铺/.test(n)) rows = o.merchants || [];
   else if (/履约方式|流程模板/.test(n))
-    return ["上门", "预约到点"].map((v) => ({ value: v, label: v }));
+    return ["上门", "预约到点"].map((v) => ({ value: v, label: serviceText(v) }));
   else if (/社区/.test(n)) return o.communities || [];
   else if (/小区/.test(n))
     return (o.estates || []).filter(
@@ -274,7 +283,7 @@ function choices(f: any): any[] {
 function label(f: any) {
   const v = val(f),
     opts = choices(f);
-  return opts.find((x) => x.value === v)?.label || str(v);
+  return serviceText(opts.find((x) => x.value === v)?.label || str(v));
 }
 function choose(f: any, e: any) {
   set(f.name, choices(f)[Number(e.detail.value)]?.value || "");
@@ -347,6 +356,7 @@ function datePart(f: any, e: any, time = false) {
   );
 }
 function eventValue(event: any) { return event.detail.value }
+async function openMaterial(f:any,index:number){try{const previous=await service.draft(props.draftKey);await service.draft(props.draftKey,{...previous,data:props.value});uni.navigateTo({url:'/pages/service/material?draftKey='+encodeURIComponent(props.draftKey)+'&field='+encodeURIComponent(f.name)+'&index='+index})}catch(e:any){await showFormError(e)}}
 </script>
 <template>
   <view class="service-fields svc-view">
@@ -354,10 +364,12 @@ function eventValue(event: any) { return event.detail.value }
       v-for="f in fields"
       :key="f.id"
       class="field-wrap svc-view"
+      :class="{ 'field-wrap--error': errors[f.name] }"
       :data-field="f.id"
       :data-field-name="f.name"
     >
-      <template v-if="isEvidence(f)"
+      <template v-if="edit(f)&&draftKey&&childTable(f)==='26-D'"><view class="material-heading"><text>{{f.name}}<text v-if="required(f)" class="required"> *</text></text><button @click="openMaterial(f,list(f).length)">添加材料</button></view><view v-for="(m,i) in list(f)" :key="i" class="material-card" @click="openMaterial(f,i)"><text>{{m['材料名称']||'新材料'}}　›</text><text class="muted">{{m['长期有效']?'长期有效':m['有效截止日期']||'未填写有效期'}}</text><text class="text-button danger" @click.stop="set(f.name,list(f).filter((_:any,j:number)=>j!==i))">移除</text></view></template>
+      <template v-else-if="isEvidence(f)"
         ><text class="section-label svc-text"
           >{{ f.name
           }}<text v-if="edit(f) && required(f)" class="required svc-text"> *</text></text
@@ -472,7 +484,8 @@ function eventValue(event: any) { return event.detail.value }
       ></template>
       <FormField
         v-else
-        :label="f.name"
+        :label="serviceText(f.name)"
+        :multiline="isMany(f) || /附件|图片|文件/.test(f.type)"
         :required="edit(f) && required(f)"
         :readonly="!edit(f)"
         :error="errors[f.name]"
@@ -504,6 +517,8 @@ function eventValue(event: any) { return event.detail.value }
             ></template
           ><text class="svc-text" v-else>{{ label(f) }}</text></view
         >
+        <StarRating v-else-if="f.name==='总体评分'" :model-value="Number(val(f)||0)" @update:modelValue="set(f.name,$event)" />
+        <CategoryPicker v-else-if="f.name==='申请服务类目'" :value="list(f)" :categories="options.categories||[]" @input="set(f.name,$event)"/>
         <view v-else-if="isBoolean(f)" class="switch svc-view"
           ><switch
             :checked="!!val(f)"
@@ -622,7 +637,7 @@ function eventValue(event: any) { return event.detail.value }
   color: $color-error;
 }
 .readonly {
-  padding: 12px 0;
+  padding: 0;
   line-height: 1.7;
   overflow-wrap: anywhere;
 }
@@ -700,4 +715,5 @@ function eventValue(event: any) { return event.detail.value }
   margin-top: 6px;
   font-size: 13px;
 }
+.material-heading{display:flex;align-items:center;justify-content:space-between}.material-heading button{margin:0;font-size:13px;line-height:36px;color:#1b4d53;background:#edf5f4}.material-card{display:flex;flex-direction:column;gap:8px;border:1px solid #e4ebeb;border-radius:10px;padding:12px;margin:12px 0}.material-card .text-button{align-self:flex-end}
 </style>

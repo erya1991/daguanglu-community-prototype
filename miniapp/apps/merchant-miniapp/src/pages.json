@@ -71,6 +71,14 @@
       }
     },
     {
+      "path": "pages/service/material",
+      "style": {"navigationStyle":"custom","enablePullDownRefresh":false}
+    },
+    {
+      "path": "pages/service/spec",
+      "style": {"navigationStyle":"custom","enablePullDownRefresh":false}
+    },
+    {
       "path": "pages/service/action",
       "style": {
         "navigationStyle": "custom",

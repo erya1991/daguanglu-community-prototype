@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { serviceText } from "./presentation";
+import { showFormError } from "../ui/formFeedback";
+import FilterBar from "../ui/components/FilterBar.vue";
+import StarRating from "../ui/components/StarRating.vue";
 import { computed, onUnmounted, ref, watch } from "vue";
 import { onShow } from "@dcloudio/uni-app";
 import { service, APP } from "@/services/foundation";
@@ -11,6 +15,8 @@ import Details from "./Details.vue";
 import SupplyEditor from "./SupplyEditor.vue";
 import VoucherCode from "./VoucherCode.vue";
 import Picture from "./Picture.vue";
+import AddressForm from "./AddressForm.vue";
+import OrderDetails from "./OrderDetails.vue";
 const props = withDefaults(
   defineProps<{
     mode: string;
@@ -114,14 +120,38 @@ const title = computed(
         overview: "服务经营",
         funds: "服务资金",
         workbench: "服务工作台",
-        voucher: "到点凭证",
-        verify: "到点核验",
+        voucher: "到店凭证",
+        verify: "到店核验",
       }) as any
     )[props.mode] || "便民服务",
 );
 const actions = computed(() =>
   Array.isArray(row.value?._actions) ? row.value._actions : [],
 );
+const isNewFlow = computed(() => row.value?._flowVersion === 2);
+const primaryAction = computed(() => actions.value.find((a:any)=>a.primary) || (!(isNewFlow.value && table.value==='orders') ? actions.value[0] : null));
+const secondaryActions = computed(() => actions.value.filter((a:any)=>a!==primaryAction.value));
+const addresses = ref<any[]>([]), addressEditing = ref(false);
+const showSupplement = ref(false);
+const eventValue = (event:any) => event.detail?.value ?? event.target?.value ?? '';
+const addressLabel = (a:any) => [a.联系人姓名, a.省份, a.城市, a.区县, a.详细地址].filter(Boolean).join(' ');
+function selectAddress(a:any) { if(!a)return; updateForm({...form.value, 上门地址来源:'常用地址', 上门服务地址:{...a}, 联系人姓名:a.联系人姓名, 联系人电话:a.联系人电话}); addressEditing.value=false; }
+function manageAddresses(){uni.navigateTo({url:'/pages/profile/addresses'})}
+function focusError(){setTimeout(()=>{
+ const query=uni.createSelectorQuery();
+ query.selectViewport().scrollOffset(()=>{});
+ query.select('.field-wrap--error,.form-field--error').boundingClientRect();
+ query.select('.error').boundingClientRect();
+ query.exec((items:any[])=>{const target=items[1]||items[2];if(target)uni.pageScrollTo({scrollTop:Math.max(0,(items[0]?.scrollTop||0)+target.top-80),duration:200})});
+},50)}
+function scanResult(){
+ // #ifdef MP-WEIXIN
+ uni.scanCode({success:r=>updateForm({...form.value,到点凭证码:r.result}),fail:()=>{error.value='扫码未完成，可输入凭证码'}});
+ // #endif
+ // #ifdef H5
+ error.value='浏览器中请输入住户展示的凭证码';
+ // #endif
+}
 const commandName = computed(
   () => props.action || (props.mode === "evaluation" ? "evaluation.save" : ""),
 );
@@ -151,7 +181,7 @@ const fields = computed(() =>
     ? action.value.fields
     : defaultTables(commandName.value),
 );
-const formNames = computed(
+const legacyFormNames = computed(
   () =>
     (
       ({
@@ -240,10 +270,16 @@ const formNames = computed(
       }) as any
     )[commandName.value] || [],
 );
+const formNames = computed(() => {
+  if (isNewFlow.value && commandName.value === 'order.accept') return action.value.defaults?.接单结果 === '无法承接' ? ['无法承接说明'] : ['服务人员','安排服务日期','安排开始时间','安排结束时间','安排说明'];
+  if (isNewFlow.value && commandName.value === 'order.result') return ['实际完成内容','结果图片', ...(showSupplement.value ? ['结果补充说明'] : [])];
+  if (isNewFlow.value && commandName.value === 'aftersale.plan') return ['方案处理类型','拟退款金额','金额依据说明','业务结案方式','方案说明'];
+  return legacyFormNames.value;
+});
 const bookingData = computed(() => ({
   ...form.value,
   方式说明: combo.value["方式说明"] || combo.value["组合履约方式名称"],
-  约时提示: "期望时间不代表预约成功，具体人员及时间需商家提出并由您确认。",
+  约时提示: "期望时间不代表预约成功，具体人员及时间由商户接单派工后生效。",
   规格包含内容: spec.value["包含内容"],
   规格不包含内容: spec.value["不包含内容"],
   规格方式固定价: combo.value["组合固定价格"],
@@ -493,7 +529,7 @@ function toggleCoverage(id: string) {
     : [...expandedCoverage.value, id];
 }
 function subtitle(r: any) {
-  return (
+  return serviceText(
     r._subtitle ||
     [
       r["服务规格名称"] || r["规格名称"],
@@ -524,6 +560,7 @@ function statusLabel(r: any) {
     ""
   );
 }
+const orderStatuses = computed(() => [...new Set(['全部','待付款','待接单','待服务','待评价','已完成','已取消',...rows.value.filter(r=>r._flowVersion!==2).map(statusLabel)])]);
 function price(r: any) {
   if (r._amount !== undefined) return money(r._amount);
   const prices = (r["服务规格集合"] || [])
@@ -587,6 +624,12 @@ function seedForm() {
       安排结束时间: "11:00",
       原安排仍可履行: true,
     });
+  if (isNewFlow.value && name === 'order.accept') {
+    const hour = Number((options.value.clock || '').slice(11,13));
+    data['安排开始时间'] = String(hour).padStart(2,'0') + ':00';
+    data['安排结束时间'] = hour < 23 ? String(hour + 1).padStart(2,'0') + ':00' : '23:59';
+    data['接单结果'] = action.value.defaults?.接单结果 || '接单';
+  }
   if (name === "order.respond")
     Object.assign(data, {
       安排版本:
@@ -644,21 +687,23 @@ function seedForm() {
   }
   return data;
 }
+let reloadPending = false;
 async function load() {
-  if (busy.value) return;
+  if (busy.value) { reloadPending = true; return; }
   busy.value = true;
   error.value = "";
   try {
     await service.start();
     options.value = await api().options();
+    if (props.mode === 'booking') addresses.value = await api().query('addresses');
     if (["workbench", "overview"].includes(props.mode))
       overview.value = await api().overview(
         props.mode === "overview"
           ? {
               ...form.value,
-              start: form.value.start || "2026-11-01",
-              end: form.value.end || "2026-11-06",
-              serviceDate: form.value.serviceDate || "2026-11-07",
+              start: form.value.start || options.value.today.slice(0,7)+'-01',
+              end: form.value.end || options.value.today,
+              serviceDate: form.value.serviceDate || options.value.today,
             }
           : {},
       );
@@ -685,17 +730,20 @@ async function load() {
           选定服务项目: props.id,
           选定服务规格: selectedSpec.value,
           选定履约方式: selectedMethod.value,
-          期望时间选择: "指定日期",
+          期望时间选择: "时间可协商",
           期望服务日期: options.value.today || "2026-11-07",
-          联系人姓名: "",
+          联系人姓名: options.value.actor.name || "",
           联系人电话: "",
           上门地址来源: "本次填写",
-          上门服务地址: { 所属社区: "C-A", 所属小区: "E-A", 详细地址: "" },
+          上门服务地址: { 省份:'江苏省',城市:'南京市',区县:'秦淮区',所属社区: "C-A", 所属小区: "E-A", 详细地址: "" },
           到点服务地点:
             combo.value["可服务门店或服务点"]?.[0]?.["地点业务编号"] || "",
           服务约定确认: false,
           需求图片: [],
         };
+        const preferred = addresses.value.find((a:any)=>a.默认地址);
+        if (preferred && combo.value['组合流程模板'] === '上门') selectAddress(preferred);
+        else addressEditing.value = true;
       } else if (isAction.value) form.value = seedForm();
     } else if (props.mode === "qualification") {
       rows.value = await api().query("qualifications");
@@ -713,7 +761,7 @@ async function load() {
           ":" +
           (props.id || "new") +
           ":" +
-          (commandName.value || "booking"),
+          (commandName.value || "booking") + (props.section ? ":" + props.section : ""),
       );
       if (draft?.data)
         form.value = { ...draft.data, ...(action.value.defaults || {}) };
@@ -725,6 +773,7 @@ async function load() {
     error.value = e.message || "加载失败，请重试";
   } finally {
     busy.value = false;
+    if (reloadPending) { reloadPending = false; load(); }
   }
 }
 function updateForm(v: any) {
@@ -737,7 +786,7 @@ function updateForm(v: any) {
           ":" +
           (props.id || "new") +
           ":" +
-          (commandName.value || "booking"),
+          (commandName.value || "booking") + (props.section ? ":" + props.section : ""),
         { data: v, operationId: operationId.value },
       )
       .catch(() => {});
@@ -752,6 +801,10 @@ function bookingPayload(value: any) {
   if (value["选定服务规格"] && value["选定服务规格"] !== selectedSpec.value)
     delete data["服务对象描述"];
   if (spec.value["服务对象填写要求"] === "不需要") delete data["服务对象描述"];
+  if (data["期望时间选择"] === "时间可协商") {
+    delete data["期望服务日期"];
+    delete data["期望时段偏好"];
+  }
   if (combo.value["组合流程模板"] === "预约到点") {
     delete data["上门服务地址"];
     delete data["上门地址来源"];
@@ -810,7 +863,7 @@ async function submit() {
     });
     success.value = result.message || "已保存";
     await service.draft(
-      "service:" + APP + ":" + (props.id || "new") + ":" + commandName.value,
+      "service:" + APP + ":" + (props.id || "new") + ":" + commandName.value + (props.section ? ":" + props.section : ""),
       null,
     );
     if (result.table === "evaluations")
@@ -854,6 +907,7 @@ async function submit() {
     }
     error.value = e.message || "提交失败，输入已保留";
     fieldErrors.value = e.fields || e.errors || {};
+    await showFormError(e, focusError);
   } finally {
     saving.value = false;
   }
@@ -877,52 +931,37 @@ function book() {
 }
 async function createOrder() {
   if (saving.value) return;
-  if (!form.value["服务约定确认"]) {
-    error.value = "请阅读并确认服务约定";
-    fieldErrors.value = { 服务约定确认: "请先确认服务内容与取消规则" };
-    return;
-  }
-  const ok = await new Promise<boolean>((resolve) =>
-    uni.showModal({
-      title: "确认付款",
-      content: "本次不会真实扣款。请核对本单金额后确认。",
-      success: (r) => resolve(r.confirm),
-    }),
-  );
-  if (!ok) return;
-  saving.value = true;
-  error.value = "";
+  saving.value = true; error.value = ""; fieldErrors.value = {};
   try {
     const data = bookingPayload(form.value);
-    const result = await api().command("order.create", {
-      operationId: operationId.value,
-      data,
-    });
+    await api().preflight(data);
+    const ok = await new Promise<boolean>((resolve) => uni.showModal({
+      title: "确认付款", content: "确认支付 ¥" + combo.value["组合固定价格"] + "？",
+      success: r => resolve(r.confirm), fail: () => resolve(false),
+    }));
+    if (!ok) return;
+    const result = await api().command("order.create", { operationId: operationId.value, data });
     try {
-      await api().command("order.pay", {
-        id: result.id,
-        revision: result.record?._rev,
-        operationId: operationId.value + "-pay",
-        data: {},
-      });
-    } catch (e: any) {
-      error.value = e.message;
+      await api().command("order.pay", {id:result.id, revision:result.record?._rev, operationId:operationId.value+"-pay",data:{}});
+    } catch (e:any) {
+      await showFormError(e);
+      finishObject("orders",result.id);
+      return;
     }
-    await service.draft("service:" + APP + ":" + props.id + ":booking", null);
-    finishObject("orders", result.id);
-  } catch (e: any) {
-    error.value = e.message || "订单提交失败，输入已保留";
-    fieldErrors.value = e.fields || {};
-  } finally {
-    saving.value = false;
-  }
+    await service.draft("service:"+APP+":"+props.id+":booking", null);
+    uni.redirectTo({url:"/pages/service/orders"});
+  } catch(e:any) {
+    error.value=e.message||"订单提交失败，输入已保留";
+    fieldErrors.value=e.fields||{};
+    await showFormError(e,focusError);
+  } finally { saving.value=false; }
 }
 async function quick(a: any) {
   if (a.name === "order.pay") {
     const ok = await new Promise<boolean>((resolve) =>
       uni.showModal({
         title: "确认付款",
-        content: "本次不会真实扣款。付款金额以原订单约定为准。",
+        content: "请核对原订单金额后确认付款。",
         success: (r) => resolve(r.confirm),
       }),
     );
@@ -1001,9 +1040,9 @@ async function queryVoucher() {
 async function verifyPoint() {
   const ok = await new Promise<boolean>((resolve) =>
     uni.showModal({
-      title: "确认到点",
+      title: "确认到店",
       content:
-        "请核对商户、地点和本次有效安排。确认到点只记录到点事实，不代表服务完成。",
+        "请核对商户、地点和本次有效安排。确认到店只记录到店事实，不代表服务完成。",
       success: (r) => resolve(r.confirm),
     }),
   );
@@ -1059,6 +1098,22 @@ watch(
     load();
   },
 );
+const voucherExpanded=ref(false);
+function cardActions(r:any){const list=(r._actions||[]).filter((a:any)=>['evaluation.save','aftersale.apply'].includes(a.name));if(r.currentAftersale)list.push({name:'view-sale',label:'查看售后'});return list}
+function cardAction(r:any,a:any){if(a.name==='view-sale')return go('after-sale',{id:r.currentAftersale._id});go('action',{table:'orders',id:r._id,action:a.name,section:a.label})}
+const moreDraft=ref<any>({});
+const quickFilters=computed(()=>{
+ const filters:any[]=[{key:'method',label:'服务方式',value:method.value,options:[{value:'上门',label:'上门'},{value:'预约到点',label:'预约到店'}]}];
+ if(props.mode==='discover') filters.push({key:'category',label:'服务分类',value:category.value,options:(options.value.categories||[]).map((c:any)=>({value:c._id,label:c['类目名称']}))},{key:'community',label:'社区',value:communityFilter.value,options:options.value.communities||[]});
+ if(props.mode==='orders'&&merchant.value) filters.push({key:'person',label:'服务人员',value:person.value,options:(options.value.personnel||[]).map((p:any)=>({value:p._id,label:p.label||p['姓名']}))});
+ return ['discover','orders'].includes(props.mode)?filters:[];
+});
+function setFilter(key:string,value:string){if(key==='method')method.value=value;if(key==='person')person.value=value;if(key==='category')category.value=value;if(key==='community'){communityFilter.value=value;estateFilter.value=''}}
+function openFilters(){moreDraft.value={date:date.value,estate:estateFilter.value,sort:sortOrder.value}}
+function cancelFilters(){openFilters()}
+function resetFilters(){moreDraft.value={date:'',estate:'',sort:'综合排序'}}
+function applyFilters(){date.value=moreDraft.value.date||'';estateFilter.value=moreDraft.value.estate||'';sortOrder.value=moreDraft.value.sort||'综合排序'}
+function clearFilters(){search.value='';status.value='';method.value='';category.value='';person.value='';communityFilter.value='';date.value='';estateFilter.value='';sortOrder.value='综合排序'}
 </script>
 <template>
   <AppPage
@@ -1068,7 +1123,7 @@ watch(
     :status="busy && !loaded ? 'loading' : 'ready'"
     @retry="load"
     ><template #navbar><AppNavbar v-if="!embedded" :title="title" show-back /></template>
-    <view class="service-page svc-view">
+    <view class="service-page svc-view" :class="{'booking-flow':mode==='booking','compact-action':isAction && isNewFlow}">
       <view v-if="error" class="message error svc-view" role="alert"
         ><text class="svc-text">{{ error }}</text
         ><text v-if="!loaded" class="retry svc-text" @click="load"
@@ -1082,7 +1137,7 @@ watch(
           ><text class="eyebrow svc-text">便民服务</text
           ><text class="hero-title svc-text">今天的服务待办</text
           ><text class="muted svc-text"
-            >按状态办理，服务安排与履约结果分别确认。</text
+            >接单派工后提交服务结果，及时查看住户评价。</text
           ></view
         >
         <view class="menu-grid svc-view"
@@ -1126,19 +1181,19 @@ watch(
           ><picker
             class="svc-picker"
             mode="date"
-            :value="form.start || '2026-11-01'"
+            :value="form.start || options.today?.slice(0,7)+'-01'"
             @change="form.start = $event.detail.value"
             ><text class="svc-text">{{
-              form.start || "2026-11-01"
+              form.start || options.today?.slice(0,7)+"-01"
             }}</text></picker
           ><text class="svc-text">至</text
           ><picker
             class="svc-picker"
             mode="date"
-            :value="form.end || '2026-11-06'"
+            :value="form.end || options.today"
             @change="form.end = $event.detail.value"
             ><text class="svc-text">{{
-              form.end || "2026-11-06"
+              form.end || options.today
             }}</text></picker
           ><button class="svc-button" @click="load">查询</button></view
         >
@@ -1147,13 +1202,13 @@ watch(
           ><picker
             class="svc-picker"
             mode="date"
-            :value="form.serviceDate || '2026-11-07'"
+            :value="form.serviceDate || options.today"
             @change="
               form.serviceDate = $event.detail.value;
               load();
             "
             ><text class="svc-text">{{
-              form.serviceDate || "2026-11-07"
+              form.serviceDate || options.today
             }}</text></picker
           ></view
         >
@@ -1181,166 +1236,14 @@ watch(
           >
             {{ newLabel }}
           </button></view
-        ><view class="search svc-view"
-          ><input
-            v-model="search"
-            :data-field="mode === 'discover' ? '29-A.01' : undefined"
-            :data-field-name="mode === 'discover' ? '搜索关键词' : undefined"
-            :placeholder="
-              mode === 'discover' ? '搜索服务名称、店铺' : '搜索编号、服务名称'
-            "
-            confirm-type="search"
-          /><text class="svc-text" @click="more = !more">筛选</text></view
-        ><view v-if="more" class="filter-panel svc-view"
-          ><FormField
-            label="服务方式"
-            :data-field="mode === 'discover' ? '29-A.03' : undefined"
-            ><picker
-              class="svc-picker"
-              :range="['全部', '上门', '预约到点']"
-              @change="
-                method = ['', '上门', '预约到点'][Number($event.detail.value)]
-              "
-              ><view class="pick svc-view">{{ method || "全部" }}</view></picker
-            ></FormField
-          ><FormField
-            v-if="mode === 'discover'"
-            label="服务分类"
-            data-field="29-A.02"
-            ><picker
-              class="svc-picker"
-              :range="[
-                { 类目名称: '全部', _id: '' },
-                ...(options.categories || []),
-              ]"
-              range-key="类目名称"
-              @change="
-                category = Number($event.detail.value)
-                  ? options.categories[Number($event.detail.value) - 1]._id
-                  : ''
-              "
-              ><view class="pick svc-view">{{
-                options.categories?.find((r: any) => r._id === category)
-                  ?.类目名称 || "全部"
-              }}</view></picker
-            ></FormField
-          ><FormField
-            v-if="mode === 'discover'"
-            label="社区"
-            data-field="29-A.04"
-            ><picker
-              class="svc-picker"
-              :range="[
-                { value: '', label: '全部' },
-                ...(options.communities || []),
-              ]"
-              range-key="label"
-              @change="
-                communityFilter = Number($event.detail.value)
-                  ? options.communities[Number($event.detail.value) - 1].value
-                  : '';
-                estateFilter = '';
-              "
-              ><view class="pick svc-view">{{
-                options.communities?.find(
-                  (r: any) => r.value === communityFilter,
-                )?.label || "全部"
-              }}</view></picker
-            ></FormField
-          >
-          <FormField
-            v-if="mode === 'discover'"
-            label="小区"
-            data-field="29-A.05"
-            ><picker
-              class="svc-picker"
-              :range="[
-                { value: '', label: '全部' },
-                ...(options.estates || []).filter(
-                  (r: any) =>
-                    !communityFilter || r.community === communityFilter,
-                ),
-              ]"
-              range-key="label"
-              @change="
-                estateFilter = Number($event.detail.value)
-                  ? options.estates.filter(
-                      (r: any) =>
-                        !communityFilter || r.community === communityFilter,
-                    )[Number($event.detail.value) - 1].value
-                  : ''
-              "
-              ><view class="pick svc-view">{{
-                options.estates?.find((r: any) => r.value === estateFilter)
-                  ?.label || "全部"
-              }}</view></picker
-            ></FormField
-          >
-          <FormField
-            v-if="mode === 'discover'"
-            label="排序"
-            data-field="29-A.06"
-            ><picker
-              class="svc-picker"
-              :range="['综合排序', '价格从低到高', '价格从高到低']"
-              @change="
-                sortOrder = ['综合排序', '价格从低到高', '价格从高到低'][
-                  Number($event.detail.value)
-                ]
-              "
-              ><view class="pick svc-view">{{ sortOrder }}</view></picker
-            ></FormField
-          >
-          <FormField
-            v-if="mode === 'orders' && merchant"
-            label="服务人员"
-            data-field="28-D.02"
-            ><picker
-              class="svc-picker"
-              :range="[
-                { value: '', label: '全部' },
-                ...(options.personnel || []),
-              ]"
-              range-key="label"
-              @change="
-                person = Number($event.detail.value)
-                  ? options.personnel[Number($event.detail.value) - 1]._id
-                  : ''
-              "
-              ><view class="pick svc-view">{{
-                options.personnel?.find((r: any) => r._id === person)?.label ||
-                "全部"
-              }}</view></picker
-            ></FormField
-          >
-          <FormField v-if="mode === 'orders'" label="当前进度"
-            ><input
-              v-model="status"
-              placeholder="如：待接单、待居民确认" /></FormField
-          ><FormField
-            v-if="mode === 'orders' && merchant"
-            label="服务日期"
-            data-field="28-D.01"
-            ><picker
-              class="svc-picker"
-              mode="date"
-              :value="date"
-              @change="date = $event.detail.value"
-              ><view class="pick svc-view">{{
-                date || "全部日期"
-              }}</view></picker
-            ></FormField
-          ><button
-            class="text-button svc-button"
-            @click="
-              status = '';
-              date = '';
-              category = '';
-              method = '';
-            "
-          >
-            清除筛选
-          </button></view
+        >
+          <button v-if="mode==='discover'" class="order-shortcut" @click="go('orders')">我的服务订单 ›</button>
+          <FilterBar v-model="search" :placeholder="mode==='discover'?'搜索服务名称、店铺':'搜索编号、服务名称'" :filters="quickFilters" :has-more="mode==='discover'||(mode==='orders'&&merchant)" :active-more="!!date||!!estateFilter||sortOrder!=='综合排序'" @filter="setFilter" @open="openFilters" @cancel="cancelFilters" @apply="applyFilters" @reset="resetFilters">
+            <FormField v-if="mode==='orders'&&merchant" label="服务日期"><picker mode="date" :value="moreDraft.date" @change="moreDraft.date=$event.detail.value"><view class="pick">{{moreDraft.date||'全部日期'}}</view></picker></FormField>
+            <template v-if="mode==='discover'"><FormField label="小区"><picker :range="[{value:'',label:'全部'},...(options.estates||[]).filter((r:any)=>!communityFilter||r.community===communityFilter)]" range-key="label" @change="moreDraft.estate=Number($event.detail.value)?(options.estates||[]).filter((r:any)=>!communityFilter||r.community===communityFilter)[Number($event.detail.value)-1].value:''"><view class="pick">{{options.estates?.find((r:any)=>r.value===moreDraft.estate)?.label||'全部'}}</view></picker></FormField><FormField label="排序"><picker :range="['综合排序','价格从低到高','价格从高到低']" @change="moreDraft.sort=['综合排序','价格从低到高','价格从高到低'][Number($event.detail.value)]"><view class="pick">{{moreDraft.sort}}</view></picker></FormField></template>
+          </FilterBar>
+          <scroll-view v-if="mode==='orders'" scroll-x class="status-tabs"><button v-for="t in orderStatuses" :key="t" :class="{active:(status||'全部')===t}" @click="status=t==='全部'?'':t">{{t}}</button></scroll-view>
+          <view v-if="search||status||method||category||person||communityFilter||date||estateFilter||sortOrder!=='综合排序'" class="filter-summary"><text>共 {{filtered.length}} 条</text><text class="text-link" @click="clearFilters">清除筛选</text></view
         ><view v-if="!filtered.length" class="empty svc-view"
           ><text class="svc-text">暂无符合条件的记录</text
           ><text class="muted svc-text">调整筛选，或稍后重新查询。</text
@@ -1371,7 +1274,7 @@ watch(
               r["经营店铺名称"]
             }}</text>
             <text class="muted svc-text" data-field="29-A.11">{{
-              serviceMethods(r)
+              serviceText(serviceMethods(r))
             }}</text>
             <view
               class="coverage svc-view"
@@ -1384,7 +1287,7 @@ watch(
                   : serviceCoverage(r).slice(0, 1)"
                 :key="line"
                 class="muted svc-text"
-                >{{ line }}</text
+                >{{ serviceText(line) }}</text
               >
               <text
                 v-if="serviceCoverage(r).length > 1"
@@ -1414,6 +1317,9 @@ watch(
             <text class="svc-text" data-field="28-D.05">{{
               r.currentArrangement["安排结束时间"]
             }}</text> </view
+          ><view v-if="table==='evaluations'" class="review-summary"><StarRating :model-value="Number(r['总体评分'])" readonly/><text class="review-copy">{{r['评价内容']||'未填写文字评价'}}</text><text class="muted">{{r['评价时间']}}</text></view>
+          <view v-if="table==='funds' && r['资金类型']==='分账'" class="fund-summary"><text>分账金额</text><text>¥{{r['本次成功分账金额']||r['应分服务商金额']||(Number(r._amount||0)/100).toFixed(2)}}</text></view>
+          <view v-if="table==='orders'&&!merchant" class="card-actions" @click.stop><button v-for="a in cardActions(r)" :key="a.name" :class="{primary:a.name==='evaluation.save'}" @click.stop="cardAction(r,a)">{{a.label}}</button></view
           ><view class="card-bottom svc-view"
             ><text
               class="amount svc-text"
@@ -1472,7 +1378,7 @@ watch(
                   selected: combo['组合履约方式名称'] === c['组合履约方式名称'],
                 }"
                 @click="selectedMethod = c._method || c['组合履约方式名称']"
-                >{{ c["组合履约方式名称"] }} · ¥{{ c["组合固定价格"] }}</view
+                >{{ serviceText(c["组合履约方式名称"]) }} · ¥{{ c["组合固定价格"] }}</view
               ></view
             ><text class="muted svc-text">{{ spec["包含内容"] }}</text
             ><text v-if="spec['不包含内容']" class="muted svc-text"
@@ -1485,48 +1391,24 @@ watch(
         ><view class="hero compact svc-view"
           ><text class="hero-title svc-text">{{ row["服务名称"] }}</text
           ><text class="svc-text"
-            >{{ spec["规格名称"] }} · {{ combo["组合履约方式名称"] }}</text
+            >{{ spec["规格名称"] }} · {{ serviceText(combo["组合履约方式名称"]) }}</text
           ><text class="amount svc-text">¥{{ combo["组合固定价格"] }}</text
           ><text class="muted svc-text">{{ spec["包含内容"] }}</text
           ><text v-if="spec['不包含内容']" class="muted svc-text"
             >不包含：{{ spec["不包含内容"] }}</text
           ></view
         ><view class="form-card svc-view"
-          ><FieldGroup
-            :tables="['29-B', '28-A']"
-            :value="bookingData"
-            action="order.book"
-            :options="{ ...options, selectedSpec: spec, selectedCombo: combo }"
-            :errors="fieldErrors"
-            editable
-            :exclude="[
-              '选定服务项目',
-              '选定服务规格',
-              '选定履约方式',
-              '上门服务地址',
-              '到点服务地点',
-              '期望时间信息',
-              '服务约定确认',
-              '接收新预约状态',
-              '暂停原因',
-              '开关变更时间',
-            ]"
-            @input="updateForm"
-          /><view
+          ><view
             v-if="combo['组合流程模板'] === '上门'"
             class="sub-form svc-view"
             ><text class="section-label svc-text">本次上门地址</text
-            ><FieldGroup
-              :tables="['29-C']"
-              :value="form['上门服务地址']"
-              :options="{ ...options, selectedCombo: combo }"
-              action="order.book"
-              :errors="fieldErrors"
-              editable
-              @input="updateForm({ ...form, 上门服务地址: $event })" /></view
+            >
+            <view class="address-select-row"><picker v-if="addresses.length" :range="addresses.map(addressLabel)" @change="selectAddress(addresses[Number($event.detail.value)])"><view class="pick">选择常用地址 ›</view></picker><text @click="manageAddresses">管理地址</text></view>
+            <view v-if="!addressEditing && form['上门服务地址']?.详细地址" class="selected-address"><text>{{ addressLabel(form['上门服务地址']) }}</text><text class="text-link" @click="addressEditing=true">修改本次地址</text></view>
+            <AddressForm v-else :value="form['上门服务地址']||{}" :options="{...options,selectedCombo:combo}" :errors="fieldErrors" :contact="false" @input="updateForm({...form,上门服务地址:$event})" /></view
           ><FormField
             v-else
-            label="到点服务地点"
+            label="到店服务地点"
             required
             data-field="29-B.09"
             data-field-name="到点服务地点"
@@ -1549,19 +1431,30 @@ watch(
                 )?.地点名称 || "请选择服务地点"
               }}</view></picker
             ></FormField
-          ><view
-            class="agreement svc-view"
-            data-field="29-B.19"
-            data-field-name="服务约定确认"
-            @click="
-              updateForm({ ...form, 服务约定确认: !form['服务约定确认'] })
-            "
-            ><checkbox :checked="!!form['服务约定确认']" color="#1b4d53" /><text
-              class="svc-text"
-              >我已阅读服务内容、商家约时与取消售后约定 <text class="required-mark">*</text></text
-            ></view
+          ><view v-if="combo['组合流程模板']==='预约到点' && form['到点服务地点']" class="point-summary"><template v-for="p in (combo['可服务门店或服务点']||[]).filter((p:any)=>p['地点业务编号']===form['到点服务地点'])" :key="p['地点业务编号']"><text>{{p['详细地址']}}</text><text>{{p['地点联系电话']}}</text><text>{{p['到点指引']}}</text></template></view><view class="booking-inputs"><FieldGroup class="booking-main-fields"
+            :tables="['29-B', '28-A']"
+            :only="['联系人姓名','联系人电话','期望时间选择','期望服务日期','期望时段偏好','服务对象描述']"
+            :value="bookingData"
+            action="order.book"
+            :options="{ ...options, selectedSpec: spec, selectedCombo: combo }"
+            :errors="fieldErrors"
+            editable
+            :exclude="[
+              '选定服务项目',
+              '选定服务规格',
+              '选定履约方式',
+              '上门服务地址',
+              '到点服务地点',
+              '期望时间信息',
+              '服务约定确认',
+              '接收新预约状态',
+              '暂停原因',
+              '开关变更时间',
+            ]"
+            @input="updateForm"
+          /><text class="optional-toggle" @click="showSupplement=!showSupplement">{{showSupplement?'收起补充需求':'补充需求（选填）'}} {{showSupplement?'⌃':'⌄'}}</text><FieldGroup v-if="showSupplement" :tables="['29-B','28-A']" :only="['期望时间补充说明','需求补充说明','需求图片']" :value="form" action="order.book" :options="{...options,selectedSpec:spec,selectedCombo:combo}" :errors="fieldErrors" editable @input="updateForm"/></view><checkbox-group class="agreement svc-view" data-field="29-B.19" data-field-name="服务约定确认" @change="updateForm({...form,服务约定确认:$event.detail.value.includes('agree')})"><label class="agreement-label"><checkbox value="agree" :checked="!!form['服务约定确认']" color="#1b4d53"/><text>我已阅读服务内容、商家约时与取消售后约定 <text class="required-mark">*</text></text></label></checkbox-group
           ><text class="muted svc-text"
-            >先付款并提交期望时间，具体人员和时间由商户提出后另行确认。</text
+            >付款后由商户接单派工，可在订单中查看人员和服务时间。</text
           ></view
         ><view class="bottom-actions svc-view"
           ><view class="total svc-view"
@@ -1580,25 +1473,32 @@ watch(
           ><text class="muted svc-text"
             >{{ statusLabel(row) }} · {{ row._id }}</text
           ></view
-        ><view class="form-card svc-view"
+        ><view v-if="isNewFlow && table==='orders'" class="action-context"><text>{{row['服务规格名称']}} · {{row['履约方式名称']}}</text><text>{{row['地点快照']?.['地点名称']||''}} {{[row['地点快照']?.省份,row['地点快照']?.城市,row['地点快照']?.区县,row['地点快照']?.详细地址].filter(Boolean).join('')}}</text><text>{{row['联系人姓名']}}　{{row['联系人电话']}}</text><text v-if="row.currentArrangement">{{row.currentArrangement['服务人员姓名']}} · {{row.currentArrangement['安排服务日期']}} {{row.currentArrangement['安排开始时间']}}—{{row.currentArrangement['安排结束时间']}}</text></view>
+        <view class="form-card svc-view"
           ><SupplyEditor
             v-if="commandName === 'service.save'"
+            :draft-key="'service:'+APP+':'+(props.id||'new')+':service.save'+(props.section?':'+props.section:'')"
             :value="form"
             :options="options"
             :errors="fieldErrors"
             @input="updateForm" /><template v-else
-            ><FieldGroup
+            >              <FormField v-if="isNewFlow && commandName==='order.result' && row['履约方式名称']==='预约到点'" label="到店凭证码" required :error="fieldErrors['到点凭证码']" data-field-name="到点凭证码"><input :value="form['到点凭证码']||''" placeholder="输入住户出示的本订单凭证" @input="updateForm({...form,到点凭证码:eventValue($event)})"/><text class="text-link" @click="scanResult">扫码填写</text></FormField><FieldGroup
               :tables="fields"
+              :draft-key="'service:'+APP+':'+(props.id||'new')+':'+commandName+(props.section?':'+props.section:'')"
               :only="formNames"
               :value="form"
-              :options="options"
+              :options="{...options, selectedCombo:row?._combo}"
               :errors="fieldErrors"
               editable
               :record-id="row?._id || ''"
               :record-table="table"
               :action="commandName"
               :record="row || {}"
-              @input="updateForm" /><FormField
+              @input="updateForm" />
+
+              <text v-if="isNewFlow && commandName==='order.result'" class="optional-toggle" @click="showSupplement=!showSupplement">{{showSupplement?'收起补充说明':'补充说明（选填）'}}</text>
+              <template v-if="commandName==='aftersale.cancelDecision'"><FormField label="取消核实结果" required :error="fieldErrors.取消核实结果"><picker :range="['同意取消','不同意取消']" @change="updateForm({...form,取消核实结果:['同意取消','不同意取消'][Number($event.detail.value)]})"><view class="pick">{{form.取消核实结果||'选择核实结果'}}</view></picker></FormField><FormField label="核实依据说明" required :error="fieldErrors.核实依据说明"><textarea :value="form.核实依据说明||''" placeholder="填写核实结果和理由" @input="updateForm({...form,核实依据说明:eventValue($event)})"/></FormField></template>
+              <FormField
               v-if="
                 !fields.length &&
                 /status|withdraw|retry|execute|submit|publish/.test(commandName)
@@ -1618,7 +1518,7 @@ watch(
       >
       <template v-else-if="mode === 'verify'"
         ><view class="hero svc-view"
-          ><text class="hero-title svc-text">核对到点凭证</text
+          ><text class="hero-title svc-text">核对到店凭证</text
           ><text class="muted svc-text"
             >查询后核对服务、商户、地点与安排，再确认到点。核验不会完成服务。</text
           ></view
@@ -1648,7 +1548,7 @@ watch(
             :record="verified"
             :options="options"
           /><AppButton :loading="saving" @click="verifyPoint"
-            >确认到点</AppButton
+            >确认到店</AppButton
           ></template
         ></template
       >
@@ -1662,7 +1562,7 @@ watch(
             price(row)
           }}</text></view
         ><view
-          v-if="proposal || activeArrangement"
+          v-if="!isNewFlow && (proposal || activeArrangement)"
           class="arrangement-card svc-view"
           ><text class="section-label svc-text">{{
             proposal && proposal !== activeArrangement
@@ -1696,7 +1596,7 @@ watch(
             row["凭证码"] ||
             row.voucher?.code ||
             activeArrangement?.["到点凭证码"] ||
-            "当前没有有效到点凭证"
+            "当前没有有效到店凭证"
           }}</text
           ><FieldGroup
             :tables="['30-B']"
@@ -1707,8 +1607,9 @@ watch(
               ...activeArrangement,
             }"
             :options="options" /></view
-        ><Details :table="table" :record="row" :options="options" /><view
-          v-if="table === 'orders' && !merchant"
+        ><view v-if="table==='orders'&&!merchant&&row._mode==='预约到点'&&row.credential" class="inline-voucher"><button class="voucher-toggle" @click="voucherExpanded=!voucherExpanded">{{voucherExpanded?'收起到店凭证':'查看到店凭证'}} {{voucherExpanded?'⌃':'⌄'}}</button><view v-if="voucherExpanded" class="voucher-card"><VoucherCode :value="row.credential['到点凭证二维码']||''"/><text class="voucher-code">{{row.credential['到点凭证码']}}</text><text>{{row.credential['凭证状态']}}</text><text>{{row['地点快照']?.地点名称}} · {{row['地点快照']?.详细地址}}</text><text>{{row.currentArrangement?.安排服务日期}} {{row.currentArrangement?.安排开始时间}}—{{row.currentArrangement?.安排结束时间}}</text></view></view>
+        <OrderDetails v-if="table==='orders' && isNewFlow" :record="row" :options="options"/><Details v-else :table="table" :record="row" :options="options" /><view
+          v-if="table === 'orders' && !merchant && !row.credential"
           class="secondary-links svc-view"
           ><text
             class="svc-text"
@@ -1718,7 +1619,7 @@ watch(
               row['履约方式'] === '预约到点'
             "
             @click="go('voucher', { id: row._id })"
-            >查看到点凭证</text
+            >查看到店凭证</text
           ></view
         ><view
           v-if="newCommand && mode === 'qualification'"
@@ -1727,13 +1628,13 @@ watch(
             >编辑经营申请</text
           ></view
         ><view v-if="actions.length" class="bottom-actions svc-view"
-          ><AppButton :loading="saving" @click="quick(actions[0])">{{
-            actions[0].label
+          ><AppButton :loading="saving" v-if="primaryAction" @click="quick(primaryAction)">{{
+            primaryAction.label
           }}</AppButton
-          ><view v-if="actions.length > 1" class="secondary-links svc-view"
+          ><view v-if="secondaryActions.length" class="secondary-links svc-view"
             ><text
               class="svc-text"
-              v-for="a in actions.slice(1)"
+              v-for="a in secondaryActions"
               :key="a.name + ':' + a.label"
               @click="quick(a)"
               >{{ a.label }}</text
@@ -1758,6 +1659,9 @@ watch(
   </AppPage>
 </template>
 <style scoped lang="scss">
+.address-select-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0}.address-select-row>text,.text-link{color:#1b4d53;font-size:14px}.selected-address{background:#f3f7f7;padding:12px;border-radius:10px;line-height:1.6}.selected-address>text{display:block}.point-summary{display:flex;flex-direction:column;gap:6px;color:#657678;margin:10px 0;font-size:14px}.action-context{background:white;border-radius:12px;padding:14px;margin:12px 0;line-height:1.7}.action-context>text{display:block;font-size:14px}.bottom-actions .secondary-links{flex-wrap:wrap}.service-page{padding-bottom:120px!important}
+.compact-action .hero{margin-bottom:10px;gap:6px}.compact-action .action-context{padding:12px;margin:10px 0}.compact-action :deep(.service-fields),.booking-main-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}.compact-action :deep(.service-fields > [data-field-name]),.booking-main-fields :deep([data-field-name]){grid-column:span 2}.compact-action :deep(.service-fields > [data-field-name="安排开始时间"]),.compact-action :deep(.service-fields > [data-field-name="安排结束时间"]){grid-column:span 1}.compact-action :deep([data-field-name="安排开始时间"] .form-field__label-row),.compact-action :deep([data-field-name="安排结束时间"] .form-field__label-row){flex-basis:100%}.compact-action :deep(.form-field__control textarea){min-height:64px}.optional-toggle{display:block;padding:10px 0;color:#1b4d53;font-size:14px}.booking-inputs{margin-top:12px}.booking-flow .sub-form{border:0;margin:0;padding:0}.booking-flow .agreement{align-items:center;gap:8px}.booking-flow .agreement .required-mark{display:inline}.booking-flow .form-card{gap:10px}
+
 .required-mark { color: $color-error; }
 .service-page {
   padding: 16px;
@@ -2143,4 +2047,7 @@ watch(
 .svc-button::after {
   border: 0;
 }
+.card-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;}.card-actions button{font-size:13px;line-height:34px;margin:0;padding:0 14px;background:#f3f6f6;color:#1b4d53;}.card-actions .primary{background:#1b4d53;color:#fff;}.review-summary{margin:8px 0;}.review-copy{display:block;margin:6px 0;font-size:14px;line-height:1.6;}.fund-summary{display:flex;justify-content:space-between;margin-top:8px;font-size:14px;}.agreement-label{display:flex;align-items:center;gap:6px;font-size:13px;line-height:1.6;}.voucher-toggle{background:#e7f1ef;color:#1b4d53;font-size:16px;line-height:50px;margin:12px 0 0;}.inline-voucher .voucher-card{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.status-tabs {white-space:nowrap;margin:0 0 12px;background:#fff;border-radius:12px;}.status-tabs button {display:inline-block;margin:0;padding:0 12px;line-height:46px;font-size:14px;background:transparent;border-radius:0;color:#687478;}.status-tabs button::after{border:0}.status-tabs button.active{color:#1b4d53;font-weight:600;border-bottom:3px solid #1b4d53;}
+.order-shortcut {text-align:left;margin:0 0 12px;background:#fff;line-height:48px;font-size:15px;color:#1b4d53;}.order-shortcut::after{border:0}.filter-summary{display:flex;justify-content:space-between;color:#7a8788;font-size:13px;margin:8px 0 12px;}
 </style>

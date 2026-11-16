@@ -20,6 +20,9 @@ let token = 0;
 function setup(scene = "S02-BASE") {
   const s = createSeed();
   service.prepare(s);
+  // V1.1 compatibility suite: preserve historical workflows and fixed statistics.
+  s.service.fixtureLegacyOrders = true;
+  s.service.clockMode = "fixed";
   if (scene !== "S02-BASE")
     service.auxiliary(s, web, "scenario", { name: scene });
   return s;
@@ -801,7 +804,7 @@ test("AC02-040 人工核查说明不能改未知资金终态", () => {
 });
 test("AC02-041 固定统计、跨期退款、负净收和下钻时间口径", () => {
   const s = setup("S02-STATS"),
-    m = service.overview(s, web);
+    m = service.overview(s, web, {start:"2026-11-01",end:"2026-11-06",serviceDate:"2026-11-07"});
   assert.deepEqual(
     [
       m["创建订单数"],
@@ -822,8 +825,8 @@ test("AC02-041 固定统计、跨期退款、负净收和下钻时间口径", ()
     ],
     ["495.00", "189.00", "306.00", "89.00", "30.00"],
   );
-  assert.equal(service.overview(s, merchantB)["期间净收款"], "-60.00");
-  assert.equal(service.overview(s, merchant)["期间净收款"], "366.00");
+  assert.equal(service.overview(s, merchantB, {start:"2026-11-01",end:"2026-11-06"})["期间净收款"], "-60.00");
+  assert.equal(service.overview(s, merchant, {start:"2026-11-01",end:"2026-11-06"})["期间净收款"], "366.00");
   assert.equal(
     service.query(s, web, "funds", {
       metric: "期间退款成功金额",

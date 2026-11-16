@@ -1,13 +1,14 @@
 <template>
-  <div class="service-detail">
-    <details
+  <div class="service-detail" :class="{'new-order-detail':table==='orders' && record._flowVersion===2}">
+    <ServiceBusinessSummary v-if="summaryKind" :record="record" :kind="summaryKind" :table="table"/>
+    <details v-else
       v-for="section in sections"
-      :key="section.id"
+      :key="section.title || section.id"
       class="detail-section"
       open
     >
       <summary>
-        {{ cleanTitle(tableById[section.id] && tableById[section.id].title, section.id) }}
+        {{ section.title || cleanTitle(tableById[section.id] && tableById[section.id].title, section.id) }}
       </summary>
       <p v-if="!section.sources.length" class="detail-empty">
         {{ emptyMessage(section.id) }}
@@ -22,14 +23,16 @@
         </h4>
         <dl class="detail-fields">
           <div
-            v-for="f in fields(section.id, source)"
+            v-for="f in fields(section.id, source, section.names)"
             :key="f.id"
             :data-field="f.id"
+            :class="{'wide-field':/地址|说明|内容|图片/.test(f.name)}"
           >
             <dt>{{ f.name }}</dt>
             <dd>
               <ServiceEvidence
                 v-if="isFile(f)"
+                :compact="f.name === '服务主图'"
                 :value="array(fieldValue(source, f))"
                 :record="record"
                 :table="table"
@@ -76,6 +79,7 @@
 <script>
 import { tableById } from "../../../../../prototype-shared/service/fields.js";
 import ServiceEvidence from "./ServiceEvidence.vue";
+import ServiceBusinessSummary from "./ServiceBusinessSummary.vue";
 import ServiceValues from "./ServiceValues.vue";
 import { plain, valueOf, titleOf } from "./model";
 const sectionNames = {
@@ -112,7 +116,7 @@ const asArray = (v) =>
   Array.isArray(v) ? v : v === undefined || v === null || v === "" ? [] : [v];
 export default {
   name: "ServiceDetail",
-  components: { ServiceEvidence, ServiceValues },
+  components: { ServiceEvidence, ServiceValues, ServiceBusinessSummary },
   props: {
     record: { type: Object, default: () => ({}) },
     table: String,
@@ -122,10 +126,16 @@ export default {
   },
   data: () => ({ tableById, sectionNames }),
   computed: {
+    summaryKind() { if(this.table==="aftersales")return this.tableIds.includes("31-A")?"sale":"money";if(this.table==="funds")return "money";if(this.table==="orders"&&this.tableIds.includes("29-F"))return "money";if(this.table==="orders"&&this.tableIds.includes("31-A"))return "sale";return ""; },
     sections() {
       return this.tableIds
         .filter(this.tableApplicable)
-        .map((id) => ({ id, sources: this.sources(id) }));
+        .flatMap(id => id === "27-C" ? [
+          {title:"1. 基本信息",names:["服务编号","服务名称","所属服务类目","经营主体名称","经营店铺名称","当前展示价","公开服务电话"]},
+          {title:"2. 服务介绍",names:["服务主图","介绍图片","服务简介","服务详细说明"]},
+          {title:"3. 适用范围与约定",names:["适用对象说明","预约须知"]},
+          {title:"4. 当前状态",names:["审核状态","上架状态","平台限制原因","可售状态说明","创建时间","最近更新时间"]}
+        ].map(g=>({...g,id,sources:this.sources(id)})) : [{ id, sources: this.sources(id) }]);
     },
     extras() {
       return Object.entries(this.record).filter(
@@ -231,6 +241,7 @@ export default {
     },
     sources(id) {
       const r = this.record;
+      if (id === "31-E" && this.table === "orders") return asArray(r.evaluation);
       if (id === "27-C")
         return [
           {
@@ -286,7 +297,7 @@ export default {
         }));
       if (id === "28-D")
         return asArray(r.currentArrangement)
-          .filter((a) => a["安排状态"] === "已接受")
+          .filter((a) => ["已接受", "已生效"].includes(a["安排状态"]))
           .map((a) => ({
             ...r,
             ...a,
@@ -404,8 +415,15 @@ export default {
         }[id] || "当前暂无此类记录。"
       );
     },
-    fields(id, source) {
-      return (tableById[id]?.fields || []).filter((f) => {
+    fields(id, source, names) {
+      const base = tableById[id]?.fields || [];
+      const added = this.record._flowVersion === 2 && id === "29-E"
+        ? ["服务地址", "服务人员", "服务时间", "服务完成时间", "订单完成时间"].map(name => ({id: "flow2:" + name, name, type: "文本／只读"})) : [];
+      return base.concat(added).filter((f) => {
+        if(names && !names.includes(f.name))return false;
+        if(id==="27-C"&&f.name==="服务规格集合")return false;
+        if (this.record._flowVersion === 2 && id === "29-E" && !["服务订单号", "服务规格名称", "履约方式名称", "经营店铺名称", "联系人姓名", "联系人电话", "需求说明", "需求图片", "服务对象描述", "创建时间", "服务地址", "服务人员", "服务时间", "服务完成时间", "订单完成时间"].includes(f.name)) return false;
+        if (this.record._flowVersion === 2 && /居民确认|到场|开始服务|到点确认|当前待确认|原始期望时间/.test(f.name)) return false;
         if (/历史|操作记录|变更记录|数据库|主键|外键|快照|版本$|^原始期望时间$|^当前安排$/.test(f.name) || (id === '30-C' && /^过程/.test(f.name))) return false;
         const value = this.fieldValue(source, f);
         return this.fieldApplicable(id, source, f) && value !== undefined && value !== '' && (!Array.isArray(value) || value.length > 0);
@@ -477,6 +495,11 @@ export default {
       return true;
     },
     fieldValue(r, f) {
+      if (r._flowVersion === 2) {
+        if (f.name === "服务地址") { const p=r["地点快照"]||{}; return [p["地点名称"],p["省份"],p["城市"],p["区县"],p["详细地址"]].filter(Boolean).join(" "); }
+        if (f.name === "服务人员") return r.currentArrangement?.["服务人员姓名"];
+        if (f.name === "服务时间") {const a=r.currentArrangement;return a ? `${a["安排服务日期"]} ${a["安排开始时间"]}—${a["安排结束时间"]}` : undefined;}
+      }
       let value = valueOf(r, f.name);
       if (value !== undefined) {
         const opts = /类目/.test(f.name)
@@ -546,6 +569,9 @@ export default {
 };
 </script>
 <style scoped>
+.new-order-detail .detail-fields { display: grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:24px; }
+.new-order-detail .detail-fields > div { grid-template-columns:110px minmax(0,1fr); gap:12px; padding:9px 0; }
+.new-order-detail .detail-fields > .wide-field { grid-column:span 2; }
 .detail-section {
   margin-bottom: 24px;
 }

@@ -100,7 +100,7 @@ export default {
     ],
   }),
   computed: {
-    serviceMenuGroups(){const role=this.info?.actor.role;const groups=[{title:'商户与合作管理',entries:[['qualifications','服务经营资格'],['personnel','服务人员']]},{title:'商品与服务运营',entries:[['categories','服务分类'],['review','服务审核']]},{title:'订单与履约管理',entries:[['orders','服务订单']]},{title:'售后与评价',entries:[['aftersales','服务售后'],['evaluations','服务评价']]},{title:'经营与资金',entries:[['overview','服务经营'],['funds','服务资金'],['exceptions','资金异常核查']]}];return groups.map(g=>({...g,entries:g.entries.filter(e=>e[0]==='categories'?role==='platform':role==='property').map(e=>({path:'service/'+e[0],title:e[1]}))})).filter(g=>g.entries.length)},
+    serviceMenuGroups(){const role=this.info?.actor.role;const groups=[{title:'商户与合作管理',entries:[['qualifications','服务经营资格'],['personnel','服务人员']]},{title:'商品与服务运营',entries:[['categories','服务分类'],['review','服务审核']]},{title:'订单与履约管理',entries:[['orders','服务订单']]},{title:'售后与评价',entries:[['aftersales','服务售后'],['evaluations','服务评价']]}];return groups.map(g=>({...g,entries:g.entries.filter(e=>e[0]==='categories'?role==='platform':['platform','property'].includes(role)).map(e=>({path:'service/'+e[0],title:e[1]}))})).filter(g=>g.entries.length)},
     visibleGroups() {
       return this.groups.map(group => ({ ...group, items: group.items.filter(this.available) })).filter(group => group.items.length)
     },
@@ -108,6 +108,7 @@ export default {
       return this.$route.meta.service ? this.serviceMenuGroups.find(g=>g.entries.some(e=>e.path===this.table))?.title || '便民服务' : this.$route.meta.stage01 ? '物业服务' : this.groups.find(group => group.items.includes(this.table))?.title || '工作台'
     },
     table() {
+      if (this.$route.meta.service && ['/service/funds', '/service/exceptions'].includes(this.$route.path)) return 'service/orders'
       if(this.$route.meta.stage01 || this.$route.meta.service)return this.$route.path.slice(1)
       return this.$route.name === 'spaces' ? 'spaces' : this.$route.params.table || 'dashboard'
     },

@@ -83,8 +83,67 @@ function demoPoints() {
     },
   ];
 }
+// Common service categories for the prototype; these are examples, not real offerings or qualification policy.
+function addCategorySamples(d) {
+  if (d.categorySamplesVersion === 1) return false;
+  const groups = [
+    ['APPLIANCE', '家电清洗', [
+      ['AC', '空调清洗', ['挂机空调清洗', '柜机空调清洗']],
+      ['KITCHEN', '厨房家电清洗', ['油烟机清洗', '冰箱清洗']],
+    ]],
+    ['HOMECARE', '家居养护', [
+      ['FABRIC', '布艺清洁', ['沙发清洗', '床垫清洗']],
+      ['SURFACE', '家居清洁', ['地毯清洗', '窗帘清洗']],
+    ]],
+    ['LIFE', '生活便民', [
+      ['LAUNDRY', '洗衣洗鞋', ['衣物洗护', '鞋靴清洗']],
+      ['ORGANIZE', '整理收纳', ['衣柜整理', '搬家整理']],
+    ]],
+    ['PET', '宠物服务', [
+      ['GROOM', '宠物洗护', ['宠物洗澡', '宠物美容']],
+      ['CARE', '宠物照护', ['上门喂养', '宠物寄养']],
+    ]],
+  ];
+  const make = (id, name, parent, order) => ({
+    _id: id, _rev: 1, 类目编号: id, 类目名称: name, 上级类目: parent,
+    类目图标: '', 类目说明: name + '服务样例', 商户证明是否必需: false,
+    商户资质要求说明: '演示样例，实际材料要求待核验', 人员证明是否必需: false,
+    人员资质要求说明: '演示样例，实际材料要求待核验',
+    允许履约方式: ['HOME', 'POINT'], 类目排序: order, 类目状态: '启用', history: hist('分类样例'),
+  });
+  const exists = (id) => d.categories.some((c) => c._id === id);
+  let order = 100;
+  for (const [code, name, children] of groups) {
+    const root = 'S02-SAMPLE-' + code;
+    // Preserve user-created or previously deleted roots; never merge into or replace them.
+    if (exists(root) || d.categories.some((c) => !c._deleted && !c['上级类目'] && c['类目名称'] === name)) continue;
+    d.categories.push(make(root, name, '', order++));
+    for (const [subCode, subName, leaves] of children) {
+      const child = root + '-' + subCode;
+      if (exists(child)) continue;
+      d.categories.push(make(child, subName, root, order++));
+      leaves.forEach((leaf, index) => {
+        const id = child + '-' + (index + 1);
+        if (!exists(id)) d.categories.push(make(id, leaf, child, order++));
+      });
+    }
+  }
+  d.categorySamplesVersion = 1;
+  return true;
+}
 function prepareReferences(d) {
-  let changed = false;
+  let changed = addCategorySamples(d);
+  if (!d.clockMode) { d.clockMode = "live"; changed = true; }
+  // Bring existing sessions in line with the platform administrator's Web access.
+  const platformGrant = d.grants?.["platform-admin"];
+  if (platformGrant) {
+    for (const capability of ["manage", "review", "ruling", "funds"]) {
+      if (platformGrant[capability] !== true) {
+        platformGrant[capability] = true;
+        changed = true;
+      }
+    }
+  }
   if (!Array.isArray(d.points)) {
     d.points = demoPoints();
     changed = true;
@@ -488,6 +547,7 @@ export function prepare(s, session = "") {
     sequence: 100,
     revision: 1,
     clock: at,
+    clockMode: "live",
     scenario: "S02-BASE",
     scenarioVersion: 1,
     ruleVersion: "DEMO-ALLOC-V1",
@@ -502,10 +562,10 @@ export function prepare(s, session = "") {
       "platform-admin": {
         read: true,
         config: true,
-        manage: false,
-        review: false,
-        ruling: false,
-        funds: false,
+        manage: true,
+        review: true,
+        ruling: true,
+        funds: true,
         sensitive: false,
       },
       "property-admin": {

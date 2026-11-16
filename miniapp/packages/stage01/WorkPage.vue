@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import FilterBar from "../ui/components/FilterBar.vue";
+import FormField from "../ui/components/FormField.vue";
+import {showFormError} from "../ui/formFeedback";
 import { ref, computed, onUnmounted, watch, nextTick } from "vue";
 import { onShow, onHide } from "@dcloudio/uni-app";
 import { service, APP } from "@/services/foundation";
@@ -8,6 +11,7 @@ import ActionForm from "./ActionForm.vue";
 import Details from "./Details.vue";
 import { actionNames, format, listStates } from "@core/stage01/ui.js";
 const names: Record<string, string> = actionNames;
+const filterDraft=ref<any>({start:"",end:""});
 const props = withDefaults(
   defineProps<{
     mode: string;
@@ -240,6 +244,7 @@ async function save() {
     error.value = e.message;
     errors.value = e.fields || {};
     await service.draft(draftKey.value, form.value);
+    await showFormError(e);
   } finally {
     saving.value = false;
   }
@@ -294,35 +299,7 @@ onUnmounted(() => {
               ? "上报工单"
               : "现场上报"
           }}</button
-        ><view class="filters"
-          ><input
-            v-model="keyword"
-            placeholder="搜索事项或编号"
-            data-field="QF01"
-          /><picker
-            mode="date"
-            :value="startDate"
-            @change="startDate = $event.detail.value"
-            ><view data-field="QF08"
-              >{{ startDate || "上报开始日期" }} ›</view
-            ></picker
-          ><picker
-            mode="date"
-            :value="endDate"
-            @change="endDate = $event.detail.value"
-            ><view data-field="QF09"
-              >{{ endDate || "上报结束日期" }} ›</view
-            ></picker
-          ><picker
-            :range="['全部状态', ...listStates.workorders]"
-            @change="
-              status = ['', ...listStates.workorders][
-                Number($event.detail.value)
-              ]
-            "
-            ><view>{{ status || "全部状态" }} ›</view></picker
-          ></view
-        ><text class="muted" data-field="QF12">共 {{ filtered.length }} 条</text
+        ><FilterBar v-model="keyword" placeholder="搜索事项或编号" :filters="[{key:'status',label:'状态',value:status,options:listStates.workorders.map((s:string)=>({value:s,label:s}))}]" has-more :active-more="!!startDate||!!endDate" @filter="(_,v)=>status=v" @open="filterDraft={start:startDate,end:endDate}" @reset="filterDraft={start:'',end:''}" @apply="startDate=filterDraft.start;endDate=filterDraft.end"><FormField label="上报开始日期"><picker mode="date" :value="filterDraft.start" @change="filterDraft.start=$event.detail.value"><view>{{filterDraft.start||'全部日期'}}</view></picker></FormField><FormField label="上报结束日期"><picker mode="date" :value="filterDraft.end" @change="filterDraft.end=$event.detail.value"><view>{{filterDraft.end||'全部日期'}}</view></picker></FormField></FilterBar><text class="muted" data-field="QF12">共 {{ filtered.length }} 条</text
         ><view v-for="r in filtered" :key="r._id" class="card" @click="open(r)"
           ><text class="card-title">{{ r._title }}</text
           ><text class="muted">{{ r._subtitle }}</text

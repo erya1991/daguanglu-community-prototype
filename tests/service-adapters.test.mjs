@@ -17,6 +17,19 @@ function environment() {
   };
   return { data, removed };
 }
+
+test("V1.2 微信下单预校验与正式提交共用规则，成功和失败均不写入存储", async () => {
+  const {data}=environment(), api=createUniAdapter('resident');
+  await api.start(); await api.identity('resident-a');
+  const input={选定服务项目:'SV-FAN',选定服务规格:'SPEC-FAN',选定履约方式:'POINT',到点服务地点:'POINT-A',联系人姓名:'林悦',联系人电话:'13800000001',期望时间选择:'时间可协商',服务约定确认:true};
+  const before=clone([...data]);
+  assert.deepEqual(await api.service.preflight(input),{valid:true,amount:'59.00'});
+  assert.deepEqual([...data],before);
+  await assert.rejects(()=>api.service.preflight({...input,联系人电话:''}),/联系人电话/);
+  assert.deepEqual([...data],before);
+  const order=(await api.service.command('order.create',{operationId:'wechat-preflight-create',data:input})).record;
+  assert.equal(order['订单应付金额'],'59.00');
+});
 test("AC02-047/052 微信Adapter专属复位保留基础与Stage01，并清理专属本端文件", async () => {
   const { data, removed } = environment(),
     api = createUniAdapter("merchant");

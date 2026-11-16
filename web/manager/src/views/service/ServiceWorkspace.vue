@@ -10,6 +10,7 @@
         <Button
           v-if="newAction"
           type="primary"
+          :class="{ 'category-root-button': activeView === 'categories' }"
           :data-action="newAction.name"
           @click="startAction(newAction, null)"
           >{{ newAction.label }}</Button
@@ -32,6 +33,11 @@
         label="履约方式"
         name="methods"
     /></Tabs>
+    <Tabs v-if="['orders', 'funds', 'exceptions'].includes(activeView)" :value="activeView" @on-click="openOrderTab">
+      <TabPane label="服务订单" name="orders" />
+      <TabPane label="资金记录" name="funds" />
+      <TabPane label="异常核查" name="exceptions" />
+    </Tabs>
     <div class="query-panel">
       <div class="query-main">
         <input
@@ -154,7 +160,25 @@
         >当前范围暂无可计算的经营事实。</Alert
       >
     </div>
-    <div v-else class="list-card" :class="{ 'category-list': activeView === 'categories' }">
+    <div v-else-if="activeView === 'categories'" class="list-card category-list">
+      <div class="table-scroll">
+        <table class="service-table category-tree" data-table="categories">
+          <thead><tr><th>分类名称</th><th>状态</th><th>操作</th></tr></thead>
+          <tbody>
+            <tr v-for="item in categoryTreeRows" :key="item.row._id" :data-record="item.row._id">
+              <td><div class="category-name" :style="{ paddingLeft: (item.depth * 24) + 'px' }">
+                <button v-if="item.hasChildren" class="tree-toggle" :class="{expanded:!collapsedCategories[item.row._id]}" type="button" :aria-label="(collapsedCategories[item.row._id] ? '展开' : '收起') + item.row['类目名称']" :aria-expanded="!collapsedCategories[item.row._id]" @click="toggleCategory(item.row._id)">{{ collapsedCategories[item.row._id] ? '›' : '›' }}</button>
+                <span v-else class="tree-spacer"></span><span>{{ item.row['类目名称'] }}</span>
+              </div></td>
+              <td><i-switch size="large" v-if="options.actor && options.actor.grant && options.actor.grant.config" :value="item.row['类目状态'] === '启用'" :disabled="!!categoryBusy[item.row._id]" @on-change="toggleCategoryStatus(item.row, $event)"><span slot="open">启用</span><span slot="close">停用</span></i-switch><span v-else>{{item.row['类目状态']}}</span></td>
+              <td class="action-column"><Button type="text" @click="openRecord(item.row)">查看详情</Button><template v-if="options.actor && options.actor.grant && options.actor.grant.config"><Button type="text" @click="editCategory(item.row)">编辑</Button><Button type="text" @click="deleteCategory(item.row)">删除</Button><Button v-if="item.depth < 2" type="text" @click="addSubcategory(item.row)">添加子分类</Button></template></td>
+            </tr>
+            <tr v-if="!categoryTreeRows.length"><td colspan="3" class="empty-state">暂无匹配分类</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div v-else class="list-card">
       <div class="list-heading">
         <strong>{{ config.title }}记录</strong
         ><span>{{ filteredRows.length }} 条</span>
@@ -174,7 +198,7 @@
                 :key="column"
                 :data-field="fieldIdFor(column)"
               >
-                <span
+                <Button v-if="currentTable === 'evaluations' && column === '原订单号'" type="text" @click="openRelatedOrder(row)">{{row['服务订单号'] || row._order}}</Button><span v-else
                   :class="{ 'status-badge': /状态|进度|有效性/.test(column), 'category-child': activeView === 'categories' && column === '类目名称' && row['上级类目'] }"
                   >{{ cell(row, column) }}</span
                 >
@@ -210,33 +234,44 @@
         />
       </div>
     </div>
-    <Drawer
+    <component :is="currentTable === 'categories' ? 'Modal' : 'Drawer'"
       v-model="detailVisible"
       :title="selected ? recordTitle(selected) : '记录详情'"
-      :width="960"
+      :width="currentTable === 'categories' ? 680 : 960"
+      footer-hide
       :mask-closable="true"
       class-name="service-detail-drawer"
       @on-close="clearSelection"
+      @on-cancel="clearSelection"
     >
       <template v-if="selected"
         ><div class="record-summary">
           <div>
-            <span>{{ selected._id }}</span>
             <h2>{{ recordTitle(selected) }}</h2>
             <p>{{ summary(selected) }}</p>
           </div>
         </div>
-        <section v-for="g in detailGroups" :key="g[0]" class="service-detail-group">
-          <h3>{{ g[0] }}</h3>
-          <ServiceDetail :record="selected" :options="options" :table="currentTable" :table-ids="g[1]" :show-extras="false" />
-        </section>
-        <ServiceDetail :record="selected" :options="options" :table="currentTable" :table-ids="[]" />
+        <Tabs v-model="detailTab" v-if="detailGroups.length > 1">
+          <TabPane v-for="(g, index) in detailGroups" :key="g[0]" :label="g[0]" :name="String(index)">
+            <ServiceDetail v-if="detailTab === String(index)" :record="selected" :options="options" :table="currentTable" :table-ids="g[1]" :show-extras="false" />
+          </TabPane>
+          <TabPane v-if="!['services','evaluations','aftersales','funds'].includes(currentTable) && selected._flowVersion !== 2" label="关联信息" name="related">
+            <ServiceDetail v-if="detailTab === 'related'" :record="selected" :options="options" :table="currentTable" :table-ids="[]" />
+          </TabPane>
+        </Tabs>
+        <template v-else>
+          <ServiceDetail v-for="g in detailGroups" :key="g[0]" :record="selected" :options="options" :table="currentTable" :table-ids="g[1]" :show-extras="false" />
+          <ServiceDetail v-if="!['categories','services','evaluations','aftersales','funds'].includes(currentTable)" :record="selected" :options="options" :table="currentTable" :table-ids="[]" />
+        </template>
       </template>
-    </Drawer>
-    <Drawer
+      <div v-if="currentTable === 'categories'" class="modal-footer"><Button @click="detailVisible=false;clearSelection()">关闭</Button></div>
+    </component>
+    <component :is="simpleAction ? 'Modal' : 'Drawer'"
       v-model="actionVisible"
       :title="actionTitle"
-      :width="760"
+      :width="simpleAction ? 680 : 760"
+      footer-hide
+      @on-cancel="closeAction"
       :mask-closable="false"
       class-name="service-action-drawer"
       @on-close="closeAction"
@@ -266,21 +301,22 @@
             :errors="fieldErrors"
             :original="actionRecord || {}"
             :action="action.name"
+            :excluded-fields="action.name === 'category.save' && action.categoryParent !== undefined ? ['上级类目'] : []"
           />
           <div class="action-footer">
-            <Button @click="closeAction">保留输入并返回</Button
+            <Button @click="closeAction">{{simpleAction ? "取消" : "返回"}}</Button
             ><Button
               type="primary"
               :loading="saving"
               :disabled="saving"
               :data-action="'submit:' + action.name"
               @click="submitAction"
-              >{{ saving ? "正在保存…" : "确认" + actionTitle }}</Button
+              >{{ saving ? "正在保存…" : simpleAction ? "确定" : "确认" + actionTitle }}</Button
             >
           </div></Form
         ></template
       >
-    </Drawer>
+    </component>
   </section>
 </template>
 <script>
@@ -356,7 +392,10 @@ export default {
     filters: {},
     page: 1,
     categoryTab: "categories",
+    collapsedCategories: {},
+    categoryBusy: {},
     detailVisible: false,
+    detailTab: "0",
     selected: null,
     actionVisible: false,
     action: null,
@@ -390,10 +429,21 @@ export default {
     currentTable() {
       return this.config.table;
     },
+    // Keep the transferred container type stable while opening an action.
+    simpleAction() { return ["categories", "methods", "evaluations"].includes(this.activeView); },
     columns() {
-      return this.config.columns;
+      return this.currentTable === "evaluations" ? ["原订单号", ...this.config.columns] : this.config.columns;
     },
     detailGroups() {
+      if (this.currentTable === "orders" && this.selected?._flowVersion === 2)
+        return [
+          ["订单信息", ["29-E"]],
+          ["服务结果", ["30-C", "30-B", "31-E"]],
+          ["支付结果", ["29-F", "31-D", "32-C", "32-D", "32-E"]],
+          ["取消与售后", ["31-A", "31-B", "31-C", "31-G"]],
+        ];
+      if(this.currentTable === "aftersales") return [["售后详情", ["31-A"]],["执行与退款",["31-D"]]];
+      if(this.currentTable === "funds") return [["资金结果", ["32-C"]]];
       return this.config.groups;
     },
     filterExclusions() {
@@ -430,7 +480,9 @@ export default {
       if (this.activeView === "categories")
         return {
           name: "category.save",
-          label: "新增服务类目",
+          label: "添加一级分类",
+          defaults: { 上级类目: "" },
+          categoryParent: "",
           fields: ["27-A"],
         };
       if (this.activeView === "methods")
@@ -472,6 +524,28 @@ export default {
         }
         return true;
       });
+    },
+    categoryTreeRows() {
+      const matched = new Set(this.filteredRows.map((r) => r._id));
+      const byId = new Map(this.rows.map((r) => [r._id, r]));
+      for (const id of [...matched]) {
+        let node = byId.get(id), seen = new Set();
+        while (node && node['上级类目'] && !seen.has(node._id)) {
+          seen.add(node._id); node = byId.get(node['上级类目']);
+          if (node) matched.add(node._id);
+        }
+      }
+      const visible = this.rows.filter((r) => matched.has(r._id)), result = [], visited = new Set();
+      const walk = (row, depth) => {
+        if (visited.has(row._id)) return;
+        visited.add(row._id);
+        const children = visible.filter((r) => r['上级类目'] === row._id);
+        result.push({ row, depth, hasChildren: children.length > 0 });
+        if (!this.collapsedCategories[row._id] || this.keyword || this.status) children.forEach((child) => walk(child, depth + 1));
+      };
+      visible.filter((r) => !r['上级类目'] || !byId.has(r['上级类目'])).forEach((r) => walk(r, 0));
+      visible.filter((r) => !visited.has(r._id) && !byId.has(r['上级类目'])).forEach((r) => walk(r, 0));
+      return result;
     },
     pageRows() {
       return this.filteredRows.slice((this.page - 1) * 10, this.page * 10);
@@ -608,6 +682,31 @@ export default {
     this.persistFilters();
   },
   methods: {
+    toggleCategory(id) { this.$set(this.collapsedCategories, id, !this.collapsedCategories[id]); },
+    addSubcategory(row) {
+      this.$delete(this.collapsedCategories, row._id);
+      this.startAction({name: 'category.save', label: '添加子分类', fields: ['27-A'], defaults: {'上级类目': row._id}, categoryParent: row._id}, null);
+    },
+    editCategory(row) {
+      const action = this.rowActions(row).find((v) => v.name === 'category.save');
+      if (action) this.startAction(action, row);
+    },
+    async toggleCategoryStatus(row, enabled) {
+      if (this.categoryBusy[row._id]) return;
+      this.$set(this.categoryBusy, row._id, true);
+      try {
+        await service.service.command('category.status', {id: row._id, revision: row._rev, operationId: operationId(), data: {'状态': enabled ? '启用' : '停用'}});
+        await this.load();
+        this.$Message.success(enabled ? '分类已启用' : '分类已停用');
+      } catch (e) { this.$Message.error(e.message || '状态更新失败，请重试'); await this.load(); }
+      finally { this.$delete(this.categoryBusy, row._id); }
+    },
+    deleteCategory(row) {
+      this.$Modal.confirm({ title: '删除分类', content: '确认删除此分类？已有下级分类或业务引用时需要先处理关联。', onOk: async () => {
+        try { await service.service.command('category.delete', {id: row._id, revision: row._rev, operationId: operationId(), data: {}}); this.$Message.success('分类已删除'); await this.load(); }
+        catch (e) { this.$Message.error(e.message || '删除失败'); }
+      }});
+    },
     recordTitle: titleOf,
     cell(r, c) {
       let v = valueOf(r, c);
@@ -703,6 +802,9 @@ export default {
       this.applyDrillQuery();
       this.load();
     },
+    openOrderTab(name) {
+      if (name !== this.activeView) this.$router.push('/service/' + name).catch(() => {});
+    },
     setCategoryTab(name) {
       this.categoryTab = name;
       this.keyword = "";
@@ -794,6 +896,7 @@ export default {
             }
           }
           if ((this.page - 1) * 10 >= this.filteredRows.length) this.page = 1;
+          if(this.currentTable==="orders" && this.$route.query.record && !this.detailVisible) { const order=this.rows.find(r=>r._id===this.$route.query.record); if(order) await this.openRecord(order); }
         }
       } catch (e) {
         if (seq === this.requestSequence)
@@ -809,11 +912,13 @@ export default {
           this.currentTable,
           row._id,
         );
+        this.detailTab = "0";
         this.detailVisible = true;
       } catch (e) {
         this.error = e.message || "无权读取此记录";
       }
     },
+    openRelatedOrder(row) { this.$router.push({path:"/service/orders",query:{record:row._order || row["服务订单号"]}}); },
     clearSelection() {
       this.selected = null;
     },
@@ -858,7 +963,7 @@ export default {
                 ? "受限"
                 : "停用";
       try {
-        const saved = await service.draft(this.actionDraftKey());
+        const saved = this.simpleAction ? null : await service.draft(this.actionDraftKey());
         if (saved?.data) {
           draft = saved.data;
           this.pendingOperation = saved.operationId || this.pendingOperation;
@@ -878,7 +983,7 @@ export default {
         "service:web:" +
         this.currentTable +
         ":" +
-        (this.actionRecord ? this.actionRecord._id : "new") +
+        (this.actionRecord ? this.actionRecord._id : "new:" + (this.action?.categoryParent || "root")) +
         ":" +
         this.action?.name +
         ":" +
@@ -886,7 +991,7 @@ export default {
       );
     },
     async persistActionDraft() {
-      if (!this.action) return;
+      if (!this.action || this.simpleAction) return;
       try {
         await service.draft(this.actionDraftKey(), {
           data: this.draft,
@@ -897,7 +1002,8 @@ export default {
       }
     },
     async closeAction() {
-      await this.persistActionDraft();
+      if(this.simpleAction) await service.draft(this.actionDraftKey(),null);
+      else await this.persistActionDraft();
       this.actionVisible = false;
     },
     async submitAction() {
@@ -1088,6 +1194,13 @@ export default {
   min-width: 0;
   overflow: hidden;
 }
+.category-root-button { background: #2d8cf0; border-color: #2d8cf0; }
+.category-list .ivu-switch-checked { background: #2d8cf0; border-color: #2d8cf0; }
+.category-tree th:first-child { width: 48%; }
+.category-tree th:nth-child(2) { width: 120px; }
+.category-tree .category-name { display: flex; align-items: center; min-height: 22px; }
+.category-tree .tree-toggle { border: 0; background: transparent; cursor: pointer; color: #657180; font-size: 18px; width: 20px; line-height: 1; }
+.category-tree .tree-spacer { display: inline-block; width: 20px; }
 .category-list .service-table th { background: #e9f3fd; color: #314154; }
 .category-list .service-table td { height: 49px; }
 .category-list .service-table tbody tr:hover { background: #f5f8fc; }
@@ -1296,4 +1409,5 @@ export default {
     flex-direction: column;
   }
 }
+.category-tree .tree-toggle,.category-tree .tree-spacer{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;line-height:22px;padding:0;margin:0 4px 0 0;vertical-align:middle}.category-tree .tree-toggle.expanded{transform:rotate(90deg)}.modal-footer{text-align:right;margin-top:16px}
 </style>

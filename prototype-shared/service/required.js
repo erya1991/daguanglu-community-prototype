@@ -43,6 +43,9 @@ const requiredByAction = {
  * @returns {boolean | undefined}
  */
 export function requiredServiceField(action, field, data = {}, options = {}, record = {}) {
+  if (record._flowVersion === 2 && action === 'order.accept') return data['接单结果'] === '无法承接'
+    ? field.name === '无法承接说明' : ['服务人员','安排服务日期','安排开始时间','安排结束时间'].includes(field.name);
+  if (record._flowVersion === 2 && action === 'order.result') return field.name === '实际完成内容' || (field.name === '到点凭证码' && record._mode === '预约到点') || (field.name === '结果图片' && (record._combo || record['服务内容快照']?.方式 || {})['完成证据要求'] === '必需图片');
   if (!Object.prototype.hasOwnProperty.call(requiredByAction, action)) return undefined;
   const name = field.name;
   if (action === "order.book" && field.id?.startsWith("29-C.")) {

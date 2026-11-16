@@ -24,6 +24,8 @@ import {
   fundsFor,
   auditEvidence,
   pickInput,
+  simplified,
+  serviceCompleted,
 } from "./common.js";
 import { refund, syncOrder } from "./funds.js";
 const types = [
@@ -46,9 +48,9 @@ function normalize(t) {
 }
 export function businessTreatments(o, result, ruling = false) {
   const type = normalize(result),
-    completed =
-      o["结案结果"] === "正常完成" && o["居民完成确认状态"] === "已确认",
+    completed = serviceCompleted(o),
     started = list(o.rounds).some((r) => r["开始记录时间"]);
+  if (type === "补充履约" && simplified(o)) return [];
   if (type === "补充履约")
     return ruling ? ["继续／补充履约"] : ["继续履约／补充履约"];
   if (completed)
@@ -177,6 +179,8 @@ export function executeSale(s, a, sale, o) {
   append(s, a, sale, "执行售后结果", sale["售后结案说明"] || type);
 }
 export function aftersaleCommand(s, a, name, p) {
+  if (["aftersale.ruling", "aftersale.rulingNote"].includes(name))
+    need(domain(s).fixtureLegacyOrders, "本期仅支持协商售后，历史裁定只读保留");
   const d = pickInput(
     p.data || {},
     {
@@ -216,12 +220,17 @@ export function aftersaleCommand(s, a, name, p) {
       ],
       rulingNote: ["追加说明", "裁定依据附件"],
       execute: [],
+      cancelDecision: ["取消核实结果", "核实依据说明"],
     }[name.split(".")[1]] || [],
   );
   if (name === "aftersale.apply") {
     resident(a);
     const o = get(s, a, "orders", p.id);
     revision(o, p);
+    if (simplified(o)) {
+      need(serviceCompleted(o), "服务完成后才可申请售后，待服务订单请申请取消");
+      need(d["申请类型"] !== "核实取消" && d["期望解决方式"] !== "补充履约", "本期售后办理退款或服务问题");
+    }
     need(success(s, o, "支付") > 0, "付款尚未成功，不进入已付款售后");
     need(!activeAftersale(s, o), "本单已有进行中售后，请在原记录补证或办理");
     required(d, ["申请类型", "申请原因"]);
@@ -268,6 +277,25 @@ export function aftersaleCommand(s, a, name, p) {
   const sale = get(s, a, "aftersales", p.id),
     o = get(s, a, "orders", sale._order);
   revision(sale, p);
+  if (name === "aftersale.cancelDecision") {
+    merchant(a);
+    need(simplified(o) && sale["申请类型"] === "核实取消" && ["待处理", "协商中"].includes(sale["售后状态"]), "当前没有待核实取消申请");
+    required(d, ["取消核实结果", "核实依据说明"]);
+    need(["同意取消", "不同意取消"].includes(d["取消核实结果"]), "请选择核实结果");
+    Object.assign(sale, d);
+    if (d["取消核实结果"] === "同意取消") {
+      const plan = { 方案处理类型: "全额退款", 业务结案方式: "未服务取消", 方案说明: d["核实依据说明"], 拟退款金额: money(refundable(s, o)), 方案版本: ++sale["方案版本"], 方案提出人: a.name, 方案提出时间: clock(s) };
+      sale.plans.push(plan); sale["售后状态"] = "待执行";
+      executeSale(s, a, sale, o);
+    } else {
+      sale["售后状态"] = "已拒绝"; sale["售后结案时间"] = clock(s);
+      sale["当前处理说明"] = d["核实依据说明"];
+    }
+    o["售后状态"] = sale["售后状态"];
+    append(s, a, sale, "核实取消", d["核实依据说明"]);
+    append(s, a, o, "取消核实结果", d["取消核实结果"]);
+    return { table: "aftersales", r: sale };
+  }
   if (name === "aftersale.plan") {
     merchant(a);
     need(
@@ -279,6 +307,7 @@ export function aftersaleCommand(s, a, name, p) {
     required(d, ["方案处理类型", "方案说明"]);
     need(types.includes(d["方案处理类型"]), "方案处理类型无效");
     let type = normalize(d["方案处理类型"]);
+    if (simplified(o)) need(type !== "补充履约" && sale["申请类型"] !== "核实取消", "请使用取消核实办理；新订单不提供补充履约");
     if (sale["申请类型"] === "核实取消") {
       required(d, ["取消核实结果", "服务是否已实际开始", "核实依据说明"]);
       if ([true, "是"].includes(d["服务是否已实际开始"]))
@@ -375,6 +404,7 @@ export function aftersaleCommand(s, a, name, p) {
       "存在在途或未知资金，请先核查，不可录入或更正裁定",
     );
     required(d, ["裁定结果", "裁定说明", "裁定作出人", "裁定作出时间"]);
+    if (simplified(o)) need(d["裁定结果"] !== "继续或补充履约", "新订单不提供补充履约裁定");
     need(
       ["全额退款", "部分退款", "继续或补充履约", "不予退款"].includes(
         d["裁定结果"],
@@ -464,6 +494,8 @@ function evaluationCommand(s, a, name, p) {
   if (name === "evaluation.save") {
     resident(a);
     const o = get(s, a, "orders", p.id);
+    const existing = domain(s).evaluations.find(e => e._order === o._id);
+    if (simplified(o) && existing) return { table: "evaluations", r: existing };
     revision(o, p);
     need(
       ["正常完成", "部分履行终止"].includes(o["结案结果"]),
@@ -505,6 +537,11 @@ function evaluationCommand(s, a, name, p) {
     );
     r["评价编号"] = r._id;
     append(s, a, r, "提交评价");
+    if (simplified(o)) {
+      o["订单完成时间"] = clock(s); o["评价状态"] = "已评价";
+      o["当前业务进度"] = "已完成";
+      append(s, a, o, "评价完成");
+    }
     return { table: "evaluations", r };
   }
   const r = get(s, a, "evaluations", p.id);

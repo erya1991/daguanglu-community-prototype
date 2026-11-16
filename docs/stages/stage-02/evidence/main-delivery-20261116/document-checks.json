@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-11-16T08:12:43.349Z",
+  "checks": [
+    {
+      "file": "docs/stages/stage-02/REQUIREMENTS.md",
+      "headings": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "file": "docs/stages/stage-02/PLAN.md",
+      "headings": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "file": "docs/stages/stage-02/ACCEPTANCE.md",
+      "headings": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "file": "docs/stages/stage-02/RESULT.md",
+      "headings": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "originalScenarios": 52,
+  "nextManualRows": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+  ],
+  "feedback": {
+    "rows": 35,
+    "counts": {
+      "pass": 16,
+      "fail": 17,
+      "待执行": 1,
+      "pas": 1
+    },
+    "preservedWithOnlyNewlineNormalization": true,
+    "sourceSha256": "8746aad183d10f04417582dc23b5254dba6d1473d34a9379fbaef8f40f6912ca"
+  },
+  "git": {
+    "branch": "main",
+    "head": "a9d8057ff8a95ac7b85c9cb644ef2d891bb32a2b",
+    "staged": ""
+  },
+  "errors": []
+}

@@ -238,6 +238,7 @@ export function createUniAdapter(app) {
   }
 
   api.service = {
+    preflight: async data => serviceDomain.preflight(read(), context, data),
     query: async (table, filters) => serviceDomain.query(read(), context, table, filters),
     record: async (table, id) => serviceDomain.record(read(), context, table, id),
     options: async () => serviceDomain.options(read(), context),

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {showFormError} from "../ui/formFeedback";
 import { ref, computed, onUnmounted, watch, nextTick } from "vue";
 import { onShow } from "@dcloudio/uni-app";
 import { service } from "@/services/foundation";
@@ -142,6 +143,7 @@ async function create() {
     go("fees/pay", { id: r.id, kind: "停车月租" });
   } catch (e: any) {
     error.value = e.message;
+    await showFormError(e);
   } finally {
     saving.value = false;
   }

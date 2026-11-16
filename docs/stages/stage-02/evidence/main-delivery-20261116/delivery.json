@@ -1,0 +1,360 @@
+{
+  "createdAt": "2026-11-16T08:48:55.046Z",
+  "baseCommit": "a9d8057ff8a95ac7b85c9cb644ef2d891bb32a2b",
+  "branch": "main",
+  "scope": "Stage02 V1.2 implementation and shared frontend standards",
+  "ownerAcceptance": "待人工复验",
+  "stagePass": false,
+  "gitIdentity": "The main commit containing the first addition of this delivery.json fixes this version. Push confirmation is reported separately.",
+  "sourceVerification": {
+    "snapshot": "candidate-snapshot.json",
+    "implementationMatchesSnapshot": true,
+    "documentationChangedSinceSnapshot": [
+      "docs/stages/stage-02/ACCEPTANCE.md",
+      "docs/stages/stage-02/PLAN.md",
+      "docs/stages/stage-02/REQUIREMENTS.md",
+      "docs/stages/stage-02/RESULT.md",
+      "docs/stages/stage-02/人工验收清单.md"
+    ]
+  },
+  "precommitTests": {
+    "command": "npm test",
+    "startedAt": "2026-11-16T08:46:32.208Z",
+    "endedAt": "2026-11-16T08:46:38.291Z",
+    "exit": 0,
+    "log": "logs/precommit-tests.txt",
+    "tests": 262,
+    "suites": 0,
+    "pass": 258,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 4,
+    "todo": 0
+  },
+  "priorBuilds": {
+    "recordedAt": "2026-11-16T08:07:13.078Z",
+    "notRerunForDocumentationOnlyDelivery": true,
+    "results": [
+      {
+        "id": "web",
+        "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-16T07:53:19.153Z",
+        "end": "2026-11-16T07:53:33.564Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/feedback-20261116-151208/web-confirmed.log",
+        "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/web.log",
+        "verification": "Successful targeted rerun after final changes; original log retained",
+        "archivedLog": "logs/web.txt"
+      },
+      {
+        "id": "resident-h5",
+        "command": "npm.cmd run build:h5 --workspace=@daguanglu/resident-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-16T07:53:33.568Z",
+        "end": "2026-11-16T07:53:52.484Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-h5.log",
+        "archivedLog": "logs/resident-h5.txt"
+      },
+      {
+        "id": "resident-mp-weixin",
+        "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/resident-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-16T07:53:52.484Z",
+        "end": "2026-11-16T07:54:02.385Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/feedback-20261116-151208/resident-weixin-confirmed.log",
+        "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-mp-weixin.log",
+        "verification": "Successful targeted rerun after final changes; original log retained",
+        "archivedLog": "logs/resident-mp-weixin.txt"
+      },
+      {
+        "id": "merchant-h5",
+        "command": "npm.cmd run build:h5 --workspace=@daguanglu/merchant-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-16T07:54:02.385Z",
+        "end": "2026-11-16T07:54:19.361Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/feedback-20261116-151208/merchant-h5-confirmed.log",
+        "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/merchant-h5.log",
+        "verification": "Successful targeted rerun after final changes; original log retained",
+        "archivedLog": "logs/merchant-h5.txt"
+      },
+      {
+        "id": "merchant-mp-weixin",
+        "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/merchant-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-16T07:54:19.362Z",
+        "end": "2026-11-16T07:54:33.694Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/feedback-20261116-151208/merchant-weixin-confirmed.log",
+        "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/merchant-mp-weixin.log",
+        "verification": "Successful targeted rerun after final changes; original log retained",
+        "archivedLog": "logs/merchant-mp-weixin.txt"
+      },
+      {
+        "id": "staff-h5",
+        "command": "npm.cmd run build:h5 --workspace=@daguanglu/staff-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-16T07:54:33.694Z",
+        "end": "2026-11-16T07:54:51.362Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-h5.log",
+        "archivedLog": "logs/staff-h5.txt"
+      },
+      {
+        "id": "staff-mp-weixin",
+        "command": "npm.cmd run build:mp-weixin --workspace=@daguanglu/staff-miniapp",
+        "cwd": "D:\\git\\daguanglu-community-prototype\\miniapp",
+        "start": "2026-11-16T07:54:51.362Z",
+        "end": "2026-11-16T07:55:06.839Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-mp-weixin.log",
+        "archivedLog": "logs/staff-mp-weixin.txt"
+      },
+      {
+        "id": "resident-types",
+        "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/resident-miniapp/tsconfig.json",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-16T07:55:06.839Z",
+        "end": "2026-11-16T07:55:14.215Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-types.log",
+        "archivedLog": "logs/resident-types.txt"
+      },
+      {
+        "id": "merchant-types",
+        "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/merchant-miniapp/tsconfig.json",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-16T07:55:14.216Z",
+        "end": "2026-11-16T07:55:20.779Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/feedback-20261116-151208/merchant-types-confirmed.log",
+        "priorAttempt": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/merchant-types.log",
+        "verification": "Successful targeted rerun after final changes; original log retained",
+        "archivedLog": "logs/merchant-types.txt"
+      },
+      {
+        "id": "staff-types",
+        "command": "C:\\Program Files\\nodejs\\node.exe miniapp/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p miniapp/apps/staff-miniapp/tsconfig.json",
+        "cwd": "D:\\git\\daguanglu-community-prototype",
+        "start": "2026-11-16T07:55:20.779Z",
+        "end": "2026-11-16T07:55:27.210Z",
+        "exit": 0,
+        "status": "PASS",
+        "log": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-types.log",
+        "archivedLog": "logs/staff-types.txt"
+      }
+    ]
+  },
+  "priorBrowser": {
+    "steps": 21,
+    "passed": 21,
+    "errors": 0,
+    "externalBusinessRequests": 0,
+    "evidence": "browser/browser-1794816564325.json",
+    "method": "Retained same mobile artifacts; revalidated changed Web artifacts; resumeFrom links preserve source runs",
+    "resumeChain": [
+      "browser/browser-1794816564325.json",
+      "browser/browser-1794816384678.json",
+      "browser/browser-1794816313152.json",
+      "browser/browser-1794816089190.json",
+      "browser/browser-1794816036594.json",
+      "browser/browser-1794815929905.json"
+    ],
+    "notRerunForDocumentationOnlyDelivery": true,
+    "screenshots": "Original local screenshots and browser profiles are not included; machine results are archived."
+  },
+  "preview": {
+    "resources": 221,
+    "allMatch": true,
+    "evidence": ".runtime/stage02/feedback-20261116-151208/preview-artifacts.json"
+  },
+  "wechatDevtools": "NOT_RUN",
+  "realDevice": "NOT_RUN",
+  "realFunds": "NOT_RUN",
+  "excluded": [
+    "docs/stages/stage-03/",
+    ".runtime browser profiles, dependencies, build artifacts, local configuration"
+  ],
+  "archives": [
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/validation-summary.json",
+      "file": "validation-summary.json",
+      "sourceSha256": "1d275f9ee9513c2e30bba2b5f159cf4e65ff06c35d521b7235781cec9aa726be",
+      "repositoryContentSha256": "1d275f9ee9513c2e30bba2b5f159cf4e65ff06c35d521b7235781cec9aa726be",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/candidate-snapshot.json",
+      "file": "candidate-snapshot.json",
+      "sourceSha256": "dec07d52c41c57ab77c68f909850417cd3f38aa4ea89fc61557799b97bfc9327",
+      "repositoryContentSha256": "dec07d52c41c57ab77c68f909850417cd3f38aa4ea89fc61557799b97bfc9327",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/build-artifacts.json",
+      "file": "build-artifacts.json",
+      "sourceSha256": "e72e26f9769f03de1aa5ea3a69ee93ee11555695965b950fe9ba0d4c4c91f9b7",
+      "repositoryContentSha256": "e72e26f9769f03de1aa5ea3a69ee93ee11555695965b950fe9ba0d4c4c91f9b7",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/preview-artifacts.json",
+      "file": "preview-artifacts.json",
+      "sourceSha256": "5b11d1b7fae44644723cc9b193bce57eeb323fe2a9f96f45989289998b996442",
+      "repositoryContentSha256": "5b11d1b7fae44644723cc9b193bce57eeb323fe2a9f96f45989289998b996442",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/document-checks.json",
+      "file": "document-checks.json",
+      "sourceSha256": "781bca3c4575f5188dbce05b65965b429c45bdcdd81bf4a5b75bdce3d5b9637e",
+      "repositoryContentSha256": "781bca3c4575f5188dbce05b65965b429c45bdcdd81bf4a5b75bdce3d5b9637e",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/owner-feedback-original.md",
+      "file": "owner-feedback-original.md",
+      "sourceSha256": "8746aad183d10f04417582dc23b5254dba6d1473d34a9379fbaef8f40f6912ca",
+      "repositoryContentSha256": "43a6e5366c9c36effd4bab1ad69c769e02901ca4ade946f83df398288aaf8428",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/final-tests.log",
+      "file": "logs/implementation-tests.txt",
+      "sourceSha256": "550869d2c08137dba8ac3d5c79008fc6d059ec43803db27ddeb94b4b0996cabd",
+      "repositoryContentSha256": "83a16953b13709a908768b160536049935e9922e8a804c96655159c6ca994f19",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/main-delivery-20261116T084621Z/tests.log",
+      "file": "logs/precommit-tests.txt",
+      "sourceSha256": "042013131de20e0d3b80867645cd4c3edcb27231f2c4110e3f8ec424479141d9",
+      "repositoryContentSha256": "8f2a5d21196d9ac5af3149182e999700aa094e61ea5dfbfc92c5e6cb680714c8",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/web-confirmed.log",
+      "file": "logs/web.txt",
+      "sourceSha256": "424cf3469a8e4ffbab08fe8b54eee2aecd184b0321f8e81f1e1ac9a150d63089",
+      "repositoryContentSha256": "d38968b5d9aa4969eda1c81e3a3741484ba6dd55c21a4c77443b129b92169a8e",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-h5.log",
+      "file": "logs/resident-h5.txt",
+      "sourceSha256": "c7b7f969c14162fbbf3daed8ca2bb878141dcfa5d3f22a72b9df737e9138170a",
+      "repositoryContentSha256": "437892fa2595ec1bdebb6e34f2258b93a79cd5d3b86ec882d62265911dff0c8c",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/resident-weixin-confirmed.log",
+      "file": "logs/resident-mp-weixin.txt",
+      "sourceSha256": "66cf13117b0280b2011bb898fd37a52e459a1b0577ea9bb9cc7fce8730a03bc1",
+      "repositoryContentSha256": "dcffb04bc520b032cc70b3e7432ea2f0621e0abcef6d8bed9962500fcec3f668",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/merchant-h5-confirmed.log",
+      "file": "logs/merchant-h5.txt",
+      "sourceSha256": "1549bccf353155ae415c98eaa8e9370c71504c858e9349cdd2d06f49e55223d9",
+      "repositoryContentSha256": "5c7d650d80e2ae1f6b95ca4fd7934a1bef422ba22b40b75d406b174e433a4ce6",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/merchant-weixin-confirmed.log",
+      "file": "logs/merchant-mp-weixin.txt",
+      "sourceSha256": "ba976daadc79d9fb95e8336fb87fa7eaadac8c34c0b24f265375645589cfd5d5",
+      "repositoryContentSha256": "d8250114897cb8a81c9081503eb9966641624af386fc0ba36e66f042d7dd327e",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-h5.log",
+      "file": "logs/staff-h5.txt",
+      "sourceSha256": "35b42ed0fe16edc7338222fd1028ffd6353cb14dcaa5a13aa7d2f06ae8c26a6a",
+      "repositoryContentSha256": "9d74f7bea90cda4281fbcd23b574c92f60c22f2753570f27af53a83e9d765e35",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-mp-weixin.log",
+      "file": "logs/staff-mp-weixin.txt",
+      "sourceSha256": "ce6b6799c4eb5a3c13fd0430aa4b79f8f933659ed1f8f6fb37241f929351d9e2",
+      "repositoryContentSha256": "6b9464bcea29ca75d585a23c3defe7f441eb068f8e17d5faa1520d62fc672c21",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/resident-types.log",
+      "file": "logs/resident-types.txt",
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "repositoryContentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/merchant-types-confirmed.log",
+      "file": "logs/merchant-types.txt",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "repositoryContentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/BUILD_2026-11-16T07-53-18-679Z/staff-types.log",
+      "file": "logs/staff-types.txt",
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "repositoryContentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "UTF-8, CRLF normalized to LF; trailing spaces and extra terminal blank lines removed; source bytes unchanged"
+    },
+    {
+      "source": ".runtime/stage02/feedback-20261116-151208/browser-1794816564325/results.json",
+      "file": "browser/browser-1794816564325.json",
+      "sourceSha256": "1883d6595b7125b33f7400c45ad9a876195fcbc8b21644874b061d783bb43ac9",
+      "repositoryContentSha256": "1883d6595b7125b33f7400c45ad9a876195fcbc8b21644874b061d783bb43ac9",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": "D:/git/daguanglu-community-prototype/.runtime/stage02/feedback-20261116-151208/browser-1794816384678/results.json",
+      "file": "browser/browser-1794816384678.json",
+      "sourceSha256": "e3a515bdfbdd07bdd957b095ba9125b29d63f1807202f72177af95a9730e8a1f",
+      "repositoryContentSha256": "e3a515bdfbdd07bdd957b095ba9125b29d63f1807202f72177af95a9730e8a1f",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": "D:/git/daguanglu-community-prototype/.runtime/stage02/feedback-20261116-151208/browser-1794816313152/results.json",
+      "file": "browser/browser-1794816313152.json",
+      "sourceSha256": "c8e7d91cb68f18d1fab34a3ee604b1ad978e676c9d33c7abc860e62686d7ee83",
+      "repositoryContentSha256": "c8e7d91cb68f18d1fab34a3ee604b1ad978e676c9d33c7abc860e62686d7ee83",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": "D:/git/daguanglu-community-prototype/.runtime/stage02/feedback-20261116-151208/browser-1794816089190/results.json",
+      "file": "browser/browser-1794816089190.json",
+      "sourceSha256": "3a9700921d640cef10f238e826b50f820b118eaf97f4d47ec92a56f7ec1cf866",
+      "repositoryContentSha256": "3a9700921d640cef10f238e826b50f820b118eaf97f4d47ec92a56f7ec1cf866",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": "D:/git/daguanglu-community-prototype/.runtime/stage02/feedback-20261116-151208/browser-1794816036594/results.json",
+      "file": "browser/browser-1794816036594.json",
+      "sourceSha256": "b9d67e82776b1fce2c046c68c89826b6093dc6eec9fe49c00781d9ad45bf98e8",
+      "repositoryContentSha256": "b9d67e82776b1fce2c046c68c89826b6093dc6eec9fe49c00781d9ad45bf98e8",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    },
+    {
+      "source": "D:/git/daguanglu-community-prototype/.runtime/stage02/feedback-20261116-151208/browser-1794815929905/results.json",
+      "file": "browser/browser-1794815929905.json",
+      "sourceSha256": "fa6d6ee39aa7263441f05794873e34ff3b4be4d966fed0ab202f025a39d3510b",
+      "repositoryContentSha256": "fa6d6ee39aa7263441f05794873e34ff3b4be4d966fed0ab202f025a39d3510b",
+      "normalization": "UTF-8 text, CRLF normalized to LF"
+    }
+  ]
+}

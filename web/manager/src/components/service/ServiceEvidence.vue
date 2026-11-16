@@ -15,7 +15,8 @@
     </div>
     <p v-if="uploading" role="status">正在保存文件，请稍候…</p>
     <p v-if="!items.length && !failed.length" class="quiet">暂无文件</p>
-    <article
+    <div v-if="compact" class="thumbnail-list"><button v-for="item in items" :key="item.id" class="thumbnail-button" @click="open(item)"><img v-if="thumbnails[item.id]" :src="thumbnails[item.id]" :alt="name(item)"/><span v-else>查看图片</span></button></div>
+    <article v-if="!compact"
       v-for="(item, index) in items"
       :key="item.id || index"
       class="evidence-item"
@@ -143,6 +144,7 @@ export default {
   props: {
     value: { type: Array, default: () => [] },
     editable: Boolean,
+    compact: Boolean,
     label: { type: String, default: "附件" },
     fieldId: String,
     record: Object,
@@ -152,6 +154,7 @@ export default {
     multiple: { type: Boolean, default: true },
   },
   data: () => ({
+    thumbnails: {},
     uploading: false,
     failed: [],
     error: "",
@@ -169,10 +172,19 @@ export default {
       );
     },
   },
+  watch: { value: {immediate:true,handler(){this.loadThumbnails();}}, compact(){this.loadThumbnails();} },
   beforeDestroy() {
+    Object.values(this.thumbnails).forEach(url=>URL.revokeObjectURL(url));
     this.closePreview();
   },
   methods: {
+    async loadThumbnails() {
+      if(!this.compact)return;
+      const recordId=this.record?._id;
+      Object.values(this.thumbnails).forEach(url=>URL.revokeObjectURL(url));
+      this.thumbnails={};
+      for(const item of this.items){try{const file=await service.service.attachment({table:this.table,id:recordId,attachmentId:item.id});if(recordId!==this.record?._id)return;if(file.blob)this.$set(this.thumbnails,item.id,URL.createObjectURL(file.blob));}catch(e){this.error=e.message;}}
+    },
     name(f) {
       return f["文件名称"] || f.name || f.id || "文件";
     },
@@ -366,4 +378,5 @@ summary {
   cursor: pointer;
   color: #315f93;
 }
+.thumbnail-list{display:flex;gap:8px}.thumbnail-button{border:1px solid #edf0f2;border-radius:8px;background:#f7f9fa;padding:0;cursor:pointer;width:96px;height:76px;overflow:hidden}.thumbnail-button img{width:100%;height:100%;object-fit:cover}
 </style>

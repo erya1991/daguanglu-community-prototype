@@ -22,6 +22,7 @@ import {
   coverageValid,
   catEnabled,
   qualificationFor,
+  qualificationMaterialMatches,
   materialValid,
   materialPresent,
   materialState,
@@ -264,6 +265,7 @@ export function supplyCommand(s, a, name, p) {
         r,
         pick(d, ["申请服务类目", "申请覆盖社区", "申请覆盖小区", "申请说明"]),
       );
+      if (!domain(s).fixtureLegacyOrders) r._applicationMaterialScope = "application";
       if (d["服务资质材料"] !== undefined)
         r["服务资质材料"] = materials(
           s,
@@ -271,6 +273,7 @@ export function supplyCommand(s, a, name, p) {
           d["服务资质材料"],
           r._shop,
           r["申请服务类目"],
+          r._applicationMaterialScope,
         );
       r["申请状态"] = "草稿";
     } else if (action === "submit") {
@@ -286,7 +289,7 @@ export function supplyCommand(s, a, name, p) {
           need(
             list(r["服务资质材料"]).some(
               (m) =>
-                list(m["对应服务类目"]).includes(cat) && materialPresent(s, m),
+                qualificationMaterialMatches(r, m, cat, true) && materialPresent(s, m),
             ),
             "请补齐该类目的商户证明材料",
           );
@@ -348,14 +351,14 @@ export function supplyCommand(s, a, name, p) {
           const config = find(s, "categories", cat);
           need(
             catEnabled(s, cat) &&
-              !domain(s).categories.some((c) => c["上级类目"] === cat),
+              !domain(s).categories.some((c) => !c._deleted && c["上级类目"] === cat),
             "只可批准当前启用末级类目",
           );
           if (config["商户证明是否必需"])
             need(
               list(r["服务资质材料"]).some(
                 (m) =>
-                  list(m["对应服务类目"]).includes(cat) &&
+                  qualificationMaterialMatches(r, m, cat, true) &&
                   materialPresent(s, m),
               ),
               "批准前请重新核验对应商户证明",
@@ -368,6 +371,7 @@ export function supplyCommand(s, a, name, p) {
           m["材料有效性"] = materialState(s, m);
         }
         r.authorizationMaterials = clone(r["服务资质材料"] || []);
+        r._authorizationMaterialScope = r._applicationMaterialScope || "category";
         r["获准服务类目"] = cats;
         r["获准社区"] = communities;
         r["获准小区"] = estates;
@@ -391,7 +395,7 @@ export function supplyCommand(s, a, name, p) {
             need(
               list(r.authorizationMaterials || r["服务资质材料"]).some(
                 (m) =>
-                  list(m["对应服务类目"]).includes(cat) && materialValid(s, m),
+                  qualificationMaterialMatches(r, m, cat) && materialValid(s, m),
               ),
               "必要资质仍缺失或失效，不能恢复资格",
             );
@@ -421,6 +425,7 @@ export function supplyCommand(s, a, name, p) {
     } else merchant(a);
     r = p.id ? get(s, a, "personnel", p.id) : null;
     if (r) revision(r, p);
+    if (kind === "category" && r) need(!r._deleted, "分类已删除");
     if (action === "save") {
       required(d, ["姓名", "工作联系电话", "可执行服务类目"]);
       phone(d["工作联系电话"], "工作联系电话");
@@ -507,7 +512,7 @@ export function supplyCommand(s, a, name, p) {
         required(d, ["类目名称"]);
         if (d["上级类目"])
           need(
-            d["上级类目"] !== p.id && find(s, "categories", d["上级类目"]),
+            d["上级类目"] !== p.id && find(s, "categories", d["上级类目"]) && !find(s, "categories", d["上级类目"])._deleted,
             "上级类目无效",
           );
         let parent = find(s, "categories", d["上级类目"]),
@@ -520,6 +525,11 @@ export function supplyCommand(s, a, name, p) {
           seen.add(parent._id);
           parent = find(s, "categories", parent["上级类目"]);
         }
+        const subtreeDepth = (id) => {
+          const children = domain(s).categories.filter((c) => !c._deleted && c["上级类目"] === id);
+          return children.length ? 1 + Math.max(...children.map((c) => subtreeDepth(c._id))) : 1;
+        };
+        need(seen.size + (r ? subtreeDepth(r._id) : 1) <= 3, "服务分类最多支持三级");
         if (!r) r = create(s, a, t, { 类目状态: "启用", 类目排序: 0 }, "CAT");
         Object.assign(
           r,
@@ -582,7 +592,7 @@ export function supplyCommand(s, a, name, p) {
       }
     } else if (action === "status") {
       need(r, "配置不存在");
-      required(d, [value(d, "配置变更原因") ? "配置变更原因" : "原因说明"]);
+      if (kind === "method") required(d, [value(d, "配置变更原因") ? "配置变更原因" : "原因说明"]);
       const status = value(
         d,
         "状态",
@@ -590,6 +600,13 @@ export function supplyCommand(s, a, name, p) {
       );
       need(["启用", "停用"].includes(status), "配置状态无效");
       r[kind === "category" ? "类目状态" : "方式状态"] = status;
+    } else if (kind === "category" && action === "delete") {
+      need(r, "分类不存在");
+      need(!domain(s).categories.some((c) => !c._deleted && c["上级类目"] === r._id), "请先处理下级分类");
+      const contains = (v) => v === r._id || (Array.isArray(v) ? v.some(contains) : v && typeof v === "object" ? Object.values(v).some(contains) : false);
+      need(!["services", "qualifications", "personnel", "orders"].some((table) => (domain(s)[table] || []).some(contains)), "分类已被业务引用，请停用而不是删除");
+      r._deleted = true;
+      r["类目状态"] = "停用";
     } else need(false, "不支持的配置动作");
     append(s, a, r, name, value(d, "配置变更原因", "原因说明") || "");
     return { table: t, r };

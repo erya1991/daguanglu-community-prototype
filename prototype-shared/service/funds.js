@@ -1,4 +1,6 @@
 import {
+  serviceCompleted,
+  simplified,
   domain,
   need,
   value,
@@ -130,7 +132,7 @@ export function finish(s, a, f, status) {
   return f;
 }
 export function splitIfReady(s, a, o) {
-  if (o["结案结果"] !== "正常完成" || o["居民完成确认状态"] !== "已确认")
+  if (!serviceCompleted(o))
     return null;
   if (activeAftersale(s, o) || pendingRefund(s, o) > 0) {
     o["分账阻断原因"] = "存在进行中售后或退款";
@@ -160,8 +162,9 @@ export function splitIfReady(s, a, o) {
       ?._id,
     完成确认依据: {
       结果版本: o["结果版本"],
-      确认人: o["居民确认人"],
-      确认时间: o["居民确认时间"],
+      确认人: simplified(o) ? o["服务完成人"] : o["居民确认人"],
+      确认时间: simplified(o) ? o["服务完成时间"] : o["居民确认时间"],
+      完成方式: simplified(o) ? "商户提交服务结果" : "居民确认完成",
     },
     接收主体名称: o["经营主体名称"],
     接收账户标识: domain(s).receivers[o._shop],
@@ -252,9 +255,9 @@ export function syncOrder(s, o) {
   o["规则适用店铺名称"] = o["经营店铺名称"];
   o["资金规则版本"] = o.ruleSnapshot?.version || null;
   o["分账业务条件"] =
-    o["居民完成确认状态"] === "已确认"
-      ? "居民已确认，继续核对售后与资金条件"
-      : "待居民本人确认完成";
+    serviceCompleted(o)
+      ? "服务已完成，核对售后与资金条件"
+      : simplified(o) ? "待商户提交服务结果" : "待居民本人确认完成";
   return o;
 }
 export function fundCommand(s, a, name, p) {
@@ -305,7 +308,7 @@ export function fundCommand(s, a, name, p) {
     ) {
       need(
         o["结案结果"] === "正常完成" &&
-          o["居民完成确认状态"] === "已确认" &&
+          serviceCompleted(o) &&
           !activeAftersale(s, o) &&
           pendingRefund(s, o) === 0,
         "当前售后或完成条件不满足，原分账不可恢复，请先核查",

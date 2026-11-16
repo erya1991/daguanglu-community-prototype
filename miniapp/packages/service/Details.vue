@@ -3,10 +3,15 @@ import { computed, ref } from "vue";
 import { APP, service } from "@/services/foundation";
 import FieldGroup from "./FieldGroup.vue";
 import Evidence from "./Evidence.vue";
+import StarRating from "../ui/components/StarRating.vue";
+import FundDetails from "./FundDetails.vue";
 const props = withDefaults(
   defineProps<{ table: string; record: any; options?: any }>(),
   { options: () => ({}) },
 );
+const activeGroup = ref("");
+const reviewLimit = ref(10);
+const visibleReviews = computed(()=>(props.record.evaluations||[]).slice(0,reviewLimit.value));
 const error = ref(""),
   busy = ref("");
 async function fundAction(item: any, action: any) {
@@ -38,7 +43,7 @@ const groups = computed(
         services: [
           { key: "content", title: "服务内容", tables: ["27-C"] },
           { key: "spec", title: "规格与履约方式", tables: ["27-D"] },
-          { key: "review", title: "审核结果", tables: ["27-F"] },
+          APP === "resident" ? {key:"evaluations",title:"服务评价",tables:[]} : { key: "review", title: "审核结果", tables: ["27-F"] },
         ],
         qualifications: [
           { key: "current", title: "当前经营授权", tables: ["26-B"] },
@@ -135,9 +140,10 @@ function values(key: string) {
 }
 </script>
 <template>
-  <view class="service-details svc-view"
+  <FundDetails v-if="table==='funds'" :record="record"/><view v-else class="service-details svc-view"
     ><text v-if="error" class="error svc-text">{{ error }}</text>
-    <view v-for="g in groups" :key="g.key" class="detail-section svc-view"
+    <view v-if="groups.length>1" class="detail-tabs"><button v-for="g in groups" :key="g.key" :class="{active:(activeGroup||groups[0]?.key)===g.key}" @click="activeGroup=g.key">{{g.title}}</button></view>
+    <view v-for="g in groups.filter((g:any)=>g.key!=='evaluations'&&g.key===(activeGroup||groups[0]?.key))" :key="g.key" class="detail-section svc-view"
       ><view class="section-toggle svc-view"><text class="svc-text">{{ g.title }}</text></view
       ><view class="section-content svc-view"
         ><template v-if="values(g.key).length"
@@ -182,16 +188,16 @@ function values(key: string) {
           :record-table="table" /></view
     ></view>
     <view
-      v-if="APP === 'resident' && table === 'services'"
+      v-if="APP === 'resident' && table === 'services' && activeGroup === 'evaluations'"
       class="detail-section svc-view"
     >
-      <view class="section-toggle svc-view"><text class="svc-text">居民评价</text></view>
+      <view class="section-toggle svc-view"><text class="svc-text">服务评价</text></view>
       <view class="section-content svc-view">
         <text v-if="!record.evaluations?.length" class="muted svc-text"
           >暂无公开评价</text
         >
         <view
-          v-for="(review, i) in record.evaluations || []"
+          v-for="(review, i) in visibleReviews"
           :key="i"
           class="public-review svc-view"
         >
@@ -199,9 +205,7 @@ function values(key: string) {
             ><text class="svc-text" data-field="31-E.09">{{
               review["评价人公开名称"]
             }}</text
-            ><text class="svc-text" data-field="31-E.06"
-              >{{ review["总体评分"] }} 星</text
-            ></view
+            ><StarRating :model-value="Number(review['总体评分'])" readonly data-field="31-E.06" /></view
           >
           <text class="muted svc-text" data-field="31-E.10">{{
             review["评价时间"]
@@ -216,11 +220,13 @@ function values(key: string) {
               :record-id="record._id"
           /></view>
         </view>
+        <button v-if="(record.evaluations||[]).length > reviewLimit" class="load-reviews" @click="reviewLimit+=10">加载更多评价</button>
       </view>
     </view>
   </view>
 </template>
 <style scoped lang="scss">
+.detail-tabs{display:flex;gap:4px;overflow-x:auto;margin-top:14px}.detail-tabs button{flex:1;flex-shrink:0;white-space:nowrap;font-size:13px;padding:10px;line-height:1.4;color:#66777a;background:#edf2f2}.detail-tabs button.active{background:#1b4d53;color:white}
 .public-review {
   display: flex;
   flex-direction: column;

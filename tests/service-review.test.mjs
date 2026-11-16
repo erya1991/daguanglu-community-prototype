@@ -18,6 +18,9 @@ const copy = (x) => structuredClone(x),
 function setup(scene) {
   const s = createSeed();
   api.prepare(s);
+  // These review fixtures exercise existing V1.1 records without migrating them.
+  s.service.fixtureLegacyOrders = true;
+  s.service.clockMode = "fixed";
   if (scene) api.auxiliary(s, W, "scenario", { name: scene });
   return s;
 }
@@ -396,9 +399,9 @@ test("S02-GAP-05 项目类目主体及各指标时间上下文在汇总与下钻
     api.overview(s, W, { category: "NO-SUCH-CATEGORY" }).values["创建订单数"],
     0,
   );
-  assert.equal(api.overview(s, W).values["期间退款成功金额"], "189.00");
+  assert.equal(api.overview(s, W, {start:"2026-11-01",end:"2026-11-06"}).values["期间退款成功金额"], "189.00");
   assert.equal(
-    api.overview(s, W, { merchant: "SHOP-B" }).values["期间净收款"],
+    api.overview(s, W, { merchant: "SHOP-B", start:"2026-11-01",end:"2026-11-06" }).values["期间净收款"],
     "-60.00",
   );
 });
@@ -541,4 +544,72 @@ test("S02-GAP-01 停用方式不再进入居民规格、范围说明及起步价
   assert.deepEqual(v["适用履约方式"], ["上门"]);
   assert.equal(v["服务规格集合"][0]["组合集合"].length, 1);
   assert.equal(v["服务规格集合"][0]["组合集合"][0]._method, "HOME");
+});
+
+
+test("平台管理员可办理全部服务Web菜单，旧会话升级且敏感授权独立", () => {
+  const s = setup();
+  const grant = s.service.grants["platform-admin"];
+  for (const cap of ["manage", "review", "ruling", "funds"]) assert.equal(grant[cap], true);
+  const baseline = structuredClone(s.service.orders);
+  Object.assign(grant, {manage: false, review: false, ruling: false, funds: false});
+  assert.equal(api.prepare(s), true);
+  assert.deepEqual(s.service.orders, baseline);
+  assert.equal(api.prepare(s), false);
+  for (const table of ["qualifications", "personnel", "categories", "methods", "services", "orders", "aftersales", "evaluations", "funds", "exceptions"]) assert.doesNotThrow(() => api.query(s, P, table, {}), table);
+  assert.doesNotThrow(() => api.overview(s, P, {}));
+  assert.equal(grant.sensitive, false);
+  assert.equal(s.service.grants["service-web-limited"].funds, false);
+  assert.ok(api.query(s, P, "qualifications", {}).some(r => r._actions.some(a => a.name === "qualification.status")));
+});
+
+
+test('三级服务分类创建、层级校验和无原因启停', () => {
+  const s=setup();
+  const root=run(s,P,'category.save',null,{类目名称:'测试一级'});
+  const child=run(s,P,'category.save',null,{类目名称:'测试二级',上级类目:root._id});
+  const leaf=run(s,P,'category.save',null,{类目名称:'测试三级',上级类目:child._id});
+  assert.throws(()=>run(s,P,'category.save',null,{类目名称:'测试四级',上级类目:leaf._id}),/最多支持三级/);
+  assert.throws(()=>run(s,P,'category.save',raw(s,root._id),{类目名称:'测试一级',上级类目:leaf._id}),/循环/);
+  run(s,P,'category.status',raw(s,leaf._id),{状态:'停用'});
+  assert.equal(raw(s,leaf._id)['类目状态'],'停用');
+  run(s,P,'category.status',raw(s,leaf._id),{状态:'启用'});
+  assert.equal(raw(s,leaf._id)['类目状态'],'启用');
+  assert.throws(()=>run(s,L,'category.status',raw(s,leaf._id),{状态:'停用'}),/权限/);
+});
+
+test('分类删除保护子类与业务引用，未引用分类删除后不再可选', () => {
+  const s=setup();
+  const root=run(s,P,'category.save',null,{类目名称:'可删除一级'});
+  const child=run(s,P,'category.save',null,{类目名称:'可删除子类',上级类目:root._id});
+  assert.throws(()=>run(s,P,'category.delete',raw(s,root._id)),/下级分类/);
+  assert.throws(()=>run(s,P,'category.delete',raw(s,'CAT-CLEAN')),/业务引用/);
+  run(s,P,'category.delete',raw(s,child._id));
+  assert.equal(api.query(s,P,'categories',{}).some(v=>v._id===child._id),false);
+  assert.equal(api.options(s,P).categories.some(v=>v._id===child._id),false);
+  assert.equal(raw(s,child._id)._deleted,true);
+  run(s,P,'category.delete',raw(s,root._id));
+  assert.equal(api.query(s,P,'categories',{}).some(v=>v._id===root._id),false);
+});
+
+
+test('常见服务分类样例三级结构与旧会话增量迁移不覆盖已有数据', () => {
+  const s=setup();
+  const samples=s.service.categories.filter(c=>c._id.startsWith('S02-SAMPLE-'));
+  assert.equal(samples.length,28);
+  for(const c of samples) { let depth=1,p=c;while(p['上级类目']){p=s.service.categories.find(x=>x._id===p['上级类目']);assert.ok(p);depth++;assert.ok(depth<=3);} }
+  const original=structuredClone(s.service.categories.find(c=>c._id==='CAT-CLEAN'));
+  const orders=structuredClone(s.service.orders),qualifications=structuredClone(s.service.qualifications);
+  s.service.categories=s.service.categories.filter(c=>!c._id.startsWith('S02-SAMPLE-'));
+  s.service.categories.push({_id:'USER-PET',类目名称:'宠物服务',上级类目:'',类目状态:'启用'});
+  delete s.service.categorySamplesVersion;
+  assert.equal(api.prepare(s),true);
+  assert.equal(s.service.categories.filter(c=>c._id.startsWith('S02-SAMPLE-')).length,21);
+  assert.deepEqual(s.service.categories.find(c=>c._id==='CAT-CLEAN'),original);
+  assert.deepEqual(s.service.orders,orders);assert.deepEqual(s.service.qualifications,qualifications);
+  assert.equal(api.prepare(s),false);
+  const sample=s.service.categories.find(c=>c._id==='S02-SAMPLE-LIFE-LAUNDRY-1');
+  run(s,P,'category.delete',sample);
+  api.prepare(s);
+  assert.equal(api.query(s,P,'categories',{}).some(c=>c._id===sample._id),false);
 });

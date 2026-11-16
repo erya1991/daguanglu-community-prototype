@@ -1,5 +1,6 @@
 {
   "pages": [
+    {"path":"pages/profile/addresses","style":{"navigationStyle":"custom"}},
     {
       "path": "pages/home/index",
       "style": {

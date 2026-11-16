@@ -1,0 +1,1557 @@
+{
+  "checkedAt": "2026-11-16T08:11:20.120Z",
+  "root": "D:\\git\\daguanglu-community-prototype",
+  "base": "http://127.0.0.1:19221",
+  "processId": 19264,
+  "existingListenerPreserved": true,
+  "processCommandLine": "not readable; stop denied by OS; source confirmed by matching actual HTTP bytes",
+  "resources": [
+    {
+      "file": "web/manager/dist/css/app.0e951206.css",
+      "url": "http://127.0.0.1:19221/web/css/app.0e951206.css",
+      "localSha256": "27d99f33b4755726efb32bd17a4aa003ba2cf80e624f2f66a07dd421cc98158f",
+      "httpSha256": "27d99f33b4755726efb32bd17a4aa003ba2cf80e624f2f66a07dd421cc98158f",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/index.html",
+      "url": "http://127.0.0.1:19221/web/index.html",
+      "localSha256": "f010c60d98efbfc94ff8b5bba9f03a9bba680309f529ad166132aafdbd9b9a9e",
+      "httpSha256": "f010c60d98efbfc94ff8b5bba9f03a9bba680309f529ad166132aafdbd9b9a9e",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/css/chunk-5312231a.0d9ee774.css",
+      "url": "http://127.0.0.1:19221/web/css/chunk-5312231a.0d9ee774.css",
+      "localSha256": "c67104245ceb4d91a8c041d4ac8d5f3fd31bd882ea0264b811dc88103c60ce09",
+      "httpSha256": "c67104245ceb4d91a8c041d4ac8d5f3fd31bd882ea0264b811dc88103c60ce09",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d0ab562.0e8c58e5.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0ab562.0e8c58e5.js",
+      "localSha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98",
+      "httpSha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/app.6f41dcc2.js",
+      "url": "http://127.0.0.1:19221/web/js/app.6f41dcc2.js",
+      "localSha256": "00efdb8f095b52f0ed8765ae0d26fa8864b237ad05f83ac3aa87c6f71272e3d5",
+      "httpSha256": "00efdb8f095b52f0ed8765ae0d26fa8864b237ad05f83ac3aa87c6f71272e3d5",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d0b1bc2.e99ead48.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0b1bc2.e99ead48.js",
+      "localSha256": "e026cefbd1005a519fc305ef6320daddadcb1c20ff63bb12259ae900db8e61a5",
+      "httpSha256": "e026cefbd1005a519fc305ef6320daddadcb1c20ff63bb12259ae900db8e61a5",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d0e5450.7ceae92a.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0e5450.7ceae92a.js",
+      "localSha256": "07a457eac031ec319266ccff68ec538df124e490428717076b6e62e431665ca0",
+      "httpSha256": "07a457eac031ec319266ccff68ec538df124e490428717076b6e62e431665ca0",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d0d2fae.e473150f.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0d2fae.e473150f.js",
+      "localSha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11",
+      "httpSha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d208a96.42b149f2.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d208a96.42b149f2.js",
+      "localSha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a",
+      "httpSha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-770e854f.4650b104.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-770e854f.4650b104.js",
+      "localSha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504",
+      "httpSha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d215c24.8b94bac2.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d215c24.8b94bac2.js",
+      "localSha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5",
+      "httpSha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-2d21f830.c0d3ba6c.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d21f830.c0d3ba6c.js",
+      "localSha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be",
+      "httpSha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-5312231a.13f8f1f1.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-5312231a.13f8f1f1.js",
+      "localSha256": "3308e8125a905af8126cc3af830b2b38fd262a31bd438646e64c35bd31debac1",
+      "httpSha256": "3308e8125a905af8126cc3af830b2b38fd262a31bd438646e64c35bd31debac1",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-9f647590.e2b670b0.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-9f647590.e2b670b0.js",
+      "localSha256": "0756b7bec8ffe7376cbda1fd1d4c7dd7ea09e09f4646031ffe0ecef8cd587829",
+      "httpSha256": "0756b7bec8ffe7376cbda1fd1d4c7dd7ea09e09f4646031ffe0ecef8cd587829",
+      "matches": true
+    },
+    {
+      "file": "web/manager/dist/js/chunk-vendors.4c902ff7.js",
+      "url": "http://127.0.0.1:19221/web/js/chunk-vendors.4c902ff7.js",
+      "localSha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5",
+      "httpSha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/addresses-wrgCpW1o.css",
+      "url": "http://127.0.0.1:19221/resident/assets/addresses-wrgCpW1o.css",
+      "localSha256": "87284691d7719b3fc8aa2e94292bfa7c8565f6f67ab2d55d284b11a22679274f",
+      "httpSha256": "87284691d7719b3fc8aa2e94292bfa7c8565f6f67ab2d55d284b11a22679274f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/AddressForm-CEV8bgGt.css",
+      "url": "http://127.0.0.1:19221/resident/assets/AddressForm-CEV8bgGt.css",
+      "localSha256": "c18597faabca71ce20f7357caefbe2d2b2740e5c93b99a70f50e55f28292a386",
+      "httpSha256": "c18597faabca71ce20f7357caefbe2d2b2740e5c93b99a70f50e55f28292a386",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/AddressForm.DyWqAMe1.js",
+      "url": "http://127.0.0.1:19221/resident/assets/AddressForm.DyWqAMe1.js",
+      "localSha256": "96ffa3bc951b4bf3c1345b173c259f150a53bedf732305800e26b2f8fa77f237",
+      "httpSha256": "96ffa3bc951b4bf3c1345b173c259f150a53bedf732305800e26b2f8fa77f237",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/AppNavbar-BF91pLGH.css",
+      "url": "http://127.0.0.1:19221/resident/assets/AppNavbar-BF91pLGH.css",
+      "localSha256": "1ceb33ad22ba0f00a95e7c1fb41c0062c06cb99f1744c1f4d125f5f77b2ba666",
+      "httpSha256": "1ceb33ad22ba0f00a95e7c1fb41c0062c06cb99f1744c1f4d125f5f77b2ba666",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/AppNavbar.CLopAgGA.js",
+      "url": "http://127.0.0.1:19221/resident/assets/AppNavbar.CLopAgGA.js",
+      "localSha256": "8dae68895b5476919d289667b371ad3723524c02885b848c6f687098fc30a87c",
+      "httpSha256": "8dae68895b5476919d289667b371ad3723524c02885b848c6f687098fc30a87c",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/BaseCard-DUs1Qfff.css",
+      "url": "http://127.0.0.1:19221/resident/assets/BaseCard-DUs1Qfff.css",
+      "localSha256": "dcd26cf3eb2b79ce1e1e20bd25afc6612c882078c2c363fc9a1d55608272a2b1",
+      "httpSha256": "dcd26cf3eb2b79ce1e1e20bd25afc6612c882078c2c363fc9a1d55608272a2b1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/BaseCard.Dp4FwZXX.js",
+      "url": "http://127.0.0.1:19221/resident/assets/BaseCard.Dp4FwZXX.js",
+      "localSha256": "7da9d415fd27fb011f592cee9f719bedeea9e810ba05b84879729c9d0b7a8dba",
+      "httpSha256": "7da9d415fd27fb011f592cee9f719bedeea9e810ba05b84879729c9d0b7a8dba",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/Details-Bg2ohJ8e.css",
+      "url": "http://127.0.0.1:19221/resident/assets/Details-Bg2ohJ8e.css",
+      "localSha256": "7c0032dde3d384b06b27ca92c4bd72b8b27ebc75a3a41073e83d579f6311d21b",
+      "httpSha256": "7c0032dde3d384b06b27ca92c4bd72b8b27ebc75a3a41073e83d579f6311d21b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/Details.Bd2bcStU.js",
+      "url": "http://127.0.0.1:19221/resident/assets/Details.Bd2bcStU.js",
+      "localSha256": "3b1f94a392a96c12d9a634aa14025a0dc703ae02d60a82da24cf1ebee391b996",
+      "httpSha256": "3b1f94a392a96c12d9a634aa14025a0dc703ae02d60a82da24cf1ebee391b996",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FeesPage-bnZsbkBP.css",
+      "url": "http://127.0.0.1:19221/resident/assets/FeesPage-bnZsbkBP.css",
+      "localSha256": "33f208017bbe3a0b3b08b63baa67a3def552288486d697927da583be0238a67f",
+      "httpSha256": "33f208017bbe3a0b3b08b63baa67a3def552288486d697927da583be0238a67f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FilterBar-B2FGrUfI.css",
+      "url": "http://127.0.0.1:19221/resident/assets/FilterBar-B2FGrUfI.css",
+      "localSha256": "6e70d8f6510da8a21143d862637adf30d13d5594d1be8d5a08a84b49c7ede019",
+      "httpSha256": "6e70d8f6510da8a21143d862637adf30d13d5594d1be8d5a08a84b49c7ede019",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FilterBar.yFS_7mat.js",
+      "url": "http://127.0.0.1:19221/resident/assets/FilterBar.yFS_7mat.js",
+      "localSha256": "ec232f03ac65672a5f969af5debf3904f3247dc212176162aaa0279d9c420cb8",
+      "httpSha256": "ec232f03ac65672a5f969af5debf3904f3247dc212176162aaa0279d9c420cb8",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/formFeedback.ZKBPMOlp.js",
+      "url": "http://127.0.0.1:19221/resident/assets/formFeedback.ZKBPMOlp.js",
+      "localSha256": "1c9f8c49403750e99ec245c3c9ee6d5b81ef3bec3c2a6aea6386456862c114e4",
+      "httpSha256": "1c9f8c49403750e99ec245c3c9ee6d5b81ef3bec3c2a6aea6386456862c114e4",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FormField-Ru3Jslm9.css",
+      "url": "http://127.0.0.1:19221/resident/assets/FormField-Ru3Jslm9.css",
+      "localSha256": "0144a31715b9126ad15085831a1700fa507831d203b251faee3789ec2642f42d",
+      "httpSha256": "0144a31715b9126ad15085831a1700fa507831d203b251faee3789ec2642f42d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FormField.BR8IQ1fB.js",
+      "url": "http://127.0.0.1:19221/resident/assets/FormField.BR8IQ1fB.js",
+      "localSha256": "c6928f712281ff9a72bc9f19c73be496d0dd3fe7192d0cee1b16480feab72e96",
+      "httpSha256": "c6928f712281ff9a72bc9f19c73be496d0dd3fe7192d0cee1b16480feab72e96",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FeesPage.BcmPJYG_.js",
+      "url": "http://127.0.0.1:19221/resident/assets/FeesPage.BcmPJYG_.js",
+      "localSha256": "ff5c6db1648fe642734f7f595779c56618dfe9ce0b6468ec2118ed0a86f7e3fe",
+      "httpSha256": "ff5c6db1648fe642734f7f595779c56618dfe9ce0b6468ec2118ed0a86f7e3fe",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FoundationPage-EwtXGTuB.css",
+      "url": "http://127.0.0.1:19221/resident/assets/FoundationPage-EwtXGTuB.css",
+      "localSha256": "dde2261935eb7277633b7b54078b47dd8424f9bc8ee5c403ea7b3b9776c75d00",
+      "httpSha256": "dde2261935eb7277633b7b54078b47dd8424f9bc8ee5c403ea7b3b9776c75d00",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FoundationPage.CV1UAD2H.js",
+      "url": "http://127.0.0.1:19221/resident/assets/FoundationPage.CV1UAD2H.js",
+      "localSha256": "cb47d4cda95d4cc25f945e56a3f75cfa1679a8a8e84a32146a8b7504750fd408",
+      "httpSha256": "cb47d4cda95d4cc25f945e56a3f75cfa1679a8a8e84a32146a8b7504750fd408",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-Cbztp1Bb.css",
+      "url": "http://127.0.0.1:19221/resident/assets/index-Cbztp1Bb.css",
+      "localSha256": "ea799edf5280fc1de2756b5f0f0475dc562c983fb51afca5e6b174021d294fa1",
+      "httpSha256": "ea799edf5280fc1de2756b5f0f0475dc562c983fb51afca5e6b174021d294fa1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "url": "http://127.0.0.1:19221/resident/assets/index-DdiibYX0.css",
+      "localSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "httpSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-DMmlFNkt.css",
+      "url": "http://127.0.0.1:19221/resident/assets/index-DMmlFNkt.css",
+      "localSha256": "d7a6b1175026f6934b3e35e343c0381058ca04438217546d44709caa0bc35d9b",
+      "httpSha256": "d7a6b1175026f6934b3e35e343c0381058ca04438217546d44709caa0bc35d9b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-ObyFUo6j.js",
+      "url": "http://127.0.0.1:19221/resident/assets/index-ObyFUo6j.js",
+      "localSha256": "5c4db8344929495d0e7a96081822e6e8635aee62ffe732826f2126f949bab83b",
+      "httpSha256": "5c4db8344929495d0e7a96081822e6e8635aee62ffe732826f2126f949bab83b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-applications-detail.HBp1gxH-.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-applications-detail.HBp1gxH-.js",
+      "localSha256": "7b7481a5fa36544720f14e143383f7ca5da6f8723118935a33111b27c98a0125",
+      "httpSha256": "7b7481a5fa36544720f14e143383f7ca5da6f8723118935a33111b27c98a0125",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-applications-index.DdIiV__g.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-applications-index.DdIiV__g.js",
+      "localSha256": "734fafa57ef054f09560c8f80bb65f32a78ee925393a6337e5795df98e52a491",
+      "httpSha256": "734fafa57ef054f09560c8f80bb65f32a78ee925393a6337e5795df98e52a491",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-houses-detail.B-qYUhdQ.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-houses-detail.B-qYUhdQ.js",
+      "localSha256": "48a540fb107a3657c932074c022d860052327f4792b361cda96b2f6ec807834d",
+      "httpSha256": "48a540fb107a3657c932074c022d860052327f4792b361cda96b2f6ec807834d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-houses-index.0PO_4s2Q.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-houses-index.0PO_4s2Q.js",
+      "localSha256": "ad5c2485171a185ad7c7f32e2747abeb3b63b680c046b0dfbe4101ace0862800",
+      "httpSha256": "ad5c2485171a185ad7c7f32e2747abeb3b63b680c046b0dfbe4101ace0862800",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-messages-detail.k-PuJokV.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-messages-detail.k-PuJokV.js",
+      "localSha256": "45e5b692c8b0309d6dda2e83f56369ac66c29394297cf95f22288aacf099eb29",
+      "httpSha256": "45e5b692c8b0309d6dda2e83f56369ac66c29394297cf95f22288aacf099eb29",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-messages-index.BT6uOFmQ.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-messages-index.BT6uOFmQ.js",
+      "localSha256": "3ec4ea0c55ef269a9796ac31371235e5293c667c81045928a8665f87c6e9677c",
+      "httpSha256": "3ec4ea0c55ef269a9796ac31371235e5293c667c81045928a8665f87c6e9677c",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-missing-detail.CA7mjcz_.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-missing-detail.CA7mjcz_.js",
+      "localSha256": "500663a5cf14da8d3a8df8454b45b9bad3d68ac34e5fa212045c0393124b217a",
+      "httpSha256": "500663a5cf14da8d3a8df8454b45b9bad3d68ac34e5fa212045c0393124b217a",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-missing-edit.ByI5TImY.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-missing-edit.ByI5TImY.js",
+      "localSha256": "51c45810aed7f252b0d34351ff28f4adc38df92556962444fc1aef19a456a393",
+      "httpSha256": "51c45810aed7f252b0d34351ff28f4adc38df92556962444fc1aef19a456a393",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-missing-index.Dr1DWBgi.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-missing-index.Dr1DWBgi.js",
+      "localSha256": "5d203b4bb474777bb2631044525cf11a5d488d6f4297f94e842135684156bebd",
+      "httpSha256": "5d203b4bb474777bb2631044525cf11a5d488d6f4297f94e842135684156bebd",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-relations-apply.DHeG5HVB.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-relations-apply.DHeG5HVB.js",
+      "localSha256": "88708924f5df169d7b96d52fe48d48dc19efd3d53ffc44429c70465a79c09b27",
+      "httpSha256": "88708924f5df169d7b96d52fe48d48dc19efd3d53ffc44429c70465a79c09b27",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-relations-detail.lA899FWL.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-relations-detail.lA899FWL.js",
+      "localSha256": "48a540fb107a3657c932074c022d860052327f4792b361cda96b2f6ec807834d",
+      "httpSha256": "48a540fb107a3657c932074c022d860052327f4792b361cda96b2f6ec807834d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-relations-index.Cexo-XRB.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-relations-index.Cexo-XRB.js",
+      "localSha256": "ad5c2485171a185ad7c7f32e2747abeb3b63b680c046b0dfbe4101ace0862800",
+      "httpSha256": "ad5c2485171a185ad7c7f32e2747abeb3b63b680c046b0dfbe4101ace0862800",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-vehicles-detail.HgD6XBQ3.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-vehicles-detail.HgD6XBQ3.js",
+      "localSha256": "eda06efd9e34a2269a758eb3f53132e9b5d90263c47ddcc37a634d45ea1dafa5",
+      "httpSha256": "eda06efd9e34a2269a758eb3f53132e9b5d90263c47ddcc37a634d45ea1dafa5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-vehicles-edit.Bb8JhYxT.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-vehicles-edit.Bb8JhYxT.js",
+      "localSha256": "032a14c724975ff5cc0053bb7ce986ec647fdc546b36fc8111a50b6f73f69b90",
+      "httpSha256": "032a14c724975ff5cc0053bb7ce986ec647fdc546b36fc8111a50b6f73f69b90",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-foundation-vehicles-index.B5qUqCwv.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-foundation-vehicles-index.B5qUqCwv.js",
+      "localSha256": "4b4973bf152ee996eb1491962be5d6b3ab9f769100c979cb82c871e53e28ff35",
+      "httpSha256": "4b4973bf152ee996eb1491962be5d6b3ab9f769100c979cb82c871e53e28ff35",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-home-index.DkHbi1MN.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-home-index.DkHbi1MN.js",
+      "localSha256": "b98f9be63ccaa62ab1047dfad99bfcd4e1005ad8e67c567ad29c4e6c754b585d",
+      "httpSha256": "b98f9be63ccaa62ab1047dfad99bfcd4e1005ad8e67c567ad29c4e6c754b585d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-cart-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-cart-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-confirm-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-confirm-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-detail-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-detail-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-index.Df8O5bjW.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-index.Df8O5bjW.js",
+      "localSha256": "a59f351d5fd405c8a536353f92673a90f15237e5cbcaa166c20224739bd3cd16",
+      "httpSha256": "a59f351d5fd405c8a536353f92673a90f15237e5cbcaa166c20224739bd3cd16",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-list-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-list-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-order-detail-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-order-detail-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-order-list-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-order-list-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-mall-pending-index.wSaUVu4D.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-mall-pending-index.wSaUVu4D.js",
+      "localSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "httpSha256": "a4d3050e937374b1c8e0013339c83e21983d44c47d41d41a9093e0b252d65761",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-profile-index.B4uD-8Il.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-profile-index.B4uD-8Il.js",
+      "localSha256": "9f72f8f85b5a37347354a0c6e2bdb7dfe23cc653b8bdbc9eca8302addda66ff9",
+      "httpSha256": "9f72f8f85b5a37347354a0c6e2bdb7dfe23cc653b8bdbc9eca8302addda66ff9",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-profile-addresses.DIVg8fTF.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-profile-addresses.DIVg8fTF.js",
+      "localSha256": "676b0757a4b3958f57154d1549cdb464b8879b79100401dd902dbe48e7be55c9",
+      "httpSha256": "676b0757a4b3958f57154d1549cdb464b8879b79100401dd902dbe48e7be55c9",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-profile-edit.CYV0C0Fh.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-profile-edit.CYV0C0Fh.js",
+      "localSha256": "71627d510fb466daa8cbd88feae33deafb5e68670eaf7ca8c8a1a03475332c2d",
+      "httpSha256": "71627d510fb466daa8cbd88feae33deafb5e68670eaf7ca8c8a1a03475332c2d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-action.DSwJn4AN.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-action.DSwJn4AN.js",
+      "localSha256": "481beffa0f4b99fc257538d006722dbf81c36349da68fb4f5e7e6a7f2e256ea0",
+      "httpSha256": "481beffa0f4b99fc257538d006722dbf81c36349da68fb4f5e7e6a7f2e256ea0",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-after-sale.Cl3VpmcE.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-after-sale.Cl3VpmcE.js",
+      "localSha256": "acfaca15e35a9f899d5f2e575cec34b334e201fa699359437236c31a63e34292",
+      "httpSha256": "acfaca15e35a9f899d5f2e575cec34b334e201fa699359437236c31a63e34292",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-booking.FiPzPd6h.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-booking.FiPzPd6h.js",
+      "localSha256": "021276ccbfd354059f0290028177c2dda3827f77e4b7454bc3b24d5ea6f696e6",
+      "httpSha256": "021276ccbfd354059f0290028177c2dda3827f77e4b7454bc3b24d5ea6f696e6",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-catalog.-gy5T3r4.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-catalog.-gy5T3r4.js",
+      "localSha256": "4149968dfb49c684aadc20ba2bae6c6ff84bfdf86fd2117ed8dcf58abff3f0a2",
+      "httpSha256": "4149968dfb49c684aadc20ba2bae6c6ff84bfdf86fd2117ed8dcf58abff3f0a2",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-detail.B5bDlr82.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-detail.B5bDlr82.js",
+      "localSha256": "595fa27ac89e4e8fe1e7ac604f95cb76adbf65b8849957696da5afa819186a0e",
+      "httpSha256": "595fa27ac89e4e8fe1e7ac604f95cb76adbf65b8849957696da5afa819186a0e",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-index.DaMj3c9e.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-index.DaMj3c9e.js",
+      "localSha256": "a5feb8621eccf96c252a6217028a9a62bb7b28e320be2625d58398c5ab8d4d19",
+      "httpSha256": "a5feb8621eccf96c252a6217028a9a62bb7b28e320be2625d58398c5ab8d4d19",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-evaluation.Bgow8jUJ.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-evaluation.Bgow8jUJ.js",
+      "localSha256": "f72fcd9e0ef0aff8993ffba8c9f6fd8c89033d5ef33677896b31aaf901435316",
+      "httpSha256": "f72fcd9e0ef0aff8993ffba8c9f6fd8c89033d5ef33677896b31aaf901435316",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-order.DI3kT85m.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-order.DI3kT85m.js",
+      "localSha256": "8cd146140a36492133888f69389afd0f56c8def8d14591b992c8ccd4503a0ad8",
+      "httpSha256": "8cd146140a36492133888f69389afd0f56c8def8d14591b992c8ccd4503a0ad8",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-orders.Ig_5_D-0.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-orders.Ig_5_D-0.js",
+      "localSha256": "bf6e3a23185564347ded518cdaac1530116da5e204365808cd3296833a2b2109",
+      "httpSha256": "bf6e3a23185564347ded518cdaac1530116da5e204365808cd3296833a2b2109",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-service-voucher.BGUsayRq.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-service-voucher.BGUsayRq.js",
+      "localSha256": "0f20a36c42a490bbd974f14fcf671d6c14a84df7dc577419c80cc6b7d414c369",
+      "httpSha256": "0f20a36c42a490bbd974f14fcf671d6c14a84df7dc577419c80cc6b7d414c369",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-fees-detail.Dqc1Jqym.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-fees-detail.Dqc1Jqym.js",
+      "localSha256": "b7acc5f8ca69c9718e415fd03d8f8c5ee6d614df0ba24915e9fc974ef60fad6c",
+      "httpSha256": "b7acc5f8ca69c9718e415fd03d8f8c5ee6d614df0ba24915e9fc974ef60fad6c",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-fees-index.ZBBS52M8.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-fees-index.ZBBS52M8.js",
+      "localSha256": "22109afcbbf62bce8cf0ea8e5f9079a5509db11ead0af951d15f3f4e79dc0076",
+      "httpSha256": "22109afcbbf62bce8cf0ea8e5f9079a5509db11ead0af951d15f3f4e79dc0076",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-fees-pay.T5_v4EVe.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-fees-pay.T5_v4EVe.js",
+      "localSha256": "601b6ce387efcd503783674fcb226b34a67379f37fae1cfb0dd59656444396cd",
+      "httpSha256": "601b6ce387efcd503783674fcb226b34a67379f37fae1cfb0dd59656444396cd",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-hazards-action.Bwowb6cG.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-hazards-action.Bwowb6cG.js",
+      "localSha256": "317945290af1dc650f7f4318820da414fb2139ee3c839bf7f0afcdbb6f02cf9d",
+      "httpSha256": "317945290af1dc650f7f4318820da414fb2139ee3c839bf7f0afcdbb6f02cf9d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-hazards-create.BJy6ZYKO.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-hazards-create.BJy6ZYKO.js",
+      "localSha256": "59e46a6df011d5a175c7da8fc566d42d17f22febdffdcc602c7d3196acf6f4a5",
+      "httpSha256": "59e46a6df011d5a175c7da8fc566d42d17f22febdffdcc602c7d3196acf6f4a5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-hazards-detail.BBAR3xWx.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-hazards-detail.BBAR3xWx.js",
+      "localSha256": "3477f4658a2591400388242ca043ba7485375204d31580c492b9c30153ab676b",
+      "httpSha256": "3477f4658a2591400388242ca043ba7485375204d31580c492b9c30153ab676b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-hazards-index.DJ0NrfZ7.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-hazards-index.DJ0NrfZ7.js",
+      "localSha256": "2be32f4e7b02746cc9462bd2cc2dd12654adefde00638de36603166de4e162ad",
+      "httpSha256": "2be32f4e7b02746cc9462bd2cc2dd12654adefde00638de36603166de4e162ad",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-parking-contactless.7rGkIxQW.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-parking-contactless.7rGkIxQW.js",
+      "localSha256": "f9e737b9472189f70d75b9ec6e19a2613e111a60436a2616fec82f5386702982",
+      "httpSha256": "f9e737b9472189f70d75b9ec6e19a2613e111a60436a2616fec82f5386702982",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-parking-index.CX0iX92m.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-parking-index.CX0iX92m.js",
+      "localSha256": "cb3c973795624f41c166e6b589eb442bf30af84a9cb587d73cae7a8d4b5e5cfa",
+      "httpSha256": "cb3c973795624f41c166e6b589eb442bf30af84a9cb587d73cae7a8d4b5e5cfa",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-parking-monthly.BGiZpY33.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-parking-monthly.BGiZpY33.js",
+      "localSha256": "9140c26e50710c219679e59496c10540e3c10d9bb1f7ee479050bddb094fa4d1",
+      "httpSha256": "9140c26e50710c219679e59496c10540e3c10d9bb1f7ee479050bddb094fa4d1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-parking-temporary.DdGsfIR4.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-parking-temporary.DdGsfIR4.js",
+      "localSha256": "8f4f860c6beb450891c3dc72964a515d4205fb927c99056bc6cf81e8d9b955d0",
+      "httpSha256": "8f4f860c6beb450891c3dc72964a515d4205fb927c99056bc6cf81e8d9b955d0",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-payments-index.CJp9exHD.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-payments-index.CJp9exHD.js",
+      "localSha256": "683b0df9e4bef6c0e710007247eb692ea708999eb0f53ecabbec8856def288f2",
+      "httpSha256": "683b0df9e4bef6c0e710007247eb692ea708999eb0f53ecabbec8856def288f2",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-payments-detail.DLpIiEJN.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-payments-detail.DLpIiEJN.js",
+      "localSha256": "def000eff21c661772fc966b8edb7268484b455fdeeaf60bd26a4d01cf117df0",
+      "httpSha256": "def000eff21c661772fc966b8edb7268484b455fdeeaf60bd26a4d01cf117df0",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-records-index.DXhlSmVk.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-records-index.DXhlSmVk.js",
+      "localSha256": "1af730311450b824e90ad71f5ca4d9af0700c059157e1b2ecbd96c0dc0849236",
+      "httpSha256": "1af730311450b824e90ad71f5ca4d9af0700c059157e1b2ecbd96c0dc0849236",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-repairs-action.yr2dqwz2.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-repairs-action.yr2dqwz2.js",
+      "localSha256": "55aecb11caf26f2d208755ee419fb09a0c97e253a349e97edf4ea20d10a34deb",
+      "httpSha256": "55aecb11caf26f2d208755ee419fb09a0c97e253a349e97edf4ea20d10a34deb",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-repairs-create.DHfkCYRV.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-repairs-create.DHfkCYRV.js",
+      "localSha256": "3cf5e103af5cda10c552b8ea1f809a4da6bb524f39ae07f6cc2983f0dab97128",
+      "httpSha256": "3cf5e103af5cda10c552b8ea1f809a4da6bb524f39ae07f6cc2983f0dab97128",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-repairs-index.DV4gSFwc.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-repairs-index.DV4gSFwc.js",
+      "localSha256": "7d21faef6416a925d4f3447688137f86bd8a5a9e67dcdd8c262d617bf44b2083",
+      "httpSha256": "7d21faef6416a925d4f3447688137f86bd8a5a9e67dcdd8c262d617bf44b2083",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-stage01-repairs-detail.Cd7O1GYX.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-stage01-repairs-detail.Cd7O1GYX.js",
+      "localSha256": "87d3c0bd799992d7f48ca7ea52328cda8e367702c21644dbef0f5a366b6dc6a7",
+      "httpSha256": "87d3c0bd799992d7f48ca7ea52328cda8e367702c21644dbef0f5a366b6dc6a7",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/pages-unavailable-index.D4N-9ygz.js",
+      "url": "http://127.0.0.1:19221/resident/assets/pages-unavailable-index.D4N-9ygz.js",
+      "localSha256": "7d806772a6e27e4e392a731126248ad9acf63111a46e312ca8f0aff79146ea7c",
+      "httpSha256": "7d806772a6e27e4e392a731126248ad9acf63111a46e312ca8f0aff79146ea7c",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ParkingPage-DePjeEnG.css",
+      "url": "http://127.0.0.1:19221/resident/assets/ParkingPage-DePjeEnG.css",
+      "localSha256": "c97e50b472cc4a2a42dd8e6cf317d13f9e26b36ec8ef5de4985115802a512ef3",
+      "httpSha256": "c97e50b472cc4a2a42dd8e6cf317d13f9e26b36ec8ef5de4985115802a512ef3",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ParkingPage.Cf557bZ7.js",
+      "url": "http://127.0.0.1:19221/resident/assets/ParkingPage.Cf557bZ7.js",
+      "localSha256": "cf1fcb7afdd24f8ccaf312d730c5da2017ca49ae2f245d62a87c7d61cc252c21",
+      "httpSha256": "cf1fcb7afdd24f8ccaf312d730c5da2017ca49ae2f245d62a87c7d61cc252c21",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/PortalPage-BgbNIGTB.css",
+      "url": "http://127.0.0.1:19221/resident/assets/PortalPage-BgbNIGTB.css",
+      "localSha256": "7e107bd8cfa7f2f85f62c2ac5b4a52b9a06fc189dcaf444bdaf12372e6b3045b",
+      "httpSha256": "7e107bd8cfa7f2f85f62c2ac5b4a52b9a06fc189dcaf444bdaf12372e6b3045b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/PortalPage.CqEhtR_-.js",
+      "url": "http://127.0.0.1:19221/resident/assets/PortalPage.CqEhtR_-.js",
+      "localSha256": "d0ffdd382b98a7ada6d9a243184579dc14ba1438d7b0c276e768f98f7e3e65f8",
+      "httpSha256": "d0ffdd382b98a7ada6d9a243184579dc14ba1438d7b0c276e768f98f7e3e65f8",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ServicePage-DfEJacfa.css",
+      "url": "http://127.0.0.1:19221/resident/assets/ServicePage-DfEJacfa.css",
+      "localSha256": "c7338a09570a97ef3506d07056c67f9e28907fbde837d7a8c177180a0ef0b5cc",
+      "httpSha256": "c7338a09570a97ef3506d07056c67f9e28907fbde837d7a8c177180a0ef0b5cc",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ServicePage.C1vZ9uoX.js",
+      "url": "http://127.0.0.1:19221/resident/assets/ServicePage.C1vZ9uoX.js",
+      "localSha256": "2732a1cc7b4119ea11fe7a9df0c16c5769d5a1d38476c7c6fdef9e3bd87c151f",
+      "httpSha256": "2732a1cc7b4119ea11fe7a9df0c16c5769d5a1d38476c7c6fdef9e3bd87c151f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/uni.ac315461.css",
+      "url": "http://127.0.0.1:19221/resident/assets/uni.ac315461.css",
+      "localSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "httpSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/WorkPage-C8MmWrvN.css",
+      "url": "http://127.0.0.1:19221/resident/assets/WorkPage-C8MmWrvN.css",
+      "localSha256": "cbedf5e300162142cdec4306951ba8d9fd6e4dc4c6e1dcba9f146dd58b521590",
+      "httpSha256": "cbedf5e300162142cdec4306951ba8d9fd6e4dc4c6e1dcba9f146dd58b521590",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/WorkPage.dXAJHXKx.js",
+      "url": "http://127.0.0.1:19221/resident/assets/WorkPage.dXAJHXKx.js",
+      "localSha256": "aaa54e0b551a0c199cc25af661528b0649694c2cae8124bdcfd2e02be2100aa5",
+      "httpSha256": "aaa54e0b551a0c199cc25af661528b0649694c2cae8124bdcfd2e02be2100aa5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/index.html",
+      "url": "http://127.0.0.1:19221/resident/index.html",
+      "localSha256": "f22148d01b2d6894527419b0c68330ce5a505e88ed1deee5f3f46924fb68f594",
+      "httpSha256": "f22148d01b2d6894527419b0c68330ce5a505e88ed1deee5f3f46924fb68f594",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/AppNavbar-BF91pLGH.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/AppNavbar-BF91pLGH.css",
+      "localSha256": "1ceb33ad22ba0f00a95e7c1fb41c0062c06cb99f1744c1f4d125f5f77b2ba666",
+      "httpSha256": "1ceb33ad22ba0f00a95e7c1fb41c0062c06cb99f1744c1f4d125f5f77b2ba666",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/AppNavbar.ZUva6VlG.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/AppNavbar.ZUva6VlG.js",
+      "localSha256": "cdfda266fa321f2cb1362ab1c2bd9f3c9321d1307df225f627209007c300420b",
+      "httpSha256": "cdfda266fa321f2cb1362ab1c2bd9f3c9321d1307df225f627209007c300420b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/FieldGroup-dfDUXEi4.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/FieldGroup-dfDUXEi4.css",
+      "localSha256": "cef4f83383b7c9106248b22060a780406eef7447854a1682acfe7bbbd08fb66e",
+      "httpSha256": "cef4f83383b7c9106248b22060a780406eef7447854a1682acfe7bbbd08fb66e",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/FieldGroup.CnfGe2SI.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/FieldGroup.CnfGe2SI.js",
+      "localSha256": "0591b3bf7d815edc18a0040ad72a9cb5aaed31bd8f03efa25e0736cfbab1d1b6",
+      "httpSha256": "0591b3bf7d815edc18a0040ad72a9cb5aaed31bd8f03efa25e0736cfbab1d1b6",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-BcmnsA_E.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/index-BcmnsA_E.js",
+      "localSha256": "0731265ada6e59b6708b1486f0fd138cb7f9bb72334ad2977d2b1cad5f7fb814",
+      "httpSha256": "0731265ada6e59b6708b1486f0fd138cb7f9bb72334ad2977d2b1cad5f7fb814",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-Cbztp1Bb.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/index-Cbztp1Bb.css",
+      "localSha256": "ea799edf5280fc1de2756b5f0f0475dc562c983fb51afca5e6b174021d294fa1",
+      "httpSha256": "ea799edf5280fc1de2756b5f0f0475dc562c983fb51afca5e6b174021d294fa1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/index-DdiibYX0.css",
+      "localSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "httpSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/material-BMWF6SaD.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/material-BMWF6SaD.css",
+      "localSha256": "7672444e575ba93511a63a2eb3bfaf43f936af5ed907115b79bd79457ef73e06",
+      "httpSha256": "7672444e575ba93511a63a2eb3bfaf43f936af5ed907115b79bd79457ef73e06",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-operation-index.DFhbhjPq.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-operation-index.DFhbhjPq.js",
+      "localSha256": "1901a697eb5ec2cf9d7287c0405539772b9f676a4d1c0efe0f6364271947aedb",
+      "httpSha256": "1901a697eb5ec2cf9d7287c0405539772b9f676a4d1c0efe0f6364271947aedb",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-order-detail-index.CRw-tHXU.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-order-detail-index.CRw-tHXU.js",
+      "localSha256": "68578d92c22eaf247c9a1f47fa2a3d1bef7e5e4ef7fc4730a0df627142aec37e",
+      "httpSha256": "68578d92c22eaf247c9a1f47fa2a3d1bef7e5e4ef7fc4730a0df627142aec37e",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-order-index.Kj2BmH-t.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-order-index.Kj2BmH-t.js",
+      "localSha256": "f0e49f95a83c8a615857102bb47948de218988eceb663b01cc7e506d52115a9b",
+      "httpSha256": "f0e49f95a83c8a615857102bb47948de218988eceb663b01cc7e506d52115a9b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-product-editor-index.CRw-tHXU.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-product-editor-index.CRw-tHXU.js",
+      "localSha256": "68578d92c22eaf247c9a1f47fa2a3d1bef7e5e4ef7fc4730a0df627142aec37e",
+      "httpSha256": "68578d92c22eaf247c9a1f47fa2a3d1bef7e5e4ef7fc4730a0df627142aec37e",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-profile-index.Xokzb74m.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-profile-index.Xokzb74m.js",
+      "localSha256": "bf0d602624039490960fc6f9d185a9a76aa441936a5f41f41d9c5328b8776c5b",
+      "httpSha256": "bf0d602624039490960fc6f9d185a9a76aa441936a5f41f41d9c5328b8776c5b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-action.C8DZk-0P.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-action.C8DZk-0P.js",
+      "localSha256": "4d7751fa2a48ab4973cc78557378d9742abc3c92478d1cec77748ba4e3250450",
+      "httpSha256": "4d7751fa2a48ab4973cc78557378d9742abc3c92478d1cec77748ba4e3250450",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-after-sale.CjVjho_z.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-after-sale.CjVjho_z.js",
+      "localSha256": "1d7b468a0e892d71307d8f333ed23c9befcb1c6877f2b3d9f747de7987fc1fa4",
+      "httpSha256": "1d7b468a0e892d71307d8f333ed23c9befcb1c6877f2b3d9f747de7987fc1fa4",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-aftersales.DpXVmGVY.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-aftersales.DpXVmGVY.js",
+      "localSha256": "42e512faf6506653fd192f2734987deab18f915c6dec648bbbc3a6ed132c456a",
+      "httpSha256": "42e512faf6506653fd192f2734987deab18f915c6dec648bbbc3a6ed132c456a",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-evaluations.BU2wveq1.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-evaluations.BU2wveq1.js",
+      "localSha256": "1569682cb9e4eb0b7074f75d86071253cb9eca7f79240ed98af1cf89303866a6",
+      "httpSha256": "1569682cb9e4eb0b7074f75d86071253cb9eca7f79240ed98af1cf89303866a6",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-funds.C4x3TRVl.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-funds.C4x3TRVl.js",
+      "localSha256": "680e9b56451d108d89f2600c6673a44dc463ae07243f0db3ab4f77374ec2c696",
+      "httpSha256": "680e9b56451d108d89f2600c6673a44dc463ae07243f0db3ab4f77374ec2c696",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-material.zzZA0CCO.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-material.zzZA0CCO.js",
+      "localSha256": "5ef58331f71f65b30f8db8c5a416bc0b24080aa0092252e5f60e547279f65712",
+      "httpSha256": "5ef58331f71f65b30f8db8c5a416bc0b24080aa0092252e5f60e547279f65712",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-order.DWydQgfv.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-order.DWydQgfv.js",
+      "localSha256": "7e509a43e39083a382e7dbde005e05b3a82c9776fb29080852e3621fa3ee14d5",
+      "httpSha256": "7e509a43e39083a382e7dbde005e05b3a82c9776fb29080852e3621fa3ee14d5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-orders.yP7JlGE9.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-orders.yP7JlGE9.js",
+      "localSha256": "a16ccf6d33488d6a86e2be52ec1d3d9a4b8e0fc057608dde034f73a08bd71444",
+      "httpSha256": "a16ccf6d33488d6a86e2be52ec1d3d9a4b8e0fc057608dde034f73a08bd71444",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-overview.D1hdvvzp.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-overview.D1hdvvzp.js",
+      "localSha256": "07095387b915336ed4ed8786a531a31d3b1da30659c69f6b7361c3d6097d9ec9",
+      "httpSha256": "07095387b915336ed4ed8786a531a31d3b1da30659c69f6b7361c3d6097d9ec9",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-personnel.Bl0XtyjZ.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-personnel.Bl0XtyjZ.js",
+      "localSha256": "865c42a5a2c438b269fbb7076c7d487b557b52a68622103a872a4934cb0bcdae",
+      "httpSha256": "865c42a5a2c438b269fbb7076c7d487b557b52a68622103a872a4934cb0bcdae",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-qualification.C-L8hRy-.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-qualification.C-L8hRy-.js",
+      "localSha256": "93d755af80261f37cd3ba78b0c9835c7094697931a3bc65b348b4dc0c4b4361f",
+      "httpSha256": "93d755af80261f37cd3ba78b0c9835c7094697931a3bc65b348b4dc0c4b4361f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-spec.2ck0Y6gy.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-spec.2ck0Y6gy.js",
+      "localSha256": "dd025f11c55a165b5cd71c7d58dba99a542b96e47c8babcd747bb0b62d7202a7",
+      "httpSha256": "dd025f11c55a165b5cd71c7d58dba99a542b96e47c8babcd747bb0b62d7202a7",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-supply.DGtrBn2i.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-supply.DGtrBn2i.js",
+      "localSha256": "698a0108144c9bf79839461f0f661ce2c9c2639b69ef962abfba14614dcf332f",
+      "httpSha256": "698a0108144c9bf79839461f0f661ce2c9c2639b69ef962abfba14614dcf332f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-verify.C_ZaPucH.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-verify.C_ZaPucH.js",
+      "localSha256": "4bb3e450acdc4a3b731bb9059a5357658666d01c1d5c825fbe19baae953a3e95",
+      "httpSha256": "4bb3e450acdc4a3b731bb9059a5357658666d01c1d5c825fbe19baae953a3e95",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-service-workbench.BqKyRUXT.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-service-workbench.BqKyRUXT.js",
+      "localSha256": "584264b573d3dd945cd5312f217b918d7e6c4290df471500787d11feb176372a",
+      "httpSha256": "584264b573d3dd945cd5312f217b918d7e6c4290df471500787d11feb176372a",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-unavailable-index.D9mFY4Lg.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-unavailable-index.D9mFY4Lg.js",
+      "localSha256": "e3b14de496d8027d5bc8f2e220b9fcc1713f90a1e28aa015a357742c924ec3b5",
+      "httpSha256": "e3b14de496d8027d5bc8f2e220b9fcc1713f90a1e28aa015a357742c924ec3b5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/pages-workbench-index.CbwCROiB.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/pages-workbench-index.CbwCROiB.js",
+      "localSha256": "593ffd21b84f94dc20b99184c84d221a46494a6d237037602c400ea56d33713a",
+      "httpSha256": "593ffd21b84f94dc20b99184c84d221a46494a6d237037602c400ea56d33713a",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/PortalPage-Cz6o0X_D.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/PortalPage-Cz6o0X_D.css",
+      "localSha256": "caf87b05fe324295cfde8b78bf7bac93f4ca592af058dcd65a1fc143acf596b7",
+      "httpSha256": "caf87b05fe324295cfde8b78bf7bac93f4ca592af058dcd65a1fc143acf596b7",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/PortalPage.Bb0Y8FQp.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/PortalPage.Bb0Y8FQp.js",
+      "localSha256": "206dded7eebaba38ae1658fb7575e1352ebcaf79515dac5649245ea3aa98bbad",
+      "httpSha256": "206dded7eebaba38ae1658fb7575e1352ebcaf79515dac5649245ea3aa98bbad",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/ServicePage-Devqgm9a.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/ServicePage-Devqgm9a.css",
+      "localSha256": "805725947ba440775e9f66da45bc64484f206450fdabe04e83f578d1cc6fbe16",
+      "httpSha256": "805725947ba440775e9f66da45bc64484f206450fdabe04e83f578d1cc6fbe16",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/ServicePage.DxyWonf6.js",
+      "url": "http://127.0.0.1:19221/merchant/assets/ServicePage.DxyWonf6.js",
+      "localSha256": "718174e7da1050843bb2f1568dfef3b8c37fdd16e68ebb0209fc9fa019355eff",
+      "httpSha256": "718174e7da1050843bb2f1568dfef3b8c37fdd16e68ebb0209fc9fa019355eff",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/spec-_o5CF199.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/spec-_o5CF199.css",
+      "localSha256": "699227fa9ded0a82ea1e8b11c761fe2e870b51f3a92f5356fab93ddf75a49301",
+      "httpSha256": "699227fa9ded0a82ea1e8b11c761fe2e870b51f3a92f5356fab93ddf75a49301",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/uni.ac315461.css",
+      "url": "http://127.0.0.1:19221/merchant/assets/uni.ac315461.css",
+      "localSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "httpSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/index.html",
+      "url": "http://127.0.0.1:19221/merchant/index.html",
+      "localSha256": "aebdc8d16594a15b31dea2c3aee6724d61c3f74f81e39586ce5959cffd94b099",
+      "httpSha256": "aebdc8d16594a15b31dea2c3aee6724d61c3f74f81e39586ce5959cffd94b099",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/AppNavbar-BF91pLGH.css",
+      "url": "http://127.0.0.1:19221/staff/assets/AppNavbar-BF91pLGH.css",
+      "localSha256": "1ceb33ad22ba0f00a95e7c1fb41c0062c06cb99f1744c1f4d125f5f77b2ba666",
+      "httpSha256": "1ceb33ad22ba0f00a95e7c1fb41c0062c06cb99f1744c1f4d125f5f77b2ba666",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/AppNavbar.BrhMry2i.js",
+      "url": "http://127.0.0.1:19221/staff/assets/AppNavbar.BrhMry2i.js",
+      "localSha256": "8549d48b72ed672c4d05381ce82e932e6047f0d08887aebfadae17f3d4f9db6c",
+      "httpSha256": "8549d48b72ed672c4d05381ce82e932e6047f0d08887aebfadae17f3d4f9db6c",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/BaseCard-DUs1Qfff.css",
+      "url": "http://127.0.0.1:19221/staff/assets/BaseCard-DUs1Qfff.css",
+      "localSha256": "dcd26cf3eb2b79ce1e1e20bd25afc6612c882078c2c363fc9a1d55608272a2b1",
+      "httpSha256": "dcd26cf3eb2b79ce1e1e20bd25afc6612c882078c2c363fc9a1d55608272a2b1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/BaseCard.BdkJVVI8.js",
+      "url": "http://127.0.0.1:19221/staff/assets/BaseCard.BdkJVVI8.js",
+      "localSha256": "4ce711ddfbda9434c1b1154b7d06f92af45dea7fdf9d9a216fe4afb0c1a14232",
+      "httpSha256": "4ce711ddfbda9434c1b1154b7d06f92af45dea7fdf9d9a216fe4afb0c1a14232",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/Details-Bg2ohJ8e.css",
+      "url": "http://127.0.0.1:19221/staff/assets/Details-Bg2ohJ8e.css",
+      "localSha256": "7c0032dde3d384b06b27ca92c4bd72b8b27ebc75a3a41073e83d579f6311d21b",
+      "httpSha256": "7c0032dde3d384b06b27ca92c4bd72b8b27ebc75a3a41073e83d579f6311d21b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/Details.DA_Pxk2X.js",
+      "url": "http://127.0.0.1:19221/staff/assets/Details.DA_Pxk2X.js",
+      "localSha256": "f3d309c74e8f0f7f2eaf437becf0b84e4847ceb0cc40ef80f3dd0af47bd5f882",
+      "httpSha256": "f3d309c74e8f0f7f2eaf437becf0b84e4847ceb0cc40ef80f3dd0af47bd5f882",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FeesPage-bnZsbkBP.css",
+      "url": "http://127.0.0.1:19221/staff/assets/FeesPage-bnZsbkBP.css",
+      "localSha256": "33f208017bbe3a0b3b08b63baa67a3def552288486d697927da583be0238a67f",
+      "httpSha256": "33f208017bbe3a0b3b08b63baa67a3def552288486d697927da583be0238a67f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FeesPage.BFRyGtFm.js",
+      "url": "http://127.0.0.1:19221/staff/assets/FeesPage.BFRyGtFm.js",
+      "localSha256": "06d08c829be5f9c0573c80756466afb578b5c8aaa09fa736b36beb71e6c2f40e",
+      "httpSha256": "06d08c829be5f9c0573c80756466afb578b5c8aaa09fa736b36beb71e6c2f40e",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/formFeedback.DC6EizRf.js",
+      "url": "http://127.0.0.1:19221/staff/assets/formFeedback.DC6EizRf.js",
+      "localSha256": "8646030bb9be9c5017088f333ce9fd04ae7f93e8f94db962c7a5af82475867db",
+      "httpSha256": "8646030bb9be9c5017088f333ce9fd04ae7f93e8f94db962c7a5af82475867db",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FormField-MvPuIPzS.css",
+      "url": "http://127.0.0.1:19221/staff/assets/FormField-MvPuIPzS.css",
+      "localSha256": "d2cad89bbf741ec41c63ded891818da63d0561316ddc90acd67987416e73a212",
+      "httpSha256": "d2cad89bbf741ec41c63ded891818da63d0561316ddc90acd67987416e73a212",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FormField.5kDiGxXI.js",
+      "url": "http://127.0.0.1:19221/staff/assets/FormField.5kDiGxXI.js",
+      "localSha256": "53a79fca2c868e34c4bd5b7c208b60223ac90a1b6898ce241cb8de868b2c440b",
+      "httpSha256": "53a79fca2c868e34c4bd5b7c208b60223ac90a1b6898ce241cb8de868b2c440b",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FoundationPage-EwtXGTuB.css",
+      "url": "http://127.0.0.1:19221/staff/assets/FoundationPage-EwtXGTuB.css",
+      "localSha256": "dde2261935eb7277633b7b54078b47dd8424f9bc8ee5c403ea7b3b9776c75d00",
+      "httpSha256": "dde2261935eb7277633b7b54078b47dd8424f9bc8ee5c403ea7b3b9776c75d00",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FoundationPage.hFVxV1As.js",
+      "url": "http://127.0.0.1:19221/staff/assets/FoundationPage.hFVxV1As.js",
+      "localSha256": "df35454aaaf82ce0d67614a93af0c9834e1e5ed0fd52fb261e37cd31c298e196",
+      "httpSha256": "df35454aaaf82ce0d67614a93af0c9834e1e5ed0fd52fb261e37cd31c298e196",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-Cbztp1Bb.css",
+      "url": "http://127.0.0.1:19221/staff/assets/index-Cbztp1Bb.css",
+      "localSha256": "ea799edf5280fc1de2756b5f0f0475dc562c983fb51afca5e6b174021d294fa1",
+      "httpSha256": "ea799edf5280fc1de2756b5f0f0475dc562c983fb51afca5e6b174021d294fa1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "url": "http://127.0.0.1:19221/staff/assets/index-DdiibYX0.css",
+      "localSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "httpSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-o9hMuedb.js",
+      "url": "http://127.0.0.1:19221/staff/assets/index-o9hMuedb.js",
+      "localSha256": "e5bc6ab1710e09f3646051bf6a89a6c03ceaf0e60b9ea890089d657da813900d",
+      "httpSha256": "e5bc6ab1710e09f3646051bf6a89a6c03ceaf0e60b9ea890089d657da813900d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-archive-index.BLdiQ4nh.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-archive-index.BLdiQ4nh.js",
+      "localSha256": "a0290000afaaaeab7a70925b777166668f6e797988d8ff702bd758b891eb3aab",
+      "httpSha256": "a0290000afaaaeab7a70925b777166668f6e797988d8ff702bd758b891eb3aab",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-communities-detail.BJL5AVEl.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-communities-detail.BJL5AVEl.js",
+      "localSha256": "5da300fdc3f6bae87b4fcb1bbd0c9140e7ebf959c6ebd5ce3990c8772f281b23",
+      "httpSha256": "5da300fdc3f6bae87b4fcb1bbd0c9140e7ebf959c6ebd5ce3990c8772f281b23",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-communities-index.B6r6k3Cb.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-communities-index.B6r6k3Cb.js",
+      "localSha256": "1932a32b6e50a5fc0bac4fa9cae3545b16a98d190d2c0e7031b16bb361a8d7b7",
+      "httpSha256": "1932a32b6e50a5fc0bac4fa9cae3545b16a98d190d2c0e7031b16bb361a8d7b7",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-estates-detail.Dq-Xwzo6.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-estates-detail.Dq-Xwzo6.js",
+      "localSha256": "64faea8f28a228ccd1936c98d758a6f29ed6c18f2469f03a4f3671403b888423",
+      "httpSha256": "64faea8f28a228ccd1936c98d758a6f29ed6c18f2469f03a4f3671403b888423",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-estates-index.B5WLACMQ.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-estates-index.B5WLACMQ.js",
+      "localSha256": "78bcf6b2c0463b86b0e2b74d2d7267ffbac2b398869b3fbb7f87fa1990128687",
+      "httpSha256": "78bcf6b2c0463b86b0e2b74d2d7267ffbac2b398869b3fbb7f87fa1990128687",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-facilities-detail.DGlECamp.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-facilities-detail.DGlECamp.js",
+      "localSha256": "61b59cd6eced0563002235eca5a38cd0f0d68457248d01b3442cd7297cd7371d",
+      "httpSha256": "61b59cd6eced0563002235eca5a38cd0f0d68457248d01b3442cd7297cd7371d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-facilities-index.Bt9eRDvT.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-facilities-index.Bt9eRDvT.js",
+      "localSha256": "771568a78918d4bfb34a1b0f194bdeeef78e9d11a9d9278dacacba54880c78a2",
+      "httpSha256": "771568a78918d4bfb34a1b0f194bdeeef78e9d11a9d9278dacacba54880c78a2",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-houses-detail.-bre4Al7.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-houses-detail.-bre4Al7.js",
+      "localSha256": "a6d80bed22b5334bc6b77907830863e27dcb942a435a79d9bf42084bce3f85cc",
+      "httpSha256": "a6d80bed22b5334bc6b77907830863e27dcb942a435a79d9bf42084bce3f85cc",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-houses-index.B_Oc4Xug.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-houses-index.B_Oc4Xug.js",
+      "localSha256": "ee315ccaac3c250db0b82ebbebda23b10d54e47a329a1ed1fc8b343dbfdf14cc",
+      "httpSha256": "ee315ccaac3c250db0b82ebbebda23b10d54e47a329a1ed1fc8b343dbfdf14cc",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-messages-detail.aXrPB3uu.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-messages-detail.aXrPB3uu.js",
+      "localSha256": "bd778960b5c72e56f667f48b033a7a42dd97748a2077b827be0d7dce27e26c10",
+      "httpSha256": "bd778960b5c72e56f667f48b033a7a42dd97748a2077b827be0d7dce27e26c10",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-messages-index.CSk5dtFh.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-messages-index.CSk5dtFh.js",
+      "localSha256": "1efafa11df0cb2b70776d346559b1b48c307767bb83242f8e4727d3bd6099032",
+      "httpSha256": "1efafa11df0cb2b70776d346559b1b48c307767bb83242f8e4727d3bd6099032",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-personnel-detail.BcF-HUk5.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-personnel-detail.BcF-HUk5.js",
+      "localSha256": "2ce3bcf18a84d401adb7574f02dd062e4ac9a47d84cac82269a01bfc6ad6da9a",
+      "httpSha256": "2ce3bcf18a84d401adb7574f02dd062e4ac9a47d84cac82269a01bfc6ad6da9a",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-personnel-index.DTngGIym.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-personnel-index.DTngGIym.js",
+      "localSha256": "5321a349fd025599a961b262f4d1c7f591d1b1a09f1e730dcb46fb6f6a80c443",
+      "httpSha256": "5321a349fd025599a961b262f4d1c7f591d1b1a09f1e730dcb46fb6f6a80c443",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-residents-detail.CrFhVVzG.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-residents-detail.CrFhVVzG.js",
+      "localSha256": "efa1182e0e1e55ddc9cf9bbda3469906fd9d64cfbd4ad043cf928cd08ea90f24",
+      "httpSha256": "efa1182e0e1e55ddc9cf9bbda3469906fd9d64cfbd4ad043cf928cd08ea90f24",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-residents-index.DX2QanmU.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-residents-index.DX2QanmU.js",
+      "localSha256": "8bd5220344fef00c30849f89e9e0453231109b5f274fea503be9085b455fe68d",
+      "httpSha256": "8bd5220344fef00c30849f89e9e0453231109b5f274fea503be9085b455fe68d",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-vehicles-detail.C1Vsdi-p.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-vehicles-detail.C1Vsdi-p.js",
+      "localSha256": "6606dd09044407d29abada3b67aba8f14ff1a06e818040504ac095bcb38c81cb",
+      "httpSha256": "6606dd09044407d29abada3b67aba8f14ff1a06e818040504ac095bcb38c81cb",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-foundation-vehicles-index.B8vpL5Xx.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-foundation-vehicles-index.B8vpL5Xx.js",
+      "localSha256": "70967669563957b555a50c22bce1bb88515e4107005721dab26724b5f217dfcd",
+      "httpSha256": "70967669563957b555a50c22bce1bb88515e4107005721dab26724b5f217dfcd",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-profile-index.DK_n2yj2.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-profile-index.DK_n2yj2.js",
+      "localSha256": "bb0abd8613acf5a695f72eb984abc9c8a6d58b919005ef4758059801477e50d4",
+      "httpSha256": "bb0abd8613acf5a695f72eb984abc9c8a6d58b919005ef4758059801477e50d4",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-charges-detail.BRGO8Iyg.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-charges-detail.BRGO8Iyg.js",
+      "localSha256": "764edf605ad1d125c91b18a85b4ff76a70ee063f94f354403da8a11388c2ebe5",
+      "httpSha256": "764edf605ad1d125c91b18a85b4ff76a70ee063f94f354403da8a11388c2ebe5",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-charges-index.B9AcadNx.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-charges-index.B9AcadNx.js",
+      "localSha256": "f64f3f29535cddce64c20ee89f5e7dc41c5a014c2a40f195fc5e06f790a06ae7",
+      "httpSha256": "f64f3f29535cddce64c20ee89f5e7dc41c5a014c2a40f195fc5e06f790a06ae7",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-reports-create.QmbGoqIy.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-reports-create.QmbGoqIy.js",
+      "localSha256": "85c4b11222d6bcf3db7a62f62552d272fa25ca3a0a9c0a6814b92766a0ed7d5e",
+      "httpSha256": "85c4b11222d6bcf3db7a62f62552d272fa25ca3a0a9c0a6814b92766a0ed7d5e",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-reports-supplement.BBadyipX.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-reports-supplement.BBadyipX.js",
+      "localSha256": "27ce02a714abee9eb5c2c4e33440b1e1d5349e024fbc44a35ab851b89c1315de",
+      "httpSha256": "27ce02a714abee9eb5c2c4e33440b1e1d5349e024fbc44a35ab851b89c1315de",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-tasks-action.B-mPqeCU.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-tasks-action.B-mPqeCU.js",
+      "localSha256": "17eb694641047c59dcfa5c4d093a4bf130aa7802afa92cb901e2ff6034978849",
+      "httpSha256": "17eb694641047c59dcfa5c4d093a4bf130aa7802afa92cb901e2ff6034978849",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-tasks-detail.DW5SsQWs.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-tasks-detail.DW5SsQWs.js",
+      "localSha256": "0bc3dc9d286cef34c89c6ecf2141041bfa9dd2a8f041b540ae17512c2a816e44",
+      "httpSha256": "0bc3dc9d286cef34c89c6ecf2141041bfa9dd2a8f041b540ae17512c2a816e44",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-stage01-tasks-index.uvKzoL7n.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-stage01-tasks-index.uvKzoL7n.js",
+      "localSha256": "673a2108d473297f3264739a4ece392be3f2d0e85f3411f310ef1e28c5859bcd",
+      "httpSha256": "673a2108d473297f3264739a4ece392be3f2d0e85f3411f310ef1e28c5859bcd",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-unavailable-index.79L6uhJi.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-unavailable-index.79L6uhJi.js",
+      "localSha256": "5b0b5968eaf2cac0363bb4e226f74e17f340fe882237ee81bf4f3197c8470c7a",
+      "httpSha256": "5b0b5968eaf2cac0363bb4e226f74e17f340fe882237ee81bf4f3197c8470c7a",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/pages-workbench-index.B1OslWYD.js",
+      "url": "http://127.0.0.1:19221/staff/assets/pages-workbench-index.B1OslWYD.js",
+      "localSha256": "e129f7270fe17e75790d853d2db83a5dd799ccc9569c6d984f61af1a239a0452",
+      "httpSha256": "e129f7270fe17e75790d853d2db83a5dd799ccc9569c6d984f61af1a239a0452",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/PortalPage-CVm0mP99.css",
+      "url": "http://127.0.0.1:19221/staff/assets/PortalPage-CVm0mP99.css",
+      "localSha256": "0c14f470a7ad62bed4575734892aa8d5b179fe28a091f92f9180b092e6565bb1",
+      "httpSha256": "0c14f470a7ad62bed4575734892aa8d5b179fe28a091f92f9180b092e6565bb1",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/uni.ac315461.css",
+      "url": "http://127.0.0.1:19221/staff/assets/uni.ac315461.css",
+      "localSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "httpSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/WorkPage-C8MmWrvN.css",
+      "url": "http://127.0.0.1:19221/staff/assets/WorkPage-C8MmWrvN.css",
+      "localSha256": "cbedf5e300162142cdec4306951ba8d9fd6e4dc4c6e1dcba9f146dd58b521590",
+      "httpSha256": "cbedf5e300162142cdec4306951ba8d9fd6e4dc4c6e1dcba9f146dd58b521590",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/WorkPage.BGnyXHAu.js",
+      "url": "http://127.0.0.1:19221/staff/assets/WorkPage.BGnyXHAu.js",
+      "localSha256": "c1a74952e1801411f5d6372440603a02ffc2f050631b8f1848c6fd042d4ba1b4",
+      "httpSha256": "c1a74952e1801411f5d6372440603a02ffc2f050631b8f1848c6fd042d4ba1b4",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/PortalPage.DT5HFoD8.js",
+      "url": "http://127.0.0.1:19221/staff/assets/PortalPage.DT5HFoD8.js",
+      "localSha256": "a74cd0cadf0ae07027365f61e09fa89b9ce9c8c97696708db4d0bc049d687bbe",
+      "httpSha256": "a74cd0cadf0ae07027365f61e09fa89b9ce9c8c97696708db4d0bc049d687bbe",
+      "matches": true
+    },
+    {
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/index.html",
+      "url": "http://127.0.0.1:19221/staff/index.html",
+      "localSha256": "91cc9cfacb058e47e05c956a1ac2df9e39e6f50f0f20c71476fe38d49b6dcd07",
+      "httpSha256": "91cc9cfacb058e47e05c956a1ac2df9e39e6f50f0f20c71476fe38d49b6dcd07",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/catalog.js",
+      "url": "http://127.0.0.1:19221/_shared/catalog.js",
+      "localSha256": "1aaefa727ce76102b6f8b061bbf5456f132011cd360837ec01def11b94cdaa05",
+      "httpSha256": "1aaefa727ce76102b6f8b061bbf5456f132011cd360837ec01def11b94cdaa05",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/core.js",
+      "url": "http://127.0.0.1:19221/_shared/core.js",
+      "localSha256": "62362067a7e140d3bfcd17bc5e14373e7d5aa448d9a04a73a5528ffa5787a87f",
+      "httpSha256": "62362067a7e140d3bfcd17bc5e14373e7d5aa448d9a04a73a5528ffa5787a87f",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/field-help.js",
+      "url": "http://127.0.0.1:19221/_shared/field-help.js",
+      "localSha256": "89d2e53e6bbadd424b348ac58a1b81acf8280a499a066263d93a847ba5a59997",
+      "httpSha256": "89d2e53e6bbadd424b348ac58a1b81acf8280a499a066263d93a847ba5a59997",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/import-houses.js",
+      "url": "http://127.0.0.1:19221/_shared/import-houses.js",
+      "localSha256": "74b9508c3d0efb593316b91585341cae90945df4e7c0783693a2360e6c95a96b",
+      "httpSha256": "74b9508c3d0efb593316b91585341cae90945df4e7c0783693a2360e6c95a96b",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/r1-migration.js",
+      "url": "http://127.0.0.1:19221/_shared/r1-migration.js",
+      "localSha256": "6bf3a2949866432bf04cc0f21d5124ef8d19d354846a3bb40d1fea2ba839b9f9",
+      "httpSha256": "6bf3a2949866432bf04cc0f21d5124ef8d19d354846a3bb40d1fea2ba839b9f9",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/r3-product.js",
+      "url": "http://127.0.0.1:19221/_shared/r3-product.js",
+      "localSha256": "930d9384fcbc2ef0ae3174eda472c40b0b3a15a386dfb004c484ea2b16abf0ee",
+      "httpSha256": "930d9384fcbc2ef0ae3174eda472c40b0b3a15a386dfb004c484ea2b16abf0ee",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/addresses.js",
+      "url": "http://127.0.0.1:19221/_shared/service/addresses.js",
+      "localSha256": "1866afd7ab1449e9f00ba3136b93d28a007980643198e95cc0ed38b61ac2d9bb",
+      "httpSha256": "1866afd7ab1449e9f00ba3136b93d28a007980643198e95cc0ed38b61ac2d9bb",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/aftersale.js",
+      "url": "http://127.0.0.1:19221/_shared/service/aftersale.js",
+      "localSha256": "473889b868550dc7d4c0d7f3fd9612304ed0050be990c63961fd0385685af4ed",
+      "httpSha256": "473889b868550dc7d4c0d7f3fd9612304ed0050be990c63961fd0385685af4ed",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/common.js",
+      "url": "http://127.0.0.1:19221/_shared/service/common.js",
+      "localSha256": "a5690c86382c575a6b34b52056b5c5710c4d4f9d3b8d4f614b03922df1502b61",
+      "httpSha256": "a5690c86382c575a6b34b52056b5c5710c4d4f9d3b8d4f614b03922df1502b61",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/display.js",
+      "url": "http://127.0.0.1:19221/_shared/service/display.js",
+      "localSha256": "2c5188cccd22ea0c34d66ecb6a3d2becec1ac51d1bf117b2ce1cd4023adc0caa",
+      "httpSha256": "2c5188cccd22ea0c34d66ecb6a3d2becec1ac51d1bf117b2ce1cd4023adc0caa",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/fields.js",
+      "url": "http://127.0.0.1:19221/_shared/service/fields.js",
+      "localSha256": "456732f32a295b368c6d57ae3ba6d28f4c9b16c2cd4a6e0d053fbdd7b75db0b7",
+      "httpSha256": "456732f32a295b368c6d57ae3ba6d28f4c9b16c2cd4a6e0d053fbdd7b75db0b7",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/funds.js",
+      "url": "http://127.0.0.1:19221/_shared/service/funds.js",
+      "localSha256": "b803cecc3087e45f722dceefabfee81c9d6e3a3c5e8b8867c36f44daae503b70",
+      "httpSha256": "b803cecc3087e45f722dceefabfee81c9d6e3a3c5e8b8867c36f44daae503b70",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/index.js",
+      "url": "http://127.0.0.1:19221/_shared/service/index.js",
+      "localSha256": "f3616960d9aaf7ed059a554d8cefd980e3f9bc383acfefdad44d2c1017d2cb57",
+      "httpSha256": "f3616960d9aaf7ed059a554d8cefd980e3f9bc383acfefdad44d2c1017d2cb57",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/orders.js",
+      "url": "http://127.0.0.1:19221/_shared/service/orders.js",
+      "localSha256": "0186b47caaa0ef62544c6f9ae4a274174c20e891f95a54b8b54b1a34ad6c5c78",
+      "httpSha256": "0186b47caaa0ef62544c6f9ae4a274174c20e891f95a54b8b54b1a34ad6c5c78",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/required.js",
+      "url": "http://127.0.0.1:19221/_shared/service/required.js",
+      "localSha256": "c720ac6c0ebba30dc2046f80954d43cd9d4ca7adbc8e9759fccf3003de1304e2",
+      "httpSha256": "c720ac6c0ebba30dc2046f80954d43cd9d4ca7adbc8e9759fccf3003de1304e2",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/scenarios.js",
+      "url": "http://127.0.0.1:19221/_shared/service/scenarios.js",
+      "localSha256": "2a2994cece70dbf9cd4fd32f90b3b0258eb535534cac9298c5aeedb3cf572613",
+      "httpSha256": "2a2994cece70dbf9cd4fd32f90b3b0258eb535534cac9298c5aeedb3cf572613",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/seed.js",
+      "url": "http://127.0.0.1:19221/_shared/service/seed.js",
+      "localSha256": "8e93b563fe54890c586f1f253a6dce2241fc7b6843572de5f8bd5400741fcbd2",
+      "httpSha256": "8e93b563fe54890c586f1f253a6dce2241fc7b6843572de5f8bd5400741fcbd2",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/service/supply.js",
+      "url": "http://127.0.0.1:19221/_shared/service/supply.js",
+      "localSha256": "9e05cb9fef70bac30e76d34d382b030a4a4c0e010778621a5620ca2ae72494bf",
+      "httpSha256": "9e05cb9fef70bac30e76d34d382b030a4a4c0e010778621a5620ca2ae72494bf",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/spaces.js",
+      "url": "http://127.0.0.1:19221/_shared/spaces.js",
+      "localSha256": "87de0a0a5e3b90adaf482938ffdce67a766676476b056356956dea47349856d5",
+      "httpSha256": "87de0a0a5e3b90adaf482938ffdce67a766676476b056356956dea47349856d5",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/billing.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/billing.js",
+      "localSha256": "4b72d9af337672151f7428df6a18357d65a0d47f164d3cbd8762a821647405dd",
+      "httpSha256": "4b72d9af337672151f7428df6a18357d65a0d47f164d3cbd8762a821647405dd",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/common.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/common.js",
+      "localSha256": "878247b33471edc04a5839c11fd6074d269cfe4023395c94328094e6048baef0",
+      "httpSha256": "878247b33471edc04a5839c11fd6074d269cfe4023395c94328094e6048baef0",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/fields.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/fields.js",
+      "localSha256": "18b09cacb4940e65f682b6190b9357ca8507417473ef94f118d9cd56a3baa080",
+      "httpSha256": "18b09cacb4940e65f682b6190b9357ca8507417473ef94f118d9cd56a3baa080",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/index.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/index.js",
+      "localSha256": "eb6738d7eb845bd9ccde0441a441805c8a5101024b0a6fa46a637085a478e708",
+      "httpSha256": "eb6738d7eb845bd9ccde0441a441805c8a5101024b0a6fa46a637085a478e708",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/migration.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/migration.js",
+      "localSha256": "ac4dc3c108e6e46f2833b331396964ac42c1a32a5892d2f6ecfe797adf41beb0",
+      "httpSha256": "ac4dc3c108e6e46f2833b331396964ac42c1a32a5892d2f6ecfe797adf41beb0",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/parking.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/parking.js",
+      "localSha256": "90f21f8bae07e6e2d0ff67e765f925b96d0b81001f7a9eb5b0ee8523fffd9d5d",
+      "httpSha256": "90f21f8bae07e6e2d0ff67e765f925b96d0b81001f7a9eb5b0ee8523fffd9d5d",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/payments.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/payments.js",
+      "localSha256": "57650662f0e2893d90a2c3aa114ef1c2b6cf1b27a303d55aaa5885a3f987112b",
+      "httpSha256": "57650662f0e2893d90a2c3aa114ef1c2b6cf1b27a303d55aaa5885a3f987112b",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/seed.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/seed.js",
+      "localSha256": "8dc3a5e20a74639f7df4168967c6ae90778d9ab4c12d5c9057c5d1adc4415c4d",
+      "httpSha256": "8dc3a5e20a74639f7df4168967c6ae90778d9ab4c12d5c9057c5d1adc4415c4d",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/ui.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/ui.js",
+      "localSha256": "202485a8a63222d8a41e8bc9f7ff159c2d734d01005988bb427f30751da072eb",
+      "httpSha256": "202485a8a63222d8a41e8bc9f7ff159c2d734d01005988bb427f30751da072eb",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/upgrade.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/upgrade.js",
+      "localSha256": "2fe16dcf6a9a3f99fe3f8ffc201c981b5551e8c2cee48de3fdf1ed83d4af8dc8",
+      "httpSha256": "2fe16dcf6a9a3f99fe3f8ffc201c981b5551e8c2cee48de3fdf1ed83d4af8dc8",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/stage01/workorders.js",
+      "url": "http://127.0.0.1:19221/_shared/stage01/workorders.js",
+      "localSha256": "9faea0c84dafce5bd0405d79b4225d095b03524c0eed528e197319cdecf7a5d1",
+      "httpSha256": "9faea0c84dafce5bd0405d79b4225d095b03524c0eed528e197319cdecf7a5d1",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/storage-h5.js",
+      "url": "http://127.0.0.1:19221/_shared/storage-h5.js",
+      "localSha256": "e3ab97a4a15436443d5774088aed7b44f11b9bafcd58e5696d899c0a1fb57b88",
+      "httpSha256": "e3ab97a4a15436443d5774088aed7b44f11b9bafcd58e5696d899c0a1fb57b88",
+      "matches": true
+    },
+    {
+      "file": "prototype-shared/storage-uni.js",
+      "url": "http://127.0.0.1:19221/_shared/storage-uni.js",
+      "localSha256": "8a56700d7ab293f9b793228d8de82c1c8acb905ab321d5157147391b844ade0f",
+      "httpSha256": "8a56700d7ab293f9b793228d8de82c1c8acb905ab321d5157147391b844ade0f",
+      "matches": true
+    }
+  ]
+}
