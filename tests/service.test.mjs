@@ -197,7 +197,7 @@ test("AC02-003 申请退回不影响原授权、审核不扩大申请范围", ()
         审核结果: "通过",
         批准服务类目: ["CAT-DRAIN"],
       }),
-    /不得超过/,
+    /与本次申请范围完全一致/,
   );
   q = run(s, web, "qualification.review", q, {
     审核结果: "退回修改",
@@ -556,7 +556,7 @@ test("AC02-024 已接受取消核实与开始互锁", () => {
   assert.equal(rows(s, "aftersales")[0]["申请类型"], "核实取消");
   assert.throws(() => run(s, merchant, "order.arrive", o), /阻断/);
 });
-test("AC02-026/027 方案版本、单进行中售后与撤回补证", () => {
+test("AC02-026/027 方案版本、单进行中售后与撤回；本轮关闭追加证据", () => {
   const s = setup("S02-RULING");
   let sale = service.query(s, resident, "aftersales")[0],
     o = rows(s, "orders")[0];
@@ -583,8 +583,9 @@ test("AC02-026/027 方案版本、单进行中售后与撤回补证", () => {
       }),
     /方案已变更/,
   );
-  sale = run(s, resident, "aftersale.evidence", sale, { 追加说明: "补充情况" });
-  assert.equal(sale.evidence.length, 1);
+  const before=JSON.stringify(sale.evidence||[]);
+  assert.throws(()=>run(s, resident, "aftersale.evidence", sale, { 追加说明: "补充情况" }),/不支持追加证据/);
+  assert.equal(JSON.stringify(service.record(s,resident,'aftersales',sale._id).evidence||[]),before);
   sale = run(s, resident, "aftersale.withdraw", sale, { 撤回原因: "继续协调" });
   assert.equal(sale["售后状态"], "已撤回");
 });
@@ -1004,7 +1005,7 @@ test("AC02-003/035 失败命令保持原子性，不留审核或裁定半成品"
   assert.equal(JSON.stringify(s.service), before);
 });
 
-test("AC02-003/004 材料开关按末级类目独立生效，虚假_seed不能代替证明", () => {
+test("AC02-003/004 材料选填，旧类目开关不再拦截准入，伪造核验不生效", () => {
   const s = setup();
   const o = rows(s, "qualifications").find((q) => q._shop === "SHOP-A");
   run(s, platform, "category.save", "CAT-CLEAN", {
@@ -1014,7 +1015,7 @@ test("AC02-003/004 材料开关按末级类目独立生效，虚假_seed不能�
     人员证明是否必需: false,
     允许履约方式: ["HOME"],
   });
-  assert.throws(() => order(s), /资格/);
+  assert.equal(order(s)._amount, 9900);
   let q = run(s, merchant, "qualification.save", o, {
     申请服务类目: ["CAT-CLEAN"],
     申请覆盖社区: ["C-A"],
@@ -1023,7 +1024,10 @@ test("AC02-003/004 材料开关按末级类目独立生效，虚假_seed不能�
       { 材料名称: "伪造无文件", 对应服务类目: ["CAT-CLEAN"], _seed: true },
     ],
   });
-  assert.throws(() => run(s, merchant, "qualification.submit", q), /证明材料/);
+  assert.equal(q.服务资质材料[0]._seed, undefined);
+  assert.equal(q.服务资质材料[0].核验结论, "待核实");
+  q = run(s, merchant, "qualification.submit", q);
+  assert.equal(q.申请状态, "待审核");
   assert.equal(rows(s, "personnel")[0]["人员状态"], "启用");
 });
 test("AC02-021 结果必需图片从本单快照读取，不能缺图提交", () => {
@@ -1369,9 +1373,9 @@ test("AC02-003/004/043 资格人员筛选在授权范围内实际生效，电话
     "SHOP-B",
   );
   assert.equal(
-    service.query(s, merchant, "personnel", { 人员资质有效性: "待核实" })[0]
-      ._id,
-    "P-A-MISSING",
+    service.query(s, merchant, "personnel", { 人员资质有效性: "无专项要求" })
+      .some(p => p._id === "P-A-MISSING"),
+    true,
   );
   assert.equal(
     service.query(s, merchant, "personnel", { 人员联系电话: "004444" }).length,
@@ -1571,7 +1575,8 @@ test("AC02-003/004/042 新材料必须本人成功上传，跨主体及伪造核
   assert.equal(p["人员资质材料"][0]["核验结论"], "待核实");
   assert.equal(p["人员资质材料"][0]["核验意见"], "");
   assert.equal(p["人员资质材料"][0]._seed, undefined);
-  assert.equal(staffEligible(s, raw(s, p._id), "SHOP-A", "CAT-AC"), false);
+  assert.equal(staffEligible(raw(s, p._id), "SHOP-A", "CAT-AC"), true);
+  assert.equal(p.资质有效性, "待核实");
   assert.throws(
     () => run(s, merchant, "personnel.review", p, { 核验结论: "认可" }),
     /Web办理权限/,
@@ -1585,7 +1590,7 @@ test("AC02-003/004/042 新材料必须本人成功上传，跨主体及伪造核
     核验意见: "Web逐项核验",
   });
   assert.equal(p["资质有效性"], "有效");
-  assert.equal(staffEligible(s, raw(s, p._id), "SHOP-A", "CAT-AC"), true);
+  assert.equal(staffEligible(raw(s, p._id), "SHOP-A", "CAT-AC"), true);
   assert.equal(
     service.attachmentId(s, merchant, {
       table: "personnel",
@@ -1610,7 +1615,7 @@ test("AC02-003/004 合法同主体既有有效证明无需重传，变更证书�
     人员资质材料: [{ ...old, 核验结论: "不认可", 材料有效性: "已失效" }],
   });
   assert.equal(p["人员资质材料"][0]["核验结论"], "认可");
-  assert.equal(staffEligible(s, raw(s, p._id), "SHOP-A", "CAT-AC"), true);
+  assert.equal(staffEligible(raw(s, p._id), "SHOP-A", "CAT-AC"), true);
   const changed = run(s, merchant, "personnel.save", p, {
     姓名: p["姓名"],
     工作联系电话: p["工作联系电话"],
@@ -1618,7 +1623,8 @@ test("AC02-003/004 合法同主体既有有效证明无需重传，变更证书�
     人员资质材料: [{ ...old, 证明编号: "另一个证书" }],
   });
   assert.equal(changed["人员资质材料"][0]["核验结论"], "待核实");
-  assert.equal(staffEligible(s, raw(s, p._id), "SHOP-A", "CAT-AC"), false);
+  assert.equal(staffEligible(raw(s, p._id), "SHOP-A", "CAT-AC"), true);
+  assert.equal(changed.资质有效性, "待核实");
 });
 test("AC02-003/042 资格新材料由Web审核认可，申请与历史不能泄露给受限Web", () => {
   const s = setup(),

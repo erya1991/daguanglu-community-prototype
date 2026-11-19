@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-11-19T02:18:24.720Z",
+  "git": {
+    "head": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+    "branch": "main",
+    "staged": []
+  },
+  "tests": {
+    "tests": 276,
+    "pass": 272,
+    "fail": 0,
+    "skipped": 4
+  },
+  "build": {
+    "run": "BUILD_2026-11-19T01-54-33-310Z",
+    "result": "../BUILD_2026-11-19T01-54-33-310Z/build-results.json",
+    "count": 7,
+    "typeChecks": 3,
+    "webAfterStyles": "web-final.log"
+  },
+  "h5": {
+    "newSession": {
+      "groups": 27,
+      "completeOrders": {
+        "home": "S02-ORDER-000101",
+        "point": "S02-ORDER-000115"
+      },
+      "statistics": {
+        "创建订单数": 2,
+        "付款成功订单数": 2,
+        "已确认服务安排数": 0,
+        "正常完成订单数": 2,
+        "服务完成数": 2,
+        "已完成订单数": 2,
+        "未服务取消订单数": 0,
+        "部分履行终止订单数": 0,
+        "当前待接单数": 0,
+        "当前待安排数": 0,
+        "当前售后待处理数": 0,
+        "期间支付成功金额": "158.00",
+        "期间退款成功金额": "0.00",
+        "期间分账成功金额": "142.04",
+        "期间回退成功金额": "0.00",
+        "期间净收款": "158.00",
+        "商户净实分金额": "142.04"
+      },
+      "refund": {
+        "order": "S02-ORDER-000177",
+        "sale": "S02-SALE-000188",
+        "initialAmount": 20,
+        "restoredDraftAmount": 18,
+        "refund": 20
+      },
+      "browserErrors": 0,
+      "externalBusinessRequests": 0,
+      "evidence": "h5-main.json",
+      "note": "同一新会话完整执行 27 组。"
+    },
+    "priorSession": {
+      "groups": 2,
+      "evidence": "h5-legacy.json",
+      "ordersCompared": 6,
+      "fundsCompared": 15
+    },
+    "viewports": {
+      "mobile": [
+        "390×844",
+        "414×896"
+      ],
+      "web": [
+        "1366×768",
+        "1920×1080"
+      ]
+    }
+  },
+  "preview": {
+    "url": "http://127.0.0.1:19221",
+    "matchedFiles": 55,
+    "result": "preview-check.json"
+  },
+  "acceptance": {
+    "pending": [
+      "00",
+      "01",
+      "02",
+      "04",
+      "05",
+      "09",
+      "B06"
+    ],
+    "ownerPassedInSource": [
+      "06",
+      "07",
+      "08"
+    ],
+    "freeze": "待负责人复验确认"
+  },
+  "notRun": [
+    "微信开发者工具实操",
+    "真机",
+    "生产支付、退款、分账与回退"
+  ]
+}

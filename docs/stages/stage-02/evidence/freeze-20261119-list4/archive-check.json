@@ -1,0 +1,13 @@
+{
+  "version": "Stage02-V1.2-20261119-R4",
+  "branch": "main",
+  "base": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+  "sourceFingerprint": "d5c377dbc86082a79f19e0d73a69fe70e5de4f085b4fd39f482d40d0d00c3b71",
+  "archive": ".runtime/stage02/freeze-list4/Stage02-V1.2-20261119-R4-d5c377dbc860.zip",
+  "archiveSha256": "2ec01d254906dbc49604fc00bb3323d7c94d10cf7b6a77e771b1b3ef4f18f858",
+  "byteLength": 821368,
+  "sourceFileCount": 88,
+  "evidenceFileCount": 11,
+  "verifiedEntries": 100,
+  "verifiedAt": "2026-11-19T07:41:20.3877154Z"
+}

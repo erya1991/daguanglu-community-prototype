@@ -1,0 +1,180 @@
+{
+  "date": "2026-11-18",
+  "head": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+  "unit": {
+    "tests": 272,
+    "pass": 268,
+    "fail": 0,
+    "skipped": 4,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "build": {
+    "run": "BUILD_2026-11-18T06-21-34-358Z",
+    "builds": 7,
+    "typechecks": 3,
+    "evidence": "../BUILD_2026-11-18T06-21-34-358Z/build-results.json"
+  },
+  "browser": {
+    "mainGroups": 25,
+    "oldSessionGroups": 8,
+    "controlledLocalRequests": true,
+    "viewport": [
+      "390x844",
+      "414x896",
+      "1366x768",
+      "1920x1080"
+    ],
+    "H": "S02-ORDER-000101",
+    "P": "S02-ORDER-000115",
+    "homeMoney": [
+      {
+        "type": "支付",
+        "amount": 9900,
+        "status": "成功"
+      },
+      {
+        "type": "分账",
+        "amount": 8900,
+        "status": "成功"
+      }
+    ],
+    "pointMoney": [
+      {
+        "type": "支付",
+        "amount": 5900,
+        "status": "成功"
+      },
+      {
+        "type": "分账",
+        "amount": 5304,
+        "status": "成功"
+      }
+    ],
+    "refund": {
+      "order": "S02-ORDER-000174",
+      "sale": "S02-SALE-000185",
+      "initialAmount": 20,
+      "restoredDraftAmount": 18,
+      "refund": 20
+    },
+    "legacyMigration": {
+      "before": {
+        "leaf": "S02-SAMPLE-APPLIANCE-AC-1",
+        "names": [
+          "家电清洗",
+          "空调清洗",
+          "挂机空调清洗"
+        ],
+        "version": 1,
+        "facts": {
+          "orders": {
+            "count": 9,
+            "sha256": "1fcfb7e4eea1beeec4e107e1b6ab636589c39298a983e106036d695aa15437ce"
+          },
+          "funds": {
+            "count": 23,
+            "sha256": "e240dcca244f4ab62555684fc8c3296e42fef234393af92b1074c196619248fa"
+          },
+          "services": {
+            "count": 8,
+            "sha256": "776f1aff8e2a4378f7cd9be36c974073e0c016182b77f4f56315c3b08d872a19"
+          },
+          "qualifications": {
+            "count": 2,
+            "sha256": "849b6f8afa8145ee7f659694ccc142328d3a75ec9133cd5f600892752766c168"
+          },
+          "aftersales": {
+            "count": 6,
+            "sha256": "2062691bc9bf44daba88ea8e31dea3a7913fb06a8d4e502649bf7a0d6ad23b62"
+          },
+          "evaluations": {
+            "count": 2,
+            "sha256": "2d7c62611557482aa0538583078da3efea64dd782b14a5df9f4c4f478fda5e66"
+          }
+        }
+      },
+      "after": {
+        "leaf": "S02-SAMPLE-APPLIANCE-AC-1",
+        "names": [
+          "家电清洗",
+          "挂机空调清洗"
+        ],
+        "version": 2,
+        "facts": {
+          "orders": {
+            "count": 9,
+            "sha256": "1fcfb7e4eea1beeec4e107e1b6ab636589c39298a983e106036d695aa15437ce"
+          },
+          "funds": {
+            "count": 23,
+            "sha256": "e240dcca244f4ab62555684fc8c3296e42fef234393af92b1074c196619248fa"
+          },
+          "services": {
+            "count": 8,
+            "sha256": "776f1aff8e2a4378f7cd9be36c974073e0c016182b77f4f56315c3b08d872a19"
+          },
+          "qualifications": {
+            "count": 2,
+            "sha256": "849b6f8afa8145ee7f659694ccc142328d3a75ec9133cd5f600892752766c168"
+          },
+          "aftersales": {
+            "count": 6,
+            "sha256": "2062691bc9bf44daba88ea8e31dea3a7913fb06a8d4e502649bf7a0d6ad23b62"
+          },
+          "evaluations": {
+            "count": 2,
+            "sha256": "2d7c62611557482aa0538583078da3efea64dd782b14a5df9f4c4f478fda5e66"
+          }
+        }
+      }
+    },
+    "legacySource": "stage02-feedback-1794903688405"
+  },
+  "preview": {
+    "base": "http://127.0.0.1:19221",
+    "matched": 50
+  },
+  "owner": {
+    "priority": [
+      "00"
+    ],
+    "previousFailures": [
+      "01",
+      "02",
+      "04",
+      "05",
+      "06",
+      "08",
+      "09",
+      "B06"
+    ],
+    "feedbackPending": [
+      "07"
+    ],
+    "previouslyAccepted": [
+      "03",
+      "B05",
+      "R05",
+      "B02"
+    ],
+    "pending": [
+      "00",
+      "01",
+      "02",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "B06"
+    ]
+  },
+  "unchecked": [
+    "微信开发者工具实际交互",
+    "微信真机",
+    "生产支付及分账"
+  ],
+  "acceptance": "待人工复验"
+}

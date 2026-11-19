@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, onUnmounted } from 'vue'
 import FormField from '../ui/components/FormField.vue'
 import AppButton from '../ui/components/AppButton.vue'
+import FileAttachmentRow from '../ui/components/FileAttachmentRow.vue'
 import { catalog } from '@core/catalog.js'
 import { fieldHelp } from '@core/field-help.js'
 import { service } from '@/services/foundation'
@@ -15,16 +16,28 @@ const emit = defineEmits<{ 'update:modelValue': [value: Record<string, any>] }>(
 const choices = ref<Record<string, any[]>>({}),
   buildings = ref<any[]>([]),
   status = ref<Record<string, string>>({})
+const images=ref<Record<string,any>>({});
+const imageId=(name:string)=>Array.isArray(props.modelValue[name])?props.modelValue[name][0]:props.modelValue[name];
+watch(()=>props.names.filter(n=>/图片|附件|上传/.test(field(n)?.type||'')).map(n=>[n,imageId(n)]),async entries=>{for(const [name,id] of entries){if(!id||images.value[name]?.id===id)continue;try{const file=await service.ownedAttachment(id);let url=file.path;
+// #ifdef H5
+url=URL.createObjectURL(file.blob);
+// #endif
+images.value={...images.value,[name]:{...file,id,url}}}catch(e:any){status.value={...status.value,[name]:e.message}}}},{deep:true,immediate:true});
+onUnmounted(()=>{
+// #ifdef H5
+Object.values(images.value).forEach((i:any)=>i.url&&URL.revokeObjectURL(i.url));
+// #endif
+});
 async function load() {
   const all: Record<string, any[]> = {}
-  for (const f of props.names) all[f] = await service.options(props.table, f, props.modelValue)
+  for (const f of props.names) all[f] = await service.options(props.table, f, f === '所属小区' ? { ...props.modelValue, 所属社区: '' } : props.modelValue)
   choices.value = all
   try {
     buildings.value = await service.query('buildings')
   } catch {}
 }
 watch(() => [props.table, props.modelValue], load, { immediate: true, deep: true })
-const field = (name: string) => (catalog as any)[props.table].fields.find((f: any) => f.name === name)
+function field(name:string){return (catalog as any)[props.table].fields.find((f:any)=>f.name===name)}
 function set(f: string, value: any) {
   const next = { ...props.modelValue, [f]: value }
   const cascade: Record<string, string[]> = {
@@ -34,6 +47,7 @@ function set(f: string, value: any) {
     所属单元: ['房号', '_house'],
   }
   for (const k of cascade[f] || []) next[k] = ''
+  if (f === '所属小区') next['所属社区'] = choices.value[f]?.find(e => e.value === value)?.community || ''
   emit('update:modelValue', next)
 }
 const required = (name: string) =>
@@ -62,7 +76,7 @@ async function image(f: string) {
         // #endif
         const saved = await service.upload(file)
         set(f, f === '证明附件' || f === '点位照片' ? [saved.id] : saved.id)
-        status.value = { ...status.value, [f]: '上传成功，可重新选择' }
+        status.value = { ...status.value, [f]: '' }
       } catch (e: any) {
         status.value = { ...status.value, [f]: '失败：' + e.message }
       }
@@ -96,14 +110,11 @@ async function preview(f: string) {
       >
         <template v-if="/图片|附件|上传/.test(field(name)?.type || '')"
           ><AppButton variant="quiet" @click="image(name)">选择图片</AppButton
-          ><view
-            v-if="modelValue[name] && (!Array.isArray(modelValue[name]) || modelValue[name].length)"
-            class="actions"
-            ><AppButton variant="quiet" @click="preview(name)">预览已选图片</AppButton
-            ><AppButton variant="secondary" @click="set(name, Array.isArray(modelValue[name]) ? [] : '')"
-              >移除</AppButton
-            ></view
-          ><text class="hint">{{ status[name] || '支持 PNG、JPEG 图片' }}</text></template
+          ><FileAttachmentRow
+            v-if="images[name]?.id === imageId(name) && images[name]?.type && !images[name].type.startsWith('image/')"
+            :file="images[name]" removable @failure="status[name]=$event"
+            @remove="set(name,Array.isArray(modelValue[name])?[]:'')" />
+          <view v-else-if="imageId(name)" class="file-thumbnail"><image v-if="images[name]?.id===imageId(name)" :src="images[name].url" mode="aspectFill" @click="preview(name)"/><AppButton v-else size="compact" variant="secondary" @click="preview(name)">查看图片</AppButton><button aria-label="删除附件" @click="set(name,Array.isArray(modelValue[name])?[]:'')">×</button></view><text v-if="status[name]" class="hint">{{status[name]}}</text></template
         >
         <picker
           v-else-if="choices[name]?.length"
@@ -139,3 +150,5 @@ async function preview(f: string) {
         /> </FormField></template
   ></view>
 </template>
+
+<style scoped>.file-thumbnail{position:relative;width:80px;margin:6px 0}.file-thumbnail image{width:80px;height:80px;border-radius:8px}.file-thumbnail button{position:absolute;right:-6px;top:-6px;margin:0;width:44px;height:44px;line-height:44px;padding:0;font-size:24px;background:#fffffff0;color:#bf3340}</style>

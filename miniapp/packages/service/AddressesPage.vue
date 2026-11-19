@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {showFormError} from "../ui/formFeedback";
 import { nextTick, ref } from "vue";
-import { onShow } from "@dcloudio/uni-app";
+import { onShow, onLoad } from "@dcloudio/uni-app";
 import { service } from "@/services/foundation";
 import AppPage from "../ui/components/AppPage.vue";
 import AppNavbar from "../ui/components/AppNavbar.vue";
@@ -15,6 +15,9 @@ const api = () => service.service,
   error = ref(""),
   saving = ref(false),
   owner = ref("");
+const returnKey=ref(''), editId=ref(''), fromBooking=ref(false), opened=ref(false);
+onLoad((query:any)=>{returnKey.value=query?.returnKey||'';for(let i=0;i<3;i++){const decoded=decodeURIComponent(returnKey.value);if(decoded===returnKey.value)break;returnKey.value=decoded}editId.value=query?.id||'';fromBooking.value=!!returnKey.value});
+function cancel(){if(fromBooking.value)uni.navigateBack();else form.value=null}
 async function load() {
   try {
     options.value = await api().options();
@@ -23,6 +26,7 @@ async function load() {
       owner.value = options.value.actor._id;
     }
     rows.value = await api().query("addresses");
+    if(fromBooking.value&&!opened.value){const selected=rows.value.find(r=>r._id===editId.value);if(editId.value&&!selected)throw Error('地址不存在或无权编辑');edit(selected);opened.value=true;}
   } catch (e: any) {
     error.value = e.message;
   }
@@ -49,7 +53,13 @@ async function act(name: string, r: any, data: any = {}) {
   saving.value = true;
   error.value = "";
   try {
-    await api().command(name, { id: r?._id, revision: r?._rev, data });
+    const result=await api().command(name, { id: r?._id, revision: r?._rev, data });
+    if(fromBooking.value&&name==='address.save'){
+      const draft=await service.draft(returnKey.value);
+      if(!draft?.data)throw Error('下单草稿已失效，地址已保存，请返回重新选择');
+      await service.draft(returnKey.value,{...draft,selectedAddressId:result.id});
+      uni.navigateBack();return;
+    }
     form.value = null;
     await load();
     uni.showToast({ title: "已保存", icon: "none" });
@@ -88,11 +98,11 @@ onShow(load);
 </script>
 <template>
   <AppPage secondary with-bottom-action
-    ><template #navbar><AppNavbar title="常用地址" show-back /></template
+    ><template #navbar><AppNavbar :title="form?(form._id?'编辑地址':'新增地址'):'常用地址'" show-back /></template
     ><view class="addresses-page"
       ><text v-if="error" class="error">{{ error }}</text
       ><template v-if="form"
-        ><AddressForm
+        ><AddressForm allow-bound
           :value="form"
           :options="options"
           :errors="errors"
@@ -104,7 +114,7 @@ onShow(load);
             color="#1b4d53"
             @change="setDefault" /></view
         ><view class="address-actions"
-          ><AppButton variant="secondary" @click="form = null">取消</AppButton
+          ><AppButton variant="secondary" @click="cancel">取消</AppButton
           ><AppButton :loading="saving" @click="act('address.save', form, form)"
             >保存地址</AppButton
           ></view
@@ -118,7 +128,7 @@ onShow(load);
             ><text v-if="r.默认地址" class="tag">默认</text></view
           ><text class="address-text"
             >{{ r.省份 }}{{ r.城市 }}{{ r.区县 }}{{ r.详细地址 }}</text
-          ><text v-if="r.地址补充说明">{{ r.地址补充说明 }}</text
+
           ><view class="row-actions"
             ><button v-if="!r.默认地址" @click="act('address.default', r)">
               设为默认</button
@@ -191,4 +201,5 @@ onShow(load);
   padding: 40px 12px;
   color: #738087;
 }
+.addresses-page{padding:12px 12px 96px}.address-card{padding:12px}.address-text{margin:8px 0}.row-actions button{background:#edf5f4;min-height:44px;line-height:44px;border-radius:8px}.row-actions button:last-child{color:#bf3340}
 </style>

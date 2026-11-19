@@ -5,7 +5,7 @@ const preview = (files: string[], index: number) => uni.previewImage({ urls: fil
 </script>
 
 <template>
-  <view class="evidence-uploader" :class="{ 'evidence-uploader--images': images }"><view v-for="(file, index) in files" :key="`${file}-${index}`" class="evidence-uploader__file"><image v-if="images" :src="file" mode="aspectFill" @click="preview(files, index)" /><template v-else><text class="evidence-uploader__icon">▧</text><text class="evidence-uploader__name">{{ file }}</text></template><view v-if="!readonly" class="evidence-uploader__remove" @click="emit('remove', index)">×</view></view><view v-if="!readonly && (!maxFiles || files.length < maxFiles)" class="evidence-uploader__add" @click="emit('add')"><text class="evidence-uploader__camera">＋</text><text>上传 / 拍照</text><text class="evidence-uploader__hint">{{ images ? '本地图片凭证' : '支持图片与文件' }}</text></view></view>
+  <view class="evidence-uploader" :class="{ 'evidence-uploader--images': images }"><view v-for="(file, index) in files" :key="`${file}-${index}`" class="evidence-uploader__file"><image v-if="images" :src="file" mode="aspectFill" @click="preview(files, index)" /><template v-else><text class="evidence-uploader__icon">▧</text><text class="evidence-uploader__name">{{ file }}</text></template><view v-if="!readonly" class="evidence-uploader__remove" @click="emit('remove', index)">×</view></view><view v-if="!readonly && (!maxFiles || files.length < maxFiles)" class="evidence-uploader__add" @click="emit('add')"><text class="evidence-uploader__camera">＋</text><text>上传 / 拍照</text></view></view>
 </template>
 
 <style scoped lang="scss">
@@ -19,4 +19,5 @@ const preview = (files: string[], index: number) => uni.previewImage({ urls: fil
 .evidence-uploader--images .evidence-uploader__file { padding:0; overflow:hidden; }
 .evidence-uploader--images image { width:100%; height:112px; }
 .evidence-uploader--images .evidence-uploader__remove { width:44px; height:44px; background:rgba(255,255,255,.9); }
+.evidence-uploader{display:flex;flex-wrap:wrap;gap:8px}.evidence-uploader__file,.evidence-uploader__add{width:88px;min-height:88px;padding:8px;box-sizing:border-box}.evidence-uploader--images image{height:88px;width:88px}
 </style>

@@ -7,28 +7,10 @@
           :src="f.url"
           :alt="f.name"
           @click="preview = f"
-        /><button v-else-if="f.url" type="button" @click="preview = f">
-          查看附件</button
-        ><span>{{ f.name }}</span>
-        <details>
-          <summary>附件信息</summary>
-          <div
-            v-for="id in [
-              'AT01',
-              'AT02',
-              'AT03',
-              'AT05',
-              'AT06',
-              'AT07',
-              'AT08',
-            ].filter((id) => id !== 'AT08' || f.error)"
-            :key="id"
-            :data-field="id"
-          >
-            {{ names[id] }}：{{ meta(f, id) }}
-          </div>
-        </details>
-        <button v-if="editable" type="button" @click="remove(f.id)">移除</button
+        /><Button v-else-if="f.url" type="default" size="small" @click="preview = f">
+          {{ f.name }}</Button
+        ><span v-else>{{ f.name }}</span>
+        <Button v-if="editable" type="default" size="small" @click="remove(f.id)">移除</Button
         ><span v-if="f.error" class="s1-error">{{ f.error }}</span>
       </div>
     </div>
@@ -41,7 +23,7 @@
       @change="choose"
     /><span v-if="busy">正在保存照片…</span>
     <div v-if="error" class="s1-error" data-field="AT08">
-      {{ error }} <button type="button" @click="retry">重试上传</button>
+      {{ error }} <Button type="default" size="small" @click="retry">重试上传</Button>
     </div>
     <Modal
       :z-index="3600"
@@ -161,3 +143,5 @@ export default {
   },
 };
 </script>
+
+<style scoped>.s1-evidence .s1-photo{display:flex;align-items:center;gap:8px}.s1-evidence img{width:64px;height:64px;object-fit:cover}</style>

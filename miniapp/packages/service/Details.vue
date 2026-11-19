@@ -5,6 +5,8 @@ import FieldGroup from "./FieldGroup.vue";
 import Evidence from "./Evidence.vue";
 import StarRating from "../ui/components/StarRating.vue";
 import FundDetails from "./FundDetails.vue";
+import { serviceText } from "./presentation";
+import { serviceContentFields, serviceSpecFields, serviceWayFields } from "@core/service/display.js";
 const props = withDefaults(
   defineProps<{ table: string; record: any; options?: any }>(),
   { options: () => ({}) },
@@ -87,7 +89,6 @@ const groups = computed(
           { key: "plans", title: "处理方案与答复", tables: ["31-B"] },
           { key: "rulings", title: "裁定公开结论与执行", tables: ["31-G"] },
           { key: "fundRecords", title: "退款结果", tables: ["31-D"] },
-          { key: "evidence", title: "补充证据与处理", tables: ["31-C"] },
         ],
         evaluations: [
           { key: "evaluation", title: "评价内容", tables: ["31-E"] },
@@ -101,7 +102,7 @@ const groups = computed(
         ],
         exceptions: [{ key: "exception", title: "核查记录", tables: ["32-F"] }],
       }) as any
-    )[props.table] || [],
+    )[props.table]?.filter((g:any)=>!(["rulings","fundRecords"].includes(g.key)) || props.record[g.key]?.length) || [],
 );
 function merged(value: any) {
   const r = props.record || {},
@@ -144,18 +145,18 @@ function values(key: string) {
     ><text v-if="error" class="error svc-text">{{ error }}</text>
     <view v-if="groups.length>1" class="detail-tabs"><button v-for="g in groups" :key="g.key" :class="{active:(activeGroup||groups[0]?.key)===g.key}" @click="activeGroup=g.key">{{g.title}}</button></view>
     <view v-for="g in groups.filter((g:any)=>g.key!=='evaluations'&&g.key===(activeGroup||groups[0]?.key))" :key="g.key" class="detail-section svc-view"
-      ><view class="section-toggle svc-view"><text class="svc-text">{{ g.title }}</text></view
+      ><view v-if="groups.length===1" class="section-toggle svc-view"><text class="svc-text">{{ g.title }}</text></view
       ><view class="section-content svc-view"
         ><template v-if="values(g.key).length"
           ><view
             v-for="(item, i) in values(g.key)"
             :key="item._id || i"
             class="detail-round svc-view"
-            ><text v-if="values(g.key).length > 1" class="round-title svc-text"
-              >第{{ i + 1 }}条记录</text
+            ><text v-if="g.key==='spec' || values(g.key).length > 1" class="round-title svc-text"
+              >{{ g.key==='spec' ? serviceText(item.组合履约方式名称) : '第'+(i+1)+'条记录' }}</text
             ><FieldGroup
               :compact="true"
-              :tables="g.tables"
+              :tables="g.tables" :only="table==='services' && g.key==='content' ? serviceContentFields : g.key==='spec' ? [...serviceSpecFields,...serviceWayFields] : []"
               :value="merged(item)"
               :options="options"
               :record-id="record._id"
@@ -181,17 +182,16 @@ function values(key: string) {
         ><FieldGroup
               :compact="true"
           v-else
-          :tables="g.tables"
+          :tables="g.tables" :exclude="g.key==='content'?['服务规格集合']:[]"
           :value="merged({})"
           :options="options"
           :record-id="record._id"
-          :record-table="table" /></view
+          :record-table="table" /><view v-if="table==='aftersales'&&g.key==='application'" class="historical-materials"><view v-for="(item,i) in record.evidence||[]" :key="i"><text>{{item['追加说明']}}</text><Evidence :value="item['追加证据']||[]" table="aftersales" :record-id="record._id"/></view></view></view
     ></view>
     <view
       v-if="APP === 'resident' && table === 'services' && activeGroup === 'evaluations'"
       class="detail-section svc-view"
     >
-      <view class="section-toggle svc-view"><text class="svc-text">服务评价</text></view>
       <view class="section-content svc-view">
         <text v-if="!record.evaluations?.length" class="muted svc-text"
           >暂无公开评价</text
@@ -301,4 +301,5 @@ function values(key: string) {
   color: $color-error;
   margin: 12px 0;
 }
+.detail-section{margin:10px 0}.section-content{padding:10px 12px}.section-toggle{padding:10px 12px}.detail-round{padding:8px 0;margin:0}.detail-tabs{margin:8px 0}.historical-materials{padding-top:8px}
 </style>

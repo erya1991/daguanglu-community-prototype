@@ -10,7 +10,6 @@
         <Button
           v-if="newAction"
           type="primary"
-          :class="{ 'category-root-button': activeView === 'categories' }"
           :data-action="newAction.name"
           @click="startAction(newAction, null)"
           >{{ newAction.label }}</Button
@@ -171,7 +170,7 @@
                 <span v-else class="tree-spacer"></span><span>{{ item.row['类目名称'] }}</span>
               </div></td>
               <td><i-switch size="large" v-if="options.actor && options.actor.grant && options.actor.grant.config" :value="item.row['类目状态'] === '启用'" :disabled="!!categoryBusy[item.row._id]" @on-change="toggleCategoryStatus(item.row, $event)"><span slot="open">启用</span><span slot="close">停用</span></i-switch><span v-else>{{item.row['类目状态']}}</span></td>
-              <td class="action-column"><Button type="text" @click="openRecord(item.row)">查看详情</Button><template v-if="options.actor && options.actor.grant && options.actor.grant.config"><Button type="text" @click="editCategory(item.row)">编辑</Button><Button type="text" @click="deleteCategory(item.row)">删除</Button><Button v-if="item.depth < 2" type="text" @click="addSubcategory(item.row)">添加子分类</Button></template></td>
+              <td class="action-column"><Button type="text" @click="openRecord(item.row)">查看详情</Button><template v-if="options.actor && options.actor.grant && options.actor.grant.config"><Button type="default" size="small" @click="editCategory(item.row)">编辑</Button><Button type="error" ghost size="small" @click="deleteCategory(item.row)">删除</Button><Button v-if="item.depth < 1" type="default" size="small" @click="addSubcategory(item.row)">添加子分类</Button></template></td>
             </tr>
             <tr v-if="!categoryTreeRows.length"><td colspan="3" class="empty-state">暂无匹配分类</td></tr>
           </tbody>
@@ -264,7 +263,7 @@
           <ServiceDetail v-if="!['categories','services','evaluations','aftersales','funds'].includes(currentTable)" :record="selected" :options="options" :table="currentTable" :table-ids="[]" />
         </template>
       </template>
-      <div v-if="currentTable === 'categories'" class="modal-footer"><Button @click="detailVisible=false;clearSelection()">关闭</Button></div>
+      <div v-if="currentTable === 'categories'" class="business-form-footer modal-footer"><Button @click="detailVisible=false;clearSelection()">关闭</Button></div>
     </component>
     <component :is="simpleAction ? 'Modal' : 'Drawer'"
       v-model="actionVisible"
@@ -277,11 +276,11 @@
       @on-close="closeAction"
     >
       <template v-if="action"
-        ><div class="action-context">
+        ><div v-if="!simpleAction && !supplyReview && action.name!=='qualification.review'" class="action-context">
           <strong>{{
             actionRecord ? recordTitle(actionRecord) : config.title
           }}</strong>
-          <p>{{ actionDescription }}</p>
+          <p v-if="reviewSummary">{{reviewSummary}}</p><p v-if="action.name==='qualification.review' && !options.actor?.grant?.sensitive">当前身份无权查阅申请材料。</p>
           <p v-if="action.defaults && action.defaults['状态']">
             本次操作：{{ action.defaults["状态"] }}
           </p>
@@ -291,35 +290,71 @@
         </div>
         <Alert v-if="actionError" type="error" show-icon>{{
           actionError
-        }}</Alert
-        ><Form :label-width="0" @submit.native.prevent="submitAction"
-          ><ServiceFields
-            v-model="draft"
-            :table-ids="actionTables"
-            :extra-fields="extraFields"
-            :options="options"
-            :errors="fieldErrors"
-            :original="actionRecord || {}"
-            :action="action.name"
-            :excluded-fields="action.name === 'category.save' && action.categoryParent !== undefined ? ['上级类目'] : []"
-          />
-          <div class="action-footer">
-            <Button @click="closeAction">{{simpleAction ? "取消" : "返回"}}</Button
-            ><Button
-              type="primary"
-              :loading="saving"
-              :disabled="saving"
-              :data-action="'submit:' + action.name"
-              @click="submitAction"
-              >{{ saving ? "正在保存…" : simpleAction ? "确定" : "确认" + actionTitle }}</Button
-            >
-          </div></Form
-        ></template
-      >
+        }}</Alert>
+        <div v-if="actionRecord && (supplyReview || action.name==='qualification.review')" class="action-review-panel">
+          <div class="review-heading"><h3>基本信息</h3><Tag v-if="!supplyReview" color="orange">{{actionRecord['申请状态']}}</Tag></div>
+          <dl class="review-identity"><div><dt>服务商</dt><dd>{{reviewMerchant['商户名称'] || actionRecord['经营主体名称']}}</dd></div><div><dt>经营店铺</dt><dd>{{reviewMerchant['经营店铺名称'] || actionRecord['经营店铺名称']}}</dd></div></dl>
+          <template v-if="supplyReview">
+            <ServiceDetail flat :record="actionRecord" :options="options" table="services" :table-ids="['27-C']" :only-fields="reviewContentFields" :show-extras="false" />
+            <h3>规格与方式</h3>
+            <ServiceDetail flat :record="actionRecord" :options="options" table="services" :table-ids="['27-D']" :only-fields="reviewSpecFields" :show-extras="false" />
+          </template>
+          <template v-else>
+            <ServiceDetail flat :record="actionRecord" :options="options" table="qualifications" :table-ids="['26-C']" :only-fields="['申请服务类目','申请覆盖小区','申请说明','提交人','提交时间']" :show-extras="false" />
+            <h3>申请材料</h3>
+            <ServiceDetail v-if="options.actor.grant.sensitive" flat :record="actionRecord" :options="options" table="qualifications" :table-ids="['26-D']" :show-extras="false" />
+            <p v-else>当前身份无权查阅申请材料</p>
+            <h3>审核处理</h3>
+          </template>
+        </div>
+        <Tabs v-if="reviewGroups.length" v-model="reviewTab" class="review-tabs">
+          <TabPane v-for="g in reviewGroups" :key="g.key" :name="g.key" :label="g.label" />
+          <TabPane label="审核处理" name="process" />
+        </Tabs>
+        <div v-if="activeReviewGroup && actionRecord" class="action-review-panel">
+          <ServiceDetail :record="actionRecord" :options="options" :table="currentTable"
+            :table-ids="activeReviewGroup.tables" :show-extras="false" />
+        </div>
+        <Form v-if="!supplyReview && (!reviewGroups.length || reviewTab === 'process')"
+          :label-width="0" @submit.native.prevent="submitAction()">
+          <ServiceFields v-model="draft" :table-ids="actionTables" :extra-fields="extraFields"
+            :options="options" :errors="fieldErrors" :original="actionRecord || {}" :action="action.name"
+            :excluded-fields="action.name === 'category.save' && action.categoryParent !== undefined ? ['上级类目'] : []" />
+        </Form>
+        <div class="business-form-footer action-footer">
+          <Button :disabled="saving" @click="closeAction">{{ simpleAction ? "取消" : "返回" }}</Button>
+          <template v-if="supplyReview">
+            <Button :disabled="saving" @click="confirmSupplyReview('退回')">拒绝</Button>
+            <Button type="primary" :loading="saving" :disabled="saving" @click="confirmSupplyReview('通过')">通过</Button>
+          </template>
+          <Button v-else-if="!reviewGroups.length || reviewTab === 'process'"
+            type="primary" :loading="saving" :disabled="saving"
+            :data-action="'submit:' + action.name" @click="submitAction()">
+            {{ saving ? "正在保存…" : simpleAction ? "确定" : action.name === "qualification.review" ? "确认审核结果" : "确认" + actionTitle }}
+          </Button>
+          <Button v-else type="primary" @click="reviewTab = 'process'">去审核</Button>
+        </div>
+      </template>
     </component>
+    <Modal
+      v-model="qualificationConfirm" title="确认经营资格审核结果" :z-index="3600" :mask-closable="false" @on-ok="submitAction(true)">
+      <p>{{qualificationDecision}}</p>
+    </Modal>
+    <Modal
+      :value="!!supplyReviewChoice"
+      :title="supplyReviewChoice === '通过' ? '通过供给审核' : '拒绝供给审核'"
+      :z-index="3600"
+      :mask-closable="false"
+      class-name="supply-review-confirmation"
+      @on-cancel="supplyReviewChoice = null"
+      @on-ok="submitSupplyReview"
+    >
+      {{ supplyReviewChoice === "通过" ? "通过后将按本次送审内容发布。" : "拒绝后服务保持下架，商户可修改后重新提交。" }}
+    </Modal>
   </section>
 </template>
 <script>
+import { serviceContentFields, serviceSpecFields, serviceWayFields } from "../../../../../prototype-shared/service/display.js";
 import { service } from "../../services/foundation";
 import {
   fieldTables,
@@ -398,6 +433,9 @@ export default {
     detailTab: "0",
     selected: null,
     actionVisible: false,
+    supplyReviewChoice: null,
+    qualificationConfirm: false,
+    reviewTab: "content",
     action: null,
     actionRecord: null,
     draft: {},
@@ -453,7 +491,7 @@ export default {
           : this.activeView === "qualifications"
             ? ["人员姓名", "人员联系电话", "人员状态", "人员资质有效性"]
             : this.activeView === "personnel"
-              ? ["申请状态", "资格有效性", "覆盖社区", "覆盖小区"]
+              ? ["申请状态", "资格有效性", "覆盖小区"]
               : [];
       if (this.options.actor?.grant?.sensitive !== true)
         list.push("人员联系电话", "联系人电话筛选");
@@ -563,6 +601,27 @@ export default {
         ),
       ).sort();
     },
+    supplyReview() { return this.action?.name === "service.review"; },
+    reviewContentFields() { return serviceContentFields; },
+    reviewSpecFields() { return [...serviceSpecFields, '组合履约方式名称', ...serviceWayFields]; },
+    reviewMerchant() { return this.options.merchants?.find(m => m._id === this.actionRecord?._shop) || {}; },
+    reviewGroups() {
+      if (this.action?.name !== "personnel.review") return [];
+      const groups = [{ key: "content", label: "人员资料", tables: ["26-E"] }];
+      if (this.options.actor?.grant?.sensitive)
+        groups.push({ key: "materials", label: "证明材料", tables: ["26-D"] });
+      return groups;
+    },
+    activeReviewGroup() { return this.reviewGroups.find(g=>g.key===this.reviewTab); },
+    qualificationDecision() {
+      if (!this.actionRecord) return "";
+      const label = (ids, options) => (ids || []).map(id => options?.find(item => item.value === id)?.label || id).join("、");
+      const r = this.actionRecord;
+      if (this.draft.审核结果 !== "通过") return "退回申请，原因：" + (this.draft.审核意见 || "");
+      return "通过后，可经营类目为" + label(r.申请服务类目, this.options.categories) +
+        "，覆盖小区为" + label(r.申请覆盖小区, this.options.estates) + "。";
+    },
+    reviewSummary() { const r=this.actionRecord||{};const shop=(this.options.merchants||[]).find(m=>m._id===r._shop)||{};return [shop['商户名称']||r['商户名称'],shop['经营店铺名称']||r['经营店铺名称']].filter(Boolean).join(' · '); },
     actionTables() {
       return this.action?.fields?.length
         ? this.action.fields
@@ -923,7 +982,17 @@ export default {
       this.selected = null;
     },
     async startAction(action, row) {
+      if (action.name === 'evaluation.status' || ['service.publish','fund.query','fund.retry','aftersale.execute'].includes(action.name)) {
+        const current = await service.service.record(this.currentTable,row._id);
+        const id = operationId();
+        this.$Modal.confirm({title:action.label,content: action.name==='evaluation.status' ?
+          (action.defaults.状态==='隐藏'?'确认限制此评价的公开展示？不得仅因低分限制。':'确认恢复此评价的公开展示？') : '确认'+action.label+'？',
+          onOk:async()=>{try{await service.service.command(action.name,{id:current._id,revision:current._rev,operationId:id,data:action.defaults||{}});await this.load();if(this.selected?._id===current._id)this.selected=await service.service.record(this.currentTable,current._id);this.$Message.success('操作已完成')}catch(e){this.$Message.error(e.message)}}});
+        return;
+      }
+      this.actionRecord = null;
       this.action = action;
+      this.reviewTab = "content";
       this.actionRecord = row
         ? await service.service.record(this.currentTable, row._id)
         : null;
@@ -933,13 +1002,7 @@ export default {
       let draft = {};
       if (action.name.endsWith(".save") && row)
         draft = JSON.parse(JSON.stringify(row));
-      if (action.name === "qualification.review") {
-        draft["审核结果"] = "通过";
-        draft["批准服务类目"] = this.actionRecord["申请服务类目"] || [];
-        draft["批准覆盖社区"] = this.actionRecord["申请覆盖社区"] || [];
-        draft["批准覆盖小区"] = this.actionRecord["申请覆盖小区"] || [];
-      }
-      if (action.name === "service.review") draft["审核结果"] = "通过";
+      if (action.name === "qualification.review") draft["审核结果"] = "";
       if (action.name === "personnel.review") draft["核验结论"] = "认可";
       if (action.name === "aftersale.ruling") {
         draft["裁定结果"] = "部分退款";
@@ -963,7 +1026,7 @@ export default {
                 ? "受限"
                 : "停用";
       try {
-        const saved = this.simpleAction ? null : await service.draft(this.actionDraftKey());
+        const saved = this.simpleAction || this.supplyReview ? null : await service.draft(this.actionDraftKey());
         if (saved?.data) {
           draft = saved.data;
           this.pendingOperation = saved.operationId || this.pendingOperation;
@@ -986,12 +1049,13 @@ export default {
         (this.actionRecord ? this.actionRecord._id : "new:" + (this.action?.categoryParent || "root")) +
         ":" +
         this.action?.name +
+        (this.action?.name === "qualification.review" ? ":" + this.actionRecord._rev : "") +
         ":" +
         (this.action?.defaults?.["状态"] || "")
       );
     },
     async persistActionDraft() {
-      if (!this.action || this.simpleAction) return;
+      if (!this.action || this.simpleAction || this.supplyReview) return;
       try {
         await service.draft(this.actionDraftKey(), {
           data: this.draft,
@@ -1006,13 +1070,34 @@ export default {
       else await this.persistActionDraft();
       this.actionVisible = false;
     },
-    async submitAction() {
+    confirmSupplyReview(result) {
+      if (this.saving || !this.supplyReview) return;
+      this.supplyReviewChoice = result;
+    },
+    submitSupplyReview() {
+      const result = this.supplyReviewChoice;
+      this.supplyReviewChoice = null;
+      return this.submitAction(result);
+    },
+    async submitAction(reviewResult) {
       if (this.saving || !this.action) return;
+      if (this.supplyReview && !["通过", "退回"].includes(reviewResult)) return;
+      if (this.action.name === "qualification.review" && reviewResult !== true) {
+        const field = !this.draft.审核结果 ? "审核结果" : this.draft.审核结果 !== "通过" && !this.draft.审核意见?.trim() ? "审核意见" : "";
+        if (field) { this.fieldErrors = { [field]: "请填写" + field }; this.actionError = "请填写" + field; return; }
+        this.qualificationConfirm = true;
+        return;
+      }
       this.saving = true;
       this.actionError = "";
       this.fieldErrors = {};
       try {
-        const payload = JSON.parse(JSON.stringify(this.draft));
+        const payload = this.supplyReview ? { 审核结果: reviewResult } : JSON.parse(JSON.stringify(this.draft));
+        if (this.action.name === "qualification.review") {
+          delete payload["批准服务类目"];
+          delete payload["批准覆盖社区"];
+          delete payload["批准覆盖小区"];
+        }
         if (this.action.name === "aftersale.ruling") {
           if (!/退款/.test(payload["裁定结果"] || ""))
             delete payload["裁定退款金额"];
@@ -1194,7 +1279,6 @@ export default {
   min-width: 0;
   overflow: hidden;
 }
-.category-root-button { background: #2d8cf0; border-color: #2d8cf0; }
 .category-list .ivu-switch-checked { background: #2d8cf0; border-color: #2d8cf0; }
 .category-tree th:first-child { width: 48%; }
 .category-tree th:nth-child(2) { width: 120px; }
@@ -1204,7 +1288,6 @@ export default {
 .category-list .service-table th { background: #e9f3fd; color: #314154; }
 .category-list .service-table td { height: 49px; }
 .category-list .service-table tbody tr:hover { background: #f5f8fc; }
-.category-list .service-table .action-column .ivu-btn { color: #2d8cf0; }
 .category-list .category-child { display: inline-block; padding-left: 22px; }
 .category-list .category-child::before { content: "— "; color: #9ba7b4; }
 .list-heading {
@@ -1322,6 +1405,11 @@ export default {
   border-top: 1px solid #dbe4ed;
   padding-top: 8px;
 }
+.review-heading {display:flex;align-items:center;justify-content:space-between}
+.review-identity {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0}
+.review-identity div {display:grid;grid-template-columns:100px 1fr;gap:8px;padding:8px 0;border-bottom:1px solid #eef1f5}
+.review-identity dd{margin:0}.review-identity dt{color:#526070}
+@media(max-width:650px){.review-identity{grid-template-columns:1fr}}
 .action-footer {
   position: sticky;
   bottom: -16px;
@@ -1329,8 +1417,6 @@ export default {
   border-top: 1px solid #e1e7ef;
   padding: 18px 0 2px;
   margin-top: 25px;
-  display: flex;
-  justify-content: flex-end;
   gap: 10px;
   z-index: 3;
 }
@@ -1409,5 +1495,8 @@ export default {
     flex-direction: column;
   }
 }
-.category-tree .tree-toggle,.category-tree .tree-spacer{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;line-height:22px;padding:0;margin:0 4px 0 0;vertical-align:middle}.category-tree .tree-toggle.expanded{transform:rotate(90deg)}.modal-footer{text-align:right;margin-top:16px}
+.category-tree .tree-toggle,.category-tree .tree-spacer{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;line-height:22px;padding:0;margin:0 4px 0 0;vertical-align:middle}.category-tree .tree-toggle.expanded{transform:rotate(90deg)}.modal-footer{margin-top:16px}
+.review-tabs .ivu-tabs-tabpane{max-height:calc(100vh - 270px);overflow-y:auto}.category-tree .action-column .ivu-btn{margin-right:6px}.action-context{padding:10px 12px;margin-bottom:12px}
+.action-review-panel{margin-bottom:12px}
+.review-tabs + .action-review-panel{max-height:calc(100vh - 270px);overflow-y:auto}
 </style>

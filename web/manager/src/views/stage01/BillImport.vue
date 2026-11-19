@@ -19,15 +19,16 @@
         aria-required="true"
         data-field="IM01"
         @change="file"
-      /></label><Button @click="download">下载样表</Button
-      ><Button :disabled="!text" :loading="busy" @click="validate"
-        >重新校验</Button
-      >
+      /></label>
       <p>{{ filename }}</p>
+      <div class="business-form-footer">
+        <Button @click="download">下载样表</Button>
+        <Button :disabled="!text" :loading="busy" @click="validate">重新校验</Button>
+      </div>
     </div>
     <div v-else-if="!result" class="s1-summary">
       <p>已选择：{{ filename }} · {{ source }}</p>
-      <div class="s1-actions">
+      <div class="business-form-footer">
         <Button @click="resetFile">重新选择文件</Button
         ><Button :loading="busy" @click="validate">重新校验</Button>
       </div>
@@ -82,7 +83,7 @@
                 <p data-field="IR06">{{ r.IR06 }}</p>
                 <span data-field="IR07">{{ r.IR07 }}</span>
               </td>
-              <td>
+              <td class="s1-list-actions">
                 <Button
                   @click="
                     row = r;
@@ -99,7 +100,7 @@
         ><input type="checkbox" v-model="validOnly" />仅导入有效行；排除
         {{ preview.IM07 + preview.IM08 }} 行</label
       >
-      <div v-if="!result" class="s1-actions">
+      <div v-if="!result" class="business-form-footer">
         <Button
           type="primary"
           :disabled="!preview.IM06"
@@ -114,24 +115,23 @@
       <Fields
         :row="result"
         :ids="['IM03', 'IM10', 'IM07', 'IM08', 'IM13']"
-      /><Button type="primary" @click="$router.push('/property/bills')"
-        >核验发布账单</Button
-      >
-      <Button @click="showRows = !showRows">{{
-        showRows ? "收起行结果" : "查看本次行结果"
-      }}</Button>
-      <Button @click="resetFile">导入下一份文件</Button>
-      <details>
-        <summary>批次信息</summary>
+      />
+      <section>
+        <h3>批次信息</h3>
         <Fields
           :row="result"
           :ids="['IM02', 'IM04', 'IM05', 'IM06', 'IM09', 'IM11', 'IM12']"
         />
-      </details>
-      <details>
-        <summary>源文件信息</summary>
+      </section>
+      <section>
+        <h3>源文件信息</h3>
         <Fields :row="result" :ids="['IM01']" />
-      </details>
+      </section>
+      <div class="business-form-footer">
+        <Button @click="showRows = !showRows">{{ showRows ? "收起行结果" : "查看本次行结果" }}</Button>
+        <Button @click="resetFile">导入下一份文件</Button>
+        <Button type="primary" @click="$router.push('/property/bills')">核验发布账单</Button>
+      </div>
     </div>
     <Modal
       :value="!!row"
@@ -163,10 +163,10 @@
             :readonly="!!result"
             :aria-required="!result ? 'true' : undefined"
             data-field="IR08"
-          /></label
-        ><Button v-if="!result" type="primary" @click="map"
-          >保存映射并重新校验</Button
-        >
+          /></label>
+        <div v-if="!result" class="business-form-footer">
+          <Button type="primary" @click="map">保存映射并重新校验</Button>
+        </div>
       </div></Modal
     >
   </section>

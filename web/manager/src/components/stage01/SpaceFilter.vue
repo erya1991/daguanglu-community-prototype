@@ -25,7 +25,7 @@ export default {
         (s.houses || []).filter(test).map((h) => make(h, "house"));
       return [
         {
-          title: "全部授权房屋",
+          title: s.rootName || "大光路社区",
           level: "",
           id: "",
           expand: true,

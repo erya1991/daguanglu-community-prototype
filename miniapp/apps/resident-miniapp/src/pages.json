@@ -308,6 +308,10 @@
       }
     },
     {
+      "path": "pages/service/aftersales",
+      "style": {"navigationStyle": "custom", "enablePullDownRefresh": false}
+    },
+    {
       "path": "pages/service/after-sale",
       "style": {
         "navigationStyle": "custom",

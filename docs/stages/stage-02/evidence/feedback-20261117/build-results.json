@@ -1,0 +1,101 @@
+{
+  "collectedAt": "2026-11-17T08:30:53.207Z",
+  "node": "v24.14.0",
+  "builds": 7,
+  "typeChecks": 3,
+  "results": [
+    {
+      "id": "web",
+      "command": "C:\\Program Files\\nodejs\\node.exe .runtime/stage00/tools/yarn/bin/yarn.js --cwd web/manager build",
+      "cwd": "D:\\git\\daguanglu-community-prototype",
+      "start": "2026-11-17T08:15:09.650Z",
+      "end": "2026-11-17T08:15:22.522Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": ".runtime/stage02/BUILD_2026-11-17T08-15-09-298Z/web.log",
+      "archivedLog": "logs/web.txt"
+    },
+    {
+      "id": "resident-h5",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:17:52.644Z",
+      "end": "2026-11-17T08:18:11.416Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/resident-h5.log",
+      "archivedLog": "logs/resident-h5.txt"
+    },
+    {
+      "id": "resident-mp-weixin",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:18:11.417Z",
+      "end": "2026-11-17T08:18:26.217Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/resident-mp-weixin.log",
+      "archivedLog": "logs/resident-mp-weixin.txt"
+    },
+    {
+      "id": "resident-types",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:18:26.218Z",
+      "end": "2026-11-17T08:18:32.577Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/resident-types.log",
+      "archivedLog": "logs/resident-types.txt"
+    },
+    {
+      "id": "merchant-h5",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:18:32.577Z",
+      "end": "2026-11-17T08:18:50.800Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/merchant-h5.log",
+      "archivedLog": "logs/merchant-h5.txt"
+    },
+    {
+      "id": "merchant-mp-weixin",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:18:50.801Z",
+      "end": "2026-11-17T08:19:09.159Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/merchant-mp-weixin.log",
+      "archivedLog": "logs/merchant-mp-weixin.txt"
+    },
+    {
+      "id": "merchant-types",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:19:09.160Z",
+      "end": "2026-11-17T08:19:17.057Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/merchant-types.log",
+      "archivedLog": "logs/merchant-types.txt"
+    },
+    {
+      "id": "staff-h5",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:19:17.058Z",
+      "end": "2026-11-17T08:19:36.386Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/staff-h5.log",
+      "archivedLog": "logs/staff-h5.txt"
+    },
+    {
+      "id": "staff-mp-weixin",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:19:36.386Z",
+      "end": "2026-11-17T08:19:51.000Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/staff-mp-weixin.log",
+      "archivedLog": "logs/staff-mp-weixin.txt"
+    },
+    {
+      "id": "staff-types",
+      "status": "PASS",
+      "exit": 0,
+      "start": "2026-11-17T08:19:51.001Z",
+      "end": "2026-11-17T08:19:58.837Z",
+      "log": ".runtime/stage02/feedback-20261117/mobile-final/staff-types.log",
+      "archivedLog": "logs/staff-types.txt"
+    }
+  ],
+  "scope": "Final mobile recheck after immediate thumbnail loading; Web unchanged since full verified build."
+}

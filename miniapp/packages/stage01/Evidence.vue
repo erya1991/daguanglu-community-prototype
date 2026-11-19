@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FileAttachmentRow from "../ui/components/FileAttachmentRow.vue";
 import { ref, watch, onUnmounted } from "vue";
 import { service } from "@/services/foundation";
 const props = withDefaults(
@@ -14,8 +15,7 @@ const emit = defineEmits<{ input: [string[]] }>(),
   files = ref<any[]>([]),
   error = ref(""),
   pending = ref<any[]>([]),
-  busy = ref(false),
-  expanded = ref("");
+  busy = ref(false);
 let generation = 0;
 async function load() {
   const stamp = ++generation;
@@ -50,11 +50,12 @@ function release() {
 }
 watch(() => props.value, load, { immediate: true, deep: true });
 onUnmounted(release);
+function isPhoto(f: any) { return /^image\//.test(f.type || "") || /\.(png|jpe?g|webp)$/i.test(f.name || ""); }
 function preview(f: any) {
   if (f.url)
     uni.previewImage({
       current: f.url,
-      urls: files.value.filter((f) => f.url).map((f) => f.url),
+      urls: files.value.filter((f) => f.url && isPhoto(f)).map((f) => f.url),
     });
 }
 async function upload() {
@@ -117,7 +118,7 @@ function choose() {
 <template>
   <view
     ><view class="photos"
-      ><view v-for="f in files" :key="f.id" class="photo"
+      ><template v-for="f in files" :key="f.id"><view v-if="isPhoto(f)" class="photo"
         ><image
           v-if="f.url"
           :src="f.url"
@@ -126,31 +127,14 @@ function choose() {
           data-field="AT04"
         /><text data-field="AT01">{{ f.name }}</text
         ><text v-if="f.error" class="error">{{ f.error }}</text
-        ><view class="photo-links"
-          ><text @click="expanded = expanded === f.id ? '' : f.id"
-            >附件信息</text
-          ><text
-            v-if="editable"
-            @click="
-              emit(
-                'input',
-                value.filter((x) => x !== f.id)
-              )
-            "
-            >移除</text
-          ></view
-        ><view v-if="expanded === f.id" class="metadata"
-          ><text data-field="AT02">格式：{{ f.type || "图片" }}</text
-          ><text data-field="AT03">大小：{{ f.size || 0 }} 字节</text
-          ><text data-field="AT05">上传人：{{ f.uploader || "本人" }}</text
-          ><text data-field="AT06"
-            >上传时间：{{ f.uploadedAt || "本次选择" }}</text
-          ><text data-field="AT07"
-            >结果：{{ f.error ? "失败" : "成功" }}</text
-          ></view
-        ></view
-      ></view
-    ><view v-if="editable" class="choose"
+        ><button v-if="editable" class="remove-photo" aria-label="删除附件" @click="emit('input',value.filter(x=>x!==f.id))">×</button></view>
+        <template v-else>
+          <FileAttachmentRow :file="f" :removable="editable" @failure="error=$event"
+            @remove="emit('input',value.filter(x=>x!==f.id))" />
+          <text v-if="f.error" class="error">{{ f.error }}</text>
+        </template>
+      </template>
+    </view><view v-if="editable" class="choose"
       ><button size="mini" @click="choose" :disabled="busy">
         选择／拍摄照片
       </button></view
@@ -208,4 +192,5 @@ function choose() {
   width: 100%;
   min-height: 44px;
 }
+.photos{gap:8px}.photo{width:80px;position:relative}.photo image{height:80px;width:80px}.photo>text:not(.error){display:none}.remove-photo{position:absolute;right:-6px;top:-6px;width:44px;height:44px;line-height:44px;padding:0;margin:0;font-size:24px;background:#fffffff0;color:#bf3340}.choose button{min-height:44px;line-height:44px;background:#edf5f4;color:#1b4d53}
 </style>

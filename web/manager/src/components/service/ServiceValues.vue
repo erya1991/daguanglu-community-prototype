@@ -1,6 +1,6 @@
 <template>
   <div class="service-values">
-    <template v-if="Array.isArray(value)"
+    <span v-if="Array.isArray(value) && value.every(v=>typeof v!=='object')">{{value.map(v=>show(v)).join('、')}}</span><template v-else-if="Array.isArray(value)"
       ><p v-if="!value.length" class="quiet">暂无记录</p>
       <article v-for="(item, index) in value" :key="index" class="value-entry">
         <strong v-if="typeof item === 'object'"

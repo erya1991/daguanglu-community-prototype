@@ -1,0 +1,243 @@
+{
+  "preview": "http://127.0.0.1:19221",
+  "initialLayouts": [
+    {
+      "width": 1366,
+      "height": 768,
+      "dashboardCategoryVisible": true,
+      "sevenServiceEntriesVisible": true,
+      "directReloadVisible": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "dashboardCategoryVisible": true,
+      "sevenServiceEntriesVisible": true,
+      "directReloadVisible": true
+    }
+  ],
+  "platformEntries": [
+    {
+      "menu": "物业工作台",
+      "route": "dashboard",
+      "highlighted": true
+    },
+    {
+      "menu": "社区房屋档案",
+      "route": "spaces",
+      "highlighted": true
+    },
+    {
+      "menu": "居民档案",
+      "route": "residents",
+      "highlighted": true
+    },
+    {
+      "menu": "房屋绑定",
+      "route": "applications",
+      "highlighted": true
+    },
+    {
+      "menu": "房屋缺失反馈",
+      "route": "missing",
+      "highlighted": true
+    },
+    {
+      "menu": "车辆档案",
+      "route": "vehicles",
+      "highlighted": true
+    },
+    {
+      "menu": "设施点位",
+      "route": "facilities",
+      "highlighted": true
+    },
+    {
+      "menu": "物业人员",
+      "route": "personnel",
+      "highlighted": true
+    },
+    {
+      "menu": "文件资料",
+      "route": "files",
+      "highlighted": true
+    },
+    {
+      "menu": "物业费账单",
+      "route": "property/bills",
+      "highlighted": true
+    },
+    {
+      "menu": "缴费记录",
+      "route": "property/payments",
+      "highlighted": true
+    },
+    {
+      "menu": "停车业务",
+      "route": "parking/business",
+      "highlighted": true
+    },
+    {
+      "menu": "工单办理",
+      "route": "workorders/tasks",
+      "highlighted": true
+    },
+    {
+      "menu": "服务经营资格",
+      "route": "service/qualifications",
+      "highlighted": true
+    },
+    {
+      "menu": "服务人员",
+      "route": "service/personnel",
+      "highlighted": true
+    },
+    {
+      "menu": "服务分类",
+      "route": "service/categories",
+      "highlighted": true
+    },
+    {
+      "menu": "服务审核",
+      "route": "service/review",
+      "highlighted": true
+    },
+    {
+      "menu": "服务订单",
+      "route": "service/orders",
+      "highlighted": true
+    },
+    {
+      "menu": "服务售后",
+      "route": "service/aftersales",
+      "highlighted": true
+    },
+    {
+      "menu": "服务评价",
+      "route": "service/evaluations",
+      "highlighted": true
+    }
+  ],
+  "propertyServiceEntries": [
+    {
+      "menu": "服务经营资格",
+      "route": "service/qualifications",
+      "highlighted": true
+    },
+    {
+      "menu": "服务人员",
+      "route": "service/personnel",
+      "highlighted": true
+    },
+    {
+      "menu": "服务审核",
+      "route": "service/review",
+      "highlighted": true
+    },
+    {
+      "menu": "服务订单",
+      "route": "service/orders",
+      "highlighted": true
+    },
+    {
+      "menu": "服务售后",
+      "route": "service/aftersales",
+      "highlighted": true
+    },
+    {
+      "menu": "服务评价",
+      "route": "service/evaluations",
+      "highlighted": true
+    }
+  ],
+  "orderTabs": [
+    "资金记录",
+    "异常核查",
+    "服务订单"
+  ],
+  "errors": [],
+  "webAssets": [
+    {
+      "file": "index.html",
+      "sha256": "388765150af7723e8d52841d4930abc411206cafd13cc387499300e9837a3e4d"
+    },
+    {
+      "file": "js/app.2ae9ddd8.js",
+      "sha256": "ccf62f06597ee6d5d439df2c693bb605a54e429113d4a54cc00a9b794763d0fa"
+    },
+    {
+      "file": "js/chunk-2596ed77.70221b16.js",
+      "sha256": "353ca8b784186218affe6e9d37a2b3afc460a22841190bdddbb672439f5d453c"
+    },
+    {
+      "file": "js/chunk-2d0ab562.0e8c58e5.js",
+      "sha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98"
+    },
+    {
+      "file": "js/chunk-2d0d2fae.e473150f.js",
+      "sha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11"
+    },
+    {
+      "file": "js/chunk-2d0e5450.f14c5394.js",
+      "sha256": "7cec1c19d0a1f55c9597d9c69720fe034abe1cc25961e57866f36fbceed12ad9"
+    },
+    {
+      "file": "js/chunk-2d208a96.42b149f2.js",
+      "sha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a"
+    },
+    {
+      "file": "js/chunk-2d215c24.8b94bac2.js",
+      "sha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5"
+    },
+    {
+      "file": "js/chunk-2d21f830.c0d3ba6c.js",
+      "sha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be"
+    },
+    {
+      "file": "js/chunk-54958e12.b7845501.js",
+      "sha256": "d891a8806871a181ca3f464eb0429be641ddf9af2685fda119d9750b6c2f686e"
+    },
+    {
+      "file": "js/chunk-770e854f.4650b104.js",
+      "sha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504"
+    },
+    {
+      "file": "js/chunk-7fd5bb0e.81c7a3e5.js",
+      "sha256": "ec5f9cf58ad90e7b4e19545a9c63ecdcb20c14a276923123ea0935ccca9fefe0"
+    },
+    {
+      "file": "js/chunk-vendors.4c902ff7.js",
+      "sha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5"
+    },
+    {
+      "file": "css/app.0c04323e.css",
+      "sha256": "7bab26cea5157729fbb2909963fc32de9f4cbab8243b002533a86d99cafe5d0e"
+    },
+    {
+      "file": "css/chunk-2596ed77.3856b55b.css",
+      "sha256": "dcc2fc528b55405b3630a2e2707614fe1c29a35ad94cf67e60d7866dac3c5e0b"
+    },
+    {
+      "file": "css/chunk-54958e12.7d75b065.css",
+      "sha256": "5e2f26aff2d84531231df0d19a7746611a934fa39e14ba314c0304cd00840135"
+    },
+    {
+      "file": "css/chunk-7fd5bb0e.baf8be68.css",
+      "sha256": "3411f50b12940a33ba8afa930516fe37f7966529ca58400f52ca9294ea1d406c"
+    }
+  ],
+  "date": "2026-11-19T03:40:41.809Z",
+  "session": "stage02-nav-verification-1795059628196",
+  "buildLog": ".runtime/stage02/feedback-20261119/menu-web-build.log",
+  "previousCandidate": "f3fea2be47987aeb6cd62c3a2c7a8663930dde95393f2be762c8169941e24a6a",
+  "sources": [
+    {
+      "file": "web/manager/src/App.vue",
+      "sha256": "6f005b255a12ae0af5f78e43a003a30c59f82897de634c449c46caa060b4837b"
+    },
+    {
+      "file": "scripts/browser-service-feedback-r2.mjs",
+      "sha256": "7d0b57559b1a2db8533c1712248bbb66920e8c9f506d789acc0b783e85874cf1"
+    }
+  ]
+}

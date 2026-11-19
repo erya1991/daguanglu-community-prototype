@@ -1,0 +1,425 @@
+
+> build:h5
+> node ../../scripts/run-uni.mjs h5 build
+
+Compiler version: 5.24（vue3）
+Compiling...
+
+uni-app 有新版本发布，请执行 `npx @dcloudio/uvm@latest` 更新，更新日志详见：https://download1.dcloud.net.cn/hbuilderx/changelog/5.34.2026102909.html
+DONE  Build complete.
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+4 │ @import './_shared/theme/global.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 4:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+5 │ @import './_shared/foundation/foundation.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 5:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+6 │ @import './_shared/theme/business.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\App.vue 6:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import './foundation-base.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\foundation\foundation.scss 1:9  @import
+    src\App.vue 5:9                             root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\pages\unavailable\index.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\portal\PortalPage.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+4 │ @import './portal.scss';
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\portal\PortalPage.vue 4:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\ServicePage.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\SpecEditorPage.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\MaterialEditorPage.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\AppIcon.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\AppNavbar.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\AppPage.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\BaseCard.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\FilterBar.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\portal\ModuleGrid.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\Picture.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\FieldGroup.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\PageState.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\AppTabbar.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\VoucherCode.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\FormField.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\StarRating.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\Details.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\SupplyEditor.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\ui\components\AppButton.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\FundDetails.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\OrderDetails.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\Evidence.vue 1:9  root stylesheet
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import '@/_shared/theme/uni.scss';
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src\_shared\service\CategoryPicker.vue 1:9  root stylesheet
+

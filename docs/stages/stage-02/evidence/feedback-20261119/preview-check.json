@@ -1,0 +1,401 @@
+{
+  "base": "http://127.0.0.1:19221",
+  "checkedAt": "2026-11-19T02:16:07.975Z",
+  "workspace": "D:\\git\\daguanglu-community-prototype",
+  "fourApplicationLinks": [
+    "web",
+    "resident",
+    "merchant",
+    "staff"
+  ],
+  "byteMatches": [
+    {
+      "route": "/resident/",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "bytes": 461,
+      "sha256": "918687a56d92c7f5068ba01f6c7bf8527737225e88f84bc5cb3ccb31442e81bc"
+    },
+    {
+      "route": "/resident/assets/uni.a9437254.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/uni.a9437254.css",
+      "status": 200,
+      "bytes": 23173,
+      "sha256": "a943725453a3942fd4d76081a0f4cad8b35db6423cccbe54372989f0ed6e1639"
+    },
+    {
+      "route": "/resident/assets/index-Ccseas4U.js",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-Ccseas4U.js",
+      "status": 200,
+      "bytes": 1032143,
+      "sha256": "4cd1d2030a2c55dbc1560f4ada53cf9ec5d684774980b257e18e65fd1379dfca"
+    },
+    {
+      "route": "/resident/assets/index-DdiibYX0.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "bytes": 11825,
+      "sha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f"
+    },
+    {
+      "route": "/resident/assets/Details-C7XxpDuf.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/Details-C7XxpDuf.css",
+      "status": 200,
+      "bytes": 2554,
+      "sha256": "b76cdbb7c5076b2c5d73c731cf8a9ec63ab84a41f002beb2dfb0dae2f7b34a43"
+    },
+    {
+      "route": "/resident/assets/Details.Y9pFwzAA.js",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/Details.Y9pFwzAA.js",
+      "status": 200,
+      "bytes": 109292,
+      "sha256": "851e6387078596fa5acd20522f6ff7a83c429762dd285887d8b6e7545f20de60"
+    },
+    {
+      "route": "/resident/assets/FileAttachmentRow-zM1UMN-_.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FileAttachmentRow-zM1UMN-_.css",
+      "status": 200,
+      "bytes": 437,
+      "sha256": "930ccab1bf6984570bd1d1846702e7fa1f5ba54e77ad473b21c8a1507cd6dd26"
+    },
+    {
+      "route": "/resident/assets/FileAttachmentRow.CZg_sv-P.js",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FileAttachmentRow.CZg_sv-P.js",
+      "status": 200,
+      "bytes": 1071,
+      "sha256": "7b520dcdb6a178161ebd64c08dd589954ba9056da9eba347a01bf16bb4adafbe"
+    },
+    {
+      "route": "/resident/assets/FilterBar-DgeBeu55.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FilterBar-DgeBeu55.css",
+      "status": 200,
+      "bytes": 2183,
+      "sha256": "4103d67605caa1f59a2a3c84a43bc076dca9ea0fe42303f7f33fee5aa4714316"
+    },
+    {
+      "route": "/resident/assets/FilterBar.elQt6q9i.js",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FilterBar.elQt6q9i.js",
+      "status": 200,
+      "bytes": 3471,
+      "sha256": "7a4c9eec1c8d7991dae3c558cdba2d68401cb96fb0ade6a20a7ef7e1efadc6e4"
+    },
+    {
+      "route": "/resident/assets/FoundationPage-C686mE2c.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FoundationPage-C686mE2c.css",
+      "status": 200,
+      "bytes": 1169,
+      "sha256": "2dc418b609ac0dff015f208e122563b1c628a274dc2b5d8f528e94a64edc9ce2"
+    },
+    {
+      "route": "/resident/assets/FoundationPage.CvcYwuBC.js",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FoundationPage.CvcYwuBC.js",
+      "status": 200,
+      "bytes": 24349,
+      "sha256": "30b568ac7ab8747bccc68c6d99e781fab1dec79a6021a8c908bbc05b0d05510e"
+    },
+    {
+      "route": "/resident/assets/ServicePage-do0FcgEO.css",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ServicePage-do0FcgEO.css",
+      "status": 200,
+      "bytes": 27627,
+      "sha256": "2d60beb1299438496d095a0504048f30b4d57587747eda9ca2b9751ded4b22c1"
+    },
+    {
+      "route": "/resident/assets/ServicePage.CgLWO7Dk.js",
+      "file": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ServicePage.CgLWO7Dk.js",
+      "status": 200,
+      "bytes": 137962,
+      "sha256": "cd0fe4d854ac63630c00e833d98833382a8cb7c9a998bd692b5470e0a0de62c5"
+    },
+    {
+      "route": "/merchant/",
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "bytes": 467,
+      "sha256": "66f15d8ad4b166f9ec71aad5d46ab7b79148d9059fcb1b35d16220013e3cf7fe"
+    },
+    {
+      "route": "/merchant/assets/uni.a9437254.css",
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/uni.a9437254.css",
+      "status": 200,
+      "bytes": 23173,
+      "sha256": "a943725453a3942fd4d76081a0f4cad8b35db6423cccbe54372989f0ed6e1639"
+    },
+    {
+      "route": "/merchant/assets/index-BRnnAY-Z.js",
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-BRnnAY-Z.js",
+      "status": 200,
+      "bytes": 1014104,
+      "sha256": "9ecfa567343d0196b5531cd0805723ad038b8d604d558b9945a196b2981039fd"
+    },
+    {
+      "route": "/merchant/assets/index-DdiibYX0.css",
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "bytes": 11825,
+      "sha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f"
+    },
+    {
+      "route": "/merchant/assets/ServicePage-CnDcF2i3.css",
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/ServicePage-CnDcF2i3.css",
+      "status": 200,
+      "bytes": 22942,
+      "sha256": "e3ad3797a26d10b69eda8b4eb683b2a023ce1b8ed879e087170ee0860ddcc7f9"
+    },
+    {
+      "route": "/merchant/assets/ServicePage.CnWTd0uC.js",
+      "file": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/ServicePage.CnWTd0uC.js",
+      "status": 200,
+      "bytes": 104972,
+      "sha256": "9328b07634e5b5167ff1b804f3b6ae2c8e6a2f90b6fee7d0a53829bcad530594"
+    },
+    {
+      "route": "/staff/",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "bytes": 461,
+      "sha256": "235b05991ecc9057a1d8da9fa277b954fd9659a0b131bd5b8ec477db324239ba"
+    },
+    {
+      "route": "/staff/assets/uni.a9437254.css",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/uni.a9437254.css",
+      "status": 200,
+      "bytes": 23173,
+      "sha256": "a943725453a3942fd4d76081a0f4cad8b35db6423cccbe54372989f0ed6e1639"
+    },
+    {
+      "route": "/staff/assets/index-KcgPenvK.js",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-KcgPenvK.js",
+      "status": 200,
+      "bytes": 1019562,
+      "sha256": "34005a7714724640a39915cca563287272c020bee487c79a88a2e405b5b8f2c6"
+    },
+    {
+      "route": "/staff/assets/index-DdiibYX0.css",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "bytes": 11825,
+      "sha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f"
+    },
+    {
+      "route": "/staff/assets/Details-C7XxpDuf.css",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/Details-C7XxpDuf.css",
+      "status": 200,
+      "bytes": 2554,
+      "sha256": "b76cdbb7c5076b2c5d73c731cf8a9ec63ab84a41f002beb2dfb0dae2f7b34a43"
+    },
+    {
+      "route": "/staff/assets/Details.CH85rygK.js",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/Details.CH85rygK.js",
+      "status": 200,
+      "bytes": 109301,
+      "sha256": "c21e5fe8572bf477348138a3faf3a76a52233a45b6382673b8906a09e1f5f91f"
+    },
+    {
+      "route": "/staff/assets/FileAttachmentRow-D6Am_MQg.css",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FileAttachmentRow-D6Am_MQg.css",
+      "status": 200,
+      "bytes": 5237,
+      "sha256": "5edbb7422e2820ab06a6dc6845210e85c0556d0c49b75d32c28cdd670fb7c509"
+    },
+    {
+      "route": "/staff/assets/FileAttachmentRow.Q33f_Joj.js",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FileAttachmentRow.Q33f_Joj.js",
+      "status": 200,
+      "bytes": 5548,
+      "sha256": "7199544846c03003842c4e570afb9bd5f232ef0217eff8341bbbd132d23d423e"
+    },
+    {
+      "route": "/staff/assets/FoundationPage-C686mE2c.css",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FoundationPage-C686mE2c.css",
+      "status": 200,
+      "bytes": 1169,
+      "sha256": "2dc418b609ac0dff015f208e122563b1c628a274dc2b5d8f528e94a64edc9ce2"
+    },
+    {
+      "route": "/staff/assets/FoundationPage.ZRSL_lkh.js",
+      "file": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FoundationPage.ZRSL_lkh.js",
+      "status": 200,
+      "bytes": 24602,
+      "sha256": "858f20260ccafd6630223f7d1c89ac16300239cbc5b78c871add7962ae387d30"
+    },
+    {
+      "route": "/_shared/core.js",
+      "file": "prototype-shared/core.js",
+      "status": 200,
+      "bytes": 73773,
+      "sha256": "fd3dc66877af5fc37f9bc2399d2e449b5cf40b9a6fde5ded7389fb3fc535c513"
+    },
+    {
+      "route": "/_shared/storage-h5.js",
+      "file": "prototype-shared/storage-h5.js",
+      "status": 200,
+      "bytes": 14997,
+      "sha256": "431bb37c3fc56ec1ef3ff38149610de8488c8124f4c912171eb85fe504ec04eb"
+    },
+    {
+      "route": "/_shared/service/addresses.js",
+      "file": "prototype-shared/service/addresses.js",
+      "status": 200,
+      "bytes": 5755,
+      "sha256": "55ba7dffe223a81e5679e2fecb39f5b199b8a9a2f42d5e86d3f415e561de6ca9"
+    },
+    {
+      "route": "/_shared/service/common.js",
+      "file": "prototype-shared/service/common.js",
+      "status": 200,
+      "bytes": 22043,
+      "sha256": "4043424414466a6de401c9532aba86d314c11e0d90e417286bf1db3e313decf0"
+    },
+    {
+      "route": "/_shared/service/seed.js",
+      "file": "prototype-shared/service/seed.js",
+      "status": 200,
+      "bytes": 21263,
+      "sha256": "5c2dc0aad04fed92286d4bea30800cecbde9266bc543436109d7901e40c37875"
+    },
+    {
+      "route": "/_shared/service/supply.js",
+      "file": "prototype-shared/service/supply.js",
+      "status": 200,
+      "bytes": 28714,
+      "sha256": "f4577b5912906cb78e78c2dea4779702185ce6507bf262f8e23f6f0fc888bb16"
+    },
+    {
+      "route": "/_shared/service/orders.js",
+      "file": "prototype-shared/service/orders.js",
+      "status": 200,
+      "bytes": 37711,
+      "sha256": "0b78d8edf31f1952b867c175f332dd40173089259ef4ca82d3d196a7aa8ae0c7"
+    },
+    {
+      "route": "/_shared/service/index.js",
+      "file": "prototype-shared/service/index.js",
+      "status": 200,
+      "bytes": 58431,
+      "sha256": "6898429968e6de388d4045ef833bf5b0d894f0c24276532be5ebc118a671d134"
+    },
+    {
+      "route": "/web/",
+      "file": "web/manager/dist/index.html",
+      "status": 200,
+      "bytes": 1403,
+      "sha256": "acfa2779e76928ed39c3587da12d2844d1a4264247e6f01c5492835629319d66"
+    },
+    {
+      "route": "/web/js/app.6f1b984e.js",
+      "file": "web/manager/dist/js/app.6f1b984e.js",
+      "status": 200,
+      "bytes": 753195,
+      "sha256": "54ae57a23a6f4e1c79bb3634d692d0739fb0138dcd9aea1f097ffcba0eedb8e9"
+    },
+    {
+      "route": "/web/js/chunk-2596ed77.70221b16.js",
+      "file": "web/manager/dist/js/chunk-2596ed77.70221b16.js",
+      "status": 200,
+      "bytes": 106359,
+      "sha256": "353ca8b784186218affe6e9d37a2b3afc460a22841190bdddbb672439f5d453c"
+    },
+    {
+      "route": "/web/js/chunk-2d0ab562.0e8c58e5.js",
+      "file": "web/manager/dist/js/chunk-2d0ab562.0e8c58e5.js",
+      "status": 200,
+      "bytes": 342,
+      "sha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98"
+    },
+    {
+      "route": "/web/js/chunk-2d0d2fae.e473150f.js",
+      "file": "web/manager/dist/js/chunk-2d0d2fae.e473150f.js",
+      "status": 200,
+      "bytes": 342,
+      "sha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11"
+    },
+    {
+      "route": "/web/js/chunk-2d0e5450.f14c5394.js",
+      "file": "web/manager/dist/js/chunk-2d0e5450.f14c5394.js",
+      "status": 200,
+      "bytes": 29703,
+      "sha256": "7cec1c19d0a1f55c9597d9c69720fe034abe1cc25961e57866f36fbceed12ad9"
+    },
+    {
+      "route": "/web/js/chunk-2d208a96.42b149f2.js",
+      "file": "web/manager/dist/js/chunk-2d208a96.42b149f2.js",
+      "status": 200,
+      "bytes": 8948,
+      "sha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a"
+    },
+    {
+      "route": "/web/js/chunk-2d215c24.8b94bac2.js",
+      "file": "web/manager/dist/js/chunk-2d215c24.8b94bac2.js",
+      "status": 200,
+      "bytes": 343,
+      "sha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5"
+    },
+    {
+      "route": "/web/js/chunk-2d21f830.c0d3ba6c.js",
+      "file": "web/manager/dist/js/chunk-2d21f830.c0d3ba6c.js",
+      "status": 200,
+      "bytes": 342,
+      "sha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be"
+    },
+    {
+      "route": "/web/js/chunk-54958e12.b7845501.js",
+      "file": "web/manager/dist/js/chunk-54958e12.b7845501.js",
+      "status": 200,
+      "bytes": 92762,
+      "sha256": "d891a8806871a181ca3f464eb0429be641ddf9af2685fda119d9750b6c2f686e"
+    },
+    {
+      "route": "/web/js/chunk-770e854f.4650b104.js",
+      "file": "web/manager/dist/js/chunk-770e854f.4650b104.js",
+      "status": 200,
+      "bytes": 19019,
+      "sha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504"
+    },
+    {
+      "route": "/web/js/chunk-7fd5bb0e.81c7a3e5.js",
+      "file": "web/manager/dist/js/chunk-7fd5bb0e.81c7a3e5.js",
+      "status": 200,
+      "bytes": 42849,
+      "sha256": "ec5f9cf58ad90e7b4e19545a9c63ecdcb20c14a276923123ea0935ccca9fefe0"
+    },
+    {
+      "route": "/web/js/chunk-vendors.4c902ff7.js",
+      "file": "web/manager/dist/js/chunk-vendors.4c902ff7.js",
+      "status": 200,
+      "bytes": 895974,
+      "sha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5"
+    },
+    {
+      "route": "/web/css/app.0c04323e.css",
+      "file": "web/manager/dist/css/app.0c04323e.css",
+      "status": 200,
+      "bytes": 299076,
+      "sha256": "7bab26cea5157729fbb2909963fc32de9f4cbab8243b002533a86d99cafe5d0e"
+    },
+    {
+      "route": "/web/css/chunk-2596ed77.3856b55b.css",
+      "file": "web/manager/dist/css/chunk-2596ed77.3856b55b.css",
+      "status": 200,
+      "bytes": 174,
+      "sha256": "dcc2fc528b55405b3630a2e2707614fe1c29a35ad94cf67e60d7866dac3c5e0b"
+    },
+    {
+      "route": "/web/css/chunk-54958e12.7d75b065.css",
+      "file": "web/manager/dist/css/chunk-54958e12.7d75b065.css",
+      "status": 200,
+      "bytes": 15095,
+      "sha256": "5e2f26aff2d84531231df0d19a7746611a934fa39e14ba314c0304cd00840135"
+    },
+    {
+      "route": "/web/css/chunk-7fd5bb0e.baf8be68.css",
+      "file": "web/manager/dist/css/chunk-7fd5bb0e.baf8be68.css",
+      "status": 200,
+      "bytes": 399,
+      "sha256": "3411f50b12940a33ba8afa930516fe37f7966529ca58400f52ca9294ea1d406c"
+    }
+  ],
+  "serverIdentity": {
+    "httpStatus": 404
+  }
+}

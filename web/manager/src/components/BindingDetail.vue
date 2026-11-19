@@ -4,8 +4,9 @@
     <div class="binding-summary"><strong>{{ record['申请人姓名'] }}</strong><span>{{ text(record, '房屋地址') }}</span></div>
     <section><h3>申请信息</h3><dl class="detail-grid"><div v-for="name in bindingFields" :key="name" class="detail-row" :data-field="'applications:' + name"><dt>{{ bindingLabel(name) }}</dt><dd>{{ text(record, name) }}</dd></div><div v-if="record['联系号码']" class="detail-row"><dt>联系电话</dt><dd>{{ text(record, '联系号码') }}</dd></div><div v-if="relation" class="detail-row"><dt>当前关系状态</dt><dd>{{ relation['关系状态'] }}</dd></div></dl></section>
     <section class="binding-materials"><h3>申请材料</h3><template v-if="record['证明附件']?.length"><Button v-for="(id, index) in record['证明附件']" :key="id" @click="$emit('preview', id)">查看材料 {{ index + 1 }}</Button></template><p v-else class="muted">当前没有可展示的材料</p><p v-if="proofError" class="error">{{ proofError }}</p></section>
-    <section><h3>房屋信息</h3><p v-if="houseError" class="muted">{{ houseError }}</p><dl v-if="house" class="detail-grid"><div v-for="name in houseFields" :key="name" class="detail-row" :data-field="'houses:' + name"><dt>{{ name === '房号' ? '房间号' : name }}</dt><dd>{{ text(house, name) }}</dd></div></dl><Button v-if="house" @click="openHouse">打开社区房屋档案</Button></section>
+    <section><h3>房屋信息</h3><p v-if="houseError" class="muted">{{ houseError }}</p><dl v-if="house" class="detail-grid"><div v-for="name in houseFields" :key="name" class="detail-row" :data-field="'houses:' + name"><dt>{{ name === '房号' ? '房间号' : name }}</dt><dd>{{ text(house, name) }}</dd></div></dl></section>
     <section v-if="reviewFields.length"><h3>审核结果</h3><dl class="detail-grid"><div v-for="name in reviewFields" :key="name" class="detail-row" :data-field="'applications:' + name"><dt>{{ name }}</dt><dd>{{ text(record, name) }}</dd></div></dl></section>
+    <div v-if="house" class="business-form-footer"><Button @click="openHouse">打开社区房屋档案</Button></div>
   </div>
 </template>
 <script>

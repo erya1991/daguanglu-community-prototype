@@ -90,15 +90,15 @@
           size="default"
           ><template slot="actions" slot-scope="{ row }"
             ><div class="table-actions" :data-row-id="row._id">
-              <a @click="details(row)">详情</a><a v-if="canWrite" @click="edit(row)">编辑</a>
-              <a v-if="canWrite && table === 'houses'" @click="removeRow(row)">删除</a>
-              <a v-if="table === 'applications' && canReview && row['申请状态'] === '待审核'" @click="openRowAction(row, 'review')">审核</a>
-              <a v-if="table === 'vehicles' && canWrite && row['核实状态'] === '待核实'" @click="openRowAction(row, 'verifyVehicle')">核实</a>
-              <a v-if="table === 'files'" @click="openFile(row, 'view')">预览</a><a v-if="table === 'files'" @click="openFile(row, 'download')">下载</a>
-              <a
+              <Button size="small" type="text" @click="details(row)">详情</Button><Button size="small" type="text" v-if="canWrite" @click="edit(row)">编辑</Button>
+              <Button size="small" type="text" v-if="canWrite && table === 'houses'" @click="removeRow(row)">删除</Button>
+              <Button size="small" type="text" v-if="table === 'applications' && canReview && row['申请状态'] === '待审核'" @click="openRowAction(row, 'review')">审核</Button>
+              <Button size="small" type="text" v-if="table === 'vehicles' && canWrite && row['核实状态'] === '待核实'" @click="openRowAction(row, 'verifyVehicle')">核实</Button>
+              <Button size="small" type="text" v-if="table === 'files'" @click="openFile(row, 'view')">预览</Button><Button size="small" type="text" v-if="table === 'files'" @click="openFile(row, 'download')">下载</Button>
+              <Button size="small" type="text"
                 v-if="embedded && table === 'houses' && info.actor.permissions.includes('read:applications')"
                 @click="$router.push({ path: '/applications', query: { house: row._id } })"
-                >房屋绑定</a
+                >房屋绑定</Button
               >
             </div></template
           ></Table
@@ -136,10 +136,9 @@
           data-field="fileFeedback:操作原因"
           ><Input v-model="form['操作原因']" type="textarea" /></FormItem
       ></Form>
-      <div class="toolbar">
-        <Button type="primary" :loading="saving" @click="save">保存</Button
-        ><Button @click="editor = false">取消</Button>
-
+      <div class="business-form-footer">
+        <Button @click="editor = false">取消</Button>
+        <Button type="primary" :loading="saving" @click="save">保存</Button>
       </div></Modal
     >
     <Modal v-model="detailOpen" :title="definition.title + '详情'" width="1000" :footer-hide="true">
@@ -203,9 +202,9 @@
         >
 </Form
       >
-      <div class="toolbar">
-        <Button type="primary" :loading="saving" @click="submitAction">确认</Button
-        ><Button @click="actionOpen = false">取消</Button>
+      <div class="business-form-footer">
+        <Button @click="actionOpen = false">取消</Button>
+        <Button type="primary" :loading="saving" @click="submitAction">确认</Button>
       </div></Modal
     >
   </section>
@@ -355,7 +354,10 @@ export default {
     filterFields() {
       if (this.table === 'applications')
         return ['申请人姓名', '所属小区', '房屋地址', '申请类型', '申请状态', '提交时间']
-      return this.definition.filters.filter((f) => !this.embedded || !(f in this.parentContext))
+      return this.definition.filters.filter(f => {
+        const estate = { 所属社区: '所属小区', 适用社区: '适用小区', 可查看社区: '可查看小区' }[f]
+        return (!estate || !this.definition.filters.includes(estate)) && (!this.embedded || !(f in this.parentContext))
+      })
     },
     pagedRows() {
       return this.rows.slice((this.page - 1) * this.pageSize, this.page * this.pageSize)

@@ -18,11 +18,12 @@ import {
   clock,
   day,
   qualified,
+  estateCommunities,
+  applicationEstates,
   pointFor,
   coverageValid,
   catEnabled,
   qualificationFor,
-  qualificationMaterialMatches,
   materialValid,
   materialPresent,
   materialState,
@@ -30,6 +31,10 @@ import {
   shopFor,
   shopRecord,
   auditEvidence,
+  evidence,
+  supplyUnderReview,
+  suspendSupplyForReview,
+  supplyListed,
 } from "./common.js";
 const pick = (d, keys) =>
   Object.fromEntries(
@@ -41,8 +46,6 @@ const serviceKeys = [
   "服务主图",
   "介绍图片",
   "服务简介",
-  "服务详细说明",
-  "适用对象说明",
   "预约须知",
   "公开服务电话",
   "服务规格集合",
@@ -66,11 +69,8 @@ export function normalizeSpecs(s, d, old = [], shop) {
                 "规格编号",
                 "规格名称",
                 "规格说明",
-                "包含内容",
-                "不包含内容",
                 "预计服务时长",
                 "服务对象填写要求",
-                "服务对象填写提示",
                 "规格启用状态",
               ]),
               组合集合: list(d["组合集合"]).length
@@ -90,7 +90,7 @@ export function normalizeSpecs(s, d, old = [], shop) {
             },
           ]
         : clone(old);
-  return specs.map((raw, i) => {
+  return specs.filter((item) => item["规格启用状态"] !== "停用").map((raw, i) => {
     const x = clone(raw);
     x["规格编号"] =
       x["规格编号"] || "SPEC-" + domain(s).sequence + "-" + (i + 1);
@@ -99,7 +99,7 @@ export function normalizeSpecs(s, d, old = [], shop) {
     x["服务对象填写要求"] = x["服务对象填写要求"] || "选填";
     x["组合集合"] = list(
       x["组合集合"] || x["方式报价"] || x["规格方式组合"],
-    ).map((c) => {
+    ).filter((combo) => combo["组合启用状态"] !== "停用").map((c) => {
       const mode = value(c, "组合履约方式名称", "履约方式名称") || "上门",
         m = domain(s).methods.find((m) =>
           c._method
@@ -113,7 +113,7 @@ export function normalizeSpecs(s, d, old = [], shop) {
         _method: m?._id || c._method,
         组合计价方式: "固定规格价",
         组合启用状态: c["组合启用状态"] || "启用",
-        上门覆盖社区: list(c["上门覆盖社区"]),
+        上门覆盖社区: c["上门覆盖社区"] === undefined && shop ? estateCommunities(s, {role:"merchant",shop}, c["上门覆盖小区"]) : list(c["上门覆盖社区"]),
         上门覆盖小区: list(c["上门覆盖小区"]),
         可服务门店或服务点: list(c["可服务门店或服务点"]).map((p) => {
           if (!shop) return clone(p);
@@ -151,9 +151,10 @@ export function saleability(s, r) {
   const reasons = [];
   if (!r.published || r["审核状态"] === "未通过")
     reasons.push("尚无审核通过发布版本");
-  if (r["上架状态"] !== "已上架") reasons.push("服务未上架");
+  if (supplyUnderReview(r)) reasons.push("服务尚未通过本次审核");
+  else if (!supplyListed(r) && !r["平台限制原因"]) reasons.push("服务未上架");
   if (r["平台限制原因"]) reasons.push(r["平台限制原因"]);
-  if (r["接收新预约状态"] === "暂停") reasons.push("商户暂停接收新预约");
+  if (supplyListed(r) && r["接收新预约状态"] === "暂停") reasons.push("商户暂停接收新预约");
   const cat = r.published?.["所属服务类目"] || r["所属服务类目"];
   if (!qualified(s, r._shop, cat)) reasons.push("服务经营资格或类目当前不满足");
   const valid = list(r.published?.["服务规格集合"]).some(
@@ -202,14 +203,13 @@ export function validateSupply(s, r) {
     "所属服务类目",
     "服务主图",
     "服务简介",
-    "服务详细说明",
     "公开服务电话",
   ]);
   phone(r["公开服务电话"], "公开服务电话");
   need(qualified(s, r._shop, r["所属服务类目"]), "经营资格或类目当前不满足");
   need(list(r["服务规格集合"]).length, "请至少配置一个服务规格");
   for (const x of r["服务规格集合"]) {
-    required(x, ["规格名称", "规格说明", "包含内容"]);
+    required(x, ["规格名称", "规格说明"]);
     need(["启用", "停用"].includes(x["规格启用状态"]), "规格启用状态无效");
     if (
       x["预计服务时长"] !== undefined &&
@@ -226,19 +226,42 @@ export function validateSupply(s, r) {
         ["不需要", "选填", "必填"].includes(x["服务对象填写要求"]),
         "服务对象填写要求无效",
       );
-    if (x["服务对象填写要求"] === "必填") required(x, ["服务对象填写提示"]);
     for (const combo of x["组合集合"] || [])
       need(
         ["可选图片", "必需图片"].includes(combo["完成证据要求"]),
         "完成证据要求无效",
       );
     need(list(x["组合集合"]).length, "每个规格至少配置一个方式报价");
+    const methods = x["组合集合"].map((combo) => methodFor(s, combo)?.["绑定流程模板"]);
+    need(methods.length === new Set(methods).size, "同一规格的每种履约方式只可填写一项报价");
     for (const c of x["组合集合"])
       need(
         comboValid(s, c, r["所属服务类目"], r._shop),
         "请完善固定价格、类目允许的启用方式及对应范围或地点",
       );
   }
+}
+function qualificationScope(s, a, application) {
+  required(application, ["申请服务类目", "申请覆盖小区"]);
+  const cats = list(application["申请服务类目"]);
+  const estates = list(application["申请覆盖小区"]);
+  for (const cat of cats) {
+    const config = find(s, "categories", cat);
+    need(config?.["上级类目"] && catEnabled(s, cat) &&
+      !domain(s).categories.some((c) => !c._deleted && !c._retiredGroup && c["上级类目"] === cat),
+    "请选择启用的二级服务类目");
+  }
+  return { cats, estates, communities: estateCommunities(s, a, estates, applicationEstates(s, a)) };
+}
+function updateSupplyBookings(r) {
+  r["接收新预约状态"] = supplyListed(r) && !r._merchantPaused ? "接收中" : "暂停";
+}
+function publishApprovedSupply(r) {
+  r._merchantPaused ??= r["接收新预约状态"] === "暂停";
+  r.published = clone(r.approved);
+  r["当前发布版本"] = r["送审版本"] ?? r["当前编辑版本"];
+  r["上架状态"] = r["平台限制原因"] ? "已下架" : "已上架";
+  updateSupplyBookings(r);
 }
 export function supplyCommand(s, a, name, p) {
   const d = clone(p.data || {}),
@@ -265,6 +288,7 @@ export function supplyCommand(s, a, name, p) {
         r,
         pick(d, ["申请服务类目", "申请覆盖社区", "申请覆盖小区", "申请说明"]),
       );
+      r["申请覆盖社区"] = qualificationScope(s, a, r).communities;
       if (!domain(s).fixtureLegacyOrders) r._applicationMaterialScope = "application";
       if (d["服务资质材料"] !== undefined)
         r["服务资质材料"] = materials(
@@ -281,19 +305,7 @@ export function supplyCommand(s, a, name, p) {
         ["草稿", "已退回", "已撤回"].includes(r["申请状态"]),
         "当前申请不可提交",
       );
-      required(r, ["申请服务类目", "申请覆盖社区"]);
-      for (const cat of list(r["申请服务类目"])) {
-        const c = find(s, "categories", cat);
-        need(c && catEnabled(s, cat), "申请类目未启用");
-        if (c["商户证明是否必需"])
-          need(
-            list(r["服务资质材料"]).some(
-              (m) =>
-                qualificationMaterialMatches(r, m, cat, true) && materialPresent(s, m),
-            ),
-            "请补齐该类目的商户证明材料",
-          );
-      }
+      r["申请覆盖社区"] = qualificationScope(s, a, r).communities;
       r["申请版本"] = (r["申请版本"] || 0) + 1;
       r["审核轮次"] = (r["审核轮次"] || 0) + 1;
       r["申请状态"] = "待审核";
@@ -325,44 +337,15 @@ export function supplyCommand(s, a, name, p) {
       r["最近审核时间"] = clock(s);
       r["申请状态"] = pass ? "已通过" : "已退回";
       if (pass) {
-        const cats = list(value(d, "批准服务类目") || r["申请服务类目"]),
-          communities = list(value(d, "批准覆盖社区") || r["申请覆盖社区"]),
-          estates = list(value(d, "批准覆盖小区") || r["申请覆盖小区"]);
-        need(
-          cats.length && communities.length,
-          "批准服务类目和覆盖社区不能为空",
-        );
-        for (const [requested, approved] of [
-          [r["申请服务类目"], cats],
-          [r["申请覆盖社区"], communities],
-          [r["申请覆盖小区"], estates],
-        ])
-          need(
-            approved.every((x) => list(requested).includes(x)),
-            "批准范围不得超过申请范围",
-          );
-        if (
-          cats.length !== list(r["申请服务类目"]).length ||
-          communities.length !== list(r["申请覆盖社区"]).length ||
-          estates.length !== list(r["申请覆盖小区"]).length
-        )
-          required(d, ["审核意见"]);
-        for (const cat of cats) {
-          const config = find(s, "categories", cat);
-          need(
-            catEnabled(s, cat) &&
-              !domain(s).categories.some((c) => !c._deleted && c["上级类目"] === cat),
-            "只可批准当前启用末级类目",
-          );
-          if (config["商户证明是否必需"])
-            need(
-              list(r["服务资质材料"]).some(
-                (m) =>
-                  qualificationMaterialMatches(r, m, cat, true) &&
-                  materialPresent(s, m),
-              ),
-              "批准前请重新核验对应商户证明",
-            );
+        const submitted = list(r["申请历史"]).findLast((item) => item["申请版本"] === r["申请版本"]) || r;
+        const { cats, estates, communities } = qualificationScope(s, a, submitted);
+        for (const [field, ids] of [
+          ["批准服务类目", cats], ["批准覆盖小区", estates], ["批准覆盖社区", communities],
+        ]) {
+          if (d[field] === undefined) continue;
+          const requested = new Set(list(d[field]));
+          need(requested.size === new Set(ids).size && ids.every((id) => requested.has(id)),
+            "批准范围须与本次申请范围完全一致");
         }
         if (list(r["服务资质材料"]).length) admin(a, "sensitive");
         for (const m of list(r["服务资质材料"])) {
@@ -388,18 +371,8 @@ export function supplyCommand(s, a, name, p) {
           r["协议状态"] === "有效" && r["商户状态"] === "正常",
           "协议或主体状态仍受限，不能恢复交易资格",
         );
-        for (const cat of list(r["获准服务类目"])) {
-          const config = find(s, "categories", cat);
+        for (const cat of list(r["获准服务类目"]))
           need(catEnabled(s, cat), "授权类目仍停用，不能恢复资格");
-          if (config?.["商户证明是否必需"])
-            need(
-              list(r.authorizationMaterials || r["服务资质材料"]).some(
-                (m) =>
-                  qualificationMaterialMatches(r, m, cat) && materialValid(s, m),
-              ),
-              "必要资质仍缺失或失效，不能恢复资格",
-            );
-        }
       }
       r["服务经营有效性"] = ["暂停", "受限"].includes(status) ? "受限" : "有效";
       r["新增交易资格"] =
@@ -425,7 +398,6 @@ export function supplyCommand(s, a, name, p) {
     } else merchant(a);
     r = p.id ? get(s, a, "personnel", p.id) : null;
     if (r) revision(r, p);
-    if (kind === "category" && r) need(!r._deleted, "分类已删除");
     if (action === "save") {
       required(d, ["姓名", "工作联系电话", "可执行服务类目"]);
       phone(d["工作联系电话"], "工作联系电话");
@@ -486,10 +458,10 @@ export function supplyCommand(s, a, name, p) {
       }
     } else if (action === "status") {
       need(r, "人员不存在");
-      required(d, [value(d, "启停原因") ? "启停原因" : "原因说明"]);
+
       r["人员状态"] = value(d, "状态", "人员状态");
       need(["启用", "停用"].includes(r["人员状态"]), "人员状态无效");
-      r["启停原因"] = value(d, "启停原因", "原因说明");
+      if (value(d, "启停原因", "原因说明")) r["启停原因"] = value(d, "启停原因", "原因说明");
     } else need(false, "不支持的人员动作");
     const proofs = list(r["人员资质材料"]);
     r["资质有效性"] = proofs.length
@@ -506,13 +478,13 @@ export function supplyCommand(s, a, name, p) {
     admin(a, "config");
     const t = kind === "category" ? "categories" : "methods";
     r = p.id ? get(s, a, t, p.id) : null;
-    if (r) revision(r, p);
+    if (r) { revision(r, p); need(!r._retiredGroup && !r._deleted, "分类已归档"); }
     if (action === "save") {
       if (kind === "category") {
         required(d, ["类目名称"]);
         if (d["上级类目"])
           need(
-            d["上级类目"] !== p.id && find(s, "categories", d["上级类目"]) && !find(s, "categories", d["上级类目"])._deleted,
+            d["上级类目"] !== p.id && find(s, "categories", d["上级类目"]) && !find(s, "categories", d["上级类目"])._deleted && !find(s, "categories", d["上级类目"])._retiredGroup,
             "上级类目无效",
           );
         let parent = find(s, "categories", d["上级类目"]),
@@ -526,10 +498,10 @@ export function supplyCommand(s, a, name, p) {
           parent = find(s, "categories", parent["上级类目"]);
         }
         const subtreeDepth = (id) => {
-          const children = domain(s).categories.filter((c) => !c._deleted && c["上级类目"] === id);
+          const children = domain(s).categories.filter((c) => !c._deleted && !c._retiredGroup && c["上级类目"] === id);
           return children.length ? 1 + Math.max(...children.map((c) => subtreeDepth(c._id))) : 1;
         };
-        need(seen.size + (r ? subtreeDepth(r._id) : 1) <= 3, "服务分类最多支持三级");
+        need(seen.size + (r ? subtreeDepth(r._id) : 1) <= 2, "服务分类最多支持二级");
         if (!r) r = create(s, a, t, { 类目状态: "启用", 类目排序: 0 }, "CAT");
         Object.assign(
           r,
@@ -537,23 +509,12 @@ export function supplyCommand(s, a, name, p) {
             "类目名称",
             "上级类目",
             "类目图标",
-            "类目说明",
-            "商户证明是否必需",
-            "商户资质要求说明",
-            "人员证明是否必需",
-            "人员资质要求说明",
             "允许履约方式",
             "类目排序",
           ]),
         );
         r["类目编号"] = r._id;
         if (d["类目图标"] !== undefined) auditEvidence(s, a, r, ["类目图标"]);
-        r["商户证明是否必需"] = [true, "是", "必需"].includes(
-          r["商户证明是否必需"],
-        );
-        r["人员证明是否必需"] = [true, "是", "必需"].includes(
-          r["人员证明是否必需"],
-        );
       } else {
         required(d, ["履约方式名称", "绑定流程模板"]);
         need(
@@ -602,7 +563,7 @@ export function supplyCommand(s, a, name, p) {
       r[kind === "category" ? "类目状态" : "方式状态"] = status;
     } else if (kind === "category" && action === "delete") {
       need(r, "分类不存在");
-      need(!domain(s).categories.some((c) => !c._deleted && c["上级类目"] === r._id), "请先处理下级分类");
+      need(!domain(s).categories.some((c) => !c._deleted && !c._retiredGroup && c["上级类目"] === r._id), "请先处理下级分类");
       const contains = (v) => v === r._id || (Array.isArray(v) ? v.some(contains) : v && typeof v === "object" ? Object.values(v).some(contains) : false);
       need(!["services", "qualifications", "personnel", "orders"].some((table) => (domain(s)[table] || []).some(contains)), "分类已被业务引用，请停用而不是删除");
       r._deleted = true;
@@ -622,7 +583,7 @@ export function supplyCommand(s, a, name, p) {
       admin(a, "manage");
     else merchant(a);
     if (r) revision(r, p);
-    if (action === "save") {
+    if (action === "save" || action === "saveAndSubmit") {
       required(d, ["服务名称", "所属服务类目"]);
       if (r) need(r["审核状态"] !== "待审核", "送审中不可修改，请等待审核结果");
       if (!r)
@@ -636,13 +597,18 @@ export function supplyCommand(s, a, name, p) {
             当前发布版本: 0,
             审核状态: "草稿",
             上架状态: "未上架",
-            接收新预约状态: "接收中",
+            接收新预约状态: "暂停",
+            _merchantPaused: false,
             平台限制原因: "",
             versions: [],
           },
           "SUPPLY",
         );
       const m = shopRecord(s, r._shop);
+      // Check retained images against the stored field before applying any submitted data.
+      for (const field of ["服务主图", "介绍图片"]) {
+        if (d[field] !== undefined) d[field] = evidence(s, a, d[field], null, { record: r, field });
+      }
       Object.assign(r, pick(d, serviceKeys));
       r["经营主体名称"] = m["商户名称"];
       r["经营店铺名称"] = m["经营店铺名称"];
@@ -652,8 +618,8 @@ export function supplyCommand(s, a, name, p) {
       r["审核状态"] = "草稿";
       r["当前展示价"] =
         r["服务规格集合"][0]?.["组合集合"]?.[0]?.["组合固定价格"] || "";
-      auditEvidence(s, a, r, ["服务主图", "介绍图片"]);
-    } else if (action === "submit") {
+    }
+    if (action === "submit" || action === "saveAndSubmit") {
       need(
         r && ["草稿", "退回", "通过"].includes(r["审核状态"]),
         "当前版本不可提交审核",
@@ -665,18 +631,22 @@ export function supplyCommand(s, a, name, p) {
       r["送审版本"] = r["当前编辑版本"];
       r["审核状态"] = "待审核";
       r["提交时间"] = clock(s);
+      suspendSupplyForReview(r);
     } else if (action === "review") {
       need(r["审核状态"] === "待审核", "当前没有待审核版本");
-      validateSupply(s, { ...r, ...r.submitted });
-      required(d, ["审核结果"]);
+      need(r.submitted && r["送审版本"] !== undefined, "当前没有待审核版本");
+      need(["通过", "退回"].includes(d["审核结果"]), "请选择审核结果");
       const pass = d["审核结果"] === "通过";
-      if (!pass) required(d, ["审核意见"]);
+      if (pass) validateSupply(s, { ...r, ...r.submitted });
       r["审核状态"] = pass ? "通过" : "退回";
       r["审核结果"] = pass ? "通过" : "退回";
       r["审核意见"] = d["审核意见"] || "";
       r["审核人"] = a.name;
       r["审核时间"] = clock(s);
-      if (pass) r.approved = clone(r.submitted);
+      if (pass) {
+        r.approved = clone(r.submitted);
+        publishApprovedSupply(r);
+      } else suspendSupplyForReview(r);
       r.versions.push({
         版本: r["送审版本"],
         内容: clone(r.submitted),
@@ -688,46 +658,57 @@ export function supplyCommand(s, a, name, p) {
     } else if (action === "publish") {
       need(r["审核状态"] === "通过" && r.approved, "新版本尚未审核通过");
       validateSupply(s, { ...r, ...r.approved });
-      r.published = clone(r.approved);
-      r["当前发布版本"] = r["当前编辑版本"];
-      r["上架状态"] = "已上架";
+      need(!r["平台限制原因"], "存在平台限制");
+      publishApprovedSupply(r);
     } else if (action === "status") {
       const status = d["状态"];
       if (status === "已上架") {
+        need(r["审核状态"] === "通过", "本次审核通过后才可上架");
+        r._merchantPaused ??= r["接收新预约状态"] === "暂停";
         if (!r.published) {
           need(r.approved, "请先审核通过");
           r.published = clone(r.approved);
-          r["当前发布版本"] = r["当前编辑版本"];
+          r["当前发布版本"] = r["送审版本"] ?? r["当前编辑版本"];
         }
         validateSupply(s, { ...r, ...r.published });
         need(!r["平台限制原因"], "存在平台限制");
         r["上架状态"] = "已上架";
+        updateSupplyBookings(r);
       } else if (status === "已下架") {
         required(d, [
           value(d, "上架或下架原因") ? "上架或下架原因" : "原因说明",
         ]);
+        r._merchantPaused ??= r["接收新预约状态"] === "暂停";
         r["上架状态"] = "已下架";
+        updateSupplyBookings(r);
       } else if (status === "暂停接单") {
+        need(!supplyUnderReview(r), "审核期间已暂停接单");
         required(d, [value(d, "暂停原因") ? "暂停原因" : "原因说明"]);
-        r["接收新预约状态"] = "暂停";
+        r._merchantPaused = true;
+        updateSupplyBookings(r);
         r["暂停原因"] = value(d, "暂停原因", "原因说明");
       } else if (status === "恢复接单") {
+        need(!supplyUnderReview(r) && !r["平台限制原因"], "当前不可恢复接单");
         need(
           qualified(s, r._shop, r["所属服务类目"]),
           "经营资格不满足恢复条件",
         );
-        r["接收新预约状态"] = "接收中";
+        r._merchantPaused = false;
+        updateSupplyBookings(r);
       } else if (status === "平台限制") {
         required(d, ["原因说明"]);
+        r._merchantPaused ??= r["接收新预约状态"] === "暂停";
         r["平台限制原因"] = d["原因说明"];
+        updateSupplyBookings(r);
       } else if (status === "解除限制") {
         required(d, ["原因说明"]);
         r["平台限制原因"] = "";
+        updateSupplyBookings(r);
       } else if (["推荐", "取消推荐"].includes(status)) {
         r["推荐展示状态"] = status === "推荐" ? "推荐" : "不推荐";
         r["推荐顺序"] = Number(d["推荐顺序"] || 0);
       } else need(false, "不支持的服务状态动作");
-    } else need(false, "不支持的供给动作");
+    } else if (action !== "save") need(false, "不支持的供给动作");
     append(
       s,
       a,

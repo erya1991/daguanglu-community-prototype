@@ -6,6 +6,7 @@ import Vuex from 'vuex'
 import './styles/theme.less'
 import './styles/stage00.scss'
 import './styles/stage01.scss'
+import './styles/business-actions.scss'
 import App from './App.vue'
 import { service } from './services/foundation'
 Vue.use(ViewUI)

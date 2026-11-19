@@ -1,0 +1,271 @@
+{
+  "session": "stage01-actions-1795071818873",
+  "base": "http://127.0.0.1:19221",
+  "checks": [
+    {
+      "route": "residents",
+      "width": 1366,
+      "rows": [
+        {
+          "text": "详情",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "编辑",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "详情",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "primary": {
+        "text": "保存",
+        "fg": "rgb(255, 255, 255)",
+        "bg": "rgb(23, 102, 191)",
+        "border": "rgb(23, 102, 191)"
+      },
+      "secondary": {
+        "text": "取消",
+        "fg": "rgb(81, 90, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "border": "rgb(220, 222, 226)"
+      }
+    },
+    {
+      "route": "property/bills",
+      "width": 1366,
+      "rows": [
+        {
+          "text": "登记核对事项",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "登记核对事项",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "route": "parking/business",
+      "width": 1366,
+      "rows": [
+        {
+          "text": "维护停车关系",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "route": "workorders/tasks",
+      "width": 1366,
+      "primary": {
+        "text": "确认登记工单",
+        "fg": "rgb(255, 255, 255)",
+        "bg": "rgb(23, 102, 191)",
+        "border": "rgb(23, 102, 191)"
+      },
+      "secondary": {
+        "text": "取消",
+        "fg": "rgb(81, 90, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "border": "rgb(220, 222, 226)"
+      }
+    },
+    {
+      "route": "service/categories",
+      "width": 1366,
+      "rows": [
+        {
+          "text": "查看详情",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "编辑",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "删除",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "primary": {
+        "text": "确定",
+        "fg": "rgb(255, 255, 255)",
+        "bg": "rgb(23, 102, 191)",
+        "border": "rgb(23, 102, 191)"
+      },
+      "secondary": {
+        "text": "取消",
+        "fg": "rgb(81, 90, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "border": "rgb(220, 222, 226)"
+      },
+      "confirmation": {
+        "primary": {
+          "text": "确定",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(23, 102, 191)",
+          "border": "rgb(23, 102, 191)"
+        },
+        "secondary": {
+          "text": "取消",
+          "fg": "rgb(69, 85, 104)",
+          "bg": "rgb(255, 255, 255)",
+          "border": "rgb(198, 205, 212)"
+        }
+      }
+    },
+    {
+      "route": "residents",
+      "width": 1920,
+      "rows": [
+        {
+          "text": "详情",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "编辑",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "详情",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "primary": {
+        "text": "保存",
+        "fg": "rgb(255, 255, 255)",
+        "bg": "rgb(23, 102, 191)",
+        "border": "rgb(23, 102, 191)"
+      },
+      "secondary": {
+        "text": "取消",
+        "fg": "rgb(81, 90, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "border": "rgb(220, 222, 226)"
+      }
+    },
+    {
+      "route": "property/bills",
+      "width": 1920,
+      "rows": [
+        {
+          "text": "登记核对事项",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "登记核对事项",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "route": "parking/business",
+      "width": 1920,
+      "rows": [
+        {
+          "text": "维护停车关系",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "route": "workorders/tasks",
+      "width": 1920,
+      "primary": {
+        "text": "确认登记工单",
+        "fg": "rgb(255, 255, 255)",
+        "bg": "rgb(23, 102, 191)",
+        "border": "rgb(23, 102, 191)"
+      },
+      "secondary": {
+        "text": "取消",
+        "fg": "rgb(81, 90, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "border": "rgb(220, 222, 226)"
+      }
+    },
+    {
+      "route": "service/categories",
+      "width": 1920,
+      "rows": [
+        {
+          "text": "查看详情",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "编辑",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "删除",
+          "fg": "rgb(23, 102, 191)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "primary": {
+        "text": "确定",
+        "fg": "rgb(255, 255, 255)",
+        "bg": "rgb(23, 102, 191)",
+        "border": "rgb(23, 102, 191)"
+      },
+      "secondary": {
+        "text": "取消",
+        "fg": "rgb(81, 90, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "border": "rgb(220, 222, 226)"
+      },
+      "confirmation": {
+        "primary": {
+          "text": "确定",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(23, 102, 191)",
+          "border": "rgb(23, 102, 191)"
+        },
+        "secondary": {
+          "text": "取消",
+          "fg": "rgb(69, 85, 104)",
+          "bg": "rgb(255, 255, 255)",
+          "border": "rgb(198, 205, 212)"
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {serviceText} from './presentation';
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {showFormError} from "../ui/formFeedback";
 import { service, APP } from "@/services/foundation";
 import { fieldsFor } from "@core/service/fields.js";
@@ -8,6 +8,7 @@ import { requiredServiceField } from "@core/service/required.js";
 import FormField from "../ui/components/FormField.vue";
 import Evidence from "./Evidence.vue";
 import StarRating from "../ui/components/StarRating.vue";
+import CategoryTags from "./CategoryTags.vue";
 import CategoryPicker from "./CategoryPicker.vue";
 const props = withDefaults(
   defineProps<{
@@ -82,17 +83,28 @@ const dictionaries: any = {
   公开展示状态: ["展示", "限制"],
   总体评分: [1, 2, 3, 4, 5],
 };
-const fields = computed(() =>
-  (fieldsFor as any)(...props.tables).filter(
+const expandedPoints=ref<string[]>([]);
+function togglePointDetails(id:string){expandedPoints.value=expandedPoints.value.includes(id)?expandedPoints.value.filter(v=>v!==id):[...expandedPoints.value,id]}
+const fields = computed(() => {
+  const shown = (fieldsFor as any)(...props.tables).filter(
     (f: any) =>
       (!props.only.length || props.only.includes(f.name)) &&
       !props.exclude.includes(f.name) &&
       (!props.compact || props.editable || (!/历史|操作记录|变更记录|数据库|主键|外键|快照|版本$|^原始期望时间$|^当前安排$/.test(f.name) && props.value?.[f.name] !== undefined && props.value?.[f.name] !== '' && (!Array.isArray(props.value?.[f.name]) || props.value[f.name].length > 0))) &&
       visible(f),
-  ),
-);
+  );
+  if (props.recordTable === 'qualifications' && !props.editable) {
+    const scope = shown.find((f: any) => f.name === '获准服务类目' || f.name === '申请服务类目');
+    if (scope) return [scope, ...shown.filter((f: any) => f !== scope)];
+  }
+  return shown;
+});
 function set(name: string, value: any) {
   const next: any = { ...props.value, [name]: value };
+  const estateField = ({"申请覆盖小区":"申请覆盖社区","上门覆盖小区":"上门覆盖社区"} as Record<string,string>)[name];
+  const estateChoices = name === "申请覆盖小区" ? props.options.applicationEstates : props.options.estates;
+  if (estateField) next[estateField] = [...new Set((value || []).map((id:string)=>estateChoices?.find((e:any)=>e.value===id)?.community).filter(Boolean))];
+  if (name === "期望时间选择" && value === "时间可协商") { delete next.期望服务日期; delete next.期望时段偏好; }
   if (name === "上门覆盖社区")
     next["上门覆盖小区"] = (next["上门覆盖小区"] || []).filter((id: string) =>
       props.options.approvedEstates?.some(
@@ -118,6 +130,10 @@ function set(name: string, value: any) {
   emit("input", next);
 }
 function visible(f: any) {
+  if (f.name === "到点凭证二维码") return false;
+  if ((props.recordTable === "qualifications" || props.action === "qualification.save") &&
+      ["核验结论","核验意见","材料有效性"].includes(f.name)) return false;
+  if (["申请覆盖社区","上门覆盖社区"].includes(f.name) && props.editable) return false;
   if (props.action === 'qualification.save' && f.name === '对应服务类目') return false;
   if (props.record?._flowVersion === 2 && props.action === 'aftersale.plan' && ['拟退款金额','金额依据说明'].includes(f.name) && props.value['方案处理类型'] !== '部分退款') return false;
   const visibility = (f.condition.split("可见：")[1] || "").split("；")[0];
@@ -241,17 +257,17 @@ function choices(f: any): any[] {
         value: m._id || m.value,
         label: m.label || m["履约方式名称"],
       }));
+  if (n === "申请覆盖小区" && o.applicationEstates?.length) return o.applicationEstates;
   if (n === "上门覆盖社区" && props.editable)
     return o.approvedCommunities || [];
   if (n === "上门覆盖小区" && props.editable)
-    return (o.approvedEstates || []).filter((e: any) =>
-      (props.value["上门覆盖社区"] || []).includes(e.community),
-    );
+    return o.approvedEstates || [];
   if (o.dictionaries?.[n])
     return o.dictionaries[n].map((v: any) => ({ value: v, label: serviceText(v) }));
   if (dictionaries[n])
     return dictionaries[n].map((v: any) => ({ value: v, label: serviceText(v) }));
   if (/服务类目|申请经营类目|可执行类目/.test(n)) rows = o.categories || [];
+  else if (n === "服务人员" && props.record?.dispatchPersonnel) rows = props.record.dispatchPersonnel;
   else if (/服务人员|拟安排人员/.test(n)) rows = o.personnel || [];
   else if (/选定服务项目|服务项目筛选|评价项目筛选/.test(n))
     rows = o.services || [];
@@ -364,7 +380,7 @@ async function openMaterial(f:any,index:number){try{const previous=await service
       v-for="f in fields"
       :key="f.id"
       class="field-wrap svc-view"
-      :class="{ 'field-wrap--error': errors[f.name] }"
+      :class="{ 'field-wrap--error': errors[f.name], 'attachment-row':isEvidence(f) }"
       :data-field="f.id"
       :data-field-name="f.name"
     >
@@ -413,14 +429,12 @@ async function openMaterial(f:any,index:number){try{const previous=await service
           v-for="p in list(f)"
           :key="p['地点业务编号']"
           class="nested svc-view"
-          ><FieldGroup
+          ><view class="point-summary-row"><text>{{p['详细地址']}} {{p['地点联系电话']||p['联系号码']||''}}</text><button @click="togglePointDetails(p['地点业务编号'])">{{expandedPoints.includes(p['地点业务编号'])?'收起':'详情'}}</button></view><FieldGroup v-if="expandedPoints.includes(p['地点业务编号'])"
             :tables="['27-E']"
             :value="p"
             :options="options"
             :editable="false"
-          /><button class="text-button svc-button" @click="togglePoint(f, p)">
-            移除此地点
-          </button></view
+          /></view
         >
         <text v-if="errors[f.name]" class="error svc-text">{{
           errors[f.name]
@@ -436,6 +450,7 @@ async function openMaterial(f:any,index:number){try{const previous=await service
         ><view v-for="(item, i) in list(f)" :key="i" class="nested svc-view"
           ><FieldGroup
             :tables="[childTable(f)]"
+            :record-table="recordTable" :record-id="recordId"
             :value="item"
             :compact="compact"
             :action="action"
@@ -485,12 +500,14 @@ async function openMaterial(f:any,index:number){try{const previous=await service
       <FormField
         v-else
         :label="serviceText(f.name)"
-        :multiline="isMany(f) || /附件|图片|文件/.test(f.type)"
+        :multiline="isMany(f) || f.name==='所属服务类目' || /附件|图片|文件/.test(f.type)"
         :required="edit(f) && required(f)"
         :readonly="!edit(f)"
+        :label-above="recordTable === 'qualifications' && Array.isArray(val(f)) && /类目/.test(f.name)"
         :error="errors[f.name]"
       >
-        <view v-if="!edit(f)" class="readonly svc-view"
+        <CategoryTags v-if="!edit(f) && Array.isArray(val(f)) && /类目/.test(f.name)" :ids="val(f)" :categories="options.categories || []" />
+        <view v-else-if="!edit(f)" class="readonly svc-view"
           ><template v-if="Array.isArray(val(f))"
             ><view
               v-for="(item, i) in val(f)"
@@ -518,7 +535,9 @@ async function openMaterial(f:any,index:number){try{const previous=await service
           ><text class="svc-text" v-else>{{ label(f) }}</text></view
         >
         <StarRating v-else-if="f.name==='总体评分'" :model-value="Number(val(f)||0)" @update:modelValue="set(f.name,$event)" />
-        <CategoryPicker v-else-if="f.name==='申请服务类目'" :value="list(f)" :categories="options.categories||[]" @input="set(f.name,$event)"/>
+        <view v-else-if="f.name==='期望时间选择'" class="time-choices"><button v-for="v in ['指定日期','时间可协商']" :key="v" :class="{selected:val(f)===v}" @click="set(f.name,v)">{{v}}</button></view>
+        <text v-else-if="f.name==='服务人员'&&record?.dispatchPersonnel&&!choices(f).length" class="muted">暂无符合本单条件的已启用人员</text>
+        <CategoryPicker v-else-if="['申请服务类目','所属服务类目','可执行服务类目','对应服务类目','服务类目筛选','服务类目选择'].includes(f.name)" :multiple="!['所属服务类目','服务类目筛选','服务类目选择'].includes(f.name)" :allowed="['所属服务类目','可执行服务类目'].includes(f.name)?options.approvedCategories:undefined" :value="['所属服务类目','服务类目筛选','服务类目选择'].includes(f.name)?(value[f.name]?[value[f.name]]:[]):list(f)" :categories="options.categories||[]" @input="set(f.name,['所属服务类目','服务类目筛选','服务类目选择'].includes(f.name)?($event[0]||''):$event)"/>
         <view v-else-if="isBoolean(f)" class="switch svc-view"
           ><switch
             :checked="!!val(f)"
@@ -587,8 +606,7 @@ async function openMaterial(f:any,index:number){try{const previous=await service
           auto-height
           :placeholder="
             f.name === '服务对象描述'
-              ? props.options.selectedSpec?.['服务对象填写提示'] ||
-                '填写服务对象描述'
+              ? '填写服务对象描述'
               : '填写' + f.name
           "
           @input="input(f, $event)"
@@ -599,22 +617,11 @@ async function openMaterial(f:any,index:number){try{const previous=await service
           :type="/金额|价格|数量|排序|评分/.test(f.name) ? 'digit' : 'text'"
           :placeholder="
             f.name === '服务对象描述'
-              ? props.options.selectedSpec?.['服务对象填写提示'] ||
-                '填写服务对象描述'
+              ? '填写服务对象描述'
               : '填写' + f.name
           "
           @input="input(f, $event)"
         />
-        <text
-          v-if="
-            f.name === '服务对象描述' &&
-            props.options.selectedSpec?.['服务对象填写提示']
-          "
-          class="muted svc-text"
-          data-field="27-D.08"
-          data-field-name="服务对象填写提示"
-          >{{ props.options.selectedSpec["服务对象填写提示"] }}</text
-        >
       </FormField>
     </view>
   </view>
@@ -716,4 +723,8 @@ async function openMaterial(f:any,index:number){try{const previous=await service
   font-size: 13px;
 }
 .material-heading{display:flex;align-items:center;justify-content:space-between}.material-heading button{margin:0;font-size:13px;line-height:36px;color:#1b4d53;background:#edf5f4}.material-card{display:flex;flex-direction:column;gap:8px;border:1px solid #e4ebeb;border-radius:10px;padding:12px;margin:12px 0}.material-card .text-button{align-self:flex-end}
+.multi{gap:6px;flex-wrap:wrap}.multi .choice{padding:0 10px;min-height:44px}.service-fields{gap:8px}.field-wrap{min-width:0}
+.point-summary-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#657678}.point-summary-row>text{flex:1}.point-summary-row button{margin:0;padding:0 10px;min-height:44px;line-height:44px;font-size:13px;background:#edf5f4;color:#1b4d53}
+.time-choices{display:flex;justify-content:flex-end;gap:6px}.time-choices button{margin:0;padding:0 10px;line-height:40px;font-size:14px;background:#f4f6f5;border-radius:8px}.time-choices .selected{background:#e5f3ee;color:$color-primary}
+.attachment-row{display:grid;grid-template-columns:minmax(68px,auto) minmax(0,1fr);gap:8px;align-items:start}.attachment-row>.error{grid-column:2}.attachment-row .section-label{line-height:32px}
 </style>

@@ -15,5 +15,5 @@ withDefaults(defineProps<{ padded?: boolean }>(), { padded: true })
   box-shadow: 0 2px 8px rgba(27, 77, 83, 0.04);
 }
 
-.base-card--padded { padding: $space-4; }
+.base-card--padded { padding: 12px; }
 </style>

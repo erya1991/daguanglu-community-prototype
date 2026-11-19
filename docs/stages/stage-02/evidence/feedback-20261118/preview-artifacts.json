@@ -1,0 +1,420 @@
+{
+  "root": "D:\\git\\daguanglu-community-prototype",
+  "base": "http://127.0.0.1:19221",
+  "checkedAt": "2026-11-18T06:26:46.635Z",
+  "overviewHTTP": 200,
+  "verifiedMounts": [
+    "web",
+    "resident",
+    "merchant",
+    "staff"
+  ],
+  "process": {
+    "pid": 19264,
+    "metadataHTTP": 404,
+    "verifiedBy": "四个入口及实际文件内容逐项比对"
+  },
+  "matched": 50,
+  "resources": [
+    {
+      "url": "/web/",
+      "local": "web/manager/dist/index.html",
+      "status": 200,
+      "bytes": 1403,
+      "sha256": "398322056725e850aef69c4d459a0e01e19803bc31d9cee18a17806ca63948a5",
+      "same": true
+    },
+    {
+      "url": "/web/css/chunk-52a05124.726a84c7.css",
+      "local": "web/manager/dist/css/chunk-52a05124.726a84c7.css",
+      "status": 200,
+      "bytes": 174,
+      "sha256": "be1078aa816e99351cd555ea5d51ce03b1c959b9dc3fbb1557e33d09757a9818",
+      "same": true
+    },
+    {
+      "url": "/web/css/chunk-6a8ab198.d72c9718.css",
+      "local": "web/manager/dist/css/chunk-6a8ab198.d72c9718.css",
+      "status": 200,
+      "bytes": 15168,
+      "sha256": "31b2582093ed4a195e3a993ae29bd85ec30eafd1acf39631e0164bcd7e728bb7",
+      "same": true
+    },
+    {
+      "url": "/web/css/chunk-7fd5bb0e.baf8be68.css",
+      "local": "web/manager/dist/css/chunk-7fd5bb0e.baf8be68.css",
+      "status": 200,
+      "bytes": 399,
+      "sha256": "3411f50b12940a33ba8afa930516fe37f7966529ca58400f52ca9294ea1d406c",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-2d0ab562.0e8c58e5.js",
+      "local": "web/manager/dist/js/chunk-2d0ab562.0e8c58e5.js",
+      "status": 200,
+      "bytes": 342,
+      "sha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-2d0d2fae.e473150f.js",
+      "local": "web/manager/dist/js/chunk-2d0d2fae.e473150f.js",
+      "status": 200,
+      "bytes": 342,
+      "sha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-2d0e5450.b4602f85.js",
+      "local": "web/manager/dist/js/chunk-2d0e5450.b4602f85.js",
+      "status": 200,
+      "bytes": 29627,
+      "sha256": "d3f30fadd5c7e3dd6bba4fc6167d655d0b5a128bfc916c075ef9776e022f9441",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-2d208a96.42b149f2.js",
+      "local": "web/manager/dist/js/chunk-2d208a96.42b149f2.js",
+      "status": 200,
+      "bytes": 8948,
+      "sha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-2d215c24.8b94bac2.js",
+      "local": "web/manager/dist/js/chunk-2d215c24.8b94bac2.js",
+      "status": 200,
+      "bytes": 343,
+      "sha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-2d21f830.c0d3ba6c.js",
+      "local": "web/manager/dist/js/chunk-2d21f830.c0d3ba6c.js",
+      "status": 200,
+      "bytes": 342,
+      "sha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-52a05124.198c874a.js",
+      "local": "web/manager/dist/js/chunk-52a05124.198c874a.js",
+      "status": 200,
+      "bytes": 106330,
+      "sha256": "02c770a8f40773b4aec4ba65c83b26d652eeab53a78f734023f5e51e9c9a07a2",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-6a8ab198.3cc62c87.js",
+      "local": "web/manager/dist/js/chunk-6a8ab198.3cc62c87.js",
+      "status": 200,
+      "bytes": 92655,
+      "sha256": "befa9ef1b42cb6e70513cf9aa50962fcfabc0d52f732d2a1801c6a94805b86e7",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-770e854f.4650b104.js",
+      "local": "web/manager/dist/js/chunk-770e854f.4650b104.js",
+      "status": 200,
+      "bytes": 19019,
+      "sha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-7fd5bb0e.0f6db292.js",
+      "local": "web/manager/dist/js/chunk-7fd5bb0e.0f6db292.js",
+      "status": 200,
+      "bytes": 42543,
+      "sha256": "c9e7310c4e21bc48aa094e1b5dfc8dab25c0e0bd404b97c67ef444e3e636b6a5",
+      "same": true
+    },
+    {
+      "url": "/web/css/app.0e951206.css",
+      "local": "web/manager/dist/css/app.0e951206.css",
+      "status": 200,
+      "bytes": 298371,
+      "sha256": "27d99f33b4755726efb32bd17a4aa003ba2cf80e624f2f66a07dd421cc98158f",
+      "same": true
+    },
+    {
+      "url": "/web/js/app.4794ffa5.js",
+      "local": "web/manager/dist/js/app.4794ffa5.js",
+      "status": 200,
+      "bytes": 751873,
+      "sha256": "d7ddcaf7ff3d8fe8c01c19fd2ff3f1f3bfbb73cf70001d78b71946affe575ffc",
+      "same": true
+    },
+    {
+      "url": "/web/js/chunk-vendors.4c902ff7.js",
+      "local": "web/manager/dist/js/chunk-vendors.4c902ff7.js",
+      "status": 200,
+      "bytes": 895974,
+      "sha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5",
+      "same": true
+    },
+    {
+      "url": "/resident/",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "bytes": 461,
+      "sha256": "bf3a308a0b94d7aa973fe4b59edca431d4a5db6bacb12e1ef55316c33d3a7848",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/uni.a9437254.css",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/uni.a9437254.css",
+      "status": 200,
+      "bytes": 23173,
+      "sha256": "a943725453a3942fd4d76081a0f4cad8b35db6423cccbe54372989f0ed6e1639",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/index-Cj12NGCQ.js",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-Cj12NGCQ.js",
+      "status": 200,
+      "bytes": 1030961,
+      "sha256": "6a866169433ea25f9d525d2289c90e2aae2d70ba58a42159ca39b56446213512",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/index-DdiibYX0.css",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "bytes": 11825,
+      "sha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/FoundationPage-CDTSMYfk.css",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FoundationPage-CDTSMYfk.css",
+      "status": 200,
+      "bytes": 998,
+      "sha256": "feee48cf70238a04098e0a90f2d4b89d64013c81f872ac85d96dc8bf8355b6de",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/FoundationPage.Dr3ByUQs.js",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/FoundationPage.Dr3ByUQs.js",
+      "status": 200,
+      "bytes": 23139,
+      "sha256": "8e6736a932104caa13ff4023269c36c76cc703c1c595ee957efea8af3503da12",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/PortalPage-C--d2rkq.css",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/PortalPage-C--d2rkq.css",
+      "status": 200,
+      "bytes": 8438,
+      "sha256": "ff541d19c3368e68c1e6a0886a4872557e703669b240c07168058f8b8e2fbe81",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/PortalPage.BGZUNCYH.js",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/PortalPage.BGZUNCYH.js",
+      "status": 200,
+      "bytes": 23635,
+      "sha256": "3be6ea17860386c67866048badfa43db7cecf948356ecff2554782be10312a7a",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/ServicePage-DN_5ZerX.css",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ServicePage-DN_5ZerX.css",
+      "status": 200,
+      "bytes": 27949,
+      "sha256": "425017277be7e25895ab986e38966e21c60ae03610c959ed491e55fe804d12f0",
+      "same": true
+    },
+    {
+      "url": "/resident/assets/ServicePage.BXwVcPxg.js",
+      "local": "miniapp/apps/resident-miniapp/dist/build/h5/assets/ServicePage.BXwVcPxg.js",
+      "status": 200,
+      "bytes": 139094,
+      "sha256": "4b3a75d92b7b66e4dd7f3e163d59dd2160be10101519dbae18c03fd5d77dbade",
+      "same": true
+    },
+    {
+      "url": "/merchant/",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "bytes": 467,
+      "sha256": "53bceff342c59559d1764e69e72f36a41a5f97ff7c29811d8591504bfbae6382",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/uni.a9437254.css",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/uni.a9437254.css",
+      "status": 200,
+      "bytes": 23173,
+      "sha256": "a943725453a3942fd4d76081a0f4cad8b35db6423cccbe54372989f0ed6e1639",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/index-Ds-HQpnk.js",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-Ds-HQpnk.js",
+      "status": 200,
+      "bytes": 1013217,
+      "sha256": "ebfa5e394ec16033794dd018a27006d378940f42d90e08ddcb4433f5dafb1bc7",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/index-DdiibYX0.css",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "bytes": 11825,
+      "sha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/PortalPage-Cc-07MyL.css",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/PortalPage-Cc-07MyL.css",
+      "status": 200,
+      "bytes": 9609,
+      "sha256": "31f3f49b8abc34ceef72f8981713c128e3310c73ec97eee36322ea75b41bead7",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/PortalPage.DQReDeso.js",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/PortalPage.DQReDeso.js",
+      "status": 200,
+      "bytes": 24522,
+      "sha256": "778809db2e5b4654373cb8be0f6dd254d3e72a5299126e361afe453dd237f00c",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/ServicePage-CDMuCku3.css",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/ServicePage-CDMuCku3.css",
+      "status": 200,
+      "bytes": 23119,
+      "sha256": "e134635b2924604b629e98564eebe8a0b6b7639a091cd2986361c2365ca026e1",
+      "same": true
+    },
+    {
+      "url": "/merchant/assets/ServicePage.CtOod_As.js",
+      "local": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/ServicePage.CtOod_As.js",
+      "status": 200,
+      "bytes": 106466,
+      "sha256": "322353d5becbd6df1df1460334299224c080a9d2a9ed3969a2a563e4abdd36f8",
+      "same": true
+    },
+    {
+      "url": "/staff/",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "bytes": 461,
+      "sha256": "d96dc21631ad9142c1739372705ec6ceeacfbf3cce2a34c156f6feb91976ecc6",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/uni.a9437254.css",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/uni.a9437254.css",
+      "status": 200,
+      "bytes": 23173,
+      "sha256": "a943725453a3942fd4d76081a0f4cad8b35db6423cccbe54372989f0ed6e1639",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/index-BoLLYaIX.js",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-BoLLYaIX.js",
+      "status": 200,
+      "bytes": 1018725,
+      "sha256": "8f9ebd86b23f5edb47e4cde8529c7b23cc1dcc9dc9126de9d6712978ad4c444e",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/index-DdiibYX0.css",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "bytes": 11825,
+      "sha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/FoundationPage-CDTSMYfk.css",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FoundationPage-CDTSMYfk.css",
+      "status": 200,
+      "bytes": 998,
+      "sha256": "feee48cf70238a04098e0a90f2d4b89d64013c81f872ac85d96dc8bf8355b6de",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/FoundationPage.3YrDrVSJ.js",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/FoundationPage.3YrDrVSJ.js",
+      "status": 200,
+      "bytes": 23435,
+      "sha256": "fc93e1324906b0418ea6054080757057a561827eb255d6641e65465013d50c48",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/PortalPage-ByVxWjvS.css",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/PortalPage-ByVxWjvS.css",
+      "status": 200,
+      "bytes": 36386,
+      "sha256": "7a46202675880bbbb2b1bd55a908e3181650f0334d96df68d6c0a10b6c19d1a2",
+      "same": true
+    },
+    {
+      "url": "/staff/assets/PortalPage.CluOIxXS.js",
+      "local": "miniapp/apps/staff-miniapp/dist/build/h5/assets/PortalPage.CluOIxXS.js",
+      "status": 200,
+      "bytes": 161741,
+      "sha256": "06256dd8545603b33040d6cb531fd5a1bcd8629cbdae6f56c6300455c3986e66",
+      "same": true
+    },
+    {
+      "url": "/_shared/core.js",
+      "local": "prototype-shared/core.js",
+      "status": 200,
+      "bytes": 73578,
+      "sha256": "bc5a02cfef7292846045a2df0495ed4577048f286c0b881ddad169d981ffe869",
+      "same": true
+    },
+    {
+      "url": "/_shared/r3-product.js",
+      "local": "prototype-shared/r3-product.js",
+      "status": 200,
+      "bytes": 11354,
+      "sha256": "c0f5108285d5b110123cb32f651788f323c5ea7d8502003302b9e4ed1caff5cb",
+      "same": true
+    },
+    {
+      "url": "/_shared/service/common.js",
+      "local": "prototype-shared/service/common.js",
+      "status": 200,
+      "bytes": 21990,
+      "sha256": "2d11f120f1b82d339a4bea1f170225cf01f87e33d48fd5334a52a54fff0dfc7a",
+      "same": true
+    },
+    {
+      "url": "/_shared/service/supply.js",
+      "local": "prototype-shared/service/supply.js",
+      "status": 200,
+      "bytes": 29393,
+      "sha256": "e161303285e052cbd6ccfbc6eed8217e954d4e474843b2139ef96ae5a5ecca5c",
+      "same": true
+    },
+    {
+      "url": "/_shared/service/orders.js",
+      "local": "prototype-shared/service/orders.js",
+      "status": 200,
+      "bytes": 37564,
+      "sha256": "a3072ee643c9a9347dcbd25ee3da02712270f690b082dcf592bebf1846941580",
+      "same": true
+    },
+    {
+      "url": "/_shared/service/index.js",
+      "local": "prototype-shared/service/index.js",
+      "status": 200,
+      "bytes": 58541,
+      "sha256": "373a983e9489e34e7fdc9361e80848748c8ffe6bc5b6b453a48eb5bcf5c4e9a3",
+      "same": true
+    },
+    {
+      "url": "/_shared/storage-h5.js",
+      "local": "prototype-shared/storage-h5.js",
+      "status": 200,
+      "bytes": 14997,
+      "sha256": "431bb37c3fc56ec1ef3ff38149610de8488c8124f4c912171eb85fe504ec04eb",
+      "same": true
+    }
+  ]
+}

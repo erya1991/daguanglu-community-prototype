@@ -1,6 +1,7 @@
 import {
   domain,
   pointFor,
+  serviceEstates,
   list,
   need,
   value,
@@ -32,7 +33,8 @@ import {
   simplified,
 } from "./common.js";
 import { comboFor, saleability, comboValid, methodFor } from "./supply.js";
-import { validateAddress } from "./addresses.js";
+import { issueServiceCode } from "./service-code.js";
+import { resolveHomeAddress } from "./addresses.js";
 import {
   fund,
   refund,
@@ -117,31 +119,25 @@ function activateDispatch(s, o, ar) {
   o["当前有效安排编号"] = ar["安排编号"];
   o["安排状态"] = "已安排";
   ensureRound(s, o, ar);
-  if (o._mode === "预约到点") o.credential = {
-    到点凭证码: "S02-" + o._id + "-V" + ar["安排版本"],
-    到点凭证二维码: "S02:" + o._id + ":" + ar["安排版本"],
-    凭证状态: "有效", 凭证对应服务订单号: o["服务订单号"],
-    凭证对应项目名称: o["服务项目名称"], 凭证对应规格名称: o["服务规格名称"],
-    凭证对应地点名称: o["地点快照"]["地点名称"],
-    凭证对应服务日期: ar["安排服务日期"], 凭证对应开始时间: ar["安排开始时间"],
-    凭证对应结束时间: ar["安排结束时间"], 凭证联系人姓名: o["联系人姓名"],
-    凭证联系人电话: o["联系人电话"],
-  };
+  issueServiceCode(domain(s).orders, o, ar);
 }
 function completeService(s, a, o, data) {
   const ar = currentArrangement(o);
   need(ar && !orderBlocked(s, o), "需要有效派工，且无取消或售后处理中");
   need(day(s) >= ar["安排服务日期"], "服务日期尚未到达");
-  need(staffEligible(s, find(s, "personnel", ar["服务人员"]), o._shop, o._category), "安排人员当前不可执行，请联系商户处理");
+  need(staffEligible(find(s, "personnel", ar["服务人员"]), o._shop, o._category), "安排人员当前不可执行，请联系商户处理");
   required(data, ["实际完成内容"]);
   need(!data["服务结果"] || data["服务结果"] === "全部完成", "本期提交按约完成结果；无法完成请办理取消核实");
   auditEvidence(s, a, data, ["结果图片"]);
   if (o._combo["完成证据要求"] === "必需图片") need(list(data["结果图片"]).length, "本单要求提交结果图片", { 结果图片: "请补充结果图片" });
-  if (o._mode === "预约到点") {
-    const code = String(data["到点凭证码"] || "").trim(), cr = o.credential;
-    need(cr && cr["凭证状态"] === "有效" && [cr["到点凭证码"], cr["到点凭证二维码"]].includes(code), "到点凭证不匹配或已失效", { 到点凭证码: "请输入本订单有效凭证" });
-    need(day(s) === ar["安排服务日期"], "凭证对应服务日期与今天不符");
-    Object.assign(cr, { 凭证状态: "已核验", 核验时间: clock(s), 核验操作人: a.name, 核验地点: o["地点快照"]["地点名称"] });
+  const credential = o.credential;
+  if (credential?.凭证状态 !== "已核验") {
+    const code = String(data.服务码 || "").trim();
+    need(/^\d{6}$/.test(code) && credential?.凭证状态 === "有效" && credential.服务码 === code,
+      "服务码不匹配或已失效", { 服务码: "请输入住户本单的 6 位服务码" });
+    if (o._mode === "预约到点") need(day(s) === ar["安排服务日期"], "服务码对应服务日期与今天不符");
+    Object.assign(credential, { 凭证状态: "已核验", 核验时间: clock(s), 核验操作人: a.name });
+    if (o._mode === "预约到点") credential.核验地点 = o["地点快照"]["地点名称"];
   }
   const when = clock(s), result = {
     服务结果: "全部完成", 实际完成内容: data["实际完成内容"],
@@ -196,7 +192,10 @@ export function validateBooking(s, a, data) {
     date(s, data["期望服务日期"], "期望服务日期", true);
   }
   let location;
-  if (combo["组合流程模板"] === "上门") {
+  if (combo["组合流程模板"] === "上门" && !domain(s).fixtureLegacyOrders) {
+    location = resolveHomeAddress(s, a, data, combo);
+    need(!data["到点服务地点"], "上门订单不能同时提交到点地点");
+  } else if (combo["组合流程模板"] === "上门") {
     location = pickInput(data["上门服务地址"] || {}, [
       "省份",
       "城市",
@@ -215,7 +214,6 @@ export function validateBooking(s, a, data) {
       "联系人电话",
     ]);
     required(location, ["所属社区", "详细地址"]);
-    if (!domain(s).fixtureLegacyOrders) validateAddress(s, location, false);
     if (location["所属小区"])
       need(
         s.estates.some(
@@ -253,6 +251,7 @@ export function validateBooking(s, a, data) {
       currentPoint && currentPoint["详细地址"] && currentPoint["联系号码"],
       "请选择本商户有效到点地点",
     );
+    need(serviceEstates(s, a).some(e => e._id === currentPoint._estate), "所选服务点不在可用小区内");
     location = Object.fromEntries(
       Object.entries(currentPoint).filter(([k]) => !k.startsWith("_")),
     );
@@ -373,7 +372,7 @@ function arrange(s, a, o, data) {
   );
   const staff = find(s, "personnel", data["服务人员"]);
   need(
-    staffEligible(s, staff, o._shop, o._category),
+    staffEligible(staff, o._shop, o._category),
     "人员已停用、类目或所需资质不满足",
   );
   const old = currentArrangement(o);
@@ -454,6 +453,7 @@ export function orderCommand(s, a, name, p) {
         "期望时间补充说明",
         "上门服务地址",
         "上门地址来源",
+        "履约小区",
         "到点服务地点",
         "需求补充说明",
         "需求图片",
@@ -486,7 +486,7 @@ export function orderCommand(s, a, name, p) {
       start: ["开始说明"],
       process: ["过程记录类型", "过程说明", "过程图片"],
       result: [
-        "到点凭证码",
+        "服务码",
         "服务结果",
         "实际完成内容",
         "未完成内容",
@@ -683,7 +683,6 @@ export function orderCommand(s, a, name, p) {
     const ar = currentArrangement(o);
     need(
       staffEligible(
-        s,
         find(s, "personnel", ar["服务人员"]),
         o._shop,
         o._category,
@@ -742,7 +741,6 @@ export function orderCommand(s, a, name, p) {
     need(
       arrangement &&
         staffEligible(
-          s,
           find(s, "personnel", arrangement["服务人员"]),
           o._shop,
           o._category,

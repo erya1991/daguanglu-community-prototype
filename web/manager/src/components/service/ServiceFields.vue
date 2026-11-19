@@ -1,7 +1,7 @@
 <template>
   <div class="service-fields" :class="{ 'filter-mode': mode === 'filter' }">
     <section v-for="group in groups" :key="group.id" class="form-section">
-      <h3 v-if="groups.length > 1">{{ cleanTitle(group.title) }}</h3>
+      <h3 v-if="groups.length > 1 && action !== 'qualification.review'">{{ cleanTitle(group.title) }}</h3>
       <div class="fields-grid">
         <div
           v-for="f in group.fields"
@@ -29,7 +29,7 @@
             <article v-for="(item, index) in array(value[f.name])" :key="index">
               <div class="collection-title">
                 <strong>{{ f.name }} {{ index + 1 }}</strong
-                ><Button size="small" type="text" @click="removeItem(f, index)"
+                ><Button size="small" type="default" @click="removeItem(f, index)"
                   >移除</Button
                 >
               </div>
@@ -48,6 +48,7 @@
               >添加{{ f.name.replace(/集合|条目/g, "") }}</Button
             >
           </div>
+          <div v-else-if="f.name==='允许履约方式' && action==='category.save'" class="method-options"><button type="button" v-for="o in choices(f)" :key="o.value" :aria-pressed="array(value[f.name]).includes(o.value)" @click="set(f.name,array(value[f.name]).includes(o.value)?array(value[f.name]).filter(v=>v!==o.value):[...array(value[f.name]),o.value])">{{o.label==='预约到点'?'预约到店':o.label}}</button></div>
           <Select
             v-else-if="isMulti(f)"
             :id="controlId(f)"
@@ -158,6 +159,7 @@
   </div>
 </template>
 <script>
+import { retiredCategoryFields } from "../../../../../prototype-shared/service/display.js";
 import { tableById } from "../../../../../prototype-shared/service/fields.js";
 import { requiredServiceField } from "../../../../../prototype-shared/service/required.js";
 import ServiceEvidence from "./ServiceEvidence.vue";
@@ -210,6 +212,10 @@ export default {
         id,
         fields: (tableById[id]?.fields || []).filter(this.applicable),
       }));
+      if(this.action==='category.save') for(const group of groups){
+        const sort=group.fields.find(f=>f.name==='类目排序');
+        if(sort){group.fields=group.fields.filter(f=>f!==sort);group.fields.splice(group.fields.findIndex(f=>f.name==='类目名称')+1,0,sort)}
+      }
       if (this.extraFields.length)
         groups.push({
           id: "action",
@@ -304,10 +310,11 @@ export default {
         return false;
       const n = f.name,
         a = this.action;
+      if (a === "category.save" && (n === "配置变更原因" || retiredCategoryFields.includes(n))) return false;
       if (/筛选|关键词/.test(n)) return false;
       if (
         a === "qualification.review" &&
-        !/^(审核结果|审核意见|批准服务类目|批准覆盖社区|批准覆盖小区)$/.test(n)
+        !/^(审核结果|审核意见)$/.test(n)
       )
         return false;
       if (
@@ -644,4 +651,6 @@ export { statusField };
     grid-template-columns: 1fr;
   }
 }
+.method-options{display:flex;gap:12px}.method-options label{display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #dce3e9;border-radius:6px;cursor:pointer}.method-options .selected{background:#ecf5ff;border-color:#2d8cf0;color:#2d8cf0}
+.method-options{display:flex;align-items:center;flex-wrap:nowrap;gap:8px}.method-options button{background:white;border:1px solid #cfd8df;border-radius:4px;white-space:nowrap;font:inherit;padding:4px 12px;cursor:pointer}.method-options button[aria-pressed=true]{border-color:#2d8cf0;background:#edf6ff;color:#126ac1}
 </style>

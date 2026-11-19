@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-17",
+  "status": "待人工复验",
+  "head": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+  "unit": {
+    "command": "npm test",
+    "total": 266,
+    "pass": 262,
+    "fail": 0,
+    "skip": 4,
+    "log": "logs/tests.txt",
+    "skipNote": "4 existing skipped tests, not counted as passing"
+  },
+  "browser": {
+    "pass": 25,
+    "fail": 0,
+    "errors": 0,
+    "externalRequests": 0,
+    "primary": "browser-main.json",
+    "focused": "browser-focused.json",
+    "reuse": "23 steps fully rerun on final artifacts; two added targeted steps reused the identical artifact hashes and isolated session.",
+    "sizes": [
+      "390x844",
+      "414x896",
+      "1366x768",
+      "1920x1080"
+    ],
+    "mainlines": {
+      "home": {
+        "price": "99.00",
+        "merchantSplit": "89.00"
+      },
+      "point": {
+        "price": "59.00",
+        "merchantSplit": "53.04"
+      },
+      "paidTotal": "158.00",
+      "splitTotal": "142.04"
+    }
+  },
+  "builds": {
+    "pass": 7,
+    "typeChecks": 3,
+    "detail": "build-results.json"
+  },
+  "preview": "preview-artifacts.json",
+  "fields": "field-presentation-map.json",
+  "ownerFeedback": "owner-feedback.md",
+  "manual": {
+    "retestGroups": 9,
+    "pending": [
+      "B05",
+      "B06"
+    ],
+    "preservedPassed": [
+      "R05",
+      "B02"
+    ],
+    "stagePass": false
+  },
+  "notRun": [
+    "WeChat developer-tool interaction",
+    "Physical device",
+    "Real payment/refund/split integration"
+  ],
+  "git": "Local changes only; no stage/commit/push/merge/public release"
+}

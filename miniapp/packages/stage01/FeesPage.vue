@@ -221,11 +221,11 @@ onUnmounted(() => {
 });
 const filterDraft=ref<any>({start:'',end:''});
 const feeFilters=computed(()=>[
- ...(charging.value?[{key:'community',label:'社区',value:community.value,options:options.value.communities||[]},{key:'estate',label:'小区',value:estate.value,options:(options.value.estates||[]).filter((e:any)=>!community.value||e.community===community.value)}]:[]),
+ ...(charging.value?[{key:'estate',label:'小区',value:estate.value,options:options.value.estates||[]}]:[]),
  ...(table.value==='bills'?[{key:'house',label:'房屋',value:house.value,options:options.value.houses||[]}]:[]),
  ...(table.value==='payments'?[{key:'business',label:'业务',value:business.value,options:['物业费','停车月租','临停'].map(v=>({value:v,label:v}))}]:[])
 ]);
-function feeFilter(key:string,v:string){if(key==='community'){community.value=v;estate.value=''}if(key==='estate')estate.value=v;if(key==='house')house.value=v;if(key==='business')business.value=v}
+function feeFilter(key:string,v:string){if(key==='community'){community.value=v;estate.value=''}if(key==='estate'){estate.value=v;community.value=(options.value.estates||[]).find((e:any)=>e.value===v)?.community||''}if(key==='house')house.value=v;if(key==='business')business.value=v}
 </script>
 <template>
   <AppPage secondary

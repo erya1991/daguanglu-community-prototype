@@ -1,0 +1,294 @@
+{
+  "base": "http://127.0.0.1:19221",
+  "session": "stage02-feedback-1795071713145",
+  "H": "S02-ORDER-000101",
+  "P": "S02-ORDER-000115",
+  "hashes": {
+    "prototype-shared/core.js": "fd3dc66877af5fc37f9bc2399d2e449b5cf40b9a6fde5ded7389fb3fc535c513",
+    "prototype-shared/storage-h5.js": "b2dd870c7413edc8254fe08e7dc3c4fdc91ef9d15fd663cf0b0c94a8326aa0c3",
+    "prototype-shared/service/index.js": "bc77fd2f1b44c44d8cc47d6475ba2b6747e4a376ea047b40450131b7aad1b9bd",
+    "prototype-shared/service/common.js": "83b5e159343f445f5c7a6a06cf405e2eb55c7abe20c77d8055d4e9cd3b7fa7e7",
+    "prototype-shared/service/seed.js": "ba3a1b987ed50f7a6e37c221cb3d5de3a9ccb5b607d7690277e778481c7936c5",
+    "prototype-shared/service/service-code.js": "36112f457e59f2bc83b4993d273f3581feb1a9976434812dfb424ecfa8130b4f",
+    "prototype-shared/service/supply.js": "79c4f417e340ea6920898b37761429185768c3b8cb90e50a3207af43f5e85fbb",
+    "prototype-shared/service/orders.js": "8c98c00258e67f491def5c4f5cd7823cc80ee28ba8db073abfdf5ebb4d3fe128",
+    "prototype-shared/service/aftersale.js": "8f4c272a99980312ab50679e1eeb9a48247f9d630096d32530335bfaa8dc38c5",
+    "prototype-shared/service/addresses.js": "c685659304c266010977f6a4a0df759c6e4fb6968c5e749f6889917a67681e18",
+    "web/manager/dist/index.html": "fa78a44d1c5c718fe36cd324bcd571edc0d4818bc05970908be0c6a30a993842",
+    "miniapp/apps/resident-miniapp/dist/build/h5/index.html": "2d5ea1216d2c670e28dbae2b7d8aaf1821693ab0399ab675c066021a08b1d462",
+    "miniapp/apps/merchant-miniapp/dist/build/h5/index.html": "33f89485b77a256d91e4256abc2ab4ff94ec246026b71d08aa9d1cfd272d6d6d",
+    "miniapp/apps/staff-miniapp/dist/build/h5/index.html": "fdeecb716fac0d588fa83110861edab8bd97d8f25f19af620b58d6ea0405e7eb"
+  },
+  "profile": "D:\\git\\daguanglu-community-prototype\\.runtime\\stage02\\feedback-list3\\browser-1795071713144\\profile",
+  "resumeFrom": null,
+  "recheckWeb": false,
+  "steps": [
+    {
+      "name": "H01 常用地址入口、必填、联动、默认地址",
+      "status": "PASS",
+      "detail": "ADDRESS-1"
+    },
+    {
+      "name": "H02 住户选择服务、方式与付款",
+      "status": "PASS",
+      "detail": {
+        "id": "S02-ORDER-000101",
+        "price": "99.00"
+      }
+    },
+    {
+      "name": "H03 商户接单派工一次生效",
+      "status": "PASS",
+      "detail": {
+        "arrangement": {
+          "安排编号": "S02-ARR-000106",
+          "安排版本": 1,
+          "关联履约轮次": 1,
+          "服务人员": "P-A",
+          "服务人员姓名": "陈师傅",
+          "服务人员工作联系电话": "13800004444",
+          "安排服务日期": "2026-11-19",
+          "安排开始时间": "15:00",
+          "安排结束时间": "16:00",
+          "安排地点": {
+            "省份": "江苏省",
+            "城市": "南京市",
+            "区县": "秦淮区",
+            "详细地址": "验收街新地址202室",
+            "联系人姓名": "林悦",
+            "联系人电话": "13800000001",
+            "所属小区": "E-A",
+            "所属社区": "C-A"
+          },
+          "安排说明": "",
+          "安排状态": "已生效",
+          "安排提出人": "青禾家政服务商",
+          "安排提出时间": "2026-11-19T15:02:04+08:00"
+        }
+      }
+    },
+    {
+      "name": "H04 商户提交结果与资金事实",
+      "status": "PASS",
+      "detail": {
+        "funds": [
+          {
+            "type": "支付",
+            "amount": 9900,
+            "status": "成功"
+          },
+          {
+            "type": "分账",
+            "amount": 8900,
+            "status": "成功"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H05 评价主按钮、完成、刷新幂等",
+      "status": "PASS",
+      "detail": "S02-ORDER-000101"
+    },
+    {
+      "name": "P02 住户选择服务、方式与付款",
+      "status": "PASS",
+      "detail": {
+        "id": "S02-ORDER-000115",
+        "price": "59.00"
+      }
+    },
+    {
+      "name": "P03 商户接单派工一次生效",
+      "status": "PASS",
+      "detail": {
+        "arrangement": {
+          "安排编号": "S02-ARR-000120",
+          "安排版本": 1,
+          "关联履约轮次": 1,
+          "服务人员": "P-A",
+          "服务人员姓名": "陈师傅",
+          "服务人员工作联系电话": "13800004444",
+          "安排服务日期": "2026-11-19",
+          "安排开始时间": "15:00",
+          "安排结束时间": "16:00",
+          "安排地点": {
+            "地点业务编号": "POINT-A",
+            "地点名称": "青禾社区便民服务点",
+            "所属社区名称": "青禾示例社区",
+            "所属小区名称": "青禾花园",
+            "详细地址": "青禾花园社区服务中心一层",
+            "联系号码": "13800001111",
+            "营业时间说明": "按双方确认安排接待",
+            "到点指引": "进入服务中心后查看便民服务标识",
+            "地点状态": "启用"
+          },
+          "安排说明": "",
+          "安排状态": "已生效",
+          "安排提出人": "青禾家政服务商",
+          "安排提出时间": "2026-11-19T15:02:12+08:00"
+        }
+      }
+    },
+    {
+      "name": "P04 商户提交结果与资金事实",
+      "status": "PASS",
+      "detail": {
+        "funds": [
+          {
+            "type": "支付",
+            "amount": 5900,
+            "status": "成功"
+          },
+          {
+            "type": "分账",
+            "amount": 5304,
+            "status": "成功"
+          }
+        ]
+      }
+    },
+    {
+      "name": "P05 评价主按钮、完成、刷新幂等",
+      "status": "PASS",
+      "detail": "S02-ORDER-000115"
+    },
+    {
+      "name": "G09 首页统计、下钻与跨端金额",
+      "status": "PASS",
+      "detail": {
+        "创建订单数": 2,
+        "付款成功订单数": 2,
+        "已确认服务安排数": 0,
+        "正常完成订单数": 2,
+        "服务完成数": 2,
+        "已完成订单数": 2,
+        "未服务取消订单数": 0,
+        "部分履行终止订单数": 0,
+        "当前待接单数": 0,
+        "当前待安排数": 0,
+        "当前售后待处理数": 0,
+        "期间支付成功金额": "158.00",
+        "期间退款成功金额": "0.00",
+        "期间分账成功金额": "142.04",
+        "期间回退成功金额": "0.00",
+        "期间净收款": "158.00",
+        "商户净实分金额": "142.04"
+      }
+    },
+    {
+      "name": "G04 空调条件必填、图片上传与预览",
+      "status": "PASS",
+      "detail": "S02-ORDER-000129"
+    },
+    {
+      "name": "G06 拒单独立原因与唯一退款",
+      "status": "PASS",
+      "detail": "S02-ORDER-000140"
+    },
+    {
+      "name": "G07 派工后取消核实及拒绝恢复",
+      "status": "PASS",
+      "detail": "S02-ORDER-000148"
+    },
+    {
+      "name": "G08 完成后退款售后，方案不提供补充履约",
+      "status": "PASS",
+      "detail": "S02-SALE-000161"
+    },
+    {
+      "name": "F01 状态页签、即时筛选、订单入口及公开评价",
+      "status": "PASS"
+    },
+    {
+      "name": "F02 规格独立页、方式多选与父草稿恢复",
+      "status": "PASS"
+    },
+    {
+      "name": "F03 资格类目层级多选、材料独立编辑无重复类目",
+      "status": "PASS"
+    },
+    {
+      "name": "Web 全部服务菜单、新订单页签与双分辨率",
+      "status": "PASS",
+      "detail": {
+        "H": "S02-ORDER-000101",
+        "P": "S02-ORDER-000115"
+      }
+    },
+    {
+      "name": "F04 Web居中分类、审核分组主图、售后双页签及评价订单链接",
+      "status": "PASS"
+    },
+    {
+      "name": "F05 商户资金分组及公共查询页面",
+      "status": "PASS"
+    },
+    {
+      "name": "G12 公共只读行、管理端既有入口",
+      "status": "PASS",
+      "detail": "Staff workbench visible"
+    },
+    {
+      "name": "R2 日期筛选、七状态单行、人员按钮和资金入口一致",
+      "status": "PASS"
+    },
+    {
+      "name": "R2 Web审核直接可见送审内容及材料，分类方式多选卡片",
+      "status": "PASS"
+    },
+    {
+      "name": "R2 退款申请金额默认、草稿恢复、首页责任待办与协商完成",
+      "status": "PASS",
+      "detail": {
+        "order": "S02-ORDER-000177",
+        "sale": "S02-SALE-000188",
+        "initialAmount": 20,
+        "restoredDraftAmount": 18,
+        "refund": 20
+      }
+    },
+    {
+      "name": "R2 商户文件打开、两类管理员预览材料及平台整份批准",
+      "status": "PASS",
+      "detail": {
+        "material": "整份申请证明",
+        "authorized": [
+          "property-admin",
+          "platform-admin"
+        ],
+        "approvedCategories": [
+          "CAT-CLEAN",
+          "CAT-AC",
+          "CAT-FAN",
+          "CAT-GLASS"
+        ],
+        "approvedEstates": [
+          "E-A"
+        ]
+      }
+    },
+    {
+      "name": "评价显示和隐藏同步公开页，Web 详情无监管记录页签",
+      "status": "PASS"
+    },
+    {
+      "name": "通用 Web 业务按钮、两端排序和紧凑小程序按钮",
+      "status": "PASS"
+    },
+    {
+      "name": "清单3 住户服务总入口、便民目录及返回",
+      "status": "PASS"
+    },
+    {
+      "name": "清单3 有效绑定选房、返回上门下单及本人地址隔离",
+      "status": "PASS"
+    },
+    {
+      "name": "清单3 商户类目标签、全部可申请小区和早期阶段移动页面",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "blocked": []
+}

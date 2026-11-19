@@ -1,5 +1,5 @@
 import { loadScenario } from "./scenarios.js";
-import { addressQuery, addressCommand, addressRegions } from "./addresses.js";
+import { addressQuery, addressCommand, addressRegions, boundHomes } from "./addresses.js";
 import { fieldTables } from "./fields.js";
 import { prepare as seed, SCENARIOS } from "./seed.js";
 import { supplyCommand, saleability, methodFor, comboValid } from "./supply.js";
@@ -52,6 +52,13 @@ import {
   qualified,
   pointFor,
   qualificationFor,
+  catEnabled,
+  serviceEstates,
+  applicationEstates,
+  comboInEstates,
+  staffEligible,
+  supplyUnderReview,
+  evaluationVisibility,
   simplified,
 } from "./common.js";
 export { prepare } from "./seed.js";
@@ -132,21 +139,20 @@ function actions(s, a, t, r) {
         add("service.save", "编辑服务", ["27-C", "27-D", "27-E"]);
       if (["草稿", "退回"].includes(r["审核状态"]))
         add("service.submit", "提交审核");
-      if (r.approved && r["当前发布版本"] !== r["当前编辑版本"])
+      if (r["审核状态"] === "通过" && r.approved && r["当前发布版本"] !== r["当前编辑版本"])
         add("service.publish", "发布已审核版本");
-      if (r.published || r.approved)
+      if (r["审核状态"] === "通过" && (r.published || r.approved))
         add(
           "service.status",
           r["上架状态"] === "已上架" ? "下架服务" : "上架服务",
           ["27-F"],
           { 状态: r["上架状态"] === "已上架" ? "已下架" : "已上架" },
         );
-      add(
-        "service.status",
-        r["接收新预约状态"] === "暂停" ? "恢复接单" : "暂停接单",
-        ["28-A"],
-        { 状态: r["接收新预约状态"] === "暂停" ? "恢复接单" : "暂停接单" },
-      );
+      if (!supplyUnderReview(r) && (r["上架状态"] === "已上架" || r._merchantPaused)) {
+        const paused = r._merchantPaused ?? (r["接收新预约状态"] === "暂停");
+        add("service.status", paused ? "恢复接单" : "暂停接单", ["28-A"],
+          { 状态: paused ? "恢复接单" : "暂停接单" });
+      }
     }
     if (a.grant.review && r["审核状态"] === "待审核")
       add("service.review", "审核供给", ["27-F"]);
@@ -250,12 +256,7 @@ function actions(s, a, t, r) {
     )
       add("aftersale.plan", "提出处理方案", ["31-B"]);
     if (a.role === "resident" && r["售后状态"] === "待居民确认方案")
-      add("aftersale.respond", "答复处理方案", ["31-B"]);
-    if (
-      ["merchant", "resident"].includes(a.role) &&
-      !["已解决", "已撤回"].includes(r["售后状态"])
-    )
-      add("aftersale.evidence", "追加证据", ["31-C"]);
+      add("aftersale.respond", "确认方案", [], { 居民方案答复: "同意" });
     if (
       a.role === "resident" &&
       ["待处理", "协商中", "待居民确认方案"].includes(r["售后状态"])
@@ -283,7 +284,7 @@ function actions(s, a, t, r) {
       "evaluation.status",
       r["评价展示状态"] === "显示" ? "限制展示" : "恢复展示",
       ["31-F"],
-      { 状态: r["评价展示状态"] === "显示" ? "受限" : "显示" },
+      { 状态: r["评价展示状态"] === "显示" ? "隐藏" : "显示" },
     );
   if (t === "funds") {
     const allowed =
@@ -475,11 +476,13 @@ function productAliases(s, a, t, r) {
 }
 function project(s, a, t, row) {
   const r = clone(row);
+  if (t === "evaluations") r["评价展示状态"] = evaluationVisibility(r["评价展示状态"]);
   if (t === "services" && a.role === "resident") {
     Object.assign(r, clone(row.published));
+    const estates = serviceEstates(s,a).map(e=>e._id);
     for (const spec of list(r["服务规格集合"])) {
       spec["组合集合"] = list(spec["组合集合"])
-        .filter((c) => comboValid(s, c, r["所属服务类目"], row._shop))
+        .filter((c) => comboValid(s, c, r["所属服务类目"], row._shop) && comboInEstates(s,c,row._shop,estates))
         .map((c) => {
           const method = methodFor(s, c),
             current = {
@@ -489,16 +492,15 @@ function project(s, a, t, row) {
               方式版本: method["方式版本"],
               方式说明: method["履约方式说明"],
             };
+          if (current["组合流程模板"] === "上门") current["上门覆盖小区"] = list(c["上门覆盖小区"]).filter(id=>estates.includes(id));
           if (current["组合流程模板"] === "预约到点")
             current["可服务门店或服务点"] = list(
               c["可服务门店或服务点"],
             ).flatMap((p) => {
               const point = pointFor(s, row._shop, p);
-              return point
+              return point && estates.includes(point._estate)
                 ? [
-                    Object.fromEntries(
-                      Object.entries(point).filter(([k]) => !k.startsWith("_")),
-                    ),
+                    { ...Object.fromEntries(Object.entries(point).filter(([k]) => !k.startsWith("_"))), 所属社区名称: s.spaceRootName || "大光路社区", 所属小区: point._estate },
                   ]
                 : [];
             });
@@ -548,6 +550,7 @@ function project(s, a, t, row) {
   }
   if (t === "orders") {
     refreshOrder(s, r);
+    if (a.role === "merchant" && r["接单状态"] === "待接单") r.dispatchPersonnel = domain(s).personnel.filter(p => staffEligible(p, r._shop, r._category || r["所属服务类目"])).map(p => ({ value: p._id, label: p["姓名"] }));
     r.currentArrangement = clone(currentArrangement(r));
     r.proposal = clone(proposal(r));
     r.result = clone(r.results?.[r.results.length - 1] || null);
@@ -575,7 +578,16 @@ function project(s, a, t, row) {
     r["当前确认日期"] = r.currentArrangement?.["安排服务日期"] || "";
     r["当前确认开始时间"] = r.currentArrangement?.["安排开始时间"] || "";
     r["当前确认结束时间"] = r.currentArrangement?.["安排结束时间"] || "";
-    if (r.credential) Object.assign(r, r.credential);
+    if (r.credential) {
+      if (simplified(r) && r.credential.凭证状态 === "有效" && r.结案结果 !== "进行中") r.credential.凭证状态 = "失效";
+      if (a.role !== "resident" && simplified(r)) {
+        delete r.credential.服务码;
+        delete r.credential.到点凭证码;
+        delete r.credential.到点凭证二维码;
+      }
+      Object.assign(r, r.credential);
+      r.服务码状态 = r.credential.凭证状态;
+    }
   }
   if (t === "personnel") {
     r["资质有效性"] = personnelValidity(s, r);
@@ -590,7 +602,7 @@ function project(s, a, t, row) {
   }
   if (t === "aftersales") {
     const o = find(s, "orders", r._order);
-    if (o) r._flowVersion = o._flowVersion;
+    if (o) { r._flowVersion = o._flowVersion; r["服务项目名称"] = o["服务项目名称"] || o["服务名称"]; }
     if (o)
       r.handlingOptions = {
         plan: Object.fromEntries(
@@ -779,29 +791,14 @@ function inPeriod(v, start, end) {
   return (!start || d >= start) && (!end || d <= end);
 }
 function personnelValidity(s, r) {
-  const cats = list(r["可执行服务类目"]).filter(
-    (id) => find(s, "categories", id)?.["人员证明是否必需"],
-  );
-  if (!cats.length) return "无专项要求";
-  const states = cats.map((cat) => {
-    const proofs = list(r["人员资质材料"]).filter((m) =>
-      list(m["对应服务类目"]).includes(cat),
-    );
-    return proofs.some((m) => materialValid(s, m))
-      ? "有效"
-      : !proofs.length || proofs.some((m) => m["核验结论"] !== "认可")
-        ? "待核实"
-        : "已失效";
-  });
-  return states.every((v) => v === "有效")
-    ? "有效"
-    : states.includes("待核实")
-      ? "待核实"
-      : "已失效";
+  const proofs = list(r["人员资质材料"]);
+  if (!proofs.length) return "无专项要求";
+  if (proofs.some((m) => materialValid(s, m))) return "有效";
+  return proofs.some((m) => m["核验结论"] !== "认可") ? "待核实" : "已失效";
 }
 function filterRows(s, a, t, filters = {}) {
   let rows = domain(s)[t] || [];
-  rows = rows.filter((r) => !(t === "categories" && r._deleted) && visible(s, a, t, r));
+  rows = rows.filter((r) => !(t === "categories" && (r._deleted || r._retiredGroup)) && visible(s, a, t, r));
   if (a.role === "resident" && t === "services")
     rows = rows.filter((r) => saleability(s, r).length === 0);
   const shop = value(
@@ -1111,8 +1108,30 @@ export function query(s, ctx, table, filters = {}) {
   const a = actor(s, ctx);
   if (table === "addresses") return addressQuery(s, a);
   need(TABLES.includes(table), "未知服务业务表");
-  const rows = filterRows(s, a, table, filters);
+  if (table === "orders" && filters.serviceCode !== undefined) {
+    need(a.role === "merchant", "仅商户可核对本店服务码");
+    const code = String(filters.serviceCode).trim();
+    if (!/^\d{6}$/.test(code)) return [];
+    return filterRows(s, a, "orders", {}).filter(o => o.结案结果 === "进行中" &&
+      o.credential?.凭证状态 === "有效" && o.credential.服务码 === code).map(o => project(s, a, "orders", o));
+  }
+  if (table === "funds" && filters.groupBy === "order") {
+    const funds = filterRows(s, a, "funds", {});
+    const period = filters.start || filters.end ? filters : {start: day(s).slice(0,7)+"-01", end: day(s)};
+    const orderIds = new Set(funds.filter(f => inPeriod(f["成功时间"] || f["发生时间"], period.start, period.end)).map(f => f._order));
+    return filterRows(s, a, "orders", {}).filter(o => orderIds.has(o._id)).map(o => {
+      const record = project(s, a, "orders", o);
+      const all = funds.filter(f => f._order === o._id);
+      const amount = kind => all.filter(f => f["资金类型"] === kind && f["资金状态"] === "成功").reduce((sum,f) => sum + f._amount, 0);
+      const splits = all.filter(f => f["资金类型"] === "分账");
+      record._fundSummary = {paid:amount("支付"), split:amount("分账"), refund:amount("退款"), reversal:amount("回退"), splitStatus:splits.length ? splits[splits.length-1]["资金状态"] : "未分账", period, lastEvent:all.map(f=>f["成功时间"]||f["发生时间"]||"").sort().pop()};
+      return record;
+    }).sort((x,y) => String(y._fundSummary.lastEvent).localeCompare(String(x._fundSummary.lastEvent)));
+  }
+  let rows = filterRows(s, a, table, filters);
+  if (table === "aftersales" && filters.pendingForMerchant) rows = rows.filter(r => a.role === "merchant" && ["待处理","协商中","待执行"].includes(r["售后状态"]) && actions(s,a,table,r).some(action => ["aftersale.plan","aftersale.execute","aftersale.cancelDecision"].includes(action.name)));
   if (table === "orders") rows.sort((x, y) => String(y["创建时间"]).localeCompare(String(x["创建时间"])) || String(y._id).localeCompare(String(x._id), undefined, { numeric: true }));
+  if (table === "aftersales") rows.sort((x,y) => String(y["申请时间"]).localeCompare(String(x["申请时间"])) || y._id.localeCompare(x._id));
   return rows.map((r) => project(s, a, table, r));
 }
 export function preflight(s, ctx, data = {}) {
@@ -1134,8 +1153,12 @@ export function options(s, ctx) {
   return {
     actor: a,
     clock: clock(s),
-    today: day(s),
+    spaceRootName: s.spaceRootName || "大光路社区",
     addressRegions: clone(addressRegions),
+    boundHomes: a.role === "resident" ? boundHomes(s, a) : [],
+    applicationEstates: a.role === "merchant" ? applicationEstates(s, a).map(e => ({
+      value: e._id, label: e.小区名称, community: e.所属社区,
+    })) : [],
     today: day(s),
     scenario: domain(s).scenario,
     ruleVersion: domain(s).ruleVersion || "DEMO-ALLOC-V1",
@@ -1150,7 +1173,7 @@ export function options(s, ctx) {
       })),
     categories: domain(s)
       .categories.filter(
-        (x) => !x._deleted && (a.role !== "resident" || x["类目状态"] === "启用"),
+        (x) => !x._deleted && !x._retiredGroup && (a.role !== "resident" || catEnabled(s, x._id)),
       )
       .map((x) =>
         a.role === "resident"
@@ -1189,16 +1212,18 @@ export function options(s, ctx) {
             )
             .map((p) => ({
               ...clone(p),
+              所属社区名称: s.spaceRootName || "大光路社区",
               value: p["地点业务编号"],
               label: p["地点名称"],
             })),
+    approvedCategories: a.role === "merchant" ? domain(s).categories.filter(c => qualified(s, a.shop, c._id)).map(c=>c._id) : [],
     approvedCommunities:
       a.role === "merchant"
         ? s.communities
             .filter((c) =>
               list(qualificationFor(s, a.shop)?.["获准社区"]).includes(c._id),
             )
-            .map((c) => ({ value: c._id, label: c["社区名称"] }))
+            .map((c) => ({ value: c._id, label: s.spaceRootName || "大光路社区" }))
         : [],
     approvedEstates:
       a.role === "merchant"
@@ -1224,11 +1249,11 @@ export function options(s, ctx) {
       value: x._id,
       label: x["服务名称"],
     })),
-    communities: s.communities.map((x) => ({
+    communities: s.communities.filter(c => serviceEstates(s,a).some(e => e["所属社区"] === c._id)).map((x) => ({
       value: x._id,
-      label: x["社区名称"],
+      label: s.spaceRootName || "大光路社区",
     })),
-    estates: s.estates.map((x) => ({
+    estates: serviceEstates(s,a).map((x) => ({
       value: x._id,
       label: x["小区名称"],
       community: x["所属社区"],

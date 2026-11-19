@@ -1,0 +1,34 @@
+{
+  "stage03": [
+    {
+      "file": "docs/stages/stage-03/ACCEPTANCE.md",
+      "prior": "b3b4703fbf568d763c7e34b09497a40238eb61afd72f900e271aa5ff17e03481",
+      "current": "b3b4703fbf568d763c7e34b09497a40238eb61afd72f900e271aa5ff17e03481"
+    },
+    {
+      "file": "docs/stages/stage-03/PLAN.md",
+      "prior": "73b4ca526d9f70d6a76c60be5d31b22f73dee809142f4f007cf20d97b510cbef",
+      "current": "73b4ca526d9f70d6a76c60be5d31b22f73dee809142f4f007cf20d97b510cbef"
+    },
+    {
+      "file": "docs/stages/stage-03/REQUIREMENTS.md",
+      "prior": "8cabcf21702faf552a9ad19b96e056e32fd3d5746710709aacb1644010fbfdc7",
+      "current": "8cabcf21702faf552a9ad19b96e056e32fd3d5746710709aacb1644010fbfdc7"
+    },
+    {
+      "file": "docs/stages/stage-03/RESULT.md",
+      "prior": "0558e134d94bb752e78cab5669c62cdb7360e8cf55e8f22146d5103539043e5d",
+      "current": "0558e134d94bb752e78cab5669c62cdb7360e8cf55e8f22146d5103539043e5d"
+    }
+  ],
+  "input": {
+    "name": "stage02人工验收清单.md",
+    "sha256": "a93b9bc78fe32401f807e33722b9e72ea2655de7a9ed7dbca35d862701a72762"
+  },
+  "checkedAt": "2026-11-18T06:18:22.805Z",
+  "git": {
+    "head": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+    "branch": "main",
+    "staged": []
+  }
+}

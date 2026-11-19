@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-const props=defineProps<{ label: string; required?: boolean; hint?: string; error?: string; readonly?: boolean; multiline?: boolean }>()
-const stacked=computed(()=>props.multiline || /说明|原因|内容|描述|详细地址|须知|图片|附件|材料|证明|备注|集合/.test(props.label));
+const props=defineProps<{ label: string; required?: boolean; hint?: string; error?: string; readonly?: boolean; multiline?: boolean; labelAbove?: boolean }>()
+const stacked=computed(()=>(props.multiline || /说明|原因|内容|描述|详细地址|须知|图片|附件|材料|证明|备注|集合/.test(props.label)) && !/图片|附件|照片|证明文件/.test(props.label));
 </script>
 
 <template>
-  <view class="form-field" :class="{ 'form-field--error': error, 'form-field--readonly': readonly, 'form-field--inline':!readonly&&!stacked, 'form-field--stacked':!readonly&&stacked }">
+  <view class="form-field" :class="{ 'form-field--error': error, 'form-field--readonly': readonly, 'form-field--readonly-stacked': readonly && labelAbove, 'form-field--inline':!readonly&&!stacked, 'form-field--stacked':!readonly&&stacked }">
     <view class="form-field__label-row"><text class="form-field__label">{{ label }}<text v-if="required" class="form-field__required"> *</text></text><text v-if="hint" class="form-field__hint">{{ hint }}</text></view>
     <view class="form-field__control"><slot /></view>
     <text v-if="error" class="form-field__error">{{ error }}</text>
@@ -34,4 +34,7 @@ const stacked=computed(()=>props.multiline || /说明|原因|内容|描述|详�
 .form-field--inline .form-field__control :deep(input),.form-field--inline .form-field__control :deep(picker) {min-height:44px; font-size:14px;}
 .form-field--inline .form-field__error {flex:0 0 100%;}
 .form-field--stacked .form-field__control {margin-top:8px;}
+.form-field{padding:6px 0}.form-field--inline{gap:4px 10px}.form-field--readonly{padding:8px 0;gap:10px}.form-field--readonly .form-field__label-row{flex-basis:96px}.form-field--inline .form-field__label-row{flex-basis:96px}.form-field--stacked .form-field__control{margin-top:6px}
+.form-field--readonly-stacked { display: block; }
+.form-field--readonly-stacked .form-field__control { margin-top: 6px; }
 </style>

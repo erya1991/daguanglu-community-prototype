@@ -1,3 +1,13 @@
+export const serviceContentFields = [
+  "服务名称", "所属服务类目", "服务主图", "介绍图片", "服务简介", "预约须知", "公开服务电话",
+];
+export const serviceSpecFields = ["规格名称", "规格说明", "预计服务时长", "服务对象填写要求"];
+export const serviceWayFields = [
+  "组合固定价格", "完成证据要求", "上门覆盖小区", "可服务门店或服务点", "方式说明", "服务约定说明",
+];
+export const retiredCategoryFields = [
+  "类目说明", "商户证明是否必需", "人员证明是否必需", "商户资质要求说明", "人员资质要求说明",
+];
 // Presentation only: do not infer successful funds from an order status.
 const list = value => Array.isArray(value) ? value : [];
 const amount = value => (Number(value || 0) / 100).toFixed(2);

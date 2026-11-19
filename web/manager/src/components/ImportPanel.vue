@@ -11,12 +11,6 @@
       ><FormItem label="来源说明" required
         ><Input v-model="source" type="textarea" :disabled="busy" placeholder="填写台账提供方及依据" @input="result = null" /></FormItem
     ></Form>
-    <div class="toolbar">
-      <Button type="primary" :disabled="!text" :loading="busy" @click="preview">校验预览</Button
-      ><Button :disabled="!result || result['导入处理状态'] !== '待确认导入'" :loading="busy" @click="commit"
-        >确认整批导入</Button
-      ><Button v-if="result" @click="downloadErrors">下载错误明细</Button>
-    </div>
     <p v-if="error" class="error">{{ error }}</p>
     <template v-if="result"
       ><div class="metric-grid">
@@ -32,6 +26,11 @@
         提交人：{{ result['提交人'] || '待确认' }} · 提交时间：{{ result['提交时间'] || '未提交' }}
       </p></template
     >
+    <div class="business-form-footer">
+      <Button v-if="result" @click="downloadErrors">下载错误明细</Button>
+      <Button :type="readyToImport ? 'default' : 'primary'" :disabled="!text" :loading="busy" @click="preview">校验预览</Button>
+      <Button :type="readyToImport ? 'primary' : 'default'" :disabled="!readyToImport" :loading="busy" @click="commit">确认整批导入</Button>
+    </div>
   </div>
 </template>
 <script>
@@ -49,6 +48,9 @@ export default {
   props: { scope: Object, scopeLabel: String },
   data: () => ({ name: '', text: '', source: '', result: null, error: '', busy: false }),
   computed: {
+    readyToImport() {
+      return this.result && this.result['导入处理状态'] === '待确认导入'
+    },
     columns() {
       return [
         { title: '数据行号', key: '数据行号', width: 90 },

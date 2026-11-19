@@ -150,14 +150,14 @@
                         size="small"
                         @click="start(a, r)"
                         >{{ actionNames[a] }}</Button
-                      ><a
+                      ><Button
                         v-if="r._workorder && r._table !== 'workorders'"
-                        @click="
-                          open({ _table: 'workorders', _id: r._workorder })
-                        "
-                        >查看工单</a
-                      ><a v-if="!actionsFor(r).length" @click="open(r)"
-                        >查看详情</a
+                        type="text"
+                        size="small"
+                        @click="open({ _table: 'workorders', _id: r._workorder })"
+                        >查看工单</Button
+                      ><Button v-if="!actionsFor(r).length" type="text" size="small" @click="open(r)"
+                        >查看详情</Button
                       >
                     </div>
                   </td>
@@ -245,10 +245,9 @@
         :record="actionTarget || {}"
         :public-candidates="publicCandidates"
       />
-      <div class="s1-actions">
-        <Button type="primary" :loading="saving" @click="save"
-          >确认{{ actionNames[action] }}</Button
-        ><Button :disabled="saving" @click="cancel">取消</Button>
+      <div class="business-form-footer">
+        <Button :disabled="saving" @click="cancel">取消</Button>
+        <Button type="primary" :loading="saving" @click="save">确认{{ actionNames[action] }}</Button>
       </div>
     </Modal>
   </section>
@@ -709,8 +708,8 @@ export default {
           ...(r?.draft || {}),
           RP07: "报修",
           RP08: "设施维修",
-          RP09: this.options.communities?.[0]?.value || "",
-          RP10: this.options.estates?.[0]?.value || "",
+          RP09: this.options.estates?.length===1 ? this.options.estates[0].community : "",
+          RP10: this.options.estates?.length===1 ? this.options.estates[0].value : "",
           RP11: "公共位置",
           RV02: r?.WO12,
           RV03: "通过",

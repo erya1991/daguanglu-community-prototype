@@ -135,7 +135,6 @@ export const views = {
     ],
     groups: [
       ["评价内容", ["31-E"]],
-      ["监管记录", ["31-F"]],
     ],
   },
   overview: {

@@ -1,0 +1,134 @@
+{
+  "base": "http://127.0.0.1:19221",
+  "sourceSession": "stage02-feedback-1794903688405",
+  "H": "S02-ORDER-000101",
+  "P": "S02-ORDER-000115",
+  "checks": [
+    {
+      "name": "原会话升级保持末级、已有订单、授权、供给和资金事实",
+      "pass": true,
+      "detail": {
+        "before": {
+          "leaf": "S02-SAMPLE-APPLIANCE-AC-1",
+          "names": [
+            "家电清洗",
+            "空调清洗",
+            "挂机空调清洗"
+          ],
+          "version": 1,
+          "facts": {
+            "orders": {
+              "count": 9,
+              "sha256": "1fcfb7e4eea1beeec4e107e1b6ab636589c39298a983e106036d695aa15437ce"
+            },
+            "funds": {
+              "count": 23,
+              "sha256": "e240dcca244f4ab62555684fc8c3296e42fef234393af92b1074c196619248fa"
+            },
+            "services": {
+              "count": 8,
+              "sha256": "776f1aff8e2a4378f7cd9be36c974073e0c016182b77f4f56315c3b08d872a19"
+            },
+            "qualifications": {
+              "count": 2,
+              "sha256": "849b6f8afa8145ee7f659694ccc142328d3a75ec9133cd5f600892752766c168"
+            },
+            "aftersales": {
+              "count": 6,
+              "sha256": "2062691bc9bf44daba88ea8e31dea3a7913fb06a8d4e502649bf7a0d6ad23b62"
+            },
+            "evaluations": {
+              "count": 2,
+              "sha256": "2d7c62611557482aa0538583078da3efea64dd782b14a5df9f4c4f478fda5e66"
+            }
+          }
+        },
+        "after": {
+          "leaf": "S02-SAMPLE-APPLIANCE-AC-1",
+          "names": [
+            "家电清洗",
+            "挂机空调清洗"
+          ],
+          "version": 2,
+          "facts": {
+            "orders": {
+              "count": 9,
+              "sha256": "1fcfb7e4eea1beeec4e107e1b6ab636589c39298a983e106036d695aa15437ce"
+            },
+            "funds": {
+              "count": 23,
+              "sha256": "e240dcca244f4ab62555684fc8c3296e42fef234393af92b1074c196619248fa"
+            },
+            "services": {
+              "count": 8,
+              "sha256": "776f1aff8e2a4378f7cd9be36c974073e0c016182b77f4f56315c3b08d872a19"
+            },
+            "qualifications": {
+              "count": 2,
+              "sha256": "849b6f8afa8145ee7f659694ccc142328d3a75ec9133cd5f600892752766c168"
+            },
+            "aftersales": {
+              "count": 6,
+              "sha256": "2062691bc9bf44daba88ea8e31dea3a7913fb06a8d4e502649bf7a0d6ad23b62"
+            },
+            "evaluations": {
+              "count": 2,
+              "sha256": "2d7c62611557482aa0538583078da3efea64dd782b14a5df9f4c4f478fda5e66"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "双列服务卡片与图片点击、两级分类和可见范围",
+      "pass": true
+    },
+    {
+      "name": "日期预设与自定义首尾、住户售后两个入口",
+      "pass": true
+    },
+    {
+      "name": "物业档案空间根与下钻",
+      "pass": true
+    },
+    {
+      "name": "Web限评恢复二次确认，关闭弹窗保留公开评价",
+      "pass": true,
+      "detail": {
+        "evaluation": "S02-EVAL-000112"
+      }
+    },
+    {
+      "name": "供给编辑一次提交、当前发布版与原单价格保留",
+      "pass": true,
+      "detail": {
+        "before": {
+          "state": "通过",
+          "version": 1,
+          "live": 1
+        },
+        "after": {
+          "state": "待审核",
+          "version": 2,
+          "live": 1
+        }
+      }
+    },
+    {
+      "name": "陈师傅停用与恢复、派工须主动选择",
+      "pass": true,
+      "detail": {
+        "order": "S02-ORDER-000255"
+      }
+    },
+    {
+      "name": "住户撤回待答复申请，取消弹窗和重复进入均不退款",
+      "pass": true,
+      "detail": {
+        "id": "S02-SALE-000273",
+        "order": "S02-ORDER-000262"
+      }
+    }
+  ],
+  "errors": []
+}

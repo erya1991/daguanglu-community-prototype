@@ -11,84 +11,11 @@
         "
         :aria-label="label + '选择文件'"
         @change="choose"
-      /><span class="quiet">支持查看已提交附件；上传失败可重试。</span>
+      />
     </div>
     <p v-if="uploading" role="status">正在保存文件，请稍候…</p>
     <p v-if="!items.length && !failed.length" class="quiet">暂无文件</p>
-    <div v-if="compact" class="thumbnail-list"><button v-for="item in items" :key="item.id" class="thumbnail-button" @click="open(item)"><img v-if="thumbnails[item.id]" :src="thumbnails[item.id]" :alt="name(item)"/><span v-else>查看图片</span></button></div>
-    <article v-if="!compact"
-      v-for="(item, index) in items"
-      :key="item.id || index"
-      class="evidence-item"
-    >
-      <div class="evidence-heading">
-        <strong data-field="C1.01">{{ name(item) }}</strong
-        ><span class="evidence-success" data-field="C1.07">{{
-          item["上传状态"] || item.status || "成功"
-        }}</span>
-      </div>
-      <div class="evidence-meta">
-        <span data-field="C1.02"
-          >类型：{{ item["文件类型"] || item.type || extension(item) }}</span
-        ><span data-field="C1.03">大小：{{ size(item) }}</span>
-      </div>
-      <div
-        v-if="editable && isImage(item)"
-        class="image-caption"
-        data-field="C1.05"
-      >
-        <label
-          >图片说明<Input
-            :value="item['图片说明'] || item.description || ''"
-            @input="update(index, '图片说明', $event)"
-        /></label>
-      </div>
-      <p v-else-if="item['图片说明'] || item.description" data-field="C1.05">
-        {{ item["图片说明"] || item.description }}
-      </p>
-      <details>
-        <summary>文件记录</summary>
-        <dl class="file-record">
-          <div>
-            <dt>显示顺序</dt>
-            <dd data-field="C1.06">{{ index + 1 }}</dd>
-          </div>
-          <div>
-            <dt>上传人</dt>
-            <dd data-field="C1.09">
-              {{ item["上传人"] || item.uploader || "当前上传账号" }}
-            </dd>
-          </div>
-          <div>
-            <dt>上传时间</dt>
-            <dd data-field="C1.10">
-              {{ item["上传时间"] || item.uploadedAt || "随文件记录保存" }}
-            </dd>
-          </div>
-          <div>
-            <dt>上传失败原因</dt>
-            <dd data-field="C1.08">{{ item["上传失败原因"] || "无" }}</dd>
-          </div>
-        </dl>
-      </details>
-      <div class="file-actions">
-        <Button size="small" @click="open(item)" data-field="C1.04">{{
-          isImage(item) ? "查看图片" : "打开文件"
-        }}</Button
-        ><template v-if="editable"
-          ><Button size="small" :disabled="index === 0" @click="move(index, -1)"
-            >上移</Button
-          ><Button
-            size="small"
-            :disabled="index === items.length - 1"
-            @click="move(index, 1)"
-            >下移</Button
-          ><Button size="small" type="text" @click="remove(index)"
-            >移除</Button
-          ></template
-        >
-      </div>
-    </article>
+    <div class="compact-files"><article v-for="(item,index) in items" :key="item.id||index" class="compact-file"><button class="file-open" @click="open(item)"><img v-if="thumbnails[item.id] && isImage(item)" :src="thumbnails[item.id]" :alt="name(item)"/><span>{{name(item)}}</span><small v-if="!isImage(item)">{{size(item)}}</small></button><Button v-if="editable" size="small" @click="remove(index)" aria-label="删除附件">删除</Button></article></div>
     <article
       v-for="(f, index) in failed"
       :key="'failed-' + index"
@@ -98,7 +25,7 @@
       <p data-field="C1.07">上传失败</p>
       <p data-field="C1.08" role="alert">{{ f.message }}</p>
       <Button size="small" @click="retry(index)">重试此文件</Button
-      ><Button size="small" type="text" @click="failed.splice(index, 1)"
+      ><Button size="small" type="default" @click="failed.splice(index, 1)"
         >移除此项</Button
       >
     </article>
@@ -179,11 +106,11 @@ export default {
   },
   methods: {
     async loadThumbnails() {
-      if(!this.compact)return;
+
       const recordId=this.record?._id;
       Object.values(this.thumbnails).forEach(url=>URL.revokeObjectURL(url));
       this.thumbnails={};
-      for(const item of this.items){try{const file=await service.service.attachment({table:this.table,id:recordId,attachmentId:item.id});if(recordId!==this.record?._id)return;if(file.blob)this.$set(this.thumbnails,item.id,URL.createObjectURL(file.blob));}catch(e){this.error=e.message;}}
+      for(const item of this.items.filter(this.isImage)){try{const file=await service.service.attachment(this.editable ? {attachmentId:item.id} : {table:this.table,id:recordId,attachmentId:item.id});if(recordId!==this.record?._id)return;if(file.blob)this.$set(this.thumbnails,item.id,URL.createObjectURL(file.blob));}catch(e){this.error=e.message;}}
     },
     name(f) {
       return f["文件名称"] || f.name || f.id || "文件";
@@ -239,20 +166,6 @@ export default {
     async retry(i) {
       const entry = this.failed.splice(i, 1)[0];
       if (entry) await this.save(entry.file);
-    },
-    update(i, key, value) {
-      const arr = this.items.map((x, n) =>
-        n === i ? { ...x, [key]: value } : x,
-      );
-      this.$emit("input", arr);
-    },
-    move(i, delta) {
-      const arr = [...this.items];
-      [arr[i], arr[i + delta]] = [arr[i + delta], arr[i]];
-      this.$emit(
-        "input",
-        arr.map((x, n) => ({ ...x, 显示顺序: n + 1 })),
-      );
     },
     remove(i) {
       this.$emit(
@@ -379,4 +292,5 @@ summary {
   color: #315f93;
 }
 .thumbnail-list{display:flex;gap:8px}.thumbnail-button{border:1px solid #edf0f2;border-radius:8px;background:#f7f9fa;padding:0;cursor:pointer;width:96px;height:76px;overflow:hidden}.thumbnail-button img{width:100%;height:100%;object-fit:cover}
+.compact-files{display:flex;gap:8px;flex-wrap:wrap}.compact-file{display:flex;align-items:center;gap:8px;max-width:100%;padding:6px 0}.file-open{border:0;background:none;display:flex;align-items:center;gap:8px;text-align:left;color:#315a63;cursor:pointer;min-width:0}.file-open img{width:64px;height:64px;object-fit:cover;border-radius:6px}.file-open span{overflow-wrap:anywhere;font-size:13px}.file-open small{white-space:nowrap;color:#899399}
 </style>

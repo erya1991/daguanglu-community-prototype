@@ -70,9 +70,7 @@ function ready(s, point = false, sv) {
 function complete(s, o, extra = {}) {
   return run(s, M, "order.result", o, {
     实际完成内容: "已完成约定内容",
-    ...(o._mode === "预约到点"
-      ? { 到点凭证码: o.credential["到点凭证码"] }
-      : {}),
+    服务码: get(s, o, R).credential?.服务码,
     ...extra,
   });
 }
@@ -117,7 +115,7 @@ for (const point of [false, true])
         o.fundRecords.find((f) => f["资金类型"] === "分账")["本次成功分账金额"],
         point ? "53.04" : "89.00",
       );
-      if (point) assert.equal(o.credential["凭证状态"], "已核验");
+      assert.equal(o.credential["凭证状态"], "已核验");
       const repeat = complete(s, o);
       assert.equal(repeat.results.length, 1);
       assert.equal(
@@ -161,7 +159,7 @@ test("凭证与图片校验失败保持原事实，取消申请和完成互锁",
   const s = setup();
   let o = ready(s, true);
   const before = JSON.stringify(s.service.orders);
-  assert.throws(() => complete(s, o, { 到点凭证码: "错误凭证" }), /凭证/);
+  assert.throws(() => complete(s, o, { 服务码: "WRONG" }), /服务码/);
   assert.equal(JSON.stringify(s.service.orders), before);
   const cancelled = run(s, R, "order.cancel", get(s, o, R), {
     申请原因: "临时有事",
@@ -343,7 +341,9 @@ test('V1.2复验：整份申请材料不绑定类目，提交、审批、恢复�
  let q=api.query(s,M,'qualifications')[0];const prior=[...q['获准服务类目']];
  q=run(s,M,'qualification.save',q,{申请服务类目:['CAT-CLEAN'],申请覆盖社区:['C-A'],服务资质材料:[]});
  assert.deepEqual(q['获准服务类目'],prior,'新申请不提前覆盖旧授权');
- assert.throws(()=>run(s,M,'qualification.submit',q),/证明材料/);
+ q=run(s,M,'qualification.submit',q);
+ assert.equal(q.申请状态,'待审核');
+ q=run(s,reviewer,'qualification.review',q,{审核结果:'退回修改',审核意见:'核对已提交范围'});
  s.attachments['application-proof']={id:'application-proof',stage02:true,status:'成功',owner:api.options(s,M).actor._id,name:'经营证明.png',type:'image/png',size:10};
  q=run(s,M,'qualification.save',q,{服务资质材料:[{材料名称:'整份申请经营证明',长期有效:true,证明文件:['application-proof']}]});
  assert.deepEqual(q['服务资质材料'][0]['对应服务类目'],[]);
@@ -385,4 +385,81 @@ test('V1.2复验：资金简表使用真实记录快照，公开评价保留全�
  const service=api.record(s,R,'services','SV-HOME');
  assert.equal(service.evaluations.length,4);
  assert.ok(service.evaluations.every(r=>!r['联系电话']&&!r['联系人电话']));
+});
+
+test("评价旧值按隐藏读取，新操作同时控制居民公开内容与附件", () => {
+  const s = setup();
+  const order = complete(s, ready(s));
+  const image = { id:"review-photo", owner:R.account, stage02:true, status:"成功",
+    type:"image/png", name:"评价图.png", size:14 };
+  s.attachments[image.id] = image;
+  const review = run(s,R,"evaluation.save",get(s,order,R),{
+    总体评分:5, 评价内容:"上门服务已结束", 评价图片:[image.id],
+  });
+  const publicPhoto = { table:"services", id:"SV-HOME", attachmentId:image.id };
+  assert.equal(api.attachmentId(s,B,publicPhoto),image.id);
+  const raw = s.service.evaluations.find(r=>r._id===review._id);
+  raw.评价展示状态 = "受限";
+  assert.equal(api.record(s,W,"evaluations",review._id).评价展示状态,"隐藏");
+  assert.equal(api.record(s,B,"services","SV-HOME").evaluations.length,0);
+  assert.throws(()=>api.attachmentId(s,B,publicPhoto),/附件|业务对象/);
+  let current = run(s,W,"evaluation.status",review,{状态:"显示"});
+  assert.equal(api.attachmentId(s,B,publicPhoto),image.id);
+  current = run(s,W,"evaluation.status",current,{状态:"隐藏"});
+  assert.equal(current.评价展示状态,"隐藏");
+  assert.throws(()=>api.attachmentId(s,B,publicPhoto),/附件|业务对象/);
+  assert.equal(api.record(s,R,"evaluations",review._id).评价内容,"上门服务已结束");
+});
+
+test("双方式服务码按订单发放，仅本人可看，待服务旧单稳定升级", () => {
+  const s = setup(), h = ready(s), p = ready(s, true);
+  const code = o => get(s, o, R).credential.服务码;
+  assert.match(code(h), /^\d{6}$/);
+  assert.match(code(p), /^\d{6}$/);
+  assert.notEqual(code(h), code(p));
+  assert.equal(get(s, h, M).credential.服务码, undefined);
+  assert.equal(get(s, h, W).服务码, undefined);
+  assert.deepEqual(api.query(s, MB, "orders", {serviceCode:code(h)}), []);
+  assert.deepEqual(api.query(s, M, "orders", {serviceCode:code(h)}).map(r=>r._id), [h._id]);
+  assert.throws(() => complete(s, h, {服务码:code(p)}), /服务码/);
+  assert.equal(get(s, h).credential.凭证状态, "有效");
+  assert.equal(get(s, h).fundRecords.filter(f=>f.资金类型==="分账").length, 0);
+  const raw = s.service.orders.find(o=>o._id===h._id);
+  delete raw.credential;
+  api.prepare(s);
+  const upgraded = code(h);
+  api.prepare(s);
+  assert.equal(code(h), upgraded);
+  assert.equal(complete(s,h).服务码状态,"已核验");
+  assert.deepEqual(api.query(s,M,"orders",{serviceCode:upgraded}),[]);
+});
+
+test("绑定房屋地址只取本人的有效关系、保存真实地址，解绑保留旧单快照", () => {
+  const s=setup(), home=api.options(s,B).boundHomes[0];
+  assert.ok(home?.绑定房屋);
+  const payload={...address,地址来源:"绑定房屋",绑定房屋:home.绑定房屋,详细地址:"由档案覆盖"};
+  assert.throws(()=>run(s,R,"address.save",null,payload),/绑定/);
+  const saved=run(s,B,"address.save",null,payload);
+  assert.equal(saved.详细地址,home.详细地址);
+  const booking={选定服务项目:"SV-HOME",选定服务规格:"SP-BASE",选定履约方式:"HOME",联系人姓名:"周宁",联系人电话:address.联系人电话,期望时间选择:"时间可协商",服务约定确认:true,上门服务地址:{_id:saved._id}};
+  booking.选定服务规格=api.record(s,B,"services","SV-HOME").服务规格集合[0].规格编号;
+  api.preflight(s,B,booking);
+  const order=run(s,B,"order.create",null,booking);
+  s.relations.find(r=>r._resident==="R-B"&&r._house===home.绑定房屋).关系状态="已解除";
+  assert.throws(()=>api.preflight(s,B,booking),/绑定/);
+  assert.throws(()=>run(s,B,"order.create",null,booking),/绑定/);
+  assert.equal(api.record(s,B,"orders",order._id).地点快照.详细地址,home.详细地址);
+});
+
+test("可申请小区目录覆盖全部启用小区，整份批准后才扩大经营范围", () => {
+  const s=setup(), opt=api.options(s,M);
+  assert.ok(opt.applicationEstates.some(e=>e.value==="E-B"));
+  assert.ok(!opt.estates.some(e=>e.value==="E-B"));
+  let q=api.record(s,M,"qualifications","Q-A");
+  q=run(s,M,"qualification.save",q,{申请服务类目:q.获准服务类目,申请覆盖小区:["E-A","E-B"]});
+  q=run(s,M,"qualification.submit",q);
+  assert.ok(!api.options(s,M).estates.some(e=>e.value==="E-B"));
+  q=run(s,W,"qualification.review",q,{审核结果:"通过"});
+  assert.deepEqual(q.获准小区,["E-A","E-B"]);
+  assert.ok(api.options(s,M).estates.some(e=>e.value==="E-B"));
 });

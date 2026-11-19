@@ -1,9 +1,9 @@
 <template>
   <form class="s1-form" @submit.prevent="$emit('submit')">
     <div v-for="id in active" :key="id" class="s1-form-field" :data-field="id">
-      <label :for="'s1-' + id">{{ fields[id].name }}<span v-if="required(id)" class="s1-required" aria-hidden="true"> *</span></label
-      ><Evidence
-        v-if="attachmentIds.includes(id) && id !== 'EV13'"
+      <label :for="'s1-' + id">{{ fields[id].name }}<span v-if="id!=='RP09'&&required(id)" class="s1-required" aria-hidden="true"> *</span></label
+      ><span v-if="id==='RP09'">{{options.spaceRootName}}</span><Evidence
+        v-else-if="attachmentIds.includes(id) && id !== 'EV13'"
         :value="value[id] || []"
         editable
         @input="set(id, $event)"
@@ -86,15 +86,13 @@ export default {
     required(id) { return isRequiredField(this.action, id, this.value, this.record); },
     set(id, v) {
       const n = { ...this.value, [id]: v };
-      if (id === "RP09") n.RP10 = "";
+      if (id === "RP10") n.RP09 = this.options.estates?.find(e=>e.value===v)?.community || "";
       if (id === "RP11" && v === "公共位置") n.RP12 = "";
       this.$emit("input", n);
     },
     opts(id) {
       const o = choices(id, this.options, this.records);
-      return id === "RP10"
-        ? o?.filter((e) => !this.value.RP09 || e.community === this.value.RP09)
-        : o;
+      return o;
     },
     inputType(id) {
       const t = this.fields[id].type;

@@ -496,15 +496,22 @@ export function actorFor(s, ctx) {
     resident: a._resident,
     orgName: find(s, 'orgs', a['所属组织'])?.['组织名称'] || '本人',
     roleName: role['角色名称'],
-    scopeLabel:
-      communities
-        .map((c) => find(s, 'communities', c)?.['社区名称'] || '待维护')
-        .join('、') || '本人／本主体',
+    scopeLabel: communities.length ? s.spaceRootName || DEFAULT_SPACE_ROOT_NAME : '本人／本主体',
   }
 }
 export const permitted = (a, action, table) =>
   a.permissions.includes(`${action}:${table}`) && a.menus.includes(table)
 export const sensitive = (a, kind) => a.sensitive.includes(kind)
+export function residentEstateIds(s, residentId) {
+  const relations = s.relations.filter(r => r._resident === residentId && r['关系状态'] === '有效');
+  if (relations.length) return [...new Set(relations.map(r => r._estate || find(s, 'houses', r._house)?.['所属小区']).filter(Boolean))];
+  const communities = list(find(s, 'residents', residentId)?._communities);
+  return s.estates.filter(e => communities.includes(e['所属社区'])).map(e => e._id);
+}
+function residentSpaceVisible(s, table, row, estateIds) {
+  if (table === 'communities') return s.estates.some(e => estateIds.includes(e._id) && e['所属社区'] === row._id);
+  return estateIds.includes(table === 'estates' ? row._id : row['所属小区'] || row._estate);
+}
 export function inScope(s, a, r) {
   if (a.role === 'platform' || (a.role === 'property' && a.stage00FullScope !== false)) return true
   if (a.role === 'resident') return r._resident === a.resident
@@ -616,7 +623,10 @@ export function query(s, ctx, table, filters = {}) {
   let items = table === 'personnel' ? personnelFromAccounts(s) : s[table] || []
   if (a.role === 'resident') {
     if (['houses', 'communities', 'estates', 'buildings', 'units'].includes(table))
-      items = items.filter(active)
+      {
+        const ids = residentEstateIds(s, a.resident)
+        items = items.filter(r => active(r) && residentSpaceVisible(s, table, r, ids))
+      }
     else if (table === 'residents') items = items.filter((r) => r._id === a.resident)
     else if (table === 'vehicles') items = items.filter((r) => r._resident === a.resident)
     else if (table === 'missing') items = items.filter((r) => r._resident === a.resident)
@@ -987,6 +997,13 @@ export function validateSave(s, ctx, table, input, id) {
     }
   }
   if (table === 'missing') {
+    if (a.role === 'resident') {
+      const ids = residentEstateIds(s, a.resident)
+      if (d._estate && !ids.includes(d._estate)) fail('请选择本人有权的小区', { 所属小区: '请重新选择小区' })
+      const parent = d._estate ? find(s, 'estates', d._estate)?.['所属社区'] : d['社区']
+      if (!s.estates.some(e => ids.includes(e._id) && e['所属社区'] === parent)) fail('地址不在本人可选范围', { 所属小区: '请选择所属小区' })
+      d['社区'] = parent
+    }
     d._resident = a.resident
     d._community = d['社区']
     d['提交时间'] = now()
@@ -1130,6 +1147,7 @@ export function execute(s, ctx, command, p = {}) {
     d['联系号码'] = d['联系号码'] || resident['联系电话']
     required(d, ['联系号码'])
     if (!active(house)) fail('房屋不存在或已停用')
+    if (!residentEstateIds(s, a.resident).includes(house['所属小区'])) fail('房屋不在本人可选小区范围', { 房号: '请选择本人有权的小区和房屋' })
     if (
       s.applications.some(
         (r) => r._resident === a.resident && r._house === house._id && r['申请状态'] === '待审核',
@@ -1425,6 +1443,11 @@ export function authorizeAttachment(s, ctx, p) {
     if (!list(r['证明附件']).includes(p.blob)) fail('附件不属于该申请')
     return p.blob
   }
+  if (p.table === 'facilities') {
+    const r = record(s, ctx, 'facilities', p.id)
+    if (!list(r['点位照片']).includes(p.blob)) fail('照片不属于该设施点位')
+    return p.blob
+  }
   fail('未获准的附件访问')
 }
 export function display(s, table, key, value) {
@@ -1464,6 +1487,8 @@ export function display(s, table, key, value) {
     适用小区: 'estates',
     到期提醒接收人: 'accounts',
   }
+  if (refs[key] === 'communities' && key !== '统计范围' && list(value).every(id => find(s, 'communities', id)))
+    return s.spaceRootName || DEFAULT_SPACE_ROOT_NAME
   const values = list(value).map((v) => {
     const t = refs[key]
     return t && find(s, t, v)
@@ -1552,13 +1577,15 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
   const t = refs[field]
   if (!t) return []
   const a = actorFor(s, ctx)
+  const residentEstates = a.role === 'resident' ? residentEstateIds(s, a.resident) : []
   return (s[t] || [])
     .filter(active)
     .filter((r) => {
       if (['communities', 'estates', 'buildings', 'units', 'houses'].includes(t)) {
+        if (a.role === 'resident' && !residentSpaceVisible(s, t, r, residentEstates)) return false
         if (field === '可查看社区' && ['config', 'platform'].includes(a.role)) return true
         if (field === '可查看小区' && ['config', 'platform'].includes(a.role))
-          return list(data['可查看社区']).includes(r['所属社区'])
+          return data._estateDirectory === true || list(data['可查看社区']).includes(r['所属社区'])
         if (a.role !== 'resident' && !inScope(s, a, t === 'communities' ? { _community: r._id } : r))
           return false
         if (t === 'estates' && data['所属社区'] && r['所属社区'] !== data['所属社区']) return false
@@ -1577,7 +1604,7 @@ export const optionsFor = (s, ctx, table, field, data = {}) => {
       if (t === 'accounts') return a.role === 'platform' || r['所属组织'] === a.org || r._id === a._id
       return true
     })
-    .map((r) => ({ value: r._id, label: titleOf(t, r) }))
+    .map((r) => ({ value: r._id, label: titleOf(t, r), ...(t === 'estates' ? {community:r['所属社区']} : {}) }))
 }
 export function fieldVisible(s, table, f, d) {
   if (f === '所属单元') return find(s, 'buildings', d['所属楼栋'])?.['是否设单元'] === '是'
@@ -1610,7 +1637,9 @@ export function statistics(s, ctx, filters) {
   const actor = actorFor(s, ctx)
   if (!permitted(actor, 'read', 'statistics')) fail('当前角色不能查看统计')
   for (const scope of filters.scopes || []) if (scope.table !== 'root') record(s, ctx, scope.table, scope.id)
-  return calculateStatistics(s, filters)
+  return calculateStatistics(s, filters, r => inScope(s, actor, r)
+    && (!ctx.estate || (r['所属小区'] || r._estate) === ctx.estate)
+    && (!ctx.community || (r['所属社区'] || r._community) === ctx.community))
 }
 export function exportData(s, ctx, table, filters) {
   const a = actorFor(s, ctx)
@@ -1620,6 +1649,7 @@ export function exportData(s, ctx, table, filters) {
 export function scopeOptions(s, ctx) {
   const a = actorFor(s, ctx)
   return {
+    spaceRootName: s.spaceRootName || DEFAULT_SPACE_ROOT_NAME,
     communities: s.communities
       .filter((c) => a['可查看社区'].includes(c._id))
       .map((c) => ({ value: c._id, label: c['社区名称'] })),
@@ -1630,7 +1660,7 @@ export function scopeOptions(s, ctx) {
           (!ctx.community || e['所属社区'] === ctx.community) &&
           a['可查看小区'].includes(e._id),
       )
-      .map((e) => ({ value: e._id, label: e['小区名称'] })),
+      .map((e) => ({ value: e._id, label: e['小区名称'], community:e['所属社区'] })),
   }
 }
 export function communitySummary(s, ctx, id) {

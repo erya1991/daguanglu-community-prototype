@@ -480,9 +480,9 @@ body {
 }
 .table-actions {
   align-items: center;
-  a { display: inline-block; white-space: nowrap; word-break: keep-all; line-height: 28px; }
+  .ivu-btn { white-space: nowrap; padding: 0 3px; }
   display: flex;
-  gap: 10px;
+  gap: 4px;
 }
 .empty {
   padding: 50px 20px;

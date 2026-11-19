@@ -8,27 +8,48 @@ import AppPage from '../ui/components/AppPage.vue'
 import AppNavbar from '../ui/components/AppNavbar.vue'
 import AppTabbar from '../ui/components/AppTabbar.vue'
 import AppButton from '../ui/components/AppButton.vue'
+import FileAttachmentRow from '../ui/components/FileAttachmentRow.vue'
 import AppIcon from '../ui/components/AppIcon.vue'
 import BaseCard from '../ui/components/BaseCard.vue'
 import AccountSwitch from './AccountSwitch.vue'
 import MobileFields from './MobileFields.vue'
 import { catalog } from '@core/catalog.js'
 import { detailVisible } from '@core/core.js'
+import { spatialTree } from '@core/r3-product.js'
 const props = withDefaults(
   defineProps<{ mode: string; table?: string; id?: string; kind?: string; previous?: string }>(),
   { table: '', id: '', kind: '绑定', previous: '' },
 )
-const previewUrls: string[] = []
-async function previewApplicationAttachment(id: string) {
-  try {
-    const file = await service.attachment({ table: 'applications', id: props.id, blob: id, action: 'view' })
-    let url = file.path
-    // #ifdef H5
-    url = URL.createObjectURL(file.blob)
-    previewUrls.push(url)
-    // #endif
-    uni.previewImage({ urls: [url] })
-  } catch (e: any) { error.value = e.message }
+const detailFiles = ref<Record<string, any[]>>({})
+const documentError = ref('')
+function releaseDetailFiles(rows = detailFiles.value) {
+  // #ifdef H5
+  for (const file of Object.values(rows).flat()) if (file.url) URL.revokeObjectURL(file.url)
+  // #endif
+}
+function previewDetailPhoto(url:string) { uni.previewImage({urls:[url]}) }
+async function loadDetailFiles(row:any, request:number) {
+  const result:Record<string, any[]> = {}
+  const field = props.table === 'applications' ? '证明附件' : props.table === 'facilities' ? '点位照片' : ''
+  const ids = field ? (Array.isArray(row[field]) ? row[field] : row[field] ? [row[field]] : []) : []
+  if (ids.length) result[field] = []
+  for (const id of ids) {
+    try {
+      const file = await service.attachment({ table: props.table, id: props.id, blob: id, action: 'view' })
+      let url = file.path || ''
+      // #ifdef H5
+      if (file.blob) url = URL.createObjectURL(file.blob)
+      // #endif
+      const image = /^image\//.test(file.type || '') || /\.(png|jpe?g|gif|webp)$/i.test(file.name || '')
+      result[field].push({ ...file, id, url, image, size: file.size ?? file.blob?.size })
+    } catch (e:any) {
+      result[field].push({ id, error: e.message })
+    }
+  }
+  if (request !== generation.value) return releaseDetailFiles(result)
+  releaseDetailFiles()
+  detailFiles.value = result
+  documentError.value = ''
 }
 const info = ref<any>(null),
   rows = ref<any[]>([]),
@@ -49,6 +70,38 @@ const info = ref<any>(null),
   avatarUrl = ref(''),
   profileName = ref(''),
   identityStamp = ref('')
+const directory = ref<any>(null)
+const spaceTrail = ref<string[]>([])
+const addressEstates = ref<any[]>([])
+const spaceNodes = computed(() => {
+  const path = directory.value ? [directory.value] : []
+  for (const key of spaceTrail.value) {
+    const child = path[path.length - 1]?.children?.find((n:any) => n.key === key)
+    if (!child) break
+    path.push(child)
+  }
+  return path
+})
+const currentSpace = computed(() => spaceNodes.value[spaceNodes.value.length - 1])
+function selectSpace(node:any) {
+  if (node.table === 'houses') open('detail', 'houses', node.id)
+  else spaceTrail.value = [...spaceTrail.value, node.key]
+}
+async function loadSpaceDirectory(actor:any, rootName:string) {
+  const data:Record<string,any> = { spaceRootName:rootName }
+  await Promise.all(['estates','buildings','units','houses'].map(async table => {
+    data[table] = actor.permissions.includes('read:' + table) ? await service.query(table) : []
+  }))
+  directory.value = spatialTree(data)[0]
+}
+async function openSpaceSummary(id:string) {
+  const estate = await service.record('estates', id)
+  if (estate['所属社区']) open('detail','communities',estate['所属社区'])
+}
+function selectAddressEstate(e:any) {
+  const estate = addressEstates.value[Number(e.detail.value)]
+  form.value = {...form.value, _estate:estate.value, 社区:estate.community}
+}
 const top = computed(() =>
   ['home', 'profile', 'service', 'mall', 'workbench', 'operation', 'order', 'archive'].includes(props.mode),
 )
@@ -154,6 +207,8 @@ async function load() {
       // #endif
       avatarUrl.value = ''
       rows.value = []
+      directory.value = null
+      spaceTrail.value = []
       record.value = null
       form.value = {}
       success.value = ''
@@ -184,10 +239,13 @@ async function load() {
       uni.redirectTo({url: APP === 'resident' ? '/pages/foundation/applications/index' : '/pages/profile/index'});return
     }
     if (['list', 'detail'].includes(props.mode)) {
-      if (props.mode === 'list')
+      if (props.mode === 'list' && props.table === 'communities' && APP === 'staff')
+        await loadSpaceDirectory(next.actor, next.spaceRootName)
+      else if (props.mode === 'list')
         rows.value = await service.labels(props.table, await service.query(props.table))
       else {
         record.value = (await service.labels(props.table, [await service.record(props.table, props.id)]))[0]
+        await loadDetailFiles(record.value, request)
         if (props.table === 'communities') {
           const summary = await service.summary(props.id)
           communityCounts.value = summary.counts
@@ -233,7 +291,9 @@ async function load() {
         }
       } else if (props.table === 'missing') {
         const me = (await service.query('residents'))[0]
+        addressEstates.value = await service.options('missing','所属小区')
         form.value = { 联系号码: me['联系电话'] }
+        if (addressEstates.value.length === 1) selectAddressEstate({detail:{value:0}})
       } else form.value = props.id ? await service.record(props.table, props.id) : {}
     }
     if (props.mode === 'apply' && !loaded.value) {
@@ -360,7 +420,7 @@ onUnmounted(() => {
   unsubscribe()
   generation.value++
   // #ifdef H5
-  previewUrls.forEach((url) => URL.revokeObjectURL(url))
+  releaseDetailFiles()
   // #endif
 })
 </script>
@@ -380,7 +440,18 @@ onUnmounted(() => {
         ><AppButton variant="quiet" @click="load">重新读取</AppButton></view
       ><text v-if="success" class="success-tip">{{ success }}</text
       ><view v-if="busy && !info" class="hint">正在加载…</view>
-      <template v-if="props.mode === 'list'"
+      <template v-if="props.mode === 'list' && props.table === 'communities' && APP === 'staff'">
+        <BaseCard v-if="currentSpace">
+          <text class="group-title">{{ currentSpace.title }}</text>
+          <text v-if="spaceNodes.length>1" class="hint">{{spaceNodes.map(n=>n.title).join(' › ')}}</text>
+          <AppButton v-if="spaceTrail.length" variant="quiet" size="compact" @click="spaceTrail=spaceTrail.slice(0,-1)">返回上级</AppButton>
+          <view v-for="node in currentSpace.children" :key="node.key" class="control-row" @click="selectSpace(node)"><text>{{node.title}}</text><text>›</text></view>
+          <text v-if="!currentSpace.children.length" class="hint">当前节点没有可查看的下级档案</text>
+          <AppButton v-if="currentSpace.table==='estates'" variant="secondary" @click="open('detail','estates',currentSpace.id)">查看小区档案</AppButton>
+          <AppButton v-if="currentSpace.table==='estates'" variant="quiet" @click="openSpaceSummary(currentSpace.id)">查看所属范围基础概况</AppButton>
+        </BaseCard>
+      </template>
+      <template v-else-if="props.mode === 'list'"
         ><view class="list-toolbar"
           ><FilterBar v-model="filter" placeholder="搜索当前列表" style="flex:1;min-width:0;margin:0"/><AppButton
             v-if="APP === 'resident' && props.table === 'relations'"
@@ -407,7 +478,7 @@ onUnmounted(() => {
             ><view v-for="f in shortFields[props.table] || []" :key="f" class="card-field"
               ><text>{{ f }}</text
               ><text>{{ r._labels[f] || '未维护' }}</text></view
-            ><text class="hint link">查看详情 ›</text></view
+            ></view
           ></BaseCard
         ></template
       >
@@ -419,8 +490,16 @@ onUnmounted(() => {
             class="detail-field"
             :data-field="props.table + ':' + f.name"
             ><text class="hint">{{ f.name }}</text
-            ><template v-if="props.table === 'applications' && f.name === '证明附件' && Array.isArray(record[f.name]) && record[f.name].length"><button v-for="(id, index) in record[f.name]" :key="id" @click="previewApplicationAttachment(id)">查看材料 {{ index + 1 }}</button></template
-            ><text v-else>{{ record._labels[f.name] || '未维护／不适用' }}</text></view
+            ><view v-if="detailFiles[f.name]?.length" class="detail-attachments">
+              <template v-for="file in detailFiles[f.name]" :key="file.id">
+                <text v-if="file.error" class="hint">{{ file.error }}</text>
+                <image v-else-if="file.image" :src="file.url" mode="aspectFill" class="detail-thumbnail"
+                  @click="previewDetailPhoto(file.url)" />
+                <FileAttachmentRow v-else :file="file" @failure="documentError=$event" />
+              </template>
+              <text v-if="documentError" class="hint">{{documentError}}</text>
+            </view>
+            <text v-else>{{ record._labels[f.name] || '未维护／不适用' }}</text></view
           ></BaseCard
         ><view
           class="actions"
@@ -461,10 +540,8 @@ onUnmounted(() => {
       >
       <template v-else-if="props.mode === 'apply'"
         ><BaseCard
-          ><text class="group-title">{{ props.kind }}申请</text
-          ><text class="hint"
-            >姓名及联系号码自动带入个人资料，请核对房屋信息。</text
-          ><text class="hint">申请人姓名：{{ form['申请人姓名'] }}；房屋选择不显示其他住户。</text></BaseCard
+          ><text class="group-title">申请人</text>
+            <text>{{ form['申请人姓名'] }}</text><text class="hint">联系信息取自个人资料</text></BaseCard
         ><BaseCard
           ><MobileFields
             table="applications"
@@ -497,14 +574,14 @@ onUnmounted(() => {
       >
       <template v-else-if="props.mode === 'edit'"
         ><BaseCard
-          ><MobileFields
+          ><template v-if="props.table==='missing'"><text class="hint">{{info?.spaceRootName}}</text><picker :range="addressEstates" range-key="label" @change="selectAddressEstate"><view class="control-row"><text>所属小区 <text class="required-mark">*</text></text><text>{{addressEstates.find(e=>e.value===form._estate)?.label||'选择小区'}} ›</text></view></picker></template><MobileFields
             :table="props.table"
             v-model="form"
             :names="
               props.table === 'profile'
                 ? profileFormNames
                 : props.table === 'missing'
-                  ? ['社区', '小区名称或地址', '具体房屋描述', '联系号码']
+                  ? ['小区名称或地址', '具体房屋描述', '联系号码']
                   : vehicleFormNames
             "
             :errors="fieldErrors" /></BaseCard>
@@ -517,4 +594,4 @@ onUnmounted(() => {
   ></AppPage>
 </template>
 
-<style scoped>.required-mark{color:#ba1a1a}.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}.order-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.order-filters button{font-size:14px;padding:8px;min-height:40px}.order-filters .is-current{color:#225e46;background:#edf5f0}</style>
+<style scoped>.detail-attachments{flex:1;min-width:0}.detail-thumbnail{width:72px;height:72px;border-radius:6px;vertical-align:middle;margin-right:4px}.required-mark{color:#ba1a1a}.s1-entry{padding:16px;background:white;border-radius:12px;margin:16px 0}.s1-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.s1-entry-grid button{font-size:15px;padding:12px 8px;line-height:1.6;color:#225e46;background:#edf5f0;min-height:48px}.order-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.order-filters button{font-size:14px;padding:8px;min-height:40px}.order-filters .is-current{color:#225e46;background:#edf5f0}</style>

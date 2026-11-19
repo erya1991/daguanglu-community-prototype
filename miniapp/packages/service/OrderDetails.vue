@@ -109,7 +109,7 @@ function amount(f: any) {
           :editable="false"
           table="orders"
           :record-id="record._id"
-        /><FormField v-if="record.credential" label="凭证状态" readonly
+        /><FormField v-if="record.credential" label="服务码状态" readonly
           ><text>{{ record.credential.凭证状态 }}</text></FormField
         ><template v-if="record.evaluation"
           ><FormField label="住户评分" readonly

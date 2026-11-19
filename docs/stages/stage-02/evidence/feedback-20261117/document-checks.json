@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-11-17T08:34:59.685Z",
+  "documents": [
+    {
+      "file": "AGENTS.md",
+      "tables": 6,
+      "localLinks": 14,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    },
+    {
+      "file": "docs/WORKFLOW.md",
+      "tables": 1,
+      "localLinks": 9,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    },
+    {
+      "file": "docs/stages/stage-02/ACCEPTANCE.md",
+      "tables": 121,
+      "localLinks": 184,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    },
+    {
+      "file": "docs/stages/stage-02/PLAN.md",
+      "tables": 67,
+      "localLinks": 8,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    },
+    {
+      "file": "docs/stages/stage-02/REQUIREMENTS.md",
+      "tables": 64,
+      "localLinks": 6,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    },
+    {
+      "file": "docs/stages/stage-02/RESULT.md",
+      "tables": 28,
+      "localLinks": 75,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    },
+    {
+      "file": "docs/stages/stage-02/人工验收清单.md",
+      "tables": 2,
+      "localLinks": 1,
+      "newErrors": [],
+      "preservedHistoricalIssues": []
+    }
+  ],
+  "currentScenarioApplicability": {
+    "按新规则重写": 28,
+    "保留": 20,
+    "首期延期": 4
+  },
+  "gitDiffCheck": "PASS",
+  "branch": "main",
+  "head": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+  "index": "No staged content",
+  "stage03": "UNCHANGED",
+  "newErrorCount": 0
+}

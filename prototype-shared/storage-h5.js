@@ -110,9 +110,9 @@ export function createBrowserAdapter(app) {
     const state = s || createSeed()
     upgradeState(state)
     upgradeProductState(state)
-          stage01.prepare(state, session)
-          seedStage01(state)
-          serviceDomain.prepare(state, session)
+    stage01.prepare(state, session)
+    seedStage01(state)
+    if (serviceDomain.prepare(state, session)) return transact(fn)
     return fn(state)
   }
   const api = {
@@ -159,7 +159,7 @@ export function createBrowserAdapter(app) {
       return read((s) => scopeOptions(s, context))
     },
     async scope(community, estate) {
-      const options = await api.scopes()
+      const options = await read(s => scopeOptions(s, {...context, community}))
       if (community && !options.communities.some((c) => c.value === community))
         throw new DomainError('选择上下文不能扩大授权')
       if (estate && !options.estates.some((e) => e.value === estate))

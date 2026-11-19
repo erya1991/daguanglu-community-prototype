@@ -1,0 +1,23 @@
+{
+  "base": "http://127.0.0.1:19221",
+  "priorSession": "stage02-feedback-1794983087517",
+  "checks": [
+    {
+      "name": "旧会话修复待审上架状态，授权和新旧版本一致",
+      "passed": true,
+      "orders": 6,
+      "orderSha256": "546c64a94ff6d388fd22c4908cc8a3bc74f9925fd0597bfa05a6e76afafec134",
+      "funds": 15,
+      "fundSha256": "5e38baaa0dd6298939bb789e17567d7bc92b3db23991f00505bcbf97efda2e72"
+    },
+    {
+      "name": "保留旧地址关联，99 元原服务预校验成功",
+      "passed": true,
+      "preflight": {
+        "valid": true,
+        "amount": "99.00"
+      }
+    }
+  ],
+  "errors": []
+}

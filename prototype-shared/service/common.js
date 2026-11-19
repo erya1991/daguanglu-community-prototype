@@ -1,4 +1,4 @@
-import { actorFor, inScope, clone, DomainError } from "../core.js";
+import { actorFor, inScope, residentEstateIds, clone, DomainError } from "../core.js";
 export { clone, DomainError };
 export const TABLES = [
   "qualifications",
@@ -124,10 +124,23 @@ export function ownShop(a, r) {
   if (a.role === "merchant")
     need(r._shop === a.shop, "无权操作其他经营主体的数据");
 }
+export const supplyUnderReview = (r) => ["待审核", "退回"].includes(r["审核状态"]);
+export function suspendSupplyForReview(r) {
+  r._merchantPaused ??= r["接收新预约状态"] === "暂停";
+  r["上架状态"] = r.published ? "已下架" : "未上架";
+  r["接收新预约状态"] = "暂停";
+}
+export function supplyListed(r) {
+  return r.published && !supplyUnderReview(r) && r["上架状态"] === "已上架" && !r["平台限制原因"];
+}
+export const evaluationVisibility = (status) => status === "受限" ? "隐藏" : status;
 export function visible(s, a, t, r) {
   if (["categories", "methods"].includes(t)) return true;
-  if (t === "services" && a.role === "resident")
-    return !!r.published && r["上架状态"] === "已上架";
+  if (t === "services" && a.role === "resident") {
+    if (!supplyListed(r)) return false;
+    const estates = serviceEstates(s,a).map(e=>e._id);
+    return list(r.published["服务规格集合"]).some(spec=>list(spec["组合集合"]).some(c=>comboInEstates(s,c,r._shop,estates)));
+  }
   if (a.role === "resident") {
     if (["orders", "aftersales", "evaluations", "funds"].includes(t))
       return (
@@ -384,16 +397,17 @@ export function authorizeAttachment(s, a, key, context = {}) {
   } else need(f.owner === a._id, "无权预览他人未绑定附件");
   return key;
 }
-export function evidence(s, a, v, order = null) {
+export function evidence(s, a, v, order = null, originalField = null) {
   return list(v).map((item, i) => {
     const key =
         typeof item === "string" ? item : item?.id || item?.attachmentId,
       f = s.attachments[key];
+    const retained = originalField && attachmentIds(originalField.record[originalField.field]).includes(key);
     need(
       f &&
         f.stage02 &&
         f.status === "成功" &&
-        (f.owner === a._id ||
+        (f.owner === a._id || retained ||
           (order &&
             attachmentReferences(s, key).some(
               (ref) =>
@@ -403,7 +417,7 @@ export function evidence(s, a, v, order = null) {
             ))),
       "请使用本人上传成功的服务附件",
     );
-    authorizeAttachment(s, a, key);
+    authorizeAttachment(s, a, key, retained ? { table: "services", id: originalField.record._id } : {});
     return {
       id: key,
       name: f.name,
@@ -509,7 +523,7 @@ export function catEnabled(s, key) {
     seen = new Set();
   if (!c) return false;
   while (c) {
-    if (c["类目状态"] !== "启用" || seen.has(c._id)) return false;
+    if (c._deleted || c._retiredGroup || c["类目状态"] !== "启用" || seen.has(c._id)) return false;
     seen.add(c._id);
     c = find(s, "categories", c["上级类目"]);
   }
@@ -522,18 +536,13 @@ export function qualificationMaterialMatches(q, m, cat, application = false) {
   return q[application ? "_applicationMaterialScope" : "_authorizationMaterialScope"] === "application" || list(m["对应服务类目"]).includes(cat);
 }
 export function qualified(s, shop, cat) {
-  const q = qualificationFor(s, shop),
-    c = find(s, "categories", cat);
+  const q = qualificationFor(s, shop);
   return (
     !!q &&
     q["服务经营有效性"] === "有效" &&
     q["协议状态"] === "有效" &&
     list(q["获准服务类目"]).includes(cat) &&
-    catEnabled(s, cat) &&
-    (!c?.["商户证明是否必需"] ||
-      list(q.authorizationMaterials || q["服务资质材料"]).some(
-        (m) => qualificationMaterialMatches(q, m, cat) && materialValid(s, m),
-      ))
+    catEnabled(s, cat)
   );
 }
 export function pointFor(s, shop, key, activeOnly = true) {
@@ -568,17 +577,38 @@ export function coverageValid(s, shop, combo) {
     })
   );
 }
-export function staffEligible(s, p, shop, cat) {
-  const c = find(s, "categories", cat);
+// Legacy community IDs are storage relations. The public directory is one root with scoped estates.
+export function comboInEstates(s, combo, shop, ids) {
+  return combo["组合流程模板"] === "上门" ? list(combo["上门覆盖小区"]).some(id=>ids.includes(id))
+    : list(combo["可服务门店或服务点"]).some(p=>ids.includes(pointFor(s,shop,p)?._estate));
+}
+export function serviceEstates(s, a) {
+  let ids;
+  if (a.role === "resident") {
+    ids = residentEstateIds(s, a.resident);
+  } else if (a.role === "merchant") {
+    ids = [...list(qualificationFor(s, a.shop)?.["获准小区"]), shopRecord(s, a.shop)?._estate];
+  } else {
+    ids = s.estates.filter(e => inScope(s, a, e)).map(e => e._id);
+  }
+  return s.estates.filter(e => ids.includes(e._id) && e["档案状态"] !== "停用");
+}
+export function applicationEstates(s, a) {
+  return a.role === "merchant" ? s.estates.filter(e => e.档案状态 === "启用") : serviceEstates(s, a);
+}
+export function estateCommunities(s, a, ids, allowed = serviceEstates(s, a)) {
+  return [...new Set(list(ids).map(id => {
+    const estate = allowed.find(e => e._id === id);
+    need(estate, "所选小区不存在或不在当前权限范围");
+    return estate["所属社区"];
+  }))];
+}
+export function staffEligible(p, shop, cat) {
   return (
     p &&
     p._shop === shop &&
     p["人员状态"] === "启用" &&
-    list(p["可执行服务类目"]).includes(cat) &&
-    (!c?.["人员证明是否必需"] ||
-      list(p["人员资质材料"]).some(
-        (m) => list(m["对应服务类目"]).includes(cat) && materialValid(s, m),
-      ))
+    list(p["可执行服务类目"]).includes(cat)
   );
 }
 export function allocations(amount, version = "DEMO-ALLOC-V1") {

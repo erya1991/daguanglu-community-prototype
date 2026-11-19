@@ -21,13 +21,28 @@ const emit = defineEmits<{ click: [] }>()
 </template>
 
 <style scoped lang="scss">
-.app-button { box-sizing: border-box; display: flex; width: 100%; height: $button-height; min-height: $touch-target-min; align-items: center; justify-content: center; padding: 0 $space-4; border: 1px solid transparent; border-radius: $radius-md; font-size: 16px; font-weight: 600; line-height: 1; transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, opacity 120ms ease; }
+.app-button { box-sizing: border-box; display: flex; width: 100%; height: $button-height; min-height: $touch-target-min; align-items: center; justify-content: center; padding: 0 $space-4; border: 1px solid transparent; border-radius: $radius-md; font-size: 15px; font-weight: 600; line-height: 1; transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, opacity 120ms ease; }
 .app-button::after { border: 0; }
 .app-button--primary { background: $color-primary; color: #fff; }
 .app-button--secondary { border-color: rgba(27, 77, 83, 0.72); background: #fff; color: $color-primary; }
 .app-button--quiet { background: $color-primary-light; color: $color-primary; }
 .app-button--danger { background: $color-error; color: #fff; }
-.app-button--compact { width: auto; height: 44px; min-height: 44px; padding: 0 $space-3; border-radius: $radius-sm; font-size: 14px; }
+.app-button--compact {
+  width: auto;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 6px solid transparent;
+  border-inline-width: 2px;
+  border-radius: 12px;
+  background-clip: padding-box;
+  font-size: 14px;
+}
+.app-button--compact.app-button--secondary {
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1px #c8d7d4;
+}
+.app-button--compact.app-button--danger { color: $color-error; background-color: #fff4f2; }
 .app-button--pressed.app-button--primary { background: $color-primary-dark; }
 .app-button--pressed.app-button--secondary { background: $color-primary-light; }
 .app-button--pressed.app-button--quiet { background: rgba(27, 77, 83, 0.16); }

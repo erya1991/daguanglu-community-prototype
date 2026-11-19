@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FileAttachmentRow from "../ui/components/FileAttachmentRow.vue";
 import { ref, watch, onUnmounted } from "vue";
 import { service, APP } from "@/services/foundation";
 const props = withDefaults(
@@ -23,8 +24,7 @@ const emit = defineEmits<{ input: [any[]] }>();
 const files = ref<any[]>([]),
   pending = ref<any[]>([]),
   error = ref(""),
-  busy = ref(false),
-  expanded = ref("");
+  busy = ref(false);
 let generation = 0;
 const api = () => (service as any).service;
 function ids() {
@@ -86,29 +86,10 @@ function image(f: any) {
   );
 }
 function preview(f: any) {
-  if (image(f)) {
-    uni.previewImage({
-      current: f.url,
-      urls: files.value.filter(image).map((x) => x.url),
-    });
-  } else {
-    // #ifdef H5
-    if (f.url) {
-      const a = document.createElement("a");
-      a.href = f.url;
-      a.download = f.name || "附件";
-      a.click();
-    }
-    // #endif
-    // #ifdef MP-WEIXIN
-    if (f.path)
-      uni.openDocument({
-        filePath: f.path,
-        showMenu: true,
-        fail: () => (error.value = "此格式暂不能预览，请按授权下载后查看"),
-      });
-    // #endif
-  }
+  uni.previewImage({
+    current: f.url,
+    urls: files.value.filter((file) => image(file) && file.url).map((file) => file.url),
+  });
 }
 async function upload() {
   if (busy.value) return;
@@ -127,27 +108,6 @@ async function upload() {
   } finally {
     busy.value = false;
   }
-}
-function describe(index: number, text: string) {
-  const next = props.value.map((v: any, i: number) => ({
-    ...(typeof v === "string" ? { id: v } : v),
-    显示顺序: i + 1,
-  }));
-  next[index].图片说明 = text;
-  emit("input", next);
-}
-function move(index: number, offset: number) {
-  const next = [...props.value];
-  const j = index + offset;
-  if (j < 0 || j >= next.length) return;
-  [next[index], next[j]] = [next[j], next[index]];
-  emit(
-    "input",
-    next.map((v: any, i: number) => ({
-      ...(typeof v === "string" ? { id: v } : v),
-      显示顺序: i + 1,
-    })),
-  );
 }
 function remove(id: string) {
   emit(
@@ -227,114 +187,23 @@ function chooseFile() {
   });
   // #endif
 }
-function eventValue(event: any) { return event.detail.value }
 </script>
 <template>
   <view class="service-evidence svc-view">
-    <view
-      v-for="(f, index) in files"
-      :key="f.id"
-      class="evidence-item svc-view"
-    >
-      <image
-        class="svc-image"
-        v-if="image(f) && f.url"
-        :src="f.url"
-        mode="aspectFill"
-        @click="preview(f)"
-      />
-      <view class="evidence-copy svc-view"
-        ><text class="file-name svc-text">{{
-          f.name || f["文件名称"] || "附件"
-        }}</text
-        ><text v-if="f.error" class="error svc-text">{{ f.error }}</text
-        ><view class="links svc-view"
-          ><text class="svc-text" v-if="f.url" @click="preview(f)"
-            >查看内容</text
-          ><text
-            class="svc-text"
-            @click="expanded = expanded === f.id ? '' : f.id"
-            >文件详情</text
-          ><text v-if="editable" class="danger svc-text" @click="remove(f.id)"
-            >移除</text
-          ></view
-        ></view
-      >
-      <view v-if="editable" class="file-meta svc-view"
-        ><input
-          :value="f['图片说明'] || f.description || ''"
-          placeholder="图片说明（选填）"
-          data-field="C1.05"
-          @input="describe(index, eventValue($event))"
-        /><view class="links svc-view"
-          ><text class="svc-text" v-if="index > 0" @click="move(index, -1)"
-            >上移</text
-          ><text
-            class="svc-text"
-            v-if="index < files.length - 1"
-            @click="move(index, 1)"
-            >下移</text
-          ></view
-        ></view
-      >
-      <view
-        v-if="expanded === f.id"
-        class="file-meta svc-view"
-        data-field-table="C1"
-      >
-        <view class="svc-view" data-field="C1.01"
-          ><text class="svc-text">文件名称</text
-          ><text class="svc-text">{{ f.name || "—" }}</text></view
-        >
-        <view class="svc-view" data-field="C1.02"
-          ><text class="svc-text">文件类型</text
-          ><text class="svc-text">{{ f.type || "—" }}</text></view
-        >
-        <view class="svc-view" data-field="C1.03"
-          ><text class="svc-text">文件大小</text
-          ><text class="svc-text">{{
-            f.size == null ? "—" : f.size + " B"
-          }}</text></view
-        >
-        <view class="svc-view" data-field="C1.04"
-          ><text class="svc-text">文件内容</text
-          ><text class="svc-text" @click="preview(f)">{{
-            f.url ? "查看原文件" : "暂不可用"
-          }}</text></view
-        >
-        <view class="svc-view" data-field="C1.05"
-          ><text class="svc-text">图片说明</text
-          ><text class="svc-text">{{
-            f["图片说明"] || f.description || "未填写"
-          }}</text></view
-        >
-        <view class="svc-view" data-field="C1.06"
-          ><text class="svc-text">显示顺序</text
-          ><text class="svc-text">{{ index + 1 }}</text></view
-        >
-        <view class="svc-view" data-field="C1.07"
-          ><text class="svc-text">上传状态</text
-          ><text class="svc-text">{{ f.error ? "失败" : "成功" }}</text></view
-        >
-        <view class="svc-view" data-field="C1.08"
-          ><text class="svc-text">上传失败原因</text
-          ><text class="svc-text">{{ f.error || "无" }}</text></view
-        >
-        <view
-          class="svc-view"
-          v-if="!(APP === 'resident' && table === 'services')"
-          data-field="C1.09"
-          ><text class="svc-text">上传人</text
-          ><text class="svc-text">{{
-            f.uploader || f.owner || "—"
-          }}</text></view
-        >
-        <view class="svc-view" data-field="C1.10"
-          ><text class="svc-text">上传时间</text
-          ><text class="svc-text">{{ f.uploadedAt || "—" }}</text></view
-        >
+    <template v-for="f in files" :key="f.id">
+      <view v-if="image(f)" class="evidence-item svc-view">
+        <image v-if="f.url" class="svc-image" :src="f.url" mode="aspectFill" @click="preview(f)" />
+        <view class="evidence-copy">
+          <text class="file-name">{{ f.name || '图片' }}</text>
+          <text v-if="f.error" class="error">{{ f.error }}</text>
+        </view>
+        <button v-if="editable" class="remove-file" aria-label="删除附件" @click.stop="remove(f.id)">×</button>
       </view>
-    </view>
+      <template v-else>
+        <FileAttachmentRow :file="f" :removable="editable" @failure="error=$event" @remove="remove(f.id)" />
+        <text v-if="f.error" class="error">{{ f.error }}</text>
+      </template>
+    </template>
     <text v-if="!files.length && !pending.length" class="muted svc-text"
       >暂无附件</text
     >
@@ -445,4 +314,5 @@ function eventValue(event: any) { return event.detail.value }
 .upload-actions .svc-button::after {
   border: 0;
 }
+.evidence-item{position:relative;display:flex;align-items:center;flex-wrap:nowrap;gap:8px;padding:8px 0;margin:0}.evidence-item image{width:64px!important;height:64px!important;flex:none;border-radius:6px}.evidence-copy{min-width:0;flex:1}.file-name{font-size:13px;overflow-wrap:anywhere}.remove-file{flex:none;width:44px;height:44px;line-height:44px;margin:0;padding:0;background:#f5f7f8;color:#9b3940;font-size:22px}.remove-file::after{border:0}.upload-actions{gap:8px;margin-top:8px}.upload-actions button{font-size:13px;min-height:44px;line-height:44px;margin:0;padding:0 12px}
 </style>

@@ -38,17 +38,13 @@ function input(id: string, e: any) {
 }
 function set(id: string, v: any) {
   const n = { ...props.value, [id]: v };
-  if (id === "RP09") n.RP10 = "";
+  if (id === "RP10") n.RP09 = props.options.estates?.find((e:any)=>e.value===v)?.community || "";
   if (id === "RP11" && v === "公共位置") n.RP12 = "";
   emit("input", n);
 }
 function opts(id: string) {
   const list = choices(id, props.options, props.records);
-  return id === "RP10"
-    ? list?.filter(
-        (x: any) => !props.value.RP09 || x.community === props.value.RP09
-      )
-    : list;
+  return list;
 }
 function choose(id: string, e: any) {
   set(id, opts(id)?.[Number(e.detail.value)]?.value || "");
@@ -91,11 +87,11 @@ function toggle(photo: string) {
       v-for="id in active"
       :key="id"
       :label="fieldById[id].name"
-      :required="isRequiredField(action, id, value, record)"
+      :required="id!=='RP09'&&isRequiredField(action, id, value, record)"
       :error="errors[id]"
       :data-field="id"
-      ><Evidence
-        v-if="attachmentFields.includes(id) && id !== 'EV13'"
+      ><text v-if="id==='RP09'">{{options.spaceRootName}}</text><Evidence
+        v-else-if="attachmentFields.includes(id) && id !== 'EV13'"
         :value="value[id] || []"
         editable
         @input="set(id, $event)" /><view v-else-if="id === 'EV13'"

@@ -1,0 +1,322 @@
+{
+  "head": "f724ebfcdb13b9525206473fce878a02ffffaaa5",
+  "files": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "91623bb08ff3477473a11c8c5ec98e1ead334869e0ca10e7b1a71027ac3600d4"
+    },
+    {
+      "file": "docs/WORKFLOW.md",
+      "sha256": "0c8958f2e25e1708f31195cee7e389453b3ba240ed735c78f5519ebf987685a4"
+    },
+    {
+      "file": "docs/stages/stage-02/ACCEPTANCE.md",
+      "sha256": "520534b0b491c839bcda90efba7b8252c3b0f98af67814ec0a53dd113de8767e"
+    },
+    {
+      "file": "docs/stages/stage-02/PLAN.md",
+      "sha256": "a133f6eedb336a1ca4aa94d4803d994bb54412f94fe0545ef914cdca4aa6579c"
+    },
+    {
+      "file": "docs/stages/stage-02/REQUIREMENTS.md",
+      "sha256": "034fa7b50fce1b06253f4706a8c4ef1ef1a42bb2033b39e61be5e04aea6061a5"
+    },
+    {
+      "file": "docs/stages/stage-02/RESULT.md",
+      "sha256": "8831d66b72d100567b631b9d785550eb45405942d8c2e14ce5a7c4744d79e629"
+    },
+    {
+      "file": "docs/stages/stage-02/人工验收清单.md",
+      "sha256": "81978a12c95599a82d724d00114a9e4703edf52aba940f2c1eb67e9a4a67db80"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages.json",
+      "sha256": "579d395182efceed5ae0166dfcbe9a8dbf6d04b45de6a0dfd98ad74e50006726"
+    },
+    {
+      "file": "miniapp/apps/resident-miniapp/src/pages/service/aftersales.vue",
+      "sha256": "5271a64514238d96d7d6b7f12972b556b1e598c10c55c2f09ac264dcd62032e0"
+    },
+    {
+      "file": "miniapp/packages/foundation/FoundationPage.vue",
+      "sha256": "59752443f1868906c24afb822f7a364f116dc937f9dc58a2f16aa59cd15db606"
+    },
+    {
+      "file": "miniapp/packages/foundation/MobileFields.vue",
+      "sha256": "6af160391ced15939c5662c565dfca2d5b40be2b008a8103cc2076c6f5abdf03"
+    },
+    {
+      "file": "miniapp/packages/portal/PortalPage.vue",
+      "sha256": "5945f8762fe02b38282933dcdc6f25e6ed44d63efd9e5b5b7bee208846079821"
+    },
+    {
+      "file": "miniapp/packages/portal/modules.ts",
+      "sha256": "e04cb40fd776fde930b3527eacdeb0c754784075544f154ecda4fa7a5bdaae52"
+    },
+    {
+      "file": "miniapp/packages/service/AddressForm.vue",
+      "sha256": "08e9b4f69bf893781d0c502510910e97b5edc96270d3dc3f87d47546d6958615"
+    },
+    {
+      "file": "miniapp/packages/service/AddressesPage.vue",
+      "sha256": "1053c8e7098a8db25b385ddaa28b9f4bf8c9de8f8eeb25ade0218752916dce91"
+    },
+    {
+      "file": "miniapp/packages/service/AftersaleDetail.vue",
+      "sha256": "e3717d361ed0ca8b20c6a85096e5c3eb09ae7cc4d2cd0657a1093c3b012a80a2"
+    },
+    {
+      "file": "miniapp/packages/service/CategoryPicker.vue",
+      "sha256": "031bce609fdae60265493cd90a23cf6a756a45138b13bfb00ea280873ab6b4a6"
+    },
+    {
+      "file": "miniapp/packages/service/Details.vue",
+      "sha256": "c022d3ffd1d3c3becb18aa9fc239c732d0430fb959d471359d66ce1b5d36b462"
+    },
+    {
+      "file": "miniapp/packages/service/Evidence.vue",
+      "sha256": "aa0003c2428ac72c44cfa9007b2eaf6d16a0a003888ab8b11c985516191d35ee"
+    },
+    {
+      "file": "miniapp/packages/service/FieldGroup.vue",
+      "sha256": "be6e8623aa738762feef8eb1a5f8c8c0fd805f9e45076e0657e2928ef102c8b2"
+    },
+    {
+      "file": "miniapp/packages/service/FundDetails.vue",
+      "sha256": "5f0512f0a521101dc984b2b85d24a98aaa7c9194900aae5655458532f9d4969e"
+    },
+    {
+      "file": "miniapp/packages/service/Picture.vue",
+      "sha256": "b7b8a801df75036cddc8e0d287d4ecd4b558e9153bcc84ee07691c81b4c4db27"
+    },
+    {
+      "file": "miniapp/packages/service/ServicePage.vue",
+      "sha256": "f057e5fb5dffb5c532439fff871063c4d15da2628ca67c6b4db32a3ea0f050ad"
+    },
+    {
+      "file": "miniapp/packages/service/SpecEditorPage.vue",
+      "sha256": "6e3e87e3ac6cf651c19de0822965ea40c23311c3d9fef08692b94953fa2f9423"
+    },
+    {
+      "file": "miniapp/packages/service/SupplyEditor.vue",
+      "sha256": "61b3dca3f8aff776d8803af18cb4e566978aeb0c4d245cd4fe6a12cf07b5e730"
+    },
+    {
+      "file": "miniapp/packages/service/VoucherCode.vue",
+      "sha256": "ba2af1e9b07ae831f92e383319d1739aa578a4e6bdcab4468f65410ff6cd1f07"
+    },
+    {
+      "file": "miniapp/packages/stage01/ActionForm.vue",
+      "sha256": "7b7b1a92313745c593243c208959e5fb0b2da0dc0aacb97a4dc2197e977f9b98"
+    },
+    {
+      "file": "miniapp/packages/stage01/Details.vue",
+      "sha256": "bf7886fd7a16f08a2a61a437fa218ad035c8645819fbb3b4d704289be368b9bf"
+    },
+    {
+      "file": "miniapp/packages/stage01/Evidence.vue",
+      "sha256": "dac427f88fb97d4baa73b847e533f529edc3dfcc792d6e79619742eadc1de864"
+    },
+    {
+      "file": "miniapp/packages/stage01/FeesPage.vue",
+      "sha256": "89dc70a57200315f32dc17395da54147bc0dc04f254d2eb095a2d299eb273a07"
+    },
+    {
+      "file": "miniapp/packages/stage01/Fields.vue",
+      "sha256": "af2d6b7a25829358d70804ce1b6b710f00be936aecd60fb595efcbaef1ad266d"
+    },
+    {
+      "file": "miniapp/packages/stage01/WorkPage.vue",
+      "sha256": "da12b46892cca3886042cb100f2269a86eb434a39978b1c87558453f260ca522"
+    },
+    {
+      "file": "miniapp/packages/ui/components/AppButton.vue",
+      "sha256": "814b39bb2580ec719c05358dd2078bb8118e10125a4865cae85ec2bc880bdab0"
+    },
+    {
+      "file": "miniapp/packages/ui/components/BaseCard.vue",
+      "sha256": "999432ae5dafadbc91f7d2ea9f507a4471fa0207bd22e948125ed5151dee59d4"
+    },
+    {
+      "file": "miniapp/packages/ui/components/EvidenceUploader.vue",
+      "sha256": "05944730794908afe78607a781c8e5ce3deac181030981ccb3402983e906dddd"
+    },
+    {
+      "file": "miniapp/packages/ui/components/FileAttachmentRow.vue",
+      "sha256": "7dbbe939ba202394e1501426485b5143210be8d9b725d294e0a893efc968d46b"
+    },
+    {
+      "file": "miniapp/packages/ui/components/FilterBar.vue",
+      "sha256": "90739fcab72f4eb1fc766edae3a514bac4e5be39b6156de967e9d66ca419bfe7"
+    },
+    {
+      "file": "miniapp/packages/ui/components/FormField.vue",
+      "sha256": "4de38aa7bf53ff20b7cbfd6dd449286df588c5b016071e6ced3843d520559d0c"
+    },
+    {
+      "file": "prototype-shared/core.js",
+      "sha256": "fd3dc66877af5fc37f9bc2399d2e449b5cf40b9a6fde5ded7389fb3fc535c513"
+    },
+    {
+      "file": "prototype-shared/r3-product.js",
+      "sha256": "c0f5108285d5b110123cb32f651788f323c5ea7d8502003302b9e4ed1caff5cb"
+    },
+    {
+      "file": "prototype-shared/service/addresses.js",
+      "sha256": "55ba7dffe223a81e5679e2fecb39f5b199b8a9a2f42d5e86d3f415e561de6ca9"
+    },
+    {
+      "file": "prototype-shared/service/aftersale.js",
+      "sha256": "8f4c272a99980312ab50679e1eeb9a48247f9d630096d32530335bfaa8dc38c5"
+    },
+    {
+      "file": "prototype-shared/service/common.js",
+      "sha256": "4043424414466a6de401c9532aba86d314c11e0d90e417286bf1db3e313decf0"
+    },
+    {
+      "file": "prototype-shared/service/display.js",
+      "sha256": "b0bf63834dc3eb36cc1915e0e360632fb94017d5dc6f0ca3cda359698d77bfef"
+    },
+    {
+      "file": "prototype-shared/service/index.js",
+      "sha256": "6898429968e6de388d4045ef833bf5b0d894f0c24276532be5ebc118a671d134"
+    },
+    {
+      "file": "prototype-shared/service/orders.js",
+      "sha256": "0b78d8edf31f1952b867c175f332dd40173089259ef4ca82d3d196a7aa8ae0c7"
+    },
+    {
+      "file": "prototype-shared/service/required.js",
+      "sha256": "dd28c4e3ef410f5f9c82dbdcf70b679e6ed25d02bc33b3c04c9a133dc8b50ca1"
+    },
+    {
+      "file": "prototype-shared/service/seed.js",
+      "sha256": "5c2dc0aad04fed92286d4bea30800cecbde9266bc543436109d7901e40c37875"
+    },
+    {
+      "file": "prototype-shared/service/supply.js",
+      "sha256": "f4577b5912906cb78e78c2dea4779702185ce6507bf262f8e23f6f0fc888bb16"
+    },
+    {
+      "file": "prototype-shared/stage01/index.js",
+      "sha256": "fc443d736b6e11c83b729d12ac89d4b2bdc30e5af98ee448481678b9360c5340"
+    },
+    {
+      "file": "prototype-shared/storage-h5.js",
+      "sha256": "431bb37c3fc56ec1ef3ff38149610de8488c8124f4c912171eb85fe504ec04eb"
+    },
+    {
+      "file": "prototype-shared/storage-uni.js",
+      "sha256": "a8b8a26cbf1ece58bcbbeb7e48f877a6d767c73847996e4a1657b47dc47a828d"
+    },
+    {
+      "file": "prototype-shared/types.d.ts",
+      "sha256": "1dd0d3887a7a4c637405fc953e8f2722008a3bca04e6a87a30bd18cdff4a7c45"
+    },
+    {
+      "file": "scripts/browser-service-acceptance-r3.mjs",
+      "sha256": "5ead07e79cb447933f0d391965dacda4f3026c837178d7074011a02c9587cb6e"
+    },
+    {
+      "file": "scripts/browser-service-feedback-r2.mjs",
+      "sha256": "f6513376ead04631c8066820e177e9c7be8b65fe6ce0444bd51dace47d2875cb"
+    },
+    {
+      "file": "scripts/browser-service-freeze-legacy.mjs",
+      "sha256": "71fb294d0ce9cfa8d7dcd08cd610027c5ca14dc0bebe106d49b6da41d91e6053"
+    },
+    {
+      "file": "tests/r2.test.mjs",
+      "sha256": "d935c4a176be628d2301074e893a8ccfcc44c78f3b4faa0971a90b1d2d43f1ae"
+    },
+    {
+      "file": "tests/required-fields.test.mjs",
+      "sha256": "5ff0c777455a24945bbfd33dcb481d99114f11435196e49633992267db81dcfd"
+    },
+    {
+      "file": "tests/service-feedback-r2.test.mjs",
+      "sha256": "0a6bc1883a266e1fb9c66748200fa9c341079979367c9ba4c54c25081209006d"
+    },
+    {
+      "file": "tests/service-mainflow.test.mjs",
+      "sha256": "5300c1cb88e586e128fad5221e09d76c8615b3a22a249c44e99a9720bec794a2"
+    },
+    {
+      "file": "tests/service-review.test.mjs",
+      "sha256": "d6141db9af061c9163d707554b49d96f6bf315f40a690c6717e52053d6a5b7ef"
+    },
+    {
+      "file": "tests/service.test.mjs",
+      "sha256": "29e7c692aca4e2aa35ce154153c72bf32b28185778f27e0332f4121fe85e4f30"
+    },
+    {
+      "file": "web/manager/src/App.vue",
+      "sha256": "5e97e2e5135ae77d14ef0432a833ff650c643a73ae0729f2d7de8c0ccaa69c6a"
+    },
+    {
+      "file": "web/manager/src/components/FieldEditor.vue",
+      "sha256": "2634b008f207584f28b989ae63912982847f11876ae03b1b6fb039fcc2f730c3"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceDetail.vue",
+      "sha256": "b73e5719868679b29acf95d94b5f6b89f835ca41445fccfedef06e21603abf0d"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceEvidence.vue",
+      "sha256": "e6094ba3cd80b8e96f385b7698c3f7bdcaf570d00df8cec1084eab86da308472"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceFields.vue",
+      "sha256": "313dcf8b3324e3d560f3afc0477db9b41c02571775e59ba9c0d4b08cbd2f9402"
+    },
+    {
+      "file": "web/manager/src/components/service/ServiceValues.vue",
+      "sha256": "cb909695ad23070402dedff0835ad0d616ef156ab125678102d0d9f2b81fcdb7"
+    },
+    {
+      "file": "web/manager/src/components/service/model.js",
+      "sha256": "e9326f773b3e3e0ae9a618f1b6c64ac638a5691e139d00ecf4d4640e5295ce50"
+    },
+    {
+      "file": "web/manager/src/components/stage01/ActionForm.vue",
+      "sha256": "43b9584c8f9a14b71756d808dd3688897c4974358f9b6d782528b370b5fecb3a"
+    },
+    {
+      "file": "web/manager/src/components/stage01/Business.vue",
+      "sha256": "6710b52d16b555fbb262e49e0628c1af2ff6bacb890053e37bfad24db80c68d1"
+    },
+    {
+      "file": "web/manager/src/components/stage01/Evidence.vue",
+      "sha256": "6fcfb293a5b920c0512940f95f469728dc02d4e750e8ef0a11d672d47c6e52e6"
+    },
+    {
+      "file": "web/manager/src/components/stage01/SpaceFilter.vue",
+      "sha256": "4dda8e7e0b2306b72f46726025718a7bcd01f71b61a5c3ffd3c2205686cd7dc8"
+    },
+    {
+      "file": "web/manager/src/main.js",
+      "sha256": "9ebd10dfc02ad80b5eafefeace26181b451a14581742949fa82f5f253696a6ec"
+    },
+    {
+      "file": "web/manager/src/styles/business-actions.scss",
+      "sha256": "a66b534098123e34aa4ca140113c0a22595931bd5b3be9522bcbabcdeac9e6b7"
+    },
+    {
+      "file": "web/manager/src/styles/stage00.scss",
+      "sha256": "0ad8d15405089c23bee2260a5ecbc29c91eefb9eee9fdc64c6d919d66bc452a1"
+    },
+    {
+      "file": "web/manager/src/views/Workspace.vue",
+      "sha256": "c7e1a065b20f92c1ef01b9c19f6fb7ae225e6f8ed72468d97119437d1da5410e"
+    },
+    {
+      "file": "web/manager/src/views/service/ServiceWorkspace.vue",
+      "sha256": "72a063b2c673968d0bbc58df7c4a9264c9f60006cd6dc9df93b608df42533b57"
+    }
+  ],
+  "branch": "main",
+  "worktree": "D:\\git\\daguanglu-community-prototype",
+  "recordedAt": "2026-11-19T02:18:25.288Z",
+  "candidateSha256": "f3fea2be47987aeb6cd62c3a2c7a8663930dde95393f2be762c8169941e24a6a",
+  "scope": "自 HEAD 以来的已修改及新增源码、脚本和文档，证据、忽略产物及 Stage03 未跟踪资料独立留存"
+}

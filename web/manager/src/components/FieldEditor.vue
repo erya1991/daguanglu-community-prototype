@@ -10,12 +10,7 @@
       :class="{ 'field-full': /多行|集合|上传/.test(f.type) }"
       :data-field="table + ':' + f.name"
     >
-      <Input
-        v-if="isLocked(f.name)"
-        :value="lockedText(f.name)"
-        disabled
-        :aria-label="label(f.name) + '（已带入，不可修改）'"
-      />
+      <span v-if="isLocked(f.name)" class="locked-value">{{lockedText(f.name)}}</span>
       <template v-else-if="isFile(f)"
         ><div class="file-input">
           <input
@@ -28,7 +23,7 @@
             @change="upload($event, f)"
           />
           <p>{{ uploadState[f.name] || '支持 PDF、PNG/JPEG、TXT、DOCX、XLSX，单文件不超过 10 MiB' }}</p>
-          <p v-if="value[f.name]">已选：{{ fileNames[f.name] || value[f.name] }}</p>
+          <div v-if="fileItem(f.name)" class="attachment-line"><button type="button" class="file-open" @click="openFile(f.name)"><img v-if="fileItem(f.name).type?.startsWith('image/')" :src="fileItem(f.name).url"/><span>{{fileItem(f.name).name}}</span><small v-if="!fileItem(f.name).type?.startsWith('image/')">{{Math.ceil(fileItem(f.name).size/1024)}}KB</small></button><Button size="small" @click="set(f.name,Array.isArray(value[f.name])?[]:'')">删除</Button></div>
         </div></template
       >
       <Select
@@ -67,7 +62,7 @@
         @input="set(f.name, $event)"
       />
       <div v-if="help(f.name)" class="field-help">{{ help(f.name) }}</div>
-    </FormItem>
+    </FormItem><Modal :value="!!previewImage" title="图片预览" footer-hide @on-cancel="previewImage=null"><img v-if="previewImage" :src="previewImage" style="max-width:100%"/></Modal>
 
 
   </div>
@@ -108,7 +103,7 @@ export default {
     original: Object,
     locked: { type: Object, default: () => ({}) },
   },
-  data: () => ({ choices: {}, lockedNames: {}, uploadState: {}, fileNames: {}, uploadFail: false, buildings: [], loadTicket: 0 }),
+  data: () => ({ choices: {}, lockedNames: {}, uploadState: {}, fileNames: {}, files: {}, previewImage: null, uploadFail: false, buildings: [], loadTicket: 0 }),
   computed: {
     isResource() {
       return ['facilities', 'parking'].includes(this.table)
@@ -129,11 +124,15 @@ export default {
     },
   },
   watch: { table: { handler: 'load', immediate: true }, value: { handler: 'load', deep: true } },
-  beforeDestroy() { this.loadTicket++ },
+  beforeDestroy() { this.loadTicket++;Object.values(this.files).forEach(f=>URL.revokeObjectURL(f.url)) },
   methods: {
     async load() {
       const ticket = ++this.loadTicket, result = {}, lockedNames = {}, data = this.isResource ? { ...this.value, 所属楼栋: this.value['关联楼栋'] } : this.value
-      for (const f of this.fields) result[f.name] = await service.options(this.table, f.name, data)
+      for (const f of this.fields) {
+        const scope = ['所属小区', '可查看小区', '适用小区'].includes(f.name) && !this.isLocked('所属社区')
+          ? { ...data, 所属社区: '', _estateDirectory: true } : data
+        result[f.name] = await service.options(this.table, f.name, scope)
+      }
       for (const name of Object.keys(this.locked)) {
         const reference = spaceReferences[name], value = this.locked[name]
         if (!reference || !value) continue
@@ -146,6 +145,7 @@ export default {
       }
       if (ticket !== this.loadTicket) return
       this.choices = result
+      for(const field of this.fields.filter(this.isFile)){const id=Array.isArray(this.value[field.name])?this.value[field.name][0]:this.value[field.name];if(id&&!this.files[id]){try{let f;try{f=await service.ownedAttachment(id)}catch(e){if(!this.original?._id)throw e;f=await service.attachment({table:this.table,id:this.original._id,blob:id,action:'view'})}this.$set(this.files,id,{...f,url:URL.createObjectURL(f.blob)})}catch(e){this.$set(this.uploadState,field.name,e.message)}}}
       this.lockedNames = lockedNames
       try {
         const buildings = await service.query('buildings')
@@ -163,6 +163,8 @@ export default {
       return values.map((v) => (this.choices[name] || []).find((item) => item.value === v)?.label || String(v)).join('、')
     },
     visible(n) {
+      const paired = { 所属社区: '所属小区', 可查看社区: '可查看小区', 适用社区: '适用小区' }
+      if (paired[n] && this.fields.some(f => f.name === paired[n])) return false
       if (this.table === 'personnel' && n === '变更说明')
         return (
           !!this.original &&
@@ -213,8 +215,16 @@ export default {
         所属楼栋: ['所属单元'],
       }
       for (const f of cascade[k] || []) next[f] = ''
+      const communityField = { 所属小区: '所属社区', 可查看小区: '可查看社区', 适用小区: '适用社区' }[k]
+      if (communityField && !this.isLocked(communityField)) {
+        const ids = Array.isArray(v) ? v : [v]
+        const parents = [...new Set((this.choices[k] || []).filter(e => ids.includes(e.value)).map(e => e.community))]
+        next[communityField] = Array.isArray(v) ? parents : parents[0] || ''
+      }
       this.$emit('input', next)
     },
+    fileItem(name) { const id=Array.isArray(this.value[name])?this.value[name][0]:this.value[name];return this.files[id]; },
+    openFile(name) {const f=this.fileItem(name);if(!f)return;if(f.type?.startsWith('image/')){this.previewImage=f.url;return}const link=document.createElement('a');link.href=f.url;link.download=f.name;link.target='_blank';link.click();},
     async upload(event, f) {
       const file = event.target.files[0]
       if (!file) return
@@ -231,3 +241,5 @@ export default {
   },
 }
 </script>
+
+<style scoped>.attachment-line,.file-open{display:flex;gap:8px;align-items:center}.file-open{padding:4px;border:0;background:transparent;color:#2d8cf0;cursor:pointer}.file-open img{width:64px;height:64px;object-fit:cover}.locked-value{line-height:32px}.file-open span{overflow-wrap:anywhere}</style>

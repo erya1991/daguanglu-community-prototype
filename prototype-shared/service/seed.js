@@ -1,4 +1,5 @@
-import { clone, allocations } from "./common.js";
+import { clone, allocations, supplyUnderReview, suspendSupplyForReview } from "./common.js";
+import { upgradeServiceCodes } from "./service-code.js";
 export const SCENARIOS = [
   "S02-BASE",
   "S02-BOOKING",
@@ -85,7 +86,7 @@ function demoPoints() {
 }
 // Common service categories for the prototype; these are examples, not real offerings or qualification policy.
 function addCategorySamples(d) {
-  if (d.categorySamplesVersion === 1) return false;
+  if (d.categorySamplesVersion >= 1) return false;
   const groups = [
     ['APPLIANCE', '家电清洗', [
       ['AC', '空调清洗', ['挂机空调清洗', '柜机空调清洗']],
@@ -121,27 +122,52 @@ function addCategorySamples(d) {
     for (const [subCode, subName, leaves] of children) {
       const child = root + '-' + subCode;
       if (exists(child)) continue;
-      d.categories.push(make(child, subName, root, order++));
+
       leaves.forEach((leaf, index) => {
         const id = child + '-' + (index + 1);
-        if (!exists(id)) d.categories.push(make(id, leaf, child, order++));
+        if (!exists(id)) d.categories.push(make(id, leaf, root, order++));
       });
     }
   }
-  d.categorySamplesVersion = 1;
+  d.categorySamplesVersion = 2;
   return true;
 }
 function prepareReferences(d) {
-  let changed = addCategorySamples(d);
+  const migrateExisting = (d.categorySamplesVersion || 0) < 2;
+  let changed = upgradeServiceCodes(d.orders);
+  if (addCategorySamples(d)) changed = true;
+  if (migrateExisting) {
+    // Capture the original relationships before moving leaves. Keep legacy IDs readable.
+    const byId = new Map(d.categories.map(c => [c._id, c]));
+    const parents = new Set(d.categories.map(c => c["上级类目"]));
+    for (const leaf of d.categories.filter(c => !parents.has(c._id))) {
+      const middle = byId.get(leaf["上级类目"]);
+      if (!middle?.["上级类目"]) continue;
+      const root = byId.get(middle["上级类目"]);
+      if (!root) continue;
+      leaf["上级类目"] = root._id;
+      if (middle._deleted || middle["类目状态"] !== "启用") leaf["类目状态"] = "停用";
+      middle._retiredGroup = true;
+    }
+    d.categorySamplesVersion = 2;
+    changed = true;
+  }
   if (!d.clockMode) { d.clockMode = "live"; changed = true; }
   // Bring existing sessions in line with the platform administrator's Web access.
   const platformGrant = d.grants?.["platform-admin"];
   if (platformGrant) {
-    for (const capability of ["manage", "review", "ruling", "funds"]) {
+    for (const capability of ["read", "config", "manage", "review", "ruling", "funds", "sensitive"]) {
       if (platformGrant[capability] !== true) {
         platformGrant[capability] = true;
         changed = true;
       }
+    }
+  }
+  for (const service of d.services) {
+    if (supplyUnderReview(service) && (service._merchantPaused === undefined ||
+      service["上架状态"] === "已上架" || service["接收新预约状态"] !== "暂停")) {
+      suspendSupplyForReview(service);
+      changed = true;
     }
   }
   if (!Array.isArray(d.points)) {
@@ -566,7 +592,7 @@ export function prepare(s, session = "") {
         review: true,
         ruling: true,
         funds: true,
-        sensitive: false,
+        sensitive: true,
       },
       "property-admin": {
         read: true,

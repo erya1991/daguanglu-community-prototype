@@ -1,4 +1,4 @@
-import { actorFor, inScope, execute, sensitive } from "../core.js";
+import { actorFor, inScope, execute, sensitive, residentEstateIds } from "../core.js";
 import {
   actor,
   domain,
@@ -44,7 +44,7 @@ const historyKeys = {
 };
 export function fieldLabels(s) {
   const pairs = [
-    ...s.communities.map((r) => [r._id, r["社区名称"]]),
+    ...s.communities.map((r) => [r._id, s.spaceRootName || "大光路社区"]),
     ...s.estates.map((r) => [r._id, r["小区名称"]]),
     ...s.buildings.map((r) => [r._id, r["楼栋名称／楼栋号"]]),
     ...s.units.map((r) => [r._id, r["单元名称／单元号"]]),
@@ -472,7 +472,9 @@ export function options(s, ctx) {
     }
   });
   return {
+    spaceRootName: s.spaceRootName || "大光路社区",
     spaces: {
+      rootName: s.spaceRootName || "大光路社区",
       estates: s.estates
         .filter((e) => (a["可查看小区"] || []).includes(e._id))
         .map((e) => ({ _id: e._id, name: e["小区名称"] })),
@@ -512,13 +514,11 @@ export function options(s, ctx) {
             ).includes(c._id)
           : a["可查看社区"].includes(c._id)
       )
-      .map((c) => ({ value: c._id, label: c["社区名称"] })),
+      .map((c) => ({ value: c._id, label: s.spaceRootName || "大光路社区" })),
     estates: s.estates
       .filter((e) =>
         a.role === "resident"
-          ? (
-              s.residents.find((r) => r._id === a.resident)?._communities || []
-            ).includes(e["所属社区"])
+          ? residentEstateIds(s, a.resident).includes(e._id)
           : a["可查看小区"].includes(e._id)
       )
       .map((e) => ({

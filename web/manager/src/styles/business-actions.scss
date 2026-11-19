@@ -1,0 +1,32 @@
+/* Keep the application theme on navigation. Business forms use one primary action color. */
+.single-page-con, .ivu-modal, .ivu-drawer {
+  .ivu-btn-primary:not(:where([disabled], .ivu-btn-ghost, .table-actions *, .s1-list-actions *, .action-column *)) {
+    color: white;
+    background: #1766bf;
+    border-color: #1766bf;
+    &:hover, &:focus-visible { background: #12569f; border-color: #12569f; }
+  }
+}
+
+.business-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Lists share text actions across foundation, property operations and community services. */
+.table-actions .ivu-btn, .s1-list-actions .ivu-btn, .action-column .ivu-btn {
+  color: #1766bf;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  &:hover:not([disabled]) { color:#104c92; border-color:transparent; background:transparent; text-decoration:underline; }
+  &[disabled] { color:#858c93; border-color:transparent; background:transparent; }
+}
+.ivu-modal-footer .ivu-btn-text, .ivu-modal-confirm-footer .ivu-btn-text {
+  color:#455568; border-color:#c6cdd4; background:white;
+}
+.ivu-btn:focus-visible { outline:2px solid #1766bf; outline-offset:2px; }

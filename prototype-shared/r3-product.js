@@ -78,7 +78,7 @@ export function captureStatistics(s) {
   s.resourceSnapshots[businessDate()] = { capturedAt: new Date().toISOString(), facilities: JSON.parse(JSON.stringify(s.facilities || [])), parking: JSON.parse(JSON.stringify(s.parking || [])) }
 }
 
-export function calculateStatistics(s, { scopes = [], metric, category = '', date }) {
+export function calculateStatistics(s, { scopes = [], metric, category = '', date }, canRead = () => true) {
   if (!scopes.length || !['人口', '户数', '设施类别', '车位'].includes(metric) || !/^\d{4}-\d{2}-\d{2}$/.test(date || '') || !Number.isFinite(Date.parse(date)) || new Date(date).toISOString().slice(0, 10) !== date) throw Error('请选择统计范围、指标和有效统计日期')
   const names = scopes.map(scope => scope.table === 'root' ? s.spaceRootName : spaceTitle(scope.table, s[scope.table]?.find(r => r._id === scope.id)))
   if (names.some(n => !n)) throw Error('所选统计范围已变化，请重新选择')
@@ -87,7 +87,7 @@ export function calculateStatistics(s, { scopes = [], metric, category = '', dat
   const snapshot = date === businessDate() ? s : s.resourceSnapshots?.[date]
   if (!snapshot) return [{ ...common, 数值: null, 单位: metric === '车位' ? '个' : '处', 状态: '暂无该日期数据' }]
   const rows = (metric === '车位' ? snapshot.parking : snapshot.facilities) || []
-  const matching = rows.filter(r => scopes.some(scope => resourceInSpace(r, scope)) && (!category || metric !== '设施类别' || r['点位类别'] === category))
+  const matching = rows.filter(r => canRead(r) && scopes.some(scope => resourceInSpace(r, scope)) && (!category || metric !== '设施类别' || r['点位类别'] === category))
   return [{ ...common, 数值: new Set(matching.map(r => r._id)).size, 单位: metric === '车位' ? '个' : '处', 状态: '已统计' }]
 }
 

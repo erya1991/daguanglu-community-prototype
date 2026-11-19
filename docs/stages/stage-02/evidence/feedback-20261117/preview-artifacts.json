@@ -1,0 +1,253 @@
+{
+  "checkedAt": "2026-11-17T08:22:34.332Z",
+  "origin": "http://127.0.0.1:19221",
+  "expectedRoot": "D:\\git\\daguanglu-community-prototype",
+  "server": {
+    "status": 404,
+    "metadataEndpointAvailable": false
+  },
+  "processCommandLine": "OS process query did not expose the existing process command line; resource bytes and browser pages verified instead.",
+  "resources": [
+    {
+      "url": "http://127.0.0.1:19221/web/",
+      "path": "web/manager/dist/index.html",
+      "status": 200,
+      "servedSha256": "92d670a2716d7477c9d2eb4753e54989fbb9dc9467134b72299e3b7b80285339",
+      "diskSha256": "92d670a2716d7477c9d2eb4753e54989fbb9dc9467134b72299e3b7b80285339",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/css/chunk-50765535.e3075771.css",
+      "path": "web/manager/dist/css/chunk-50765535.e3075771.css",
+      "status": 200,
+      "servedSha256": "aa1c12f103c8a121a99d3cbc30c05c9ab9ad012f906359d4a17efd1767471bbc",
+      "diskSha256": "aa1c12f103c8a121a99d3cbc30c05c9ab9ad012f906359d4a17efd1767471bbc",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/css/chunk-517dea6d.0c1a2178.css",
+      "path": "web/manager/dist/css/chunk-517dea6d.0c1a2178.css",
+      "status": 200,
+      "servedSha256": "fc143a78cd1a31a62638a60ad7ee8c450180dd60d616d893e8777c395fbafb90",
+      "diskSha256": "fc143a78cd1a31a62638a60ad7ee8c450180dd60d616d893e8777c395fbafb90",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/css/chunk-52a05124.726a84c7.css",
+      "path": "web/manager/dist/css/chunk-52a05124.726a84c7.css",
+      "status": 200,
+      "servedSha256": "be1078aa816e99351cd555ea5d51ce03b1c959b9dc3fbb1557e33d09757a9818",
+      "diskSha256": "be1078aa816e99351cd555ea5d51ce03b1c959b9dc3fbb1557e33d09757a9818",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0ab562.0e8c58e5.js",
+      "path": "web/manager/dist/js/chunk-2d0ab562.0e8c58e5.js",
+      "status": 200,
+      "servedSha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98",
+      "diskSha256": "cd6feda0db1675b46b7f8d016ca18be322994181a8ea81a6415117f035318a98",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0d2fae.e473150f.js",
+      "path": "web/manager/dist/js/chunk-2d0d2fae.e473150f.js",
+      "status": 200,
+      "servedSha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11",
+      "diskSha256": "762b34e95375ab85451089e2843e6b9be44462d0fd3a43db1acec161016abc11",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d0e5450.7ceae92a.js",
+      "path": "web/manager/dist/js/chunk-2d0e5450.7ceae92a.js",
+      "status": 200,
+      "servedSha256": "07a457eac031ec319266ccff68ec538df124e490428717076b6e62e431665ca0",
+      "diskSha256": "07a457eac031ec319266ccff68ec538df124e490428717076b6e62e431665ca0",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d208a96.42b149f2.js",
+      "path": "web/manager/dist/js/chunk-2d208a96.42b149f2.js",
+      "status": 200,
+      "servedSha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a",
+      "diskSha256": "278bfda0d0acc4d1b8975f42de88db1aa2a29d7c6864e559037b3a0d6967fa1a",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d215c24.8b94bac2.js",
+      "path": "web/manager/dist/js/chunk-2d215c24.8b94bac2.js",
+      "status": 200,
+      "servedSha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5",
+      "diskSha256": "c2a9b83659bf94bef01a98e30daaadc943d909eaaaeae28b60bccf1cf1e938b5",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-2d21f830.c0d3ba6c.js",
+      "path": "web/manager/dist/js/chunk-2d21f830.c0d3ba6c.js",
+      "status": 200,
+      "servedSha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be",
+      "diskSha256": "000241f661c4dd3134aea6a34aab0084fca28e979896703f507d01016e1da0be",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-50765535.4200aca3.js",
+      "path": "web/manager/dist/js/chunk-50765535.4200aca3.js",
+      "status": 200,
+      "servedSha256": "e206661d18cb6e24380ae528dcc0e84e688d9e7f35f72a3a3793e81059376146",
+      "diskSha256": "e206661d18cb6e24380ae528dcc0e84e688d9e7f35f72a3a3793e81059376146",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-517dea6d.68e8b664.js",
+      "path": "web/manager/dist/js/chunk-517dea6d.68e8b664.js",
+      "status": 200,
+      "servedSha256": "4ba8ad4b6c9eab332a02d76c288136055b6445fdc8a91fc60f09042b29fa2fe4",
+      "diskSha256": "4ba8ad4b6c9eab332a02d76c288136055b6445fdc8a91fc60f09042b29fa2fe4",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-52a05124.198c874a.js",
+      "path": "web/manager/dist/js/chunk-52a05124.198c874a.js",
+      "status": 200,
+      "servedSha256": "02c770a8f40773b4aec4ba65c83b26d652eeab53a78f734023f5e51e9c9a07a2",
+      "diskSha256": "02c770a8f40773b4aec4ba65c83b26d652eeab53a78f734023f5e51e9c9a07a2",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-770e854f.4650b104.js",
+      "path": "web/manager/dist/js/chunk-770e854f.4650b104.js",
+      "status": 200,
+      "servedSha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504",
+      "diskSha256": "d0c74d453fcf4e4b1811128537d841c7e95cd53af0509b1cf3824df12c147504",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/css/app.0e951206.css",
+      "path": "web/manager/dist/css/app.0e951206.css",
+      "status": 200,
+      "servedSha256": "27d99f33b4755726efb32bd17a4aa003ba2cf80e624f2f66a07dd421cc98158f",
+      "diskSha256": "27d99f33b4755726efb32bd17a4aa003ba2cf80e624f2f66a07dd421cc98158f",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/app.ffb27afa.js",
+      "path": "web/manager/dist/js/app.ffb27afa.js",
+      "status": 200,
+      "servedSha256": "2cf682f5be553342050a7c6d73fafa3e739b8fb26374e3114285600e5302a4c4",
+      "diskSha256": "2cf682f5be553342050a7c6d73fafa3e739b8fb26374e3114285600e5302a4c4",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/web/js/chunk-vendors.4c902ff7.js",
+      "path": "web/manager/dist/js/chunk-vendors.4c902ff7.js",
+      "status": 200,
+      "servedSha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5",
+      "diskSha256": "117abc0398c3b9469a65b77923785d56e6aa4aa4403b9665f072416b0819beb5",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/resident/",
+      "path": "miniapp/apps/resident-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "servedSha256": "028e6be4e1dfe0ebdad7913d34b74475454770b6a29a010e64e7efcfe95a05af",
+      "diskSha256": "028e6be4e1dfe0ebdad7913d34b74475454770b6a29a010e64e7efcfe95a05af",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/resident/assets/uni.ac315461.css",
+      "path": "miniapp/apps/resident-miniapp/dist/build/h5/assets/uni.ac315461.css",
+      "status": 200,
+      "servedSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "diskSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/resident/assets/index-DutiPTEo.js",
+      "path": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-DutiPTEo.js",
+      "status": 200,
+      "servedSha256": "e8f9dcfd1a06bff19e1129e51fdae612c17c7e3106d2f839df9feabd3729fe09",
+      "diskSha256": "e8f9dcfd1a06bff19e1129e51fdae612c17c7e3106d2f839df9feabd3729fe09",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/resident/assets/index-DdiibYX0.css",
+      "path": "miniapp/apps/resident-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "servedSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "diskSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/merchant/",
+      "path": "miniapp/apps/merchant-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "servedSha256": "6e81c37bcdac8ec9cd6e009eb1d25d7296570c2b87c5bc6c4e3cb116cc8767d1",
+      "diskSha256": "6e81c37bcdac8ec9cd6e009eb1d25d7296570c2b87c5bc6c4e3cb116cc8767d1",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/merchant/assets/uni.ac315461.css",
+      "path": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/uni.ac315461.css",
+      "status": 200,
+      "servedSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "diskSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/merchant/assets/index-CtcAy6Xz.js",
+      "path": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-CtcAy6Xz.js",
+      "status": 200,
+      "servedSha256": "65f39e1804043f876334d2d2f00aecf35a4798e5dab9af75803d87da448225e2",
+      "diskSha256": "65f39e1804043f876334d2d2f00aecf35a4798e5dab9af75803d87da448225e2",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/merchant/assets/index-DdiibYX0.css",
+      "path": "miniapp/apps/merchant-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "servedSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "diskSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/staff/",
+      "path": "miniapp/apps/staff-miniapp/dist/build/h5/index.html",
+      "status": 200,
+      "servedSha256": "1b1c2f9e00be64c89140b7c1429ac5a36492b1d3a24f351fa5b0d0b41e115950",
+      "diskSha256": "1b1c2f9e00be64c89140b7c1429ac5a36492b1d3a24f351fa5b0d0b41e115950",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/staff/assets/uni.ac315461.css",
+      "path": "miniapp/apps/staff-miniapp/dist/build/h5/assets/uni.ac315461.css",
+      "status": 200,
+      "servedSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "diskSha256": "ac3154610ad9e7cd114575e4b35e265d58d2106f1443e7f7dffaf6348743b496",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/staff/assets/index-DJGPfMoK.js",
+      "path": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-DJGPfMoK.js",
+      "status": 200,
+      "servedSha256": "590ad1ae93111a1e249195e653ca17f3184038ecac4fb6cdd61c977af9bf1074",
+      "diskSha256": "590ad1ae93111a1e249195e653ca17f3184038ecac4fb6cdd61c977af9bf1074",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/staff/assets/index-DdiibYX0.css",
+      "path": "miniapp/apps/staff-miniapp/dist/build/h5/assets/index-DdiibYX0.css",
+      "status": 200,
+      "servedSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "diskSha256": "8a5ebcf1006bcd99b55add0a4ae806b660b5a36a58389c3de078de258f277b7f",
+      "matches": true
+    },
+    {
+      "url": "http://127.0.0.1:19221/_shared/service/index.js",
+      "path": "prototype-shared/service/index.js",
+      "status": 200,
+      "servedSha256": "01825df047bc71f1e8541e56e913913422340006b802308c5f551af3d79bb979",
+      "diskSha256": "01825df047bc71f1e8541e56e913913422340006b802308c5f551af3d79bb979",
+      "matches": true
+    }
+  ],
+  "status": "MATCH"
+}

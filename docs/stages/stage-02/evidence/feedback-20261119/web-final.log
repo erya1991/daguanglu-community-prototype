@@ -1,0 +1,65 @@
+yarn run v1.22.22
+$ node scripts/apply-compression-hash-fix.cjs
+[manager-md4-compat] already-applied compression-webpack-plugin@4.0.1 sha256=950b598eef25905c5f32bb2733937a4f10294ed5efa410deb5af6959f61c8d4c
+$ vue-cli-service build
+
+-  Building for production...
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+ WARNING  Compiled with 2 warnings10:14:50
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  img/ionicons.a2c4a261.svg (542 KiB)
+  css/app.0c04323e.css (292 KiB)
+  js/app.6f1b984e.js (736 KiB)
+  js/chunk-vendors.4c902ff7.js (875 KiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (1.86 MiB)
+      js/chunk-vendors.4c902ff7.js
+      css/app.0c04323e.css
+      js/app.6f1b984e.js
+
+
+  File                                    Size              Gzipped
+
+  dist\js\chunk-vendors.4c902ff7.js       874.97 KiB        224.72 KiB
+  dist\js\app.6f1b984e.js                 735.54 KiB        155.96 KiB
+  dist\js\chunk-2596ed77.70221b16.js      103.87 KiB        27.56 KiB
+  dist\js\chunk-54958e12.b7845501.js      90.59 KiB         26.02 KiB
+  dist\js\chunk-7fd5bb0e.81c7a3e5.js      41.84 KiB         12.58 KiB
+  dist\js\chunk-2d0e5450.f14c5394.js      29.01 KiB         9.00 KiB
+  dist\js\chunk-770e854f.4650b104.js      18.57 KiB         6.45 KiB
+  dist\js\chunk-2d208a96.42b149f2.js      8.74 KiB          3.00 KiB
+  dist\js\chunk-2d215c24.8b94bac2.js      0.33 KiB          0.26 KiB
+  dist\js\chunk-2d0ab562.0e8c58e5.js      0.33 KiB          0.26 KiB
+  dist\js\chunk-2d0d2fae.e473150f.js      0.33 KiB          0.26 KiB
+  dist\js\chunk-2d21f830.c0d3ba6c.js      0.33 KiB          0.26 KiB
+  dist\css\app.0c04323e.css               292.05 KiB        42.46 KiB
+  dist\css\chunk-54958e12.7d75b065.css    14.74 KiB         3.30 KiB
+  dist\css\chunk-7fd5bb0e.baf8be68.css    0.39 KiB          0.23 KiB
+  dist\css\chunk-2596ed77.3856b55b.css    0.17 KiB          0.14 KiB
+
+  Images and other types of assets omitted.
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+      
+Done in 27.71s.

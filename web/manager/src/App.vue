@@ -35,24 +35,15 @@
           ><BreadcrumbItem>{{ pageTitle }}</BreadcrumbItem></Breadcrumb
         >
         <div class="header-context" v-if="!identityChanging && $route.meta.stage01 && $route.path !== '/property/bills'">
+          <span class="scope-root">{{info.spaceRootName}}</span>
           <Select
-            :value="context.community || ''"
-            clearable
-            placeholder="全部社区"
-            :data-field="$route.meta.stage01?'QF02':'demo:当前社区'"
-            style="width: 180px"
-            @on-change="changeCommunity"
-            ><Option v-for="c in scopes.communities" :key="c.value" :value="c.value">{{
-              c.label
-            }}</Option></Select
-          ><Select
             :value="context.estate || ''"
             clearable
             placeholder="全部小区"
             :data-field="$route.meta.stage01?'QF03':'demo:当前小区'"
             style="width: 180px"
             @on-change="changeEstate"
-            ><Option v-for="e in scopes.estates" :key="e.value" :value="e.value">{{
+            ><Option v-for="e in scopeEstates" :key="e.value" :value="e.value">{{
               e.label
             }}</Option></Select
           >
@@ -74,6 +65,9 @@
 <script>
 import { service } from './services/foundation'
 import { catalog } from '../../../prototype-shared/catalog.js'
+
+const serviceCatalogGroup = '商品与服务运营'
+
 export default {
   data: () => ({
     info: null,
@@ -83,6 +77,7 @@ export default {
     generation: 0,
     openGroups: [],
     scopes: { communities: [], estates: [] },
+    scopeEstates: [],
     context: {},
     catalog,
     stage01Entries: [['property/bills','物业费账单'],['property/payments','缴费记录'],['parking/business','停车业务'],['workorders/tasks','工单办理']],
@@ -100,7 +95,7 @@ export default {
     ],
   }),
   computed: {
-    serviceMenuGroups(){const role=this.info?.actor.role;const groups=[{title:'商户与合作管理',entries:[['qualifications','服务经营资格'],['personnel','服务人员']]},{title:'商品与服务运营',entries:[['categories','服务分类'],['review','服务审核']]},{title:'订单与履约管理',entries:[['orders','服务订单']]},{title:'售后与评价',entries:[['aftersales','服务售后'],['evaluations','服务评价']]}];return groups.map(g=>({...g,entries:g.entries.filter(e=>e[0]==='categories'?role==='platform':['platform','property'].includes(role)).map(e=>({path:'service/'+e[0],title:e[1]}))})).filter(g=>g.entries.length)},
+    serviceMenuGroups(){const role=this.info?.actor.role;const groups=[{title:'商户与合作管理',entries:[['qualifications','服务经营资格'],['personnel','服务人员']]},{title:serviceCatalogGroup,entries:[['categories','服务分类'],['review','服务审核']]},{title:'订单与履约管理',entries:[['orders','服务订单']]},{title:'售后与评价',entries:[['aftersales','服务售后'],['evaluations','服务评价']]}];return groups.map(g=>({...g,entries:g.entries.filter(e=>e[0]==='categories'?role==='platform':['platform','property'].includes(role)).map(e=>({path:'service/'+e[0],title:e[1]}))})).filter(g=>g.entries.length)},
     visibleGroups() {
       return this.groups.map(group => ({ ...group, items: group.items.filter(this.available) })).filter(group => group.items.length)
     },
@@ -126,8 +121,22 @@ export default {
       return this.info.actor.orgName + ' · ' + this.info.actor.scopeLabel
     },
   },
+  watch: {
+    openGroups() {
+      this.$nextTick(() => this.$refs.propertyMenu?.updateOpened())
+    },
+    $route(to, from) {
+      if (!this.info || this.identityChanging || to.path === from.path) return
+      if (to.meta.service !== from.meta.service) {
+        this.setDefaultOpenGroups()
+        return
+      }
+      const ancestors = to.meta.service ? [this.activeGroup] : ['property-management', this.activeGroup]
+      this.openGroups = [...new Set([...this.openGroups, ...ancestors])]
+    },
+    '$route.meta.stage01'() { if (this.info) this.refresh() },
+  },
   async created() {
-    this.openGroups = ['property-management', ...this.groups.map(group => group.title), '物业服务','商户与合作管理','商品与服务运营','订单与履约管理','售后与评价','经营与资金']
     this.unsubscribe = service.onChange(this.refresh)
     try {
       await service.start()
@@ -140,6 +149,12 @@ export default {
     this.unsubscribe?.()
   },
   methods: {
+    setDefaultOpenGroups(group = this.activeGroup) {
+      const serviceGroups = this.serviceMenuGroups.map(({ title }) => title)
+      this.openGroups = serviceGroups.includes(group) || group === '便民服务'
+        ? serviceGroups
+        : ['property-management', group, ...serviceGroups.filter(title => title === serviceCatalogGroup)]
+    },
     menuTitle(t) { return t === 'dashboard' ? '物业工作台' : t === 'spaces' ? '社区房屋档案' : catalog[t].title },
     available(t) {
       if (t === 'dashboard') return true
@@ -156,6 +171,7 @@ export default {
         const next = await service.info()
         const scopes = await service.scopes()
 
+        const estates = this.$route.meta.stage01 ? (await service.stage01.options()).estates : scopes.estates
         if (ticket !== this.refreshTicket) return
         if (
           this.info &&
@@ -164,7 +180,10 @@ export default {
           this.generation++
           this.$store.commit('identityChanged')
         }
+        const firstLoad = !this.info
         this.info = next
+        if (firstLoad) this.setDefaultOpenGroups()
+        this.scopeEstates = estates
         this.scopes = scopes
         this.context = service.context()
         this.error = ''
@@ -193,6 +212,7 @@ export default {
         this.generation++
         this.$store.commit('identityChanged')
         await this.refresh(true)
+        this.setDefaultOpenGroups('工作台')
         this.navigate('dashboard')
       } catch (e) {
         this.$Message.error(e.message)
@@ -207,7 +227,7 @@ export default {
       this.generation++
     },
     async changeEstate(e) {
-      await service.scope(this.context.community || '', e || '')
+      await service.scope('', e || '')
       await this.refresh()
       this.generation++
     },

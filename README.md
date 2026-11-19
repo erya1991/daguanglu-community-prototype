@@ -8,15 +8,15 @@
 
 ## 当前统一交付
 
-当前工作目录为 `D:\git\daguanglu-community-prototype`，统一使用 `main` 的完整代码与文档。本次交付包含既有Stage00／01基础、Stage02 V1.2最新实现及公共前端规范；Stage02仍待lee人工复验。后续Stage03以该main版本为已提交基础，新增工作按独立任务推进。
+当前工作目录为 `D:\git\daguanglu-community-prototype`，统一使用 `main` 的完整代码与文档。Stage02 V1.2 已按负责人授权在本地冻结，包含 Stage00／01 受影响的公共展示。以冻结记录中的基线提交和本地文件增量定位版本。
 
 | 使用目的 | 当前入口 |
 | --- | --- |
 | 开发共同规范 | [AGENTS第6.6节](AGENTS.md#66-前端交互与样式执行规范所有stage通用)、[WORKFLOW](docs/WORKFLOW.md) |
-| Stage02业务与实施 | [REQUIREMENTS](docs/stages/stage-02/REQUIREMENTS.md)、[PLAN](docs/stages/stage-02/PLAN.md)；当前规则以需求第5.8、5.9节为准，旧节点仅供历史订单兼容 |
-| Stage02人工验收 | [当前人工验收清单](docs/stages/stage-02/人工验收清单.md)：12项整改复验及6组补验，含各端入口、身份和明确数据 |
-| 验证、版本与运行 | [RESULT第7.1节](docs/stages/stage-02/RESULT.md#71-当前-v12-main统一交付)、[随仓验证记录](docs/stages/stage-02/evidence/main-delivery-20261116/README.md) |
-| 固定Stage02版本 | 包含本次交付记录首次新增的main提交；提交SHA在Git交付回执中提供，不用旧a9d8057代表本次实现 |
+| Stage02业务与实施 | [REQUIREMENTS](docs/stages/stage-02/REQUIREMENTS.md)、[PLAN](docs/stages/stage-02/PLAN.md)；当前规则以需求第5.8～5.13节的最新确认项为准，旧节点仅供历史订单兼容 |
+| Stage02人工验收 | [最终人工验收记录](docs/stages/stage-02/人工验收清单.md)，含清单（4）的五项通过和最后两项修正 |
+| 验证、版本与运行 | [RESULT 冻结记录](docs/stages/stage-02/RESULT.md#stage02-freeze-r4)、[本地验证证据](docs/stages/stage-02/evidence/freeze-20261119-list4/verification.json) |
+| 固定Stage02版本 | Stage02-V1.2-20261119-R4，基于 main@f724ebf 和[冻结文件清单](docs/stages/stage-02/evidence/freeze-20261119-list4/manifest.json) |
 
 已有依赖及产物时，在仓库根目录执行 `npm run preview -- --stage02`，本地入口为 http://127.0.0.1:19221 。修改源码后执行 `npm run build:preview` 再预览。全新检出先按下方“公共工程安装与运行”恢复锁定依赖；各端验收使用清单中的同一会话。实际Git推送状态以远端SHA核对为准，Git交付不代表Stage02人工验收或真实资金联调通过。
 

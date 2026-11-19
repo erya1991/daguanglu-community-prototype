@@ -30,7 +30,7 @@ export function createUniAdapter(app) {
     listeners = [],
     queue = Promise.resolve()
   context = upgradeIdentity(context, app)
-  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); upgradeProductState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); serviceDomain.prepare(s, "stage02-wechat"); return s },
+  const read = () => { const stored = uni.getStorageSync(key); const s = stored || createSeed(); upgradeState(s); upgradeProductState(s); stage01.prepare(s, stored ? "" : "stage01-wechat"); seedStage01(s); if (serviceDomain.prepare(s, "stage02-wechat") && stored) uni.setStorageSync(key, s); return s },
     save = (s) => uni.setStorageSync(key, s)
   let cleanupPromise
   async function ensureStage01Cleanup() {
@@ -104,7 +104,7 @@ export function createUniAdapter(app) {
       return scopeOptions(read(), context)
     },
     async scope(community, estate) {
-      const opts = scopeOptions(read(), context)
+      const opts = scopeOptions(read(), {...context, community})
       if (community && !opts.communities.some((c) => c.value === community)) throw Error('上下文不能扩大授权')
       if (estate && !opts.estates.some((e) => e.value === estate)) throw Error('上下文不能扩大授权')
       context = { ...context, community, estate }

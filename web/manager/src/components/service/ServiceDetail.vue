@@ -1,15 +1,14 @@
 <template>
   <div class="service-detail" :class="{'new-order-detail':table==='orders' && record._flowVersion===2}">
     <ServiceBusinessSummary v-if="summaryKind" :record="record" :kind="summaryKind" :table="table"/>
-    <details v-else
+    <section v-else
       v-for="section in sections"
       :key="section.title || section.id"
       class="detail-section"
-      open
     >
-      <summary>
+      <h3 v-if="!flat && (sections.length>1 || tableIds.length>1)">
         {{ section.title || cleanTitle(tableById[section.id] && tableById[section.id].title, section.id) }}
-      </summary>
+      </h3>
       <p v-if="!section.sources.length" class="detail-empty">
         {{ emptyMessage(section.id) }}
       </p>
@@ -18,7 +17,7 @@
         :key="index"
         class="detail-object"
       >
-        <h4 v-if="source._contextLabel || section.sources.length > 1">
+        <h4 v-if="!flat && (source._contextLabel || section.sources.length > 1)">
           {{ objectTitle(source, index) }}
         </h4>
         <dl class="detail-fields">
@@ -26,9 +25,9 @@
             v-for="f in fields(section.id, source, section.names)"
             :key="f.id"
             :data-field="f.id"
-            :class="{'wide-field':/地址|说明|内容|图片/.test(f.name)}"
+            :class="{'wide-field':/地址|说明|内容|图片|材料|证明|附件|服务点/.test(f.name),'attachment-row':isFile(f)}"
           >
-            <dt>{{ f.name }}</dt>
+            <dt>{{ flat ? (reviewLabels[f.name] || f.name) : f.name }}</dt>
             <dd>
               <ServiceEvidence
                 v-if="isFile(f)"
@@ -62,9 +61,9 @@
           </div>
         </dl>
       </article>
-    </details>
-    <details v-if="showExtras && extras.length" class="related-records" open>
-      <summary>关联业务信息</summary>
+    </section>
+    <section v-if="showExtras && extras.length" class="related-records">
+      <h3>关联业务信息</h3>
       <section v-for="[key, value] in extras" :key="key">
         <h3>{{ sectionNames[key] || key }}</h3>
         <ServiceValues
@@ -73,10 +72,11 @@
           :options="options"
         />
       </section>
-    </details>
+    </section>
   </div>
 </template>
 <script>
+import { serviceSpecFields, serviceWayFields, retiredCategoryFields } from "../../../../../prototype-shared/service/display.js";
 import { tableById } from "../../../../../prototype-shared/service/fields.js";
 import ServiceEvidence from "./ServiceEvidence.vue";
 import ServiceBusinessSummary from "./ServiceBusinessSummary.vue";
@@ -122,20 +122,23 @@ export default {
     table: String,
     options: { type: Object, default: () => ({}) },
     tableIds: { type: Array, default: () => [] },
+    flat: Boolean,
+    onlyFields: { type: Array, default: () => [] },
     showExtras: { type: Boolean, default: true },
   },
   data: () => ({ tableById, sectionNames }),
   computed: {
+    reviewLabels() { return { "组合履约方式名称":"履约方式", "组合固定价格":"报价（元）", "可服务门店或服务点":"到店服务点" }; },
     summaryKind() { if(this.table==="aftersales")return this.tableIds.includes("31-A")?"sale":"money";if(this.table==="funds")return "money";if(this.table==="orders"&&this.tableIds.includes("29-F"))return "money";if(this.table==="orders"&&this.tableIds.includes("31-A"))return "sale";return ""; },
     sections() {
       return this.tableIds
         .filter(this.tableApplicable)
-        .flatMap(id => id === "27-C" ? [
+        .flatMap(id => id === "27-C" && !this.flat ? [
           {title:"1. 基本信息",names:["服务编号","服务名称","所属服务类目","经营主体名称","经营店铺名称","当前展示价","公开服务电话"]},
-          {title:"2. 服务介绍",names:["服务主图","介绍图片","服务简介","服务详细说明"]},
-          {title:"3. 适用范围与约定",names:["适用对象说明","预约须知"]},
+          {title:"2. 服务介绍",names:["服务主图","介绍图片","服务简介","预约须知"]},
           {title:"4. 当前状态",names:["审核状态","上架状态","平台限制原因","可售状态说明","创建时间","最近更新时间"]}
-        ].map(g=>({...g,id,sources:this.sources(id)})) : [{ id, sources: this.sources(id) }]);
+        ].filter(g => g.names.some(name => !this.onlyFields.length || this.onlyFields.includes(name)))
+          .map(g=>({...g,id,sources:this.sources(id)})) : [{ id, sources: this.sources(id) }]);
     },
     extras() {
       return Object.entries(this.record).filter(
@@ -203,6 +206,7 @@ export default {
               ...spec,
               ...combo,
               _sourceKind: "combo",
+              _firstWay: j === 0,
               _contextLabel:
                 (spec["规格名称"] || "规格 " + (i + 1)) +
                 " · " +
@@ -418,14 +422,20 @@ export default {
     fields(id, source, names) {
       const base = tableById[id]?.fields || [];
       const added = this.record._flowVersion === 2 && id === "29-E"
-        ? ["服务地址", "服务人员", "服务时间", "服务完成时间", "订单完成时间"].map(name => ({id: "flow2:" + name, name, type: "文本／只读"})) : [];
+        ? ["服务地址", "服务人员", "服务时间", "服务完成时间", "订单完成时间", "服务码状态", "核验操作人", "核验时间"].map(name => ({id: "flow2:" + name, name, type: "文本／只读"})) : [];
       return base.concat(added).filter((f) => {
+        if (this.flat && id === "27-D" && source._firstWay === false && serviceSpecFields.includes(f.name)) return false;
+        if (id === "30-B" && ["到点凭证码","到点凭证二维码"].includes(f.name)) return false;
+        if (id === "26-D" && this.table === "qualifications" && ["核验结论","核验意见","材料有效性"].includes(f.name)) return false;
+        if (this.onlyFields.length && !this.onlyFields.includes(f.name)) return false;
+        if (["申请覆盖社区","批准覆盖社区","获准社区","上门覆盖社区"].includes(f.name)) return false;
         if(names && !names.includes(f.name))return false;
         if(id==="27-C"&&f.name==="服务规格集合")return false;
-        if (this.record._flowVersion === 2 && id === "29-E" && !["服务订单号", "服务规格名称", "履约方式名称", "经营店铺名称", "联系人姓名", "联系人电话", "需求说明", "需求图片", "服务对象描述", "创建时间", "服务地址", "服务人员", "服务时间", "服务完成时间", "订单完成时间"].includes(f.name)) return false;
+        if (this.record._flowVersion === 2 && id === "29-E" && !["服务订单号", "服务规格名称", "履约方式名称", "经营店铺名称", "联系人姓名", "联系人电话", "需求说明", "需求图片", "服务对象描述", "创建时间", "服务地址", "服务人员", "服务时间", "服务完成时间", "订单完成时间", "服务码状态", "核验操作人", "核验时间"].includes(f.name)) return false;
         if (this.record._flowVersion === 2 && /居民确认|到场|开始服务|到点确认|当前待确认|原始期望时间/.test(f.name)) return false;
         if (/历史|操作记录|变更记录|数据库|主键|外键|快照|版本$|^原始期望时间$|^当前安排$/.test(f.name) || (id === '30-C' && /^过程/.test(f.name))) return false;
         const value = this.fieldValue(source, f);
+        if (this.flat && value === null) return false;
         return this.fieldApplicable(id, source, f) && value !== undefined && value !== '' && (!Array.isArray(value) || value.length > 0);
       });
     },
@@ -465,13 +475,13 @@ export default {
         )
           return false;
       }
+      if (this.table === "categories" && retiredCategoryFields.includes(n)) return false;
       if (id === "27-D") {
+        if (this.table === "services" && ![...serviceSpecFields, ...serviceWayFields, "允许履约方式", "组合履约方式名称"].includes(n)) return false;
         if (mode === "上门" && n === "可服务门店或服务点") return false;
         if (mode === "预约到点" && /^上门覆盖/.test(n)) return false;
       }
       if (n === "有效截止日期" && source["长期有效"] === true) return false;
-      if (n === "商户资质要求说明" && !source["商户证明是否必需"]) return false;
-      if (n === "人员资质要求说明" && !source["人员证明是否必需"]) return false;
       if (id === "28-A" && this.table === "services" && /期望|约时提示/.test(n))
         return false;
       if (
@@ -501,6 +511,13 @@ export default {
         if (f.name === "服务时间") {const a=r.currentArrangement;return a ? `${a["安排服务日期"]} ${a["安排开始时间"]}—${a["安排结束时间"]}` : undefined;}
       }
       let value = valueOf(r, f.name);
+      if (this.flat && f.name === "可服务门店或服务点") {
+        return asArray(value).map(item => {
+          const point = typeof item === "string" ? this.options.points?.find(p => p.地点业务编号 === item) : item;
+          if (!point) return item;
+          return [point.地点名称, point.所属小区名称, point.详细地址, point.联系号码, point.营业时间说明, point.到点指引, point.地点状态].filter(Boolean).join(" · ");
+        }).join("；");
+      }
       if (value !== undefined) {
         const opts = /类目/.test(f.name)
           ? this.options.categories
@@ -575,13 +592,12 @@ export default {
 .detail-section {
   margin-bottom: 24px;
 }
-.detail-section > summary {
+.detail-section > h3 {
   font-size: 15px;
   padding: 10px 0;
   border-bottom: 2px solid #edf0f4;
   margin-bottom: 12px;
   color: #2d4259;
-  cursor: pointer;
 }
 .detail-empty {
   padding: 14px;
@@ -620,8 +636,7 @@ export default {
   border: 1px solid #dce4ed;
   border-radius: 6px;
 }
-.related-records summary {
-  cursor: pointer;
+.related-records h3 {
   color: #315f93;
 }
 .related-records section {
@@ -637,4 +652,6 @@ export default {
     gap: 12px;
   }
 }
+.detail-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}.detail-fields>div{grid-template-columns:100px minmax(0,1fr);gap:10px;padding:8px 0}.detail-fields>.wide-field{grid-column:1/-1}@media(max-width:650px){.detail-fields{grid-template-columns:1fr}}
+.detail-fields .attachment-row{display:flex;align-items:flex-start;gap:12px}.detail-fields .attachment-row dt{flex:0 0 auto}.detail-fields .attachment-row dd{min-width:0;flex:1}
 </style>

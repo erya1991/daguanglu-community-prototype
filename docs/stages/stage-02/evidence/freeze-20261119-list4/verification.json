@@ -1,0 +1,429 @@
+{
+  "version": "Stage02-V1.2-20261119-R4",
+  "decision": "负责人要求修正最后两项后冻结 Stage02 前端原型",
+  "ownerDecisions": [
+    {
+      "source": "00、09",
+      "menu": "Web → 基础档案、物业工单、服务分类",
+      "decision": "fail",
+      "feedback": "1 历史功能有一些页面的按钮放在了左下角，需要统一放到右下角"
+    },
+    {
+      "source": "01",
+      "menu": "住户 → 服务",
+      "decision": "pass",
+      "feedback": ""
+    },
+    {
+      "source": "01",
+      "menu": "住户 → 上门下单 → 地址",
+      "decision": "pass",
+      "feedback": ""
+    },
+    {
+      "source": "02",
+      "menu": "住户、商户 → 服务订单；Web → 服务订单",
+      "decision": "pass",
+      "feedback": ""
+    },
+    {
+      "source": "04",
+      "menu": "商户 → 供给送审；Web → 服务审核",
+      "decision": "pass",
+      "feedback": ""
+    },
+    {
+      "source": "05",
+      "menu": "商户 → 经营资格；Web → 服务经营资格",
+      "decision": "fail",
+      "feedback": "1 商户端服务经营资格页面，类目展示，可以在“获准服务类目”字段下方开始展示嘛，这样宽度就可以利用起来，展示也更好看了；"
+    },
+    {
+      "source": "B06",
+      "menu": "Web → 服务评价；住户 → 服务详情",
+      "decision": "pass",
+      "feedback": ""
+    }
+  ],
+  "sourceSha256": "aeedd5ae89b4a168b28c73a835b90be5c74d408193db5f00d12876c9697137cd",
+  "layout": {
+    "before": {
+      "phase": "before",
+      "base": "http://127.0.0.1:19221",
+      "session": "stage01-freeze4-1795073229258",
+      "web": [
+        {
+          "label": "新增居民档案",
+          "viewport": 1366,
+          "button": "保存",
+          "gap": 812,
+          "width": 868,
+          "rightmost": false
+        },
+        {
+          "label": "登记工单",
+          "viewport": 1366,
+          "button": "确认登记工单",
+          "gap": 584,
+          "width": 688,
+          "rightmost": false
+        },
+        {
+          "label": "添加一级分类",
+          "viewport": 1366,
+          "button": "确定",
+          "gap": 0,
+          "width": 648,
+          "rightmost": true
+        }
+      ],
+      "merchant": [
+        {
+          "width": 390,
+          "label": {
+            "x": 25,
+            "y": 330.265625,
+            "right": 121,
+            "bottom": 354.265625,
+            "width": 96
+          },
+          "tags": {
+            "x": 131,
+            "y": 327.265625,
+            "right": 365,
+            "bottom": 435.640625,
+            "width": 234
+          },
+          "field": {
+            "x": 25,
+            "y": 319.265625,
+            "right": 365,
+            "bottom": 444.640625,
+            "width": 340
+          },
+          "count": 4,
+          "firstRowCount": 3,
+          "values": [
+            "家庭保洁",
+            "空调清洗",
+            "循环扇清洗",
+            "居家玻璃清洗"
+          ],
+          "pageFits": true
+        }
+      ],
+      "errors": []
+    },
+    "after": {
+      "phase": "after",
+      "base": "http://127.0.0.1:19221",
+      "session": "stage01-freeze4-1795073592708",
+      "web": [
+        {
+          "label": "新增居民档案",
+          "viewport": 1366,
+          "button": "保存",
+          "gap": 0,
+          "width": 868,
+          "rightmost": true
+        },
+        {
+          "label": "登记工单",
+          "viewport": 1366,
+          "button": "确认登记工单",
+          "gap": 0,
+          "width": 688,
+          "rightmost": true
+        },
+        {
+          "label": "添加一级分类",
+          "viewport": 1366,
+          "button": "确定",
+          "gap": 0,
+          "width": 648,
+          "rightmost": true
+        },
+        {
+          "label": "编辑空间目录名称",
+          "viewport": 1366,
+          "button": "保存",
+          "gap": 0,
+          "width": 468,
+          "rightmost": true
+        },
+        {
+          "label": "房间导入办理",
+          "viewport": 1366,
+          "button": "确认整批导入",
+          "gap": 0,
+          "width": 1068,
+          "rightmost": true
+        },
+        {
+          "label": "账单选择文件",
+          "viewport": 1366,
+          "button": "重新校验",
+          "gap": 0,
+          "width": 1076,
+          "rightmost": true
+        },
+        {
+          "label": "账单导入预览",
+          "viewport": 1366,
+          "button": "确认导入有效行",
+          "gap": 0,
+          "width": 1076,
+          "rightmost": true
+        },
+        {
+          "label": "账单逐行核验",
+          "viewport": 1366,
+          "button": "保存映射并重新校验",
+          "gap": 0,
+          "width": 488,
+          "rightmost": true
+        },
+        {
+          "label": "账单导入结果",
+          "viewport": 1366,
+          "button": "核验发布账单",
+          "gap": 0,
+          "width": 1076,
+          "rightmost": true
+        },
+        {
+          "label": "新增居民档案",
+          "viewport": 1920,
+          "button": "保存",
+          "gap": 0,
+          "width": 868,
+          "rightmost": true
+        },
+        {
+          "label": "登记工单",
+          "viewport": 1920,
+          "button": "确认登记工单",
+          "gap": 0,
+          "width": 688,
+          "rightmost": true
+        },
+        {
+          "label": "添加一级分类",
+          "viewport": 1920,
+          "button": "确定",
+          "gap": 0,
+          "width": 648,
+          "rightmost": true
+        },
+        {
+          "label": "编辑空间目录名称",
+          "viewport": 1920,
+          "button": "保存",
+          "gap": 0,
+          "width": 468,
+          "rightmost": true
+        },
+        {
+          "label": "房间导入办理",
+          "viewport": 1920,
+          "button": "确认整批导入",
+          "gap": 0,
+          "width": 1068,
+          "rightmost": true
+        },
+        {
+          "label": "账单选择文件",
+          "viewport": 1920,
+          "button": "重新校验",
+          "gap": 0,
+          "width": 1458,
+          "rightmost": true
+        },
+        {
+          "label": "账单导入预览",
+          "viewport": 1920,
+          "button": "确认导入有效行",
+          "gap": 0,
+          "width": 1458,
+          "rightmost": true
+        },
+        {
+          "label": "账单逐行核验",
+          "viewport": 1920,
+          "button": "保存映射并重新校验",
+          "gap": 0,
+          "width": 488,
+          "rightmost": true
+        },
+        {
+          "label": "账单导入结果",
+          "viewport": 1920,
+          "button": "核验发布账单",
+          "gap": 0,
+          "width": 1458,
+          "rightmost": true
+        }
+      ],
+      "merchant": [
+        {
+          "width": 390,
+          "label": {
+            "x": 25,
+            "y": 327.265625,
+            "right": 365,
+            "bottom": 351.265625,
+            "width": 340
+          },
+          "tags": {
+            "x": 25,
+            "y": 357.265625,
+            "right": 365,
+            "bottom": 426.453125,
+            "width": 340
+          },
+          "field": {
+            "x": 25,
+            "y": 319.265625,
+            "right": 365,
+            "bottom": 435.453125,
+            "width": 340
+          },
+          "count": 4,
+          "firstRowCount": 3,
+          "values": [
+            "家庭保洁",
+            "空调清洗",
+            "循环扇清洗",
+            "居家玻璃清洗"
+          ],
+          "pageFits": true
+        },
+        {
+          "width": 414,
+          "label": {
+            "x": 25,
+            "y": 327.265625,
+            "right": 389,
+            "bottom": 351.265625,
+            "width": 364
+          },
+          "tags": {
+            "x": 25,
+            "y": 357.265625,
+            "right": 389,
+            "bottom": 426.453125,
+            "width": 364
+          },
+          "field": {
+            "x": 25,
+            "y": 319.265625,
+            "right": 389,
+            "bottom": 435.453125,
+            "width": 364
+          },
+          "count": 4,
+          "firstRowCount": 3,
+          "values": [
+            "家庭保洁",
+            "空调清洗",
+            "循环扇清洗",
+            "居家玻璃清洗"
+          ],
+          "pageFits": true
+        }
+      ],
+      "errors": []
+    }
+  },
+  "web": {
+    "checks": 10,
+    "widths": [
+      1366,
+      1920
+    ],
+    "browserErrors": []
+  },
+  "h5": {
+    "session": "stage02-feedback-1795073563566",
+    "groups": 30,
+    "home": "S02-ORDER-000101",
+    "store": "S02-ORDER-000115",
+    "browserErrors": [],
+    "blockedRequests": []
+  },
+  "unitTests": {
+    "total": 279,
+    "pass": 275,
+    "skip": 4,
+    "fail": 0
+  },
+  "builds": {
+    "firstRun": "../BUILD_2026-11-19T07-29-20-670Z/build-results.json",
+    "firstResult": [
+      {
+        "id": "web",
+        "status": "PASS"
+      },
+      {
+        "id": "resident-h5",
+        "status": "PASS"
+      },
+      {
+        "id": "resident-mp-weixin",
+        "status": "FAIL"
+      },
+      {
+        "id": "merchant-h5",
+        "status": "PASS"
+      },
+      {
+        "id": "merchant-mp-weixin",
+        "status": "PASS"
+      },
+      {
+        "id": "staff-h5",
+        "status": "PASS"
+      },
+      {
+        "id": "staff-mp-weixin",
+        "status": "PASS"
+      },
+      {
+        "id": "resident-types",
+        "status": "PASS"
+      },
+      {
+        "id": "merchant-types",
+        "status": "PASS"
+      },
+      {
+        "id": "staff-types",
+        "status": "PASS"
+      }
+    ],
+    "retry": {
+      "id": "resident-mp-weixin",
+      "initialError": "EPERM 创建生成目录 _shared/common",
+      "exitCode": 0,
+      "log": "resident-mp-retry.txt",
+      "appJsonSha256": "4b2c7af183e641dc1de5cbdd940f6b909e433e1e4f230d6926f24a3cb8b5499b"
+    },
+    "final": {
+      "buildsPassed": 7,
+      "typeChecksPassed": 3
+    }
+  },
+  "preview": {
+    "base": "http://127.0.0.1:19221/",
+    "mounts": {
+      "web": 17,
+      "resident": 89,
+      "merchant": 38,
+      "staff": 49,
+      "_shared": 33
+    }
+  },
+  "wechatDevTools": "本轮未执行",
+  "physicalDevice": "本轮未执行",
+  "productionFunds": "模拟资金"
+}

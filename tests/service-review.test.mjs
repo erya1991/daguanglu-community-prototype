@@ -420,27 +420,15 @@ test("S02-GAP-05 待居民答复及资金执行中不计商户或Web售后待办
   });
   for (const a of [M, W])
     assert.equal(api.overview(s, a).values["当前售后待处理数"], 0);
-  sale = run(s, R, "aftersale.respond", sale, {
-    方案版本: sale["方案版本"],
-    居民方案答复: "不同意",
-    居民方案答复说明: "请继续协商",
-  });
-  assert.equal(sale["居民方案答复人"], s.accounts.find(a => a._id === R.account)["人员姓名"]);
-  assert.ok(sale["居民方案答复时间"]);
-  for (const a of [M, W])
-    assert.equal(api.overview(s, a).values["当前售后待处理数"], 1);
-  sale = run(s, M, "aftersale.plan", sale, {
-    方案处理类型: "部分退款",
-    拟退款金额: "10",
-    金额依据说明: "重新协商",
-    方案说明: "按新方案",
-    业务结案方式: "部分履行终止",
-  });
+  assert.throws(()=>run(s,R,"aftersale.respond",sale,{方案版本:sale.方案版本,居民方案答复:"不同意"}),/仅支持确认或撤回/);
+  assert.equal(api.record(s,R,"aftersales",sale._id).售后状态,"待居民确认方案");
   api.auxiliary(s, W, "mode", { kind: "refund", outcome: "pending" });
-  run(s, R, "aftersale.respond", sale, {
+  sale = run(s, R, "aftersale.respond", sale, {
     方案版本: sale["方案版本"],
     居民方案答复: "同意",
   });
+  assert.equal(sale.plans.at(-1).居民方案答复人, s.accounts.find(a=>a._id===R.account).人员姓名);
+  assert.ok(sale.plans.at(-1).居民方案答复时间);
   for (const a of [M, W])
     assert.equal(api.overview(s, a).values["当前售后待处理数"], 0);
 });
@@ -457,17 +445,14 @@ test("S02-GAP-06 不需要与选填均可空，隐藏旧输入不会进入不需
     assert.equal(o["服务对象描述"], "");
   }
 });
-test("S02-GAP-06 必填规格配置提示及下单描述分别强制校验", () => {
+test("S02-GAP-06 规格无需配置提示，下单仍校验服务对象描述", () => {
   const s = setup(),
     d = draft(s);
   Object.assign(d["服务规格集合"][0], {
     服务对象填写要求: "必填",
     服务对象填写提示: "",
   });
-  let v = run(s, M, "service.save", null, d);
-  assert.throws(() => run(s, M, "service.submit", v), /提示/);
-  d["服务规格集合"][0]["服务对象填写提示"] = "请描述需清洁的对象";
-  v = publish(s, d);
+  const v = publish(s, d);
   assert.throws(
     () => run(s, R, "order.create", null, booking(s, v._id)),
     /对象描述/,
@@ -547,29 +532,29 @@ test("S02-GAP-01 停用方式不再进入居民规格、范围说明及起步价
 });
 
 
-test("平台管理员可办理全部服务Web菜单，旧会话升级且敏感授权独立", () => {
+test("平台管理员可办理全部服务Web菜单和授权材料，旧会话升级保留其他授权", () => {
   const s = setup();
   const grant = s.service.grants["platform-admin"];
-  for (const cap of ["manage", "review", "ruling", "funds"]) assert.equal(grant[cap], true);
+  for (const cap of ["read", "config", "manage", "review", "ruling", "funds", "sensitive"]) assert.equal(grant[cap], true);
   const baseline = structuredClone(s.service.orders);
-  Object.assign(grant, {manage: false, review: false, ruling: false, funds: false});
+  Object.assign(grant, {config: false, manage: false, review: false, ruling: false, funds: false, sensitive: false});
   assert.equal(api.prepare(s), true);
   assert.deepEqual(s.service.orders, baseline);
   assert.equal(api.prepare(s), false);
   for (const table of ["qualifications", "personnel", "categories", "methods", "services", "orders", "aftersales", "evaluations", "funds", "exceptions"]) assert.doesNotThrow(() => api.query(s, P, table, {}), table);
   assert.doesNotThrow(() => api.overview(s, P, {}));
-  assert.equal(grant.sensitive, false);
+  assert.equal(grant.sensitive, true);
+  assert.equal(s.service.grants["service-web-limited"].sensitive, false);
   assert.equal(s.service.grants["service-web-limited"].funds, false);
   assert.ok(api.query(s, P, "qualifications", {}).some(r => r._actions.some(a => a.name === "qualification.status")));
 });
 
 
-test('三级服务分类创建、层级校验和无原因启停', () => {
+test('二级服务分类创建、层级校验和无原因启停', () => {
   const s=setup();
   const root=run(s,P,'category.save',null,{类目名称:'测试一级'});
-  const child=run(s,P,'category.save',null,{类目名称:'测试二级',上级类目:root._id});
-  const leaf=run(s,P,'category.save',null,{类目名称:'测试三级',上级类目:child._id});
-  assert.throws(()=>run(s,P,'category.save',null,{类目名称:'测试四级',上级类目:leaf._id}),/最多支持三级/);
+  const leaf=run(s,P,'category.save',null,{类目名称:'测试二级',上级类目:root._id});
+  assert.throws(()=>run(s,P,'category.save',null,{类目名称:'测试三级',上级类目:leaf._id}),/最多支持二级/);
   assert.throws(()=>run(s,P,'category.save',raw(s,root._id),{类目名称:'测试一级',上级类目:leaf._id}),/循环/);
   run(s,P,'category.status',raw(s,leaf._id),{状态:'停用'});
   assert.equal(raw(s,leaf._id)['类目状态'],'停用');
@@ -593,18 +578,18 @@ test('分类删除保护子类与业务引用，未引用分类删除后不再�
 });
 
 
-test('常见服务分类样例三级结构与旧会话增量迁移不覆盖已有数据', () => {
+test('常见服务分类样例二级结构与旧会话增量迁移不覆盖已有数据', () => {
   const s=setup();
   const samples=s.service.categories.filter(c=>c._id.startsWith('S02-SAMPLE-'));
-  assert.equal(samples.length,28);
-  for(const c of samples) { let depth=1,p=c;while(p['上级类目']){p=s.service.categories.find(x=>x._id===p['上级类目']);assert.ok(p);depth++;assert.ok(depth<=3);} }
+  assert.equal(samples.length,20);
+  for(const c of samples) { let depth=1,p=c;while(p['上级类目']){p=s.service.categories.find(x=>x._id===p['上级类目']);assert.ok(p);depth++;assert.ok(depth<=2);} }
   const original=structuredClone(s.service.categories.find(c=>c._id==='CAT-CLEAN'));
   const orders=structuredClone(s.service.orders),qualifications=structuredClone(s.service.qualifications);
   s.service.categories=s.service.categories.filter(c=>!c._id.startsWith('S02-SAMPLE-'));
   s.service.categories.push({_id:'USER-PET',类目名称:'宠物服务',上级类目:'',类目状态:'启用'});
   delete s.service.categorySamplesVersion;
   assert.equal(api.prepare(s),true);
-  assert.equal(s.service.categories.filter(c=>c._id.startsWith('S02-SAMPLE-')).length,21);
+  assert.equal(s.service.categories.filter(c=>c._id.startsWith('S02-SAMPLE-')).length,15);
   assert.deepEqual(s.service.categories.find(c=>c._id==='CAT-CLEAN'),original);
   assert.deepEqual(s.service.orders,orders);assert.deepEqual(s.service.qualifications,qualifications);
   assert.equal(api.prepare(s),false);
@@ -612,4 +597,110 @@ test('常见服务分类样例三级结构与旧会话增量迁移不覆盖已�
   run(s,P,'category.delete',sample);
   api.prepare(s);
   assert.equal(api.query(s,P,'categories',{}).some(c=>c._id===sample._id),false);
+});
+
+test('既有会话的末级上提保留 ID、授权、历史与停用效果',()=>{
+  const s=setup(),root='S02-SAMPLE-APPLIANCE',id=root+'-AC-1',mid=root+'-AC';
+  const leaf=raw(s,id); s.service.categorySamplesVersion=1;
+  s.service.categories.push({...leaf,_id:mid,类目名称:'空调清洗',上级类目:root,类目状态:'停用'}); leaf.上级类目=mid;
+  const q=s.service.qualifications[0];q.获准服务类目.push(id);
+  const orders=structuredClone(s.service.orders);
+  assert.equal(api.prepare(s),true);assert.equal(api.prepare(s),false);
+  assert.equal(raw(s,id).上级类目,root);assert.equal(raw(s,id).类目状态,'停用');
+  assert.ok(q.获准服务类目.includes(id));assert.ok(api.options(s,M).categories.every(c=>c._id!==mid));
+  assert.deepEqual(s.service.orders,orders);
+});
+test('保存并送审在同一事务内校验，重复请求保留同一送审版和原发布价',()=>{
+  const s=setup(),shopAccount={app:'merchant',account:'service-merchant-a'},record=api.record(s,shopAccount,'services','SV-HOME');
+  const previous=structuredClone(raw(s,record._id));
+  const payload={id:record._id,revision:record._rev,operationId:'joint-submit',data:{...record,服务名称:'新名称'}};
+  assert.throws(()=>api.command(s,shopAccount,'service.saveAndSubmit',{...payload,data:{...payload.data,服务主图:[]}}));
+  assert.deepEqual(raw(s,record._id),previous);
+  const foreignImage=raw(s,'SV-FAN')['服务主图'];
+  assert.throws(()=>api.command(s,shopAccount,'service.saveAndSubmit',{...payload,data:{...payload.data,服务主图:foreignImage}}),/本人上传/);
+  assert.deepEqual(raw(s,record._id),previous);
+  const result=api.command(s,shopAccount,'service.saveAndSubmit',payload).record;
+  assert.equal(result.审核状态,'待审核');assert.equal(raw(s,record._id).submitted.服务名称,'新名称');
+  assert.deepEqual(raw(s,record._id).published,previous.published);
+  assert.ok(api.command(s,shopAccount,'service.saveAndSubmit',payload).replayed);
+});
+test('地址簿免选小区，上门预校验和建单共同验证履约范围', () => {
+  const s=setup(), opts=api.options(s,R);
+  s.service.fixtureLegacyOrders=false;
+  assert.equal(opts.spaceRootName,'大光路社区');
+  assert.deepEqual(opts.estates.map(e=>e.value),['E-A']);
+  const data={联系人姓名:'林悦',联系人电话:'13800000001',省份:'江苏省',城市:'南京市',区县:'秦淮区',详细地址:'某街12号'};
+  const item=api.command(s,R,'address.save',{data:{...data,所属小区:'E-B'}}).record;
+  assert.equal(item.所属小区,undefined);
+  const book={...booking(s),上门服务地址:item};
+  assert.throws(()=>api.preflight(s,R,book),e=>!!e.fields?.履约小区);
+  assert.throws(()=>api.preflight(s,R,{...book,履约小区:'E-B'}),e=>!!e.fields?.履约小区);
+  assert.deepEqual(api.preflight(s,R,{...book,履约小区:'E-A'}),{valid:true,amount:'99.00'});
+  const order=run(s,R,'order.create',null,{...book,履约小区:'E-A'});
+  assert.equal(order.地点快照.所属小区,'E-A');
+  assert.equal(order.地点快照.详细地址,data.详细地址);
+  const typed=api.command(s,R,'address.save',{data:{...data,详细地址:'青禾花园 1栋101'}}).record;
+  assert.equal(api.preflight(s,R,{...book,上门服务地址:typed}).valid,true);
+  const other=api.command(s,R,'address.save',{data:{...data,城市:'苏州市',区县:'吴中区'}}).record;
+  for(const method of [x=>api.preflight(s,R,x),x=>run(s,R,'order.create',null,x)]) {
+    assert.throws(()=>method({...book,上门服务地址:other,履约小区:'E-A'}),/覆盖小区/);
+    assert.throws(()=>method({...book,上门服务地址:{...data,详细地址:'望江公寓 1栋101'},履约小区:'E-A'}),/覆盖小区/);
+  }
+});
+
+test("既有待审供给经迁移下架，拒绝保持下架，通过发布当前送审版", () => {
+  const s = setup();
+  const service = raw(s, "SV-HOME");
+  const old = run(s, R, "order.create", null, booking(s, service._id));
+  const purchased = run(s, R, "order.pay", old);
+  const historical = structuredClone(purchased["服务内容快照"]);
+  const current = structuredClone(service.published);
+  const save = () => run(s, M, "service.saveAndSubmit", raw(s, service._id), {
+    ...current, 服务名称: "新版本保洁",
+    服务规格集合: [{ ...current.服务规格集合[0],
+      组合集合: [{ ...current.服务规格集合[0].组合集合[0], 组合固定价格: "109.00" }] }],
+  });
+  let pending = save();
+  assert.equal(pending.上架状态, "已下架");
+  assert.equal(pending.接收新预约状态, "暂停");
+  const rawPending = raw(s, service._id);
+  delete rawPending._merchantPaused;
+  rawPending.上架状态 = "已上架";
+  rawPending.接收新预约状态 = "接收中";
+  assert.equal(api.prepare(s), true);
+  assert.equal(api.prepare(s), false);
+  assert.equal(raw(s, service._id).上架状态, "已下架");
+  assert.ok(!api.query(s, R, "services", {}).some(x => x._id === service._id));
+  assert.throws(() => run(s, R, "order.create", null, booking(s, service._id)), /审核/);
+  assert.throws(() => run(s, M, "service.status", pending, { 状态: "已上架" }), /审核/);
+  assert.throws(() => run(s, M, "service.status", pending, { 状态: "恢复接单" }), /当前不可/);
+  const denied = run(s, P, "service.review", pending, { 审核结果: "退回" });
+  assert.equal(denied.上架状态, "已下架");
+  assert.equal(denied.接收新预约状态, "暂停");
+  pending = save();
+  const approved = run(s, P, "service.review", pending, { 审核结果: "通过" });
+  assert.equal(approved.当前发布版本, pending.送审版本);
+  assert.equal(approved.上架状态, "已上架");
+  assert.equal(approved.接收新预约状态, "接收中");
+  assert.equal(api.record(s, R, "services", service._id).服务名称, "新版本保洁");
+  const newer = run(s, R, "order.create", null, booking(s, service._id));
+  assert.equal(newer._amount, 10900);
+  assert.equal(api.record(s, R, "orders", old._id)._amount, 9900);
+  assert.deepEqual(api.record(s, R, "orders", old._id)["服务内容快照"], historical);
+});
+test("通过复审保留商户主动暂停，平台限制优先", () => {
+  const s = setup();
+  let service = run(s, M, "service.status", raw(s,"SV-HOME"), { 状态: "暂停接单", 暂停原因: "门店休息" });
+  service = run(s, M, "service.saveAndSubmit", service, { ...service, 服务简介: "更新时间" });
+  service = run(s, P, "service.review", service, { 审核结果: "通过" });
+  assert.equal(service.上架状态, "已上架");
+  assert.equal(service.接收新预约状态, "暂停");
+  service = run(s, M, "service.status", service, { 状态: "恢复接单" });
+  assert.equal(service.接收新预约状态, "接收中");
+  service = run(s, P, "service.status", service, { 状态: "平台限制", 原因说明: "平台核验" });
+  service = run(s, M, "service.saveAndSubmit", service, { ...service, 服务简介: "复审描述" });
+  service = run(s, P, "service.review", service, { 审核结果: "通过" });
+  assert.equal(service.上架状态, "已下架");
+  assert.equal(service.接收新预约状态, "暂停");
+  assert.throws(() => run(s,M,"service.status",service,{状态:"已上架"}), /平台限制/);
 });

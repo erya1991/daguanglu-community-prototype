@@ -116,9 +116,9 @@
             placeholder="填写空间目录名称"
             :disabled="rootNameSaving" /></FormItem
       ></Form>
-      <div class="toolbar">
-        <Button type="primary" :loading="rootNameSaving" @click="saveRootName">保存</Button
-        ><Button @click="rootNameOpen = false">取消</Button>
+      <div class="business-form-footer">
+        <Button @click="rootNameOpen = false">取消</Button>
+        <Button type="primary" :loading="rootNameSaving" @click="saveRootName">保存</Button>
       </div>
     </Modal>
   </section>

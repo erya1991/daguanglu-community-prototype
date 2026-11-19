@@ -23,7 +23,7 @@ function openPayment(id: string) { const route = APP === 'staff' ? '/pages/stage
         <view v-if="present(row,['WO04','WO05','WO07','WO09']).length" class="s1-detail-group"><text class="group-title">派工信息</text><Fields :row="row" :ids="present(row,['WO04','WO05','WO07','WO09'])" :table="table" :record-id="row._id"/></view>
         <view v-if="row.feedback?.EV12 && row._canConfirm" class="s1-detail-group"><text class="group-title">本次处理结果</text><Fields :row="row.feedback" :ids="['EV12','EV13']" :table="table" :record-id="row._id"/></view>
       </template>
-      <view v-else class="s1-detail-group"><text class="group-title">居民评价</text><Fields v-if="evaluation.VA01" :row="evaluation" :ids="present(evaluation,['VA01','VA02','VA03','VA04'])" :table="table" :record-id="row._id"/><text v-else class="hint">暂无评价</text></view>
+      <view v-else class="s1-detail-group"><Fields v-if="evaluation.VA01" :row="evaluation" :ids="present(evaluation,['VA01','VA02','VA03','VA04'])" :table="table" :record-id="row._id"/><text v-else class="hint">暂无评价</text></view>
     </template>
     <template v-else>
       <view v-for="section in groups" :key="section[0]" class="s1-detail-group"><text class="group-title">{{ section[0] }}</text><Fields :row="row" :ids="section[1]" :table="table" :record-id="row._id"/><Fields v-if="row.relation" :row="row.relation" :ids="['PK03','PK05','PK06','PK13','PK14']"/></view>
@@ -34,7 +34,7 @@ function openPayment(id: string) { const route = APP === 'staff' ? '/pages/stage
   </view>
 </template>
 <style scoped lang="scss">
-.s1-detail-group{background:#fff;border-radius:$radius-card;padding:16px;margin:16px 0;border:1px solid $color-border;min-width:0}
+.s1-detail-group{background:#fff;border-radius:$radius-card;padding:12px;margin:12px 0;border:1px solid $color-border;min-width:0}
 .group-title{display:block;font-size:16px;font-weight:600;line-height:1.6;margin-bottom:8px}.hint,.record-number{display:block;font-size:13px;color:$color-text-secondary;line-height:1.6}.payment-link{padding:12px 0;line-height:1.6;color:$color-primary;overflow-wrap:anywhere}
 .detail-tabs{display:flex;gap:12px;margin-top:16px}.detail-tabs button{flex:1;background:#fff;border:1px solid $color-border;font-size:14px;padding:8px;line-height:1.6}.detail-tabs button.active{color:$color-primary;border-color:$color-primary;font-weight:600}
 </style>

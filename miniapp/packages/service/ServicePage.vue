@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CategoryPicker from "./CategoryPicker.vue";
+import AftersaleDetail from "./AftersaleDetail.vue";
 import { serviceText } from "./presentation";
 import { showFormError } from "../ui/formFeedback";
 import FilterBar from "../ui/components/FilterBar.vue";
@@ -15,7 +17,7 @@ import Details from "./Details.vue";
 import SupplyEditor from "./SupplyEditor.vue";
 import VoucherCode from "./VoucherCode.vue";
 import Picture from "./Picture.vue";
-import AddressForm from "./AddressForm.vue";
+import FundDetails from "./FundDetails.vue";
 import OrderDetails from "./OrderDetails.vue";
 const props = withDefaults(
   defineProps<{
@@ -59,10 +61,8 @@ const rows = ref<any[]>([]),
   more = ref(false);
 watch(()=>props.initialStatus, v=>{status.value=v||""});
 watch(()=>props.category, v=>{category.value=v||""});
-const expandedCoverage = ref<string[]>([]);
-const communityFilter = ref(""),
-  estateFilter = ref(""),
-  sortOrder = ref("综合排序");
+const estateFilter = ref(""),
+  sortOrder = ref("");
 const merchant = computed(() => APP === "merchant");
 const table = computed(
   () =>
@@ -120,8 +120,8 @@ const title = computed(
         overview: "服务经营",
         funds: "服务资金",
         workbench: "服务工作台",
-        voucher: "到店凭证",
-        verify: "到店核验",
+        voucher: "服务码",
+        verify: "服务码核对",
       }) as any
     )[props.mode] || "便民服务",
 );
@@ -129,14 +129,28 @@ const actions = computed(() =>
   Array.isArray(row.value?._actions) ? row.value._actions : [],
 );
 const isNewFlow = computed(() => row.value?._flowVersion === 2);
-const primaryAction = computed(() => actions.value.find((a:any)=>a.primary) || (!(isNewFlow.value && table.value==='orders') ? actions.value[0] : null));
+const primaryAction = computed(() => {
+  if (merchant.value && table.value === "services") return actions.value.find((a:any) => a.name === "service.save");
+  const main = actions.value.find((a:any) => a.primary || ["qualification.submit","aftersale.respond"].includes(a.name));
+  return main || (isNewFlow.value && table.value === "orders" ? null : actions.value[0]);
+});
 const secondaryActions = computed(() => actions.value.filter((a:any)=>a!==primaryAction.value));
-const addresses = ref<any[]>([]), addressEditing = ref(false);
+const addresses = ref<any[]>([]), addressSheet = ref(false), needsEstate = ref(false);
+const filterBar=ref<any>(null);
+const createdPreset=ref(''), createdStart=ref(''), createdEnd=ref(''), customStart=ref(''), customEnd=ref('');
+const bookingDraftKey=()=> 'service:'+APP+':'+props.id+':booking';
+async function editAddress(a?:any){try{await service.draft(bookingDraftKey(),{data:form.value,operationId:operationId.value});addressSheet.value=false;uni.navigateTo({url:'/pages/profile/addresses?returnKey='+encodeURIComponent(bookingDraftKey())+(a?'&id='+encodeURIComponent(a._id):'')})}catch(e:any){await showFormError(e)}}
+function applyCreatedDates(){if(!customStart.value||!customEnd.value||customStart.value>customEnd.value){uni.showModal({title:'日期范围有误',content:'请选择有效的起止日期',showCancel:false});return}createdPreset.value='custom';createdStart.value=customStart.value;createdEnd.value=customEnd.value;filterBar.value?.close();load()}
 const showSupplement = ref(false);
 const eventValue = (event:any) => event.detail?.value ?? event.target?.value ?? '';
 const addressLabel = (a:any) => [a.联系人姓名, a.省份, a.城市, a.区县, a.详细地址].filter(Boolean).join(' ');
-function selectAddress(a:any) { if(!a)return; updateForm({...form.value, 上门地址来源:'常用地址', 上门服务地址:{...a}, 联系人姓名:a.联系人姓名, 联系人电话:a.联系人电话}); addressEditing.value=false; }
-function manageAddresses(){uni.navigateTo({url:'/pages/profile/addresses'})}
+function selectAddress(a:any) {
+  if (!a) return;
+  needsEstate.value = false;
+  updateForm({ ...form.value, 履约小区: "", 上门地址来源: "常用地址", 上门服务地址: { ...a },
+    联系人姓名: a.联系人姓名, 联系人电话: a.联系人电话 });
+  addressSheet.value = false;
+}
 function focusError(){setTimeout(()=>{
  const query=uni.createSelectorQuery();
  query.selectViewport().scrollOffset(()=>{});
@@ -144,14 +158,6 @@ function focusError(){setTimeout(()=>{
  query.select('.error').boundingClientRect();
  query.exec((items:any[])=>{const target=items[1]||items[2];if(target)uni.pageScrollTo({scrollTop:Math.max(0,(items[0]?.scrollTop||0)+target.top-80),duration:200})});
 },50)}
-function scanResult(){
- // #ifdef MP-WEIXIN
- uni.scanCode({success:r=>updateForm({...form.value,到点凭证码:r.result}),fail:()=>{error.value='扫码未完成，可输入凭证码'}});
- // #endif
- // #ifdef H5
- error.value='浏览器中请输入住户展示的凭证码';
- // #endif
-}
 const commandName = computed(
   () => props.action || (props.mode === "evaluation" ? "evaluation.save" : ""),
 );
@@ -280,8 +286,6 @@ const bookingData = computed(() => ({
   ...form.value,
   方式说明: combo.value["方式说明"] || combo.value["组合履约方式名称"],
   约时提示: "期望时间不代表预约成功，具体人员及时间由商户接单派工后生效。",
-  规格包含内容: spec.value["包含内容"],
-  规格不包含内容: spec.value["不包含内容"],
   规格方式固定价: combo.value["组合固定价格"],
   应付总金额: combo.value["组合固定价格"],
   收款主体名称: row.value?.["收款主体名称"] || "青禾物业服务有限公司",
@@ -305,7 +309,7 @@ const filtered = computed(() => {
     );
     return (
       (!search.value ||
-        [label(r), subtitle(r), r._id].join(" ").includes(search.value)) &&
+        [label(r), subtitle(r), r._id, r._order, r.申请原因].join(" ").includes(search.value)) &&
       (!status.value || statusLabel(r).includes(status.value)) &&
       (!date.value || arrangement?.["安排服务日期"] === date.value) &&
       (!person.value || arrangement?.["服务人员"] === person.value) &&
@@ -319,24 +323,27 @@ const filtered = computed(() => {
             )
           : r._combo?._method === method.value ||
             r["履约方式名称"] === method.value)) &&
-      (!communityFilter.value ||
-        combos.some((c: any) =>
-          (c["上门覆盖社区"] || []).includes(communityFilter.value),
-        ) ||
-        r._community === communityFilter.value) &&
       (!estateFilter.value ||
         combos.some((c: any) =>
-          (c["上门覆盖小区"] || []).includes(estateFilter.value),
-        ) ||
-        r._estate === estateFilter.value)
+          (c["上门覆盖小区"] || []).includes(estateFilter.value) ||
+          (c["可服务门店或服务点"] || []).some((p:any) => (p.所属小区 || p._estate) === estateFilter.value),
+        ))
     );
   });
-  if (table.value === "services" && sortOrder.value !== "综合排序")
+  if (table.value === "services" && sortOrder.value)
     result.sort(
       (a: any, b: any) =>
         (priceNumber(a) - priceNumber(b)) *
         (sortOrder.value === "价格从低到高" ? 1 : -1),
     );
+  if (table.value === "orders" && sortOrder.value) {
+    result.sort((a: any, b: any) => {
+      if (sortOrder.value === "下单从旧到新") return String(a["创建时间"]).localeCompare(String(b["创建时间"]));
+      if (sortOrder.value === "下单从新到旧") return String(b["创建时间"]).localeCompare(String(a["创建时间"]));
+      const byAmount = Number(a._amount ?? 0) - Number(b._amount ?? 0);
+      return sortOrder.value === "价格从低到高" ? byAmount : -byAmount;
+    });
+  }
   return result;
 });
 const specs = computed(
@@ -404,7 +411,9 @@ const topMenus = computed(() =>
 );
 function queryFilters() {
   try {
-    return props.section.startsWith("{") ? JSON.parse(props.section) : {};
+    const filters=props.section.startsWith("{") ? JSON.parse(props.section) : {};
+    if(props.mode==='funds'){delete filters.metric;return {...filters,groupBy:'order'}}
+    return ['orders','aftersales'].includes(props.mode)&&createdPreset.value ? {...filters,start:createdStart.value,end:createdEnd.value} : filters;
   } catch {
     return {};
   }
@@ -495,39 +504,6 @@ function serviceMethods(r: any) {
     ...new Set(availableCombos(r).map((c: any) => c["组合履约方式名称"])),
   ].join("、");
 }
-function serviceCoverage(r: any): string[] {
-  const lines: string[] = [];
-  for (const c of availableCombos(r)) {
-    if (c["组合履约方式名称"] === "上门") {
-      const communities = (c["上门覆盖社区"] || []).map(
-        (id: string) =>
-          options.value.communities?.find((o: any) => o.value === id)?.label ||
-          id,
-      );
-      const estates = (c["上门覆盖小区"] || []).map(
-        (id: string) =>
-          options.value.estates?.find((o: any) => o.value === id)?.label || id,
-      );
-      lines.push(
-        "上门：" + [...new Set([...communities, ...estates])].join("、"),
-      );
-    } else
-      for (const p of c["可服务门店或服务点"] || []) {
-        if (p["地点状态"] !== "停用")
-          lines.push(
-            "到点：" +
-              p["地点名称"] +
-              (p["详细地址"] ? "（" + p["详细地址"] + "）" : ""),
-          );
-      }
-  }
-  return [...new Set(lines)];
-}
-function toggleCoverage(id: string) {
-  expandedCoverage.value = expandedCoverage.value.includes(id)
-    ? expandedCoverage.value.filter((v) => v !== id)
-    : [...expandedCoverage.value, id];
-}
 function subtitle(r: any) {
   return serviceText(
     r._subtitle ||
@@ -560,7 +536,7 @@ function statusLabel(r: any) {
     ""
   );
 }
-const orderStatuses = computed(() => [...new Set(['全部','待付款','待接单','待服务','待评价','已完成','已取消',...rows.value.filter(r=>r._flowVersion!==2).map(statusLabel)])]);
+const orderStatuses = computed(() => ['全部','待付款','待接单','待服务','待评价','已完成','已取消']);
 function price(r: any) {
   if (r._amount !== undefined) return money(r._amount);
   const prices = (r["服务规格集合"] || [])
@@ -589,6 +565,7 @@ function go(page: string, params: any = {}) {
   });
 }
 function openRecord(r: any) {
+  if(r._fundSummary){go('action',{table:'orders',id:r._id,section:'funds'});return}
   if (table.value === "services" && !merchant.value)
     go("detail", { id: r._id });
   else if (table.value === "orders") go("order", { id: r._id });
@@ -618,7 +595,7 @@ function seedForm() {
     Object.assign(data, JSON.parse(JSON.stringify(r)));
   if (["order.arrange", "order.accept"].includes(name))
     Object.assign(data, {
-      服务人员: options.value.personnel?.[0]?._id || "",
+      服务人员: "",
       安排服务日期: options.value.today || "2026-11-07",
       安排开始时间: "09:00",
       安排结束时间: "11:00",
@@ -668,6 +645,7 @@ function seedForm() {
   if (name === "aftersale.plan")
     Object.assign(data, {
       方案处理类型: "部分退款",
+      拟退款金额: r["申请退款金额"] || "",
       业务结案方式: r.handlingOptions?.plan?.["部分退款"]?.[0] || "",
     });
   if (name === "aftersale.respond")
@@ -709,6 +687,9 @@ async function load() {
       );
     else if (props.id) {
       row.value = await api().record(table.value, props.id);
+      if (isAction.value && table.value==='aftersales' && ['aftersale.plan','aftersale.cancelDecision','aftersale.withdraw','aftersale.respond'].includes(commandName.value)) {
+        uni.redirectTo({url:'/pages/service/after-sale?id='+encodeURIComponent(props.id)+'&section=process'}); return;
+      }
       options.value = {
         ...options.value,
         handlingOptions: row.value?.handlingOptions,
@@ -735,7 +716,7 @@ async function load() {
           联系人姓名: options.value.actor.name || "",
           联系人电话: "",
           上门地址来源: "本次填写",
-          上门服务地址: { 省份:'江苏省',城市:'南京市',区县:'秦淮区',所属社区: "C-A", 所属小区: "E-A", 详细地址: "" },
+          上门服务地址: {},
           到点服务地点:
             combo.value["可服务门店或服务点"]?.[0]?.["地点业务编号"] || "",
           服务约定确认: false,
@@ -743,7 +724,7 @@ async function load() {
         };
         const preferred = addresses.value.find((a:any)=>a.默认地址);
         if (preferred && combo.value['组合流程模板'] === '上门') selectAddress(preferred);
-        else addressEditing.value = true;
+
       } else if (isAction.value) form.value = seedForm();
     } else if (props.mode === "qualification") {
       rows.value = await api().query("qualifications");
@@ -765,8 +746,14 @@ async function load() {
       );
       if (draft?.data)
         form.value = { ...draft.data, ...(action.value.defaults || {}) };
+      if (commandName.value === "order.accept" && form.value.服务人员 && !row.value?.dispatchPersonnel?.some((p:any)=>p.value===form.value.服务人员)) form.value.服务人员 = "";
       if (props.mode === "booking") form.value = bookingPayload(form.value);
       if (draft?.operationId) operationId.value = draft.operationId;
+      if(props.mode==='booking'&&draft?.selectedAddressId){
+        const selected=addresses.value.find(a=>a._id===draft.selectedAddressId);
+        if(selected)selectAddress(selected);
+        await service.draft(bookingDraftKey(),{data:form.value,operationId:operationId.value});
+      }
     }
     loaded.value = true;
   } catch (e: any) {
@@ -778,7 +765,7 @@ async function load() {
 }
 function updateForm(v: any) {
   form.value = v;
-  if (loaded.value && (isAction.value || props.mode === "booking"))
+  if (loaded.value && !busy.value && (isAction.value || props.mode === "booking"))
     service
       .draft(
         "service:" +
@@ -808,13 +795,13 @@ function bookingPayload(value: any) {
   if (combo.value["组合流程模板"] === "预约到点") {
     delete data["上门服务地址"];
     delete data["上门地址来源"];
+    delete data["履约小区"];
     const points = combo.value["可服务门店或服务点"] || [];
     if (!points.some((p: any) => p["地点业务编号"] === data["到点服务地点"]))
       data["到点服务地点"] = "";
   } else {
     delete data["到点服务地点"];
-    if (!data["上门服务地址"])
-      data["上门服务地址"] = { 所属社区: "C-A", 所属小区: "E-A", 详细地址: "" };
+    if (!data["上门服务地址"]) data["上门服务地址"] = {};
   }
   return data;
 }
@@ -855,7 +842,7 @@ async function submit() {
   error.value = "";
   fieldErrors.value = {};
   try {
-    const result = await api().command(commandName.value, {
+    const result = await api().command(commandName.value === "service.save" ? "service.saveAndSubmit" : commandName.value, {
       id: props.id || undefined,
       revision: row.value?._rev,
       operationId: operationId.value,
@@ -953,10 +940,22 @@ async function createOrder() {
   } catch(e:any) {
     error.value=e.message||"订单提交失败，输入已保留";
     fieldErrors.value=e.fields||{};
+    if (fieldErrors.value["履约小区"]) needsEstate.value = true;
     await showFormError(e,focusError);
   } finally { saving.value=false; }
 }
-async function quick(a: any) {
+async function quick(a: any, target = row.value) {
+  if (saving.value) return;
+  if (a.name === "qualification.submit") { await execute(a.name, {}, target, "申请已提交，等待审核"); return; }
+  if (['personnel.status','aftersale.respond','aftersale.withdraw','service.publish','service.submit','aftersale.execute'].includes(a.name) ||
+      (a.name==='service.status' && ['已上架','恢复接单','推荐','取消推荐'].includes(a.defaults?.状态))) {
+    const plan=target.plans?.[target.plans.length-1];
+    const data=a.name==='aftersale.respond'?{居民方案答复:'同意',方案版本:target.方案版本}:a.defaults||{};
+    const description=a.name==='aftersale.respond'?[plan?.方案处理类型,plan?.拟退款金额?'退款 ¥'+plan.拟退款金额:'',plan?.方案说明].filter(Boolean).join(' · '):a.name==='aftersale.withdraw'?'撤回后该申请结束。':(target.姓名||target.服务名称||'')+' · '+a.label;
+    const ok=await new Promise<boolean>(resolve=>uni.showModal({title:a.label,content:description||a.label,success:r=>resolve(r.confirm)}));
+    if(ok) await execute(a.name,data,target);
+    return;
+  }
   if (a.name === "order.pay") {
     const ok = await new Promise<boolean>((resolve) =>
       uni.showModal({
@@ -983,19 +982,20 @@ async function quick(a: any) {
     });
   } else act(a);
 }
-async function execute(name: string, data: any) {
+async function execute(name: string, data: any, target=row.value, message="操作已完成") {
   if (saving.value) return;
   saving.value = true;
   error.value = "";
   try {
     await api().command(name, {
-      id: row.value._id,
-      revision: row.value._rev,
+      id: target._id,
+      revision: target._rev,
       operationId: "service-ui-" + Date.now(),
       data,
     });
     await load();
-    success.value = "操作已完成";
+    success.value = message;
+    uni.showToast({title:message,icon:"none"});
   } catch (e: any) {
     error.value = e.message || "操作失败，请重试";
   } finally {
@@ -1006,10 +1006,18 @@ async function queryVoucher() {
   error.value = "";
   verified.value = null;
   try {
+    const entered = voucherInput.value.trim();
+    if (/^\d{6}$/.test(entered)) {
+      const matches = await api().query('orders', {serviceCode: entered});
+      const order = matches.find((o:any) => !props.id || o._id === props.id);
+      if (!order) throw Error('未找到本店可办理的服务订单，请核对服务码');
+      row.value = verified.value = order;
+      return;
+    }
     const list = props.id
       ? [await api().record("orders", props.id)]
       : await api().query("orders", {});
-    const code = voucherInput.value.trim();
+    const code = entered;
     const match = list.find(
       (r: any) =>
         (r.credential?.["到点凭证码"] || r["到点凭证码"] || "") === code ||
@@ -1060,21 +1068,6 @@ function matchCredentialCode() {
     verified.value?.credential?.["到点凭证码"] || voucherInput.value.trim()
   );
 }
-function scan() {
-  // #ifdef MP-WEIXIN
-  uni.scanCode({
-    onlyFromCamera: false,
-    success: (r) => {
-      voucherInput.value = r.result;
-      queryVoucher();
-    },
-    fail: () => (error.value = "扫码未完成，可手动输入凭证码"),
-  });
-  // #endif
-  // #ifdef H5
-  error.value = "当前环境请手动输入凭证码";
-  // #endif
-}
 const off = service.onChange(() => {
   if (!isAction.value && props.mode !== "booking") load();
 });
@@ -1099,21 +1092,48 @@ watch(
   },
 );
 const voucherExpanded=ref(false);
-function cardActions(r:any){const list=(r._actions||[]).filter((a:any)=>['evaluation.save','aftersale.apply'].includes(a.name));if(r.currentAftersale)list.push({name:'view-sale',label:'查看售后'});return list}
+function cardActions(r:any){const list=(r._actions||[]).filter((a:any)=>['evaluation.save','aftersale.apply'].includes(a.name));if(r.currentAftersale)list.push({name:'view-sale',label:'查看售后'});return list.sort((x:any,y:any)=>Number(x.name==='evaluation.save')-Number(y.name==='evaluation.save'))}
 function cardAction(r:any,a:any){if(a.name==='view-sale')return go('after-sale',{id:r.currentAftersale._id});go('action',{table:'orders',id:r._id,action:a.name,section:a.label})}
-const moreDraft=ref<any>({});
+const priceSort = ["价格从低到高", "价格从高到低"];
+const selectableEstates = computed(() => (options.value.estates || [])
+  .filter((e:any) => (combo.value["上门覆盖小区"] || []).includes(e.value)));
 const quickFilters=computed(()=>{
- const filters:any[]=[{key:'method',label:'服务方式',value:method.value,options:[{value:'上门',label:'上门'},{value:'预约到点',label:'预约到店'}]}];
- if(props.mode==='discover') filters.push({key:'category',label:'服务分类',value:category.value,options:(options.value.categories||[]).map((c:any)=>({value:c._id,label:c['类目名称']}))},{key:'community',label:'社区',value:communityFilter.value,options:options.value.communities||[]});
- if(props.mode==='orders'&&merchant.value) filters.push({key:'person',label:'服务人员',value:person.value,options:(options.value.personnel||[]).map((p:any)=>({value:p._id,label:p.label||p['姓名']}))});
- return ['discover','orders'].includes(props.mode)?filters:[];
+  const filters:any[]=[];
+  if (['discover','orders'].includes(props.mode)) filters.push({key:'method',label:'服务方式',value:method.value,options:[{value:'上门',label:'上门'},{value:'预约到点',label:'预约到店'}]});
+  if (props.mode==='aftersales') filters.push({key:'status',label:'售后状态',value:status.value,options:(options.value.dictionaries?.售后状态筛选 || []).map((value:string)=>({value,label:value}))});
+  if (['orders','aftersales'].includes(props.mode)) filters.push({key:'created',custom:true,label:props.mode==='orders'?'下单日期':'申请日期',wide:props.mode==='orders',value:createdPreset.value,options:[...['7','30','90'].map(value=>({value,label:'近'+value+'天'})),{value:'custom',label:createdStart.value+' 至 '+createdEnd.value}]});
+  if (props.mode==='discover') filters.push({key:'category',custom:true,label:'服务分类',value:category.value,options:options.value.categories||[]});
+  if (props.mode==='discover') filters.push({key:'estate',label:'小区',value:estateFilter.value,options:options.value.estates||[]});
+  if (props.mode==='orders'&&merchant.value) filters.push({key:'person',label:'服务人员',value:person.value,options:options.value.personnel||[]});
+  if (["discover", "orders"].includes(props.mode)) {
+    const order = props.mode === "orders";
+    const values = order ? ["下单从新到旧", "下单从旧到新", ...priceSort] : priceSort;
+    filters.push({ key: "sort", label: "排序", emptyLabel: order ? "默认排序（最新下单）" : "综合排序",
+      value: sortOrder.value, options: values.map(value => ({ value, label: value })) });
+  }
+  return filters;
 });
-function setFilter(key:string,value:string){if(key==='method')method.value=value;if(key==='person')person.value=value;if(key==='category')category.value=value;if(key==='community'){communityFilter.value=value;estateFilter.value=''}}
-function openFilters(){moreDraft.value={date:date.value,estate:estateFilter.value,sort:sortOrder.value}}
-function cancelFilters(){openFilters()}
-function resetFilters(){moreDraft.value={date:'',estate:'',sort:'综合排序'}}
-function applyFilters(){date.value=moreDraft.value.date||'';estateFilter.value=moreDraft.value.estate||'';sortOrder.value=moreDraft.value.sort||'综合排序'}
-function clearFilters(){search.value='';status.value='';method.value='';category.value='';person.value='';communityFilter.value='';date.value='';estateFilter.value='';sortOrder.value='综合排序'}
+function openPanel(key:string){if(key==='created'){customStart.value=createdStart.value;customEnd.value=createdEnd.value;}}
+function setFilter(key:string,value:string){
+  if(key==='created'){
+    createdPreset.value=value;createdStart.value='';createdEnd.value='';
+    if(value){const today=options.value.today;const d=new Date(today+'T12:00:00');d.setDate(d.getDate()-Number(value)+1);createdStart.value=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');createdEnd.value=today}
+    load();
+  }
+  if(key==='method')method.value=value;
+  if(key==='person')person.value=value;
+  if(key==='category')category.value=value;
+  if(key==='estate')estateFilter.value=value;
+  if(key==='status')status.value=value;
+  if(key==='sort')sortOrder.value=value;
+  filterBar.value?.close();
+}
+function supplyMore(){
+  const items=secondaryActions.value;
+  uni.showActionSheet({itemList:items.map((a:any)=>a.label),success:r=>quick(items[r.tapIndex])});
+}
+function saleTask(r:any){return (r._actions||[]).find((a:any)=>['aftersale.plan','aftersale.cancelDecision','aftersale.execute'].includes(a.name))}
+function clearFilters(){createdPreset.value='';createdStart.value='';createdEnd.value='';load();search.value='';status.value='';method.value='';category.value='';person.value='';date.value='';estateFilter.value='';sortOrder.value=''}
 </script>
 <template>
   <AppPage
@@ -1225,114 +1245,39 @@ function clearFilters(){search.value='';status.value='';method.value='';category
         >
       </template>
       <template v-else-if="isList"
-        ><view class="list-heading svc-view"
-          ><text class="list-title svc-text">{{
-            mode === "discover" ? "预约专业便民服务" : title
-          }}</text
-          ><button
-            v-if="newCommand"
-            class="new-button svc-button"
-            @click="editRecord(null, newCommand)"
-          >
-            {{ newLabel }}
-          </button></view
-        >
-          <button v-if="mode==='discover'" class="order-shortcut" @click="go('orders')">我的服务订单 ›</button>
-          <FilterBar v-model="search" :placeholder="mode==='discover'?'搜索服务名称、店铺':'搜索编号、服务名称'" :filters="quickFilters" :has-more="mode==='discover'||(mode==='orders'&&merchant)" :active-more="!!date||!!estateFilter||sortOrder!=='综合排序'" @filter="setFilter" @open="openFilters" @cancel="cancelFilters" @apply="applyFilters" @reset="resetFilters">
-            <FormField v-if="mode==='orders'&&merchant" label="服务日期"><picker mode="date" :value="moreDraft.date" @change="moreDraft.date=$event.detail.value"><view class="pick">{{moreDraft.date||'全部日期'}}</view></picker></FormField>
-            <template v-if="mode==='discover'"><FormField label="小区"><picker :range="[{value:'',label:'全部'},...(options.estates||[]).filter((r:any)=>!communityFilter||r.community===communityFilter)]" range-key="label" @change="moreDraft.estate=Number($event.detail.value)?(options.estates||[]).filter((r:any)=>!communityFilter||r.community===communityFilter)[Number($event.detail.value)-1].value:''"><view class="pick">{{options.estates?.find((r:any)=>r.value===moreDraft.estate)?.label||'全部'}}</view></picker></FormField><FormField label="排序"><picker :range="['综合排序','价格从低到高','价格从高到低']" @change="moreDraft.sort=['综合排序','价格从低到高','价格从高到低'][Number($event.detail.value)]"><view class="pick">{{moreDraft.sort}}</view></picker></FormField></template>
+        ><view v-if="mode!=='discover' && mode!=='orders'" class="list-heading svc-view">
+          <text class="list-title svc-text">{{ title }}</text>
+          <AppButton v-if="newCommand" size="compact" @click="editRecord(null, newCommand)">{{ newLabel }}</AppButton>
+        </view>
+          <FilterBar ref="filterBar" v-model="search" :placeholder="mode==='discover'?'搜索服务名称、店铺':mode==='aftersales'?'搜索售后单号、订单号或服务':'搜索编号、服务名称'" :filters="quickFilters" @filter="setFilter" @panel="openPanel">
+            <template #shortcut><button v-if="mode==='discover'" class="search-shortcut" @click="go('orders')">服务订单</button><button v-if="mode==='orders'" class="search-shortcut" @click="go('aftersales')">{{merchant?'售后处理':'服务售后'}}</button></template>
+            <template #panel="{filterKey}"><view v-if="filterKey==='category'"><button class="filter-all" @click="setFilter('category','')">全部分类</button><CategoryPicker inline :multiple="false" :categories="options.categories||[]" :value="category?[category]:[]" @input="setFilter('category',$event[0]||'')"/></view>
+            <view v-else-if="filterKey==='created'" class="date-panel"><view class="date-presets"><button v-for="v in ['7','30','90']" :key="v" :class="{selected:createdPreset===v}" @click="setFilter('created',v)">近{{v}}天</button></view>
+              <view class="date-range"><picker mode="date" :value="customStart||options.today" @change="customStart=$event.detail.value"><view>{{customStart||'开始日期'}}</view></picker><text>至</text><picker mode="date" :value="customEnd||options.today" @change="customEnd=$event.detail.value"><view>{{customEnd||'结束日期'}}</view></picker></view><view class="date-presets"><button @click="setFilter('created','')">全部日期</button><button class="selected" @click="applyCreatedDates">确定范围</button></view></view></template>
           </FilterBar>
+          <view v-if="mode==='aftersales'&&createdPreset" class="date-summary">申请日期　{{createdStart}} 至 {{createdEnd}}</view>
+          <view v-if="mode==='funds'" class="date-summary">期间：{{rows[0]?._fundSummary?.period?.start||options.today?.slice(0,7)+'-01'}} 至 {{rows[0]?._fundSummary?.period?.end||options.today}} · 金额为本单累计</view>
           <scroll-view v-if="mode==='orders'" scroll-x class="status-tabs"><button v-for="t in orderStatuses" :key="t" :class="{active:(status||'全部')===t}" @click="status=t==='全部'?'':t">{{t}}</button></scroll-view>
-          <view v-if="search||status||method||category||person||communityFilter||date||estateFilter||sortOrder!=='综合排序'" class="filter-summary"><text>共 {{filtered.length}} 条</text><text class="text-link" @click="clearFilters">清除筛选</text></view
+          <view v-if="search||status||method||category||person||date||createdPreset||estateFilter||sortOrder" class="filter-summary"><text>共 {{filtered.length}} 条</text><text class="text-link" @click="clearFilters">清除筛选</text></view
         ><view v-if="!filtered.length" class="empty svc-view"
           ><text class="svc-text">暂无符合条件的记录</text
           ><text class="muted svc-text">调整筛选，或稍后重新查询。</text
           ><button class="svc-button" @click="load">重新查询</button></view
-        ><view
-          v-for="r in filtered"
-          :key="r._id"
-          class="record-card svc-view"
-          @click="openRecord(r)"
-          ><Picture
-            v-if="table === 'services'"
-            :value="r['服务主图']"
-            table="services"
-            :record-id="r._id"
-          /><view class="card-top svc-view"
-            ><text
-              class="card-title svc-text"
-              :data-field="mode === 'discover' ? '29-A.08' : undefined"
-              >{{ label(r) }}</text
-            ><text
-              v-if="statusLabel(r)"
-              class="status svc-text"
-              :data-field="mode === 'discover' ? '29-A.13' : undefined"
-              >{{ statusLabel(r) }}</text
-            ></view
-          ><template v-if="mode === 'discover'">
-            <text class="muted svc-text" data-field="29-A.09">{{
-              r["经营店铺名称"]
-            }}</text>
-            <text class="muted svc-text" data-field="29-A.11">{{
-              serviceText(serviceMethods(r))
-            }}</text>
-            <view
-              class="coverage svc-view"
-              data-field="29-A.12"
-              @click.stop="toggleCoverage(r._id)"
-            >
-              <text
-                v-for="line in expandedCoverage.includes(r._id)
-                  ? serviceCoverage(r)
-                  : serviceCoverage(r).slice(0, 1)"
-                :key="line"
-                class="muted svc-text"
-                >{{ serviceText(line) }}</text
-              >
-              <text
-                v-if="serviceCoverage(r).length > 1"
-                class="coverage-toggle svc-text"
-                >{{
-                  expandedCoverage.includes(r._id)
-                    ? "收起适用地点"
-                    : "展开全部适用地点"
-                }}</text
-              >
-            </view> </template
-          ><text v-else-if="subtitle(r)" class="muted svc-text">{{
-            subtitle(r)
-          }}</text>
-          <view
-            v-if="mode === 'orders' && merchant && r.currentArrangement"
-            class="arrangement-line svc-view"
-          >
-            <text class="muted svc-text">当前已确认：</text>
-            <text class="svc-text" data-field="28-D.03">{{
-              r.currentArrangement["安排服务日期"]
-            }}</text>
-            <text class="svc-text" data-field="28-D.04">{{
-              r.currentArrangement["安排开始时间"]
-            }}</text
-            ><text class="svc-text">至</text>
-            <text class="svc-text" data-field="28-D.05">{{
-              r.currentArrangement["安排结束时间"]
-            }}</text> </view
-          ><view v-if="table==='evaluations'" class="review-summary"><StarRating :model-value="Number(r['总体评分'])" readonly/><text class="review-copy">{{r['评价内容']||'未填写文字评价'}}</text><text class="muted">{{r['评价时间']}}</text></view>
-          <view v-if="table==='funds' && r['资金类型']==='分账'" class="fund-summary"><text>分账金额</text><text>¥{{r['本次成功分账金额']||r['应分服务商金额']||(Number(r._amount||0)/100).toFixed(2)}}</text></view>
-          <view v-if="table==='orders'&&!merchant" class="card-actions" @click.stop><button v-for="a in cardActions(r)" :key="a.name" :class="{primary:a.name==='evaluation.save'}" @click.stop="cardAction(r,a)">{{a.label}}</button></view
-          ><view class="card-bottom svc-view"
-            ><text
-              class="amount svc-text"
-              :data-field="mode === 'discover' ? '29-A.10' : undefined"
-              >{{ price(r) }}</text
-            ><text class="link svc-text">{{
-              mode === "discover" ? "查看服务 ›" : "查看详情 ›"
-            }}</text></view
-          ><text v-if="mode !== 'discover'" class="record-no svc-text">{{
-            r._id
-          }}</text></view
-        ></template
-      >
+        ><view v-if="filtered.length" :class="table==='services'?'service-grid':'record-list'">
+          <view v-for="r in filtered" :key="r._id" class="record-card svc-view" :data-record="r._id" @click="openRecord(r)">
+            <Picture v-if="table==='services'" card :value="r.服务主图" table="services" :record-id="r._id"/>
+            <view class="card-top"><text class="card-title" :data-field="mode==='discover'?'29-A.08':undefined">{{label(r)}}</text><text v-if="table==='orders'||r._fundSummary" class="top-order-no">{{r.服务订单号||r._id}}</text></view>
+            <template v-if="table==='services'"><text v-if="mode==='discover'" class="muted" data-field="29-A.09">{{r.经营店铺名称}}</text><text class="muted" data-field="29-A.11">{{serviceText(serviceMethods(r))}}</text><view class="tile-footer"><text class="amount" data-field="29-A.10">{{price(r)}}</text><text class="status" :class="{approved:merchant && r.审核状态==='通过',pending:merchant && r.审核状态==='待审核'}" data-field="29-A.13">{{statusLabel(r)}}</text></view></template>
+            <template v-else>
+              <text v-if="statusLabel(r)" class="status">{{statusLabel(r)}}</text>
+              <template v-if="table==='personnel'"><text>{{r.工作联系电话}}</text><text class="muted">{{(r.可执行服务类目||[]).map((id:string)=>options.categories?.find((c:any)=>c._id===id)?.label||id).join('、')}}</text><text class="muted">证明材料 {{r.人员资质材料?.length||0}} 份 · {{r.资质有效性}}</text>
+                <view v-if="merchant" class="card-actions" @click.stop><AppButton v-for="a in (r._actions||[]).filter((a:any)=>a.name==='personnel.status')" :key="a.name" size="compact" variant="secondary" @click="quick(a,r)">{{a.label}}</AppButton></view></template>
+              <template v-else-if="table==='aftersales'"><text>{{r.申请类型}} · {{r.申请原因}}</text><text class="muted"><template v-if="r.申请退款金额!==undefined && r.申请退款金额!==''">申请退款 ¥{{r.申请退款金额}}　</template>{{r.期望解决方式}}</text><text class="muted">{{r.申请时间}} · {{r._order}}</text><view v-if="merchant&&saleTask(r)&&r.售后状态!=='待居民确认方案'" class="card-actions" @click.stop><AppButton size="compact" @click="go('after-sale',{id:r._id,section:'process'})">去处理</AppButton></view></template>
+              <template v-else-if="r._fundSummary"><view class="fund-summary-grid"><view><text>用户支付 {{money(r._fundSummary.paid)}}</text><text v-if="r._fundSummary.refund" class="outgoing">已退款 {{money(r._fundSummary.refund)}}</text></view><view><text>商户分账 {{money(r._fundSummary.split)}} · {{r._fundSummary.splitStatus}}</text><text v-if="r._fundSummary.reversal" class="outgoing">已回退 {{money(r._fundSummary.reversal)}}</text></view></view></template>
+              <template v-else-if="table==='evaluations'"><StarRating :model-value="Number(r.总体评分)" readonly/><text>{{r.评价内容||'未填写文字评价'}}</text><text class="muted">{{r.评价时间}}</text></template>
+              <template v-else><text v-if="subtitle(r)" class="muted">{{subtitle(r)}}</text><text v-if="merchant&&r.currentArrangement" class="muted">{{r.currentArrangement.安排服务日期}}　{{r.currentArrangement.安排开始时间}}—{{r.currentArrangement.安排结束时间}}</text><view class="card-bottom"><text class="amount">{{price(r)}}</text><text v-if="table==='orders'" class="order-time">下单 {{r.创建时间?.slice(0,16).replace('T',' ')}}</text></view><view v-if="table==='orders'&&!merchant&&cardActions(r).length" class="card-actions" @click.stop><AppButton v-for="a in cardActions(r)" :key="a.name" size="compact" :variant="a.name==='evaluation.save'?'primary':'secondary'" @click="cardAction(r,a)">{{a.label}}</AppButton></view></template>
+            </template>
+          </view></view></template>
       <template v-else-if="mode === 'detail' && row"
         ><view class="hero svc-view"
           ><Picture
@@ -1346,7 +1291,7 @@ function clearFilters(){search.value='';status.value='';method.value='';category
           ><text class="hero-title svc-text">{{ row["服务名称"] }}</text
           ><text class="amount svc-text">{{ price(row) }}</text
           ><text class="muted svc-text">{{
-            row["服务简介"] || row["服务详细说明"]
+            row["服务简介"]
           }}</text></view
         ><Details table="services" :record="row" :options="options" /><view
           class="bottom-actions svc-view"
@@ -1380,9 +1325,7 @@ function clearFilters(){search.value='';status.value='';method.value='';category
                 @click="selectedMethod = c._method || c['组合履约方式名称']"
                 >{{ serviceText(c["组合履约方式名称"]) }} · ¥{{ c["组合固定价格"] }}</view
               ></view
-            ><text class="muted svc-text">{{ spec["包含内容"] }}</text
-            ><text v-if="spec['不包含内容']" class="muted svc-text"
-              >不包含：{{ spec["不包含内容"] }}</text
+            ><text class="muted svc-text">{{ spec["规格说明"] }}</text
             ><AppButton @click="book">确认选择，去预约</AppButton></view
           ></view
         ></template
@@ -1393,9 +1336,7 @@ function clearFilters(){search.value='';status.value='';method.value='';category
           ><text class="svc-text"
             >{{ spec["规格名称"] }} · {{ serviceText(combo["组合履约方式名称"]) }}</text
           ><text class="amount svc-text">¥{{ combo["组合固定价格"] }}</text
-          ><text class="muted svc-text">{{ spec["包含内容"] }}</text
-          ><text v-if="spec['不包含内容']" class="muted svc-text"
-            >不包含：{{ spec["不包含内容"] }}</text
+          ><text class="muted svc-text">{{ spec["规格说明"] }}</text
           ></view
         ><view class="form-card svc-view"
           ><view
@@ -1403,9 +1344,13 @@ function clearFilters(){search.value='';status.value='';method.value='';category
             class="sub-form svc-view"
             ><text class="section-label svc-text">本次上门地址</text
             >
-            <view class="address-select-row"><picker v-if="addresses.length" :range="addresses.map(addressLabel)" @change="selectAddress(addresses[Number($event.detail.value)])"><view class="pick">选择常用地址 ›</view></picker><text @click="manageAddresses">管理地址</text></view>
-            <view v-if="!addressEditing && form['上门服务地址']?.详细地址" class="selected-address"><text>{{ addressLabel(form['上门服务地址']) }}</text><text class="text-link" @click="addressEditing=true">修改本次地址</text></view>
-            <AddressForm v-else :value="form['上门服务地址']||{}" :options="{...options,selectedCombo:combo}" :errors="fieldErrors" :contact="false" @input="updateForm({...form,上门服务地址:$event})" /></view
+            <button class="selected-address" @click="addressSheet=true"><text>{{form['上门服务地址']?.详细地址?addressLabel(form['上门服务地址']):'请选择服务地址'}}</text><text>{{form['上门服务地址']?.联系人电话||''}}　›</text></button>
+            <FormField v-if="needsEstate" label="履约小区" required :error="fieldErrors.履约小区">
+              <picker :range="selectableEstates" range-key="label"
+                @change="updateForm({...form, 履约小区:selectableEstates[Number($event.detail.value)].value})">
+                <view class="pick">{{selectableEstates.find((e:any)=>e.value===form.履约小区)?.label || '请选择履约小区'}} ›</view>
+              </picker>
+            </FormField></view
           ><FormField
             v-else
             label="到店服务地点"
@@ -1482,7 +1427,9 @@ function clearFilters(){search.value='';status.value='';method.value='';category
             :options="options"
             :errors="fieldErrors"
             @input="updateForm" /><template v-else
-            >              <FormField v-if="isNewFlow && commandName==='order.result' && row['履约方式名称']==='预约到点'" label="到店凭证码" required :error="fieldErrors['到点凭证码']" data-field-name="到点凭证码"><input :value="form['到点凭证码']||''" placeholder="输入住户出示的本订单凭证" @input="updateForm({...form,到点凭证码:eventValue($event)})"/><text class="text-link" @click="scanResult">扫码填写</text></FormField><FieldGroup
+            >              <FormField v-if="isNewFlow && commandName==='order.result' && row.credential?.凭证状态!=='已核验'" label="服务码" required :error="fieldErrors.服务码" data-field-name="服务码">
+                <input type="number" maxlength="6" :value="form.服务码||''" placeholder="输入住户出示的 6 位服务码" @input="updateForm({...form,服务码:eventValue($event)})"/>
+              </FormField><FieldGroup
               :tables="fields"
               :draft-key="'service:'+APP+':'+(props.id||'new')+':'+commandName+(props.section?':'+props.section:'')"
               :only="formNames"
@@ -1512,24 +1459,23 @@ function clearFilters(){search.value='';status.value='';method.value='';category
               /></FormField></template></view
         ><view class="bottom-actions svc-view"
           ><AppButton :loading="saving" @click="submit">{{
-            action.label || "确认提交"
+            commandName==='qualification.save'?'保存申请':commandName==='service.save'?'保存并提交审核':commandName==='order.accept'&&form.接单结果!=='无法承接'?'确认':action.label || "确认提交"
           }}</AppButton></view
         ></template
       >
       <template v-else-if="mode === 'verify'"
         ><view class="hero svc-view"
-          ><text class="hero-title svc-text">核对到店凭证</text
+          ><text class="hero-title svc-text">核对服务码</text
           ><text class="muted svc-text"
-            >查询后核对服务、商户、地点与安排，再确认到点。核验不会完成服务。</text
+            >输入住户出示的服务码，查看对应订单。</text
           ></view
         ><view class="form-card svc-view"
-          ><FormField label="凭证码" required
+          ><FormField label="服务码" required
             ><input
               v-model="voucherInput"
-              placeholder="输入住户展示的有效凭证码" /></FormField
+              placeholder="输入住户出示的服务码" /></FormField
           ><view class="button-row svc-view"
-            ><AppButton variant="secondary" @click="scan">扫码查询</AppButton
-            ><AppButton @click="queryVoucher">查询凭证</AppButton></view
+            ><AppButton @click="queryVoucher">查询订单</AppButton></view
           ></view
         ><view
           v-if="error"
@@ -1547,7 +1493,7 @@ function clearFilters(){search.value='';status.value='';method.value='';category
             table="orders"
             :record="verified"
             :options="options"
-          /><AppButton :loading="saving" @click="verifyPoint"
+          /><AppButton v-if="verified._flowVersion===2" @click="go('order',{id:verified._id})">查看订单</AppButton><AppButton v-else :loading="saving" @click="verifyPoint"
             >确认到店</AppButton
           ></template
         ></template
@@ -1585,61 +1531,17 @@ function clearFilters(){search.value='';status.value='';method.value='';category
             class="muted svc-text"
             >原有效安排仍单独保留，新提案接受后才生效。</text
           ></view
-        ><view v-if="mode === 'voucher'" class="voucher-card svc-view"
-          ><text class="muted svc-text">请向本订单商户出示</text
-          ><VoucherCode
-            :value="
-              row.credential?.['到点凭证二维码'] || row['到点凭证二维码'] || ''
-            " /><text class="voucher-code svc-text">{{
-            row.credential?.["到点凭证码"] ||
-            row["到点凭证码"] ||
-            row["凭证码"] ||
-            row.voucher?.code ||
-            activeArrangement?.["到点凭证码"] ||
-            "当前没有有效到店凭证"
-          }}</text
-          ><FieldGroup
-            :tables="['30-B']"
-            :value="{
-              ...row,
-              ...row.credential,
-              ...row.voucher,
-              ...activeArrangement,
-            }"
-            :options="options" /></view
-        ><view v-if="table==='orders'&&!merchant&&row._mode==='预约到点'&&row.credential" class="inline-voucher"><button class="voucher-toggle" @click="voucherExpanded=!voucherExpanded">{{voucherExpanded?'收起到店凭证':'查看到店凭证'}} {{voucherExpanded?'⌃':'⌄'}}</button><view v-if="voucherExpanded" class="voucher-card"><VoucherCode :value="row.credential['到点凭证二维码']||''"/><text class="voucher-code">{{row.credential['到点凭证码']}}</text><text>{{row.credential['凭证状态']}}</text><text>{{row['地点快照']?.地点名称}} · {{row['地点快照']?.详细地址}}</text><text>{{row.currentArrangement?.安排服务日期}} {{row.currentArrangement?.安排开始时间}}—{{row.currentArrangement?.安排结束时间}}</text></view></view>
-        <OrderDetails v-if="table==='orders' && isNewFlow" :record="row" :options="options"/><Details v-else :table="table" :record="row" :options="options" /><view
-          v-if="table === 'orders' && !merchant && !row.credential"
-          class="secondary-links svc-view"
-          ><text
-            class="svc-text"
-            v-if="
-              row['履约方式名称'] === '预约到点' ||
-              row['选定履约方式'] === '预约到点' ||
-              row['履约方式'] === '预约到点'
-            "
-            @click="go('voucher', { id: row._id })"
-            >查看到店凭证</text
-          ></view
-        ><view
-          v-if="newCommand && mode === 'qualification'"
-          class="secondary-links svc-view"
-          ><text class="svc-text" @click="editRecord(row, newCommand)"
-            >编辑经营申请</text
-          ></view
-        ><view v-if="actions.length" class="bottom-actions svc-view"
-          ><AppButton :loading="saving" v-if="primaryAction" @click="quick(primaryAction)">{{
-            primaryAction.label
-          }}</AppButton
-          ><view v-if="secondaryActions.length" class="secondary-links svc-view"
-            ><text
-              class="svc-text"
-              v-for="a in secondaryActions"
-              :key="a.name + ':' + a.label"
-              @click="quick(a)"
-              >{{ a.label }}</text
-            ></view
-          ></view
+        ><view v-if="!merchant && row.credential && row.currentArrangement && row.credential.凭证状态!=='失效'" class="inline-voucher">
+          <button v-if="mode!=='voucher'" class="voucher-toggle" @click="voucherExpanded=!voucherExpanded">{{ voucherExpanded?'收起服务码':'查看服务码' }}</button>
+          <view v-if="mode==='voucher'||voucherExpanded" class="voucher-card">
+            <VoucherCode :value="row.credential.服务码 || row.credential.到点凭证码" :state="row.credential.凭证状态"/>
+            <text>{{ row.地点快照?.地点名称 || row.地点快照?.详细地址 }}</text>
+            <text>{{ row.currentArrangement.安排服务日期 }} {{ row.currentArrangement.安排开始时间 }}—{{ row.currentArrangement.安排结束时间 }}</text>
+          </view>
+        </view>
+        <AftersaleDetail v-if="table==='aftersales'" :record="row" :options="options" :merchant="merchant" :initial-tab="section" @quick="quick" @saved="load"/><FundDetails v-else-if="table==='orders'&&section==='funds'" :record="row"/><OrderDetails v-else-if="table==='orders' && isNewFlow" :record="row" :options="options"/><Details v-else :table="table" :record="row" :options="options" /><view v-if="table!=='aftersales'&&actions.length&&section!=='funds'" class="bottom-actions action-row">
+          <view v-if="secondaryActions.length" class="secondary-links"><AppButton v-if="table==='services'&&merchant" variant="secondary" @click="supplyMore">更多</AppButton><AppButton v-else v-for="a in secondaryActions" :key="a.name+a.label" variant="secondary" @click="quick(a)">{{a.label}}</AppButton></view>
+          <view v-if="primaryAction" class="main-cta"><AppButton :loading="saving" @click="quick(primaryAction)">{{primaryAction.label}}</AppButton></view></view
         ></template
       >
       <template v-else-if="mode === 'qualification' && !busy"
@@ -1656,6 +1558,8 @@ function clearFilters(){search.value='';status.value='';method.value='';category
         ></template
       >
     </view>
+    <view v-if="addressSheet" class="sheet-mask" @click="addressSheet=false"><view class="address-sheet" @click.stop><view class="sheet-heading"><text>选择地址</text><button aria-label="关闭地址选择" @click="addressSheet=false">×</button></view><scroll-view scroll-y class="address-options"><view v-for="a in addresses" :key="a._id" class="address-option"><button class="address-choice" @click="selectAddress(a)"><text class="address-radio">{{form['上门服务地址']?._id===a._id?'◉':'○'}}</text><view><text class="address-full">{{[a.省份,a.城市,a.区县,a.详细地址].filter(Boolean).join(' ')}}</text><text class="muted">{{a.联系人姓名}}　{{a.联系人电话}}</text></view></button><button class="address-edit" @click="editAddress(a)">编辑</button></view><text v-if="!addresses.length" class="empty">暂无常用地址，请新增地址</text></scroll-view><view class="sheet-footer"><AppButton variant="secondary" @click="editAddress()">新增地址</AppButton></view></view></view>
+
   </AppPage>
 </template>
 <style scoped lang="scss">
@@ -1791,13 +1695,6 @@ function clearFilters(){search.value='';status.value='';method.value='';category
 .list-title {
   font-size: 20px;
   font-weight: 700;
-}
-.new-button {
-  font-size: 13px;
-  background: $color-primary;
-  color: #fff;
-  margin: 0;
-  min-width: 108px;
 }
 .search {
   display: flex;
@@ -2047,7 +1944,12 @@ function clearFilters(){search.value='';status.value='';method.value='';category
 .svc-button::after {
   border: 0;
 }
-.card-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;}.card-actions button{font-size:13px;line-height:34px;margin:0;padding:0 14px;background:#f3f6f6;color:#1b4d53;}.card-actions .primary{background:#1b4d53;color:#fff;}.review-summary{margin:8px 0;}.review-copy{display:block;margin:6px 0;font-size:14px;line-height:1.6;}.fund-summary{display:flex;justify-content:space-between;margin-top:8px;font-size:14px;}.agreement-label{display:flex;align-items:center;gap:6px;font-size:13px;line-height:1.6;}.voucher-toggle{background:#e7f1ef;color:#1b4d53;font-size:16px;line-height:50px;margin:12px 0 0;}.inline-voucher .voucher-card{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.card-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;}.review-summary{margin:8px 0;}.review-copy{display:block;margin:6px 0;font-size:14px;line-height:1.6;}.fund-summary{display:flex;justify-content:space-between;margin-top:8px;font-size:14px;}.agreement-label{display:flex;align-items:center;gap:6px;font-size:13px;line-height:1.6;}.voucher-toggle{background:#e7f1ef;color:#1b4d53;font-size:16px;line-height:50px;margin:12px 0 0;}.inline-voucher .voucher-card{display:flex;flex-direction:column;align-items:center;gap:10px;}
 .status-tabs {white-space:nowrap;margin:0 0 12px;background:#fff;border-radius:12px;}.status-tabs button {display:inline-block;margin:0;padding:0 12px;line-height:46px;font-size:14px;background:transparent;border-radius:0;color:#687478;}.status-tabs button::after{border:0}.status-tabs button.active{color:#1b4d53;font-weight:600;border-bottom:3px solid #1b4d53;}
 .order-shortcut {text-align:left;margin:0 0 12px;background:#fff;line-height:48px;font-size:15px;color:#1b4d53;}.order-shortcut::after{border:0}.filter-summary{display:flex;justify-content:space-between;color:#7a8788;font-size:13px;margin:8px 0 12px;}
+.service-page{padding-left:12px;padding-right:12px}.record-card{padding:12px;margin-bottom:12px;gap:6px;position:relative}.card-top{gap:6px}.card-title{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;flex:1}.top-order-no{font-size:11px;color:#8b939b;max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.card-actions{justify-content:flex-end;gap:8px;margin:4px 0 0}.card-bottom{margin-top:4px}.record-card.has-card-actions .card-bottom{display:none}.card-action-amount{margin-right:auto}.status-tabs{width:100%;white-space:nowrap;margin:8px 0}.status-tabs button{box-sizing:border-box;width:14.285%;padding:0;min-width:0;margin:0;font-size:13px;line-height:44px}.hero,.form-card{padding:12px;margin-bottom:12px}.bottom-actions{gap:8px;display:flex;align-items:center}.bottom-actions>.app-button,.bottom-actions>.secondary-links{flex:1}.bottom-actions .secondary-links{margin:0;display:flex;gap:8px}.secondary-links :deep(.app-button){flex:1}.voucher-card{padding:10px;gap:6px}.voucher-code{font-size:16px!important;white-space:nowrap;overflow:auto;word-break:normal!important}.sheet-mask{position:fixed;inset:0;z-index:90;background:#0006;display:flex;align-items:flex-end}.address-sheet{width:100%;max-height:82vh;background:#fff;border-radius:20px 20px 0 0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));box-sizing:border-box}.sheet-heading{display:flex;align-items:center;justify-content:space-between;font-size:19px;font-weight:600}.sheet-heading button{background:transparent;margin:0;font-size:28px;line-height:44px;width:44px;padding:0}.address-options{max-height:55vh}.address-option{display:flex;border-bottom:1px solid #eef0f2;align-items:center;gap:8px;padding:8px 0}.address-choice{display:flex;flex:1;gap:10px;text-align:left;background:#fff;margin:0;padding:8px 0;line-height:1.6;font-size:15px}.address-choice>view{flex:1}.address-full{display:block;font-weight:600}.address-radio{color:#1b4d53;font-size:24px}.address-edit{padding:0 8px;font-size:13px;line-height:44px;margin:0;background:#f3f6f6}.sheet-footer{padding-top:12px}.selected-address{display:flex;width:100%;justify-content:space-between;gap:8px;text-align:left;font-size:15px;line-height:1.6;padding:10px}.date-sheet{padding:16px}.date-summary{font-size:12px;color:#718080;padding:6px 0}.fund-summary-grid{display:grid;gap:6px;font-size:14px;padding:8px 0}.fund-summary-grid text{display:block}
+.status-tabs button{vertical-align:top;height:46px;line-height:43px;border-bottom:3px solid transparent}
+.service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 14px}.service-grid .record-card{margin:0;min-width:0;overflow:hidden;padding:8px;gap:5px}.service-grid :deep(.service-picture){height:108px;border-radius:7px}.service-grid .card-title{font-size:15px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.tile-footer,.fund-summary-grid>view{display:flex;justify-content:space-between;align-items:center;gap:4px}.tile-footer{margin-top:auto;flex-wrap:wrap;row-gap:2px}.tile-footer .amount{white-space:nowrap;font-size:20px;line-height:1.25}.tile-footer .status{margin-left:auto}.tile-footer .status{font-size:11px;white-space:nowrap}
+.tile-footer .status.pending { color:#8e4610; background:#fff2df; }
+.tile-footer .status.approved { color:#17674b; background:#e4f5ed; }.order-time,.muted{color:#667781;font-size:13px}.record-card>.status{align-self:flex-start}.outgoing{color:#ad3434}.bottom-actions.action-row{flex-direction:row;align-items:center}.action-row>.secondary-links{flex:1;padding:0}.action-row>.main-cta{flex:1.65;min-width:0}.card-actions{justify-content:flex-end}.date-presets,.date-range{display:flex;gap:8px;align-items:center;margin:8px 0}.date-range picker,.date-presets button{flex:1;min-width:0;text-align:center}.date-range picker,.date-presets button,.filter-all{padding:0 4px;line-height:44px;background:#f4f7f6;font-size:14px}.date-presets .selected{color:$color-primary;background:#e5f3ee}.search-shortcut{font-size:14px!important;color:$color-primary;font-weight:600;white-space:nowrap}
 </style>

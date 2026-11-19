@@ -41,7 +41,7 @@ function show(id: string) {
     ><view
       v-for="id in ids.filter(show)"
       :key="id"
-      class="s1-field"
+      :class="['s1-field', {'s1-field--wide': attachmentFields.includes(id) || /多行|图片|附件/.test(fieldById[id]?.type || '') || /说明|原因|内容|描述/.test(fieldById[id]?.name || '')}]"
       :data-field="id"
       ><text class="s1-label">{{ fieldById[id]?.name || id }}</text
       ><Evidence
@@ -74,4 +74,5 @@ function show(id: string) {
   font-size: 15px;
   color: $color-text-primary;
 }
+.s1-field{display:flex;align-items:baseline;gap:10px;padding:8px 0}.s1-label{flex:0 0 96px;margin:0;font-size:14px}.s1-value{flex:1;min-width:0}.s1-field--wide{display:block}.s1-field--wide .s1-label{margin-bottom:6px}
 </style>

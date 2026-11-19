@@ -35,6 +35,18 @@ test('R2-06/07 Mock在查询层拒绝无权和不存在的空间，不只靠页�
   assert(query(s,{app:'web',account:'archive',role:'maintainer'},t,scope('root','')).every(r=>r['所属小区']!=='E-B'))
  }
 })
+test('档案点位照片按设施归属和查看范围授权，单凭附件标识无法读取', () => {
+ const s = createSeed()
+ const inside = resource(s, 'facilities', 'buildings', 'B-N', '照片点位')
+ const outside = resource(s, 'facilities', 'estates', 'E-B', '其他小区照片点位')
+ const viewer = { app: 'web', account: 'archive', role: 'maintainer' }
+ s.facilities.find(r => r._id === inside).点位照片 = ['photo-in']
+ s.facilities.find(r => r._id === outside).点位照片 = ['photo-out']
+ const photo = (id, blob) => authorizeAttachment(s, viewer, { table: 'facilities', id, blob, action: 'view' })
+ assert.equal(photo(inside, 'photo-in'), 'photo-in')
+ assert.throws(() => photo(inside, 'photo-out'), /照片不属于该设施点位/)
+ assert.throws(() => photo(outside, 'photo-out'), /无权/)
+})
 test('R2-08 不同楼栋同名房间保持独立引用，范围结果不按房号去重',()=>{
  const s=createSeed(),id=house(s,'B-N','0101')
  const matches=query(s,platform,'houses',scope('communities','C-A')).filter(h=>h['房号']==='0101')

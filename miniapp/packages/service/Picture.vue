@@ -10,6 +10,7 @@ const props = withDefaults(
     table: string;
     recordId: string;
     large?: boolean;
+    card?: boolean;
   }>(),
   { value: () => [], large: false },
 );
@@ -78,9 +79,9 @@ function preview() {
     class="service-picture svc-view"
     :class="{ 'service-picture--large': large }"
     data-field="29-A.07"
-    ><image
+    ><image v-if="url && card" class="svc-image" :src="url" mode="aspectFill"/><image
       class="svc-image"
-      v-if="url"
+      v-else-if="url"
       :src="url"
       mode="aspectFill"
       @click.stop="preview"

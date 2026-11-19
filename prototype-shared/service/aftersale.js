@@ -26,6 +26,7 @@ import {
   pickInput,
   simplified,
   serviceCompleted,
+  evaluationVisibility,
 } from "./common.js";
 import { refund, syncOrder } from "./funds.js";
 const types = [
@@ -179,6 +180,7 @@ export function executeSale(s, a, sale, o) {
   append(s, a, sale, "执行售后结果", sale["售后结案说明"] || type);
 }
 export function aftersaleCommand(s, a, name, p) {
+  need(name !== "aftersale.evidence", "本期不支持追加证据，已提交材料仍可查看");
   if (["aftersale.ruling", "aftersale.rulingNote"].includes(name))
     need(domain(s).fixtureLegacyOrders, "本期仅支持协商售后，历史裁定只读保留");
   const d = pickInput(
@@ -353,27 +355,12 @@ export function aftersaleCommand(s, a, name, p) {
       "方案已变更，请核对最新版本",
     );
     required(d, ["居民方案答复"]);
-    if (d["居民方案答复"] === "同意") {
-      plan["居民方案答复"] = "同意";
-      plan["居民方案答复人"] = a.name;
-      plan["居民方案答复时间"] = clock(s);
-      sale["售后状态"] = "待执行";
-      executeSale(s, a, sale, o);
-    } else {
-      plan["居民方案答复人"] = a.name;
-      plan["居民方案答复时间"] = clock(s);
-      required(d, ["居民方案答复说明"]);
-      plan["居民方案答复"] = "不同意";
-      plan["居民方案答复说明"] = d["居民方案答复说明"];
-      sale["售后状态"] = "协商中";
-    }
-  } else if (name === "aftersale.evidence") {
-    need(["resident", "merchant"].includes(a.role), "仅售后双方可以追加证据");
-    need(!["已解决", "已撤回"].includes(sale["售后状态"]), "当前售后已结束");
-    required(d, ["追加说明"]);
-    auditEvidence(s, a, d, ["追加证据"]);
-    sale.evidence = sale.evidence || [];
-    sale.evidence.push({ ...d, 追加人: a.name, 追加时间: clock(s) });
+    need(d["居民方案答复"] === "同意", "当前方案仅支持确认或撤回申请");
+    plan["居民方案答复"] = "同意";
+    plan["居民方案答复人"] = a.name;
+    plan["居民方案答复时间"] = clock(s);
+    sale["售后状态"] = "待执行";
+    executeSale(s, a, sale, o);
   } else if (name === "aftersale.withdraw") {
     resident(a);
     need(
@@ -382,9 +369,8 @@ export function aftersaleCommand(s, a, name, p) {
         !sale.rulings.some((r) => r["裁定有效状态"] === "生效"),
       "结果已生效或执行中，不能撤回",
     );
-    required(d, ["撤回原因"]);
     sale["售后状态"] = "已撤回";
-    sale["撤回原因"] = d["撤回原因"];
+    if (d["撤回原因"]) sale["撤回原因"] = d["撤回原因"];
     o["售后状态"] = "已撤回";
   } else if (name === "aftersale.ruling") {
     admin(a, "ruling");
@@ -547,9 +533,9 @@ function evaluationCommand(s, a, name, p) {
   const r = get(s, a, "evaluations", p.id);
   admin(a, "manage");
   revision(r, p);
-  need(["显示", "受限"].includes(d["状态"]), "评价展示状态无效");
-  if (d["状态"] === "受限") {
-    required(d, ["评价限制原因"]);
+  const status = evaluationVisibility(d["状态"]);
+  need(["显示", "隐藏"].includes(status), "评价展示状态无效");
+  if (status === "隐藏") {
     need(
       !/^(低分|评分低|不满意|差评)$/.test(d["评价限制原因"]),
       "不得仅因低分限制评价",
@@ -559,7 +545,7 @@ function evaluationCommand(s, a, name, p) {
     need(a.grant.sensitive, "没有内部监管资料权限");
     auditEvidence(s, a, d, ["评价监管证据"]);
   }
-  r["评价展示状态"] = d["状态"];
+  r["评价展示状态"] = status;
   r["评价限制原因"] = d["评价限制原因"] || "";
   if (d["评价监管证据"] !== undefined) r["评价监管证据"] = d["评价监管证据"];
   append(s, a, r, "评价监管", r["评价限制原因"]);
